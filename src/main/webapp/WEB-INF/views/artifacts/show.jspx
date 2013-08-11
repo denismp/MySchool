@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Artifact" object="${artifact}" path="/artifacts" z="iifM1jf7ak9Y3Zqlg7d1o3V4yxE=">
+        <field:display field="artifactName" id="s_com_app_myschool_model_Artifact_artifactName" object="${artifact}" z="pCNaU05csIw7w+jEpbIYm8PhO1I="/>
+        <field:display field="fileName" id="s_com_app_myschool_model_Artifact_fileName" object="${artifact}" z="Rw9Vg+CdX9YM9W73waDHqDmNZUw="/>
+        <field:display field="comments" id="s_com_app_myschool_model_Artifact_comments" object="${artifact}" z="RzRKXE4SRYuGG40jT0bSVD3d3AE="/>
+        <field:display field="bodyOfWork" id="s_com_app_myschool_model_Artifact_bodyOfWork" object="${artifact}" z="jJnGEeGhQHXiwQgehFvETKuYB7w="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Artifact_whoUpdated" object="${artifact}" z="8qb0VN7CZwhayThFs3oGPdUgx3M="/>
+        <field:display date="true" dateTimePattern="${artifact_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Artifact_lastUpdated" object="${artifact}" z="hp0YkngOTbo4HS9Tb0toU7YdHRM="/>
+    </page:show>
+</div>

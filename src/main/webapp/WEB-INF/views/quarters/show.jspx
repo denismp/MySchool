@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Quarter" object="${quarter}" path="/quarters" z="7tDnYK4E6s+P0V28GERKVc353zA=">
+        <field:display field="qtrName" id="s_com_app_myschool_model_Quarter_qtrName" object="${quarter}" z="Icdez3patZs3FQBrNiieN3fHiec="/>
+        <field:display field="gradeType" id="s_com_app_myschool_model_Quarter_gradeType" object="${quarter}" z="d/25HfbRDxC+lxG/gdtjCN+yYB0="/>
+        <field:display field="grade" id="s_com_app_myschool_model_Quarter_grade" object="${quarter}" z="UGKmznYPbJkEDgQj4PlqTKzGNLE="/>
+        <field:display field="locked" id="s_com_app_myschool_model_Quarter_locked" object="${quarter}" z="PzXUPurDOrn97BRXjOzoxIJGomM="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Quarter_whoUpdated" object="${quarter}" z="psjXxX6zz+4VV+C2hpVLaV+MKtg="/>
+        <field:display date="true" dateTimePattern="${quarter_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Quarter_lastUpdated" object="${quarter}" z="31pfrNMlInprZOmvJ+wJWk9Otwc="/>
+        <field:display field="student" id="s_com_app_myschool_model_Quarter_student" object="${quarter}" z="GiiWQZK/L4D9qJi81YnqAvulxFE="/>
+    </page:show>
+</div>

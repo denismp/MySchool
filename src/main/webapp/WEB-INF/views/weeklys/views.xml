@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="weeklys/list">
+        <put-attribute name="body" value="/WEB-INF/views/weeklys/list.jspx"/>
+    </definition>
+<definition extends="default" name="weeklys/show">
+        <put-attribute name="body" value="/WEB-INF/views/weeklys/show.jspx"/>
+    </definition>
+<definition extends="default" name="weeklys/create">
+        <put-attribute name="body" value="/WEB-INF/views/weeklys/create.jspx"/>
+    </definition>
+<definition extends="default" name="weeklys/update">
+        <put-attribute name="body" value="/WEB-INF/views/weeklys/update.jspx"/>
+    </definition>
+</tiles-definitions>

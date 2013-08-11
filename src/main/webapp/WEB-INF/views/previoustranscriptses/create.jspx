@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_PreviousTranscripts" modelAttribute="previousTranscripts" path="/previoustranscriptses" render="${empty dependencies}" z="lvBPEb9f0sBBaGjgEFI9JYbl/HY=">
+        <field:input field="type" id="c_com_app_myschool_model_PreviousTranscripts_type" max="1" min="0" required="true" z="meEkyB2U7Zf0WFllFiyeA1YvsM8="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_PreviousTranscripts" render="${not empty dependencies}" z="Ulx4IZVDZa3D7y/F4gjwYjKEFC4="/>
+</div>

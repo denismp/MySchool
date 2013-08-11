@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_Student" modelAttribute="student" path="/students" render="${empty dependencies}" z="ivO+29qavTFLqIGSrdQAa5M5sjY=">
+        <field:textarea field="personID" id="c_com_app_myschool_model_Student_personID" required="true" z="4vAzRcpvgsQIECjjQ9cGCrpHOtw="/>
+        <field:textarea field="firstName" id="c_com_app_myschool_model_Student_firstName" required="true" z="+3p010We920HU9Bu6W+vkf5Lv6A="/>
+        <field:textarea field="lastName" id="c_com_app_myschool_model_Student_lastName" required="true" z="+2kEwU/tYsFTqKe4mLUHSOmxUY8="/>
+        <field:textarea field="middleName" id="c_com_app_myschool_model_Student_middleName" z="56JT9CHUOYMmTciXEFxg0GZvHHM="/>
+        <field:input field="phone1" id="c_com_app_myschool_model_Student_phone1" max="25" required="true" z="Umn9H2GX+Oft6jAqklRW2z4PAmE="/>
+        <field:input field="phone2" id="c_com_app_myschool_model_Student_phone2" max="25" z="ZKr0Yske/LQcMmAhNL0mPGjAoCc="/>
+        <field:textarea field="address1" id="c_com_app_myschool_model_Student_address1" required="true" z="QlljFkL4USsSA7OoKqsBvDXD4QE="/>
+        <field:textarea field="address2" id="c_com_app_myschool_model_Student_address2" z="StURD7F+JU0LCTyrFate2PlfEWs="/>
+        <field:textarea field="city" id="c_com_app_myschool_model_Student_city" required="true" z="zPcrhEwlfSdDS0/jOpUJGZ8SKVk="/>
+        <field:textarea field="province" id="c_com_app_myschool_model_Student_province" required="true" z="T02lx67ouVjKs8qS/2FkzhjFuDQ="/>
+        <field:input field="postalCode" id="c_com_app_myschool_model_Student_postalCode" max="25" required="true" z="ZMZNjVkYKu8ugiDgQu6uObTuT6M="/>
+        <field:textarea field="country" id="c_com_app_myschool_model_Student_country" required="true" z="MeHyHQMR/FCOPn+NbPL89eQGmjw="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Student_whoUpdated" required="true" z="rwuA4Pe8APTjDFjFTA2UPqstOwQ="/>
+        <field:datetime dateTimePattern="${student_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Student_lastUpdated" required="true" z="iwaNE4Sprz9HNwD5j8PNSXXFQR4="/>
+        <field:simple field="roles" id="c_com_app_myschool_model_Student_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="Roles" z="VpDNIJjvUFvaqtNk7pPpK78ujag="/>
+        <field:simple field="monthlyEvaluations" id="c_com_app_myschool_model_Student_monthlyEvaluations" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="X1I8L2XC9GsEvJo/eea1MNTYs9U="/>
+        <field:simple field="quarters" id="c_com_app_myschool_model_Student_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="wwOQJukA+rXtBumf+o6tJjn8k2Q="/>
+        <field:simple field="monthlyEvaluationRatings" id="c_com_app_myschool_model_Student_monthlyEvaluationRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="Z6qZwoN8HGi6BIksnsurONHxmO4="/>
+        <field:simple field="monthlySummaryRatings" id="c_com_app_myschool_model_Student_monthlySummaryRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Summary Ratings" z="YSSbJ+emi9RFtJjAKN3F8foMX9U="/>
+        <field:simple field="previousTranscripts" id="c_com_app_myschool_model_Student_previousTranscripts" messageCode="entity_reference_not_managed" messageCodeAttribute="Previous Transcripts" z="fB1MF2cN7/aPi4STUPRoAGYj+JE="/>
+        <field:simple field="graduateTracking" id="c_com_app_myschool_model_Student_graduateTracking" messageCode="entity_reference_not_managed" messageCodeAttribute="Graduate Tracking" z="sHPYGVSwP1yoG5XFhkIZWgsP+cg="/>
+        <field:select field="faculty" id="c_com_app_myschool_model_Student_faculty" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="ck3S9plWVLvOGGlYpOpI0S6urgs="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Student" render="${not empty dependencies}" z="1a2SKbr5fwJQYr41tK71+4cnxRw="/>
+</div>

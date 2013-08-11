@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Daily" object="${daily}" path="/dailys" z="G1tK6SDb46a8snIohC3HCkC1/y8=">
+        <field:display field="daily_year" id="s_com_app_myschool_model_Daily_daily_year" object="${daily}" z="8HEPTxypidtf6u9+PLkqprdsJXg="/>
+        <field:display field="daily_month" id="s_com_app_myschool_model_Daily_daily_month" object="${daily}" z="6+eW5dSHaG0UMP5uZIhJPnzQS2c="/>
+        <field:display field="daily_week" id="s_com_app_myschool_model_Daily_daily_week" object="${daily}" z="y/OgdLk7CDn7wTWoqadYPoukBGE="/>
+        <field:display field="daily_day" id="s_com_app_myschool_model_Daily_daily_day" object="${daily}" z="ms72+Xow8jfhPobXyqiHjCxYlmI="/>
+        <field:display field="daily_hours" id="s_com_app_myschool_model_Daily_daily_hours" object="${daily}" z="P5QPRgGQD4P1+p0m1P8NbXyHFLI="/>
+        <field:display field="resourcesUsed" id="s_com_app_myschool_model_Daily_resourcesUsed" object="${daily}" z="tudEbM0ca5++qvkEzFXXNzyws3w="/>
+        <field:display field="studyDetails" id="s_com_app_myschool_model_Daily_studyDetails" object="${daily}" z="giyNbR8nqrO0aMYZFU5GezeEsNo="/>
+        <field:display field="evaluation" id="s_com_app_myschool_model_Daily_evaluation" object="${daily}" z="9tKvJi7Ow0HVDUmu9BlEBTuLXkY="/>
+        <field:display field="correction" id="s_com_app_myschool_model_Daily_correction" object="${daily}" z="db98XQB2sW0GmQNf6awyjHM1ttc="/>
+        <field:display field="dailyAction" id="s_com_app_myschool_model_Daily_dailyAction" object="${daily}" z="WyexWkHLr7IUqlYJbDbIYEsdXeU="/>
+        <field:display field="comments" id="s_com_app_myschool_model_Daily_comments" object="${daily}" z="ocxayWyGjxsag46mAxjTvoEwK0g="/>
+        <field:display field="locked" id="s_com_app_myschool_model_Daily_locked" object="${daily}" z="UmvZdoiFu0K9J7RubO51yFZgLUc="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Daily_whoUpdated" object="${daily}" z="6sH+/Sp5vUFvhQYX7kXFIVvPAe8="/>
+        <field:display date="true" dateTimePattern="${daily_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Daily_lastUpdated" object="${daily}" z="D9bq1wWbA9o3ZG1kramahE8qDOo="/>
+        <field:display field="subject" id="s_com_app_myschool_model_Daily_subject" object="${daily}" z="ZgonI/uWDXTHub1TXh7BplxMUbM="/>
+    </page:show>
+</div>

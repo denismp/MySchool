@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_EvaluationRatings" object="${evaluationratings}" path="/evaluationratingses" z="UHomKIgU2jBb1XSpDnS4ETcJUyA=">
+        <field:display field="motivation" id="s_com_app_myschool_model_EvaluationRatings_motivation" object="${evaluationratings}" z="VKyyXmtnVxtVRzhRkm7+kdmTRoA="/>
+        <field:display field="organization" id="s_com_app_myschool_model_EvaluationRatings_organization" object="${evaluationratings}" z="tEWKkTyUEQCIaQDMu7sMQuG5JuA="/>
+        <field:display field="effectiveUseOfStudyTime" id="s_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" object="${evaluationratings}" z="Q3Xjhm0BmSRBV0Hs1sp/jLKJuos="/>
+        <field:display field="qualityOfWork" id="s_com_app_myschool_model_EvaluationRatings_qualityOfWork" object="${evaluationratings}" z="S3oRNSidFMKyhYUmVezeabIDrjc="/>
+        <field:display field="accuracyOfWork" id="s_com_app_myschool_model_EvaluationRatings_accuracyOfWork" object="${evaluationratings}" z="2whalCyHIYSQ/knYn4LivfFRPQc="/>
+        <field:display field="complexityOfWork" id="s_com_app_myschool_model_EvaluationRatings_complexityOfWork" object="${evaluationratings}" z="0/PN07GTmX9G/WHcuOa4/RTcgxI="/>
+        <field:display field="growth" id="s_com_app_myschool_model_EvaluationRatings_growth" object="${evaluationratings}" z="o+pefqqmTPorD4sOfcsbUzOYroI="/>
+        <field:display field="consistency" id="s_com_app_myschool_model_EvaluationRatings_consistency" object="${evaluationratings}" z="o1jPPSxDyBSs3DJop1s63qvkNEw="/>
+        <field:display field="locked" id="s_com_app_myschool_model_EvaluationRatings_locked" object="${evaluationratings}" z="SsRVQNAlD6Xk78QlbsLnV6FvDRg="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_EvaluationRatings_whoUpdated" object="${evaluationratings}" z="4BOsUmdswSy8YbC8eavfv8vz6Yc="/>
+        <field:display date="true" dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_EvaluationRatings_lastUpdated" object="${evaluationratings}" z="JJDzGLtXfyOb3JidcuVAc172Nek="/>
+        <field:display field="weekly" id="s_com_app_myschool_model_EvaluationRatings_weekly" object="${evaluationratings}" z="i/UrW+Jqlnnr+I3+VL6/nGUTTkA="/>
+    </page:show>
+</div>

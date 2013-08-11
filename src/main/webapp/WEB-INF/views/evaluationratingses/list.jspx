@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_EvaluationRatings" items="${evaluationratingses}" z="eehocYiR6sadb12kVl0Rekk1ZUY=">
+        <table:table data="${evaluationratingses}" id="l_com_app_myschool_model_EvaluationRatings" path="/evaluationratingses" z="lKhS0O1UwjlOb9eQ0N9n2kiMzac=">
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_motivation" property="motivation" z="4V7czVVzg2aaO3SZ4487M4kAejc="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_organization" property="organization" z="ZITzZjpAN1sZKxpl8FXHLdFBOrw="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" property="effectiveUseOfStudyTime" z="kCUfG1SF5F9Jv0fWdnEUUuVKxGI="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_qualityOfWork" property="qualityOfWork" z="fwOyM0blLY+2VEvMMjiaLRCX30o="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_accuracyOfWork" property="accuracyOfWork" z="BJ6jZ4GKzURkuueDHORzZtm+bAo="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_complexityOfWork" property="complexityOfWork" z="1N6iqy+dutRwLJserEeZI2ptLVk="/>
+        </table:table>
+    </page:list>
+</div>

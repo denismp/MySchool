@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_SkillRatings" items="${skillratingses}" z="gc3W7xSilYVYvmF6//nGkBkl1nc=">
+        <table:table data="${skillratingses}" id="l_com_app_myschool_model_SkillRatings" path="/skillratingses" z="lwFgaLQ3ev40A7/EWvjR2SyVLWQ=">
+            <table:column id="c_com_app_myschool_model_SkillRatings_remembering" property="remembering" z="M8uwLTvmm44WXrSw5Cj9WYuH/h0="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_understanding" property="understanding" z="XsyE5DIPAIpMihyen1WVdbwR0d8="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_applying" property="applying" z="ibqHmasKUU9FVDRvTRXqj/NVub0="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_analyzing" property="analyzing" z="TslmtTHPULinQfU3EKjBw+OFV/M="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_creating" property="creating" z="y+ZgotC1Yn0Vzs3y/rxfmHCUY+8="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_locked" property="locked" z="T8WuM9xZPFU5hLo8KDePKCueRJs="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_SkillRatings" modelAttribute="skillRatings" path="/skillratingses" render="${empty dependencies}" z="aH8lSMD+JvXxmIhC5w4lZUdOYBY=">
+        <field:input field="remembering" id="c_com_app_myschool_model_SkillRatings_remembering" max="10" min="6" required="true" z="ObGx/fdkYm0Cm1qgmMz7UCwwRD0="/>
+        <field:input field="understanding" id="c_com_app_myschool_model_SkillRatings_understanding" max="10" min="6" required="true" z="0cak3GG1vASKWj3oBhqu0xN2JNs="/>
+        <field:input field="applying" id="c_com_app_myschool_model_SkillRatings_applying" max="10" min="6" required="true" z="QsjS6IgDwTBhrg0Bx/Izi9aBpBU="/>
+        <field:input field="analyzing" id="c_com_app_myschool_model_SkillRatings_analyzing" max="10" min="6" required="true" z="OZT8aYJG5pkmZz9JcJCgFXH7YGQ="/>
+        <field:input field="creating" id="c_com_app_myschool_model_SkillRatings_creating" max="10" min="6" required="true" z="QNIRSq41ScpFUoNl6YcGcMwnSEU="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_SkillRatings_locked" z="F6cqw4HeM2NYkxW4TxgFZzEukjg="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_SkillRatings_whoUpdated" required="true" z="u67IujOYAW25SCCUa6pHa4usIaY="/>
+        <field:datetime dateTimePattern="${skillRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_SkillRatings_lastUpdated" required="true" z="TEdVUrwcY0WeQ5YeaNxjdpF+a0Y="/>
+        <field:select field="weekly" id="c_com_app_myschool_model_SkillRatings_weekly" itemValue="id" items="${weeklys}" path="/weeklys" z="m6RnGfZYh5MYtriUsvG3tuItR8A="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_SkillRatings" render="${not empty dependencies}" z="Ukk7eHalvO8j6aS9djWSuzVpP/Y="/>
+</div>

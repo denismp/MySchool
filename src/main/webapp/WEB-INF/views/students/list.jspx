@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_Student" items="${students}" z="rF0kpQGvXRH+9lZ2q5QBV51/KHM=">
+        <table:table data="${students}" id="l_com_app_myschool_model_Student" path="/students" z="PaL5RUkYXYi261qyedCgj8k4gNM=">
+            <table:column id="c_com_app_myschool_model_Student_personID" property="personID" z="7nYb7b8HdFWEbMSAf8Ktf8oVWRI="/>
+            <table:column id="c_com_app_myschool_model_Student_firstName" property="firstName" z="KhMvruZtEySh39CSQyx8fOT8Muk="/>
+            <table:column id="c_com_app_myschool_model_Student_lastName" property="lastName" z="PMavnM79DJEdpsW6qv6aOv2Co/0="/>
+            <table:column id="c_com_app_myschool_model_Student_middleName" property="middleName" z="N+xQq4SyXpbpCpBD4gI5l4ufLVg="/>
+            <table:column id="c_com_app_myschool_model_Student_phone1" property="phone1" z="b6psEaCA7rhKRuHCZsKGdfSrjyM="/>
+            <table:column id="c_com_app_myschool_model_Student_phone2" property="phone2" z="GWeEQSVmj0zhJqKpLkdkh88Blc4="/>
+        </table:table>
+    </page:list>
+</div>

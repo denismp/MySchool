@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_MonthlyEvaluationRatings" object="${monthlyevaluationratings}" path="/monthlyevaluationratingses" z="GO2kBXTIX5ewT0mLlNDKqHDbdMw=">
+        <field:display field="month_year" id="s_com_app_myschool_model_MonthlyEvaluationRatings_month_year" object="${monthlyevaluationratings}" z="PrYOLlXCe3IlAmPzj72arsTuWEE="/>
+        <field:display field="month_number" id="s_com_app_myschool_model_MonthlyEvaluationRatings_month_number" object="${monthlyevaluationratings}" z="BFGAheoKOIjAfENBKGGfIJKw6OI="/>
+        <field:display field="week_number" id="s_com_app_myschool_model_MonthlyEvaluationRatings_week_number" object="${monthlyevaluationratings}" z="KAh91TPVxcpwJW/7U1ofTB3X0EE="/>
+        <field:display field="levelOfDifficulty" id="s_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" object="${monthlyevaluationratings}" z="Yx6LBx04dINl0sI1HVRoS2QAcfM="/>
+        <field:display field="criticalThinkingSkills" id="s_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" object="${monthlyevaluationratings}" z="ZtAWlZhXUmGSuH8qFY7LoYEreJU="/>
+        <field:display field="effectiveCorrectionActions" id="s_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" object="${monthlyevaluationratings}" z="PpNfrSmD4OX+0R5W1pGA6NAuASg="/>
+        <field:display field="accuratelyIdCorrections" id="s_com_app_myschool_model_MonthlyEvaluationRatings_accuratelyIdCorrections" object="${monthlyevaluationratings}" z="9FG7A76PbnIWMINaMVfqnI0nVk0="/>
+        <field:display field="completingCourseObjectives" id="s_com_app_myschool_model_MonthlyEvaluationRatings_completingCourseObjectives" object="${monthlyevaluationratings}" z="TtH0cOaa1WGuVyS19cKsSob5QH8="/>
+        <field:display field="thoughtfulnessOfReflections" id="s_com_app_myschool_model_MonthlyEvaluationRatings_thoughtfulnessOfReflections" object="${monthlyevaluationratings}" z="6lEkqvjJtJC/FBCpSOm9eKuzkhU="/>
+        <field:display field="responsibilityOfProgress" id="s_com_app_myschool_model_MonthlyEvaluationRatings_responsibilityOfProgress" object="${monthlyevaluationratings}" z="Q5jD7vxSXlXMsM/4ZA/CdIUVk90="/>
+        <field:display field="workingEffectivelyWithAdvisor" id="s_com_app_myschool_model_MonthlyEvaluationRatings_workingEffectivelyWithAdvisor" object="${monthlyevaluationratings}" z="tYFleNRB5DqA93SIPbZdaGIqoMA="/>
+        <field:display field="locked" id="s_com_app_myschool_model_MonthlyEvaluationRatings_locked" object="${monthlyevaluationratings}" z="2hMGzvP3Gj3kXfRrpwVFwsEaSmQ="/>
+        <field:display date="true" dateTimePattern="${monthlyEvaluationRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_MonthlyEvaluationRatings_lastUpdated" object="${monthlyevaluationratings}" z="lIeGoC86jsKd9T6l9OsXYe6IJ+Y="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_MonthlyEvaluationRatings_whoUpdated" object="${monthlyevaluationratings}" z="ViVJ+Cwb31l21sGq9IQWWta8H/4="/>
+        <field:display field="student" id="s_com_app_myschool_model_MonthlyEvaluationRatings_student" object="${monthlyevaluationratings}" z="Vv5M1qJdxBPyNhDlWroKXrxH4M4="/>
+    </page:show>
+</div>

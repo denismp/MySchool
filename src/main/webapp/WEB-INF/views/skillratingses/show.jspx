@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_SkillRatings" object="${skillratings}" path="/skillratingses" z="81NZaesXzYxzINgSjlI6J27nhCA=">
+        <field:display field="remembering" id="s_com_app_myschool_model_SkillRatings_remembering" object="${skillratings}" z="oUJL1L7ADdtRfAtDUGvH8XtnGgs="/>
+        <field:display field="understanding" id="s_com_app_myschool_model_SkillRatings_understanding" object="${skillratings}" z="iNJtmLcw9IGd5xw0jvO0mJ3T8SE="/>
+        <field:display field="applying" id="s_com_app_myschool_model_SkillRatings_applying" object="${skillratings}" z="ph4/dO0O4QFBJ5qqIRoXFclnvEk="/>
+        <field:display field="analyzing" id="s_com_app_myschool_model_SkillRatings_analyzing" object="${skillratings}" z="8kbMpWxil0JcRiDcHbINoPxzsa8="/>
+        <field:display field="creating" id="s_com_app_myschool_model_SkillRatings_creating" object="${skillratings}" z="PIIFmD7I1jg3YIP62HOpQazcP0g="/>
+        <field:display field="locked" id="s_com_app_myschool_model_SkillRatings_locked" object="${skillratings}" z="ulbOLV+owAGmw5HrJdGpSIwuPPA="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_SkillRatings_whoUpdated" object="${skillratings}" z="6fblRSmYcO7433EiZ+WEjTNNopU="/>
+        <field:display date="true" dateTimePattern="${skillRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_SkillRatings_lastUpdated" object="${skillratings}" z="VF4/VZwwnaUlchj2M+nYAAjtSRo="/>
+        <field:display field="weekly" id="s_com_app_myschool_model_SkillRatings_weekly" object="${skillratings}" z="9vPNPGdF85rROnvrDfZyxotW4Tk="/>
+    </page:show>
+</div>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Faculty" object="${faculty}" path="/facultys" z="8X22S5m4INvrHqLw9tCTkYkQJO0=">
+        <field:display field="personID" id="s_com_app_myschool_model_Faculty_personID" object="${faculty}" z="OHBknJgSmIOUymgrkg1JZgAi4Mk="/>
+        <field:display field="firstName" id="s_com_app_myschool_model_Faculty_firstName" object="${faculty}" z="o1w09e54fQ3YH+rvNdCF3LDEKbU="/>
+        <field:display field="lastName" id="s_com_app_myschool_model_Faculty_lastName" object="${faculty}" z="QwjJ3BYWqhi3/TRgrw0rEymNqtU="/>
+        <field:display field="middleName" id="s_com_app_myschool_model_Faculty_middleName" object="${faculty}" z="nfzXx1hAhmehEf0dF1qvTYngVHo="/>
+        <field:display field="phone1" id="s_com_app_myschool_model_Faculty_phone1" object="${faculty}" z="G5JID7FeCUz/thwpXJv3kpZjQN8="/>
+        <field:display field="phone2" id="s_com_app_myschool_model_Faculty_phone2" object="${faculty}" z="cBkyz8tokczhlq6ja9AbHtQGka4="/>
+        <field:display field="address1" id="s_com_app_myschool_model_Faculty_address1" object="${faculty}" z="+OEs5RcaawUGCDp3hbOWBzLzqxg="/>
+        <field:display field="address2" id="s_com_app_myschool_model_Faculty_address2" object="${faculty}" z="G5Bx5KoP4Mg9EHANwCs9kF2/VDQ="/>
+        <field:display field="city" id="s_com_app_myschool_model_Faculty_city" object="${faculty}" z="pYnClps8LKa+vca1Mz0T8gWP/NM="/>
+        <field:display field="province" id="s_com_app_myschool_model_Faculty_province" object="${faculty}" z="G6BDNY5AVQIkRzh5y/xCPxUWfBE="/>
+        <field:display field="postalCode" id="s_com_app_myschool_model_Faculty_postalCode" object="${faculty}" z="sZAkpHohgWQw+s6zExGGshU3nBY="/>
+        <field:display field="country" id="s_com_app_myschool_model_Faculty_country" object="${faculty}" z="lBt/+fYHURYDK4x0YaFc2fVvE10="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Faculty_whoUpdated" object="${faculty}" z="IJUapFjRYQn8jphtHQ4sbdH/yNk="/>
+        <field:display date="true" dateTimePattern="${faculty_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Faculty_lastUpdated" object="${faculty}" z="NbF55fddc6sIdLwbEPcL7kaqpbQ="/>
+        <field:display field="students" id="s_com_app_myschool_model_Faculty_students" object="${faculty}" z="f//F+atHTIaTF/09Mm3pqm9KmDg="/>
+    </page:show>
+</div>

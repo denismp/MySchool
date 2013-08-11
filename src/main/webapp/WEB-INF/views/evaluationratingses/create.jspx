@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_EvaluationRatings" modelAttribute="evaluationRatings" path="/evaluationratingses" render="${empty dependencies}" z="B1AL2/poTdXv0/HAzkdcCHn3mvc=">
+        <field:input field="motivation" id="c_com_app_myschool_model_EvaluationRatings_motivation" max="10" min="6" required="true" z="k9VvyneOtJ2/LvVXPsZcruYzAp4="/>
+        <field:input field="organization" id="c_com_app_myschool_model_EvaluationRatings_organization" max="10" min="6" required="true" z="0/IN41ju6McZBs6FvcEUKvqgyCw="/>
+        <field:input field="effectiveUseOfStudyTime" id="c_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" max="10" min="6" required="true" z="Sw/GKMjah7APqaCRmUAUhiP76Do="/>
+        <field:input field="qualityOfWork" id="c_com_app_myschool_model_EvaluationRatings_qualityOfWork" max="10" min="6" required="true" z="TZVcR1oU/5uGLNnJw7d1mBlMMUI="/>
+        <field:input field="accuracyOfWork" id="c_com_app_myschool_model_EvaluationRatings_accuracyOfWork" max="10" min="6" required="true" z="mDEFo7oXONHo66CnsydPjegLIgQ="/>
+        <field:input field="complexityOfWork" id="c_com_app_myschool_model_EvaluationRatings_complexityOfWork" max="10" min="6" required="true" z="BuK9UwquBle4hScQR8/yMzdS9iM="/>
+        <field:input field="growth" id="c_com_app_myschool_model_EvaluationRatings_growth" max="10" min="6" required="true" z="a8IF2C+A7ARN69I4fsuB/eUJUjM="/>
+        <field:input field="consistency" id="c_com_app_myschool_model_EvaluationRatings_consistency" max="10" min="6" required="true" z="a+CBtRna+i9mHzq7MA+HmLfXAGw="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_EvaluationRatings_locked" z="2i8ohEZR4Kk0hGQb+P5jSNwEcCU="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_EvaluationRatings_whoUpdated" required="true" z="2k0+3LKDjpm3gxg2BA79pkWtitE="/>
+        <field:datetime dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_EvaluationRatings_lastUpdated" required="true" z="1x/uL2bH87t6CfKbYnq0vHX/BA4="/>
+        <field:select field="weekly" id="c_com_app_myschool_model_EvaluationRatings_weekly" itemValue="id" items="${weeklys}" path="/weeklys" z="rVBgnwQEKXYXGheXvSrruAqNIVg="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_EvaluationRatings" render="${not empty dependencies}" z="UuIzAW9gihepUQNpZ6CJjwEUbZs="/>
+</div>

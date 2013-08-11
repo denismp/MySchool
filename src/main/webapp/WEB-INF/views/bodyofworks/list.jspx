@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_BodyOfWork" items="${bodyofworks}" z="QrC5rAnsE71Bg0+TErIwOnJfi/Y=">
+        <table:table data="${bodyofworks}" id="l_com_app_myschool_model_BodyOfWork" path="/bodyofworks" z="kP5uctx5QwX7CFrzyu3WW5dKWBw=">
+            <table:column id="c_com_app_myschool_model_BodyOfWork_workName" property="workName" z="68UR5+zrsJm13BOnExcABjAc6QY="/>
+            <table:column id="c_com_app_myschool_model_BodyOfWork_description" property="description" z="h6nBLmoJW43/+R89zLUyiLDi0mg="/>
+            <table:column id="c_com_app_myschool_model_BodyOfWork_what" property="what" z="rqtPHyUdUy98ooIPteiJwZukW6w="/>
+            <table:column id="c_com_app_myschool_model_BodyOfWork_objective" property="objective" z="8xk/X22OfTCrAfJhj9xGRL6jk58="/>
+            <table:column id="c_com_app_myschool_model_BodyOfWork_locked" property="locked" z="9IFG9w0F66vVmNVYKK6IjCXjYB8="/>
+            <table:column id="c_com_app_myschool_model_BodyOfWork_whoUpdated" property="whoUpdated" z="QXWeyTGX9f3F7T4A8rV/gDxvVNU="/>
+        </table:table>
+    </page:list>
+</div>

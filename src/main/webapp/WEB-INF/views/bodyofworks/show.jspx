@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_BodyOfWork" object="${bodyofwork}" path="/bodyofworks" z="2C3xHkij0e/2Mhh7wlc4F2XG0FI=">
+        <field:display field="workName" id="s_com_app_myschool_model_BodyOfWork_workName" object="${bodyofwork}" z="r+HLJWC6Bqf/IIvuzt2T454p8KM="/>
+        <field:display field="description" id="s_com_app_myschool_model_BodyOfWork_description" object="${bodyofwork}" z="eIKXwR0eGjs82zjl8twBoUEzgI0="/>
+        <field:display field="what" id="s_com_app_myschool_model_BodyOfWork_what" object="${bodyofwork}" z="3um4bD8WG7Mo8fUg1QTBjdC8K6U="/>
+        <field:display field="objective" id="s_com_app_myschool_model_BodyOfWork_objective" object="${bodyofwork}" z="hmumkOdATWwYj+buw7Caogaf0Hk="/>
+        <field:display field="locked" id="s_com_app_myschool_model_BodyOfWork_locked" object="${bodyofwork}" z="Pjk6Oy9BfFdB7sNZkgB8iehxbvg="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_BodyOfWork_whoUpdated" object="${bodyofwork}" z="Yvy44EXGIaUejFc9pfNogqjaBzI="/>
+        <field:display date="true" dateTimePattern="${bodyOfWork_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_BodyOfWork_lastUpdated" object="${bodyofwork}" z="ALlSOK4JwiMt1+Jr3agVKlR+mP0="/>
+        <field:display field="subject" id="s_com_app_myschool_model_BodyOfWork_subject" object="${bodyofwork}" z="y+93hYlfF8FFBk9MIrxKi+TZg9c="/>
+    </page:show>
+</div>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_MonthlySummaryRatings" object="${monthlysummaryratings}" path="/monthlysummaryratingses" z="dQJTBxDEM0lZwn+UC9NCbdj3qYs=">
+        <field:display field="year_number" id="s_com_app_myschool_model_MonthlySummaryRatings_year_number" object="${monthlysummaryratings}" z="3eg09EE8wZumJuiYN7F2DekCrrw="/>
+        <field:display field="month_number" id="s_com_app_myschool_model_MonthlySummaryRatings_month_number" object="${monthlysummaryratings}" z="sG9GWbZKQYOcn0qSuL+csYwXFZo="/>
+        <field:display field="week_number" id="s_com_app_myschool_model_MonthlySummaryRatings_week_number" object="${monthlysummaryratings}" z="OJfU9sqvgql6ftctNFfMnS5DzJk="/>
+        <field:display field="feelings" id="s_com_app_myschool_model_MonthlySummaryRatings_feelings" object="${monthlysummaryratings}" z="bNj5WdYOxzhhB4xJ5gkXRjeu+HA="/>
+        <field:display field="reflections" id="s_com_app_myschool_model_MonthlySummaryRatings_reflections" object="${monthlysummaryratings}" z="rk6+ZT02cf2OiJHQUxbQZAeJXf0="/>
+        <field:display field="patternsOfCorrections" id="s_com_app_myschool_model_MonthlySummaryRatings_patternsOfCorrections" object="${monthlysummaryratings}" z="nm28+OzhmvQ5EK6xbfTYvfnZNew="/>
+        <field:display field="effectivenessOfActions" id="s_com_app_myschool_model_MonthlySummaryRatings_effectivenessOfActions" object="${monthlysummaryratings}" z="0pYjvjXCe75hfZWKYYU8Lv9UmZQ="/>
+        <field:display field="actionResults" id="s_com_app_myschool_model_MonthlySummaryRatings_actionResults" object="${monthlysummaryratings}" z="2scuicAZX5piv0bsdCKeXvuNuH8="/>
+        <field:display field="realizations" id="s_com_app_myschool_model_MonthlySummaryRatings_realizations" object="${monthlysummaryratings}" z="ucU63WfFhujgtysLinnMfglgjgM="/>
+        <field:display field="plannedChanges" id="s_com_app_myschool_model_MonthlySummaryRatings_plannedChanges" object="${monthlysummaryratings}" z="pjtThb0B/LZZK3ffw2o/lYSI9Wg="/>
+        <field:display field="comments" id="s_com_app_myschool_model_MonthlySummaryRatings_comments" object="${monthlysummaryratings}" z="1mbvKqqKjbe2fnsBFKTyIqOTbac="/>
+        <field:display field="locked" id="s_com_app_myschool_model_MonthlySummaryRatings_locked" object="${monthlysummaryratings}" z="z2W+xITcRIJ0KtV6t9m2ryvGXv4="/>
+        <field:display date="true" dateTimePattern="${monthlySummaryRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_MonthlySummaryRatings_lastUpdated" object="${monthlysummaryratings}" z="OPmJum8u2uIs9KlY2+it6nY15Zg="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_MonthlySummaryRatings_whoUpdated" object="${monthlysummaryratings}" z="wgpCsnXOSsL5R/OZKdEtjZM3nA4="/>
+        <field:display field="student" id="s_com_app_myschool_model_MonthlySummaryRatings_student" object="${monthlysummaryratings}" z="uM0MVVnOCR1E1R18V50PjJuKsxY="/>
+    </page:show>
+</div>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_Faculty" modelAttribute="faculty" path="/facultys" render="${empty dependencies}" z="zNwgnVbRAzXBsNbHqZj/QTxAibo=">
+        <field:textarea field="personID" id="c_com_app_myschool_model_Faculty_personID" required="true" z="DxXgIVDQV4taMFYg2529Ak8BKwo="/>
+        <field:textarea field="firstName" id="c_com_app_myschool_model_Faculty_firstName" required="true" z="ajSgah+YOC9qPMOCQoFXZZuHimI="/>
+        <field:textarea field="lastName" id="c_com_app_myschool_model_Faculty_lastName" required="true" z="me3yo+kpK2WqlmWfG0fk1oFd/Uo="/>
+        <field:textarea field="middleName" id="c_com_app_myschool_model_Faculty_middleName" z="/0bma6kKVLpFdcDy39ms12eWLQs="/>
+        <field:input field="phone1" id="c_com_app_myschool_model_Faculty_phone1" max="25" required="true" z="x5tk+VMfyiCizP2XQy9t0f/bmIc="/>
+        <field:input field="phone2" id="c_com_app_myschool_model_Faculty_phone2" max="25" z="UL95DPGftQwBBgMDNDf0iunCDFw="/>
+        <field:textarea field="address1" id="c_com_app_myschool_model_Faculty_address1" required="true" z="/7AguQEFrIxAAuN98Es+1OeQTek="/>
+        <field:textarea field="address2" id="c_com_app_myschool_model_Faculty_address2" z="JcwZBUXZ+Z71Zg1PVguSqFgcXtw="/>
+        <field:textarea field="city" id="c_com_app_myschool_model_Faculty_city" required="true" z="M1FUPxyx71OF6JqjD596Ydyy+34="/>
+        <field:textarea field="province" id="c_com_app_myschool_model_Faculty_province" required="true" z="tYJZE/u+u05wAOQy9Aen5ES1JCw="/>
+        <field:input field="postalCode" id="c_com_app_myschool_model_Faculty_postalCode" max="25" required="true" z="gxrNqgOS+b+To3juPgjOQl2d9IA="/>
+        <field:textarea field="country" id="c_com_app_myschool_model_Faculty_country" required="true" z="eTCohi7sQgKf3KJ4QbSdCzY8O3Q="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Faculty_whoUpdated" required="true" z="jtr5n5IExTHd53w/9nawlMVAUTI="/>
+        <field:datetime dateTimePattern="${faculty_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Faculty_lastUpdated" required="true" z="exTzskZp16IUkj+yt+4UsEm1tKY="/>
+        <field:select field="students" id="c_com_app_myschool_model_Faculty_students" itemValue="id" items="${students}" multiple="true" path="/students" z="2vb3sYkkv+bU3wcSOdxDBF1AG3U="/>
+        <field:simple field="roles" id="c_com_app_myschool_model_Faculty_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="Roles" z="3uBV5S3BgmfWKDfkoSRbyEqJ1tw="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Faculty" render="${not empty dependencies}" z="b+d4IZfazzMYmClMjmKctUatxdg="/>
+</div>

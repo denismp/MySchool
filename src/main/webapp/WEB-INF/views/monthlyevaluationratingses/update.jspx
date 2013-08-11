@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_app_myschool_model_MonthlyEvaluationRatings" modelAttribute="monthlyEvaluationRatings" path="/monthlyevaluationratingses" versionField="Version" z="isFOjSsYitDWqp8LKYUox8OyB8Y=">
+        <field:input field="month_year" id="c_com_app_myschool_model_MonthlyEvaluationRatings_month_year" max="9999" min="1111" required="true" z="FbaBvu2PQuPdYnfvqB0eN8DVY1A="/>
+        <field:input field="month_number" id="c_com_app_myschool_model_MonthlyEvaluationRatings_month_number" max="12" min="1" required="true" z="6v6SXCrFppUdxFrAw/TYMOc39gw="/>
+        <field:input field="week_number" id="c_com_app_myschool_model_MonthlyEvaluationRatings_week_number" max="5" min="1" required="true" z="3/JEBFE759YDWJPccOwHNrhxzxk="/>
+        <field:input field="levelOfDifficulty" id="c_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" max="10" min="6" required="true" z="U1abgGO7pz0tStB5cqFUDiI7Q+Q="/>
+        <field:input field="criticalThinkingSkills" id="c_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" max="10" min="6" required="true" z="koXCU8n0C+hyMTZq/LZnuCUvpsM="/>
+        <field:input field="effectiveCorrectionActions" id="c_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" max="10" min="6" required="true" z="MAOInWxixtsEeIzHCXZlGa5BBhA="/>
+        <field:input field="accuratelyIdCorrections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_accuratelyIdCorrections" max="10" min="6" required="true" z="mlh3JT3AjV07NJKo9b+jyKDNB0A="/>
+        <field:input field="completingCourseObjectives" id="c_com_app_myschool_model_MonthlyEvaluationRatings_completingCourseObjectives" max="10" min="6" required="true" z="E8SwXdwXS6AImSAgAraOktkalDg="/>
+        <field:input field="thoughtfulnessOfReflections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_thoughtfulnessOfReflections" max="10" min="6" required="true" z="2+v9Q/wQUhs200ZjnwFBY1szQH8="/>
+        <field:input field="responsibilityOfProgress" id="c_com_app_myschool_model_MonthlyEvaluationRatings_responsibilityOfProgress" max="10" min="6" required="true" z="l8jkZsAYLq4UxW28CZThrCMJR0Y="/>
+        <field:input field="workingEffectivelyWithAdvisor" id="c_com_app_myschool_model_MonthlyEvaluationRatings_workingEffectivelyWithAdvisor" max="10" min="6" required="true" z="BmJtvS0P1WCN2NmZkplI9Yx/qjQ="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_MonthlyEvaluationRatings_locked" z="9LBH/RSkX6boh57jWQPUsFEf9sk="/>
+        <field:datetime dateTimePattern="${monthlyEvaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_MonthlyEvaluationRatings_lastUpdated" required="true" z="6z3pDPqamPbmBSq8g5EZUDvqWog="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_MonthlyEvaluationRatings_whoUpdated" required="true" z="eRIchvs5Ba1uX5N2L7vzETwcG/o="/>
+        <field:select field="student" id="c_com_app_myschool_model_MonthlyEvaluationRatings_student" itemValue="id" items="${students}" path="/students" z="P/Qb8aczR24HL2Zm/oFIlY0O2nc="/>
+    </form:update>
+</div>

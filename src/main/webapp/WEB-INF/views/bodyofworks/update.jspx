@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_app_myschool_model_BodyOfWork" modelAttribute="bodyOfWork" path="/bodyofworks" versionField="Version" z="ghtLmcMIzzQSKdCt5WE76XnMp8M=">
+        <field:input field="workName" id="c_com_app_myschool_model_BodyOfWork_workName" max="25" required="true" z="Epbdc0me+owiK46JrliQQPEdPkk="/>
+        <field:textarea field="description" id="c_com_app_myschool_model_BodyOfWork_description" required="true" z="J5LomfgUdPtHT0PhG0stMyQiHYI="/>
+        <field:textarea field="what" id="c_com_app_myschool_model_BodyOfWork_what" required="true" z="L1uL5LfgmT1VQuPe7qOsEjTsp1c="/>
+        <field:textarea field="objective" id="c_com_app_myschool_model_BodyOfWork_objective" required="true" z="m41YIDnpxIc+CjdhGZRJR3eNJcM="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_BodyOfWork_locked" z="1IudQ4+EANTosNoAsGYM6QIcmM4="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_BodyOfWork_whoUpdated" required="true" z="EuQYSjqjUBs90fTO8z76oHTjFRo="/>
+        <field:datetime dateTimePattern="${bodyOfWork_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_BodyOfWork_lastUpdated" required="true" z="maG9Gi/xl/D3znTjCXEIHVw8Sn0="/>
+        <field:select field="subject" id="c_com_app_myschool_model_BodyOfWork_subject" itemValue="id" items="${subjects}" path="/subjects" z="w6ijbSS7P3mY7sC1Qag/6zKUml4="/>
+        <field:simple field="artifacts" id="c_com_app_myschool_model_BodyOfWork_artifacts" messageCode="entity_reference_not_managed" messageCodeAttribute="Artifact" z="/VjPNmMf2XXvUUZhqlwVO7lmOfE="/>
+    </form:update>
+</div>

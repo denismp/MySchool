@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Subject" object="${subject}" path="/subjects" z="89ri7hDzl6KQ3w8L766DEAIlnVc=">
+        <field:display field="name" id="s_com_app_myschool_model_Subject_name" object="${subject}" z="tXW49nybXo0H52yf8hASk5FtjLs="/>
+        <field:display field="gradeLevel" id="s_com_app_myschool_model_Subject_gradeLevel" object="${subject}" z="uwnA4aKhbLnpbNHdSNtt2JYpjMM="/>
+        <field:display field="creditHours" id="s_com_app_myschool_model_Subject_creditHours" object="${subject}" z="aYdqpV7A/0+u8rUJdJe1gxiMVlg="/>
+        <field:display field="description" id="s_com_app_myschool_model_Subject_description" object="${subject}" z="G1PoHcQOF7anQu+lHLRfEao4elc="/>
+        <field:display field="objectives" id="s_com_app_myschool_model_Subject_objectives" object="${subject}" z="xD7xPYi0+EoghgFz/sY4FDhgXLc="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Subject_whoUpdated" object="${subject}" z="CDD2HSlYpeZSJBoYgfnP/6ZTfP4="/>
+        <field:display date="true" dateTimePattern="${subject_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Subject_lastUpdated" object="${subject}" z="ixhN5FWbM8Kd2zuRnXdSViP0+BU="/>
+        <field:display field="completed" id="s_com_app_myschool_model_Subject_completed" object="${subject}" z="IYTUS2qlCQa4lACEQzWaj9o6Io4="/>
+        <field:display field="quarter" id="s_com_app_myschool_model_Subject_quarter" object="${subject}" z="Qf5WWyhCWKqifyQ3ryRH8DuXLjQ="/>
+    </page:show>
+</div>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_Weekly" modelAttribute="weekly" path="/weeklys" render="${empty dependencies}" z="vqsukCEK4SlLZtWBVBCmrbq4Qlg=">
+        <field:input field="week_year" id="c_com_app_myschool_model_Weekly_week_year" max="9999" min="1111" required="true" z="pk0tMN2Eu8tVFbtPDuCUFet5UzQ="/>
+        <field:input field="week_month" id="c_com_app_myschool_model_Weekly_week_month" max="12" min="1" required="true" z="+8jruy9bdHqJiAG/PR5wj4EAuz8="/>
+        <field:input field="week_number" id="c_com_app_myschool_model_Weekly_week_number" max="5" min="1" required="true" z="nDQIdiGxg2yixXkvbDcV4lXPC7Q="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_Weekly_locked" z="qTPXgzkTHPmBDqM8QhjmD7r2UVo="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_Weekly_comments" z="Wv7Agy3YBw/gwucYb2WYxAdbF6A="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Weekly_whoUpdated" required="true" z="bW3PiItr8tmm8/8XobY+P0MoHVc="/>
+        <field:datetime dateTimePattern="${weekly_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Weekly_lastUpdated" required="true" z="pb7fazXhLXJyVKBNCl3re8y+HKU="/>
+        <field:select field="subject" id="c_com_app_myschool_model_Weekly_subject" itemValue="id" items="${subjects}" path="/subjects" z="gKYZgJBpmwJzs1hgcKwvk8u+bsg="/>
+        <field:simple field="skillRatings" id="c_com_app_myschool_model_Weekly_skillRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Skill Ratings" z="1nReDnUNPvHD4wVUtsj+qnACGw8="/>
+        <field:simple field="evalRatings" id="c_com_app_myschool_model_Weekly_evalRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Evaluation Ratings" z="8WNSzJtgfdbqiS6c7hJozrUZRGg="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Weekly" render="${not empty dependencies}" z="mMtrkC0gMajfD0YDg07MZVVkgu4="/>
+</div>

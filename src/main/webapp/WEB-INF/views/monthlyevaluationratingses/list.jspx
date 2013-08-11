@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_MonthlyEvaluationRatings" items="${monthlyevaluationratingses}" z="jIxoL86wn56hwZOuYy3NUN3FAFI=">
+        <table:table data="${monthlyevaluationratingses}" id="l_com_app_myschool_model_MonthlyEvaluationRatings" path="/monthlyevaluationratingses" z="8ZsHF2rC/ru1l/i02nOaAKiGCVI=">
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_month_year" property="month_year" z="Lqd+Js5MuN0xdIi95VzC3WSi8GM="/>
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_month_number" property="month_number" z="yDInEuMbhsgbHaLRMLkXcbIeLb8="/>
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_week_number" property="week_number" z="6/cT3IJkJG33BoHISbWYdV76uw0="/>
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" property="levelOfDifficulty" z="jJh0uwKOQEL3ziJaaqX3aoMktSc="/>
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" property="criticalThinkingSkills" z="q4y3Asq0t9ETamQ8ARYDYsdqNIE="/>
+            <table:column id="c_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" property="effectiveCorrectionActions" z="FBqMQ2J8uhgzpwLjNI8kogTewWM="/>
+        </table:table>
+    </page:list>
+</div>
