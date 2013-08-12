@@ -46,7 +46,8 @@ public class ControllerHelper {
 		List<?> records = null;
 		String className = myClass.getSimpleName();
 		boolean statusGood = true;
-		try {				
+		try {	
+			logger.info("GET");
 			if (myClass.equals(Student.class)) {
 				records = Student.findAllStudents();
 			} 
@@ -173,7 +174,8 @@ public class ControllerHelper {
 		Object record = null;
 		String className = myClass.getSimpleName();
 		boolean statusGood = true;
-		try {				
+		try {	
+			logger.info( "GET: " + id );
 			if (myClass.equals(Student.class)) {
 				record = Student.findStudent(id);
 			} 
@@ -256,8 +258,8 @@ public class ControllerHelper {
 
 		try {
 			String myJson = URLDecoder.decode(json, "UTF8");
-			logger.debug( "myjson=" + myJson );
-			logger.debug( "Encoded JSON=" + json );
+			logger.info( "createFromJson():myjson=" + myJson );
+			logger.info( "createFromJson():Encoded JSON=" + json );
 			Object record = null;
 			String className = myClass.getSimpleName();
 			boolean statusGood = true;
@@ -462,8 +464,8 @@ public class ControllerHelper {
 
 		try {
 			String myJson = URLDecoder.decode(json, "UTF8");
-			logger.info( "myjson=" + myJson );
-			logger.info( "Encoded JSON=" + json );
+			logger.info( "updateFromJson():myjson=" + myJson );
+			logger.info( "updateFromJson():Encoded JSON=" + json );
 			Object record = null;
 			String className = myClass.getSimpleName();
 			boolean statusGood = true;
