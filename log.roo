@@ -208,3 +208,4 @@ web mvc install view --viewName myschoolapp --path / --title MySchoolApp
 perform package
 hint log
 hint
+hint log
