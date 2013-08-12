@@ -210,3 +210,4 @@ hint log
 hint
 hint log
 hint logger
+logging setup --level INFO 
