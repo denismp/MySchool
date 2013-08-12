@@ -206,3 +206,4 @@ perform package
 web mvc install view --viewName myschoolapp --path / --title MySchoolApp
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-11 12:06:41
 perform package
+hint log
