@@ -81,7 +81,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                 {
                     xtype: 'tool',
                     handler: function(event, toolEl, owner, tool) {
-                        window.console( "Save..." );
+                        window.console.log( "Save..." );
                     },
                     id: 'mytoolsavesubjects',
                     type: 'save'
