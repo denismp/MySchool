@@ -85,7 +85,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                         debugger;
                         var pnl = this.up('subjectspanel').down('subjectsgridpanel');
                         var mystore = pnl.getStore();
-                        var mymodel = pnl.getModel();
+                        var mymodel = mystore.getModel();
 
                     },
                     id: 'mytoolsavesubjects',
