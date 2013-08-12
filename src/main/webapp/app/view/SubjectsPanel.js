@@ -81,66 +81,9 @@ Ext.define('MySchool.view.SubjectsPanel', {
                 {
                     xtype: 'tool',
                     handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                        debugger;
-                        window.console.log('SAVE...' );
-                        //var subjectsModel = Ext.ModelManager.getModel( 'MySchool.model.SubjectsModel' );
-                        //subjectsModel.set( 'lastUpdated', new Date() );
-                        //subjectsModel.save({
-                        //    success: function() {
-                        //        console.log( 'The subject was updated' );
-                        //    }
-                        //});
-                        //var pnl = this.up('subjectspanel').down('subjectsgridpanel');
-                        //var mystore = pnl.getStore();
-                        //var sm = pnl.getModel();
-                        ////sm.set( 'lastUpdated', new Date() );
-                        //sm.save({
-                        //    success: function() {
-                        //        console.log( 'The subject was updated' );
-                        //    }
-                        //});
-
-
-                        var pnl = this.up('subjectspanel').down('subjectsgridpanel');
-                        var mystore = pnl.getStore();
-                        //var sm = pnl.getSelectionModel();
-                        var records = mystore.getModifiedRecords();
-                        for( var i = 0; i < records.length; i++ )
-                        {
-                            var index = mystore.indexOf( records[i] );
-                            mystore.getAt( index ).set( 'lastUpdated', new Date() );
-                            //    //mystore.getAt( index ).set( 'completed', 'false' );
-                            records[i].set( 'lastUpdated', new Date() );
-                            //    //records[i].set( 'completed', 'false' );
-                            //    //records[i].save();
-                            //    //store.sync();
-                            //mystore.commitChanges();
-                            //mystore.sync();
-                            //    //store.save();
-                            //    //store.commit();
-                        }
-                        mystore.sync();
-                        mystore.commitChanges();
-                        //store.each(function(record)  
-                        //{  
-                        //    record.set( 'lastUpdated', new Date() );
-                        //    record.save();
-                        //  //record.fields.each(function(field) 
-                        //  //{ 
-                        //  //  //var fieldValue = record.get(field.name);
-                        //  //    record.set( 'lastUpdated', new Date() );
-                        //  //}); 
-                        //},this);
-                        //store.sync();
-                        //store.save();
-                        //store.commitChanges();
-                        //store.save();
-                        //store.sync();
-                        //pnl.setTitle( 'Denis' );
+                        window.console( "Save..." );
                     },
-                    id: 'toolsavestudentsbysubject',
-                    tooltip: 'Save',
+                    id: 'mytoolsavesubjects',
                     type: 'save'
                 },
                 {

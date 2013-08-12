@@ -42,7 +42,10 @@ Ext.define('MySchool.controller.SubjectsController', {
             'subjectsgridpanel': {
                 selectionchange: this.gridSelectionChange, 
                 viewready: this.onViewReady
-            }
+            },
+
+            'subjectspanel': { mytoolsavesubjects: this.saveSubjects }
+
         });
     },
 
@@ -56,6 +59,10 @@ Ext.define('MySchool.controller.SubjectsController', {
     onViewReady: function(grid) {
 
         grid.getSelectionModel().select( 0 );
+    },
+
+    saveSubjects: function() {
+        window.console( 'saveSubjects() called...' );
     }
 
 });
