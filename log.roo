@@ -211,3 +211,4 @@ hint
 hint log
 hint logger
 logging setup --level INFO 
+perform package
