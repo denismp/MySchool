@@ -462,8 +462,8 @@ public class ControllerHelper {
 
 		try {
 			String myJson = URLDecoder.decode(json, "UTF8");
-			logger.debug( "myjson=" + myJson );
-			logger.debug( "Encoded JSON=" + json );
+			logger.info( "myjson=" + myJson );
+			logger.info( "Encoded JSON=" + json );
 			Object record = null;
 			String className = myClass.getSimpleName();
 			boolean statusGood = true;
