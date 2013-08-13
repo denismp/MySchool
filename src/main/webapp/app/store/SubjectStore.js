@@ -39,10 +39,32 @@ Ext.define('MySchool.store.SubjectStore', {
                 },
                 writer: {
                     type: 'json',
+                    logIt: function(params, baseparams, data) {
+                        alert( 'params=' + params );
+                        alert( 'baseparams=' + baseparams );
+                        alert( 'data=' + data );
+                        params.jsonData = data;
+                    },
                     encode: true,
                     root: 'data'
+                },
+                listeners: {
+                    exception: {
+                        fn: me.onAjaxException,
+                        scope: me
+                    }
                 }
             }
         }, cfg)]);
+    },
+
+    onAjaxException: function(proxy, response, operation, eOpts) {
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION',
+            msg: operation.getError(),
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK
+        });
     }
+
 });
