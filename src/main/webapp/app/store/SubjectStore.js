@@ -53,8 +53,8 @@ Ext.define('MySchool.store.SubjectStore', {
     },
 
     onAjaxException: function(proxy, response, operation, eOpts) {
-        debugger;
-        var smsg = response + operation + eOpts; 
+        //debugger;
+        var smsg = response.options.method + ':' + response.options.action +':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; 
         Ext.MessageBox.show({
             title: 'REMOTE EXCEPTION', 
             msg: smsg,
