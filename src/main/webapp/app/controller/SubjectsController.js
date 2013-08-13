@@ -45,7 +45,7 @@ Ext.define('MySchool.controller.SubjectsController', {
             }
         });
 
-        application.on('click', this.handleSave(event, store, proxy, model, id ), this );
+        application.on('click', this.handleSave, this );
     },
 
     gridSelectionChange: function(model, records) {
@@ -60,9 +60,12 @@ Ext.define('MySchool.controller.SubjectsController', {
         grid.getSelectionModel().select( 0 );
     },
 
-    handleSave: function(event, store, proxy, model, id) {
-        model.save();
-        store.sync();
+    handleSave: function() {
+        var mymodel = this.getSubjectsModelModel();
+        var mymodel = Ext.get( 'SubjectsModel' );
+        var mystore = Ext.get( 'SubjectsStore' );
+        mymodel.save();
+        mystore.sync();
     }
 
 });
