@@ -28,7 +28,7 @@ Ext.define('MySchool.store.SubjectStore', {
             model: 'MySchool.model.SubjectsModel',
             storeId: 'SubjectStore',
             proxy: {
-                type: 'rest',
+                type: 'ajax',
                 url: 'http://localhost:8080/MySchool/subjects',
                 headers: {
                     Accept: 'application/json'
