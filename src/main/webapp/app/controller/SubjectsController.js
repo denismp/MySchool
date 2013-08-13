@@ -33,10 +33,6 @@ Ext.define('MySchool.controller.SubjectsController', {
         {
             ref: 'subjectsForm',
             selector: 'form'
-        },
-        {
-            ref: 'subjectspanel',
-            selector: 'mytoolsavesubjects'
         }
     ],
 
@@ -46,11 +42,10 @@ Ext.define('MySchool.controller.SubjectsController', {
             'subjectsgridpanel': {
                 selectionchange: this.gridSelectionChange, 
                 viewready: this.onViewReady
-            },
-
-            'subjectspanel': { itemclick: this.saveSubjects }
-
+            }
         });
+
+        application.on('click', this.handleSave(event, store, proxy, model, id ), this );
     },
 
     gridSelectionChange: function(model, records) {
@@ -65,11 +60,9 @@ Ext.define('MySchool.controller.SubjectsController', {
         grid.getSelectionModel().select( 0 );
     },
 
-    saveSubjects: function(view, model, record, item, index) {
-        debugger;
-        window.console( 'saveSubjects() called...' );
-        var app = this.application;
-        app.fireEvent( 'savesubjects', app, model );
+    handleSave: function(event, store, proxy, model, id) {
+        model.save();
+        store.sync();
     }
 
 });
