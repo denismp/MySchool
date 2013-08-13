@@ -39,12 +39,6 @@ Ext.define('MySchool.store.SubjectStore', {
                 },
                 writer: {
                     type: 'json',
-                    logIt: function(params, baseparams, data) {
-                        alert( 'params=' + params );
-                        alert( 'baseparams=' + baseparams );
-                        alert( 'data=' + data );
-                        params.jsonData = data;
-                    },
                     encode: true,
                     root: 'data'
                 },
@@ -59,9 +53,11 @@ Ext.define('MySchool.store.SubjectStore', {
     },
 
     onAjaxException: function(proxy, response, operation, eOpts) {
+        debugger;
+        var smsg = response + operation + eOpts; 
         Ext.MessageBox.show({
-            title: 'REMOTE EXCEPTION',
-            msg: operation.getError(),
+            title: 'REMOTE EXCEPTION', 
+            msg: smsg,
             icon: Ext.MessageBox.ERROR,
             buttons: Ext.Msg.OK
         });
