@@ -89,7 +89,9 @@ Ext.define('MySchool.view.SubjectsPanel', {
                         var mymodel = mystore.getProxy().getModel();
                         var myid = tool.id;
                         var myeventtype = event.type;
-                        tool.fireEvent( event.type, mystore, myProxy, mymodel, myid );
+                        //tool.fireEvent( event.type, mystore, myProxy, mymodel, myid );
+                        mymodel.save();
+                        mystore.sync();
 
                     },
                     id: 'mytoolsavesubjects',
