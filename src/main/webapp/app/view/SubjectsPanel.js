@@ -90,7 +90,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                         var myid = tool.id;
                         var myeventtype = event.type;
                         //tool.fireEvent( event.type, mystore, myProxy, mymodel, myid );
-                        mymodel.save();
+                        //mymodel.save();
                         mystore.sync();
 
                     },
