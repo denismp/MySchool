@@ -63,8 +63,8 @@ Ext.define('MySchool.controller.SubjectsController', {
     handleSave: function() {
         debugger;
         var mymodel = this.getSubjectsModelModel();
-        mymodel = Ext.get( 'SubjectsModel' );
-        var mystore = Ext.get( 'SubjectsStore' );
+        //mymodel = Ext.get( 'SubjectsModel' );
+        var mystore = this.getSubjectsStoreStore();
         mymodel.save();
         mystore.sync();
     }
