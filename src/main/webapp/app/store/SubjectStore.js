@@ -48,6 +48,12 @@ Ext.define('MySchool.store.SubjectStore', {
                         scope: me
                     }
                 }
+            },
+            listeners: {
+                beforesync: {
+                    fn: me.onJsonstoreBeforeSync,
+                    scope: me
+                }
             }
         }, cfg)]);
     },
@@ -67,6 +73,18 @@ Ext.define('MySchool.store.SubjectStore', {
     onRestException: function(proxy, response, operation, eOpts) {
         debugger;
         var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; 
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION', 
+            msg: smsg,
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK
+        });
+        window.console.log( smsg );
+    },
+
+    onJsonstoreBeforeSync: function(options, eOpts) {
+        debugger;
+        var smsg = 'Before sync()'; 
         Ext.MessageBox.show({
             title: 'REMOTE EXCEPTION', 
             msg: smsg,
