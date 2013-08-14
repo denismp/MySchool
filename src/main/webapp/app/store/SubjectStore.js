@@ -30,6 +30,9 @@ Ext.define('MySchool.store.SubjectStore', {
             proxy: {
                 type: 'ajax',
                 url: 'http://localhost:8080/MySchool/subjects',
+                headers: {
+                    Accept: 'application/json'
+                },
                 reader: {
                     type: 'json',
                     root: 'data'
