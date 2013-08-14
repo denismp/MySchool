@@ -28,7 +28,7 @@ Ext.define('MySchool.store.SubjectStore', {
             model: 'MySchool.model.SubjectsModel',
             storeId: 'SubjectStore',
             proxy: {
-                type: 'ajax',
+                type: 'rest',
                 url: 'http://localhost:8080/MySchool/subjects',
                 headers: {
                     Accept: 'application/json'
@@ -44,7 +44,7 @@ Ext.define('MySchool.store.SubjectStore', {
                 },
                 listeners: {
                     exception: {
-                        fn: me.onAjaxException,
+                        fn: me.onRestExceptionStub,
                         scope: me
                     }
                 }
@@ -62,6 +62,22 @@ Ext.define('MySchool.store.SubjectStore', {
             buttons: Ext.Msg.OK
         });
         window.console.log( smsg );
+    },
+
+    onRestException: function(proxy, response, operation, eOpts) {
+        debugger;
+        var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; 
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION', 
+            msg: smsg,
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK
+        });
+        window.console.log( smsg );
+    },
+
+    onRestExceptionStub: function() {
+
     }
 
 });
