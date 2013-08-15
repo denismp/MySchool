@@ -29,7 +29,7 @@ Ext.define('MySchool.store.SubjectStore', {
             storeId: 'SubjectStore',
             proxy: {
                 type: 'rest',
-                url: 'http://localhost:8080/MySchool/subjects',
+                url: 'subjects',
                 headers: {
                     Accept: 'application/json'
                 },
