@@ -43,7 +43,7 @@ public class StudentController {
         return controllerHelper.deleteFromJson(Student.class, id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.updateFromJson(Student.class, json);

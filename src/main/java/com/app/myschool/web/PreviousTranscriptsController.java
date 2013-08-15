@@ -43,7 +43,7 @@ public class PreviousTranscriptsController {
         return controllerHelper.createFromJsonArray(PreviousTranscripts.class, json);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.updateFromJson(PreviousTranscripts.class, json);

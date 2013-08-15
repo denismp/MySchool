@@ -93,6 +93,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                         //mymodel.save();
                         //mystore.commitChanges();
                         mystore.sync();
+                        mystore.load();
 
                     },
                     id: 'mytoolsavesubjects',

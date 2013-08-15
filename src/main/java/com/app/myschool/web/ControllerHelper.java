@@ -257,7 +257,7 @@ public class ControllerHelper {
 		JsonObjectResponse response = new JsonObjectResponse();
 
 		try {
-			String myJson = URLDecoder.decode(json, "UTF8");
+			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
 			Object record = null;
@@ -463,7 +463,7 @@ public class ControllerHelper {
 		JsonObjectResponse response = new JsonObjectResponse();
 
 		try {
-			String myJson = URLDecoder.decode(json, "UTF8");
+			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
 			Object record = null;
@@ -615,7 +615,7 @@ public class ControllerHelper {
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try {
-			myJson = URLDecoder.decode(json, "UTF8");
+			myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 		} catch (UnsupportedEncodingException e1) {
             response.setMessage( e1.getMessage() );
 			response.setSuccess(false);
@@ -934,7 +934,7 @@ public class ControllerHelper {
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try {
-			myJson = URLDecoder.decode(json, "UTF8");
+			myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 		} catch (UnsupportedEncodingException e1) {
 			//e1.printStackTrace();
             response.setMessage( e1.getMessage() );

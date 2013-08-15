@@ -42,6 +42,7 @@ Ext.define('MySchool.model.SubjectsModel', {
             type: 'string'
         },
         {
+            dateFormat: 'm/d/Y',
             name: 'lastUpdated',
             type: 'date'
         },
@@ -51,6 +52,10 @@ Ext.define('MySchool.model.SubjectsModel', {
         },
         {
             name: 'objectives',
+            type: 'string'
+        },
+        {
+            name: 'version',
             type: 'string'
         }
     ]

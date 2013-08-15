@@ -44,7 +44,7 @@ Ext.define('MySchool.store.SubjectStore', {
                 },
                 listeners: {
                     exception: {
-                        fn: me.onRestExceptionStub,
+                        fn: me.onRestException,
                         scope: me
                     }
                 }
@@ -58,20 +58,8 @@ Ext.define('MySchool.store.SubjectStore', {
         }, cfg)]);
     },
 
-    onAjaxException: function(proxy, response, operation, eOpts) {
-        debugger;
-        var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; 
-        Ext.MessageBox.show({
-            title: 'REMOTE EXCEPTION', 
-            msg: smsg,
-            icon: Ext.MessageBox.ERROR,
-            buttons: Ext.Msg.OK
-        });
-        window.console.log( smsg );
-    },
-
     onRestException: function(proxy, response, operation, eOpts) {
-        debugger;
+        //debugger;
         var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; 
         Ext.MessageBox.show({
             title: 'REMOTE EXCEPTION', 
@@ -83,19 +71,15 @@ Ext.define('MySchool.store.SubjectStore', {
     },
 
     onJsonstoreBeforeSync: function(options, eOpts) {
-        debugger;
+        //debugger;
         var smsg = 'Before sync()'; 
-        Ext.MessageBox.show({
-            title: 'REMOTE EXCEPTION', 
-            msg: smsg,
-            icon: Ext.MessageBox.ERROR,
-            buttons: Ext.Msg.OK
-        });
+        //Ext.MessageBox.show({
+        //    title: 'REMOTE EXCEPTION', 
+        //    msg: smsg,
+        //    icon: Ext.MessageBox.ERROR,
+        //    buttons: Ext.Msg.OK
+        //});
         window.console.log( smsg );
-    },
-
-    onRestExceptionStub: function() {
-
     }
 
 });

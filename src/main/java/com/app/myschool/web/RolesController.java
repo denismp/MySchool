@@ -43,7 +43,7 @@ public class RolesController {
         return controllerHelper.createFromJsonArray(Roles.class, json);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.updateFromJson(Roles.class, json);

@@ -67,6 +67,12 @@ Ext.define('MySchool.view.SubjectsGridPanel', {
                     editor: {
                         xtype: 'checkboxfield'
                     }
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'version',
+                    text: 'version'
                 }
             ],
             viewConfig: {
