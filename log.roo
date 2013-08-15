@@ -238,3 +238,6 @@ perform package
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-14 20:41:28
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-14 20:50:08
 logging setup --level TRACE 
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-14 22:15:19
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-14 22:16:37
+logging setup --level INFO 
