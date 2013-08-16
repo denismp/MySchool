@@ -82,21 +82,38 @@ Ext.define('MySchool.view.SubjectsPanel', {
                     xtype: 'tool',
                     handler: function(event, toolEl, owner, tool) {
                         window.console.log( "Save..." );
-                        //debugger;
+                        debugger;
                         var pnl = this.up('subjectspanel').down('subjectsgridpanel');
                         var mystore = pnl.getStore();
                         var myProxy = mystore.getProxy();
                         var mymodel = mystore.getProxy().getModel();
                         var myid = tool.id;
                         var myeventtype = event.type;
+                        var records = mystore.getModifiedRecords();
+                        for( var i = 0; i < records.length; i++ )
+                        {
+                            var index = mystore.indexOf( records[i] );
+                            // Updating the records[i] is redundant.
+                            records[i].set( 'lastUpdated', new Date() );
+                            //records(i).set( 'version', 0 );
+                            //records[i].commit(false);
+                            mystore.getAt( index ).set( 'lastUpdated', new Date() );
+                            //mystore.getAt( index ).set( 'version', 0 );
+                            //mystore.commit(false);
+                            //records.commit(false);
+
+                        }
+
                         //tool.fireEvent( event.type, mystore, myProxy, mymodel, myid );
                         //mymodel.save();
                         //mystore.commitChanges();
                         mystore.sync();
-                        mystore.load();
+                        mystore.commmitChanges();
+                        //mystore.load();
 
                     },
                     id: 'mytoolsavesubjects',
+                    tooltip: 'Save',
                     type: 'save'
                 },
                 {

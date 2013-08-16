@@ -53,6 +53,10 @@ Ext.define('MySchool.store.SubjectStore', {
                 beforesync: {
                     fn: me.onJsonstoreBeforeSync,
                     scope: me
+                },
+                write: {
+                    fn: me.onJsonstoreWrite,
+                    scope: me
                 }
             }
         }, cfg)]);
@@ -80,6 +84,10 @@ Ext.define('MySchool.store.SubjectStore', {
         //    buttons: Ext.Msg.OK
         //});
         window.console.log( smsg );
+    },
+
+    onJsonstoreWrite: function(store, operation, eOpts) {
+        store.reload();
     }
 
 });
