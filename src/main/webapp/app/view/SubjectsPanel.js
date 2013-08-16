@@ -82,7 +82,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                     xtype: 'tool',
                     handler: function(event, toolEl, owner, tool) {
                         window.console.log( "Save..." );
-                        debugger;
+                        //debugger;
                         var pnl = this.up('subjectspanel').down('subjectsgridpanel');
                         var mystore = pnl.getStore();
                         var myProxy = mystore.getProxy();
