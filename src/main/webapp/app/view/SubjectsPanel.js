@@ -86,13 +86,13 @@ Ext.define('MySchool.view.SubjectsPanel', {
                         var pnl = this.up('subjectspanel').down('subjectsgridpanel');
                         var mystore = pnl.getStore();
                         var myProxy = mystore.getProxy();
-                        var mymodel = mystore.getProxy().getModel();
-                        var myid = tool.id;
-                        var myeventtype = event.type;
+                        //var mymodel = mystore.getProxy().getModel();
+                        //var myid = tool.id;
+                        //var myeventtype = event.type;
                         var records = mystore.getModifiedRecords();
                         for( var i = 0; i < records.length; i++ )
                         {
-                            var index = mystore.indexOf( records[i] );
+                            //var index = mystore.indexOf( records[i] );
                             // Updating the records[i] is redundant.
                             records[i].set( 'lastUpdated', new Date() );
                             //records(i).set( 'version', 0 );
