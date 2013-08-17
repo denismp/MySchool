@@ -97,7 +97,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
                             records[i].set( 'lastUpdated', new Date() );
                             //records(i).set( 'version', 0 );
                             //records[i].commit(false);
-                            mystore.getAt( index ).set( 'lastUpdated', new Date() );
+                            //mystore.getAt( index ).set( 'lastUpdated', new Date() );
                             //mystore.getAt( index ).set( 'version', 0 );
                             //mystore.commit(false);
                             //records.commit(false);
