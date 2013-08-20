@@ -32,7 +32,13 @@ Ext.define('MySchool.view.SubjectsForm', {
                     anchor: '100%',
                     id: 'subjectdescriptiontextarea',
                     fieldLabel: 'Description',
-                    name: 'description'
+                    name: 'description',
+                    listeners: {
+                        change: {
+                            fn: me.onSubjectdescriptiontextareaChange,
+                            scope: me
+                        }
+                    }
                 },
                 {
                     xtype: 'textareafield',
@@ -45,6 +51,10 @@ Ext.define('MySchool.view.SubjectsForm', {
         });
 
         me.callParent(arguments);
+    },
+
+    onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
+
     }
 
 });

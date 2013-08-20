@@ -29,7 +29,12 @@ Ext.application({
         'MainPanel',
         'SubjectsGridPanel',
         'SubjectsForm',
-        'SubjectsPanel'
+        'SubjectsPanel',
+        'SubjectSaveTool',
+        'SubjectRefreshTool',
+        'SubjectDeleteTool',
+        'SubjectSearchTool',
+        'SubjectNewTool'
     ],
     autoCreateViewport: true,
     controllers: [

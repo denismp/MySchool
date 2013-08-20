@@ -45,7 +45,11 @@ Ext.define('MySchool.controller.SubjectsController', {
             }
         });
 
-        application.on('click', this.handleSave, this );
+        /** Application events, what fun! */
+        this.application.on({
+            saveSubjects: this.handleSave
+        });
+
     },
 
     gridSelectionChange: function(model, records) {
@@ -61,12 +65,29 @@ Ext.define('MySchool.controller.SubjectsController', {
     },
 
     handleSave: function() {
-        debugger;
-        var mymodel = this.getSubjectsModelModel();
+        //debugger;
+        //var mymodel = this.getSubjectsModelModel();
         //mymodel = Ext.get( 'SubjectsModel' );
         var mystore = this.getSubjectsStoreStore();
-        mymodel.save();
+        var form = this.getSubjectsForm();
+        //mymodel.save();
+        //mystore.sync();
+        window.console.log( "Save..." );
+        debugger;
+        //var gpnl = this.up('subjectspanel').down('subjectsgridpanel');
+        //var form = this.up( 'subjectspanel' ).down( 'subjectsform' );
+        //var mystore = gpnl.getStore();
+
+        var records = mystore.getModifiedRecords();
+        for( var i = 0; i < records.length; i++ )
+        {
+            records[i].set( 'lastUpdated', new Date() );
+            var formValues = form.getValues();
+        }
+
         mystore.sync();
+        mystore.commmitChanges();
+
     }
 
 });

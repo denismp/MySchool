@@ -19,7 +19,12 @@ Ext.define('MySchool.view.SubjectsPanel', {
 
     requires: [
         'MySchool.view.SubjectsGridPanel',
-        'MySchool.view.SubjectsForm'
+        'MySchool.view.SubjectsForm',
+        'MySchool.view.SubjectRefreshTool',
+        'MySchool.view.SubjectSearchTool',
+        'MySchool.view.SubjectNewTool',
+        'MySchool.view.SubjectSaveTool',
+        'MySchool.view.SubjectDeleteTool'
     ],
 
     id: 'subjectspanel',
@@ -45,69 +50,24 @@ Ext.define('MySchool.view.SubjectsPanel', {
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                        //debugger;
-
-                        var pnl = this.up('subjectspanel').down('subjectsgridpanel');
-                        var store = pnl.getStore();
-                        store.reload();
-                        //pnl.setTitle( 'Denis' );
-
-                    },
-                    id: 'toolrefreshstudentsbysubject',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'subjectrefreshtool',
+                    flex: 0
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    id: 'toolsearchstudentsbysubject',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'subjectsearchtool',
+                    flex: 0
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    id: 'toolnewstudentsbysubject',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'subjectnewtool',
+                    flex: 0
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        window.console.log( "Save..." );
-                        //debugger;
-                        var pnl = this.up('subjectspanel').down('subjectsgridpanel');
-                        var mystore = pnl.getStore();
-
-                        var records = mystore.getModifiedRecords();
-                        for( var i = 0; i < records.length; i++ )
-                        {
-                            records[i].set( 'lastUpdated', new Date() );
-                        }
-
-                        mystore.sync();
-                        mystore.commmitChanges();
-
-                    },
-                    id: 'mytoolsavesubjects',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'subjectsavetool',
+                    flex: 0
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    id: 'tooldeletestudentsbysubject',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'subjectdeletetool',
+                    flex: 1
                 }
             ]
         });
