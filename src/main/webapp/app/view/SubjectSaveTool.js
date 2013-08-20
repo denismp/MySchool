@@ -25,38 +25,7 @@ Ext.define('MySchool.view.SubjectSaveTool', {
     initComponent: function() {
         var me = this;
 
-        Ext.applyIf(me, {
-            listeners: {
-                click: {
-                    fn: me.onSubjectsavetoolidClick,
-                    scope: me
-                }
-            }
-        });
-
         me.callParent(arguments);
-    },
-
-    onSubjectsavetoolidClick: function(tool, e, eOpts) {
-        //window.console.log( "Save..." );
-        //debugger;
-        var gpnl = this.up('subjectspanel').down('subjectsgridpanel');
-        var form = this.up( 'subjectspanel' ).down( 'subjectsform' );
-        var mystore = gpnl.getStore();
-
-        var records = mystore.getModifiedRecords();
-        for( var i = 0; i < records.length; i++ )
-        {
-            records[i].set( 'lastUpdated', new Date() );
-            var formValues = form.getValues();
-        }
-
-        mystore.sync();
-        mystore.commmitChanges();
-
-        // Last but not least, I can do this (Approach #3)
-        //Ext.app.Application.fireEvent("saveSubjects", tool );
-
     }
 
 });
