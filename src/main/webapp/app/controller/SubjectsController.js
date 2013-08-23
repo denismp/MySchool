@@ -66,17 +66,22 @@ Ext.define('MySchool.controller.SubjectsController', {
         window.console.log( "Save..." );
         //debugger;
 
-        var mystore = Ext.getStore("SubjectStore")
+        var mystore = Ext.getStore("SubjectStore");
 
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
             records[i].set( 'lastUpdated', new Date() );
-            //var formValues = form.getValues();
+            var form = Ext.getCmp( 'subjectdetailsform' );
+            var formValues = form.getValues();
+            records[i].set( 'description', formValues.description );
+            records[i].set( 'objectives', formValues.objectives );
+            window.console.log( 'objectives=' + formValues.objectives );
+            window.console.log( 'description=' + formValues.description );
         }
 
         mystore.sync();
-        mystore.commmitChanges();
+        //mystore.commmitChanges();
 
         // Last but not least, I can do this (Approach #3)
         //Ext.app.Application.fireEvent("saveSubjects", tool );

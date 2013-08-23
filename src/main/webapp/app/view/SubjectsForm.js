@@ -45,7 +45,13 @@ Ext.define('MySchool.view.SubjectsForm', {
                     anchor: '100%',
                     id: 'subjectobjectivetextarea',
                     fieldLabel: 'Objectives',
-                    name: 'objectives'
+                    name: 'objectives',
+                    listeners: {
+                        change: {
+                            fn: me.onSubjectobjectivetextareaChange,
+                            scope: me
+                        }
+                    }
                 }
             ]
         });
@@ -54,6 +60,10 @@ Ext.define('MySchool.view.SubjectsForm', {
     },
 
     onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
+
+    },
+
+    onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
 
     }
 
