@@ -15,6 +15,7 @@
 
 Ext.define('MySchool.store.SubjectStore', {
     extend: 'Ext.data.Store',
+    alias: 'store.subjectstore',
 
     requires: [
         'MySchool.model.SubjectsModel'

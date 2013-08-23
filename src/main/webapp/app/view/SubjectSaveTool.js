@@ -17,8 +17,7 @@ Ext.define('MySchool.view.SubjectSaveTool', {
     extend: 'Ext.panel.Tool',
     alias: 'widget.subjectsavetool',
 
-    id: 'subjectsavetoolid',
-    itemId: 'configtoolsubjectsaveid',
+    itemId: 'toolsubjectsaveid',
     tooltip: 'Save',
     type: 'save',
 

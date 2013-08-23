@@ -50,24 +50,20 @@ Ext.define('MySchool.view.SubjectsPanel', {
             ],
             tools: [
                 {
-                    xtype: 'subjectrefreshtool',
-                    flex: 0
+                    xtype: 'subjectrefreshtool'
                 },
                 {
-                    xtype: 'subjectsearchtool',
-                    flex: 0
+                    xtype: 'subjectsearchtool'
                 },
                 {
-                    xtype: 'subjectnewtool',
-                    flex: 0
+                    xtype: 'subjectnewtool'
                 },
                 {
-                    xtype: 'subjectsavetool',
-                    flex: 0
+                    xtype: 'subjectsavetool'
                 },
                 {
                     xtype: 'subjectdeletetool',
-                    flex: 1
+                    id: 'tooldeletesubjects'
                 }
             ]
         });

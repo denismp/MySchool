@@ -36,48 +36,18 @@ Ext.define('MySchool.controller.SubjectsController', {
         }
     ],
 
-    onSubjectsavetoolidClick: function(tool, e, eOpts) {
-        //window.console.log( "Save..." );
-        //debugger;
-        var gpnl = this.up('subjectspanel').down('subjectsgridpanel');
-        var form = this.up( 'subjectspanel' ).down( 'subjectsform' );
-        var mystore = gpnl.getStore();
-
-        var records = mystore.getModifiedRecords();
-        for( var i = 0; i < records.length; i++ )
-        {
-            records[i].set( 'lastUpdated', new Date() );
-            var formValues = form.getValues();
-        }
-
-        mystore.sync();
-        mystore.commmitChanges();
-
-        // Last but not least, I can do this (Approach #3)
-        //Ext.app.Application.fireEvent("saveSubjects", tool );
-
-    },
-
     init: function(application) {
 
         this.control({
             'subjectsgridpanel': {
-                selectionchange: this.gridSelectionChange, 
+                selectionchange: this.gridSelectionChange,
                 viewready: this.onViewReady
-            }
-        });
-
-        /** Application events, what fun! */
-        this.application.on({
-            saveSubjects: this.handleSave
-        });
-
-
-        this.control({
-            "#subjectsavetoolid": {
+            },
+            'subjectsavetool': {
                 click: this.onSubjectsavetoolidClick
             }
         });
+
     },
 
     gridSelectionChange: function(model, records) {
@@ -92,30 +62,24 @@ Ext.define('MySchool.controller.SubjectsController', {
         grid.getSelectionModel().select( 0 );
     },
 
-    handleSave: function() {
-        //debugger;
-        //var mymodel = this.getSubjectsModelModel();
-        //mymodel = Ext.get( 'SubjectsModel' );
-        var mystore = this.getSubjectsStoreStore();
-        var form = this.getSubjectsForm();
-        //mymodel.save();
-        //mystore.sync();
+    onSubjectsavetoolidClick: function(tool, e, eOpts) {
         window.console.log( "Save..." );
-        debugger;
-        //var gpnl = this.up('subjectspanel').down('subjectsgridpanel');
-        //var form = this.up( 'subjectspanel' ).down( 'subjectsform' );
-        //var mystore = gpnl.getStore();
+        //debugger;
+
+        var mystore = Ext.getStore("SubjectStore")
 
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
             records[i].set( 'lastUpdated', new Date() );
-            var formValues = form.getValues();
+            //var formValues = form.getValues();
         }
 
         mystore.sync();
         mystore.commmitChanges();
 
+        // Last but not least, I can do this (Approach #3)
+        //Ext.app.Application.fireEvent("saveSubjects", tool );
     }
 
 });
