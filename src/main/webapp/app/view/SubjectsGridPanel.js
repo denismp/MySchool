@@ -17,7 +17,7 @@ Ext.define('MySchool.view.SubjectsGridPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.subjectsgridpanel',
 
-    id: 'subjectsgrid',
+    itemId: 'subjectsgrid',
     width: 1000,
     autoScroll: true,
     title: '[student name] Subjects',

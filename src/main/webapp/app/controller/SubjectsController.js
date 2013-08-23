@@ -36,6 +36,10 @@ Ext.define('MySchool.controller.SubjectsController', {
         }
     ],
 
+    onSubjectsgridSelect: function(rowmodel, record, index, eOpts) {
+        window.console.log( "selected row in grid." );
+    },
+
     init: function(application) {
 
         this.control({
@@ -48,6 +52,12 @@ Ext.define('MySchool.controller.SubjectsController', {
             }
         });
 
+
+        this.control({
+            "#subjectsgrid": {
+                select: this.onSubjectsgridSelect
+            }
+        });
     },
 
     gridSelectionChange: function(model, records) {
