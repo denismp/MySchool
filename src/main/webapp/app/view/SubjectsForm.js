@@ -17,7 +17,7 @@ Ext.define('MySchool.view.SubjectsForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.subjectsform',
 
-    id: 'subjectdetailsform',
+    itemId: 'subjectdetailsform',
     autoScroll: true,
     bodyPadding: 10,
     title: 'Subject Details',
@@ -30,41 +30,21 @@ Ext.define('MySchool.view.SubjectsForm', {
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
-                    id: 'subjectdescriptiontextarea',
+                    itemId: 'subjectdescriptiontextarea',
                     fieldLabel: 'Description',
-                    name: 'description',
-                    listeners: {
-                        change: {
-                            fn: me.onSubjectdescriptiontextareaChange,
-                            scope: me
-                        }
-                    }
+                    name: 'description'
                 },
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
-                    id: 'subjectobjectivetextarea',
+                    itemId: 'subjectobjectivetextarea',
                     fieldLabel: 'Objectives',
-                    name: 'objectives',
-                    listeners: {
-                        change: {
-                            fn: me.onSubjectobjectivetextareaChange,
-                            scope: me
-                        }
-                    }
+                    name: 'objectives'
                 }
             ]
         });
 
         me.callParent(arguments);
-    },
-
-    onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
-
-    },
-
-    onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
-
     }
 
 });
