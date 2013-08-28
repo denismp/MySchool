@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
         <menu:category id="c_monthlyevaluationratings" z="bLOuV8WmJk94bABNkmYFRmqTedc=">
             <menu:item id="i_monthlyevaluationratings_new" messageCode="global_menu_new" url="/monthlyevaluationratingses?form" z="Sod5sLCwCrTNK3wF6AB3J/e1+iY="/>
             <menu:item id="i_monthlyevaluationratings_list" messageCode="global_menu_list" url="/monthlyevaluationratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/nh0j54Qz8G4K2w+v/7wOipfKyc="/>
@@ -59,8 +60,11 @@
             <menu:item id="i_skillratings_new" messageCode="global_menu_new" url="/skillratingses?form" z="Nv8g8tcr2PS2qM0n3xC38oFCARU="/>
             <menu:item id="i_skillratings_list" messageCode="global_menu_list" url="/skillratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="RujHG+4hAC/kT53nc00s2Hkdz3c="/>
         </menu:category>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
         <menu:category id="c_view" z="HjmI4Chx/kBYfS/6HjBLbCA+XpU=">
             <menu:item id="i_view_myschoolapp_id" messageCode="global_generic" url="/myschoolapp" z="/mhkWMIra2pQnWEiJ9iE47K98sM="/>
         </menu:category>
+        </sec:authorize>
     </menu:menu>
 </div>
