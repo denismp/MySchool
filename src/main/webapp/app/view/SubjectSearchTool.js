@@ -25,10 +25,6 @@ Ext.define('MySchool.view.SubjectSearchTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // add search handler code here.
     }
 
 });

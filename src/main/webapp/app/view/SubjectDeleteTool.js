@@ -17,7 +17,7 @@ Ext.define('MySchool.view.SubjectDeleteTool', {
     extend: 'Ext.panel.Tool',
     alias: 'widget.subjectdeletetool',
 
-    id: 'tooldeletestudentsbysubject',
+    itemId: 'tooldeletestudentsbysubject',
     tooltip: 'Delete',
     type: 'minus',
 
@@ -25,10 +25,6 @@ Ext.define('MySchool.view.SubjectDeleteTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // Add delete handler code here.
     }
 
 });

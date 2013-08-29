@@ -17,7 +17,7 @@ Ext.define('MySchool.view.SubjectRefreshTool', {
     extend: 'Ext.panel.Tool',
     alias: 'widget.subjectrefreshtool',
 
-    id: 'toolrefreshsubjects',
+    itemId: 'toolrefreshsubjects',
     tooltip: 'Refresh',
     type: 'refresh',
 
@@ -25,17 +25,6 @@ Ext.define('MySchool.view.SubjectRefreshTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // Add refresh handler code here.  Use example from chapter 2 of book.
-        //debugger;
-
-        var pnl = this.up('subjectspanel').down('subjectsgridpanel');
-        var store = pnl.getStore();
-        store.reload();
-        //pnl.setTitle( 'Denis' );
-
     }
 
 });

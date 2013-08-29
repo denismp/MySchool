@@ -76,6 +76,28 @@ Ext.define('MySchool.controller.SubjectsController', {
         myrecord.set( 'objectives', newValue );
     },
 
+    onToolrefreshsubjectsClick: function(tool, e, eOpts) {
+        // Add refresh handler code here.  Use example from chapter 2 of book.
+        //debugger;
+        window.console.log( 'Refresh' );
+        var mystore = Ext.getStore("SubjectStore");
+        mystore.reload();
+        //pnl.setTitle( 'Denis' );
+
+    },
+
+    onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
+        window.console.log( 'Delete' );
+    },
+
+    onToolnewsubjectsClick: function(tool, e, eOpts) {
+        window.console.log( 'New' );
+    },
+
+    onToolsearchsubjectsClick: function(tool, e, eOpts) {
+        window.console.log( 'Search' );
+    },
+
     init: function(application) {
 
         this.control({
@@ -98,6 +120,18 @@ Ext.define('MySchool.controller.SubjectsController', {
             },
             "#subjectobjectivetextarea": {
                 change: this.onSubjectobjectivetextareaChange
+            },
+            "#toolrefreshsubjects": {
+                click: this.onToolrefreshsubjectsClick
+            },
+            "#tooldeletestudentsbysubject": {
+                click: this.onTooldeletestudentsbysubjectClick
+            },
+            "#toolnewsubjects": {
+                click: this.onToolnewsubjectsClick
+            },
+            "#toolsearchsubjects": {
+                click: this.onToolsearchsubjectsClick
             }
         });
     },
@@ -108,7 +142,7 @@ Ext.define('MySchool.controller.SubjectsController', {
     },
 
     onSubjectsavetoolidClick: function(tool, e, eOpts) {
-        window.console.log( "Save..." );
+        window.console.log( "Save" );
         //debugger;
 
         var mystore = Ext.getStore("SubjectStore");
