@@ -18,16 +18,16 @@ Ext.define('MySchool.controller.SubjectsController', {
 
     selectedIndex: '0',
     models: [
-        'SubjectsModel'
+        'subject.SubjectsModel'
     ],
     stores: [
-        'SubjectStore'
+        'subject.SubjectStore'
     ],
     views: [
         'MainPanel',
-        'SubjectsGridPanel',
-        'SubjectsForm',
-        'SubjectsPanel'
+        'subject.SubjectsGridPanel',
+        'subject.SubjectsForm',
+        'subject.SubjectsPanel'
     ],
 
     refs: [
@@ -60,7 +60,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'description', newValue );
 
@@ -71,19 +71,9 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'objectives', newValue );
-    },
-
-    onToolrefreshsubjectsClick: function(tool, e, eOpts) {
-        // Add refresh handler code here.  Use example from chapter 2 of book.
-        //debugger;
-        window.console.log( 'Refresh' );
-        var mystore = Ext.getStore("SubjectStore");
-        mystore.reload();
-        //pnl.setTitle( 'Denis' );
-
     },
 
     onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
@@ -96,6 +86,15 @@ Ext.define('MySchool.controller.SubjectsController', {
 
     onToolsearchsubjectsClick: function(tool, e, eOpts) {
         window.console.log( 'Search' );
+    },
+
+    onToolrefreshsubjectsClick: function(tool, e, eOpts) {
+        // Add refresh handler code here.  Use example from chapter 2 of book.
+        //debugger;
+        window.console.log( 'Refresh' );
+        var mystore = Ext.getStore("subject.SubjectStore");
+        mystore.reload();
+        //pnl.setTitle( 'Denis' );
     },
 
     init: function(application) {
@@ -121,9 +120,6 @@ Ext.define('MySchool.controller.SubjectsController', {
             "#subjectobjectivetextarea": {
                 change: this.onSubjectobjectivetextareaChange
             },
-            "#toolrefreshsubjects": {
-                click: this.onToolrefreshsubjectsClick
-            },
             "#tooldeletestudentsbysubject": {
                 click: this.onTooldeletestudentsbysubjectClick
             },
@@ -132,6 +128,9 @@ Ext.define('MySchool.controller.SubjectsController', {
             },
             "#toolsearchsubjects": {
                 click: this.onToolsearchsubjectsClick
+            },
+            "#toolrefreshsubjects": {
+                click: this.onToolrefreshsubjectsClick
             }
         });
     },
@@ -145,7 +144,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         window.console.log( "Save" );
         //debugger;
 
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
 
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
