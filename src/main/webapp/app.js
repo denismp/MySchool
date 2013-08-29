@@ -30,7 +30,6 @@ Ext.application({
         'SubjectsGridPanel',
         'SubjectsForm',
         'SubjectsPanel',
-        'SubjectSaveTool',
         'SubjectRefreshTool',
         'SubjectDeleteTool',
         'SubjectSearchTool',
