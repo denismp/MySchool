@@ -17,12 +17,12 @@ Ext.define('MySchool.view.MainPanel', {
     extend: 'Ext.panel.Panel',
 
     requires: [
-        'MySchool.view.subject.SubjectsPanel'
+        'MySchool.view.SubjectsPanel'
     ],
 
-    height: 700,
+    height: 760,
     id: 'mainpanel',
-    width: 1400,
+    width: 1500,
     layout: {
         type: 'fit'
     },
@@ -1130,50 +1130,57 @@ Ext.define('MySchool.view.MainPanel', {
                                             columns: [
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    width: 50,
+                                                    width: 30,
                                                     dataIndex: 'year',
                                                     text: 'Year'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    width: 50,
+                                                    width: 35,
                                                     dataIndex: 'month',
                                                     text: 'Month'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    width: 70,
+                                                    width: 75,
                                                     defaultWidth: 70,
-                                                    text: 'Level Of Difficulty'
+                                                    text: 'LevelOfDifficulty'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
                                                     width: 70,
-                                                    text: 'Critical Thinking'
+                                                    text: 'CriticalThinking'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Effective Correction Actions'
+                                                    width: 90,
+                                                    defaultWidth: 70,
+                                                    text: 'EffCorrectionActions'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Accurately IDs Corrections'
+                                                    width: 110,
+                                                    text: 'AccuratelyIDsCorrections'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Completes Course Objectives'
+                                                    width: 115,
+                                                    text: 'CompletesCourseObjectives'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Thoughtfulness Of Reflections'
+                                                    width: 115,
+                                                    text: 'ThoughtfulnessOfReflections'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Responsibility Of Progress'
+                                                    width: 110,
+                                                    text: 'ResponsibilityOfProgress'
                                                 },
                                                 {
                                                     xtype: 'numbercolumn',
-                                                    text: 'Works Effectively With Advisor'
+                                                    width: 95,
+                                                    text: 'WorksEffWithAdvisor'
                                                 },
                                                 {
                                                     xtype: 'booleancolumn',

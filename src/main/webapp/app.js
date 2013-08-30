@@ -20,21 +20,21 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        'subject.SubjectsModel'
+        'SubjectsModel'
     ],
     stores: [
-        'subject.SubjectStore'
+        'SubjectStore'
     ],
     views: [
         'MainPanel',
-        'subject.SubjectsGridPanel',
-        'subject.SubjectsForm',
-        'subject.SubjectsPanel',
-        'subject.SubjectRefreshTool',
-        'subject.SubjectDeleteTool',
-        'subject.SubjectSearchTool',
-        'subject.SubjectNewTool',
-        'subject.SubjectSaveTool'
+        'SubjectsGridPanel',
+        'SubjectsForm',
+        'SubjectsPanel',
+        'SubjectRefreshTool',
+        'SubjectDeleteTool',
+        'SubjectSearchTool',
+        'SubjectNewTool',
+        'SubjectSaveTool'
     ],
     autoCreateViewport: true,
     controllers: [

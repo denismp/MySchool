@@ -18,16 +18,16 @@ Ext.define('MySchool.controller.SubjectsController', {
 
     selectedIndex: '0',
     models: [
-        'subject.SubjectsModel'
+        'SubjectsModel'
     ],
     stores: [
-        'subject.SubjectStore'
+        'SubjectStore'
     ],
     views: [
         'MainPanel',
-        'subject.SubjectsGridPanel',
-        'subject.SubjectsForm',
-        'subject.SubjectsPanel'
+        'SubjectsGridPanel',
+        'SubjectsForm',
+        'SubjectsPanel'
     ],
 
     refs: [
@@ -60,7 +60,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
-        var mystore = Ext.getStore("subject.SubjectStore");
+        var mystore = Ext.getStore("SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'description', newValue );
 
@@ -71,7 +71,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
-        var mystore = Ext.getStore("subject.SubjectStore");
+        var mystore = Ext.getStore("SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'objectives', newValue );
     },
@@ -82,6 +82,7 @@ Ext.define('MySchool.controller.SubjectsController', {
 
     onToolnewsubjectsClick: function(tool, e, eOpts) {
         window.console.log( 'New' );
+
     },
 
     onToolsearchsubjectsClick: function(tool, e, eOpts) {
@@ -92,7 +93,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // Add refresh handler code here.  Use example from chapter 2 of book.
         //debugger;
         window.console.log( 'Refresh' );
-        var mystore = Ext.getStore("subject.SubjectStore");
+        var mystore = Ext.getStore("SubjectStore");
         mystore.reload();
         //pnl.setTitle( 'Denis' );
     },
@@ -144,14 +145,13 @@ Ext.define('MySchool.controller.SubjectsController', {
         window.console.log( "Save" );
         //debugger;
 
-        var mystore = Ext.getStore("subject.SubjectStore");
+        var mystore = Ext.getStore("SubjectStore");
 
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
             records[i].set( 'lastUpdated', new Date() );
             var form = this.getSubjectsForm().getForm();
-            ////var form = Ext.getCmp( 'subjectsform' );
             var formValues = form.getValues();
             records[i].set( 'description', formValues.description );
             records[i].set( 'objectives', formValues.objectives );
@@ -160,10 +160,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         }
 
         mystore.sync();
-        //mystore.commmitChanges();
 
-        // Last but not least, I can do this (Approach #3)
-        //Ext.app.Application.fireEvent("saveSubjects", tool );
     },
 
     gridSelectionChange: function(model, records) {
