@@ -9,6 +9,7 @@
       <spring:message code="button_home"/>
     </a>
   </span>
+  <!--
   <c:if test="${pageContext['request'].userPrincipal != null}">
     <c:out value=" | "/>
     <span>
@@ -27,6 +28,7 @@
       </a>
     </span>
   </c:if>
+-->
 
   <span id="language">
     <c:out value=" | "/>
