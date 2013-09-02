@@ -12,19 +12,35 @@
         <intercept-url pattern="/myschoolapp" access="isAuthenticated()"/>
         <intercept-url pattern="/app.js" access="isAuthenticated()"/>
         <intercept-url pattern="/app/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/subjects/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/artifacts" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/artifacts/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/bodyofworks" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/bodyofworks/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/dailys" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/dailys/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/evaluationratingses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/evaluationratingses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/facultys" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/facultys/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlyevaluationratingses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlyevaluationratingses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlysummaryratingses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlysummaryratingses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/previoustranscriptses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/previoustranscriptses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarters" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/quarters/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/roleses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/roleses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/skillratingses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/skillratingses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/students" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/students/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/subjects" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/subjects/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/weeklys" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/weeklys/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="permitAll"/>
     </http>
     <!-- Configure Authentication mechanism -->
