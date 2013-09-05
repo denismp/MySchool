@@ -20,9 +20,10 @@ Ext.define('MySchool.view.MainPanel', {
         'MySchool.view.SubjectsPanel'
     ],
 
-    height: 760,
-    id: 'mainpanel',
-    width: 1500,
+    itemId: 'mainpanel',
+    minHeight: 800,
+    minWidth: 1400,
+    autoScroll: true,
     layout: {
         type: 'fit'
     },
@@ -34,8 +35,8 @@ Ext.define('MySchool.view.MainPanel', {
             items: [
                 {
                     xtype: 'tabpanel',
-                    height: 700,
                     id: 'maintabpanel',
+                    minHeight: 700,
                     activeTab: 0,
                     items: [
                         {
@@ -928,11 +929,13 @@ Ext.define('MySchool.view.MainPanel', {
                                             viewConfig: {
                                                 id: 'monthlysummarygridview'
                                             }
-                                        },
+                                        }
+                                    ],
+                                    items: [
                                         {
                                             xtype: 'tabpanel',
-                                            dock: 'bottom',
                                             height: 300,
+                                            minHeight: 300,
                                             width: 1398,
                                             activeTab: 0,
                                             items: [
@@ -942,10 +945,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Feelings',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'feelingstextbox'
+                                                            dock: 'top',
+                                                            id: 'feelingstextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -955,10 +960,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Reflections',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'reflectionstextbox'
+                                                            dock: 'top',
+                                                            id: 'reflectionstextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -968,10 +975,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Patterns Of Corrections',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
+                                                            dock: 'top',
                                                             id: 'patcorrectionstextpad',
+                                                            minHeight: 320,
                                                             fieldLabel: ''
                                                         }
                                                     ]
@@ -982,10 +991,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Effectivenes Of Actions',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'effectivenestextbox'
+                                                            dock: 'top',
+                                                            id: 'effectivenestextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -995,10 +1006,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Action Results',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'actionresultstextbox'
+                                                            dock: 'top',
+                                                            id: 'actionresultstextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -1008,10 +1021,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Realizations',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'realizationstextbox'
+                                                            dock: 'top',
+                                                            id: 'realizationstextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -1021,10 +1036,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Planned Changes',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'plannedchangestextbox'
+                                                            dock: 'top',
+                                                            id: 'plannedchangestextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 },
@@ -1034,10 +1051,12 @@ Ext.define('MySchool.view.MainPanel', {
                                                         type: 'fit'
                                                     },
                                                     title: 'Comments',
-                                                    items: [
+                                                    dockedItems: [
                                                         {
                                                             xtype: 'textareafield',
-                                                            id: 'commentstextbox'
+                                                            dock: 'top',
+                                                            id: 'commentstextbox',
+                                                            minHeight: 320
                                                         }
                                                     ]
                                                 }
@@ -1397,6 +1416,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
+                            minHeight: 600,
                             title: 'Student Profiles',
                             items: [
                                 {
@@ -1405,10 +1425,11 @@ Ext.define('MySchool.view.MainPanel', {
                                         type: 'fit'
                                     },
                                     title: 'Student Profiles Details',
-                                    items: [
+                                    dockedItems: [
                                         {
                                             xtype: 'gridpanel',
-                                            height: 200,
+                                            dock: 'top',
+                                            minHeight: 200,
                                             title: '[faculty name]Students',
                                             forceFit: true,
                                             columns: [
@@ -1450,19 +1471,19 @@ Ext.define('MySchool.view.MainPanel', {
                                                     text: 'idfaculty'
                                                 }
                                             ]
-                                        }
-                                    ],
-                                    dockedItems: [
+                                        },
                                         {
                                             xtype: 'form',
                                             dock: 'bottom',
-                                            height: 600,
                                             id: 'idstudentprofileform',
+                                            minHeight: 500,
                                             autoScroll: true,
                                             layout: {
                                                 type: 'vbox'
                                             },
                                             bodyPadding: 10,
+                                            collapseFirst: false,
+                                            frameHeader: false,
                                             title: 'Student Profile Form',
                                             items: [
                                                 {
@@ -1608,17 +1629,21 @@ Ext.define('MySchool.view.MainPanel', {
                         {
                             xtype: 'panel',
                             title: 'Faculty Profiles',
-                            items: [
+                            dockedItems: [
                                 {
                                     xtype: 'panel',
+                                    dock: 'top',
                                     layout: {
                                         type: 'fit'
                                     },
                                     title: 'Faculty Profiles Details',
-                                    items: [
+                                    dockedItems: [
                                         {
                                             xtype: 'gridpanel',
+                                            dock: 'top',
                                             height: 200,
+                                            minHeight: 200,
+                                            autoScroll: true,
                                             title: 'Faculty',
                                             forceFit: true,
                                             columns: [
@@ -1659,20 +1684,23 @@ Ext.define('MySchool.view.MainPanel', {
                                                     dataIndex: 'idfaculty',
                                                     text: 'idfaculty'
                                                 }
-                                            ]
-                                        }
-                                    ],
-                                    dockedItems: [
+                                            ],
+                                            viewConfig: {
+                                                minHeight: 200
+                                            }
+                                        },
                                         {
                                             xtype: 'form',
                                             dock: 'bottom',
-                                            height: 600,
                                             id: 'idfacultyprofileform',
+                                            minHeight: 500,
                                             autoScroll: true,
                                             layout: {
                                                 type: 'vbox'
                                             },
                                             bodyPadding: 10,
+                                            collapseFirst: false,
+                                            frameHeader: false,
                                             title: 'Faculty Profile Form',
                                             items: [
                                                 {

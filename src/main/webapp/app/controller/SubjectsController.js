@@ -27,7 +27,8 @@ Ext.define('MySchool.controller.SubjectsController', {
         'MainPanel',
         'SubjectsGridPanel',
         'SubjectsForm',
-        'SubjectsPanel'
+        'SubjectsPanel',
+        'subject.NewForm'
     ],
 
     refs: [
@@ -81,8 +82,13 @@ Ext.define('MySchool.controller.SubjectsController', {
     },
 
     onToolnewsubjectsClick: function(tool, e, eOpts) {
+        //debugger;
         window.console.log( 'New' );
-
+        var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );
+        //window.console.log( "DEBUG" );
+        //newDialog.show();
+        newDialog.render( Ext.getBody() );
+        newDialog.show();
     },
 
     onToolsearchsubjectsClick: function(tool, e, eOpts) {
