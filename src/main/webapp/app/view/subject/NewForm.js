@@ -21,13 +21,18 @@ Ext.define('MySchool.view.subject.NewForm', {
     draggable: true,
     floating: true,
     frame: true,
-    height: 508,
+    height: 400,
     itemId: 'newsubjectform',
-    width: 796,
+    width: 500,
     title: 'New Subject',
+    url: 'quarters',
 
     initComponent: function() {
         var me = this;
+
+        me.initialConfig = Ext.apply({
+            url: 'quarters'
+        }, me.initialConfig);
 
         Ext.applyIf(me, {
             items: [
@@ -37,17 +42,33 @@ Ext.define('MySchool.view.subject.NewForm', {
                     items: [
                         {
                             xtype: 'textfield',
-                            fieldLabel: 'Label'
+                            anchor: '100%',
+                            fieldLabel: 'Name'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'numberfield',
                             anchor: '100%',
-                            fieldLabel: 'Label'
+                            fieldLabel: 'Grade Level'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'numberfield',
                             anchor: '100%',
-                            fieldLabel: 'Label'
+                            fieldLabel: 'Credit Hours'
+                        },
+                        {
+                            xtype: 'textareafield',
+                            anchor: '100%',
+                            fieldLabel: 'Description'
+                        },
+                        {
+                            xtype: 'textareafield',
+                            anchor: '100%',
+                            fieldLabel: 'Objective'
+                        },
+                        {
+                            xtype: 'combobox',
+                            anchor: '100%',
+                            fieldLabel: 'Quarter'
                         }
                     ]
                 },
