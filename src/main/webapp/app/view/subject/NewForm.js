@@ -53,16 +53,45 @@ Ext.define('MySchool.view.subject.NewForm', {
                 },
                 {
                     xtype: 'button',
-                    text: 'MyButton'
+                    text: 'Cancel',
+                    listeners: {
+                        click: {
+                            fn: me.onButtonClick,
+                            scope: me
+                        }
+                    }
                 },
                 {
                     xtype: 'button',
-                    text: 'MyButton'
+                    text: 'Submit',
+                    listeners: {
+                        click: {
+                            fn: me.onButtonClick1,
+                            scope: me
+                        }
+                    }
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    onButtonClick: function(button, e, eOpts) {
+        //debugger;
+        //var myform = this;
+        this.getForm().reset();
+        this.hide();
+
+    },
+
+    onButtonClick1: function(button, e, eOpts) {
+        // In a real application, this would submit the form to the configured url
+        // this.up('form').getForm().submit();
+        this.getForm().reset();
+        this.hide();
+        Ext.MessageBox.alert('Thank you!', 'Your record has been submitted.');
+
     }
 
 });
