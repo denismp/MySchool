@@ -107,12 +107,23 @@ Ext.define('MySchool.view.subject.NewForm', {
     },
 
     onButtonClick1: function(button, e, eOpts) {
-        // In a real application, this would submit the form to the configured url
-        // this.up('form').getForm().submit();
-        this.getForm().reset();
-        this.hide();
-        Ext.MessageBox.alert('Thank you!', 'Your record has been submitted.');
-
+        if( this.getForm().isValid() )
+        {
+            // In a real application, this would submit the form to the configured url
+            // this.up('form').getForm().submit();
+            //this.getForm.submit();
+            this.getForm().submit({
+                success: function(form, action) {
+                    Ext.Msg.alert('Success', action.result.message);
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('Failed', action.result ? action.result.message : 'No response');
+                }
+            });
+            this.getForm().reset();
+            this.hide();
+            Ext.MessageBox.alert('Thank you!', 'Your record has been submitted.');
+        }
     }
 
 });
