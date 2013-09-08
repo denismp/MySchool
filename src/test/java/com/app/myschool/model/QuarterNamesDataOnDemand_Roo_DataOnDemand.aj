@@ -24,7 +24,16 @@ privileged aspect QuarterNamesDataOnDemand_Roo_DataOnDemand {
     
     public QuarterNames QuarterNamesDataOnDemand.getNewTransientQuarterNames(int index) {
         QuarterNames obj = new QuarterNames();
+        setQtrName(obj, index);
         return obj;
+    }
+    
+    public void QuarterNamesDataOnDemand.setQtrName(QuarterNames obj, int index) {
+        String qtrName = "qtrName_" + index;
+        if (qtrName.length() > 25) {
+            qtrName = new Random().nextInt(10) + qtrName.substring(1, 25);
+        }
+        obj.setQtrName(qtrName);
     }
     
     public QuarterNames QuarterNamesDataOnDemand.getSpecificQuarterNames(int index) {
