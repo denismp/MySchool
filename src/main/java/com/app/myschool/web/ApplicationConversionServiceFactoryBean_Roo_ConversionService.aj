@@ -13,6 +13,7 @@ import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.QuarterNames;
 import com.app.myschool.model.Roles;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
@@ -267,6 +268,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<QuarterNames, String> ApplicationConversionServiceFactoryBean.getQuarterNamesToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.QuarterNames, java.lang.String>() {
+            public String convert(QuarterNames quarterNames) {
+                return new StringBuilder().append(quarterNames.getQtrName()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, QuarterNames> ApplicationConversionServiceFactoryBean.getIdToQuarterNamesConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.QuarterNames>() {
+            public com.app.myschool.model.QuarterNames convert(java.lang.Long id) {
+                return QuarterNames.findQuarterNames(id);
+            }
+        };
+    }
+    
+    public Converter<String, QuarterNames> ApplicationConversionServiceFactoryBean.getStringToQuarterNamesConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.QuarterNames>() {
+            public com.app.myschool.model.QuarterNames convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), QuarterNames.class);
+            }
+        };
+    }
+    
     public Converter<Roles, String> ApplicationConversionServiceFactoryBean.getRolesToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Roles, java.lang.String>() {
             public String convert(Roles roles) {
@@ -418,6 +443,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getQuarterToStringConverter());
         registry.addConverter(getIdToQuarterConverter());
         registry.addConverter(getStringToQuarterConverter());
+        registry.addConverter(getQuarterNamesToStringConverter());
+        registry.addConverter(getIdToQuarterNamesConverter());
+        registry.addConverter(getStringToQuarterNamesConverter());
         registry.addConverter(getRolesToStringConverter());
         registry.addConverter(getIdToRolesConverter());
         registry.addConverter(getStringToRolesConverter());
