@@ -1,0 +1,154 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoRender": false,
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": 400,
+        "itemId": "newsubjectform",
+        "width": 500,
+        "designer|userClassName": "subject.NewForm",
+        "designer|userAlias": "newsubjectform",
+        "layout": null,
+        "title": "New Subject",
+        "jsonSubmit": true,
+        "url": null
+    },
+    "designerId": "d6d7fa71-60f7-4db8-9ce1-634ff1382bc7",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "My Fields"
+            },
+            "designerId": "0f123e5a-ce5a-4ee1-ba19-dbebe123fc5c",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Name"
+                    },
+                    "designerId": "43b3cd48-e7c5-42e5-9f41-3091ed5aca77"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Grade Level"
+                    },
+                    "designerId": "bad29fb6-3682-4c44-af93-60dbef0d2957"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Credit Hours"
+                    },
+                    "designerId": "86b61659-f9a6-46c3-b894-d73e5eec716b"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Description"
+                    },
+                    "designerId": "1109a2ed-bcfd-4f7d-9fcd-54b4b117d3d4"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Objective"
+                    },
+                    "designerId": "641907c1-bb99-4846-ac8a-d0572c385f49"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "autoRender": false,
+                        "itemId": "quarterscombobox",
+                        "minHeight": 20,
+                        "renderTo": null,
+                        "fieldLabel": "Quarter",
+                        "allowOnlyWhitespace": false,
+                        "emptyText": "Select one.",
+                        "displayField": "qtrName",
+                        "forceSelection": true,
+                        "store": "QuarterNameStore",
+                        "valueField": "id"
+                    },
+                    "designerId": "9d7d0d66-7e1a-4246-a137-f57d5df8649a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectcancel",
+                "text": "Cancel"
+            },
+            "designerId": "e6b91e21-c022-4b51-99c2-21d8e6bab477"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectsubmit",
+                "text": "Submit"
+            },
+            "designerId": "f0a757c8-ada0-4bbc-90a6-5a88158c2b37"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": null,
+        "itemId": "subjectdetailsform",
+        "designer|userClassName": "SubjectsForm",
+        "designer|userAlias": "subjectsform",
+        "autoScroll": true,
+        "bodyPadding": 10,
+        "title": "Subject Details"
+    },
+    "designerId": "5f4ea074-864b-46c4-8416-9f9751c9f5c8",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "dock": null,
+                "height": null,
+                "id": null,
+                "itemId": "subjectdescriptiontextarea",
+                "fieldLabel": "Description",
+                "name": "description",
+                "value": null
+            },
+            "designerId": "79b6a6bb-80c9-47b0-8040-9c9c70d0f29d"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "height": null,
+                "id": null,
+                "itemId": "subjectobjectivetextarea",
+                "fieldLabel": "Objectives",
+                "name": "objectives"
+            },
+            "designerId": "c0d2d172-bcf5-4923-899c-97187911820a"
+        }
+    ]
+}

@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": null,
+        "itemId": "toolrefreshsubjects",
+        "designer|userClassName": "SubjectRefreshTool",
+        "designer|userAlias": "subjectrefreshtool",
+        "tooltip": "Refresh",
+        "type": "refresh"
+    },
+    "designerId": "427c4fdc-1be5-4661-88bd-fa3cef59f6a1"
+}

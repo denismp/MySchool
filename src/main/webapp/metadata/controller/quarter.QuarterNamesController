@@ -1,0 +1,120 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "QuarterNamesModel"
+        ],
+        "stores": [
+            "QuarterNameStore",
+            "SubjectStore"
+        ],
+        "views": [
+            "subject.NewForm",
+            "SubjectsGridPanel",
+            "SubjectsForm"
+        ],
+        "designer|userClassName": "quarter.QuarterNamesController"
+    },
+    "designerId": "60c7558a-6f00-4e14-aaa4-70ad1dbdd1f5",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "74dd0bc6-b6f4-4ba3-b655-e7b7b8206ebd"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNewsubjectcancelClick",
+                "implHandler": [
+                    "//debugger;",
+                    "",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#newsubjectcancel"
+            },
+            "designerId": "a7564690-69cb-4c01-b4f6-841552568b22"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNewsubjectsubmitClick",
+                "implHandler": [
+                    "//debugger;",
+                    "//var mystore = this.getSubjectStoreStore();",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "var myqtrstore = Ext.getStore( \"QuarterNameStore\" );",
+                    "var myrecords = myqtrstore.getRange( 0, 3 );",
+                    "for( var i = 0; i < 4; i++ )",
+                    "{",
+                    "    window.console.log( \"qtrName=\" + myrecords[i].get( 'qtrName' ) );",
+                    "}",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#newsubjectsubmit"
+            },
+            "designerId": "6cb3ca0b-883d-464b-9a39-2f5c3ec2698f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNewsubjectformShow",
+                "implHandler": [
+                    "debugger;",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "var myrecords = mystore.getRange( 0, 3 );",
+                    "window.console.log( 'DEBUG' );",
+                    ""
+                ],
+                "name": "show",
+                "scope": "me",
+                "designer|targetType": "Ext.form.Panel",
+                "designer|controlQuery": "#newsubjectform"
+            },
+            "designerId": "83d15a73-c902-438b-a11a-9987bd1c0717"
+        }
+    ]
+}

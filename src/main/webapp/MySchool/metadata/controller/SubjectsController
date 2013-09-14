@@ -1,0 +1,334 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "selectedIndex": "0",
+        "models": [
+            "SubjectsModel"
+        ],
+        "stores": [
+            "SubjectStore"
+        ],
+        "views": [
+            "MainPanel",
+            "SubjectsGridPanel",
+            "SubjectsForm",
+            "SubjectsPanel"
+        ],
+        "designer|userClassName": "SubjectsController"
+    },
+    "designerId": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "selectedIndex",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "subjectsForm",
+                "selector": "form"
+            },
+            "designerId": "a677eea6-6182-4b3d-abe9-2c77b8349cf8"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "init",
+                "designer|params": [
+                    "application"
+                ],
+                "implHandler": [
+                    "",
+                    "this.control({",
+                    "    'subjectsgridpanel': {",
+                    "        selectionchange: this.gridSelectionChange,",
+                    "        viewready: this.onViewReady",
+                    "    },",
+                    "    'subjectsavetool': {",
+                    "        click: this.onSubjectsavetoolidClick",
+                    "    }",
+                    "});",
+                    ""
+                ]
+            },
+            "designerId": "a1acc81a-0b74-4fbd-9f59-101d0487b105"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onViewReady",
+                "designer|params": [
+                    "grid"
+                ],
+                "implHandler": [
+                    "",
+                    "grid.getSelectionModel().select( 0 );"
+                ]
+            },
+            "designerId": "c01354bc-cff9-4b49-a085-01122381d726"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSubjectsavetoolidClick",
+                "designer|params": [
+                    "tool",
+                    "e",
+                    "eOpts"
+                ],
+                "implHandler": [
+                    "window.console.log( \"Save\" );",
+                    "//debugger;",
+                    "",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "",
+                    "var records = mystore.getModifiedRecords();",
+                    "for( var i = 0; i < records.length; i++ )",
+                    "{",
+                    "    records[i].set( 'lastUpdated', new Date() );",
+                    "    var form = this.getSubjectsForm().getForm();",
+                    "    var formValues = form.getValues();",
+                    "    records[i].set( 'description', formValues.description );",
+                    "    records[i].set( 'objectives', formValues.objectives );",
+                    "    window.console.log( 'objectives=' + formValues.objectives );",
+                    "    window.console.log( 'description=' + formValues.description );",
+                    "}",
+                    "",
+                    "mystore.sync();",
+                    ""
+                ]
+            },
+            "designerId": "c20c579b-a96b-4693-ad0b-489d29c77a27"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSubjectsgridSelect",
+                "implHandler": [
+                    "window.console.log( \"selected row in grid.\" );",
+                    "window.console.log( \"index=\" + index );",
+                    "//debugger;",
+                    "//if ( record ) {",
+                    "//    this.getSubjectsForm().getForm().loadRecord(record);",
+                    "//}",
+                    "this.selectedIndex = index;"
+                ],
+                "name": "select",
+                "scope": "me",
+                "designer|targetType": "Ext.grid.Panel",
+                "designer|controlQuery": "#subjectsgrid"
+            },
+            "designerId": "34c8c61a-edd5-4e1c-b140-c4d578a186a3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSubjectdescriptiontextareaChange",
+                "implHandler": [
+                    "// NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.",
+                    "window.console.log( 'selectedIndex=' + this.selectedIndex );",
+                    "window.console.log( \"onSubjectdescriptiontextareraChange() field=\" + field );",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "var myrecord = mystore.getAt( this.selectedIndex );",
+                    "myrecord.set( 'description', newValue );",
+                    "",
+                    ""
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "designer|controlQuery": "#subjectdescriptiontextarea"
+            },
+            "designerId": "6faad01a-7ee9-487e-a8c0-73ff1ef18a55"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSubjectobjectivetextareaChange",
+                "implHandler": [
+                    "// NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.",
+                    "window.console.log( 'selectedIndex=' + this.selectedIndex );",
+                    "window.console.log( \"onSubjectobjectivetextareraChange() field=\" + field );",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "var myrecord = mystore.getAt( this.selectedIndex );",
+                    "myrecord.set( 'objectives', newValue );"
+                ],
+                "name": "change",
+                "scope": "me",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "designer|controlQuery": "#subjectobjectivetextarea"
+            },
+            "designerId": "aa1e32c5-5e5c-43c8-b93d-0ebeef246a20"
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "processSubjectsController",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "return config;"
+                ]
+            },
+            "designerId": "c2194c93-8c40-4417-bed5-a3f655026c5d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "gridSelectionChange",
+                "designer|params": [
+                    "model",
+                    "records"
+                ],
+                "implHandler": [
+                    "//debugger;",
+                    "if ( records[0] ) {",
+                    "    this.getSubjectsForm().getForm().loadRecord(records[0]);",
+                    "}"
+                ]
+            },
+            "designerId": "3a6fa757-9e2b-4731-b8a3-392e1486d299"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTooldeletestudentsbysubjectClick",
+                "implHandler": [
+                    "window.console.log( 'Delete' );"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Tool",
+                "designer|controlQuery": "#tooldeletestudentsbysubject"
+            },
+            "designerId": "10448b54-6393-4184-b6b8-2278525d4f9a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onToolnewsubjectsClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( 'New' );",
+                    "var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );",
+                    "//window.console.log( \"DEBUG\" );",
+                    "//newDialog.show();",
+                    "newDialog.render( Ext.getBody() );",
+                    "newDialog.show();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Tool",
+                "designer|controlQuery": "#toolnewsubjects"
+            },
+            "designerId": "5d4868ed-6a1c-470f-b090-c3b087ab1e9b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onToolsearchsubjectsClick",
+                "implHandler": [
+                    "window.console.log( 'Search' );"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Tool",
+                "designer|controlQuery": "#toolsearchsubjects"
+            },
+            "designerId": "31fb3fa3-8dfe-4181-ab00-9fd7ab071d7d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onToolrefreshsubjectsClick",
+                "implHandler": [
+                    "// Add refresh handler code here.  Use example from chapter 2 of book.",
+                    "//debugger;",
+                    "window.console.log( 'Refresh' );",
+                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "mystore.reload();",
+                    "//pnl.setTitle( 'Denis' );"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.panel.Tool",
+                "designer|controlQuery": "#toolrefreshsubjects"
+            },
+            "designerId": "e4ca8107-d4f4-45be-8249-08a2989f145a"
+        }
+    ]
+}

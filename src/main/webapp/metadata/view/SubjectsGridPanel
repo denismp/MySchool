@@ -1,0 +1,161 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": null,
+        "id": null,
+        "itemId": "subjectsgrid",
+        "width": 1000,
+        "designer|userClassName": "SubjectsGridPanel",
+        "designer|userAlias": "subjectsgridpanel",
+        "autoScroll": true,
+        "title": "[student name] Subjects",
+        "forceFit": true,
+        "store": "SubjectStore"
+    },
+    "designerId": "03f512fe-cb0d-4bc4-889d-6c325edf2dfe",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "dataIndex": "id",
+                "text": "subjectid",
+                "format": "000000"
+            },
+            "designerId": "3c19373c-d4e6-4a91-94f8-7255e30365c3"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 94,
+                "dataIndex": "name",
+                "text": "Subject Name",
+                "flex": null
+            },
+            "designerId": "3d8e707c-25ca-4a62-87ae-86e43a3aeda0"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "width": 97,
+                "dataIndex": "gradeLevel",
+                "text": "Grade Level",
+                "format": "00"
+            },
+            "designerId": "5b7f4241-70f0-47f3-946b-581e795845e8"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "creditHours",
+                "text": "Credit Hours"
+            },
+            "designerId": "5dbb449b-e775-4cc8-9d53-c9fcdcd37570"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lastUpdated",
+                "text": "Date",
+                "format": "m/d/Y"
+            },
+            "designerId": "00e18179-73c1-41db-8607-28a2e5f32442"
+        },
+        {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": null,
+                "dataIndex": "completed",
+                "text": "Complete?"
+            },
+            "designerId": "9671afa8-1ac5-4e16-80cf-02095ee4ee5f",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "1f174953-c81f-4bcc-a879-cdb200278c4e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "subjectsgridview",
+                "minHeight": null,
+                "shadow": null,
+                "shadowOffset": null
+            },
+            "designerId": "2ef4beeb-3d12-4c5e-ad95-23493c551339"
+        },
+        {
+            "type": "Ext.grid.plugin.CellEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.CellEditing",
+            "userConfig": {
+                "clicksToEdit": 1
+            },
+            "designerId": "5a1b14f6-e16e-447e-a090-316414fdf463"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "dataIndex": "version",
+                "text": "version"
+            },
+            "designerId": "dffa39a4-cf1e-4370-ab61-689be79736fa"
+        }
+    ]
+}

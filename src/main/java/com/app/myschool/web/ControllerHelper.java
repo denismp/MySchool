@@ -24,6 +24,7 @@ import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.QuarterNames;
 import com.app.myschool.model.Roles;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
@@ -62,6 +63,9 @@ public class ControllerHelper {
 			}
 			else if (myClass.equals(Quarter.class)) {
 				records = Quarter.findAllQuarters();
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				records = QuarterNames.findAllQuarterNameses();
 			}
 			else if (myClass.equals(Roles.class)) {
 				records  = Roles.findAllRoleses();
@@ -191,6 +195,9 @@ public class ControllerHelper {
 			else if (myClass.equals(Quarter.class)) {
 				record = Quarter.findQuarter(id);
 			}
+			else if (myClass.equals(QuarterNames.class)) {
+				record = QuarterNames.findQuarterNames(id);
+			}
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.findRoles(id);
 			}
@@ -284,6 +291,10 @@ public class ControllerHelper {
 			else if (myClass.equals(Quarter.class)) {
 				record = Quarter.fromJsonToQuarter(myJson);
 		        ((Quarter)record).persist();
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				record = QuarterNames.fromJsonToQuarterNames(myJson);
+		        ((QuarterNames)record).persist();
 			}
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.fromJsonToRoles(myJson);
@@ -385,6 +396,10 @@ public class ControllerHelper {
 			else if (myClass.equals(Quarter.class)) {
 				record = Quarter.findQuarter(id);
 		        ((Quarter)record).remove();
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				record = QuarterNames.findQuarterNames(id);
+		        ((QuarterNames)record).remove();
 			}
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.findRoles(id);
@@ -499,6 +514,12 @@ public class ControllerHelper {
 			else if (myClass.equals(Quarter.class)) {
 				record = Quarter.fromJsonToQuarter(myJson);
 		        if (((Quarter)record).merge() != null ) {
+		        	updateGood = true;
+		        }				
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				record = QuarterNames.fromJsonToQuarterNames(myJson);
+		        if (((QuarterNames)record).merge() != null ) {
 		        	updateGood = true;
 		        }				
 			}
@@ -707,6 +728,24 @@ public class ControllerHelper {
 				List<Quarter> records = new ArrayList( mycollection );
 		
 		        for (Quarter record: Quarter.fromJsonArrayToQuarters(myJson)) {
+		
+	    	        if (record.merge() == null) {
+	    	            returnStatus = HttpStatus.NOT_FOUND;
+	    	            response.setMessage(className + " update failed for id=" + record.getId() );
+	    				response.setSuccess(false);
+	    				response.setTotal(0L);
+	    		        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+	    	        }
+	    		}
+		        results = records;
+		        statusGood = true;
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				Collection<QuarterNames>mycollection = QuarterNames.fromJsonArrayToQuarterNameses(myJson);
+				@SuppressWarnings("unchecked")
+				List<Quarter> records = new ArrayList( mycollection );
+		
+		        for (QuarterNames record: QuarterNames.fromJsonArrayToQuarterNameses(myJson)) {
 		
 	    	        if (record.merge() == null) {
 	    	            returnStatus = HttpStatus.NOT_FOUND;
@@ -1001,6 +1040,17 @@ public class ControllerHelper {
 				List<Quarter> records = new ArrayList( mycollection );
 		
 		        for (Quarter record: Quarter.fromJsonArrayToQuarters(myJson)) {
+	    	        record.persist();
+	    		}
+		        results = records;
+		        statusGood = true;
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				Collection <QuarterNames>mycollection = QuarterNames.fromJsonArrayToQuarterNameses(myJson);
+				@SuppressWarnings("unchecked")
+				List<Quarter> records = new ArrayList( mycollection );
+		
+		        for (QuarterNames record: QuarterNames.fromJsonArrayToQuarterNameses(myJson)) {
 	    	        record.persist();
 	    		}
 		        results = records;
