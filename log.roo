@@ -300,3 +300,4 @@ field boolean --fieldName enabled --notNull
 json all
 web mvc json all
 json all 
+web mvc json all
