@@ -280,3 +280,4 @@ hint entitities
 // [failed] focus --class ~.model.Quarters
 // [failed] finder list
 finder list --class ~.model.Quarter
+finder add --finderName findQuartersByStudent
