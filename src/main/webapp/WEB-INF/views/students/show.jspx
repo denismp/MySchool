@@ -18,5 +18,8 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Student_whoUpdated" object="${student}" z="/MmMV5iC3d44MyO8qaO5kU7KRbc="/>
         <field:display date="true" dateTimePattern="${student_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Student_lastUpdated" object="${student}" z="8iJSFfcSRf5WTIIJJhBwwXXqDSk="/>
         <field:display field="faculty" id="s_com_app_myschool_model_Student_faculty" object="${student}" z="k4aGeCZRObEF/VYkFV+8f8RJAdw="/>
+        <field:display field="userName" id="s_com_app_myschool_model_Student_userName" object="${student}" z="yujiQiOGSejCPTvVGizSvaJPQ2M="/>
+        <field:display field="userPassword" id="s_com_app_myschool_model_Student_userPassword" object="${student}" z="2JTGoKV55wkKVKkPY4FEPyZtAFk="/>
+        <field:display field="enabled" id="s_com_app_myschool_model_Student_enabled" object="${student}" z="eIYslvvZXTpOsEwrKrmfRiq/Zzw="/>
     </page:show>
 </div>

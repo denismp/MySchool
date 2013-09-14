@@ -19,5 +19,8 @@
         <field:datetime dateTimePattern="${faculty_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Faculty_lastUpdated" required="true" z="exTzskZp16IUkj+yt+4UsEm1tKY="/>
         <field:select field="students" id="c_com_app_myschool_model_Faculty_students" itemValue="id" items="${students}" multiple="true" path="/students" z="2vb3sYkkv+bU3wcSOdxDBF1AG3U="/>
         <field:simple field="roles" id="c_com_app_myschool_model_Faculty_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="Roles" z="3uBV5S3BgmfWKDfkoSRbyEqJ1tw="/>
+        <field:textarea field="userName" id="c_com_app_myschool_model_Faculty_userName" required="true" z="5zTV2rRBJ7kqpJx0AExtT6PFQ8Q="/>
+        <field:textarea field="userPassword" id="c_com_app_myschool_model_Faculty_userPassword" required="true" z="EtZ15iI3fmJOgpqsuJN2Ryyf+2E="/>
+        <field:checkbox field="enabled" id="c_com_app_myschool_model_Faculty_enabled" z="JbRqOWL4isY0S3Cxy9/ffqUYxKA="/>
     </form:update>
 </div>

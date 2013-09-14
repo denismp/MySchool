@@ -25,5 +25,8 @@
         <field:simple field="previousTranscripts" id="c_com_app_myschool_model_Student_previousTranscripts" messageCode="entity_reference_not_managed" messageCodeAttribute="Previous Transcripts" z="fB1MF2cN7/aPi4STUPRoAGYj+JE="/>
         <field:simple field="graduateTracking" id="c_com_app_myschool_model_Student_graduateTracking" messageCode="entity_reference_not_managed" messageCodeAttribute="Graduate Tracking" z="sHPYGVSwP1yoG5XFhkIZWgsP+cg="/>
         <field:select field="faculty" id="c_com_app_myschool_model_Student_faculty" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="ck3S9plWVLvOGGlYpOpI0S6urgs="/>
+        <field:textarea field="userName" id="c_com_app_myschool_model_Student_userName" required="true" z="V0HiC3w+xsiU32iLrWu8qCHmgPs="/>
+        <field:textarea field="userPassword" id="c_com_app_myschool_model_Student_userPassword" required="true" z="ldqdQ4f3jAxQt3ssD+K0t4TXPOk="/>
+        <field:checkbox field="enabled" id="c_com_app_myschool_model_Student_enabled" z="FabZ3jyXKMa1Uy/QTGGWjuhbfO4="/>
     </form:update>
 </div>
