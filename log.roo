@@ -277,3 +277,6 @@ web mvc json all
 help
 hint
 hint entitities
+// [failed] focus --class ~.model.Quarters
+// [failed] finder list
+finder list --class ~.model.Quarter
