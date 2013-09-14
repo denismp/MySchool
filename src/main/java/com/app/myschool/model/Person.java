@@ -90,9 +90,5 @@ public abstract class Person {
     private String userPassword;
 
     @NotNull
-    @Size(max = 150)
-    private String userRole;
-
-    @NotNull
     private Boolean enabled;
 }

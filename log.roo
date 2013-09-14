@@ -299,3 +299,4 @@ field boolean --fieldName enabled --notNull
  web mvc all --package ~.web
 json all
 web mvc json all
+json all 
