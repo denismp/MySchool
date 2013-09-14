@@ -8,7 +8,8 @@
     "userConfig": {
         "designer|userClassName": "Library",
         "basePath": "http://extjs.cachefly.net/ext-4.2.0-gpl/",
-        "debug": true
+        "debug": true,
+        "theme": "neptune"
     },
     "designerId": "a65537e1-e168-4a5d-b470-84f043fa8967"
 }
