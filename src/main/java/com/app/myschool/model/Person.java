@@ -88,4 +88,8 @@ public abstract class Person {
     @NotNull
     @Size(max = 150)
     private String userPassword;
+
+    @NotNull
+    @Size(max = 150)
+    private String userRole;
 }
