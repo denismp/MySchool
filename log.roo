@@ -1,0 +1,276 @@
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-25 23:36:12
+project --topLevelPackage com.app.myschool --projectName MySchool --java 7 --packaging JAR
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-07-25 23:36:19
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-25 23:41:33
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-25 23:41:39
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-25 23:42:52
+exit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-25 23:43:50
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-25 23:44:23
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-25 23:44:28
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-07-25 23:45:49
+// [failed] script /Users/denisputnam/MySchool/myschool.roo
+quit
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-07-25 23:45:51
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-25 23:48:47
+jpa setup --provider HIBERNATE --database HYPERSONIC_PERSISTENT 
+entity jpa      --class ~.model.Person --abstract --inheritanceType TABLE_PER_CLASS 
+entity jpa      --class ~.model.Student --extends ~.model.Person
+entity jpa      --class ~.model.Faculty --extends ~.model.Person --testAutomatically
+entity jpa      --class ~.model.Subject --testAutomatically
+entity jpa      --class ~.model.Quarter --testAutomatically 
+entity jpa      --class ~.model.BodyOfWork --testAutomatically
+entity jpa      --class ~.model.Weekly  --testAutomatically 
+entity jpa      --class ~.model.Roles --testAutomatically 
+entity jpa      --class ~.model.Artifact --testAutomatically
+entity jpa      --class ~.model.Daily --testAutomatically
+entity jpa      --class ~.model.SkillRatings --testAutomatically 
+entity jpa      --class ~.model.EvaluationRatings --testAutomatically 
+entity jpa      --class ~.model.MonthlySummaryRatings --testAutomatically 
+entity jpa      --class ~.model.MonthlyEvaluationRatings --testAutomatically 
+entity jpa      --class ~.model.PreviousTranscripts --testAutomatically 
+entity jpa      --class ~.model.GraduateTracking --testAutomatically 
+field string    --class ~.model.Person --fieldName personID --sizeMax 45 --notNull --unique
+field string    --class ~.model.Person --fieldName firstName --sizeMax 45 --notNull
+field string    --class ~.model.Person --fieldName lastName --notNull --sizeMax 45
+field string    --class ~.model.Person --fieldName middleName --sizeMax 45
+field string    --class ~.model.Person --fieldName phone1 --notNull --sizeMax 25
+field string    --class ~.model.Person --fieldName phone2 --sizeMax 25
+field string    --class ~.model.Person --fieldName address1 --notNull --sizeMax 45
+field string    --class ~.model.Person --fieldName address2 --sizeMax 45
+field string    --class ~.model.Person --fieldName city --notNull --sizeMax 45
+field string    --class ~.model.Person --fieldName province --notNull --sizeMax 45
+field string    --class ~.model.Person --fieldName postalCode --notNull --sizeMax 25
+field string    --class ~.model.Person --fieldName country --notNull --sizeMax 45
+field string    --class ~.model.Person --fieldName whoUpdated --notNull --sizeMax 45
+field date      --class ~.model.Person --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field set       --class ~.model.Faculty --fieldName students --type ~.model.Student --cardinality MANY_TO_MANY --mappedBy faculty
+field string    --class ~.model.Roles --fieldName roleName --sizeMax 45 --notNull
+field number    --class ~.model.Roles --type int --fieldName roleType --notNull 
+field reference --class ~.model.Roles --fieldName person --type ~.model.Person --cardinality MANY_TO_ONE 
+field set       --class ~.model.Person --fieldName roles --type ~.model.Roles --cardinality ONE_TO_MANY
+field string    --class ~.model.Subject --fieldName name --sizeMax 45 --notNull
+field number    --class ~.model.Subject --type int --fieldName gradeLevel --notNull --min 0 --max 4
+field number    --class ~.model.Subject --type int --fieldName creditHours --notNull --min 0 --max 4
+field string    --class ~.model.Subject --fieldName description --sizeMax 4096
+field string    --class ~.model.Subject --fieldName objectives --sizeMax 4096
+field string    --class ~.model.Subject --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.Subject --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field boolean   --class ~.model.Subject --fieldName completed --value false --notNull
+field reference --class ~.model.Subject --fieldName quarter --type ~.model.Quarter --cardinality MANY_TO_ONE 
+field set       --class ~.model.Subject --fieldName weeklys --type ~.model.Weekly --cardinality ONE_TO_MANY 
+field set       --class ~.model.Subject --fieldName bodiesOfWork --type ~.model.BodyOfWork --cardinality ONE_TO_MANY
+field set       --class ~.model.Subject --fieldName dailys --type ~.model.Daily --cardinality ONE_TO_MANY
+field set       --class ~.model.Student --fieldName monthlyEvaluations --type ~.model.MonthlyEvaluationRatings --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName quarters --type ~.model.Quarter --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName monthlyEvaluationRatings --type ~.model.MonthlyEvaluationRatings --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName monthlySummaryRatings --type ~.model.MonthlySummaryRatings --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName previousTranscripts --type ~.model.PreviousTranscripts --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName graduateTracking --type ~.model.GraduateTracking --cardinality ONE_TO_MANY 
+field set       --class ~.model.Student --fieldName faculty --type ~.model.Faculty --cardinality MANY_TO_MANY
+field string    --class ~.model.Quarter --fieldName qtrName --sizeMax 25 --notNull
+field number    --class ~.model.Quarter --type int --fieldName gradeType --notNull --min 1 --max 2
+field number    --class ~.model.Quarter --type int --fieldName grade --notNull --min 0 --max 4
+field boolean   --class ~.model.Quarter --fieldName locked --value false --notNull
+field string    --class ~.model.Quarter --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.Quarter --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field set       --class ~.model.Quarter --fieldName subjects --type ~.model.Subject --cardinality ONE_TO_MANY 
+field reference --class ~.model.Quarter --fieldName student --type ~.model.Student --cardinality MANY_TO_ONE 
+field string    --class ~.model.BodyOfWork --fieldName workName --sizeMax 25 --notNull
+field string    --class ~.model.BodyOfWork --fieldName description --sizeMax 4096 --notNull
+field string    --class ~.model.BodyOfWork --fieldName what --sizeMax 4096 --notNull
+field string    --class ~.model.BodyOfWork --fieldName objective --sizeMax 4096 --notNull
+field boolean   --class ~.model.BodyOfWork --fieldName locked --value false --notNull
+field string    --class ~.model.BodyOfWork --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.BodyOfWork --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field reference --class ~.model.BodyOfWork --fieldName subject --type ~.model.Subject --cardinality MANY_TO_ONE 
+field set       --class ~.model.BodyOfWork --fieldName artifacts --type ~.model.Artifact --cardinality ONE_TO_MANY
+field string    --class ~.model.Artifact --fieldName artifactName --sizeMax 45 --notNull  --unique
+field string    --class ~.model.Artifact --fieldName fileName --sizeMax 1024 --notNull  --unique
+field string    --class ~.model.Artifact --fieldName comments --sizeMax 1024
+field reference --class ~.model.Artifact --fieldName bodyOfWork --type ~.model.BodyOfWork --cardinality MANY_TO_ONE 
+field string    --class ~.model.Artifact --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.Artifact --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field number    --class ~.model.Daily --fieldName daily_year --type int --notNull --min 1111 --max 9999
+field number    --class ~.model.Daily --fieldName daily_month --type int --notNull --min 1 --max 12
+field number    --class ~.model.Daily --fieldName daily_week --type int --notNull --min 1 --max 5
+field number    --class ~.model.Daily --fieldName daily_day --type int --notNull --min 1 --max 7
+field number    --class ~.model.Daily --fieldName daily_hours --type double --notNull --min 0
+field string    --class ~.model.Daily --fieldName resourcesUsed --sizeMax 100
+field string    --class ~.model.Daily --fieldName studyDetails --sizeMax 4096
+field string    --class ~.model.Daily --fieldName evaluation --sizeMax 4096
+field string    --class ~.model.Daily --fieldName correction --sizeMax 4096
+field string    --class ~.model.Daily --fieldName dailyAction --sizeMax 4096
+field string    --class ~.model.Daily --fieldName comments --sizeMax 4096
+field boolean   --class ~.model.Daily --fieldName locked --value false --notNull
+field string    --class ~.model.Daily --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.Daily --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field reference --class ~.model.Daily --fieldName subject --type ~.model.Subject --cardinality MANY_TO_ONE 
+field number    --class ~.model.Weekly --fieldName week_year --type int --notNull --min 1111 --max 9999
+field number    --class ~.model.Weekly --fieldName week_month --type int --notNull --min 1 --max 12
+field number    --class ~.model.Weekly --fieldName week_number --type int --notNull --min 1 --max 5
+field boolean   --class ~.model.Weekly --fieldName locked --value false --notNull
+field string    --class ~.model.Weekly --fieldName comments --sizeMax 4096
+field string    --class ~.model.Weekly --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.Weekly --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field reference --class ~.model.Weekly --fieldName subject --type ~.model.Subject --cardinality MANY_TO_ONE 
+field set       --class ~.model.Weekly --fieldName skillRatings --type ~.model.SkillRatings --cardinality ONE_TO_MANY
+field set       --class ~.model.Weekly --fieldName evalRatings --type ~.model.EvaluationRatings --cardinality ONE_TO_MANY 
+field number    --class ~.model.SkillRatings --fieldName remembering --type int --notNull --min 6 --max 10
+field number    --class ~.model.SkillRatings --fieldName understanding --type int --notNull --min 6 --max 10
+field number    --class ~.model.SkillRatings --fieldName applying --type int --notNull --min 6 --max 10
+field number    --class ~.model.SkillRatings --fieldName analyzing --type int --notNull --min 6 --max 10
+field number    --class ~.model.SkillRatings --fieldName creating --type int --notNull --min 6 --max 10
+field boolean   --class ~.model.SkillRatings --fieldName locked --value false --notNull
+field string    --class ~.model.SkillRatings --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.SkillRatings --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field reference --class ~.model.SkillRatings --fieldName weekly --type ~.model.Weekly --cardinality MANY_TO_ONE 
+field number    --class ~.model.EvaluationRatings --fieldName motivation --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName organization --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName effectiveUseOfStudyTime --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName qualityOfWork --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName accuracyOfWork --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName complexityOfWork --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName growth --type int --notNull --min 6 --max 10
+field number    --class ~.model.EvaluationRatings --fieldName consistency --type int --notNull --min 6 --max 10
+field boolean   --class ~.model.EvaluationRatings --fieldName locked --value false --notNull
+field string    --class ~.model.EvaluationRatings --fieldName whoUpdated --sizeMax 45 --notNull
+field date      --class ~.model.EvaluationRatings --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field reference --class ~.model.EvaluationRatings --fieldName weekly --type ~.model.Weekly --cardinality MANY_TO_ONE 
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName month_year --type int --notNull --min 1111 --max 9999
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName month_number --type int --notNull --min 1 --max 12
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName week_number --type int --notNull --min 1 --max 5
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName levelOfDifficulty --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName criticalThinkingSkills --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName effectiveCorrectionActions --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName accuratelyIdCorrections --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName completingCourseObjectives --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName thoughtfulnessOfReflections --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName responsibilityOfProgress --type int --notNull --min 6 --max 10
+field number    --class ~.model.MonthlyEvaluationRatings --fieldName workingEffectivelyWithAdvisor --type int --notNull --min 6 --max 10
+field boolean   --class ~.model.MonthlyEvaluationRatings --fieldName locked --value false --notNull
+field date      --class ~.model.MonthlyEvaluationRatings --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field string    --class ~.model.MonthlyEvaluationRatings --fieldName whoUpdated --sizeMax 45 --notNull
+field reference --class ~.model.MonthlyEvaluationRatings --fieldName student --type ~.model.Student --cardinality MANY_TO_ONE 
+field number    --class ~.model.MonthlySummaryRatings --fieldName year_number --type int --notNull --min 1111 --max 9999
+field number    --class ~.model.MonthlySummaryRatings --fieldName month_number --type int --notNull --min 1 --max 12
+field number    --class ~.model.MonthlySummaryRatings --fieldName week_number --type int --notNull --min 1 --max 5
+field string    --class ~.model.MonthlySummaryRatings --fieldName feelings --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName reflections --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName patternsOfCorrections --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName effectivenessOfActions --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName actionResults --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName realizations --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName plannedChanges --sizeMax 4096
+field string    --class ~.model.MonthlySummaryRatings --fieldName comments --sizeMax 4096
+field boolean   --class ~.model.MonthlySummaryRatings --fieldName locked --value false --notNull
+field date      --class ~.model.MonthlySummaryRatings --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM 
+field string    --class ~.model.MonthlySummaryRatings --fieldName whoUpdated --sizeMax 45 --notNull
+field reference --class ~.model.MonthlySummaryRatings --fieldName student --type ~.model.Student --cardinality MANY_TO_ONE 
+field number    --class ~.model.PreviousTranscripts --fieldName type --type int --notNull --min 0 --max 1
+// [failed] script ~/MySchool/myschool.roo
+web mvc setup
+web mvc all --package ~.web
+json all
+web mvc json all
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-07-26 00:02:55
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-26 00:59:45
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-07-26 01:14:10
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-26 01:16:53
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-26 22:15:47
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-07-26 22:40:50
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-26 22:54:05
+perform package
+perform package
+logging setup --level DEBUG 
+perform package
+perform package
+perform package
+focus --class ~.model.Subject
+field date --fieldName mydate --type java.util.Date --dateFormat NONE 
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-07-29 21:18:00
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-07-29 21:19:55
+perform package
+perform clean
+perform package
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-01 21:36:51
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-01 21:38:59
+perform package
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-01 21:58:13
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-01 21:59:55
+perform package
+perform package
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-06 23:08:19
+web mvc install view --viewName myschoolapp --path / --title MySchoolApp
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-11 12:06:41
+perform package
+hint log
+hint
+hint log
+hint logger
+logging setup --level INFO 
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+perform package
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-12 21:20:15
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-12 21:23:15
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-12 21:39:16
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-12 21:48:01
+perform package
+perform package
+perform package
+perform package
+perform package
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-14 20:41:28
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-14 20:50:08
+logging setup --level TRACE 
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-14 22:15:19
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-14 22:16:37
+logging setup --level INFO 
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-16 15:19:00
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-16 15:20:40
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-17 15:40:07
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-17 15:42:53
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-19 12:04:07
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-19 23:11:51
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-19 23:13:50
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-19 23:19:13
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-19 23:22:10
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-22 22:39:24
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-22 22:43:07
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-24 22:12:57
+security setup
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-24 23:46:45
+perform clean
+// [failed] perform clean
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-28 21:09:21
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-28 22:42:18
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-28 22:42:30
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-28 22:45:45
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-29 22:57:27
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-29 22:59:57
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-08-30 15:26:54
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-08-30 15:32:28
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-09-07 15:35:33
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-09-07 16:32:56
+entity jpa --class ~.model.QuarterNames --activeRecord --testAutomatically 
+field string --fieldName qtrName --sizeMax 25 --notNull --unique 
+web mvc all --package ~.web
+json all
+web mvc json all
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-09-14 15:45:19
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-09-14 15:50:17
