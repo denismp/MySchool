@@ -282,3 +282,4 @@ hint entitities
 finder list --class ~.model.Quarter
 finder add --finderName findQuartersByStudent
 finder list --class ~.model.Subject
+finder add --finderName findSubjectsByQuarter
