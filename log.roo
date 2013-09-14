@@ -297,3 +297,4 @@ field string --fieldName userPassword --notNull --sizeMax 150
 field string --fieldName userRole --notNull --sizeMax 150
 field boolean --fieldName enabled --notNull 
  web mvc all --package ~.web
+json all
