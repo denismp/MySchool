@@ -12,8 +12,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
 @RooJson
+@RooJpaActiveRecord(finders = { "findStudentsByUserNameEquals" })
 public class Student extends Person {
 
     @OneToMany(cascade = CascadeType.ALL)
