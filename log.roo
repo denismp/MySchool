@@ -288,3 +288,4 @@ finder add --finderName findSubjectsByQuarter
 web mvc json all
 web mvc all --package ~.web
 json all
+web mvc json all
