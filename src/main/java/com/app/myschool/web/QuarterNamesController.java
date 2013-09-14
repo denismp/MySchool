@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RooWebJson(jsonObject = QuarterNames.class)
 public class QuarterNamesController {
 
-	
     @RequestMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
