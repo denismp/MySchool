@@ -56,7 +56,23 @@ public class ControllerHelper {
 				records = Faculty.findAllFacultys();
 			}
 			else if (myClass.equals(Subject.class)) {
-				records = Subject.findAllSubjects();
+				//records = Subject.findAllSubjects();
+				List<Subject> allSubjects = null;
+ 				Student student = Student.findStudent(1L);
+				List<Quarter> mylist = Quarter.findQuartersByStudent(student).getResultList();
+				for( Quarter quarter: mylist)
+				{
+					List<Subject> mysubjects = Subject.findSubjectsByQuarter(quarter).getResultList();
+					if( allSubjects == null )
+					{
+						allSubjects = mysubjects;
+					}
+					else
+					{
+						allSubjects.addAll(mysubjects);
+					}
+				}
+				records = allSubjects;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				records = PreviousTranscripts.findAllPreviousTranscriptses();
