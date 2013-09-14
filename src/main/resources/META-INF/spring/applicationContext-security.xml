@@ -41,6 +41,8 @@
         <intercept-url pattern="/subjects/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/weeklys" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/weeklys/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="quarternameses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/quarternameses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="permitAll"/>
     </http>
     <!-- Configure Authentication mechanism -->
