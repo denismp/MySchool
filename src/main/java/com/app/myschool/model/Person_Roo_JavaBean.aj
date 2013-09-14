@@ -138,4 +138,12 @@ privileged aspect Person_Roo_JavaBean {
         this.userName = userName;
     }
     
+    public String Person.getUserPassword() {
+        return this.userPassword;
+    }
+    
+    public void Person.setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+    
 }

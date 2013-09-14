@@ -84,4 +84,8 @@ public abstract class Person {
     @Column(unique = true)
     @Size(max = 50)
     private String userName;
+
+    @NotNull
+    @Size(max = 150)
+    private String userPassword;
 }
