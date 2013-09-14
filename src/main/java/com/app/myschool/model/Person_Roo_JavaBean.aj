@@ -130,4 +130,12 @@ privileged aspect Person_Roo_JavaBean {
         this.roles = roles;
     }
     
+    public String Person.getUserName() {
+        return this.userName;
+    }
+    
+    public void Person.setUserName(String userName) {
+        this.userName = userName;
+    }
+    
 }

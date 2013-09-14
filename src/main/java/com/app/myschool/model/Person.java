@@ -79,4 +79,9 @@ public abstract class Person {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Roles> roles = new HashSet<Roles>();
+
+    @NotNull
+    @Column(unique = true)
+    @Size(max = 50)
+    private String userName;
 }

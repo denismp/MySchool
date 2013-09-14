@@ -292,3 +292,4 @@ web mvc json all
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-09-14 18:29:52
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-09-14 18:31:34
 focus --class ~.model.Person
+field string --fieldName userName --notNull  --sizeMax 50 --unique
