@@ -295,3 +295,4 @@ focus --class ~.model.Person
 field string --fieldName userName --notNull  --sizeMax 50 --unique
 field string --fieldName userPassword --notNull --sizeMax 150
 field string --fieldName userRole --notNull --sizeMax 150
+field boolean --fieldName enabled --notNull 

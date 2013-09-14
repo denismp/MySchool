@@ -92,4 +92,7 @@ public abstract class Person {
     @NotNull
     @Size(max = 150)
     private String userRole;
+
+    @NotNull
+    private Boolean enabled;
 }

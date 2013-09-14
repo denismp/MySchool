@@ -154,4 +154,12 @@ privileged aspect Person_Roo_JavaBean {
         this.userRole = userRole;
     }
     
+    public Boolean Person.getEnabled() {
+        return this.enabled;
+    }
+    
+    public void Person.setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    
 }
