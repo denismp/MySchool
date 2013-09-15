@@ -1,6 +1,8 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Student;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/students")
@@ -59,5 +62,12 @@ public class StudentController {
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.createFromJsonArray(Student.class, json);
+    }
+
+	@RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.jsonFindStudentsByUserNameEquals(Student.class, userName);
     }
 }

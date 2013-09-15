@@ -305,3 +305,4 @@ web mvc json all
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-09-14 19:05:07
 finder list --class ~.model.Student
 finder add --finderName findStudentsByUserNameEquals
+logging setup --level DEBUG 

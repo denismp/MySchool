@@ -13,6 +13,8 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
@@ -58,7 +60,8 @@ public class ControllerHelper {
 			else if (myClass.equals(Subject.class)) {
 				//records = Subject.findAllSubjects();
 				List<Subject> allSubjects = null;
- 				Student student = Student.findStudent(1L);
+			    String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+ 				Student student = Student.findStudentsByUserNameEquals(userName != null ? userName:"").getSingleResult();
 				List<Quarter> mylist = Quarter.findQuartersByStudent(student).getResultList();
 				for( Quarter quarter: mylist)
 				{
@@ -1205,4 +1208,90 @@ public class ControllerHelper {
 		// Return the updated record(s)
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
     }
+	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(Class myClass, String student) {
+	    //return new ResponseEntity<String>(Student.toJsonArray(Student.findStudentsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        
+		HttpStatus returnStatus = HttpStatus.OK;
+		JsonObjectResponse response = new JsonObjectResponse();
+		List<?> records = null;
+		String className = myClass.getSimpleName();
+		boolean statusGood = true;
+		try {	
+			logger.info("GET");
+			if (myClass.equals(Student.class)) {
+				records = Student.findStudentsByUserNameEquals(student).getResultList();
+			}
+			/*
+			else if (myClass.equals(PreviousTranscripts.class)) {
+				records = PreviousTranscripts.findAllPreviousTranscriptses();
+			}
+			else if (myClass.equals(Quarter.class)) {
+				records = Quarter.findAllQuarters();
+			}
+			else if (myClass.equals(QuarterNames.class)) {
+				records = QuarterNames.findAllQuarterNameses();
+			}
+			else if (myClass.equals(Roles.class)) {
+				records  = Roles.findAllRoleses();
+			}
+			else if (myClass.equals(SkillRatings.class)) {
+				records  = SkillRatings.findAllSkillRatingses();
+			}
+			else if (myClass.equals(Weekly.class)) {
+				records  = Weekly.findAllWeeklys();
+			}
+			else if (myClass.equals(Artifact.class)) {
+				records  = Artifact.findAllArtifacts();
+			}
+			else if (myClass.equals(BodyOfWork.class)) {
+				records  = BodyOfWork.findAllBodyOfWorks();
+			}
+			else if (myClass.equals(Daily.class)) {
+				records  = Daily.findAllDailys();
+			}
+			else if (myClass.equals(EvaluationRatings.class)) {
+				records  = EvaluationRatings.findAllEvaluationRatingses();
+			}
+			else if (myClass.equals(GraduateTracking.class)) {
+				records  = GraduateTracking.findAllGraduateTrackings();
+			}
+			else if (myClass.equals(MonthlyEvaluationRatings.class)) {
+				records  = MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses();
+			}
+			else if (myClass.equals(MonthlySummaryRatings.class)) {
+				records  = MonthlySummaryRatings.findAllMonthlySummaryRatingses();
+			}
+			*/
+			else {
+				response.setMessage( "Unsupported class=" + className );
+				response.setSuccess(false);
+				response.setTotal(0L);		
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;
+			}
+			
+			if( statusGood )
+			{
+				response.setMessage( "All " + className + "s retrieved: ");
+				response.setData( records );
+	
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(records.size());
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			returnStatus = HttpStatus.BAD_REQUEST;
+			response.setMessage(e.getMessage());
+			response.setSuccess(false);
+			response.setTotal(0L);
+		}
+
+		// Return retrieved object.
+        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+
+	}
+
 }
