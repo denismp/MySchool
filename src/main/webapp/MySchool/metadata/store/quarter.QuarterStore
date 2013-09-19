@@ -1,0 +1,45 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "quarters.QuarterModel",
+        "designer|userClassName": "quarter.QuarterStore"
+    },
+    "designerId": "b097ba2a-55f3-4e80-9414-eda24737bd05",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "quarters",
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ]
+            },
+            "designerId": "e020e8f8-e308-4d8d-9a99-bd2882a0bc0c",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "d476cb74-c08f-40f6-8fda-fa487ae2ea0f"
+                }
+            ]
+        }
+    ]
+}

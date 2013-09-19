@@ -150,6 +150,38 @@
                 "app/controller/quarter/QuarterNamesController.js"
             ],
             "className": "quarter.QuarterNamesController"
+        },
+        "b23d64f9-689c-4bc2-aef3-666c57b7266b": {
+            "paths": [
+                "metadata/model/quarters.QuarterModel",
+                "app/model/override/quarters/QuarterModel.js",
+                "app/model/quarters/QuarterModel.js"
+            ],
+            "className": "quarters.QuarterModel"
+        },
+        "b097ba2a-55f3-4e80-9414-eda24737bd05": {
+            "paths": [
+                "metadata/store/quarter.QuarterStore",
+                "app/store/override/quarter/QuarterStore.js",
+                "app/store/quarter/QuarterStore.js"
+            ],
+            "className": "quarter.QuarterStore"
+        },
+        "e4ca4f81-2e73-42c5-b93d-8fae30650e8d": {
+            "paths": [
+                "metadata/model/student.StudentModel",
+                "app/model/override/student/StudentModel.js",
+                "app/model/student/StudentModel.js"
+            ],
+            "className": "student.StudentModel"
+        },
+        "c5c04912-9e2d-49c5-a499-402635d10f1c": {
+            "paths": [
+                "metadata/store/student.StudentStore",
+                "app/store/override/student/StudentStore.js",
+                "app/store/student/StudentStore.js"
+            ],
+            "className": "student.StudentStore"
         }
     },
     "viewOrderMap": {
@@ -167,7 +199,9 @@
         ],
         "store": [
             "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",
-            "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f"
+            "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f",
+            "b097ba2a-55f3-4e80-9414-eda24737bd05",
+            "c5c04912-9e2d-49c5-a499-402635d10f1c"
         ],
         "controller": [
             "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
@@ -175,7 +209,9 @@
         ],
         "model": [
             "3119860e-e289-4a07-9175-42d8714f4687",
-            "ff33c33e-b1e6-4d49-9268-07c1de0021ca"
+            "ff33c33e-b1e6-4d49-9268-07c1de0021ca",
+            "b23d64f9-689c-4bc2-aef3-666c57b7266b",
+            "e4ca4f81-2e73-42c5-b93d-8fae30650e8d"
         ],
         "resource": [
             "a65537e1-e168-4a5d-b470-84f043fa8967"

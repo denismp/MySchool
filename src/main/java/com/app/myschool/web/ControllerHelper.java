@@ -58,8 +58,10 @@ public class ControllerHelper {
 				records = Faculty.findAllFacultys();
 			}
 			else if (myClass.equals(Subject.class)) {
-				//records = Subject.findAllSubjects();
+				records = Subject.findAllSubjects();
+				/*
 				List<Subject> allSubjects = null;
+				
 			    String userName = SecurityContextHolder.getContext().getAuthentication().getName();
  				Student student = Student.findStudentsByUserNameEquals(userName != null ? userName:"").getSingleResult();
 				List<Quarter> mylist = Quarter.findQuartersByStudent(student).getResultList();
@@ -76,6 +78,7 @@ public class ControllerHelper {
 					}
 				}
 				records = allSubjects;
+				*/
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				records = PreviousTranscripts.findAllPreviousTranscriptses();

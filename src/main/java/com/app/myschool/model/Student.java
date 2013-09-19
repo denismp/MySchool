@@ -3,6 +3,7 @@ package com.app.myschool.model;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -19,7 +20,7 @@ public class Student extends Person {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<MonthlyEvaluationRatings> monthlyEvaluations = new HashSet<MonthlyEvaluationRatings>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private Set<Quarter> quarters = new HashSet<Quarter>();
 
     @OneToMany(cascade = CascadeType.ALL)

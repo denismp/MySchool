@@ -156,6 +156,19 @@
                 "text": "version"
             },
             "designerId": "dffa39a4-cf1e-4370-ab61-689be79736fa"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "quarter.qtrName",
+                "text": "Quarter"
+            },
+            "designerId": "b000eeb7-46fe-4942-9861-46db83f991a5"
         }
     ]
 }

@@ -73,6 +73,11 @@ Ext.define('MySchool.view.SubjectsGridPanel', {
                     hidden: true,
                     dataIndex: 'version',
                     text: 'version'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'quarter.qtrName',
+                    text: 'Quarter'
                 }
             ],
             viewConfig: {

@@ -143,6 +143,60 @@
                 "type": "string"
             },
             "designerId": "2795f9de-2add-434c-a8f5-8a90ee4c2317"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "quarter",
+                "type": "auto"
+            },
+            "designerId": "4352b78b-030f-486d-b5f0-6f2749ff1c42"
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "quarters.QuarterModel",
+                "designer|displayName": "hasOnequarters.QuarterModel"
+            },
+            "designerId": "35676c6b-fc84-4440-b5ec-e78a189bf42d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data",
+                        "record": null
+                    },
+                    "designerId": "7eed5e91-5310-4eb6-8f31-8f0ae89aef5c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.BelongsTo",
+            "reference": {
+                "name": "belongsTo",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "quarters.QuarterModel",
+                "designer|displayName": "belongsToquarters.QuarterModel"
+            },
+            "designerId": "2205f62c-a7e9-4186-9bd8-696f2bd18a08"
         }
     ]
 }

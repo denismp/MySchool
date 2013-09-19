@@ -1,0 +1,175 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "quarters.QuarterModel"
+    },
+    "designerId": "b23d64f9-689c-4bc2-aef3-666c57b7266b",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "qtrName",
+                "type": "string"
+            },
+            "designerId": "5ab50e54-518a-40c0-a82b-a43d3011551b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "gradeType",
+                "type": "int"
+            },
+            "designerId": "8fb7a3a9-2d35-41ce-91df-e35ccd745190"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "grade",
+                "type": "int"
+            },
+            "designerId": "7c00ecfe-3b40-4215-9348-364d61e2f614"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "locked",
+                "type": "boolean"
+            },
+            "designerId": "7aae12bd-451b-4a6a-b8f7-a15b85e3165f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "whoUpdated",
+                "type": "string"
+            },
+            "designerId": "c93435cc-0e92-4b3e-9858-34b054a6fcf4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "lastUpdated",
+                "type": "date"
+            },
+            "designerId": "3b2664e2-80da-4dbe-aa94-61e4f503272a"
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "SubjectsModel",
+                "designer|displayName": "hasManySubjectsModel",
+                "autoLoad": true
+            },
+            "designerId": "4366410c-3eb7-4f65-a10e-3aebf30814c6",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "bbf2a2e3-15e1-468b-a84b-46aeb6c1bd7c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.HasOne",
+            "reference": {
+                "name": "hasOne",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "student.StudentModel",
+                "designer|displayName": "hasOnestudent.StudentModel"
+            },
+            "designerId": "b17d6463-474d-483a-b660-337b55ed77e7",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "cd39507e-522a-45c5-8333-41d222424351"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.BelongsTo",
+            "reference": {
+                "name": "belongsTo",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "student.StudentModel",
+                "designer|displayName": "belongsTostudent.StudentModel",
+                "foreignKey": null
+            },
+            "designerId": "f8081a12-8253-4a34-a23a-7122e7ff78df",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "8e2adccf-ebfe-4c30-8068-5848c7b13ab8"
+                }
+            ]
+        }
+    ]
+}

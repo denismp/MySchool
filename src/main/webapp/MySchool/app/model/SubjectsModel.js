@@ -16,6 +16,10 @@
 Ext.define('MySchool.model.SubjectsModel', {
     extend: 'Ext.data.Model',
 
+    uses: [
+        'MySchool.model.quarters.QuarterModel'
+    ],
+
     fields: [
         {
             name: 'id',
@@ -57,6 +61,22 @@ Ext.define('MySchool.model.SubjectsModel', {
         {
             name: 'version',
             type: 'string'
+        },
+        {
+            name: 'quarter',
+            type: 'auto'
         }
-    ]
+    ],
+
+    hasOne: {
+        model: 'MySchool.model.quarters.QuarterModel',
+        reader: {
+            type: 'json',
+            root: 'data'
+        }
+    },
+
+    belongsTo: {
+        model: 'MySchool.model.quarters.QuarterModel'
+    }
 });

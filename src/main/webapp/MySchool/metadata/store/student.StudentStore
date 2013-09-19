@@ -1,0 +1,46 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "student.StudentModel",
+        "designer|userClassName": "student.StudentStore"
+    },
+    "designerId": "c5c04912-9e2d-49c5-a499-402635d10f1c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "students",
+                "headers": [
+                    "{ 'Accept' : 'application/json' }",
+                    ""
+                ]
+            },
+            "designerId": "6e5fa777-2c73-497e-953f-2eae00114fec",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "15114e0d-4317-46ca-8e7e-7c970ddd74cd"
+                }
+            ]
+        }
+    ]
+}

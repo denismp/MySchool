@@ -21,11 +21,15 @@ Ext.Loader.setConfig({
 Ext.application({
     models: [
         'SubjectsModel',
-        'QuarterNamesModel'
+        'QuarterNamesModel',
+        'quarters.QuarterModel',
+        'student.StudentModel'
     ],
     stores: [
         'SubjectStore',
-        'QuarterNameStore'
+        'QuarterNameStore',
+        'quarter.QuarterStore',
+        'student.StudentStore'
     ],
     views: [
         'MainPanel',

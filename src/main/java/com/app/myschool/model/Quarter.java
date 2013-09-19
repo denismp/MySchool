@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -52,7 +53,7 @@ public class Quarter {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private Set<Subject> subjects = new HashSet<Subject>();
 
     @ManyToOne
