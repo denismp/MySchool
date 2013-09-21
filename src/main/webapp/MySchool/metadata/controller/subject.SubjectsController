@@ -19,7 +19,7 @@
             "SubjectsForm",
             "SubjectsPanel"
         ],
-        "designer|userClassName": "SubjectsController"
+        "designer|userClassName": "subject.SubjectsController"
     },
     "designerId": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
     "customConfigs": [
@@ -211,7 +211,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "processSubjectsController",
+                "fn": "processSubjectSubjectsController",
                 "designer|params": [
                     "config"
                 ],

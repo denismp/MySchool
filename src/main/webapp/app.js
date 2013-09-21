@@ -45,7 +45,7 @@ Ext.application({
     ],
     autoCreateViewport: true,
     controllers: [
-        'SubjectsController',
+        'subject.SubjectsController',
         'quarter.QuarterNamesController'
     ],
     name: 'MySchool'

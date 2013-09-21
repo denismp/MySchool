@@ -24,11 +24,11 @@
         },
         "48a06a06-a1a5-4faa-8c59-edc7ba324ea9": {
             "paths": [
-                "metadata/controller/SubjectsController",
-                "app/controller/override/SubjectsController.js",
-                "app/controller/SubjectsController.js"
+                "metadata/controller/subject.SubjectsController",
+                "app/controller/override/subject/SubjectsController.js",
+                "app/controller/subject/SubjectsController.js"
             ],
-            "className": "SubjectsController"
+            "className": "subject.SubjectsController"
         },
         "27da7831-10e9-4a0b-9ee5-fef9b1e7c0a5": {
             "paths": [
