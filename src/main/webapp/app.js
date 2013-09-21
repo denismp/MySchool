@@ -20,20 +20,20 @@ Ext.Loader.setConfig({
 
 Ext.application({
     models: [
-        'SubjectsModel',
-        'QuarterNamesModel',
+        'subject.SubjectsModel',
+        'subject.QuarterNamesModel',
         'quarters.QuarterModel',
         'student.StudentModel'
     ],
     stores: [
-        'SubjectStore',
-        'QuarterNameStore',
+        'subject.SubjectStore',
+        'subject.QuarterNameStore',
         'quarter.QuarterStore',
         'student.StudentStore'
     ],
     views: [
         'MainPanel',
-        'SubjectsGridPanel',
+        'subject.SubjectsGridPanel',
         'SubjectsForm',
         'SubjectsPanel',
         'SubjectRefreshTool',

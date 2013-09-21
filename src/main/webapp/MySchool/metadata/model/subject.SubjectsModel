@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "SubjectsModel"
+        "designer|userClassName": "subject.SubjectsModel"
     },
     "designerId": "3119860e-e289-4a07-9175-42d8714f4687",
     "cn": [

@@ -10,12 +10,12 @@
         "id": null,
         "itemId": "subjectsgrid",
         "width": 1000,
-        "designer|userClassName": "SubjectsGridPanel",
+        "designer|userClassName": "subject.SubjectsGridPanel",
         "designer|userAlias": "subjectsgridpanel",
         "autoScroll": true,
         "title": "[student name] Subjects",
         "forceFit": true,
-        "store": "SubjectStore"
+        "store": "subject.SubjectStore"
     },
     "designerId": "03f512fe-cb0d-4bc4-889d-6c325edf2dfe",
     "cn": [

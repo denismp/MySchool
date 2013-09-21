@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "QuarterNamesModel"
+        "designer|userClassName": "subject.QuarterNamesModel"
     },
     "designerId": "ff33c33e-b1e6-4d49-9268-07c1de0021ca",
     "cn": [

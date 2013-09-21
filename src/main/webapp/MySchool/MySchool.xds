@@ -41,27 +41,27 @@
         },
         "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04": {
             "paths": [
-                "metadata/store/SubjectStore",
-                "app/store/override/SubjectStore.js",
-                "app/store/SubjectStore.js"
+                "metadata/store/subject.SubjectStore",
+                "app/store/override/subject/SubjectStore.js",
+                "app/store/subject/SubjectStore.js"
             ],
-            "className": "SubjectStore"
+            "className": "subject.SubjectStore"
         },
         "3119860e-e289-4a07-9175-42d8714f4687": {
             "paths": [
-                "metadata/model/SubjectsModel",
-                "app/model/override/SubjectsModel.js",
-                "app/model/SubjectsModel.js"
+                "metadata/model/subject.SubjectsModel",
+                "app/model/override/subject/SubjectsModel.js",
+                "app/model/subject/SubjectsModel.js"
             ],
-            "className": "SubjectsModel"
+            "className": "subject.SubjectsModel"
         },
         "03f512fe-cb0d-4bc4-889d-6c325edf2dfe": {
             "paths": [
-                "metadata/view/SubjectsGridPanel",
-                "app/view/override/SubjectsGridPanel.js",
-                "app/view/SubjectsGridPanel.js"
+                "metadata/view/subject.SubjectsGridPanel",
+                "app/view/override/subject/SubjectsGridPanel.js",
+                "app/view/subject/SubjectsGridPanel.js"
             ],
-            "className": "SubjectsGridPanel"
+            "className": "subject.SubjectsGridPanel"
         },
         "5f4ea074-864b-46c4-8416-9f9751c9f5c8": {
             "paths": [
@@ -129,19 +129,19 @@
         },
         "ff33c33e-b1e6-4d49-9268-07c1de0021ca": {
             "paths": [
-                "metadata/model/QuarterNamesModel",
-                "app/model/override/QuarterNamesModel.js",
-                "app/model/QuarterNamesModel.js"
+                "metadata/model/subject.QuarterNamesModel",
+                "app/model/override/subject/QuarterNamesModel.js",
+                "app/model/subject/QuarterNamesModel.js"
             ],
-            "className": "QuarterNamesModel"
+            "className": "subject.QuarterNamesModel"
         },
         "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f": {
             "paths": [
-                "metadata/store/QuarterNameStore",
-                "app/store/override/QuarterNameStore.js",
-                "app/store/QuarterNameStore.js"
+                "metadata/store/subject.QuarterNameStore",
+                "app/store/override/subject/QuarterNameStore.js",
+                "app/store/subject/QuarterNameStore.js"
             ],
-            "className": "QuarterNameStore"
+            "className": "subject.QuarterNameStore"
         },
         "60c7558a-6f00-4e14-aaa4-70ad1dbdd1f5": {
             "paths": [

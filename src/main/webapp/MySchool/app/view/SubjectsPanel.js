@@ -18,7 +18,7 @@ Ext.define('MySchool.view.SubjectsPanel', {
     alias: 'widget.subjectspanel',
 
     requires: [
-        'MySchool.view.SubjectsGridPanel',
+        'MySchool.view.subject.SubjectsGridPanel',
         'MySchool.view.SubjectsForm',
         'MySchool.view.SubjectRefreshTool',
         'MySchool.view.SubjectSearchTool',

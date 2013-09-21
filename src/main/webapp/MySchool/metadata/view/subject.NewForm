@@ -117,7 +117,7 @@
                         "emptyText": "Select one.",
                         "displayField": "qtrName",
                         "forceSelection": true,
-                        "store": "QuarterNameStore",
+                        "store": "subject.QuarterNameStore",
                         "valueField": "id"
                     },
                     "designerId": "9d7d0d66-7e1a-4246-a137-f57d5df8649a"

@@ -7,9 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
-        "model": "SubjectsModel",
+        "model": "subject.SubjectsModel",
         "storeId": "SubjectStore",
-        "designer|userClassName": "SubjectStore",
+        "designer|userClassName": "subject.SubjectStore",
         "designer|userAlias": "subjectstore"
     },
     "designerId": "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",

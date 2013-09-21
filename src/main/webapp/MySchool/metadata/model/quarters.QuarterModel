@@ -96,8 +96,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "SubjectsModel",
-                "designer|displayName": "hasManySubjectsModel",
+                "model": "subject.SubjectsModel",
+                "designer|displayName": "hasManysubject.SubjectsModel",
                 "autoLoad": true
             },
             "designerId": "4366410c-3eb7-4f65-a10e-3aebf30814c6",

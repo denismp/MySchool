@@ -17,7 +17,7 @@ Ext.define('MySchool.model.quarters.QuarterModel', {
     extend: 'Ext.data.Model',
 
     uses: [
-        'MySchool.model.SubjectsModel',
+        'MySchool.model.subject.SubjectsModel',
         'MySchool.model.student.StudentModel'
     ],
 
@@ -49,7 +49,7 @@ Ext.define('MySchool.model.quarters.QuarterModel', {
     ],
 
     hasMany: {
-        model: 'MySchool.model.SubjectsModel',
+        model: 'MySchool.model.subject.SubjectsModel',
         autoLoad: true,
         reader: {
             type: 'json',

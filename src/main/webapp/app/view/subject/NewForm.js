@@ -76,7 +76,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             emptyText: 'Select one.',
                             displayField: 'qtrName',
                             forceSelection: true,
-                            store: 'QuarterNameStore',
+                            store: 'subject.QuarterNameStore',
                             valueField: 'id'
                         }
                     ]

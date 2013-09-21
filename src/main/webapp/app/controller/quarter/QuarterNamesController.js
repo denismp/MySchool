@@ -17,15 +17,15 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
     extend: 'Ext.app.Controller',
 
     models: [
-        'QuarterNamesModel'
+        'subject.QuarterNamesModel'
     ],
     stores: [
-        'QuarterNameStore',
-        'SubjectStore'
+        'subject.QuarterNameStore',
+        'subject.SubjectStore'
     ],
     views: [
         'subject.NewForm',
-        'SubjectsGridPanel',
+        'subject.SubjectsGridPanel',
         'SubjectsForm'
     ],
 
@@ -41,7 +41,7 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
         //debugger;
         //var mystore = this.getSubjectStoreStore();
         var mystore = Ext.getStore("SubjectStore");
-        var myqtrstore = Ext.getStore( "QuarterNameStore" );
+        var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
         var myrecords = myqtrstore.getRange( 0, 3 );
         for( var i = 0; i < 4; i++ )
         {
@@ -54,7 +54,7 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
 
     onNewsubjectformShow: function(component, eOpts) {
         debugger;
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         var myrecords = mystore.getRange( 0, 3 );
         window.console.log( 'DEBUG' );
 

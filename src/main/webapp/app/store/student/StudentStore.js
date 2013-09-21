@@ -26,6 +26,7 @@ Ext.define('MySchool.store.student.StudentStore', {
         me.callParent([Ext.apply({
             autoLoad: true,
             model: 'MySchool.model.student.StudentModel',
+            storeId: 'student.StudentStore',
             proxy: {
                 type: 'rest',
                 url: 'students',

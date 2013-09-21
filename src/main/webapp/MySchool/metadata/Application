@@ -7,14 +7,14 @@
     "codeClass": null,
     "userConfig": {
         "models": [
-            "SubjectsModel",
-            "QuarterNamesModel",
+            "subject.SubjectsModel",
+            "subject.QuarterNamesModel",
             "quarters.QuarterModel",
             "student.StudentModel"
         ],
         "stores": [
-            "SubjectStore",
-            "QuarterNameStore",
+            "subject.SubjectStore",
+            "subject.QuarterNameStore",
             "quarter.QuarterStore",
             "student.StudentStore"
         ],

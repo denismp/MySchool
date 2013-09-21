@@ -18,14 +18,14 @@ Ext.define('MySchool.controller.SubjectsController', {
 
     selectedIndex: '0',
     models: [
-        'SubjectsModel'
+        'subject.SubjectsModel'
     ],
     stores: [
-        'SubjectStore'
+        'subject.SubjectStore'
     ],
     views: [
         'MainPanel',
-        'SubjectsGridPanel',
+        'subject.SubjectsGridPanel',
         'SubjectsForm',
         'SubjectsPanel'
     ],
@@ -60,7 +60,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'description', newValue );
 
@@ -71,7 +71,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'objectives', newValue );
     },
@@ -98,7 +98,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         // Add refresh handler code here.  Use example from chapter 2 of book.
         //debugger;
         window.console.log( 'Refresh' );
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
         mystore.reload();
         //pnl.setTitle( 'Denis' );
     },
@@ -150,7 +150,7 @@ Ext.define('MySchool.controller.SubjectsController', {
         window.console.log( "Save" );
         //debugger;
 
-        var mystore = Ext.getStore("SubjectStore");
+        var mystore = Ext.getStore("subject.SubjectStore");
 
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )

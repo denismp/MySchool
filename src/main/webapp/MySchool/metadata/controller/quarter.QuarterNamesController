@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "models": [
-            "QuarterNamesModel"
+            "subject.QuarterNamesModel"
         ],
         "stores": [
             "QuarterNameStore",
@@ -76,7 +76,7 @@
                     "//debugger;",
                     "//var mystore = this.getSubjectStoreStore();",
                     "var mystore = Ext.getStore(\"SubjectStore\");",
-                    "var myqtrstore = Ext.getStore( \"QuarterNameStore\" );",
+                    "var myqtrstore = Ext.getStore( \"subject.QuarterNameStore\" );",
                     "var myrecords = myqtrstore.getRange( 0, 3 );",
                     "for( var i = 0; i < 4; i++ )",
                     "{",
@@ -104,7 +104,7 @@
                 "fn": "onNewsubjectformShow",
                 "implHandler": [
                     "debugger;",
-                    "var mystore = Ext.getStore(\"SubjectStore\");",
+                    "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecords = mystore.getRange( 0, 3 );",
                     "window.console.log( 'DEBUG' );",
                     ""
