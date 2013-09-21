@@ -165,10 +165,41 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "quarter.qtrName",
+                "dataIndex": "quarter",
                 "text": "Quarter"
             },
-            "designerId": "b000eeb7-46fe-4942-9861-46db83f991a5"
+            "designerId": "b000eeb7-46fe-4942-9861-46db83f991a5",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "//debugger;",
+                            "var myobj = record.get( 'quarter' );",
+                            "var myQtrName = record.get( 'quarter' ).qtrName;",
+                            "window.console.log( 'quarter=' + myQtrName );",
+                            "return myQtrName;",
+                            ""
+                        ]
+                    },
+                    "designerId": "c3b64408-c07f-49d1-a90d-ac78487f7b38"
+                }
+            ]
         }
     ]
 }

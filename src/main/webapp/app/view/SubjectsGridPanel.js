@@ -76,7 +76,15 @@ Ext.define('MySchool.view.SubjectsGridPanel', {
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'quarter.qtrName',
+                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                        //debugger;
+                        var myobj = record.get( 'quarter' );
+                        var myQtrName = record.get( 'quarter' ).qtrName;
+                        window.console.log( 'quarter=' + myQtrName );
+                        return myQtrName;
+
+                    },
+                    dataIndex: 'quarter',
                     text: 'Quarter'
                 }
             ],
