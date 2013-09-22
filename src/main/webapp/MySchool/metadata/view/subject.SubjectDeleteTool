@@ -8,7 +8,7 @@
     "userConfig": {
         "id": null,
         "itemId": "tooldeletestudentsbysubject",
-        "designer|userClassName": "SubjectDeleteTool",
+        "designer|userClassName": "subject.SubjectDeleteTool",
         "designer|userAlias": "subjectdeletetool",
         "tooltip": "Delete",
         "type": "minus"

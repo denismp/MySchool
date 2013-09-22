@@ -8,7 +8,7 @@
     "userConfig": {
         "id": null,
         "itemId": "toolrefreshsubjects",
-        "designer|userClassName": "SubjectRefreshTool",
+        "designer|userClassName": "subject.SubjectRefreshTool",
         "designer|userAlias": "subjectrefreshtool",
         "tooltip": "Refresh",
         "type": "refresh"

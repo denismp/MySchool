@@ -17,7 +17,7 @@ Ext.define('MySchool.view.MainPanel', {
     extend: 'Ext.panel.Panel',
 
     requires: [
-        'MySchool.view.SubjectsPanel'
+        'MySchool.view.subject.SubjectsPanel'
     ],
 
     height: 800,

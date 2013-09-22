@@ -308,3 +308,4 @@ finder add --finderName findStudentsByUserNameEquals
 logging setup --level DEBUG 
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-09-15 12:06:52
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-09-15 13:24:46
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-09-21 13:26:24

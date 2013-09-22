@@ -65,59 +65,59 @@
         },
         "5f4ea074-864b-46c4-8416-9f9751c9f5c8": {
             "paths": [
-                "metadata/view/SubjectsForm",
-                "app/view/override/SubjectsForm.js",
-                "app/view/SubjectsForm.js"
+                "metadata/view/subject.SubjectsForm",
+                "app/view/override/subject/SubjectsForm.js",
+                "app/view/subject/SubjectsForm.js"
             ],
-            "className": "SubjectsForm"
+            "className": "subject.SubjectsForm"
         },
         "22072b76-4dbe-479c-8927-c3e8c20f0044": {
             "paths": [
-                "metadata/view/SubjectsPanel",
-                "app/view/override/SubjectsPanel.js",
-                "app/view/SubjectsPanel.js"
+                "metadata/view/subject.SubjectsPanel",
+                "app/view/override/subject/SubjectsPanel.js",
+                "app/view/subject/SubjectsPanel.js"
             ],
-            "className": "SubjectsPanel"
+            "className": "subject.SubjectsPanel"
         },
         "e7d95958-116e-4c8f-b906-cf468300e27e": {
             "paths": [
-                "metadata/view/SubjectSaveTool",
-                "app/view/override/SubjectSaveTool.js",
-                "app/view/SubjectSaveTool.js"
+                "metadata/view/subject.SubjectSaveTool",
+                "app/view/override/subject/SubjectSaveTool.js",
+                "app/view/subject/SubjectSaveTool.js"
             ],
-            "className": "SubjectSaveTool"
+            "className": "subject.SubjectSaveTool"
         },
         "427c4fdc-1be5-4661-88bd-fa3cef59f6a1": {
             "paths": [
-                "metadata/view/SubjectRefreshTool",
-                "app/view/override/SubjectRefreshTool.js",
-                "app/view/SubjectRefreshTool.js"
+                "metadata/view/subject.SubjectRefreshTool",
+                "app/view/override/subject/SubjectRefreshTool.js",
+                "app/view/subject/SubjectRefreshTool.js"
             ],
-            "className": "SubjectRefreshTool"
+            "className": "subject.SubjectRefreshTool"
         },
         "37b78857-e05a-4ea0-b69f-ee473669dab9": {
             "paths": [
-                "metadata/view/SubjectDeleteTool",
-                "app/view/override/SubjectDeleteTool.js",
-                "app/view/SubjectDeleteTool.js"
+                "metadata/view/subject.SubjectDeleteTool",
+                "app/view/override/subject/SubjectDeleteTool.js",
+                "app/view/subject/SubjectDeleteTool.js"
             ],
-            "className": "SubjectDeleteTool"
+            "className": "subject.SubjectDeleteTool"
         },
         "74f981cf-0986-4c25-8720-1a360a70fab6": {
             "paths": [
-                "metadata/view/SubjectSearchTool",
-                "app/view/override/SubjectSearchTool.js",
-                "app/view/SubjectSearchTool.js"
+                "metadata/view/subject.SubjectSearchTool",
+                "app/view/override/subject/SubjectSearchTool.js",
+                "app/view/subject/SubjectSearchTool.js"
             ],
-            "className": "SubjectSearchTool"
+            "className": "subject.SubjectSearchTool"
         },
         "61e1d116-9e61-4881-89e9-d69500508f0b": {
             "paths": [
-                "metadata/view/SubjectNewTool",
-                "app/view/override/SubjectNewTool.js",
-                "app/view/SubjectNewTool.js"
+                "metadata/view/subject.SubjectNewTool",
+                "app/view/override/subject/SubjectNewTool.js",
+                "app/view/subject/SubjectNewTool.js"
             ],
-            "className": "SubjectNewTool"
+            "className": "subject.SubjectNewTool"
         },
         "d6d7fa71-60f7-4db8-9ce1-634ff1382bc7": {
             "paths": [

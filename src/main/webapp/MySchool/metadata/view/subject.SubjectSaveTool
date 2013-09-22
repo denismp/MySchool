@@ -8,7 +8,7 @@
     "userConfig": {
         "id": null,
         "itemId": "toolsubjectsaveid",
-        "designer|userClassName": "SubjectSaveTool",
+        "designer|userClassName": "subject.SubjectSaveTool",
         "designer|userAlias": "subjectsavetool",
         "tooltip": "Save",
         "type": "save"

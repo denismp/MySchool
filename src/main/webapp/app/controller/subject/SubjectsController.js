@@ -26,8 +26,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     views: [
         'MainPanel',
         'subject.SubjectsGridPanel',
-        'SubjectsForm',
-        'SubjectsPanel'
+        'subject.SubjectsForm',
+        'subject.SubjectsPanel'
     ],
 
     refs: [

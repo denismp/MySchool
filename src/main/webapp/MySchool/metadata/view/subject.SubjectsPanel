@@ -8,7 +8,7 @@
     "userConfig": {
         "container|align": "stretch",
         "id": "subjectspanel",
-        "designer|userClassName": "SubjectsPanel",
+        "designer|userClassName": "subject.SubjectsPanel",
         "designer|userAlias": "subjectspanel",
         "layout": "hbox",
         "title": "Subjects By Student"

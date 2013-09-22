@@ -1,8 +1,8 @@
 {
     "expandedState": {
         "data": false,
-        "model": true,
-        "component": false,
+        "model": false,
+        "component": true,
         "controller": true,
         "resource": true,
         "27da7831-10e9-4a0b-9ee5-fef9b1e7c0a5": {
@@ -1693,18 +1693,26 @@
             "60c7558a-6f00-4e14-aaa4-70ad1dbdd1f5",
             "3119860e-e289-4a07-9175-42d8714f4687",
             "b23d64f9-689c-4bc2-aef3-666c57b7266b",
-            "ff33c33e-b1e6-4d49-9268-07c1de0021ca"
+            "ff33c33e-b1e6-4d49-9268-07c1de0021ca",
+            "5f4ea074-864b-46c4-8416-9f9751c9f5c8",
+            "application",
+            "22072b76-4dbe-479c-8927-c3e8c20f0044",
+            "37b78857-e05a-4ea0-b69f-ee473669dab9",
+            "61e1d116-9e61-4881-89e9-d69500508f0b",
+            "427c4fdc-1be5-4661-88bd-fa3cef59f6a1",
+            "e7d95958-116e-4c8f-b906-cf468300e27e",
+            "74f981cf-0986-4c25-8720-1a360a70fab6"
         ]
     },
     "canvasState": {
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
-        "selectedInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9"
+        "topInstance": "74f981cf-0986-4c25-8720-1a360a70fab6",
+        "selectedInstance": "74f981cf-0986-4c25-8720-1a360a70fab6"
     },
     "codeState": {
-        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9"
+        "topInstance": "74f981cf-0986-4c25-8720-1a360a70fab6"
     },
     "editMode": "code"
 }

@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "id": "toolsearchsubjects",
-        "designer|userClassName": "SubjectSearchTool",
+        "designer|userClassName": "subject.SubjectSearchTool",
         "designer|userAlias": "subjectsearchtool",
         "tooltip": "Search",
         "type": "search"

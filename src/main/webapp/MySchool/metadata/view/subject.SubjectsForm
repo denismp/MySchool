@@ -8,7 +8,7 @@
     "userConfig": {
         "id": null,
         "itemId": "subjectdetailsform",
-        "designer|userClassName": "SubjectsForm",
+        "designer|userClassName": "subject.SubjectsForm",
         "designer|userAlias": "subjectsform",
         "autoScroll": true,
         "bodyPadding": 10,

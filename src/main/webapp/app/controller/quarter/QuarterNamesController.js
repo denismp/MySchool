@@ -26,7 +26,7 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
     views: [
         'subject.NewForm',
         'subject.SubjectsGridPanel',
-        'SubjectsForm'
+        'subject.SubjectsForm'
     ],
 
     onNewsubjectcancelClick: function(button, e, eOpts) {
