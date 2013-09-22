@@ -21,7 +21,7 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
     ],
     stores: [
         'subject.QuarterNameStore',
-        'subject.SubjectStore'
+        'quarter.QuarterStore'
     ],
     views: [
         'subject.NewForm',
@@ -29,31 +29,8 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
         'subject.SubjectsForm'
     ],
 
-    onNewsubjectcancelClick: function(button, e, eOpts) {
-        //debugger;
-
-        var myForm = button.up().getForm();
-        myForm.reset();
-        button.up().hide();
-    },
-
-    onNewsubjectsubmitClick: function(button, e, eOpts) {
-        //debugger;
-        //var mystore = this.getSubjectStoreStore();
-        var mystore = Ext.getStore("SubjectStore");
-        var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
-        var myrecords = myqtrstore.getRange( 0, 3 );
-        for( var i = 0; i < 4; i++ )
-        {
-            window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
-        }
-        var myForm = button.up().getForm();
-        myForm.reset();
-        button.up().hide();
-    },
-
     onNewsubjectformShow: function(component, eOpts) {
-        debugger;
+        //debugger;
         var mystore = Ext.getStore("subject.SubjectStore");
         var myrecords = mystore.getRange( 0, 3 );
         window.console.log( 'DEBUG' );
@@ -62,12 +39,6 @@ Ext.define('MySchool.controller.quarter.QuarterNamesController', {
 
     init: function(application) {
         this.control({
-            "#newsubjectcancel": {
-                click: this.onNewsubjectcancelClick
-            },
-            "#newsubjectsubmit": {
-                click: this.onNewsubjectsubmitClick
-            },
             "#newsubjectform": {
                 show: this.onNewsubjectformShow
             }

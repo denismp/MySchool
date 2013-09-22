@@ -103,6 +103,30 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         //pnl.setTitle( 'Denis' );
     },
 
+    onNewsubjectsubmitClick: function(button, e, eOpts) {
+        //debugger;
+        //var mystore = this.getSubjectStoreStore();
+        window.console.log( "Submit New Subject" );
+        var mystore = Ext.getStore("subject.SubjectStore");
+        var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
+        var myrecords = myqtrstore.getRange( 0, 3 );
+        for( var i = 0; i < 4; i++ )
+        {
+            window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
+        }
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
+    },
+
+    onNewsubjectcancelClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Cancel New Subject" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
+    },
+
     init: function(application) {
 
         this.control({
@@ -137,6 +161,12 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             },
             "#toolrefreshsubjects": {
                 click: this.onToolrefreshsubjectsClick
+            },
+            "#newsubjectsubmit": {
+                click: this.onNewsubjectsubmitClick
+            },
+            "#newsubjectcancel": {
+                click: this.onNewsubjectcancelClick
             }
         });
     },

@@ -8,16 +8,16 @@
     "userConfig": {
         "selectedIndex": "0",
         "models": [
-            "SubjectsModel"
+            "subject.SubjectsModel"
         ],
         "stores": [
-            "SubjectStore"
+            "subject.SubjectStore"
         ],
         "views": [
             "MainPanel",
             "subject.SubjectsGridPanel",
-            "SubjectsForm",
-            "SubjectsPanel"
+            "subject.SubjectsForm",
+            "subject.SubjectsPanel"
         ],
         "designer|userClassName": "subject.SubjectsController"
     },
@@ -329,6 +329,60 @@
                 "designer|controlQuery": "#toolrefreshsubjects"
             },
             "designerId": "e4ca8107-d4f4-45be-8249-08a2989f145a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNewsubjectsubmitClick",
+                "implHandler": [
+                    "//debugger;",
+                    "//var mystore = this.getSubjectStoreStore();",
+                    "window.console.log( \"Submit New Subject\" );",
+                    "var mystore = Ext.getStore(\"subject.SubjectStore\");",
+                    "var myqtrstore = Ext.getStore( \"subject.QuarterNameStore\" );",
+                    "var myrecords = myqtrstore.getRange( 0, 3 );",
+                    "for( var i = 0; i < 4; i++ )",
+                    "{",
+                    "    window.console.log( \"qtrName=\" + myrecords[i].get( 'qtrName' ) );",
+                    "}",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#newsubjectsubmit"
+            },
+            "designerId": "b3d92599-5297-4d2a-b7f4-7439220ea329"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onNewsubjectcancelClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( \"Cancel New Subject\" );",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me",
+                "designer|targetType": "Ext.button.Button",
+                "designer|controlQuery": "#newsubjectcancel"
+            },
+            "designerId": "19e2a875-2a2c-4aa9-95b1-6a65f5222077"
         }
     ]
 }

@@ -10,13 +10,13 @@
             "subject.QuarterNamesModel"
         ],
         "stores": [
-            "QuarterNameStore",
-            "SubjectStore"
+            "subject.QuarterNameStore",
+            "quarter.QuarterStore"
         ],
         "views": [
             "subject.NewForm",
-            "SubjectsGridPanel",
-            "SubjectsForm"
+            "subject.SubjectsGridPanel",
+            "subject.SubjectsForm"
         ],
         "designer|userClassName": "quarter.QuarterNamesController"
     },
@@ -48,62 +48,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "onNewsubjectcancelClick",
-                "implHandler": [
-                    "//debugger;",
-                    "",
-                    "var myForm = button.up().getForm();",
-                    "myForm.reset();",
-                    "button.up().hide();"
-                ],
-                "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#newsubjectcancel"
-            },
-            "designerId": "a7564690-69cb-4c01-b4f6-841552568b22"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "onNewsubjectsubmitClick",
-                "implHandler": [
-                    "//debugger;",
-                    "//var mystore = this.getSubjectStoreStore();",
-                    "var mystore = Ext.getStore(\"SubjectStore\");",
-                    "var myqtrstore = Ext.getStore( \"subject.QuarterNameStore\" );",
-                    "var myrecords = myqtrstore.getRange( 0, 3 );",
-                    "for( var i = 0; i < 4; i++ )",
-                    "{",
-                    "    window.console.log( \"qtrName=\" + myrecords[i].get( 'qtrName' ) );",
-                    "}",
-                    "var myForm = button.up().getForm();",
-                    "myForm.reset();",
-                    "button.up().hide();"
-                ],
-                "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#newsubjectsubmit"
-            },
-            "designerId": "6cb3ca0b-883d-464b-9a39-2f5c3ec2698f"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "fn": "onNewsubjectformShow",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecords = mystore.getRange( 0, 3 );",
                     "window.console.log( 'DEBUG' );",
