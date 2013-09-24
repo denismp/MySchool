@@ -21,7 +21,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         'subject.SubjectsModel'
     ],
     stores: [
-        'subject.SubjectStore'
+        'subject.SubjectStore',
+        'quarter.QuarterStore',
+        'student.StudentStore'
     ],
     views: [
         'MainPanel',
@@ -109,12 +111,15 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         window.console.log( "Submit New Subject" );
         var mystore = Ext.getStore("subject.SubjectStore");
         var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
+        var myquarterstore = Ext.getStore( "quarter.QuarterStore" );
+        var mystudentstore = Ext.getStore( "student.StudentStore" );
         var myrecords = myqtrstore.getRange( 0, 3 );
         for( var i = 0; i < 4; i++ )
         {
             window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
         }
         var myForm = button.up().getForm();
+        // Get the data from the form and add a new subject record to the datbase.
         myForm.reset();
         button.up().hide();
     },
