@@ -29,7 +29,8 @@ Ext.application({
         'subject.SubjectStore',
         'subject.QuarterNameStore',
         'quarter.QuarterStore',
-        'student.StudentStore'
+        'student.StudentStore',
+        'subject.GradeTypeStore'
     ],
     views: [
         'MainPanel',

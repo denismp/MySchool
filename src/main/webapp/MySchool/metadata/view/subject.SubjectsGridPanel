@@ -200,6 +200,49 @@
                     "designerId": "c3b64408-c07f-49d1-a90d-ac78487f7b38"
                 }
             ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "userName",
+                "text": "UserName"
+            },
+            "designerId": "c51d321d-59ab-4c0e-b3ad-4eece5c0ca1d",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "//debugger;",
+                            "//var myobj = record.get( 'quarter' ).student;",
+                            "var myuser = record.data.quarter.student.userName;",
+                            "window.console.log( 'userName=' + myuser );",
+                            "return myuser;"
+                        ]
+                    },
+                    "designerId": "6572b6ca-9ce7-4eea-9621-a04e4291fe92"
+                }
+            ]
         }
     ]
 }

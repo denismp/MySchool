@@ -197,6 +197,19 @@
                 "designer|displayName": "belongsToquarters.QuarterModel"
             },
             "designerId": "2205f62c-a7e9-4186-9bd8-696f2bd18a08"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userName",
+                "type": "string"
+            },
+            "designerId": "448460a1-f147-440e-b7e2-071145396e97"
         }
     ]
 }

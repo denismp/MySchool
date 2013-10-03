@@ -43,9 +43,42 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Name"
+                        "fieldLabel": "Student User Name"
+                    },
+                    "designerId": "97a324d2-ef67-4d1e-9301-0cc44c9c486d"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Subject Name"
                     },
                     "designerId": "43b3cd48-e7c5-42e5-9f41-3091ed5aca77"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "autoRender": null,
+                        "itemId": "gradetypecombobox",
+                        "fieldLabel": "Grade Type",
+                        "emptyText": "Select one.",
+                        "displayField": "name",
+                        "forceSelection": true,
+                        "store": "subject.GradeTypeStore",
+                        "valueField": "value"
+                    },
+                    "designerId": "fb165ee4-c8f5-4efd-8aaf-f3c40fa01d7b"
                 },
                 {
                     "type": "Ext.form.field.Number",

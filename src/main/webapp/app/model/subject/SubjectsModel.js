@@ -65,6 +65,10 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         {
             name: 'quarter',
             type: 'auto'
+        },
+        {
+            name: 'userName',
+            type: 'string'
         }
     ],
 

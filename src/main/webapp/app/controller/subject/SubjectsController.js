@@ -23,7 +23,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     stores: [
         'subject.SubjectStore',
         'quarter.QuarterStore',
-        'student.StudentStore'
+        'student.StudentStore',
+        'subject.GradeTypeStore'
     ],
     views: [
         'MainPanel',

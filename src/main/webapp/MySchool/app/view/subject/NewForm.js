@@ -43,7 +43,23 @@ Ext.define('MySchool.view.subject.NewForm', {
                         {
                             xtype: 'textfield',
                             anchor: '100%',
-                            fieldLabel: 'Name'
+                            fieldLabel: 'Student User Name'
+                        },
+                        {
+                            xtype: 'textfield',
+                            anchor: '100%',
+                            fieldLabel: 'Subject Name'
+                        },
+                        {
+                            xtype: 'combobox',
+                            anchor: '100%',
+                            itemId: 'gradetypecombobox',
+                            fieldLabel: 'Grade Type',
+                            emptyText: 'Select one.',
+                            displayField: 'name',
+                            forceSelection: true,
+                            store: 'subject.GradeTypeStore',
+                            valueField: 'value'
                         },
                         {
                             xtype: 'numberfield',

@@ -86,6 +86,18 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     },
                     dataIndex: 'quarter',
                     text: 'Quarter'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                        //debugger;
+                        //var myobj = record.get( 'quarter' ).student;
+                        var myuser = record.data.quarter.student.userName;
+                        window.console.log( 'userName=' + myuser );
+                        return myuser;
+                    },
+                    dataIndex: 'userName',
+                    text: 'UserName'
                 }
             ],
             viewConfig: {
