@@ -53,9 +53,13 @@ public class Quarter {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Subject> subjects = new HashSet<Subject>();
 
     @ManyToOne
     private Student student;
+
+    @NotNull
+    @Size(max = 5)
+    private String qtr_year;
 }

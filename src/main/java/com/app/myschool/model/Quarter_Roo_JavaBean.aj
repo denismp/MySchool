@@ -75,4 +75,12 @@ privileged aspect Quarter_Roo_JavaBean {
         this.student = student;
     }
     
+    public String Quarter.getQtr_year() {
+        return this.qtr_year;
+    }
+    
+    public void Quarter.setQtr_year(String qtr_year) {
+        this.qtr_year = qtr_year;
+    }
+    
 }

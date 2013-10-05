@@ -10,5 +10,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Quarter_whoUpdated" object="${quarter}" z="psjXxX6zz+4VV+C2hpVLaV+MKtg="/>
         <field:display date="true" dateTimePattern="${quarter_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Quarter_lastUpdated" object="${quarter}" z="31pfrNMlInprZOmvJ+wJWk9Otwc="/>
         <field:display field="student" id="s_com_app_myschool_model_Quarter_student" object="${quarter}" z="GiiWQZK/L4D9qJi81YnqAvulxFE="/>
+        <field:display field="qtr_year" id="s_com_app_myschool_model_Quarter_qtr_year" object="${quarter}" z="kKTRZbK/5SqpXUQEfCCxw0n9+v8="/>
     </page:show>
 </div>
