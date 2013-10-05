@@ -17,11 +17,16 @@ Ext.define('MySchool.view.subject.NewForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.newsubjectform',
 
+    requires: [
+        'MySchool.view.subject.GradeTypeComboBox',
+        'MySchool.view.subject.QuarterNamesComboBox'
+    ],
+
     autoRender: false,
     draggable: true,
     floating: true,
     frame: true,
-    height: 400,
+    height: 430,
     itemId: 'newsubjectform',
     width: 500,
     title: 'New Subject',
@@ -43,57 +48,46 @@ Ext.define('MySchool.view.subject.NewForm', {
                         {
                             xtype: 'textfield',
                             anchor: '100%',
-                            fieldLabel: 'Student User Name'
+                            fieldLabel: 'Student User Name',
+                            name: 'userName'
                         },
                         {
                             xtype: 'textfield',
                             anchor: '100%',
-                            fieldLabel: 'Subject Name'
+                            fieldLabel: 'Subject Name',
+                            name: 'name'
                         },
                         {
-                            xtype: 'combobox',
-                            anchor: '100%',
-                            itemId: 'gradetypecombobox',
-                            fieldLabel: 'Grade Type',
-                            emptyText: 'Select one.',
-                            displayField: 'name',
-                            forceSelection: true,
-                            store: 'subject.GradeTypeStore',
-                            valueField: 'value'
+                            xtype: 'gradetypecombobox',
+                            anchor: '100%'
                         },
                         {
                             xtype: 'numberfield',
                             anchor: '100%',
-                            fieldLabel: 'Grade Level'
+                            fieldLabel: 'Grade Level',
+                            name: 'gradeLevel'
                         },
                         {
                             xtype: 'numberfield',
                             anchor: '100%',
-                            fieldLabel: 'Credit Hours'
+                            fieldLabel: 'Credit Hours',
+                            name: 'creditHours'
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
-                            fieldLabel: 'Description'
+                            fieldLabel: 'Description',
+                            name: 'description'
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
-                            fieldLabel: 'Objective'
+                            fieldLabel: 'Objectives',
+                            name: 'objectives'
                         },
                         {
-                            xtype: 'combobox',
-                            anchor: '100%',
-                            autoRender: false,
-                            itemId: 'quarterscombobox',
-                            minHeight: 20,
-                            fieldLabel: 'Quarter',
-                            allowOnlyWhitespace: false,
-                            emptyText: 'Select one.',
-                            displayField: 'qtrName',
-                            forceSelection: true,
-                            store: 'subject.QuarterNameStore',
-                            valueField: 'id'
+                            xtype: 'quarternamescombobox',
+                            anchor: '100%'
                         }
                     ]
                 },

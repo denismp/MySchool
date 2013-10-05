@@ -42,7 +42,9 @@ Ext.application({
         'subject.SubjectSearchTool',
         'subject.SubjectNewTool',
         'subject.SubjectSaveTool',
-        'subject.NewForm'
+        'subject.NewForm',
+        'subject.GradeTypeComboBox',
+        'subject.QuarterNamesComboBox'
     ],
     autoCreateViewport: true,
     controllers: [

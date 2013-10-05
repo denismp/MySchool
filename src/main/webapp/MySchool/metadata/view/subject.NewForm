@@ -10,7 +10,7 @@
         "draggable": true,
         "floating": true,
         "frame": true,
-        "height": 400,
+        "height": 430,
         "itemId": "newsubjectform",
         "width": 500,
         "designer|userClassName": "subject.NewForm",
@@ -43,7 +43,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Student User Name"
+                        "fieldLabel": "Student User Name",
+                        "name": "userName"
                     },
                     "designerId": "97a324d2-ef67-4d1e-9301-0cc44c9c486d"
                 },
@@ -56,29 +57,23 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Subject Name"
+                        "fieldLabel": "Subject Name",
+                        "name": "name"
                     },
                     "designerId": "43b3cd48-e7c5-42e5-9f41-3091ed5aca77"
                 },
                 {
-                    "type": "Ext.form.field.ComboBox",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
-                        "autoRender": null,
-                        "itemId": "gradetypecombobox",
-                        "fieldLabel": "Grade Type",
-                        "emptyText": "Select one.",
-                        "displayField": "name",
-                        "forceSelection": true,
-                        "store": "subject.GradeTypeStore",
-                        "valueField": "value"
+                        "layout|anchor": "100%"
                     },
-                    "designerId": "fb165ee4-c8f5-4efd-8aaf-f3c40fa01d7b"
+                    "designerId": "283bdce7-4815-496a-923e-6a815b561214",
+                    "masterInstanceId": "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4"
                 },
                 {
                     "type": "Ext.form.field.Number",
@@ -89,7 +84,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Grade Level"
+                        "fieldLabel": "Grade Level",
+                        "name": "gradeLevel"
                     },
                     "designerId": "bad29fb6-3682-4c44-af93-60dbef0d2957"
                 },
@@ -102,7 +98,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Credit Hours"
+                        "fieldLabel": "Credit Hours",
+                        "name": "creditHours"
                     },
                     "designerId": "86b61659-f9a6-46c3-b894-d73e5eec716b"
                 },
@@ -115,7 +112,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Description"
+                        "fieldLabel": "Description",
+                        "name": "description"
                     },
                     "designerId": "1109a2ed-bcfd-4f7d-9fcd-54b4b117d3d4"
                 },
@@ -128,32 +126,23 @@
                     "codeClass": null,
                     "userConfig": {
                         "layout|anchor": "100%",
-                        "fieldLabel": "Objective"
+                        "fieldLabel": "Objectives",
+                        "name": "objectives"
                     },
                     "designerId": "641907c1-bb99-4846-ac8a-d0572c385f49"
                 },
                 {
-                    "type": "Ext.form.field.ComboBox",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|anchor": "100%",
-                        "autoRender": false,
-                        "itemId": "quarterscombobox",
-                        "minHeight": 20,
-                        "renderTo": null,
-                        "fieldLabel": "Quarter",
-                        "allowOnlyWhitespace": false,
-                        "emptyText": "Select one.",
-                        "displayField": "qtrName",
-                        "forceSelection": true,
-                        "store": "subject.QuarterNameStore",
-                        "valueField": "id"
+                        "layout|anchor": "100%"
                     },
-                    "designerId": "9d7d0d66-7e1a-4246-a137-f57d5df8649a"
+                    "designerId": "d4ceadad-5eab-4143-be33-006230d69bed",
+                    "masterInstanceId": "3286d8b6-1f11-4654-9fb5-1bcd21f6821a"
                 }
             ]
         },

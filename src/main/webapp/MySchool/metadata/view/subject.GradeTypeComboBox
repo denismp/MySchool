@@ -1,0 +1,21 @@
+{
+    "type": "Ext.form.field.ComboBox",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoRender": null,
+        "itemId": "gradetypecombobox",
+        "designer|userClassName": "subject.GradeTypeComboBox",
+        "designer|userAlias": "gradetypecombobox",
+        "fieldLabel": "Grade Type",
+        "emptyText": "Select one.",
+        "displayField": "name",
+        "forceSelection": true,
+        "store": "subject.GradeTypeStore",
+        "valueField": "value"
+    },
+    "designerId": "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4"
+}

@@ -1,0 +1,24 @@
+{
+    "type": "Ext.form.field.ComboBox",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoRender": false,
+        "itemId": "quarterscombobox",
+        "minHeight": 20,
+        "renderTo": null,
+        "designer|userClassName": "subject.QuarterNamesComboBox",
+        "designer|userAlias": "quarternamescombobox",
+        "fieldLabel": "Quarter",
+        "allowOnlyWhitespace": false,
+        "emptyText": "Select one.",
+        "displayField": "qtrName",
+        "forceSelection": true,
+        "store": "subject.QuarterNameStore",
+        "valueField": "id"
+    },
+    "designerId": "3286d8b6-1f11-4654-9fb5-1bcd21f6821a"
+}

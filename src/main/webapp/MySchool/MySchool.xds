@@ -182,6 +182,22 @@
                 "app/store/subject/GradeTypeStore.js"
             ],
             "className": "subject.GradeTypeStore"
+        },
+        "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4": {
+            "paths": [
+                "metadata/view/subject.GradeTypeComboBox",
+                "app/view/override/subject/GradeTypeComboBox.js",
+                "app/view/subject/GradeTypeComboBox.js"
+            ],
+            "className": "subject.GradeTypeComboBox"
+        },
+        "3286d8b6-1f11-4654-9fb5-1bcd21f6821a": {
+            "paths": [
+                "metadata/view/subject.QuarterNamesComboBox",
+                "app/view/override/subject/QuarterNamesComboBox.js",
+                "app/view/subject/QuarterNamesComboBox.js"
+            ],
+            "className": "subject.QuarterNamesComboBox"
         }
     },
     "viewOrderMap": {
@@ -195,7 +211,9 @@
             "37b78857-e05a-4ea0-b69f-ee473669dab9",
             "74f981cf-0986-4c25-8720-1a360a70fab6",
             "61e1d116-9e61-4881-89e9-d69500508f0b",
-            "d6d7fa71-60f7-4db8-9ce1-634ff1382bc7"
+            "d6d7fa71-60f7-4db8-9ce1-634ff1382bc7",
+            "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4",
+            "3286d8b6-1f11-4654-9fb5-1bcd21f6821a"
         ],
         "store": [
             "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",

@@ -30,7 +30,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         'MainPanel',
         'subject.SubjectsGridPanel',
         'subject.SubjectsForm',
-        'subject.SubjectsPanel'
+        'subject.SubjectsPanel',
+        'subject.GradeTypeComboBox'
     ],
 
     refs: [
@@ -84,11 +85,31 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onToolnewsubjectsClick: function(tool, e, eOpts) {
-        //debugger;
+        debugger;
         window.console.log( 'New' );
         var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );
         //window.console.log( "DEBUG" );
         //newDialog.show();
+
+        var mystore = Ext.getStore("subject.SubjectStore");
+        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+        var myrecord = mystore.getAt( this.selectedIndex );
+        //myrecord.set( 'description', newValue );
+        window.console.log( myrecord.data );
+        newDialog.loadRecord(myrecord);
+        var myFormFields = newDialog.getForm().getFields();
+        var myuserName = myrecord.data.quarter.student.userName;
+        var mygradeType = myrecord.data.quarter.gradeType;
+        var myquarterName = myrecord.data.quarter.qtrName;
+        var qtrId = this.findQuarterIdByName( myquarterName );
+
+        var mycomboview = myFormFields.getAt( 2 );
+        mycomboview.setValue( mygradeType );
+        mycomboview = myFormFields.getAt( 7 );
+        mycomboview.setValue( qtrId );
+
+        newDialog.getForm().setValues( { userName: myuserName } );
+
         newDialog.render( Ext.getBody() );
         newDialog.show();
     },
@@ -121,6 +142,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         }
         var myForm = button.up().getForm();
         // Get the data from the form and add a new subject record to the datbase.
+
         myForm.reset();
         button.up().hide();
     },
@@ -209,6 +231,12 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         if ( records[0] ) {
             this.getSubjectsForm().getForm().loadRecord(records[0]);
         }
+    },
+
+    findQuarterIdByName: function(name) {
+        var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
+        var index = myqtrstore.findRecord( 'qtrName', name ).get( 'id' );
+        return index;
     }
 
 });

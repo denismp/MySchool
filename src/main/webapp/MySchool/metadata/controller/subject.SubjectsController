@@ -20,7 +20,8 @@
             "MainPanel",
             "subject.SubjectsGridPanel",
             "subject.SubjectsForm",
-            "subject.SubjectsPanel"
+            "subject.SubjectsPanel",
+            "subject.GradeTypeComboBox"
         ],
         "designer|userClassName": "subject.SubjectsController"
     },
@@ -275,11 +276,31 @@
             "userConfig": {
                 "fn": "onToolnewsubjectsClick",
                 "implHandler": [
-                    "//debugger;",
+                    "debugger;",
                     "window.console.log( 'New' );",
                     "var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );",
                     "//window.console.log( \"DEBUG\" );",
                     "//newDialog.show();",
+                    "",
+                    "var mystore = Ext.getStore(\"subject.SubjectStore\");",
+                    "var mynamestore = Ext.getStore( \"subject.QuarterNameStore\" );",
+                    "var myrecord = mystore.getAt( this.selectedIndex );",
+                    "//myrecord.set( 'description', newValue );",
+                    "window.console.log( myrecord.data );",
+                    "newDialog.loadRecord(myrecord);",
+                    "var myFormFields = newDialog.getForm().getFields();",
+                    "var myuserName = myrecord.data.quarter.student.userName;",
+                    "var mygradeType = myrecord.data.quarter.gradeType;",
+                    "var myquarterName = myrecord.data.quarter.qtrName;",
+                    "var qtrId = this.findQuarterIdByName( myquarterName );",
+                    "",
+                    "var mycomboview = myFormFields.getAt( 2 );",
+                    "mycomboview.setValue( mygradeType );",
+                    "mycomboview = myFormFields.getAt( 7 );",
+                    "mycomboview.setValue( qtrId );",
+                    "",
+                    "newDialog.getForm().setValues( { userName: myuserName } );",
+                    "",
                     "newDialog.render( Ext.getBody() );",
                     "newDialog.show();"
                 ],
@@ -357,6 +378,7 @@
                     "}",
                     "var myForm = button.up().getForm();",
                     "// Get the data from the form and add a new subject record to the datbase.",
+                    "",
                     "myForm.reset();",
                     "button.up().hide();"
                 ],
@@ -389,6 +411,26 @@
                 "designer|controlQuery": "#newsubjectcancel"
             },
             "designerId": "19e2a875-2a2c-4aa9-95b1-6a65f5222077"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "findQuarterIdByName",
+                "designer|params": [
+                    "name"
+                ],
+                "implHandler": [
+                    "var myqtrstore = Ext.getStore( \"subject.QuarterNameStore\" );",
+                    "var index = myqtrstore.findRecord( 'qtrName', name ).get( 'id' );",
+                    "return index;"
+                ]
+            },
+            "designerId": "99536c6c-316b-4421-ba92-29a0c47c50e1"
         }
     ]
 }
