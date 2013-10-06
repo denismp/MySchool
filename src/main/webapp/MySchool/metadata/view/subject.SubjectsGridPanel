@@ -209,6 +209,45 @@
             },
             "codeClass": null,
             "userConfig": {
+                "text": "QtrYear"
+            },
+            "designerId": "0a351703-b3c2-476b-82fc-f9587ebbab99",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "var myQtrYear = record.data.quarter.qtr_year;",
+                            "return myQtrYear;"
+                        ]
+                    },
+                    "designerId": "4112e9a3-1a3a-4631-b917-cce606bba494"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "dataIndex": "userName",
                 "text": "UserName"
             },

@@ -10,7 +10,7 @@
         "draggable": true,
         "floating": true,
         "frame": true,
-        "height": 430,
+        "height": 450,
         "itemId": "newsubjectform",
         "width": 500,
         "designer|userClassName": "subject.NewForm",
@@ -143,6 +143,20 @@
                     },
                     "designerId": "d4ceadad-5eab-4143-be33-006230d69bed",
                     "masterInstanceId": "3286d8b6-1f11-4654-9fb5-1bcd21f6821a"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%",
+                        "fieldLabel": "Quarter Year",
+                        "name": "qtr_year"
+                    },
+                    "designerId": "af04255e-82bd-4c5c-a2e1-cd5244d1e62c"
                 }
             ]
         },
