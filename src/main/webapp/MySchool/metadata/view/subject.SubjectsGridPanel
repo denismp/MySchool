@@ -282,6 +282,56 @@
                     "designerId": "6572b6ca-9ce7-4eea-9621-a04e4291fe92"
                 }
             ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "grade",
+                "text": "Grade"
+            },
+            "designerId": "9f37b8b8-48ec-4082-80c9-93fc46b795a0",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "var grade = record.data.quarter.grade;",
+                            "return grade;",
+                            ""
+                        ]
+                    },
+                    "designerId": "1af31fe3-8576-461f-890d-e368dab87220"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "224bba92-108c-48f4-b46d-65596844fe3e"
+                }
+            ]
         }
     ]
 }

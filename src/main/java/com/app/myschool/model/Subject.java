@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,6 +28,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class Subject {
 
     @NotNull
+    @Column(unique = true)
     @Size(max = 45)
     private String name;
 

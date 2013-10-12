@@ -314,3 +314,9 @@ focus --class ~.model.Quarter
 field string --class ~.model.Quarter --fieldName qtr_year --sizeMax 5 --notNull 
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-10-05 17:11:03
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-05 17:12:37
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-10-06 21:11:22
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-06 21:27:27
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-10-12 15:30:03
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-12 15:32:16
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-10-12 15:34:12
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-12 15:35:15

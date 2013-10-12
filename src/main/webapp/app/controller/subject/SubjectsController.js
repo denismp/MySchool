@@ -18,7 +18,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     selectedIndex: '0',
     models: [
-        'subject.SubjectsModel'
+        'subject.SubjectsModel',
+        'quarters.QuarterModel',
+        'student.StudentModel',
+        'subject.QuarterNamesModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -31,7 +34,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         'subject.SubjectsGridPanel',
         'subject.SubjectsForm',
         'subject.SubjectsPanel',
-        'subject.GradeTypeComboBox'
+        'subject.GradeTypeComboBox',
+        'subject.QuarterNamesComboBox'
     ],
 
     refs: [
@@ -61,7 +65,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
-        // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
+
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
@@ -72,7 +76,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
-        // NEED TO MARK THE GRID's RECORD DIRTY HERE BUT I DON'T HOW TO GET A HOLD OF THE RECORD INDEX OR THE RECORD.
+
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
@@ -141,7 +145,48 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
         }
         var myForm = button.up().getForm();
+        //debugger;
         // Get the data from the form and add a new subject record to the datbase.
+        var myvalues = myForm.getFieldValues();
+        var myfields = myForm.getFields();
+        var creditHours = myvalues.creditHours;
+        var description = myvalues.description;
+        var gradeLevel = myvalues.gradeLevel;
+        var subjectName = myvalues.name;
+        var objectives = myvalues.objectives;
+        var qtr_year = myvalues.qtr_year;
+        var userName = myvalues.userName;
+
+        var gradeTypeIntValue = myfields.getAt( 2 ).getValue();  // Grade type selection for combobox.
+
+        var quarterNameIntValue = myfields.getAt( 7 ).getValue(); // Quarter Name selection for combobox.
+
+        //	Now we need to put together the data to be inserted(and/or possibly updated).
+        //	1. Search for the user's input of the quarter name and quarter year.
+        debugger;
+        var qtrRecord;
+        var subjectRecord;
+        var myQtrName = this.getQuarterName( quarterNameIntValue );
+
+        //	If the myQtrName equals NONE, then there is no record for the quarter specified
+        //	in the dialog.  A new record must be created from the user's input.
+        if( myQtrName == 'NONE' )
+        {
+            var qtrModel = this.getModel( 'quarters.QuarterModel' );
+            qtrModel.set( 'qtrName', myQtrName );
+            qtrModel.set( 'qtr_year', qtr_year );
+            qtrModel.set( 'gradeType', gradeTypeIntValue );
+            qtrModel.set( 'grade', 0 );
+            qtrModel.set( 'locked', 0 );
+            qtrModel.set( 'whoUpdated', 'application' );
+            qtrModel.set( 'lastUpdated', new Date() );
+        }
+        else
+        {
+            qtrRecord = this.getQuarterRecord( myQtrName, qtr_year );
+        }
+        //	2. Search for the user's input of the subject name, grade level, and credit hours.
+
 
         myForm.reset();
         button.up().hide();
@@ -237,6 +282,48 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
         var index = myqtrstore.findRecord( 'qtrName', name ).get( 'id' );
         return index;
+    },
+
+    getQuarterName: function(quarterNameID) {
+        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+        var qtrStore = Ext.getStore( 'quarter.QuarterStore' );
+        var recCount = mynamestore.getTotalCount();
+        var qtrCount = qtrStore.getTotalCount();
+        var records = mynamestore.getRange( 0, recCount );
+        for( var i = 0; i < recCount; i++ )
+        {
+            window.console.log( "qtrName=" + records[i].get( 'qtrName' ) );
+            window.console.log( "id=" + records[i].get( 'id' ) );
+            var myId = records[i].get( 'id' );
+            var myName = records[i].get( 'qtrName' );
+            var qtrRecords = qtrStore.getRange( 0, qtrCount );
+            for( var j = 0; j < qtrCount; j++ )
+            {
+                var qtrName = qtrRecords[j].get( 'qtrName' );
+                var qtrYear = qtrRecords[j].get( 'qtr_year' );
+                if( myId === quarterNameID && myName == qtrName )
+                {
+                    return qtrName;
+                }
+            }
+        }
+        return 'NONE';
+    },
+
+    getQuarterRecord: function(name, year) {
+        var qtrStore = Ext.getStore( 'quarter.QuarterStore' );
+        var qtrCount = qtrStore.getTotalCount();
+        var records = qtrStore.getRange( 0, qtrCount );
+        for( var i = 0; i < qtrCount; i++ )
+        {
+            window.console.log( "qtrName=" + records[i].get( 'qtrName' ) );
+            window.console.log( "id=" + records[i].get( 'id' ) );
+            window.console.log( "qtr_year=" + records[i].get( 'qtr_year' ) );
+            if( name == records[i].get( 'qtrName' ) && year == records[i].get( 'qtr_year' ) )
+            {
+                return records[i];
+            }
+        }
     }
 
 });

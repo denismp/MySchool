@@ -106,6 +106,19 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     },
                     dataIndex: 'userName',
                     text: 'UserName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                        var grade = record.data.quarter.grade;
+                        return grade;
+
+                    },
+                    dataIndex: 'grade',
+                    text: 'Grade',
+                    editor: {
+                        xtype: 'numberfield'
+                    }
                 }
             ],
             viewConfig: {
