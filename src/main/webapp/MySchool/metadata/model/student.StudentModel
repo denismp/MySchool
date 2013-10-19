@@ -187,6 +187,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dateFormat": "m/d/Y",
                 "name": "lastUpdated",
                 "type": "date"
             },

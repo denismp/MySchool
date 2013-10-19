@@ -8,6 +8,7 @@
     "userConfig": {
         "autoLoad": true,
         "model": "student.StudentModel",
+        "storeId": "student.StudentStore",
         "designer|userClassName": "student.StudentStore"
     },
     "designerId": "c5c04912-9e2d-49c5-a499-402635d10f1c",
@@ -39,6 +40,20 @@
                         "root": "data"
                     },
                     "designerId": "15114e0d-4317-46ca-8e7e-7c970ddd74cd"
+                },
+                {
+                    "type": "Ext.data.writer.Json",
+                    "reference": {
+                        "name": "writer",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateFormat": "m/d/Y",
+                        "encode": true,
+                        "root": "data"
+                    },
+                    "designerId": "52d0608c-2abb-4d87-a0ea-4683ac098190"
                 }
             ]
         }

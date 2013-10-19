@@ -36,6 +36,12 @@ Ext.define('MySchool.store.quarter.QuarterStore', {
                 reader: {
                     type: 'json',
                     root: 'data'
+                },
+                writer: {
+                    type: 'json',
+                    dateFormat: 'm/d/Y',
+                    encode: true,
+                    root: 'data'
                 }
             }
         }, cfg)]);

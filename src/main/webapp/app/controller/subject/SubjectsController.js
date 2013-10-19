@@ -135,58 +135,106 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         //debugger;
         //var mystore = this.getSubjectStoreStore();
         window.console.log( "Submit New Subject" );
-        var mystore = Ext.getStore("subject.SubjectStore");
+        var mysubjectstore = Ext.getStore("subject.SubjectStore");
         var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
         var myquarterstore = Ext.getStore( "quarter.QuarterStore" );
         var mystudentstore = Ext.getStore( "student.StudentStore" );
         var myrecords = myqtrstore.getRange( 0, 3 );
+        //var currentDate = Ext.Date.parse(new Date(),'m/d/Y');
+        //var currentDate = new Date();
+        //currentDate = Ext.Date.format( currentDate, 'm/d/Y' );
+        var currentDate = '10/20/2013';
         for( var i = 0; i < 4; i++ )
         {
             window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
         }
         var myForm = button.up().getForm();
-        //debugger;
+        debugger;
         // Get the data from the form and add a new subject record to the datbase.
-        var myvalues = myForm.getFieldValues();
-        var myfields = myForm.getFields();
+        var myvalues	= myForm.getFieldValues();
+        var myfields	= myForm.getFields();
         var creditHours = myvalues.creditHours;
         var description = myvalues.description;
-        var gradeLevel = myvalues.gradeLevel;
+        var gradeLevel	= myvalues.gradeLevel;
         var subjectName = myvalues.name;
-        var objectives = myvalues.objectives;
-        var qtr_year = myvalues.qtr_year;
-        var userName = myvalues.userName;
+        var objectives	= myvalues.objectives;
+        var qtr_year	= myvalues.qtr_year;
+        var userName	= myvalues.userName;
+
 
         var gradeTypeIntValue = myfields.getAt( 2 ).getValue();  // Grade type selection for combobox.
 
         var quarterNameIntValue = myfields.getAt( 7 ).getValue(); // Quarter Name selection for combobox.
 
-        //	Now we need to put together the data to be inserted(and/or possibly updated).
-        //	1. Search for the user's input of the quarter name and quarter year.
-        debugger;
-        var qtrRecord;
-        var subjectRecord;
-        var myQtrName = this.getQuarterName( quarterNameIntValue );
 
-        //	If the myQtrName equals NONE, then there is no record for the quarter specified
-        //	in the dialog.  A new record must be created from the user's input.
-        if( myQtrName == 'NONE' )
+        //	Now we need to put together the data to be inserted(and/or possibly updated).
+        //debugger;
+        var subjectRecord, studentRecord, myQtrName, qtrRecord;
+        subjectRecord	= this.getSubjectRecord( subjectName );
+        studentRecord	= this.getStudentRecord( userName );
+        myQtrName		= this.getQuarterName( quarterNameIntValue );
+
+        qtrRecord		= this.getQuarterRecord( myQtrName, qtr_year);
+
+
+        window.console.log( "subjectRecord type is " + typeof subjectRecord );
+        window.console.log( "studentRecord type is " + typeof studentRecord );
+        window.console.log( "qtrRecord type is " + typeof qtrRecord );
+
+        var qtrFlag = 1;
+        var subjectFlag = 1;
+        //debugger;
+        if( typeof qtrRecord == "undefined" )
         {
-            var qtrModel = this.getModel( 'quarters.QuarterModel' );
-            qtrModel.set( 'qtrName', myQtrName );
-            qtrModel.set( 'qtr_year', qtr_year );
-            qtrModel.set( 'gradeType', gradeTypeIntValue );
-            qtrModel.set( 'grade', 0 );
-            qtrModel.set( 'locked', 0 );
-            qtrModel.set( 'whoUpdated', 'application' );
-            qtrModel.set( 'lastUpdated', new Date() );
+            // A new quarter is being requested.
+            qtrFlag = 0;
+            qtrRecord = Ext.create('MySchool.model.quarters.QuarterModel' );
+            qtrRecord.set( 'id', null );
+            qtrRecord.set( 'qtrName', myQtrName );
+            qtrRecord.set( 'qtr_year', qtr_year );
+            qtrRecord.set( 'gradeType', gradeTypeIntValue );
+            qtrRecord.set( 'grade', 0 );
+            qtrRecord.set( 'locked', 0 );
+            qtrRecord.set( 'whoUpdated', 'application' );
+            qtrRecord.set( 'lastUpdated', new Date() );
+            qtrRecord.set( 'student', studentRecord.data );
+        }
+        if( typeof subjectRecord == "undefined" )
+        {
+            // A new subject is being requested.
+            subjectFlag = 0;
+            subjectRecord = Ext.create( 'MySchool.model.subject.SubjectsModel' );
+            subjectRecord.set( 'id', null );
+            subjectRecord.set( 'name', subjectName );
+            subjectRecord.set( 'gradeLevel', gradeLevel );
+            subjectRecord.set( 'creditHours', creditHours );
+            subjectRecord.set( 'completed', 0 );
+            subjectRecord.set( 'whoUpdated', 'application' );
+            subjectRecord.set( 'lastUpdated', new Date() );
+            subjectRecord.set( 'description', description );
+            subjectRecord.set( 'objectives', objectives );
+            subjectRecord.set( 'quarter', qtrRecord.data );
+            subjectRecord.set( 'userName', userName );
+        }
+        if( qtrFlag === 0 || subjectFlag === 0 )
+        {
+            //  Here we add the new quarter record to the existing subject record.
+            subjectRecord.set( 'quarter', qtrRecord.data );
+        }
+
+        //debugger;
+        //	Now we want to save the subject to the subject store.
+        if( subjectFlag === 0 )
+        {
+            // Here we need to add a new subject record.
+            mysubjectstore.add( subjectRecord );
         }
         else
         {
-            qtrRecord = this.getQuarterRecord( myQtrName, qtr_year );
+            // Here we need to do do an update.
+            mysubjectstore.add( subjectRecord );
         }
-        //	2. Search for the user's input of the subject name, grade level, and credit hours.
-
+        mysubjectstore.sync();
 
         myForm.reset();
         button.up().hide();
@@ -286,9 +334,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     getQuarterName: function(quarterNameID) {
         var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
-        var qtrStore = Ext.getStore( 'quarter.QuarterStore' );
         var recCount = mynamestore.getTotalCount();
-        var qtrCount = qtrStore.getTotalCount();
         var records = mynamestore.getRange( 0, recCount );
         for( var i = 0; i < recCount; i++ )
         {
@@ -296,15 +342,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             window.console.log( "id=" + records[i].get( 'id' ) );
             var myId = records[i].get( 'id' );
             var myName = records[i].get( 'qtrName' );
-            var qtrRecords = qtrStore.getRange( 0, qtrCount );
-            for( var j = 0; j < qtrCount; j++ )
+            if( myId === quarterNameID )
             {
-                var qtrName = qtrRecords[j].get( 'qtrName' );
-                var qtrYear = qtrRecords[j].get( 'qtr_year' );
-                if( myId === quarterNameID && myName == qtrName )
-                {
-                    return qtrName;
-                }
+                return myName;
             }
         }
         return 'NONE';
@@ -320,6 +360,36 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             window.console.log( "id=" + records[i].get( 'id' ) );
             window.console.log( "qtr_year=" + records[i].get( 'qtr_year' ) );
             if( name == records[i].get( 'qtrName' ) && year == records[i].get( 'qtr_year' ) )
+            {
+                return records[i];
+            }
+        }
+    },
+
+    getSubjectRecord: function(name) {
+        var myStore = Ext.getStore( 'subject.SubjectStore' );
+        var recCount = myStore.getTotalCount();
+        var records = myStore.getRange( 0, recCount );
+        for( var i = 0; i < recCount; i++ )
+        {
+            window.console.log( "name=" + records[i].get( 'name' ) );
+            window.console.log( "id=" + records[i].get( 'id' ) );
+            if( name == records[i].get( 'name' ) )
+            {
+                return records[i];
+            }
+        }
+    },
+
+    getStudentRecord: function(userName) {
+        var myStore = Ext.getStore( 'student.StudentStore' );
+        var recCount = myStore.getTotalCount();
+        var records = myStore.getRange( 0, recCount );
+        for( var i = 0; i < recCount; i++ )
+        {
+            window.console.log( "userName=" + records[i].get( 'userName' ) );
+            window.console.log( "id=" + records[i].get( 'id' ) );
+            if( userName == records[i].get( 'userName' ) )
             {
                 return records[i];
             }

@@ -21,5 +21,6 @@
         <field:display field="userName" id="s_com_app_myschool_model_Faculty_userName" object="${faculty}" z="itPwqrgsZkUJ+NNqSZUVOmqYP2A="/>
         <field:display field="userPassword" id="s_com_app_myschool_model_Faculty_userPassword" object="${faculty}" z="zBmtv6K3htmpBN6gJR3MejPDB4U="/>
         <field:display field="enabled" id="s_com_app_myschool_model_Faculty_enabled" object="${faculty}" z="6ljYu3UZ5wxNhmgjW2Rxic/hP6g="/>
+        <field:display field="userRole" id="s_com_app_myschool_model_Faculty_userRole" object="${faculty}" z="2k4Kr1lkxwoJsV1iXAJ1QJ+M2KY="/>
     </page:show>
 </div>

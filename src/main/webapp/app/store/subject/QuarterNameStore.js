@@ -26,7 +26,7 @@ Ext.define('MySchool.store.subject.QuarterNameStore', {
         me.callParent([Ext.apply({
             autoLoad: true,
             model: 'MySchool.model.subject.QuarterNamesModel',
-            storeId: 'MyJsonStore',
+            storeId: 'subject.QuarterNameStore',
             proxy: {
                 type: 'rest',
                 url: 'quarternameses',
@@ -35,6 +35,12 @@ Ext.define('MySchool.store.subject.QuarterNameStore', {
                 },
                 reader: {
                     type: 'json',
+                    root: 'data'
+                },
+                writer: {
+                    type: 'json',
+                    dateFormat: 'm/d/Y',
+                    encode: true,
                     root: 'data'
                 }
             }

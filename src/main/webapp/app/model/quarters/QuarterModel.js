@@ -47,6 +47,7 @@ Ext.define('MySchool.model.quarters.QuarterModel', {
             type: 'string'
         },
         {
+            dateFormat: 'm/d/Y',
             name: 'lastUpdated',
             type: 'date'
         }

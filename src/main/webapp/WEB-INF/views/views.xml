@@ -18,7 +18,7 @@
     <put-attribute name="body" value="/WEB-INF/views/uncaughtException.jspx"/>
   </definition>
 
-<definition extends="extjs" name="myschoolapp">
+<definition extends="neptune" name="myschoolapp">
         <put-attribute name="body" value="/WEB-INF/views/myschoolapp.jspx"/>
     </definition>
 <definition extends="public" name="login">

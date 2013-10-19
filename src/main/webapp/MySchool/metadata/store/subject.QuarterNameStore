@@ -8,7 +8,7 @@
     "userConfig": {
         "autoLoad": true,
         "model": "subject.QuarterNamesModel",
-        "storeId": "MyJsonStore",
+        "storeId": "subject.QuarterNameStore",
         "designer|userClassName": "subject.QuarterNameStore"
     },
     "designerId": "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f",
@@ -39,6 +39,20 @@
                         "root": "data"
                     },
                     "designerId": "9dddbd92-95d6-4fa0-a544-a931ff20bb89"
+                },
+                {
+                    "type": "Ext.data.writer.Json",
+                    "reference": {
+                        "name": "writer",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateFormat": "m/d/Y",
+                        "encode": true,
+                        "root": "data"
+                    },
+                    "designerId": "0fd46c65-9b36-4b80-bb60-fadb546e5e1f"
                 }
             ]
         }

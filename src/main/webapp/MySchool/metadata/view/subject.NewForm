@@ -10,7 +10,7 @@
         "draggable": true,
         "floating": true,
         "frame": true,
-        "height": 450,
+        "height": 490,
         "itemId": "newsubjectform",
         "width": 500,
         "designer|userClassName": "subject.NewForm",
@@ -44,7 +44,8 @@
                     "userConfig": {
                         "layout|anchor": "100%",
                         "fieldLabel": "Student User Name",
-                        "name": "userName"
+                        "name": "userName",
+                        "readOnly": true
                     },
                     "designerId": "97a324d2-ef67-4d1e-9301-0cc44c9c486d"
                 },

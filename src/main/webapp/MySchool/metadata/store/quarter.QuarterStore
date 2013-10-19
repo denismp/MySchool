@@ -8,6 +8,7 @@
     "userConfig": {
         "autoLoad": true,
         "model": "quarters.QuarterModel",
+        "storeId": "quarter.QuarterStore",
         "designer|userClassName": "quarter.QuarterStore"
     },
     "designerId": "b097ba2a-55f3-4e80-9414-eda24737bd05",
@@ -38,6 +39,20 @@
                         "root": "data"
                     },
                     "designerId": "d476cb74-c08f-40f6-8fda-fa487ae2ea0f"
+                },
+                {
+                    "type": "Ext.data.writer.Json",
+                    "reference": {
+                        "name": "writer",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateFormat": "m/d/Y",
+                        "encode": true,
+                        "root": "data"
+                    },
+                    "designerId": "4dd8e031-0ff4-4a7b-b6d0-9be949f3456e"
                 }
             ]
         }

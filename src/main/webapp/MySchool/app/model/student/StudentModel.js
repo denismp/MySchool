@@ -74,6 +74,7 @@ Ext.define('MySchool.model.student.StudentModel', {
             type: 'string'
         },
         {
+            dateFormat: 'm/d/Y',
             name: 'lastUpdated',
             type: 'date'
         },
