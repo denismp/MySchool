@@ -22,6 +22,5 @@
         <field:textarea field="userName" id="c_com_app_myschool_model_Faculty_userName" required="true" z="5zTV2rRBJ7kqpJx0AExtT6PFQ8Q="/>
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Faculty_userPassword" required="true" z="EtZ15iI3fmJOgpqsuJN2Ryyf+2E="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Faculty_enabled" z="JbRqOWL4isY0S3Cxy9/ffqUYxKA="/>
-        <field:textarea field="userRole" id="c_com_app_myschool_model_Faculty_userRole" required="true" z="tmzzF5aNHNGZQybawoxQw5oObXg="/>
     </form:update>
 </div>

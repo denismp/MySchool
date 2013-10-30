@@ -197,8 +197,15 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             qtrRecord.set( 'locked', 0 );
             qtrRecord.set( 'whoUpdated', 'application' );
             qtrRecord.set( 'lastUpdated', new Date() );
+            qtrRecord.set( 'version', 0 );
+            qtrRecord.set( 'student', studentRecord.data );
+            myquarterstore.add( qtrRecord );
+        }
+        else
+        {
             qtrRecord.set( 'student', studentRecord.data );
         }
+        myquarterstore.sync();
         if( typeof subjectRecord == "undefined" )
         {
             // A new subject is being requested.
@@ -213,27 +220,17 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             subjectRecord.set( 'lastUpdated', new Date() );
             subjectRecord.set( 'description', description );
             subjectRecord.set( 'objectives', objectives );
+            subjectRecord.set( 'version', 0 );
             subjectRecord.set( 'quarter', qtrRecord.data );
             subjectRecord.set( 'userName', userName );
+            mysubjectstore.add( subjectRecord );
         }
-        if( qtrFlag === 0 || subjectFlag === 0 )
+        if( qtrFlag === 0 || subjectFlag !== 0 )
         {
             //  Here we add the new quarter record to the existing subject record.
             subjectRecord.set( 'quarter', qtrRecord.data );
         }
 
-        //debugger;
-        //	Now we want to save the subject to the subject store.
-        if( subjectFlag === 0 )
-        {
-            // Here we need to add a new subject record.
-            mysubjectstore.add( subjectRecord );
-        }
-        else
-        {
-            // Here we need to do do an update.
-            mysubjectstore.add( subjectRecord );
-        }
         mysubjectstore.sync();
 
         myForm.reset();
@@ -299,7 +296,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     onSubjectsavetoolidClick: function(tool, e, eOpts) {
         window.console.log( "Save" );
-        //debugger;
+        debugger;
 
         var mystore = Ext.getStore("subject.SubjectStore");
 
@@ -307,6 +304,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         for( var i = 0; i < records.length; i++ )
         {
             records[i].set( 'lastUpdated', new Date() );
+            //records[i].set( 'quarter.lastUpdated', new Date() );
             var form = this.getSubjectsForm().getForm();
             var formValues = form.getValues();
             records[i].set( 'description', formValues.description );

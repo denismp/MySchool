@@ -54,39 +54,7 @@
                         "encode": true,
                         "root": "data"
                     },
-                    "designerId": "f38af594-d81f-4790-a8b0-1a9957ff8c8a",
-                    "cn": [
-                        {
-                            "type": "basicfunction",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fn": "write",
-                                "designer|params": [
-                                    "request"
-                                ],
-                                "implHandler": [
-                                    "debugger;",
-                                    "var operation = request.operation;",
-                                    "var records   = operation.records || [];",
-                                    "var len       = records.length;",
-                                    "var i         = 0;",
-                                    "var data      = [];",
-                                    "",
-                                    "for (; i < len; i++) {",
-                                    "    data.push(this.getRecordData(records[i], operation));",
-                                    "    data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );",
-                                    "    data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );",
-                                    "}",
-                                    "return this.writeRecords(request, data);"
-                                ]
-                            },
-                            "designerId": "c80e76cf-05c2-4e02-86b7-ce5874b6b9ad"
-                        }
-                    ]
+                    "designerId": "f38af594-d81f-4790-a8b0-1a9957ff8c8a"
                 },
                 {
                     "type": "basiceventbinding",

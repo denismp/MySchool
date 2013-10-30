@@ -40,21 +40,6 @@ Ext.define('MySchool.store.subject.SubjectStore', {
                 },
                 writer: {
                     type: 'json',
-                    write: function(request) {
-                        debugger;
-                        var operation = request.operation;
-                        var records   = operation.records || [];
-                        var len       = records.length;
-                        var i         = 0;
-                        var data      = [];
-
-                        for (; i < len; i++) {
-                            data.push(this.getRecordData(records[i], operation));
-                            data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );
-                            data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );
-                        }
-                        return this.writeRecords(request, data);
-                    },
                     dateFormat: 'm/d/Y',
                     encode: true,
                     root: 'data'
