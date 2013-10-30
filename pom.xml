@@ -480,7 +480,7 @@
 			                    <artifactItem>
 			                        <groupId>org.mortbay.jetty</groupId>
 			                        <artifactId>jetty-runner</artifactId>
-			                        <version>8.1.4.v20120524</version>
+			                        <version>7.4.5.v20110725</version>
 			                        <destFileName>jetty-runner.jar</destFileName>
 			                    </artifactItem>
 			                </artifactItems>
