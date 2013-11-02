@@ -6,11 +6,13 @@
     },
     "codeClass": null,
     "userConfig": {
-        "height": 800,
+        "height": null,
         "id": null,
         "itemId": "mainpanel",
-        "minHeight": 800,
-        "minWidth": 1400,
+        "maxHeight": 700,
+        "maxWidth": 1300,
+        "minHeight": 700,
+        "minWidth": 1300,
         "width": null,
         "designer|userClassName": "MainPanel",
         "designer|initialView": true,
@@ -74,6 +76,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "autoScroll": true,
                                 "layout|flex": 1
                             },
                             "designerId": "2b1bd015-bfe2-4a43-84b4-5a8647d6369a",
@@ -4051,9 +4054,11 @@
                                     "userConfig": {
                                         "dock": "top",
                                         "height": null,
-                                        "minHeight": 200,
+                                        "minHeight": 150,
+                                        "autoScroll": true,
                                         "title": "[faculty name]Students",
-                                        "forceFit": true
+                                        "columnLines": true,
+                                        "forceFit": false
                                     },
                                     "designerId": "c68e48cb-5e8c-4392-b39e-0648a874e885",
                                     "cn": [
@@ -4143,6 +4148,9 @@
                                                 "type": "object"
                                             },
                                             "codeClass": null,
+                                            "userConfig": {
+                                                "maxHeight": 100
+                                            },
                                             "designerId": "c4c88bb7-231c-47fe-9679-aa0cc8bfaffc"
                                         },
                                         {
@@ -4659,8 +4667,9 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "dock": "top",
-                                        "height": 200,
-                                        "minHeight": 200,
+                                        "height": null,
+                                        "maxHeight": 150,
+                                        "minHeight": 150,
                                         "autoScroll": true,
                                         "title": "Faculty",
                                         "forceFit": true
@@ -4754,7 +4763,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "minHeight": 200
+                                                "minHeight": 100
                                             },
                                             "designerId": "38f229f9-cc14-4a4d-bcb3-a85eff0cddee"
                                         },

@@ -20,10 +20,11 @@ Ext.define('MySchool.view.MainPanel', {
         'MySchool.view.subject.SubjectsPanel'
     ],
 
-    height: 800,
     itemId: 'mainpanel',
-    minHeight: 800,
-    minWidth: 1400,
+    maxHeight: 700,
+    maxWidth: 1300,
+    minHeight: 700,
+    minWidth: 1300,
     autoScroll: true,
     layout: {
         type: 'fit'
@@ -52,6 +53,7 @@ Ext.define('MySchool.view.MainPanel', {
                             items: [
                                 {
                                     xtype: 'subjectspanel',
+                                    autoScroll: true,
                                     flex: 1
                                 }
                             ]
@@ -1430,9 +1432,11 @@ Ext.define('MySchool.view.MainPanel', {
                                         {
                                             xtype: 'gridpanel',
                                             dock: 'top',
-                                            minHeight: 200,
+                                            minHeight: 150,
+                                            autoScroll: true,
                                             title: '[faculty name]Students',
-                                            forceFit: true,
+                                            columnLines: true,
+                                            forceFit: false,
                                             columns: [
                                                 {
                                                     xtype: 'numbercolumn',
@@ -1471,7 +1475,10 @@ Ext.define('MySchool.view.MainPanel', {
                                                     dataIndex: 'idfaculty',
                                                     text: 'idfaculty'
                                                 }
-                                            ]
+                                            ],
+                                            viewConfig: {
+                                                maxHeight: 100
+                                            }
                                         },
                                         {
                                             xtype: 'form',
@@ -1642,8 +1649,8 @@ Ext.define('MySchool.view.MainPanel', {
                                         {
                                             xtype: 'gridpanel',
                                             dock: 'top',
-                                            height: 200,
-                                            minHeight: 200,
+                                            maxHeight: 150,
+                                            minHeight: 150,
                                             autoScroll: true,
                                             title: 'Faculty',
                                             forceFit: true,
@@ -1687,7 +1694,7 @@ Ext.define('MySchool.view.MainPanel', {
                                                 }
                                             ],
                                             viewConfig: {
-                                                minHeight: 200
+                                                minHeight: 100
                                             }
                                         },
                                         {
