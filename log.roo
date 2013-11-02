@@ -340,3 +340,9 @@ field string --class ~.model.Quarter --fieldName qtr_year --sizeMax 5 --notNull
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-23 12:11:32
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-10-23 12:11:43
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-10-23 12:12:41
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-10-30 00:27:02
+persistence setup --provider HIBERNATE --database POSTGRES
+persistence setup --provider HIBERNATE --database POSTGRES
+persistence setup --provider HIBERNATE --database HYPERSONIC_IN_MEMORY 
+persistence setup --provider HIBERNATE --database POSTGRES 
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-10-30 01:37:38
