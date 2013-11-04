@@ -1,0 +1,161 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "writeStructuredData": "true",
+        "designer|userClassName": "BaseModel"
+    },
+    "designerId": "70a8691f-7f8a-47f9-b5d7-7daf67909aba",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "writeStructuredData",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getWriteData",
+                "implHandler": [
+                    "        var data = this.getRecordWriteData(this),",
+                    "            associations = this.associations.items,",
+                    "            association, type, name, associatedStore,",
+                    "            associatedRecords, associatedRecord,",
+                    "            a, aLen, r, rLen;",
+                    "",
+                    "        for (a=0, aLen=associations.length; a<aLen; a++) {",
+                    "",
+                    "            association = associations[a];",
+                    "            type = association.type;",
+                    "            name = association.name;",
+                    "",
+                    "            if (type == 'hasMany') {",
+                    "",
+                    "                associatedStore = this[association.storeName];",
+                    "                // Initialize the array for this association",
+                    "                data[name] = [];",
+                    "",
+                    "                // If the association's loaded, process its records",
+                    "                if (associatedStore && associatedStore.getCount() > 0) {",
+                    "                    associatedRecords = associatedStore.data.items;",
+                    "",
+                    "                    // Append data for each record",
+                    "                    for (r=0, rLen=associatedRecords.length; r<rLen; r++) {",
+                    "                        data[name][r] = this.getRecordWriteData(associatedRecords[r]);",
+                    "                    }",
+                    "                }",
+                    "",
+                    "            } else if (type == 'hasOne') {",
+                    "                associatedRecord = this[association.instanceName];",
+                    "                // If the record exists, append its data",
+                    "                if (associatedRecord !== undefined) {",
+                    "                    data[name] = this.getRecordWriteData(associatedRecord);",
+                    "                }",
+                    "            }",
+                    "",
+                    "        }",
+                    "",
+                    "        return data;",
+                    ""
+                ]
+            },
+            "designerId": "b05a0460-ba52-4d92-b8e3-0d31475ef02d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getRecordWriteData",
+                "implHandler": [
+                    "        var isPhantom = record.phantom === true,",
+                    "            writeAllFields = record.writeAllFields,",
+                    "            fields = record.fields,",
+                    "            fieldItems = fields.items,",
+                    "            data = {},",
+                    "            changes = record.getChanges(),",
+                    "            field,",
+                    "            key,",
+                    "            f, fLen;",
+                    "",
+                    "        for (f=0, fLen=fieldItems.length; f<fLen; f++) {",
+                    "            field = fieldItems[f];",
+                    "",
+                    "            if (field.forcePersist || (field.persist && (writeAllFields || isPhantom))) {",
+                    "                this.setFieldWriteData(data, record, field, record.get(field.name));",
+                    "            }",
+                    "        }",
+                    "",
+                    "        for (key in changes) {",
+                    "            if (changes.hasOwnProperty(key)) {",
+                    "                field = fields.get(key);",
+                    "                if (field.persist) {",
+                    "                    this.setFieldWriteData(data, record, field, changes[key]);",
+                    "                }",
+                    "            }",
+                    "        }",
+                    "",
+                    "        return data;",
+                    ""
+                ]
+            },
+            "designerId": "3a3e5984-3df2-4157-81b3-aaf051b525b3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setFieldWriteData",
+                "designer|params": [
+                    "data",
+                    "record",
+                    "field",
+                    "value"
+                ],
+                "implHandler": [
+                    "var name = field[this.nameProperty] || field.name,",
+                    "    path, i, len, curr;",
+                    "",
+                    "if (field.name === record.idProperty && record.phantom) {",
+                    "    return;",
+                    "}",
+                    "",
+                    "if (field.mapping) {",
+                    "    if (field.mapping.indexOf('.')) {",
+                    "        path = field.mapping.split('.');",
+                    "        curr = data;",
+                    "        for (i=0, len=path.length-1; i<len; i++) {",
+                    "            if (!curr[path[i]]) {",
+                    "                curr[path[i]] = {};",
+                    "            }",
+                    "            curr = curr[path[i]];",
+                    "        }",
+                    "        curr[path[i]] = value;",
+                    "    }",
+                    "} else {",
+                    "    data[name] = value;",
+                    "}"
+                ]
+            },
+            "designerId": "6d62e980-f960-42ff-80d4-16db9c68aa31"
+        }
+    ]
+}

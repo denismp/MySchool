@@ -198,6 +198,14 @@
                 "app/view/subject/QuarterNamesComboBox.js"
             ],
             "className": "subject.QuarterNamesComboBox"
+        },
+        "70a8691f-7f8a-47f9-b5d7-7daf67909aba": {
+            "paths": [
+                "metadata/model/BaseModel",
+                "app/model/override/BaseModel.js",
+                "app/model/BaseModel.js"
+            ],
+            "className": "BaseModel"
         }
     },
     "viewOrderMap": {
@@ -229,7 +237,8 @@
             "3119860e-e289-4a07-9175-42d8714f4687",
             "ff33c33e-b1e6-4d49-9268-07c1de0021ca",
             "b23d64f9-689c-4bc2-aef3-666c57b7266b",
-            "e4ca4f81-2e73-42c5-b93d-8fae30650e8d"
+            "e4ca4f81-2e73-42c5-b93d-8fae30650e8d",
+            "70a8691f-7f8a-47f9-b5d7-7daf67909aba"
         ],
         "resource": [
             "a65537e1-e168-4a5d-b470-84f043fa8967"
