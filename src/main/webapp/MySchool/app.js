@@ -23,8 +23,7 @@ Ext.application({
         'subject.SubjectsModel',
         'subject.QuarterNamesModel',
         'quarters.QuarterModel',
-        'student.StudentModel',
-        'BaseModel'
+        'student.StudentModel'
     ],
     stores: [
         'subject.SubjectStore',
