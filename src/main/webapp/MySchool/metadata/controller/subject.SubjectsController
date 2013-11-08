@@ -437,6 +437,8 @@
                     "    qtrRecord.set( 'version', 0 );",
                     "    qtrRecord.set( 'student', studentRecord.data );",
                     "    myquarterstore.add( qtrRecord );",
+                    "    //\tLet's try sync() ing the qtrRecord and then getting",
+                    "    //\tthe id of the record before assigning it to the subject record.",
                     "}",
                     "else",
                     "{",

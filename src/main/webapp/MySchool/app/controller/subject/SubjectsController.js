@@ -200,6 +200,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             qtrRecord.set( 'version', 0 );
             qtrRecord.set( 'student', studentRecord.data );
             myquarterstore.add( qtrRecord );
+            //	Let's try sync() ing the qtrRecord and then getting
+            //	the id of the record before assigning it to the subject record.
         }
         else
         {
