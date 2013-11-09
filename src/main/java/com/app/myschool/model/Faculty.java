@@ -15,6 +15,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJson
 public class Faculty extends Person {
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "faculty")
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<Student>();
 }

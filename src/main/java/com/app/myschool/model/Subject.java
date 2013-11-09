@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -61,9 +62,9 @@ public class Subject {
     @Value("false")
     private Boolean completed;
 
-    @ManyToOne
-    private Quarter quarter;
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Quarter> quarters = new HashSet<Quarter>();
+    
     @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
     private Set<Weekly> weeklys = new HashSet<Weekly>();
 

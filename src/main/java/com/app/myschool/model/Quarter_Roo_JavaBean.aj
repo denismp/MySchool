@@ -59,12 +59,12 @@ privileged aspect Quarter_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
-    public Set<Subject> Quarter.getSubjects() {
-        return this.subjects;
+    public Set<Subject> Quarter.getSubject() {
+        return this.subject;
     }
     
-    public void Quarter.setSubjects(Set<Subject> subjects) {
-        this.subjects = subjects;
+    public void Quarter.setSubject(Set<Subject> subject) {
+        this.subject = subject;
     }
     
     public Student Quarter.getStudent() {

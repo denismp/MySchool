@@ -166,47 +166,6 @@
             "designerId": "4352b78b-030f-486d-b5f0-6f2749ff1c42"
         },
         {
-            "type": "Ext.data.association.HasOne",
-            "reference": {
-                "name": "hasOne",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "model": "quarters.QuarterModel",
-                "designer|displayName": "hasOnequarters.QuarterModel"
-            },
-            "designerId": "35676c6b-fc84-4440-b5ec-e78a189bf42d",
-            "cn": [
-                {
-                    "type": "Ext.data.reader.Json",
-                    "reference": {
-                        "name": "reader",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "root": "data",
-                        "record": null
-                    },
-                    "designerId": "7eed5e91-5310-4eb6-8f31-8f0ae89aef5c"
-                }
-            ]
-        },
-        {
-            "type": "Ext.data.association.BelongsTo",
-            "reference": {
-                "name": "belongsTo",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "model": "quarters.QuarterModel",
-                "designer|displayName": "belongsToquarters.QuarterModel"
-            },
-            "designerId": "2205f62c-a7e9-4186-9bd8-696f2bd18a08"
-        },
-        {
             "type": "Ext.data.Field",
             "reference": {
                 "name": "fields",
@@ -317,6 +276,47 @@
                 ]
             },
             "designerId": "8c1fa7e3-a3cf-47ea-9d39-b1358036209a"
+        },
+        {
+            "type": "Ext.data.association.HasMany",
+            "reference": {
+                "name": "hasMany",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "quarters.QuarterModel",
+                "designer|displayName": "hasManyquarters.QuarterModel",
+                "autoLoad": true
+            },
+            "designerId": "660b8017-2207-4976-9bcb-bc1257359361",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "4b67a8e5-c4c6-4b99-aaad-a7eefef9f01c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.association.BelongsTo",
+            "reference": {
+                "name": "belongsTo",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "model": "subject.SubjectsModel",
+                "designer|displayName": "belongsTosubject.SubjectsModel"
+            },
+            "designerId": "bdc2e12f-4339-4390-895f-8cdb424368f7"
         }
     ]
 }

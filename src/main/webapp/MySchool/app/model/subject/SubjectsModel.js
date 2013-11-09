@@ -73,8 +73,9 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         }
     ],
 
-    hasOne: {
+    hasMany: {
         model: 'MySchool.model.quarters.QuarterModel',
+        autoLoad: true,
         reader: {
             type: 'json',
             root: 'data'
@@ -82,7 +83,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
     },
 
     belongsTo: {
-        model: 'MySchool.model.quarters.QuarterModel'
+        model: 'MySchool.model.subject.SubjectsModel'
     },
 
     getWriteData: function() {

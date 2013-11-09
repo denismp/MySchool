@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
+        "autoSync": true,
         "model": "subject.SubjectsModel",
         "storeId": "subject.SubjectStore",
         "designer|userClassName": "subject.SubjectStore",

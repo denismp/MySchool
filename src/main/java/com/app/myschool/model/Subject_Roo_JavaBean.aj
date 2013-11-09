@@ -77,12 +77,12 @@ privileged aspect Subject_Roo_JavaBean {
         this.completed = completed;
     }
     
-    public Quarter Subject.getQuarter() {
-        return this.quarter;
+    public Set<Quarter> Subject.getQuarters() {
+        return this.quarters;
     }
     
-    public void Subject.setQuarter(Quarter quarter) {
-        this.quarter = quarter;
+    public void Subject.setQuarters(Set<Quarter> quarters) {
+        this.quarters = quarters;
     }
     
     public Set<Weekly> Subject.getWeeklys() {

@@ -4,9 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -53,8 +52,8 @@ public class Quarter {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Subject> subjects = new HashSet<Subject>();
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "quarters")
+    private Set<Subject> subject = new HashSet<Subject>();
 
     @ManyToOne
     private Student student;
