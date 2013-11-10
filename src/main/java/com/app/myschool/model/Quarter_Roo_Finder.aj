@@ -5,6 +5,8 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
+import com.app.myschool.model.Subject;
+import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -15,6 +17,22 @@ privileged aspect Quarter_Roo_Finder {
         EntityManager em = Quarter.entityManager();
         TypedQuery<Quarter> q = em.createQuery("SELECT o FROM Quarter AS o WHERE o.student = :student", Quarter.class);
         q.setParameter("student", student);
+        return q;
+    }
+    
+    public static TypedQuery<Quarter> Quarter.findQuartersBySubject(Set<Subject> subject) {
+        if (subject == null) throw new IllegalArgumentException("The subject argument is required");
+        EntityManager em = Quarter.entityManager();
+        StringBuilder queryBuilder = new StringBuilder("SELECT o FROM Quarter AS o WHERE");
+        for (int i = 0; i < subject.size(); i++) {
+            if (i > 0) queryBuilder.append(" AND");
+            queryBuilder.append(" :subject_item").append(i).append(" MEMBER OF o.subject");
+        }
+        TypedQuery<Quarter> q = em.createQuery(queryBuilder.toString(), Quarter.class);
+        int subjectIndex = 0;
+        for (Subject _subject: subject) {
+            q.setParameter("subject_item" + subjectIndex++, _subject);
+        }
         return q;
     }
     

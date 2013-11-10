@@ -22,7 +22,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-@RooJpaActiveRecord(finders = { "findQuartersByStudent" })
+@RooJpaActiveRecord(finders = { "findQuartersByStudent", "findQuartersBySubject" })
 public class Quarter {
 
     @NotNull
