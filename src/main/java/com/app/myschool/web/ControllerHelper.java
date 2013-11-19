@@ -79,6 +79,8 @@ public class ControllerHelper {
 				}
 				records = allSubjects;
 				*/
+				System.out.println("DEBUG");
+				System.out.println( records.toString());
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				records = PreviousTranscripts.findAllPreviousTranscriptses();

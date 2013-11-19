@@ -64,11 +64,11 @@ public class JsonObjectResponse {
                     .exclude("data.*")
                     //.transform(new DateTransformer("MM/dd/yyyy"), Date.class)
                     .transform(DATE_TRANSFORMER, Date.class)
-                    .serialize(this);
+                    .deepSerialize(this);
         else
             return new JSONSerializer().exclude("*.class", "excludeData").include( "data.id" )
                     //.transform(new DateTransformer("MM/dd/yyyy"), Date.class)
             		.transform(DATE_TRANSFORMER, Date.class)
-                    .serialize(this);
+                    .deepSerialize(this);
     }
 }   
