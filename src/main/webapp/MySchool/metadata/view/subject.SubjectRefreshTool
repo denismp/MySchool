@@ -6,10 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
+        "designer|userAlias": "subjectrefreshtool",
+        "designer|userClassName": "subject.SubjectRefreshTool",
         "id": null,
         "itemId": "toolrefreshsubjects",
-        "designer|userClassName": "subject.SubjectRefreshTool",
-        "designer|userAlias": "subjectrefreshtool",
         "tooltip": "Refresh",
         "type": "refresh"
     },

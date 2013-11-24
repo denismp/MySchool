@@ -6,10 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
+        "designer|userAlias": "subjectdeletetool",
+        "designer|userClassName": "subject.SubjectDeleteTool",
         "id": null,
         "itemId": "tooldeletestudentsbysubject",
-        "designer|userClassName": "subject.SubjectDeleteTool",
-        "designer|userAlias": "subjectdeletetool",
         "tooltip": "Delete",
         "type": "minus"
     },

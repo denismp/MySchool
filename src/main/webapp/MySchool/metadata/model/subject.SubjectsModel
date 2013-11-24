@@ -6,8 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
-        "writeStructuredData": "true",
-        "designer|userClassName": "subject.SubjectsModel"
+        "designer|userClassName": "subject.SubjectsModel",
+        "writeStructuredData": "true"
     },
     "designerId": "3119860e-e289-4a07-9175-42d8714f4687",
     "customConfigs": [
@@ -29,7 +29,7 @@
                 "name": "id",
                 "type": null
             },
-            "designerId": "70fb41fe-3d4e-4f7d-861d-7a936222e97b"
+            "designerId": "0eadef82-6d13-4762-9bbe-87d4d2697175"
         },
         {
             "type": "Ext.data.Field",
@@ -147,36 +147,11 @@
             },
             "codeClass": null,
             "userConfig": {
+                "mapping": null,
                 "name": "version",
                 "type": "string"
             },
             "designerId": "2795f9de-2add-434c-a8f5-8a90ee4c2317"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "quarter",
-                "type": "auto"
-            },
-            "designerId": "4352b78b-030f-486d-b5f0-6f2749ff1c42"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "userName",
-                "type": "string"
-            },
-            "designerId": "448460a1-f147-440e-b7e2-071145396e97"
         },
         {
             "type": "basicfunction",
@@ -195,27 +170,27 @@
                     "    a, aLen, r, rLen;",
                     "",
                     "for (a=0, aLen=associations.length; a<aLen; a++) {",
-                    "    ",
+                    "",
                     "    association = associations[a];",
                     "    type = association.type;",
                     "    name = association.name;",
-                    "    ",
+                    "",
                     "    if (type == 'hasMany') {",
-                    "        ",
+                    "",
                     "        associatedStore = this[association.storeName];",
                     "        // Initialize the array for this association",
                     "        data[name] = [];",
-                    "        ",
+                    "",
                     "        // If the association's loaded, process its records",
                     "        if (associatedStore && associatedStore.getCount() > 0) {",
                     "            associatedRecords = associatedStore.data.items;",
-                    "            ",
+                    "",
                     "            // Append data for each record",
                     "            for (r=0, rLen=associatedRecords.length; r<rLen; r++) {",
                     "                data[name][r] = this.getRecordWriteData(associatedRecords[r]);",
                     "            }",
                     "        }",
-                    "        ",
+                    "",
                     "    } else if (type == 'hasOne') {",
                     "        associatedRecord = this[association.instanceName];",
                     "        // If the record exists, append its data",
@@ -223,7 +198,7 @@
                     "            data[name] = this.getRecordWriteData(associatedRecord);",
                     "        }",
                     "    }",
-                    "    ",
+                    "",
                     "}",
                     "",
                     "return data;",
@@ -240,10 +215,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getRecordWriteData",
                 "designer|params": [
                     "record"
                 ],
+                "fn": "getRecordWriteData",
                 "implHandler": [
                     "var isPhantom = record.phantom === true,",
                     "    writeAllFields = record.writeAllFields,",
@@ -257,25 +232,52 @@
                     "",
                     "for (f=0, fLen=fieldItems.length; f<fLen; f++) {",
                     "    field = fieldItems[f];",
-                    "    ",
+                    "",
                     "    if (field.forcePersist || (field.persist && (writeAllFields || isPhantom))) {",
                     "        this.setFieldWriteData(data, record, field, record.get(field.name));",
-                    "                               }",
-                    "                               }",
-                    "                               ",
-                    "    for (key in changes) {",
-                    "        if (changes.hasOwnProperty(key)) {",
-                    "                field = fields.get(key);",
-                    "                if (field.persist) {",
-                    "                    this.setFieldWriteData(data, record, field, changes[key]);",
-                    "       }",
                     "    }",
                     "}",
-                    "        ",
+                    "",
+                    "for (key in changes) {",
+                    "    if (changes.hasOwnProperty(key)) {",
+                    "        field = fields.get(key);",
+                    "        if (field.persist) {",
+                    "            this.setFieldWriteData(data, record, field, changes[key]);",
+                    "        }",
+                    "    }",
+                    "}",
+                    "",
                     "return data;"
                 ]
             },
             "designerId": "8c1fa7e3-a3cf-47ea-9d39-b1358036209a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "mapping": "quarters",
+                "name": "quarter",
+                "type": "auto"
+            },
+            "designerId": "3303ed76-ad5e-4172-bdde-256920f54cc6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userName",
+                "type": "string"
+            },
+            "designerId": "f22e0514-09ac-42c9-a7c2-e91228c1efd5"
         },
         {
             "type": "Ext.data.association.HasMany",
@@ -285,11 +287,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "quarters.QuarterModel",
+                "associationKey": "quarters",
                 "designer|displayName": "hasManyquarters.QuarterModel",
-                "autoLoad": true
+                "model": "quarters.QuarterModel"
             },
-            "designerId": "660b8017-2207-4976-9bcb-bc1257359361",
+            "designerId": "e54205ed-e6e6-464d-bd7f-ebdad275db9f",
             "cn": [
                 {
                     "type": "Ext.data.reader.Json",
@@ -301,7 +303,7 @@
                     "userConfig": {
                         "root": "data"
                     },
-                    "designerId": "4b67a8e5-c4c6-4b99-aaad-a7eefef9f01c"
+                    "designerId": "02a55636-ab01-470e-8eee-0a6c3346819d"
                 }
             ]
         },
@@ -313,10 +315,23 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "subject.SubjectsModel",
-                "designer|displayName": "belongsTosubject.SubjectsModel"
+                "designer|displayName": "belongsToquarters.QuarterModel",
+                "model": "quarters.QuarterModel"
             },
-            "designerId": "bdc2e12f-4339-4390-895f-8cdb424368f7"
+            "designerId": "4500ff9e-3221-4f14-8a6c-b8688bf4b31d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "grade",
+                "type": "int"
+            },
+            "designerId": "44f88362-615a-44cd-a031-8763b7967d61"
         }
     ]
 }

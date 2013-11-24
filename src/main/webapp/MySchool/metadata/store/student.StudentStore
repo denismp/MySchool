@@ -7,9 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
+        "designer|userClassName": "student.StudentStore",
         "model": "student.StudentModel",
-        "storeId": "student.StudentStore",
-        "designer|userClassName": "student.StudentStore"
+        "storeId": "student.StudentStore"
     },
     "designerId": "c5c04912-9e2d-49c5-a499-402635d10f1c",
     "cn": [
@@ -21,11 +21,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "students",
                 "headers": [
                     "{ 'Accept' : 'application/json' }",
                     ""
-                ]
+                ],
+                "url": "students"
             },
             "designerId": "6e5fa777-2c73-497e-953f-2eae00114fec",
             "cn": [

@@ -6,12 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
-        "id": null,
-        "itemId": "subjectdetailsform",
-        "designer|userClassName": "subject.SubjectsForm",
-        "designer|userAlias": "subjectsform",
         "autoScroll": true,
         "bodyPadding": 10,
+        "designer|userAlias": "subjectsform",
+        "designer|userClassName": "subject.SubjectsForm",
+        "id": null,
+        "itemId": "subjectdetailsform",
         "title": "Subject Details"
     },
     "designerId": "5f4ea074-864b-46c4-8416-9f9751c9f5c8",
@@ -24,12 +24,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": "100%",
                 "dock": null,
+                "fieldLabel": "Description",
                 "height": null,
                 "id": null,
                 "itemId": "subjectdescriptiontextarea",
-                "fieldLabel": "Description",
+                "layout|anchor": "100%",
                 "name": "description",
                 "value": null
             },
@@ -43,11 +43,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "layout|anchor": "100%",
+                "fieldLabel": "Objectives",
                 "height": null,
                 "id": null,
                 "itemId": "subjectobjectivetextarea",
-                "fieldLabel": "Objectives",
+                "layout|anchor": "100%",
                 "name": "objectives"
             },
             "designerId": "c0d2d172-bcf5-4923-899c-97187911820a"

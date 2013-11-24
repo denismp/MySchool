@@ -6,9 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
-        "id": "toolsearchsubjects",
-        "designer|userClassName": "subject.SubjectSearchTool",
         "designer|userAlias": "subjectsearchtool",
+        "designer|userClassName": "subject.SubjectSearchTool",
+        "id": "toolsearchsubjects",
         "tooltip": "Search",
         "type": "search"
     },

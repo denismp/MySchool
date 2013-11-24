@@ -240,9 +240,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "quarters.QuarterModel",
+                "autoLoad": true,
                 "designer|displayName": "hasManyquarters.QuarterModel",
-                "autoLoad": true
+                "model": "quarters.QuarterModel"
             },
             "designerId": "e7d1e003-363b-428e-b269-b0275688ebe5",
             "cn": [

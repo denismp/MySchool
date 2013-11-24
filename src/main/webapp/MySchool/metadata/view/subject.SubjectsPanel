@@ -7,9 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "container|align": "stretch",
-        "id": "subjectspanel",
-        "designer|userClassName": "subject.SubjectsPanel",
         "designer|userAlias": "subjectspanel",
+        "designer|userClassName": "subject.SubjectsPanel",
+        "id": "subjectspanel",
         "layout": "hbox",
         "title": "Subjects By Student"
     },

@@ -7,9 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
+        "designer|userClassName": "quarter.QuarterStore",
         "model": "quarters.QuarterModel",
-        "storeId": "quarter.QuarterStore",
-        "designer|userClassName": "quarter.QuarterStore"
+        "storeId": "quarter.QuarterStore"
     },
     "designerId": "b097ba2a-55f3-4e80-9414-eda24737bd05",
     "cn": [
@@ -21,10 +21,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "quarters",
                 "headers": [
                     "{ 'Accept' : 'application/json' }"
-                ]
+                ],
+                "url": "quarters"
             },
             "designerId": "e020e8f8-e308-4d8d-9a99-bd2882a0bc0c",
             "cn": [

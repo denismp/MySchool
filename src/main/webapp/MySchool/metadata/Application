@@ -6,12 +6,16 @@
     },
     "codeClass": null,
     "userConfig": {
+        "controllers": [
+            "subject.SubjectsController"
+        ],
         "models": [
             "subject.SubjectsModel",
             "subject.QuarterNamesModel",
             "quarters.QuarterModel",
             "student.StudentModel"
         ],
+        "name": "MySchool",
         "stores": [
             "subject.SubjectStore",
             "subject.QuarterNameStore",
@@ -32,12 +36,7 @@
             "subject.NewForm",
             "subject.GradeTypeComboBox",
             "subject.QuarterNamesComboBox"
-        ],
-        "autoCreateViewport": true,
-        "controllers": [
-            "subject.SubjectsController"
-        ],
-        "name": "MySchool"
+        ]
     },
     "designerId": "application"
 }

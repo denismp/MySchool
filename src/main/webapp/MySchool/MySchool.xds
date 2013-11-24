@@ -1,6 +1,11 @@
 {
     "name": "MySchool",
     "settings": {
+        "cmd": {
+            "license": "gpl",
+            "cmdVersion": "4.0.1.45",
+            "frameworkVersion": "4.2.1.883"
+        },
         "urlPrefix": "http://localhost:8080/MySchool",
         "spacesToIndent": 4,
         "exportPath": "/Users/denisputnam/git/MySchool/src/main/webapp",
@@ -8,198 +13,22 @@
         "lineEnding": "LF",
         "genTimestamps": false,
         "cacheBust": false,
-        "buildShouldOverwriteIndex": true
+        "buildShouldOverwriteIndex": true,
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "generateArchitectVersion": true
     },
-    "xdsVersion": "2.2.3",
-    "xdsBuild": 1044,
+    "xdsVersion": "3.0.0",
+    "xdsBuild": 1337,
     "schemaVersion": 1,
-    "upgradeVersion": 210000000503,
+    "upgradeVersion": 300000000003,
     "framework": "ext42",
-    "topInstanceFileMap": {
-        "a65537e1-e168-4a5d-b470-84f043fa8967": {
-            "paths": [
-                "metadata/resource/Library"
-            ],
-            "className": "Library"
-        },
-        "48a06a06-a1a5-4faa-8c59-edc7ba324ea9": {
-            "paths": [
-                "metadata/controller/subject.SubjectsController",
-                "app/controller/override/subject/SubjectsController.js",
-                "app/controller/subject/SubjectsController.js"
-            ],
-            "className": "subject.SubjectsController"
-        },
-        "27da7831-10e9-4a0b-9ee5-fef9b1e7c0a5": {
-            "paths": [
-                "metadata/view/MainPanel",
-                "app/view/override/MainPanel.js",
-                "app/view/MainPanel.js",
-                "app/view/Viewport.js"
-            ],
-            "className": "MainPanel"
-        },
-        "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04": {
-            "paths": [
-                "metadata/store/subject.SubjectStore",
-                "app/store/override/subject/SubjectStore.js",
-                "app/store/subject/SubjectStore.js"
-            ],
-            "className": "subject.SubjectStore"
-        },
-        "3119860e-e289-4a07-9175-42d8714f4687": {
-            "paths": [
-                "metadata/model/subject.SubjectsModel",
-                "app/model/override/subject/SubjectsModel.js",
-                "app/model/subject/SubjectsModel.js"
-            ],
-            "className": "subject.SubjectsModel"
-        },
-        "03f512fe-cb0d-4bc4-889d-6c325edf2dfe": {
-            "paths": [
-                "metadata/view/subject.SubjectsGridPanel",
-                "app/view/override/subject/SubjectsGridPanel.js",
-                "app/view/subject/SubjectsGridPanel.js"
-            ],
-            "className": "subject.SubjectsGridPanel"
-        },
-        "5f4ea074-864b-46c4-8416-9f9751c9f5c8": {
-            "paths": [
-                "metadata/view/subject.SubjectsForm",
-                "app/view/override/subject/SubjectsForm.js",
-                "app/view/subject/SubjectsForm.js"
-            ],
-            "className": "subject.SubjectsForm"
-        },
-        "22072b76-4dbe-479c-8927-c3e8c20f0044": {
-            "paths": [
-                "metadata/view/subject.SubjectsPanel",
-                "app/view/override/subject/SubjectsPanel.js",
-                "app/view/subject/SubjectsPanel.js"
-            ],
-            "className": "subject.SubjectsPanel"
-        },
-        "e7d95958-116e-4c8f-b906-cf468300e27e": {
-            "paths": [
-                "metadata/view/subject.SubjectSaveTool",
-                "app/view/override/subject/SubjectSaveTool.js",
-                "app/view/subject/SubjectSaveTool.js"
-            ],
-            "className": "subject.SubjectSaveTool"
-        },
-        "427c4fdc-1be5-4661-88bd-fa3cef59f6a1": {
-            "paths": [
-                "metadata/view/subject.SubjectRefreshTool",
-                "app/view/override/subject/SubjectRefreshTool.js",
-                "app/view/subject/SubjectRefreshTool.js"
-            ],
-            "className": "subject.SubjectRefreshTool"
-        },
-        "37b78857-e05a-4ea0-b69f-ee473669dab9": {
-            "paths": [
-                "metadata/view/subject.SubjectDeleteTool",
-                "app/view/override/subject/SubjectDeleteTool.js",
-                "app/view/subject/SubjectDeleteTool.js"
-            ],
-            "className": "subject.SubjectDeleteTool"
-        },
-        "74f981cf-0986-4c25-8720-1a360a70fab6": {
-            "paths": [
-                "metadata/view/subject.SubjectSearchTool",
-                "app/view/override/subject/SubjectSearchTool.js",
-                "app/view/subject/SubjectSearchTool.js"
-            ],
-            "className": "subject.SubjectSearchTool"
-        },
-        "61e1d116-9e61-4881-89e9-d69500508f0b": {
-            "paths": [
-                "metadata/view/subject.SubjectNewTool",
-                "app/view/override/subject/SubjectNewTool.js",
-                "app/view/subject/SubjectNewTool.js"
-            ],
-            "className": "subject.SubjectNewTool"
-        },
-        "d6d7fa71-60f7-4db8-9ce1-634ff1382bc7": {
-            "paths": [
-                "metadata/view/subject.NewForm",
-                "app/view/override/subject/NewForm.js",
-                "app/view/subject/NewForm.js"
-            ],
-            "className": "subject.NewForm"
-        },
-        "ff33c33e-b1e6-4d49-9268-07c1de0021ca": {
-            "paths": [
-                "metadata/model/subject.QuarterNamesModel",
-                "app/model/override/subject/QuarterNamesModel.js",
-                "app/model/subject/QuarterNamesModel.js"
-            ],
-            "className": "subject.QuarterNamesModel"
-        },
-        "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f": {
-            "paths": [
-                "metadata/store/subject.QuarterNameStore",
-                "app/store/override/subject/QuarterNameStore.js",
-                "app/store/subject/QuarterNameStore.js"
-            ],
-            "className": "subject.QuarterNameStore"
-        },
-        "b23d64f9-689c-4bc2-aef3-666c57b7266b": {
-            "paths": [
-                "metadata/model/quarters.QuarterModel",
-                "app/model/override/quarters/QuarterModel.js",
-                "app/model/quarters/QuarterModel.js"
-            ],
-            "className": "quarters.QuarterModel"
-        },
-        "b097ba2a-55f3-4e80-9414-eda24737bd05": {
-            "paths": [
-                "metadata/store/quarter.QuarterStore",
-                "app/store/override/quarter/QuarterStore.js",
-                "app/store/quarter/QuarterStore.js"
-            ],
-            "className": "quarter.QuarterStore"
-        },
-        "e4ca4f81-2e73-42c5-b93d-8fae30650e8d": {
-            "paths": [
-                "metadata/model/student.StudentModel",
-                "app/model/override/student/StudentModel.js",
-                "app/model/student/StudentModel.js"
-            ],
-            "className": "student.StudentModel"
-        },
-        "c5c04912-9e2d-49c5-a499-402635d10f1c": {
-            "paths": [
-                "metadata/store/student.StudentStore",
-                "app/store/override/student/StudentStore.js",
-                "app/store/student/StudentStore.js"
-            ],
-            "className": "student.StudentStore"
-        },
-        "71ff96d7-b73d-4452-b991-007833048098": {
-            "paths": [
-                "metadata/store/subject.GradeTypeStore",
-                "app/store/override/subject/GradeTypeStore.js",
-                "app/store/subject/GradeTypeStore.js"
-            ],
-            "className": "subject.GradeTypeStore"
-        },
-        "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4": {
-            "paths": [
-                "metadata/view/subject.GradeTypeComboBox",
-                "app/view/override/subject/GradeTypeComboBox.js",
-                "app/view/subject/GradeTypeComboBox.js"
-            ],
-            "className": "subject.GradeTypeComboBox"
-        },
-        "3286d8b6-1f11-4654-9fb5-1bcd21f6821a": {
-            "paths": [
-                "metadata/view/subject.QuarterNamesComboBox",
-                "app/view/override/subject/QuarterNamesComboBox.js",
-                "app/view/subject/QuarterNamesComboBox.js"
-            ],
-            "className": "subject.QuarterNamesComboBox"
-        }
-    },
     "viewOrderMap": {
         "view": [
             "27da7831-10e9-4a0b-9ee5-fef9b1e7c0a5",

@@ -6,13 +6,14 @@
     },
     "codeClass": null,
     "userConfig": {
-        "selectedIndex": "0",
+        "designer|userClassName": "subject.SubjectsController",
         "models": [
             "subject.SubjectsModel",
             "quarters.QuarterModel",
             "student.StudentModel",
             "subject.QuarterNamesModel"
         ],
+        "selectedIndex": "0",
         "stores": [
             "subject.SubjectStore",
             "quarter.QuarterStore",
@@ -26,8 +27,7 @@
             "subject.SubjectsPanel",
             "subject.GradeTypeComboBox",
             "subject.QuarterNamesComboBox"
-        ],
-        "designer|userClassName": "subject.SubjectsController"
+        ]
     },
     "designerId": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
     "customConfigs": [
@@ -59,10 +59,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "init",
                 "designer|params": [
                     "application"
                 ],
+                "fn": "init",
                 "implHandler": [
                     "",
                     "this.control({",
@@ -87,10 +87,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "onViewReady",
                 "designer|params": [
                     "grid"
                 ],
+                "fn": "onViewReady",
                 "implHandler": [
                     "",
                     "grid.getSelectionModel().select( 0 );"
@@ -106,12 +106,12 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "onSubjectsavetoolidClick",
                 "designer|params": [
                     "tool",
                     "e",
                     "eOpts"
                 ],
+                "fn": "onSubjectsavetoolidClick",
                 "implHandler": [
                     "window.console.log( \"Save\" );",
                     "debugger;",
@@ -145,6 +145,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#subjectsgrid",
+                "designer|targetType": "Ext.grid.Panel",
                 "fn": "onSubjectsgridSelect",
                 "implHandler": [
                     "window.console.log( \"selected row in grid.\" );",
@@ -156,9 +158,7 @@
                     "this.selectedIndex = index;"
                 ],
                 "name": "select",
-                "scope": "me",
-                "designer|targetType": "Ext.grid.Panel",
-                "designer|controlQuery": "#subjectsgrid"
+                "scope": "me"
             },
             "designerId": "34c8c61a-edd5-4e1c-b140-c4d578a186a3"
         },
@@ -170,6 +170,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#subjectdescriptiontextarea",
+                "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onSubjectdescriptiontextareaChange",
                 "implHandler": [
                     "",
@@ -182,9 +184,7 @@
                     ""
                 ],
                 "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "designer|controlQuery": "#subjectdescriptiontextarea"
+                "scope": "me"
             },
             "designerId": "6faad01a-7ee9-487e-a8c0-73ff1ef18a55"
         },
@@ -196,6 +196,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#subjectobjectivetextarea",
+                "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onSubjectobjectivetextareaChange",
                 "implHandler": [
                     "",
@@ -206,9 +208,7 @@
                     "myrecord.set( 'objectives', newValue );"
                 ],
                 "name": "change",
-                "scope": "me",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "designer|controlQuery": "#subjectobjectivetextarea"
+                "scope": "me"
             },
             "designerId": "aa1e32c5-5e5c-43c8-b93d-0ebeef246a20"
         },
@@ -220,10 +220,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "processSubjectSubjectsController",
                 "designer|params": [
                     "config"
                 ],
+                "fn": "processSubjectSubjectsController",
                 "implHandler": [
                     "return config;"
                 ]
@@ -238,11 +238,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "gridSelectionChange",
                 "designer|params": [
                     "model",
                     "records"
                 ],
+                "fn": "gridSelectionChange",
                 "implHandler": [
                     "//debugger;",
                     "if ( records[0] ) {",
@@ -260,14 +260,14 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#tooldeletestudentsbysubject",
+                "designer|targetType": "Ext.panel.Tool",
                 "fn": "onTooldeletestudentsbysubjectClick",
                 "implHandler": [
                     "window.console.log( 'Delete' );"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.panel.Tool",
-                "designer|controlQuery": "#tooldeletestudentsbysubject"
+                "scope": "me"
             },
             "designerId": "10448b54-6393-4184-b6b8-2278525d4f9a"
         },
@@ -279,6 +279,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#toolnewsubjects",
+                "designer|targetType": "Ext.panel.Tool",
                 "fn": "onToolnewsubjectsClick",
                 "implHandler": [
                     "//debugger;",
@@ -294,9 +296,9 @@
                     "window.console.log( myrecord.data );",
                     "newDialog.loadRecord(myrecord);",
                     "var myFormFields = newDialog.getForm().getFields();",
-                    "var myuserName = myrecord.data.quarter.student.userName;",
-                    "var mygradeType = myrecord.data.quarter.gradeType;",
-                    "var myquarterName = myrecord.data.quarter.qtrName;",
+                    "var myuserName = myrecord.data.quarters[0].student.userName;",
+                    "var mygradeType = myrecord.data.quarters[0].gradeType;",
+                    "var myquarterName = myrecord.data.quarters[0].qtrName;",
                     "var qtrId = this.findQuarterIdByName( myquarterName );",
                     "",
                     "var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.",
@@ -310,9 +312,7 @@
                     "newDialog.show();"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.panel.Tool",
-                "designer|controlQuery": "#toolnewsubjects"
+                "scope": "me"
             },
             "designerId": "5d4868ed-6a1c-470f-b090-c3b087ab1e9b"
         },
@@ -324,14 +324,14 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#toolsearchsubjects",
+                "designer|targetType": "Ext.panel.Tool",
                 "fn": "onToolsearchsubjectsClick",
                 "implHandler": [
                     "window.console.log( 'Search' );"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.panel.Tool",
-                "designer|controlQuery": "#toolsearchsubjects"
+                "scope": "me"
             },
             "designerId": "31fb3fa3-8dfe-4181-ab00-9fd7ab071d7d"
         },
@@ -343,6 +343,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#toolrefreshsubjects",
+                "designer|targetType": "Ext.panel.Tool",
                 "fn": "onToolrefreshsubjectsClick",
                 "implHandler": [
                     "// Add refresh handler code here.  Use example from chapter 2 of book.",
@@ -353,9 +355,7 @@
                     "//pnl.setTitle( 'Denis' );"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.panel.Tool",
-                "designer|controlQuery": "#toolrefreshsubjects"
+                "scope": "me"
             },
             "designerId": "e4ca8107-d4f4-45be-8249-08a2989f145a"
         },
@@ -367,6 +367,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#newsubjectsubmit",
+                "designer|targetType": "Ext.button.Button",
                 "fn": "onNewsubjectsubmitClick",
                 "implHandler": [
                     "//debugger;",
@@ -460,14 +462,14 @@
                     "    subjectRecord.set( 'description', description );",
                     "    subjectRecord.set( 'objectives', objectives );",
                     "    subjectRecord.set( 'version', 0 );",
-                    "    subjectRecord.set( 'quarter', qtrRecord.data );",
+                    "    subjectRecord.set( 'quarters', [qtrRecord.data] );",
                     "    subjectRecord.set( 'userName', userName );",
                     "    mysubjectstore.add( subjectRecord );",
                     "}",
                     "if( qtrFlag === 0 || subjectFlag !== 0 )",
                     "{",
                     "    //  Here we add the new quarter record to the existing subject record.",
-                    "    subjectRecord.set( 'quarter', qtrRecord.data );",
+                    "    subjectRecord.set( 'quarters', qtrRecord.data );",
                     "}",
                     "",
                     "mysubjectstore.sync();",
@@ -476,9 +478,7 @@
                     "button.up().hide();"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#newsubjectsubmit"
+                "scope": "me"
             },
             "designerId": "b3d92599-5297-4d2a-b7f4-7439220ea329"
         },
@@ -490,6 +490,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "designer|controlQuery": "#newsubjectcancel",
+                "designer|targetType": "Ext.button.Button",
                 "fn": "onNewsubjectcancelClick",
                 "implHandler": [
                     "//debugger;",
@@ -499,9 +501,7 @@
                     "button.up().hide();"
                 ],
                 "name": "click",
-                "scope": "me",
-                "designer|targetType": "Ext.button.Button",
-                "designer|controlQuery": "#newsubjectcancel"
+                "scope": "me"
             },
             "designerId": "19e2a875-2a2c-4aa9-95b1-6a65f5222077"
         },
@@ -513,10 +513,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "findQuarterIdByName",
                 "designer|params": [
                     "name"
                 ],
+                "fn": "findQuarterIdByName",
                 "implHandler": [
                     "var myqtrstore = Ext.getStore( \"subject.QuarterNameStore\" );",
                     "var index = myqtrstore.findRecord( 'qtrName', name ).get( 'id' );",
@@ -533,10 +533,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getQuarterName",
                 "designer|params": [
                     "quarterNameID"
                 ],
+                "fn": "getQuarterName",
                 "implHandler": [
                     "var mynamestore = Ext.getStore( \"subject.QuarterNameStore\" );",
                     "var recCount = mynamestore.getTotalCount();",
@@ -565,11 +565,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getQuarterRecord",
                 "designer|params": [
                     "name",
                     "year"
                 ],
+                "fn": "getQuarterRecord",
                 "implHandler": [
                     "var qtrStore = Ext.getStore( 'quarter.QuarterStore' );",
                     "var qtrCount = qtrStore.getTotalCount();",
@@ -596,10 +596,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getSubjectRecord",
                 "designer|params": [
                     "name"
                 ],
+                "fn": "getSubjectRecord",
                 "implHandler": [
                     "var myStore = Ext.getStore( 'subject.SubjectStore' );",
                     "var recCount = myStore.getTotalCount();",
@@ -625,10 +625,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "getStudentRecord",
                 "designer|params": [
                     "userName"
                 ],
+                "fn": "getStudentRecord",
                 "implHandler": [
                     "var myStore = Ext.getStore( 'student.StudentStore' );",
                     "var recCount = myStore.getTotalCount();",

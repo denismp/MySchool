@@ -110,9 +110,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "subject.SubjectsModel",
+                "autoLoad": true,
                 "designer|displayName": "hasManysubject.SubjectsModel",
-                "autoLoad": true
+                "model": "subject.SubjectsModel"
             },
             "designerId": "4366410c-3eb7-4f65-a10e-3aebf30814c6",
             "cn": [
@@ -138,8 +138,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "student.StudentModel",
-                "designer|displayName": "hasOnestudent.StudentModel"
+                "designer|displayName": "hasOnestudent.StudentModel",
+                "model": "student.StudentModel"
             },
             "designerId": "b17d6463-474d-483a-b660-337b55ed77e7",
             "cn": [
@@ -165,9 +165,9 @@
             },
             "codeClass": null,
             "userConfig": {
-                "model": "student.StudentModel",
                 "designer|displayName": "belongsTostudent.StudentModel",
-                "foreignKey": null
+                "foreignKey": null,
+                "model": "student.StudentModel"
             },
             "designerId": "f8081a12-8253-4a34-a23a-7122e7ff78df",
             "cn": [

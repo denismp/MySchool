@@ -6,16 +6,16 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "subjectsgridpanel",
+        "designer|userClassName": "subject.SubjectsGridPanel",
+        "forceFit": true,
         "height": null,
         "id": null,
         "itemId": "subjectsgrid",
-        "width": 1000,
-        "designer|userClassName": "subject.SubjectsGridPanel",
-        "designer|userAlias": "subjectsgridpanel",
-        "autoScroll": true,
+        "store": "subject.SubjectStore",
         "title": "[student name] Subjects",
-        "forceFit": true,
-        "store": "subject.SubjectStore"
+        "width": 1000
     },
     "designerId": "03f512fe-cb0d-4bc4-889d-6c325edf2dfe",
     "cn": [
@@ -27,10 +27,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "hidden": true,
                 "dataIndex": "id",
-                "text": "subjectid",
-                "format": "000000"
+                "format": "000000",
+                "hidden": true,
+                "text": "subjectid"
             },
             "designerId": "3c19373c-d4e6-4a91-94f8-7255e30365c3"
         },
@@ -42,10 +42,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "width": 94,
                 "dataIndex": "name",
+                "flex": null,
                 "text": "Subject Name",
-                "flex": null
+                "width": 94
             },
             "designerId": "3d8e707c-25ca-4a62-87ae-86e43a3aeda0"
         },
@@ -57,10 +57,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "width": 97,
                 "dataIndex": "gradeLevel",
+                "format": "00",
                 "text": "Grade Level",
-                "format": "00"
+                "width": 97
             },
             "designerId": "5b7f4241-70f0-47f3-946b-581e795845e8"
         },
@@ -86,8 +86,8 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "lastUpdated",
-                "text": "Date",
-                "format": "m/d/Y"
+                "format": "m/d/Y",
+                "text": "Date"
             },
             "designerId": "00e18179-73c1-41db-8607-28a2e5f32442"
         },
@@ -151,8 +151,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "hidden": true,
                 "dataIndex": "version",
+                "hidden": true,
                 "text": "version"
             },
             "designerId": "dffa39a4-cf1e-4370-ab61-689be79736fa"
@@ -168,7 +168,7 @@
                 "dataIndex": "quarter",
                 "text": "Quarter"
             },
-            "designerId": "b000eeb7-46fe-4942-9861-46db83f991a5",
+            "designerId": "5ee0f30c-8621-415a-9573-764a85153f2d",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -178,7 +178,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "renderer",
                         "designer|params": [
                             "value",
                             "metaData",
@@ -188,16 +187,17 @@
                             "store",
                             "view"
                         ],
+                        "fn": "renderer",
                         "implHandler": [
                             "//debugger;",
-                            "var myobj = record.get( 'quarter' );",
-                            "var myQtrName = record.get( 'quarter' ).qtrName;",
+                            "var quartersArray = record.get( 'quarter' );",
+                            "var myQtrName = quartersArray[0].qtrName;",
+                            "//var myQtrName = record.get( 'quarter' ).qtrName;",
                             "window.console.log( 'quarter=' + myQtrName );",
-                            "return myQtrName;",
-                            ""
+                            "return myQtrName;"
                         ]
                     },
-                    "designerId": "c3b64408-c07f-49d1-a90d-ac78487f7b38"
+                    "designerId": "3a4b59d7-0374-40f6-b3d4-f120857bee00"
                 }
             ]
         },
@@ -211,7 +211,7 @@
             "userConfig": {
                 "text": "QtrYear"
             },
-            "designerId": "0a351703-b3c2-476b-82fc-f9587ebbab99",
+            "designerId": "25598ab8-6374-464b-94eb-4ee6bb3d3206",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -221,7 +221,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "renderer",
                         "designer|params": [
                             "value",
                             "metaData",
@@ -231,12 +230,13 @@
                             "store",
                             "view"
                         ],
+                        "fn": "renderer",
                         "implHandler": [
-                            "var myQtrYear = record.data.quarter.qtr_year;",
+                            "var myQtrYear = record.data.quarter[0].qtr_year;",
                             "return myQtrYear;"
                         ]
                     },
-                    "designerId": "4112e9a3-1a3a-4631-b917-cce606bba494"
+                    "designerId": "8a235f7c-3815-475b-8dd0-adf190c0b80c"
                 }
             ]
         },
@@ -251,7 +251,7 @@
                 "dataIndex": "userName",
                 "text": "UserName"
             },
-            "designerId": "c51d321d-59ab-4c0e-b3ad-4eece5c0ca1d",
+            "designerId": "11c3ec9f-bef6-4bc1-abf5-7ab926d6cece",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -261,7 +261,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "renderer",
                         "designer|params": [
                             "value",
                             "metaData",
@@ -271,15 +270,16 @@
                             "store",
                             "view"
                         ],
+                        "fn": "renderer",
                         "implHandler": [
                             "//debugger;",
                             "//var myobj = record.get( 'quarter' ).student;",
-                            "var myuser = record.data.quarter.student.userName;",
+                            "var myuser = record.data.quarter[0].student.userName;",
                             "window.console.log( 'userName=' + myuser );",
                             "return myuser;"
                         ]
                     },
-                    "designerId": "6572b6ca-9ce7-4eea-9621-a04e4291fe92"
+                    "designerId": "4f63260a-5ac7-4af8-89d7-dc9f52cb8ced"
                 }
             ]
         },
@@ -294,7 +294,7 @@
                 "dataIndex": "grade",
                 "text": "Grade"
             },
-            "designerId": "9f37b8b8-48ec-4082-80c9-93fc46b795a0",
+            "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -304,7 +304,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fn": "renderer",
                         "designer|params": [
                             "value",
                             "metaData",
@@ -314,13 +313,13 @@
                             "store",
                             "view"
                         ],
+                        "fn": "renderer",
                         "implHandler": [
-                            "var grade = record.data.quarter.grade;",
-                            "return grade;",
-                            ""
+                            "var grade = record.data.quarter[0].grade;",
+                            "return grade;"
                         ]
                     },
-                    "designerId": "1af31fe3-8576-461f-890d-e368dab87220"
+                    "designerId": "ab95f3c1-dd86-4c1a-b2f7-3493567cb0eb"
                 },
                 {
                     "type": "Ext.form.field.Number",
@@ -329,7 +328,7 @@
                         "type": "object"
                     },
                     "codeClass": null,
-                    "designerId": "224bba92-108c-48f4-b46d-65596844fe3e"
+                    "designerId": "da5e6cb9-caa1-4691-8cb1-7b4284c7f3be"
                 }
             ]
         }

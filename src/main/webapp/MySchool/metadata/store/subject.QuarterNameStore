@@ -7,9 +7,9 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
+        "designer|userClassName": "subject.QuarterNameStore",
         "model": "subject.QuarterNamesModel",
-        "storeId": "subject.QuarterNameStore",
-        "designer|userClassName": "subject.QuarterNameStore"
+        "storeId": "subject.QuarterNameStore"
     },
     "designerId": "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f",
     "cn": [
@@ -21,10 +21,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "quarternameses",
                 "headers": [
                     "{ 'Accept' : 'application/json' }"
-                ]
+                ],
+                "url": "quarternameses"
             },
             "designerId": "afc3d57b-1e49-4fa0-9f36-327a189a5f7e",
             "cn": [

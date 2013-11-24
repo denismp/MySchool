@@ -6,19 +6,19 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoScroll": true,
+        "designer|initialView": true,
+        "designer|userClassName": "MainPanel",
         "height": null,
         "id": null,
         "itemId": "mainpanel",
+        "layout": "fit",
         "maxHeight": 700,
         "maxWidth": 1300,
         "minHeight": 700,
         "minWidth": 1300,
-        "width": null,
-        "designer|userClassName": "MainPanel",
-        "designer|initialView": true,
-        "autoScroll": true,
-        "layout": "fit",
-        "title": null
+        "title": null,
+        "width": null
     },
     "designerId": "27da7831-10e9-4a0b-9ee5-fef9b1e7c0a5",
     "cn": [
@@ -30,14 +30,14 @@
             },
             "codeClass": null,
             "userConfig": {
+                "activeTab": 0,
                 "dock": null,
-                "weight": null,
                 "height": null,
                 "id": "maintabpanel",
                 "minHeight": 700,
-                "width": null,
                 "title": null,
-                "activeTab": 0
+                "weight": null,
+                "width": null
             },
             "designerId": "cfd3253d-3156-4994-9147-41e326a31000",
             "cn": [
@@ -52,10 +52,10 @@
                         "container|align": "stretch",
                         "height": null,
                         "id": "subjecttab",
-                        "minHeight": null,
-                        "width": 1000,
                         "layout": "hbox",
-                        "title": "Subjects"
+                        "minHeight": null,
+                        "title": "Subjects",
+                        "width": 1000
                     },
                     "designerId": "fb1300bf-ded0-4acd-9e1d-1aca3d27d7b2",
                     "cn": [
@@ -95,10 +95,10 @@
                         "container|align": "stretch",
                         "height": 700,
                         "id": "bodiesofworkstab",
-                        "minHeight": null,
-                        "width": null,
                         "layout": "hbox",
-                        "title": "Bodies Of Work"
+                        "minHeight": null,
+                        "title": "Bodies Of Work",
+                        "width": null
                     },
                     "designerId": "3e88dbd2-62d7-4431-a4ef-11f56ac92ed0",
                     "cn": [
@@ -110,10 +110,10 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "container|align": "stretch",
                                 "id": "bodiesofworkpanel",
                                 "layout": "hbox",
+                                "layout|flex": 1,
                                 "title": "Bodies Of Work By Student And Subject"
                             },
                             "designerId": "21a8b09a-e2ae-4636-b661-9a84ef985b6f",
@@ -126,12 +126,12 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": 1,
-                                        "id": "bodiesofworkssubjectsgrid",
-                                        "width": null,
                                         "autoScroll": true,
+                                        "forceFit": true,
+                                        "id": "bodiesofworkssubjectsgrid",
+                                        "layout|flex": 1,
                                         "title": "[student name] Bodies Of Work",
-                                        "forceFit": true
+                                        "width": null
                                     },
                                     "designerId": "60e8c9ff-8df2-476d-ae19-be233c480ab6",
                                     "cn": [
@@ -144,8 +144,8 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "dataIndex": "subject_name",
-                                                "text": "Subject Name",
-                                                "flex": null
+                                                "flex": null,
+                                                "text": "Subject Name"
                                             },
                                             "designerId": "565e1844-32b0-40b5-b75d-b0896c49615b"
                                         },
@@ -171,8 +171,8 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "dataIndex": "grade_level",
-                                                "text": "Grade Level",
-                                                "format": "00.00"
+                                                "format": "00.00",
+                                                "text": "Grade Level"
                                             },
                                             "designerId": "1b733e03-f38b-4d5f-ab71-5ecda7c36fcc"
                                         },
@@ -198,8 +198,8 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "dataIndex": "credit_hours",
-                                                "text": "Credit Hours",
-                                                "format": "00.00"
+                                                "format": "00.00",
+                                                "text": "Credit Hours"
                                             },
                                             "designerId": "0be8f3e9-fa4e-473c-8d47-e5f87a4b151e"
                                         },
@@ -225,8 +225,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "8e83f2e4-0aee-4ac1-83b5-289edf308afe"
@@ -280,13 +280,13 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": 1,
+                                        "bodyPadding": 10,
                                         "height": null,
                                         "id": "bodyofworkform",
+                                        "layout|flex": 1,
                                         "minHeight": null,
-                                        "width": 508,
-                                        "bodyPadding": 10,
-                                        "title": "Body Of Work"
+                                        "title": "Body Of Work",
+                                        "width": 508
                                     },
                                     "designerId": "4e6738f5-b593-4225-a89c-ec88da7d8429",
                                     "cn": [
@@ -298,10 +298,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": "100%",
                                                 "dock": null,
+                                                "fieldLabel": "Name",
                                                 "id": "bodyofworknametextfield",
-                                                "fieldLabel": "Name"
+                                                "layout|anchor": "100%"
                                             },
                                             "designerId": "0371a996-6cc4-488e-8a88-7ebefaa9217c"
                                         },
@@ -313,11 +313,11 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": null,
-                                                "id": "bodyofworkwhattextbox",
-                                                "width": 492,
                                                 "fieldLabel": "What",
-                                                "size": 5
+                                                "id": "bodyofworkwhattextbox",
+                                                "layout|anchor": null,
+                                                "size": 5,
+                                                "width": 492
                                             },
                                             "designerId": "912d34de-d360-45c5-9050-2d462bf94264"
                                         },
@@ -329,9 +329,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": "100%",
+                                                "fieldLabel": "Description",
                                                 "id": "bodyofworkdescriptiontextbox",
-                                                "fieldLabel": "Description"
+                                                "layout|anchor": "100%"
                                             },
                                             "designerId": "534c08e9-82d7-4592-8e5d-1e166174e17f"
                                         },
@@ -343,9 +343,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": "100%",
+                                                "fieldLabel": "Objective",
                                                 "id": "bodyofworkobjectivetextbox",
-                                                "fieldLabel": "Objective"
+                                                "layout|anchor": "100%"
                                             },
                                             "designerId": "77fdd8cb-3a60-4df9-8380-01bb9c8632a4"
                                         },
@@ -357,11 +357,11 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": "100%",
-                                                "id": "bodyofworkactivecheckbox",
-                                                "fieldLabel": "",
                                                 "boxLabel": "Active?",
-                                                "checked": true
+                                                "checked": true,
+                                                "fieldLabel": "",
+                                                "id": "bodyofworkactivecheckbox",
+                                                "layout|anchor": "100%"
                                             },
                                             "designerId": "56d804cc-6e99-4182-a41c-cf06629ad4da"
                                         },
@@ -373,10 +373,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|anchor": "100%",
-                                                "id": "bodyofworklockcheckbox",
+                                                "boxLabel": "Lock?",
                                                 "fieldLabel": "",
-                                                "boxLabel": "Lock?"
+                                                "id": "bodyofworklockcheckbox",
+                                                "layout|anchor": "100%"
                                             },
                                             "designerId": "ab166049-ba71-4504-8cc6-ed80f89ebb72"
                                         }
@@ -404,13 +404,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -441,13 +441,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -478,13 +478,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -515,13 +515,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -552,13 +552,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -589,13 +589,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -628,8 +628,8 @@
                         "container|align": "stretch",
                         "height": null,
                         "id": "dailytab",
-                        "minHeight": null,
                         "layout": "vbox",
+                        "minHeight": null,
                         "title": "Daily"
                     },
                     "designerId": "12830a72-ef36-4dc0-990b-e262d5e0ae84",
@@ -654,12 +654,12 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "dock": "top",
                                 "height": 673,
+                                "layout|flex": 1,
                                 "minHeight": null,
-                                "width": 1398,
-                                "title": "Daily Details"
+                                "title": "Daily Details",
+                                "width": 1398
                             },
                             "designerId": "baadcd12-5910-4e06-a46d-4268d00e4488",
                             "cn": [
@@ -671,14 +671,14 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "autoScroll": true,
                                         "dock": "top",
+                                        "forceFit": true,
                                         "height": 373,
                                         "id": "dailysubjectsgridpanel",
                                         "minHeight": null,
-                                        "width": 967,
-                                        "autoScroll": true,
                                         "title": "[student name]Bodies of Work by Subject",
-                                        "forceFit": true
+                                        "width": 967
                                     },
                                     "designerId": "932f9720-6a6e-483d-9d2b-6f66fd019b0d",
                                     "cn": [
@@ -768,9 +768,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 105,
                                                 "dataIndex": "grade_level",
-                                                "text": "Grade Level"
+                                                "text": "Grade Level",
+                                                "width": 105
                                             },
                                             "designerId": "67bb2b99-4f6a-4ed9-874b-ce10b6afb0dd"
                                         },
@@ -807,8 +807,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "07126645-d588-4a88-bef3-0713cad402e3"
@@ -887,11 +887,11 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "activeTab": 0,
                                         "dock": "bottom",
                                         "height": 300,
                                         "minHeight": 300,
-                                        "title": null,
-                                        "activeTab": 0
+                                        "title": null
                                     },
                                     "designerId": "bc1fca87-d7de-4139-808a-80dfd9de9ad3",
                                     "cn": [
@@ -925,13 +925,13 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
+                                                        "autoScroll": true,
+                                                        "bodyPadding": 10,
                                                         "dock": "top",
                                                         "height": null,
                                                         "id": "hours",
-                                                        "minHeight": 300,
-                                                        "autoScroll": true,
                                                         "layout": "auto",
-                                                        "bodyPadding": 10,
+                                                        "minHeight": 300,
                                                         "title": null
                                                     },
                                                     "designerId": "01b90dea-2c3e-49e6-b8bd-89fcae2590e9",
@@ -945,10 +945,10 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "dock": null,
-                                                                "id": "dailydetailsformhournumberfield",
-                                                                "minHeight": null,
                                                                 "fieldLabel": null,
-                                                                "labelWidth": 50
+                                                                "id": "dailydetailsformhournumberfield",
+                                                                "labelWidth": 50,
+                                                                "minHeight": null
                                                             },
                                                             "designerId": "8b5b0f93-31ca-4369-8ddb-02c4b96b1fa3"
                                                         }
@@ -990,9 +990,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "dailydetailsresoucesusedtextarea",
-                                                        "minHeight": 273,
-                                                        "fieldLabel": null
+                                                        "minHeight": 273
                                                     },
                                                     "designerId": "63010124-a777-4175-ab3c-3ab2795eb1d7"
                                                 }
@@ -1029,9 +1029,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "dailydetailsstudydetailstextarea",
-                                                        "minHeight": 273,
-                                                        "fieldLabel": null
+                                                        "minHeight": 273
                                                     },
                                                     "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
                                                 }
@@ -1045,10 +1045,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "height": null,
-                                                "minHeight": 300,
-                                                "layout": "fit",
                                                 "bodyPadding": 10,
+                                                "height": null,
+                                                "layout": "fit",
+                                                "minHeight": 300,
                                                 "title": "Evaluation"
                                             },
                                             "designerId": "6f41f03f-1f0e-4ad9-83e9-ba3e606ab13f",
@@ -1071,9 +1071,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "dailydetailsevaluationtextarea",
-                                                        "minHeight": 273,
-                                                        "fieldLabel": null
+                                                        "minHeight": 273
                                                     },
                                                     "designerId": "4888bb3e-48cc-4e5e-8bca-72875f94bcf3"
                                                 }
@@ -1108,9 +1108,9 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
+                                                        "bodyPadding": 10,
                                                         "dock": "top",
                                                         "layout": "fit",
-                                                        "bodyPadding": 10,
                                                         "title": null
                                                     },
                                                     "designerId": "267fb73e-c8fb-4a0b-8b6b-902063b68bf2",
@@ -1124,9 +1124,9 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "dock": "top",
+                                                                "fieldLabel": null,
                                                                 "id": "dailydetailscorrectiontextarea",
-                                                                "minHeight": 273,
-                                                                "fieldLabel": null
+                                                                "minHeight": 273
                                                             },
                                                             "designerId": "278bad8f-3d7a-4d3a-9c9f-65e98e93eb2f"
                                                         }
@@ -1163,9 +1163,9 @@
                                                     },
                                                     "codeClass": null,
                                                     "userConfig": {
+                                                        "bodyPadding": 10,
                                                         "dock": "top",
                                                         "layout": "fit",
-                                                        "bodyPadding": 10,
                                                         "title": null
                                                     },
                                                     "designerId": "c03f0ec3-ce6a-46a7-8c8b-a15b58f36ac7",
@@ -1179,9 +1179,9 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "dock": "top",
+                                                                "fieldLabel": null,
                                                                 "id": "dailydetailsactiontextarea",
-                                                                "minHeight": 273,
-                                                                "fieldLabel": null
+                                                                "minHeight": 273
                                                             },
                                                             "designerId": "320279a1-83da-40db-ae45-b1cda9799201"
                                                         }
@@ -1213,13 +1213,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -1250,13 +1250,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -1287,13 +1287,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -1324,13 +1324,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -1361,13 +1361,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -1398,13 +1398,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -1427,8 +1427,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "id": "weeklyskillstab",
-                        "minHeight": 700,
                         "layout": "vbox",
+                        "minHeight": 700,
                         "title": "Weekly Skills"
                     },
                     "designerId": "88e382a5-8ee4-43fa-acb1-3d6b152fc797",
@@ -1450,9 +1450,9 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "dock": null,
                                 "layout": "fit",
+                                "layout|flex": 1,
                                 "title": "Weekly Details"
                             },
                             "designerId": "1d5a17a3-440b-46be-b8af-34f5f9386cb9",
@@ -1465,13 +1465,13 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "autoScroll": true,
                                         "dock": null,
+                                        "forceFit": true,
                                         "height": null,
                                         "id": "weeklyskillsgridpanel",
-                                        "width": 963,
-                                        "autoScroll": true,
                                         "title": "[student name]Weekly Skills By Subject And Week",
-                                        "forceFit": true
+                                        "width": 963
                                     },
                                     "designerId": "c7e6ca3c-0f7a-4558-819a-bbfe042a994b",
                                     "cn": [
@@ -1632,8 +1632,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "d3c8425e-a733-4dd9-87df-b927d4d66e69"
@@ -1701,13 +1701,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -1738,13 +1738,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -1775,13 +1775,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -1812,13 +1812,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -1849,13 +1849,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -1886,13 +1886,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -1915,8 +1915,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "id": "weeklyevaluatontab",
-                        "minHeight": 700,
                         "layout": "hbox",
+                        "minHeight": 700,
                         "title": "Weekly Evaluation"
                     },
                     "designerId": "cd9b09a5-47dd-42d1-b069-b568141ddd39",
@@ -1938,9 +1938,9 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "height": 700,
                                 "layout": "fit",
+                                "layout|flex": 1,
                                 "title": "Weekly Evaluation Details"
                             },
                             "designerId": "e7113ed6-fd1a-479f-87c5-7a1e370f26ae",
@@ -1953,13 +1953,13 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "autoScroll": true,
                                         "dock": null,
+                                        "forceFit": true,
                                         "height": null,
                                         "id": "weeklyevaluationgridpanel",
-                                        "width": 150,
-                                        "autoScroll": true,
                                         "title": "[student name]Weekly Evaluation By Subject And Week",
-                                        "forceFit": true
+                                        "width": 150
                                     },
                                     "designerId": "f832e2d5-5b21-4b10-9c60-d5336b6f9662",
                                     "cn": [
@@ -1971,9 +1971,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 131,
                                                 "dataIndex": "subject_name",
-                                                "text": "Subject Name"
+                                                "text": "Subject Name",
+                                                "width": 131
                                             },
                                             "designerId": "a05b70cb-f332-4720-ab3e-792f9dafdf09"
                                         },
@@ -1985,9 +1985,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 65,
                                                 "dataIndex": "year",
-                                                "text": "Year"
+                                                "text": "Year",
+                                                "width": 65
                                             },
                                             "designerId": "4141ab1d-6860-438d-a5fc-d81db9e136b4"
                                         },
@@ -1999,9 +1999,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 71,
                                                 "dataIndex": "month",
-                                                "text": "Month"
+                                                "text": "Month",
+                                                "width": 71
                                             },
                                             "designerId": "56cacd8d-c4b5-4530-8eaf-233d5c7c750c"
                                         },
@@ -2013,9 +2013,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 71,
                                                 "dataIndex": "week",
-                                                "text": "Week"
+                                                "text": "Week",
+                                                "width": 71
                                             },
                                             "designerId": "d556b5fa-c9b0-4a93-b96c-721d23ce14e9"
                                         },
@@ -2027,8 +2027,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 78,
-                                                "text": "Motivation"
+                                                "text": "Motivation",
+                                                "width": 78
                                             },
                                             "designerId": "629ef139-7dfd-4489-a117-9da7d6e301aa"
                                         },
@@ -2040,8 +2040,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 79,
-                                                "text": "Organization"
+                                                "text": "Organization",
+                                                "width": 79
                                             },
                                             "designerId": "96981f1b-cd9e-4272-a49e-22d73eef85bb"
                                         },
@@ -2053,8 +2053,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 127,
-                                                "text": "Effective Use Of Time"
+                                                "text": "Effective Use Of Time",
+                                                "width": 127
                                             },
                                             "designerId": "fac45ae3-3e84-4abd-9eb5-b3c69c68ed1b"
                                         },
@@ -2090,8 +2090,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 115,
-                                                "text": "Complexity Of Work"
+                                                "text": "Complexity Of Work",
+                                                "width": 115
                                             },
                                             "designerId": "768812ce-276d-43f2-92f3-dff57d3b2edf"
                                         },
@@ -2153,8 +2153,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "56d412b7-5aa4-436f-8a94-9dc90af8000a"
@@ -2222,13 +2222,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -2259,13 +2259,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -2296,13 +2296,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -2333,13 +2333,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -2370,13 +2370,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -2407,13 +2407,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -2436,8 +2436,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "id": "montlysummarytab",
-                        "minHeight": 700,
                         "layout": "hbox",
+                        "minHeight": 700,
                         "title": "Monthly Summary"
                     },
                     "designerId": "a7dc48a2-0b3e-462c-a517-bbe625fe0025",
@@ -2459,8 +2459,8 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "layout": "fit",
+                                "layout|flex": 1,
                                 "title": "Montly Summary Details"
                             },
                             "designerId": "1d81fa0f-19ba-4a08-ad15-c9f1f16c30f2",
@@ -2474,11 +2474,11 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "dock": "top",
+                                        "forceFit": true,
                                         "height": 373,
                                         "id": "monthlysumarygridpanel",
-                                        "width": 150,
                                         "title": "[student name]",
-                                        "forceFit": true
+                                        "width": 150
                                     },
                                     "designerId": "80b19bba-acab-4ecb-bf0d-dd22305d9510",
                                     "cn": [
@@ -2529,8 +2529,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "6c402dec-0b36-4964-bae6-d0a398b1e408"
@@ -2582,11 +2582,11 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "activeTab": 0,
                                         "dock": null,
                                         "height": 300,
                                         "minHeight": 300,
-                                        "width": 1398,
-                                        "activeTab": 0
+                                        "width": 1398
                                     },
                                     "designerId": "b704dcad-56ac-4094-a87f-939bb3167a4d",
                                     "cn": [
@@ -2621,10 +2621,10 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "height": null,
                                                         "id": "feelingstextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "ca1fb2df-8e41-4778-ae43-a0946d4fa2d2"
                                                 }
@@ -2661,9 +2661,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "reflectionstextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "a4654cd3-eb73-4b3e-842a-a41cc955a8a4"
                                                 }
@@ -2700,9 +2700,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": "",
                                                         "id": "patcorrectionstextpad",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": ""
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "372ed89c-e5f6-49e2-9cb5-65910951f8dc"
                                                 }
@@ -2739,9 +2739,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "effectivenestextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "c7864aa3-4945-4d69-a52a-e2faf796b316"
                                                 }
@@ -2778,9 +2778,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "actionresultstextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "474264ad-a04f-4e6b-b850-39280b58ec20"
                                                 }
@@ -2817,9 +2817,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "realizationstextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "582f84f6-8247-4c9d-a78f-85e7479ab3e8"
                                                 }
@@ -2856,9 +2856,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "plannedchangestextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "1fefa92e-c4a2-4bca-90c4-1ae08d16996b"
                                                 }
@@ -2895,9 +2895,9 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "dock": "top",
+                                                        "fieldLabel": null,
                                                         "id": "commentstextbox",
-                                                        "minHeight": 320,
-                                                        "fieldLabel": null
+                                                        "minHeight": 320
                                                     },
                                                     "designerId": "58f10870-5685-4d54-83d3-fa75ca4f10d8"
                                                 }
@@ -2927,13 +2927,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -2964,13 +2964,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -3001,13 +3001,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -3038,13 +3038,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -3075,13 +3075,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -3112,13 +3112,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -3141,8 +3141,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "id": "monthlyevaluationtab",
-                        "minHeight": 700,
                         "layout": "hbox",
+                        "minHeight": 700,
                         "title": "Monthly Evaluation"
                     },
                     "designerId": "083d9f90-119e-4b38-a47c-3b19d47e65bf",
@@ -3164,8 +3164,8 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "layout|flex": 1,
                                 "layout": "fit",
+                                "layout|flex": 1,
                                 "title": "Monthly Evaluation Details"
                             },
                             "designerId": "107a9fcf-2ac3-46e4-844e-82041b543312",
@@ -3178,10 +3178,10 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "forceFit": true,
                                         "id": "montlyevaluationgridpanel",
-                                        "width": 150,
                                         "title": "[student name]",
-                                        "forceFit": true
+                                        "width": 150
                                     },
                                     "designerId": "41081e24-e698-49d2-87df-136b720846cf",
                                     "cn": [
@@ -3193,9 +3193,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 30,
                                                 "dataIndex": "year",
-                                                "text": "Year"
+                                                "text": "Year",
+                                                "width": 30
                                             },
                                             "designerId": "839e04c4-3b50-4fdc-aadd-35dbee6d5ccf"
                                         },
@@ -3207,9 +3207,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 35,
                                                 "dataIndex": "month",
-                                                "text": "Month"
+                                                "text": "Month",
+                                                "width": 35
                                             },
                                             "designerId": "71c008a0-0374-447f-b282-0c108ad8b4b3"
                                         },
@@ -3233,9 +3233,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 75,
                                                 "defaultWidth": 70,
-                                                "text": "LevelOfDifficulty"
+                                                "text": "LevelOfDifficulty",
+                                                "width": 75
                                             },
                                             "designerId": "991f26be-8a71-428c-9723-46ffca3d0fc9"
                                         },
@@ -3247,8 +3247,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 70,
-                                                "text": "CriticalThinking"
+                                                "text": "CriticalThinking",
+                                                "width": 70
                                             },
                                             "designerId": "421412dc-e838-4956-8e8c-d340096e7573"
                                         },
@@ -3260,9 +3260,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 90,
                                                 "defaultWidth": 70,
-                                                "text": "EffCorrectionActions"
+                                                "text": "EffCorrectionActions",
+                                                "width": 90
                                             },
                                             "designerId": "21aa0d0a-06d2-430d-bc6a-d02d21841b39"
                                         },
@@ -3274,8 +3274,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 110,
-                                                "text": "AccuratelyIDsCorrections"
+                                                "text": "AccuratelyIDsCorrections",
+                                                "width": 110
                                             },
                                             "designerId": "8d4fa7bc-1c46-45df-8db4-357f151bf1ea"
                                         },
@@ -3287,8 +3287,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 115,
-                                                "text": "CompletesCourseObjectives"
+                                                "text": "CompletesCourseObjectives",
+                                                "width": 115
                                             },
                                             "designerId": "ec21f182-6d96-484a-9fe9-5d0ebcbf8f04"
                                         },
@@ -3300,8 +3300,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 115,
-                                                "text": "ThoughtfulnessOfReflections"
+                                                "text": "ThoughtfulnessOfReflections",
+                                                "width": 115
                                             },
                                             "designerId": "67263cf2-92f9-41fc-a97c-5fc4bd6c25a0"
                                         },
@@ -3313,8 +3313,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 110,
-                                                "text": "ResponsibilityOfProgress"
+                                                "text": "ResponsibilityOfProgress",
+                                                "width": 110
                                             },
                                             "designerId": "6978d133-e93f-455a-b4d7-538bfbf0a037"
                                         },
@@ -3326,8 +3326,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 95,
-                                                "text": "WorksEffWithAdvisor"
+                                                "text": "WorksEffWithAdvisor",
+                                                "width": 95
                                             },
                                             "designerId": "ffbfaa33-7d49-4045-bb21-be30aeb65fc6"
                                         },
@@ -3339,8 +3339,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "width": 50,
-                                                "text": "Locked?"
+                                                "text": "Locked?",
+                                                "width": 50
                                             },
                                             "designerId": "a65b85c6-286f-416a-b54d-62ce208d404f"
                                         },
@@ -3352,8 +3352,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "student_id",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "3728e59f-6195-4d1e-a9dd-8761a1a1cbf4"
@@ -3379,8 +3379,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "date",
+                                                "hidden": true,
                                                 "text": "Date"
                                             },
                                             "designerId": "2720fda3-2516-4bb2-a59d-498b5bfbe14c"
@@ -3409,13 +3409,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -3446,13 +3446,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -3483,13 +3483,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -3520,13 +3520,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -3557,13 +3557,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -3594,13 +3594,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -3622,8 +3622,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "id": "gradestab",
-                        "minHeight": 600,
                         "layout": "fit",
+                        "minHeight": 600,
                         "title": "Grades"
                     },
                     "designerId": "0dfa15dc-f357-46ab-be8c-613623b4bbf8",
@@ -3659,11 +3659,11 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "dock": "top",
+                                        "forceFit": true,
                                         "id": "gradesgridpanel",
                                         "minHeight": 700,
-                                        "width": 150,
                                         "title": null,
-                                        "forceFit": true
+                                        "width": 150
                                     },
                                     "designerId": "b45fcc31-eb2a-4b62-8c92-b04a5eb09ba5",
                                     "cn": [
@@ -3804,13 +3804,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -3841,13 +3841,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -3878,13 +3878,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -3915,13 +3915,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -3952,13 +3952,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -3989,13 +3989,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -4052,13 +4052,13 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "autoScroll": true,
+                                        "columnLines": true,
                                         "dock": "top",
+                                        "forceFit": false,
                                         "height": null,
                                         "minHeight": 150,
-                                        "autoScroll": true,
-                                        "title": "[faculty name]Students",
-                                        "columnLines": true,
-                                        "forceFit": false
+                                        "title": "[faculty name]Students"
                                     },
                                     "designerId": "c68e48cb-5e8c-4392-b39e-0648a874e885",
                                     "cn": [
@@ -4070,8 +4070,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "idstudent",
+                                                "hidden": true,
                                                 "text": "idstudent"
                                             },
                                             "designerId": "da533f8e-94e3-4866-ad29-710ff93de7ea"
@@ -4161,8 +4161,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "idfaculty",
+                                                "hidden": true,
                                                 "text": "idfaculty"
                                             },
                                             "designerId": "9d610768-9ed9-4697-8110-bec753733662"
@@ -4177,15 +4177,15 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "dock": "bottom",
-                                        "height": null,
-                                        "id": "idstudentprofileform",
-                                        "minHeight": 500,
                                         "autoScroll": true,
-                                        "layout": "vbox",
                                         "bodyPadding": 10,
                                         "collapseFirst": false,
+                                        "dock": "bottom",
                                         "frameHeader": false,
+                                        "height": null,
+                                        "id": "idstudentprofileform",
+                                        "layout": "vbox",
+                                        "minHeight": 500,
                                         "title": "Student Profile Form"
                                     },
                                     "designerId": "4000fb2a-17ac-4adb-a043-3c0fe633ea9c",
@@ -4198,9 +4198,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "fieldLabel": "First Name",
                                                 "id": "idfirstname",
-                                                "width": 300,
-                                                "fieldLabel": "First Name"
+                                                "width": 300
                                             },
                                             "designerId": "50a87de6-d373-41dc-843f-9d631900b77a"
                                         },
@@ -4212,9 +4212,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "fieldLabel": "Middle Name",
                                                 "id": "idmiddlename",
-                                                "width": 300,
-                                                "fieldLabel": "Middle Name"
+                                                "width": 300
                                             },
                                             "designerId": "16dc1f4d-4471-4328-aa51-3ffa9a54dd14"
                                         },
@@ -4226,10 +4226,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Last Name",
                                                 "id": "idlastname",
-                                                "width": 300,
-                                                "fieldLabel": "Last Name"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "d655c360-fcf1-4401-a50b-aea8aa55cfcb"
                                         },
@@ -4241,9 +4241,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Mobile Phone",
                                                 "id": "idmobile",
-                                                "fieldLabel": "Mobile Phone"
+                                                "layout|flex": null
                                             },
                                             "designerId": "af996aea-d4bc-4d06-91e5-137e49a66866"
                                         },
@@ -4255,9 +4255,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Phone",
                                                 "id": "idphone",
-                                                "fieldLabel": "Phone"
+                                                "layout|flex": null
                                             },
                                             "designerId": "db28b09c-d29e-4502-a397-e3d68f0f6acb"
                                         },
@@ -4269,10 +4269,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Address1",
                                                 "id": "idaddress1",
-                                                "width": 300,
-                                                "fieldLabel": "Address1"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "bdf2b650-0ff0-4a04-bbf7-74d2a36aa2d5"
                                         },
@@ -4284,10 +4284,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Address2",
                                                 "id": "idaddress2",
-                                                "width": 300,
-                                                "fieldLabel": "Address2"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "243080d5-d5a1-4aa1-9c07-7fd1fc37cd15"
                                         },
@@ -4299,10 +4299,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Street",
                                                 "id": "idstreet",
-                                                "width": 300,
-                                                "fieldLabel": "Street"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "e8ae83c7-7d61-4521-aafa-7217ce03fae4"
                                         },
@@ -4314,10 +4314,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "City",
                                                 "id": "idcity",
-                                                "width": 300,
-                                                "fieldLabel": "City"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "a96afa92-bc90-4dd7-978a-acadd30b4351"
                                         },
@@ -4329,10 +4329,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Province/State",
                                                 "id": "idprovince",
-                                                "width": 300,
-                                                "fieldLabel": "Province/State"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "b02fff11-40c8-48b1-8f37-3475e6fafa1e"
                                         },
@@ -4344,8 +4344,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
-                                                "fieldLabel": "Postal Code"
+                                                "fieldLabel": "Postal Code",
+                                                "layout|flex": null
                                             },
                                             "designerId": "397a635e-166d-407e-808a-6d9da1ee2050"
                                         },
@@ -4357,9 +4357,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Country",
                                                 "id": "idcountry",
-                                                "fieldLabel": "Country"
+                                                "layout|flex": null
                                             },
                                             "designerId": "6760b060-44cf-4690-a611-8c8e71860906"
                                         },
@@ -4371,10 +4371,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Email",
                                                 "id": "idemail",
-                                                "width": 300,
-                                                "fieldLabel": "Email"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "db650021-66f0-4084-aae0-ed6a8ef6ce77"
                                         },
@@ -4386,9 +4386,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "fieldLabel": "Faculty ID",
                                                 "id": "idfacultyid",
-                                                "width": null,
-                                                "fieldLabel": "Faculty ID"
+                                                "width": null
                                             },
                                             "designerId": "f7f657bb-2210-498e-b84f-0c56f5a106c1"
                                         }
@@ -4416,13 +4416,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -4453,13 +4453,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -4490,13 +4490,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -4527,13 +4527,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -4564,13 +4564,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -4601,13 +4601,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]
@@ -4666,13 +4666,13 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "autoScroll": true,
                                         "dock": "top",
+                                        "forceFit": true,
                                         "height": null,
                                         "maxHeight": 150,
                                         "minHeight": 150,
-                                        "autoScroll": true,
-                                        "title": "Faculty",
-                                        "forceFit": true
+                                        "title": "Faculty"
                                     },
                                     "designerId": "6c5096f4-11df-4b0d-8062-d94b211d543b",
                                     "cn": [
@@ -4684,8 +4684,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "idstudent",
+                                                "hidden": true,
                                                 "text": "idfaculty"
                                             },
                                             "designerId": "e4470ec3-af51-4606-acaf-1917442b5f19"
@@ -4775,8 +4775,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "hidden": true,
                                                 "dataIndex": "idfaculty",
+                                                "hidden": true,
                                                 "text": "idfaculty"
                                             },
                                             "designerId": "36e3a1e8-3e1c-43c9-9c02-f9bb1af81d4c"
@@ -4791,15 +4791,15 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "dock": "bottom",
-                                        "height": null,
-                                        "id": "idfacultyprofileform",
-                                        "minHeight": 500,
                                         "autoScroll": true,
-                                        "layout": "vbox",
                                         "bodyPadding": 10,
                                         "collapseFirst": false,
+                                        "dock": "bottom",
                                         "frameHeader": false,
+                                        "height": null,
+                                        "id": "idfacultyprofileform",
+                                        "layout": "vbox",
+                                        "minHeight": 500,
                                         "title": "Faculty Profile Form"
                                     },
                                     "designerId": "51d163b2-3150-4d7e-b677-0252cdf21c84",
@@ -4812,9 +4812,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "fieldLabel": "First Name",
                                                 "id": "idfirstname1",
-                                                "width": 300,
-                                                "fieldLabel": "First Name"
+                                                "width": 300
                                             },
                                             "designerId": "61f0fb7c-6c0d-46de-851a-bf18b5e21626"
                                         },
@@ -4826,9 +4826,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "fieldLabel": "Middle Name",
                                                 "id": "idmiddlename1",
-                                                "width": 300,
-                                                "fieldLabel": "Middle Name"
+                                                "width": 300
                                             },
                                             "designerId": "6c657786-b932-4897-8b56-ec47440d25f7"
                                         },
@@ -4840,10 +4840,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Last Name",
                                                 "id": "idlastname1",
-                                                "width": 300,
-                                                "fieldLabel": "Last Name"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "b037a268-f900-4934-ae43-558c49164097"
                                         },
@@ -4855,9 +4855,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Mobile Phone",
                                                 "id": "idmobile1",
-                                                "fieldLabel": "Mobile Phone"
+                                                "layout|flex": null
                                             },
                                             "designerId": "6248f552-4529-42c9-a113-320a1a743e9d"
                                         },
@@ -4869,9 +4869,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Phone",
                                                 "id": "idphone1",
-                                                "fieldLabel": "Phone"
+                                                "layout|flex": null
                                             },
                                             "designerId": "9f902437-bd94-4f4d-afd7-32db8ba8351f"
                                         },
@@ -4883,10 +4883,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Address1",
                                                 "id": "idaddress3",
-                                                "width": 300,
-                                                "fieldLabel": "Address1"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "5dcb65e6-d03f-44b7-b833-d8d62e6e1b69"
                                         },
@@ -4898,10 +4898,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Address2",
                                                 "id": "idaddress4",
-                                                "width": 300,
-                                                "fieldLabel": "Address2"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "fcff7874-0d1d-47ee-ad40-93d5b98e23c9"
                                         },
@@ -4913,10 +4913,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Street",
                                                 "id": "idstreet1",
-                                                "width": 300,
-                                                "fieldLabel": "Street"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "1067f47e-c179-4070-9dad-4f66699611c8"
                                         },
@@ -4928,10 +4928,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "City",
                                                 "id": "idcity1",
-                                                "width": 300,
-                                                "fieldLabel": "City"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "a7e6de7a-061d-4037-bf82-a43e7ed1c4c3"
                                         },
@@ -4943,10 +4943,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Province/State",
                                                 "id": "idprovince1",
-                                                "width": 300,
-                                                "fieldLabel": "Province/State"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "f4a2b25c-ff20-4738-b804-221ffbdcf49c"
                                         },
@@ -4958,8 +4958,8 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
-                                                "fieldLabel": "Postal Code"
+                                                "fieldLabel": "Postal Code",
+                                                "layout|flex": null
                                             },
                                             "designerId": "926b1c50-6f72-450e-977f-f8a77c91f0d8"
                                         },
@@ -4971,9 +4971,9 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Country",
                                                 "id": "idcountry1",
-                                                "fieldLabel": "Country"
+                                                "layout|flex": null
                                             },
                                             "designerId": "e237dad0-edee-42b6-987a-7e942eb08e49"
                                         },
@@ -4985,10 +4985,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "fieldLabel": "Email",
                                                 "id": "idemail1",
-                                                "width": 300,
-                                                "fieldLabel": "Email"
+                                                "layout|flex": null,
+                                                "width": 300
                                             },
                                             "designerId": "99850d56-6bb0-4bea-a2ea-0e432dbef162"
                                         },
@@ -5000,11 +5000,11 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "layout|flex": null,
+                                                "editable": false,
+                                                "fieldLabel": "Role",
                                                 "formBind": false,
                                                 "id": "idrole",
-                                                "fieldLabel": "Role",
-                                                "editable": false
+                                                "layout|flex": null
                                             },
                                             "designerId": "4ef96f91-7f05-4b8c-adff-d010b21cc0b5"
                                         }
@@ -5032,13 +5032,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add refresh handler code here.  Use example from chapter 2 of book."
                                                 ]
@@ -5069,13 +5069,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add search handler code here."
                                                 ]
@@ -5106,13 +5106,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add new/insert handler code here."
                                                 ]
@@ -5143,13 +5143,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add save/udate handler code here."
                                                 ]
@@ -5180,13 +5180,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// Add delete handler code here."
                                                 ]
@@ -5217,13 +5217,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "fn": "handler",
                                                 "designer|params": [
                                                     "event",
                                                     "toolEl",
                                                     "owner",
                                                     "tool"
                                                 ],
+                                                "fn": "handler",
                                                 "implHandler": [
                                                     "// add lock handler code here."
                                                 ]

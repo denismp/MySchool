@@ -6,10 +6,10 @@
     },
     "codeClass": null,
     "userConfig": {
+        "designer|userAlias": "subjectsavetool",
+        "designer|userClassName": "subject.SubjectSaveTool",
         "id": null,
         "itemId": "toolsubjectsaveid",
-        "designer|userClassName": "subject.SubjectSaveTool",
-        "designer|userAlias": "subjectsavetool",
         "tooltip": "Save",
         "type": "save"
     },

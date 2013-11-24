@@ -7,13 +7,14 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": true,
-        "designer|userClassName": "subject.GradeTypeStore",
         "data": [
             "[",
             "        {\"name\":\"Regular\", \"value\":\"1\"},",
             "        {\"name\":\"Pass/Fail\", \"value\":\"2\"}",
             "]"
-        ]
+        ],
+        "designer|userClassName": "subject.GradeTypeStore",
+        "storeId": "subject.GradeTypeStore"
     },
     "designerId": "71ff96d7-b73d-4452-b991-007833048098",
     "cn": [

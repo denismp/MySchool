@@ -8,10 +8,10 @@
     "userConfig": {
         "autoLoad": true,
         "autoSync": true,
-        "model": "subject.SubjectsModel",
-        "storeId": "subject.SubjectStore",
+        "designer|userAlias": "subjectstore",
         "designer|userClassName": "subject.SubjectStore",
-        "designer|userAlias": "subjectstore"
+        "model": "subject.SubjectsModel",
+        "storeId": "subject.SubjectStore"
     },
     "designerId": "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",
     "cn": [
@@ -23,11 +23,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "subjects/json",
                 "headers": [
                     "{ 'Accept' : 'application/json' }",
                     ""
-                ]
+                ],
+                "url": "subjects/json"
             },
             "designerId": "2a230106-f489-496a-bf00-5dbff0504f99",
             "cn": [
@@ -65,10 +65,10 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fn": "write",
                                 "designer|params": [
                                     "request"
                                 ],
+                                "fn": "write",
                                 "implHandler": [
                                     "debugger;",
                                     "var operation = request.operation;",
@@ -88,10 +88,11 @@
                                     "        data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );",
                                     "    }",
                                     "}",
-                                    "return this.writeRecords(request, data);"
+                                    "return this.writeRecords(request, data);",
+                                    ""
                                 ]
                             },
-                            "designerId": "9595c83f-b8bb-4f98-936f-afdafe457914"
+                            "designerId": "943805b0-2226-4a5b-896c-42978d91e68d"
                         }
                     ]
                 },
