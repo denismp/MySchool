@@ -29,7 +29,6 @@ Ext.define('MySchool.store.subject.SubjectStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             autoLoad: true,
-            autoSync: true,
             model: 'MySchool.model.subject.SubjectsModel',
             storeId: 'subject.SubjectStore',
             proxy: {
@@ -56,11 +55,11 @@ Ext.define('MySchool.store.subject.SubjectStore', {
                             data.push(this.getRecordData(records[i], operation));
                             if( data[i].quarter.lastUpdated !== "" )
                             {
-                                data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );
+                                data[i].quarter[0].lastUpdated = Ext.Date.format(data[i].quarter[0].lastUpdated, 'm/d/Y' );
                             }
-                            if( data[i].quarter.student.lastUpdated !== "" )
+                            if( data[i].quarter[0].student.lastUpdated !== "" )
                             {
-                                data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );
+                                data[i].quarter[0].student.lastUpdated = Ext.Date.format( data[i].quarter[0].student.lastUpdated, 'm/d/Y' );
                             }
                         }
                         return this.writeRecords(request, data);
