@@ -1,0 +1,9 @@
+<aspectj>
+<aspects>
+<aspect name="com.app.myschool.model.QuarterNamesIntegrationTest_Roo_Configurable"/>
+<aspect name="com.app.myschool.model.QuarterNamesDataOnDemand_Roo_Configurable"/>
+<aspect name="com.app.myschool.model.QuarterNamesDataOnDemand_Roo_DataOnDemand"/>
+<aspect name="com.app.myschool.model.QuarterNamesIntegrationTest_Roo_IntegrationTest"/>
+</aspects>
+</aspectj>
+
