@@ -3,13 +3,13 @@
 
 package com.app.myschool.model;
 
-import com.app.myschool.model.Denis;
+import com.app.myschool.model.SubjectView;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-privileged aspect Denis_Roo_ToString {
+privileged aspect SubjectView_Roo_ToString {
     
-    public String Denis.toString() {
+    public String SubjectView.toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
     

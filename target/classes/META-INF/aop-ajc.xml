@@ -1,5 +1,6 @@
 <aspectj>
 <aspects>
+<aspect name="com.app.myschool.model.SubjectView_Roo_Json"/>
 <aspect name="com.app.myschool.model.Student_Roo_ToString"/>
 <aspect name="com.app.myschool.model.Artifact_Roo_Jpa_Entity"/>
 <aspect name="com.app.myschool.model.QuarterNames_Roo_Jpa_ActiveRecord"/>
@@ -102,8 +103,10 @@
 <aspect name="com.app.myschool.model.EvaluationRatings_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.MonthlySummaryRatings_Roo_Json"/>
 <aspect name="com.app.myschool.model.Quarter_Roo_Configurable"/>
+<aspect name="com.app.myschool.model.SubjectView_Roo_ToString"/>
 <aspect name="com.app.myschool.web.QuarterNamesController_Roo_Controller"/>
 <aspect name="com.app.myschool.model.Artifact_Roo_Configurable"/>
+<aspect name="com.app.myschool.model.SubjectView_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.Subject_Roo_ToString"/>
 <aspect name="com.app.myschool.model.Faculty_Roo_ToString"/>
 <aspect name="com.app.myschool.model.Quarter_Roo_JavaBean"/>
