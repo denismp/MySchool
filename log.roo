@@ -376,3 +376,4 @@ entity jpa --class ~.model.Denis --activeRecord
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-11-30 13:08:55
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-11-30 13:16:20
 finder list --class ~.model.Subject
+finder add --finderName findSubjectsByQuarters

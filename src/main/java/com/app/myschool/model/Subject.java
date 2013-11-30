@@ -25,7 +25,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-@RooJpaActiveRecord(finders = { "findSubjectsByQuarter" })
+@RooJpaActiveRecord(finders = { "findSubjectsByQuarter", "findSubjectsByQuarters" })
 public class Subject {
 
     @NotNull
@@ -64,13 +64,13 @@ public class Subject {
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Quarter> quarters = new HashSet<Quarter>();
-    
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Weekly> weeklys = new HashSet<Weekly>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<BodyOfWork> bodiesOfWork = new HashSet<BodyOfWork>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Daily> dailys = new HashSet<Daily>();
 }
