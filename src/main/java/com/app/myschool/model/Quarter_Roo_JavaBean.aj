@@ -7,7 +7,6 @@ import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import java.util.Date;
-import java.util.Set;
 
 privileged aspect Quarter_Roo_JavaBean {
     
@@ -59,20 +58,20 @@ privileged aspect Quarter_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
-    public Set<Subject> Quarter.getSubject() {
-        return this.subject;
-    }
-    
-    public void Quarter.setSubject(Set<Subject> subject) {
-        this.subject = subject;
-    }
-    
     public Student Quarter.getStudent() {
         return this.student;
     }
     
     public void Quarter.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public Subject Quarter.getSubject() {
+        return this.subject;
+    }
+    
+    public void Quarter.setSubject(Subject subject) {
+        this.subject = subject;
     }
     
     public String Quarter.getQtr_year() {

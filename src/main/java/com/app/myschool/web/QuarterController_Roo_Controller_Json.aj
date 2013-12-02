@@ -7,7 +7,6 @@ import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.web.QuarterController;
-import java.util.Set;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ privileged aspect QuarterController_Roo_Controller_Json {
     
     @RequestMapping(params = "find=BySubject", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> QuarterController.jsonFindQuartersBySubject(@RequestParam("subject") Set<Subject> subject) {
+    public ResponseEntity<String> QuarterController.jsonFindQuartersBySubject(@RequestParam("subject") Subject subject) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         return new ResponseEntity<String>(Quarter.toJsonArray(Quarter.findQuartersBySubject(subject).getResultList()), headers, HttpStatus.OK);

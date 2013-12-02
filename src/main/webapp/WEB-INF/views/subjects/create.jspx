@@ -14,7 +14,7 @@
         <field:simple field="weeklys" id="c_com_app_myschool_model_Subject_weeklys" messageCode="entity_reference_not_managed" messageCodeAttribute="Weekly" z="P7ihi/2fWBMkA5yT0ST5wYYkVZk="/>
         <field:simple field="bodiesOfWork" id="c_com_app_myschool_model_Subject_bodiesOfWork" messageCode="entity_reference_not_managed" messageCodeAttribute="Body Of Work" z="IEY7XvMoYkXd23G9lC+CmwfmRfQ="/>
         <field:simple field="dailys" id="c_com_app_myschool_model_Subject_dailys" messageCode="entity_reference_not_managed" messageCodeAttribute="Daily" z="CmGX+DeUKn3SWGwbvknOpHQX8Rk="/>
-        <field:select field="quarters" id="c_com_app_myschool_model_Subject_quarters" itemValue="id" items="${quarters}" multiple="true" path="/quarters" z="xA32nKqDR0Deqelsb67njqYirl0="/>
+        <field:simple field="quarters" id="c_com_app_myschool_model_Subject_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="DLtzALGqNB48AP/WbhQ5xmToseU="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Subject" render="${not empty dependencies}" z="F6EW0aB1RCQ0yJdOUXRsMjSAJwM="/>
 </div>

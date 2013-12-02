@@ -11,7 +11,7 @@
         <field:datetime dateTimePattern="${quarter_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Quarter_lastUpdated" required="true" z="jlo9uermJYfWonXE836mhgjPh5g="/>
         <field:select field="student" id="c_com_app_myschool_model_Quarter_student" itemValue="id" items="${students}" path="/students" z="EFwaBznw3Tn8hZC59BH2LskYDzs="/>
         <field:input field="qtr_year" id="c_com_app_myschool_model_Quarter_qtr_year" max="5" required="true" z="1kADR3J75HtWRgQoMa28eyfDMD0="/>
-        <field:select field="subject" id="c_com_app_myschool_model_Quarter_subject" itemValue="id" items="${subjects}" multiple="true" path="/subjects" z="phruenSWFSQuiqV8n6vensqxkkA="/>
+        <field:select field="subject" id="c_com_app_myschool_model_Quarter_subject" itemValue="id" items="${subjects}" path="/subjects" z="KiUoPcq6gDrHlWmmiYZWZ20A3OY="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

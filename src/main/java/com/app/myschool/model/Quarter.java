@@ -52,11 +52,14 @@ public class Quarter {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "quarters")
-    private Set<Subject> subject = new HashSet<Subject>();
+    //@ManyToMany(cascade = CascadeType.ALL, mappedBy = "quarters")
+    //private Set<Subject> subject = new HashSet<Subject>();
 
     @ManyToOne
     private Student student;
+
+    @ManyToOne
+    private Subject subject;
 
     @NotNull
     @Size(max = 5)

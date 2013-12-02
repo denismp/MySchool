@@ -62,7 +62,7 @@ public class Subject {
     @Value("false")
     private Boolean completed;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Quarter> quarters = new HashSet<Quarter>();
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
