@@ -7,6 +7,9 @@ import com.app.myschool.model.Grades;
 import com.app.myschool.model.GradesDataOnDemand;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -26,6 +29,7 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
         Grades obj = new Grades();
         setGrade(obj, index);
         setGrade_type(obj, index);
+        setLastUpdated(obj, index);
         return obj;
     }
     
@@ -40,6 +44,11 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
             grade_type = 2;
         }
         obj.setGrade_type(grade_type);
+    }
+    
+    public void GradesDataOnDemand.setLastUpdated(Grades obj, int index) {
+        Date lastUpdated = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
+        obj.setLastUpdated(lastUpdated);
     }
     
     public Grades GradesDataOnDemand.getSpecificGrades(int index) {

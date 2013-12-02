@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.Grades;
+import java.util.Date;
 
 privileged aspect Grades_Roo_JavaBean {
     
@@ -21,6 +22,14 @@ privileged aspect Grades_Roo_JavaBean {
     
     public void Grades.setGrade(double grade) {
         this.grade = grade;
+    }
+    
+    public Date Grades.getLastUpdated() {
+        return this.lastUpdated;
+    }
+    
+    public void Grades.setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
     
 }
