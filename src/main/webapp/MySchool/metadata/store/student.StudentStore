@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
+        "autoLoad": false,
         "designer|userClassName": "student.StudentStore",
         "model": "student.StudentModel",
         "storeId": "student.StudentStore"

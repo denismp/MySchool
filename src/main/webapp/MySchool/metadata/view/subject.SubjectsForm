@@ -30,7 +30,7 @@
                 "id": null,
                 "itemId": "subjectdescriptiontextarea",
                 "layout|anchor": "100%",
-                "name": "description",
+                "name": "subjDescription",
                 "value": null
             },
             "designerId": "79b6a6bb-80c9-47b0-8040-9c9c70d0f29d"
@@ -48,7 +48,7 @@
                 "id": null,
                 "itemId": "subjectobjectivetextarea",
                 "layout|anchor": "100%",
-                "name": "objectives"
+                "name": "subjObjectives"
             },
             "designerId": "c0d2d172-bcf5-4923-899c-97187911820a"
         }

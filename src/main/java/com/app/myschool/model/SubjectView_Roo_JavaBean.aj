@@ -8,12 +8,20 @@ import java.util.Date;
 
 privileged aspect SubjectView_Roo_JavaBean {
     
-    public Long SubjectView.getSubjId() {
-        return this.subjId;
+    public Long SubjectView.getId() {
+        return this.id;
     }
     
-    public void SubjectView.setSubjId(Long subjId) {
-        this.subjId = subjId;
+    public void SubjectView.setId(Long id) {
+        this.id = id;
+    }
+    
+    public String SubjectView.getStudentName() {
+        return this.studentName;
+    }
+    
+    public void SubjectView.setStudentName(String studentName) {
+        this.studentName = studentName;
     }
     
     public Integer SubjectView.getSubjVersion() {

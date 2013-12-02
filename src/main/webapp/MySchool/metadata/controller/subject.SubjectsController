@@ -125,10 +125,10 @@
                     "    //records[i].set( 'quarter.lastUpdated', new Date() );",
                     "    var form = this.getSubjectsForm().getForm();",
                     "    var formValues = form.getValues();",
-                    "    records[i].set( 'description', formValues.description );",
-                    "    records[i].set( 'objectives', formValues.objectives );",
-                    "    window.console.log( 'objectives=' + formValues.objectives );",
-                    "    window.console.log( 'description=' + formValues.description );",
+                    "    records[i].set( 'subjDescription', formValues.subjDescription );",
+                    "    records[i].set( 'subjObjectives', formValues.subjObjectives );",
+                    "    window.console.log( 'objectives=' + formValues.subjObjectives );",
+                    "    window.console.log( 'description=' + formValues.subjDescription );",
                     "}",
                     "",
                     "mystore.sync();",
@@ -179,9 +179,7 @@
                     "window.console.log( \"onSubjectdescriptiontextareraChange() field=\" + field );",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecord = mystore.getAt( this.selectedIndex );",
-                    "myrecord.set( 'description', newValue );",
-                    "",
-                    ""
+                    "myrecord.set( 'subjDescription', newValue );"
                 ],
                 "name": "change",
                 "scope": "me"
@@ -205,7 +203,7 @@
                     "window.console.log( \"onSubjectobjectivetextareraChange() field=\" + field );",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecord = mystore.getAt( this.selectedIndex );",
-                    "myrecord.set( 'objectives', newValue );"
+                    "myrecord.set( 'subjObjectives', newValue );"
                 ],
                 "name": "change",
                 "scope": "me"
@@ -296,17 +294,23 @@
                     "window.console.log( myrecord.data );",
                     "newDialog.loadRecord(myrecord);",
                     "var myFormFields = newDialog.getForm().getFields();",
-                    "var myuserName = myrecord.data.quarters[0].student.userName;",
-                    "var mygradeType = myrecord.data.quarters[0].gradeType;",
-                    "var myquarterName = myrecord.data.quarters[0].qtrName;",
-                    "var qtrId = this.findQuarterIdByName( myquarterName );",
+                    "//        var myuserName = myrecord.data.studentName;",
+                    "var mygradeType = myrecord.data.qtrGradeType;",
+                    "var myquarterName = myrecord.data.qtrName;",
+                    "var myQtrNameRec = mynamestore.findRecord( 'qtrName', myquarterName );",
                     "",
-                    "var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.",
-                    "mycomboview.setValue( mygradeType );",
-                    "mycomboview = myFormFields.getAt( 7 ); // Quarter Name selection for combobox.",
-                    "mycomboview.setValue( qtrId );",
+                    "if (mygradeType) {",
+                    "    var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.",
+                    "    mycomboview.setValue( mygradeType );",
+                    "}",
                     "",
-                    "newDialog.getForm().setValues( { userName: myuserName } );",
+                    "if (myQtrNameRec) {",
+                    "    var qtrId = myQtrNameRec.get( 'id' );",
+                    "    var mycomboview = myFormFields.getAt( 7 ); // Quarter Name selection for combobox.",
+                    "    mycomboview.setValue( qtrId );",
+                    "}",
+                    "",
+                    "//        newDialog.getForm().setValues( { userName: myuserName } );",
                     "",
                     "newDialog.render( Ext.getBody() );",
                     "newDialog.show();"
@@ -371,7 +375,7 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onNewsubjectsubmitClick",
                 "implHandler": [
-                    "//debugger;",
+                    "debugger;",
                     "//var mystore = this.getSubjectStoreStore();",
                     "window.console.log( \"Submit New Subject\" );",
                     "var mysubjectstore = Ext.getStore(\"subject.SubjectStore\");",
@@ -462,14 +466,14 @@
                     "    subjectRecord.set( 'description', description );",
                     "    subjectRecord.set( 'objectives', objectives );",
                     "    subjectRecord.set( 'version', 0 );",
-                    "    subjectRecord.set( 'quarters', [qtrRecord.data] );",
+                    "    subjectRecord.set( 'quarter', qtrRecord.data );",
                     "    subjectRecord.set( 'userName', userName );",
                     "    mysubjectstore.add( subjectRecord );",
                     "}",
                     "if( qtrFlag === 0 || subjectFlag !== 0 )",
                     "{",
                     "    //  Here we add the new quarter record to the existing subject record.",
-                    "    subjectRecord.set( 'quarters', qtrRecord.data );",
+                    "    subjectRecord.set( 'quarter', qtrRecord.data );",
                     "}",
                     "",
                     "mysubjectstore.sync();",
@@ -645,6 +649,84 @@
                 ]
             },
             "designerId": "79598427-4fcc-456b-9b13-c5b9a1cf6a84"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onLaunch",
+                "implHandler": [
+                    "// Use the automatically generated getter to get the store",
+                    "//    \tdebugger;",
+                    "var studentStore_ = Ext.getStore('student.StudentStore');",
+                    "var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );",
+                    "",
+                    "studentStore_.load({",
+                    "    callback: this.onStudentStoreLoad,",
+                    "    scope: this,",
+                    "    params: {",
+                    "        studentName: 'denis'",
+                    "    }",
+                    "});",
+                    "",
+                    "subjectStore_.load({",
+                    "    callback: this.onSubjectStoreLoad,",
+                    "    scope: this,",
+                    "    params: {",
+                    "        studentName: 'denis'",
+                    "    }",
+                    "});",
+                    ""
+                ]
+            },
+            "designerId": "996cc5c5-a5ea-4e9f-8735-e523c0f5b72c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStudentStoreLoad",
+                "implHandler": [
+                    "var studentStore_ = Ext.getStore('student.StudentStore');",
+                    "var r_ = studentStore_.getAt(0);",
+                    "",
+                    "if ( typeof( r_ ) != \"undefined\" ) {",
+                    "    //   debugger;",
+                    "    var studentName_ = r_.get('firstName') + \" \" + r_.get('middleName') + ' ' + r_.get('lastName');",
+                    "    var g_ = Ext.ComponentQuery.query(\"#subjectsgrid\")[0];",
+                    "    ",
+                    "    g_.setTitle('[' + studentName_ + '] Subjects');",
+                    "}"
+                ]
+            },
+            "designerId": "d6d7a294-1f78-440b-863d-81208024bdbc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onSubjectStoreLoad",
+                "implHandler": [
+                    "var g_ = Ext.ComponentQuery.query(\"#subjectsgrid\")[0];",
+                    "",
+                    "if (g_.getStore().getCount() > 0) {",
+                    "    g_.getSelectionModel().select( 0 );",
+                    "}"
+                ]
+            },
+            "designerId": "fe341c7d-e646-4b94-8a07-310ab8985ba2"
         }
     ]
 }

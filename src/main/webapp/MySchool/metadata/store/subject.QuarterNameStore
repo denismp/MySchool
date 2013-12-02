@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
+        "autoLoad": false,
         "designer|userClassName": "subject.QuarterNameStore",
         "model": "subject.QuarterNamesModel",
         "storeId": "subject.QuarterNameStore"

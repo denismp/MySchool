@@ -18,8 +18,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "personID",
-                "type": "string"
+                "name": "id",
+                "type": null
             },
             "designerId": "75e553f4-9022-46d4-a150-0ef8b3eda698"
         },
@@ -231,34 +231,6 @@
                 "type": "boolean"
             },
             "designerId": "bc7d0633-bb33-4360-86e6-56119b17934c"
-        },
-        {
-            "type": "Ext.data.association.HasMany",
-            "reference": {
-                "name": "hasMany",
-                "type": "object"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "autoLoad": true,
-                "designer|displayName": "hasManyquarters.QuarterModel",
-                "model": "quarters.QuarterModel"
-            },
-            "designerId": "e7d1e003-363b-428e-b269-b0275688ebe5",
-            "cn": [
-                {
-                    "type": "Ext.data.reader.Json",
-                    "reference": {
-                        "name": "reader",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "root": "data"
-                    },
-                    "designerId": "2ebc4de0-5a80-443a-a428-8dea1811d3fd"
-                }
-            ]
         }
     ]
 }

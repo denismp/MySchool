@@ -17,158 +17,90 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
     extend: 'Ext.data.Model',
 
     requires: [
-        'Ext.data.Field',
-        'Ext.data.association.HasMany',
-        'Ext.data.reader.Json',
-        'Ext.data.association.BelongsTo'
+        'Ext.data.Field'
     ],
-    uses: [
-        'MySchool.model.quarters.QuarterModel'
-    ],
-
-    writeStructuredData: 'true',
 
     fields: [
         {
             name: 'id'
         },
         {
-            name: 'name',
+            name: 'studentName',
             type: 'string'
         },
         {
-            name: 'gradeLevel',
-            type: 'int'
-        },
-        {
-            name: 'creditHours',
-            type: 'int'
-        },
-        {
-            name: 'completed',
+            name: 'subjCompleted',
             type: 'boolean'
         },
         {
-            name: 'whoUpdated',
+            name: 'subjCreditHours',
+            type: 'int'
+        },
+        {
+            name: 'subjDescription',
             type: 'string'
+        },
+        {
+            name: 'subjGradeLevel',
+            type: 'int'
         },
         {
             dateFormat: 'm/d/Y',
-            name: 'lastUpdated',
+            name: 'subjLastUpdated',
             type: 'date'
         },
         {
-            name: 'description',
+            name: 'subjName',
             type: 'string'
         },
         {
-            name: 'objectives',
+            name: 'subjObjectives',
             type: 'string'
         },
         {
-            name: 'version',
+            name: 'subjVersion',
             type: 'string'
         },
         {
-            mapping: 'quarters',
-            name: 'quarter',
-            type: 'auto'
-        },
-        {
-            name: 'userName',
+            name: 'subjWhoUpdated',
             type: 'string'
         },
         {
-            name: 'grade',
+            name: 'qtrGrade',
             type: 'int'
+        },
+        {
+            name: 'qtrGradeType',
+            type: 'int'
+        },
+        {
+            name: 'qtrId',
+            type: 'int'
+        },
+        {
+            dateFormat: 'm/d/Y',
+            name: 'qtrLastUpdated',
+            type: 'date'
+        },
+        {
+            name: 'qtrLocked',
+            type: 'boolean'
+        },
+        {
+            name: 'qtrName',
+            type: 'string'
+        },
+        {
+            name: 'qtrVersion',
+            type: 'int'
+        },
+        {
+            name: 'qtrWhoUpdated',
+            type: 'string'
+        },
+        {
+            name: 'qtrYear',
+            type: 'string'
         }
-    ],
-
-    hasMany: {
-        associationKey: 'quarters',
-        model: 'MySchool.model.quarters.QuarterModel',
-        reader: {
-            type: 'json',
-            root: 'data'
-        }
-    },
-
-    belongsTo: {
-        model: 'MySchool.model.quarters.QuarterModel'
-    },
-
-    getWriteData: function() {
-        var data = this.getRecordWriteData(this),
-            associations = this.associations.items,
-            association, type, name, associatedStore,
-            associatedRecords, associatedRecord,
-            a, aLen, r, rLen;
-
-        for (a=0, aLen=associations.length; a<aLen; a++) {
-
-            association = associations[a];
-            type = association.type;
-            name = association.name;
-
-            if (type == 'hasMany') {
-
-                associatedStore = this[association.storeName];
-                // Initialize the array for this association
-                data[name] = [];
-
-                // If the association's loaded, process its records
-                if (associatedStore && associatedStore.getCount() > 0) {
-                    associatedRecords = associatedStore.data.items;
-
-                    // Append data for each record
-                    for (r=0, rLen=associatedRecords.length; r<rLen; r++) {
-                        data[name][r] = this.getRecordWriteData(associatedRecords[r]);
-                    }
-                }
-
-            } else if (type == 'hasOne') {
-                associatedRecord = this[association.instanceName];
-                // If the record exists, append its data
-                if (associatedRecord !== undefined) {
-                    data[name] = this.getRecordWriteData(associatedRecord);
-                }
-            }
-
-        }
-
-        return data;
-
-    },
-
-    getRecordWriteData: function(record) {
-        var isPhantom = record.phantom === true,
-            writeAllFields = record.writeAllFields,
-            fields = record.fields,
-            fieldItems = fields.items,
-            data = {},
-            changes = record.getChanges(),
-            field,
-            key,
-            f, fLen;
-
-        for (f=0, fLen=fieldItems.length; f<fLen; f++) {
-            field = fieldItems[f];
-
-            if (field.forcePersist || (field.persist && (writeAllFields || isPhantom))) {
-                this.setFieldWriteData(data, record, field, record.get(field.name));
-            }
-        }
-
-        for (key in changes) {
-            if (changes.hasOwnProperty(key)) {
-                field = fields.get(key);
-                if (field.persist) {
-                    this.setFieldWriteData(data, record, field, changes[key]);
-                }
-            }
-        }
-
-        return data;
-    }
-
+    ]
 });

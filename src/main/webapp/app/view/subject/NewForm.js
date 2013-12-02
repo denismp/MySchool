@@ -48,14 +48,14 @@ Ext.define('MySchool.view.subject.NewForm', {
                             xtype: 'textfield',
                             anchor: '100%',
                             fieldLabel: 'Student User Name',
-                            name: 'userName',
+                            name: 'studentName',
                             readOnly: true
                         },
                         {
                             xtype: 'textfield',
                             anchor: '100%',
                             fieldLabel: 'Subject Name',
-                            name: 'name'
+                            name: 'subjName'
                         },
                         {
                             xtype: 'gradetypecombobox',
@@ -65,25 +65,25 @@ Ext.define('MySchool.view.subject.NewForm', {
                             xtype: 'numberfield',
                             anchor: '100%',
                             fieldLabel: 'Grade Level',
-                            name: 'gradeLevel'
+                            name: 'subjGradeLevel'
                         },
                         {
                             xtype: 'numberfield',
                             anchor: '100%',
                             fieldLabel: 'Credit Hours',
-                            name: 'creditHours'
+                            name: 'subjCreditHours'
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
                             fieldLabel: 'Description',
-                            name: 'description'
+                            name: 'subjDescription'
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
                             fieldLabel: 'Objectives',
-                            name: 'objectives'
+                            name: 'subjObjectives'
                         },
                         {
                             xtype: 'quarternamescombobox',
@@ -93,7 +93,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             xtype: 'textfield',
                             anchor: '100%',
                             fieldLabel: 'Quarter Year',
-                            name: 'qtr_year'
+                            name: 'qtrYear'
                         }
                     ]
                 },

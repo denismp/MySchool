@@ -1,6 +1,11 @@
 package com.app.myschool.web;
 
+import java.util.Map;
+
 import com.app.myschool.model.Student;
+import com.app.myschool.model.Subject;
+import com.app.myschool.model.SubjectView;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,9 +34,16 @@ public class StudentController {
 
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<java.lang.String> listJson() {
+    public ResponseEntity<java.lang.String> listJson(@RequestParam Map params) {
+    	ResponseEntity<java.lang.String> ret_ = null;
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.listJson(Student.class);
+    	if (params.containsKey("studentName")) {
+    		ret_ = controllerHelper.listJson(Student.class, params);
+    	}
+    	else {
+    		ret_ = controllerHelper.listJson(Student.class);
+    	}
+        return ret_;
     }
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")

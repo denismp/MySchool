@@ -42,7 +42,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "name",
+                "dataIndex": "subjName",
                 "flex": null,
                 "text": "Subject Name",
                 "width": 94
@@ -57,7 +57,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "gradeLevel",
+                "dataIndex": "subjGradeLevel",
                 "format": "00",
                 "text": "Grade Level",
                 "width": 97
@@ -72,7 +72,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "creditHours",
+                "dataIndex": "subjCreditHours",
                 "text": "Credit Hours"
             },
             "designerId": "5dbb449b-e775-4cc8-9d53-c9fcdcd37570"
@@ -85,7 +85,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "lastUpdated",
+                "dataIndex": "subjLastUpdated",
                 "format": "m/d/Y",
                 "text": "Date"
             },
@@ -100,7 +100,7 @@
             "codeClass": null,
             "userConfig": {
                 "cls": null,
-                "dataIndex": "completed",
+                "dataIndex": "subjCompleted",
                 "text": "Complete?"
             },
             "designerId": "9671afa8-1ac5-4e16-80cf-02095ee4ee5f",
@@ -151,7 +151,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "version",
+                "dataIndex": "subjVersion",
                 "hidden": true,
                 "text": "version"
             },
@@ -165,41 +165,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "quarter",
+                "dataIndex": "qtrName",
                 "text": "Quarter"
             },
-            "designerId": "5ee0f30c-8621-415a-9573-764a85153f2d",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "value",
-                            "metaData",
-                            "record",
-                            "rowIndex",
-                            "colIndex",
-                            "store",
-                            "view"
-                        ],
-                        "fn": "renderer",
-                        "implHandler": [
-                            "//debugger;",
-                            "var quartersArray = record.get( 'quarter' );",
-                            "var myQtrName = quartersArray[0].qtrName;",
-                            "//var myQtrName = record.get( 'quarter' ).qtrName;",
-                            "window.console.log( 'quarter=' + myQtrName );",
-                            "return myQtrName;"
-                        ]
-                    },
-                    "designerId": "3a4b59d7-0374-40f6-b3d4-f120857bee00"
-                }
-            ]
+            "designerId": "5ee0f30c-8621-415a-9573-764a85153f2d"
         },
         {
             "type": "Ext.grid.column.Column",
@@ -209,36 +178,10 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "qtrYear",
                 "text": "QtrYear"
             },
-            "designerId": "25598ab8-6374-464b-94eb-4ee6bb3d3206",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "value",
-                            "metaData",
-                            "record",
-                            "rowIndex",
-                            "colIndex",
-                            "store",
-                            "view"
-                        ],
-                        "fn": "renderer",
-                        "implHandler": [
-                            "var myQtrYear = record.data.quarter[0].qtr_year;",
-                            "return myQtrYear;"
-                        ]
-                    },
-                    "designerId": "8a235f7c-3815-475b-8dd0-adf190c0b80c"
-                }
-            ]
+            "designerId": "25598ab8-6374-464b-94eb-4ee6bb3d3206"
         },
         {
             "type": "Ext.grid.column.Column",
@@ -248,40 +191,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "userName",
+                "dataIndex": "studentName",
                 "text": "UserName"
             },
-            "designerId": "11c3ec9f-bef6-4bc1-abf5-7ab926d6cece",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "value",
-                            "metaData",
-                            "record",
-                            "rowIndex",
-                            "colIndex",
-                            "store",
-                            "view"
-                        ],
-                        "fn": "renderer",
-                        "implHandler": [
-                            "//debugger;",
-                            "//var myobj = record.get( 'quarter' ).student;",
-                            "var myuser = record.data.quarter[0].student.userName;",
-                            "window.console.log( 'userName=' + myuser );",
-                            "return myuser;"
-                        ]
-                    },
-                    "designerId": "4f63260a-5ac7-4af8-89d7-dc9f52cb8ced"
-                }
-            ]
+            "designerId": "11c3ec9f-bef6-4bc1-abf5-7ab926d6cece"
         },
         {
             "type": "Ext.grid.column.Column",
@@ -291,36 +204,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "grade",
+                "dataIndex": "qtrGrade",
                 "text": "Grade"
             },
             "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052",
             "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "value",
-                            "metaData",
-                            "record",
-                            "rowIndex",
-                            "colIndex",
-                            "store",
-                            "view"
-                        ],
-                        "fn": "renderer",
-                        "implHandler": [
-                            "var grade = record.data.quarter[0].grade;",
-                            "return grade;"
-                        ]
-                    },
-                    "designerId": "ab95f3c1-dd86-4c1a-b2f7-3493567cb0eb"
-                },
                 {
                     "type": "Ext.form.field.Number",
                     "reference": {

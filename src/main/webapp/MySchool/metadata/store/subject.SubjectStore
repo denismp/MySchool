@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
+        "autoLoad": false,
         "designer|userAlias": "subjectstore",
         "designer|userClassName": "subject.SubjectStore",
         "model": "subject.SubjectsModel",
@@ -80,15 +80,14 @@
                                     "    data.push(this.getRecordData(records[i], operation));",
                                     "    if( data[i].quarter.lastUpdated !== \"\" )",
                                     "    {",
-                                    "        data[i].quarter[0].lastUpdated = Ext.Date.format(data[i].quarter[0].lastUpdated, 'm/d/Y' );",
+                                    "        data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );",
                                     "    }",
-                                    "    if( data[i].quarter[0].student.lastUpdated !== \"\" )",
+                                    "    if( data[i].quarter.student.lastUpdated !== \"\" )",
                                     "    {",
-                                    "        data[i].quarter[0].student.lastUpdated = Ext.Date.format( data[i].quarter[0].student.lastUpdated, 'm/d/Y' );",
+                                    "        data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );",
                                     "    }",
                                     "}",
-                                    "return this.writeRecords(request, data);",
-                                    ""
+                                    "return this.writeRecords(request, data);"
                                 ]
                             },
                             "designerId": "943805b0-2226-4a5b-896c-42978d91e68d"

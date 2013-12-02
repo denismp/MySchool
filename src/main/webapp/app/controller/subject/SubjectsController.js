@@ -70,9 +70,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
-        myrecord.set( 'description', newValue );
-
-
+        myrecord.set( 'subjDescription', newValue );
     },
 
     onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
@@ -81,7 +79,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
-        myrecord.set( 'objectives', newValue );
+        myrecord.set( 'subjObjectives', newValue );
     },
 
     onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
@@ -102,17 +100,23 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         window.console.log( myrecord.data );
         newDialog.loadRecord(myrecord);
         var myFormFields = newDialog.getForm().getFields();
-        var myuserName = myrecord.data.quarters[0].student.userName;
-        var mygradeType = myrecord.data.quarters[0].gradeType;
-        var myquarterName = myrecord.data.quarters[0].qtrName;
-        var qtrId = this.findQuarterIdByName( myquarterName );
+        //        var myuserName = myrecord.data.studentName;
+        var mygradeType = myrecord.data.qtrGradeType;
+        var myquarterName = myrecord.data.qtrName;
+        var myQtrNameRec = mynamestore.findRecord( 'qtrName', myquarterName );
 
-        var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.
-        mycomboview.setValue( mygradeType );
-        mycomboview = myFormFields.getAt( 7 ); // Quarter Name selection for combobox.
-        mycomboview.setValue( qtrId );
+        if (mygradeType) {
+            var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.
+            mycomboview.setValue( mygradeType );
+        }
 
-        newDialog.getForm().setValues( { userName: myuserName } );
+        if (myQtrNameRec) {
+            var qtrId = myQtrNameRec.get( 'id' );
+            var mycomboview = myFormFields.getAt( 7 ); // Quarter Name selection for combobox.
+            mycomboview.setValue( qtrId );
+        }
+
+        //        newDialog.getForm().setValues( { userName: myuserName } );
 
         newDialog.render( Ext.getBody() );
         newDialog.show();
@@ -132,7 +136,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onNewsubjectsubmitClick: function(button, e, eOpts) {
-        //debugger;
+        debugger;
         //var mystore = this.getSubjectStoreStore();
         window.console.log( "Submit New Subject" );
         var mysubjectstore = Ext.getStore("subject.SubjectStore");
@@ -223,14 +227,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             subjectRecord.set( 'description', description );
             subjectRecord.set( 'objectives', objectives );
             subjectRecord.set( 'version', 0 );
-            subjectRecord.set( 'quarters', [qtrRecord.data] );
+            subjectRecord.set( 'quarter', qtrRecord.data );
             subjectRecord.set( 'userName', userName );
             mysubjectstore.add( subjectRecord );
         }
         if( qtrFlag === 0 || subjectFlag !== 0 )
         {
             //  Here we add the new quarter record to the existing subject record.
-            subjectRecord.set( 'quarters', qtrRecord.data );
+            subjectRecord.set( 'quarter', qtrRecord.data );
         }
 
         mysubjectstore.sync();
@@ -309,10 +313,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             //records[i].set( 'quarter.lastUpdated', new Date() );
             var form = this.getSubjectsForm().getForm();
             var formValues = form.getValues();
-            records[i].set( 'description', formValues.description );
-            records[i].set( 'objectives', formValues.objectives );
-            window.console.log( 'objectives=' + formValues.objectives );
-            window.console.log( 'description=' + formValues.description );
+            records[i].set( 'subjDescription', formValues.subjDescription );
+            records[i].set( 'subjObjectives', formValues.subjObjectives );
+            window.console.log( 'objectives=' + formValues.subjObjectives );
+            window.console.log( 'description=' + formValues.subjDescription );
         }
 
         mystore.sync();
@@ -393,6 +397,51 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             {
                 return records[i];
             }
+        }
+    },
+
+    onLaunch: function() {
+        // Use the automatically generated getter to get the store
+        //    	debugger;
+        var studentStore_ = Ext.getStore('student.StudentStore');
+        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
+
+        studentStore_.load({
+            callback: this.onStudentStoreLoad,
+            scope: this,
+            params: {
+                studentName: 'denis'
+            }
+        });
+
+        subjectStore_.load({
+            callback: this.onSubjectStoreLoad,
+            scope: this,
+            params: {
+                studentName: 'denis'
+            }
+        });
+
+    },
+
+    onStudentStoreLoad: function() {
+        var studentStore_ = Ext.getStore('student.StudentStore');
+        var r_ = studentStore_.getAt(0);
+
+        if ( typeof( r_ ) != "undefined" ) {
+            //   debugger;
+            var studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+            var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+
+            g_.setTitle('[' + studentName_ + '] Subjects');
+        }
+    },
+
+    onSubjectStoreLoad: function() {
+        var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+
+        if (g_.getStore().getCount() > 0) {
+            g_.getSelectionModel().select( 0 );
         }
     }
 

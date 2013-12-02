@@ -17,18 +17,12 @@ Ext.define('MySchool.model.student.StudentModel', {
     extend: 'Ext.data.Model',
 
     requires: [
-        'Ext.data.Field',
-        'Ext.data.association.HasMany',
-        'Ext.data.reader.Json'
-    ],
-    uses: [
-        'MySchool.model.quarters.QuarterModel'
+        'Ext.data.Field'
     ],
 
     fields: [
         {
-            name: 'personID',
-            type: 'string'
+            name: 'id'
         },
         {
             name: 'firstName',
@@ -95,14 +89,5 @@ Ext.define('MySchool.model.student.StudentModel', {
             name: 'enabled',
             type: 'boolean'
         }
-    ],
-
-    hasMany: {
-        model: 'MySchool.model.quarters.QuarterModel',
-        autoLoad: true,
-        reader: {
-            type: 'json',
-            root: 'data'
-        }
-    }
+    ]
 });

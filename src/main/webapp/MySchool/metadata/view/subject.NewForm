@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoRender": null,
         "designer|userAlias": "newsubjectform",
         "designer|userClassName": "subject.NewForm",
         "draggable": true,
@@ -43,7 +44,7 @@
                     "userConfig": {
                         "fieldLabel": "Student User Name",
                         "layout|anchor": "100%",
-                        "name": "userName",
+                        "name": "studentName",
                         "readOnly": true
                     },
                     "designerId": "97a324d2-ef67-4d1e-9301-0cc44c9c486d"
@@ -58,7 +59,7 @@
                     "userConfig": {
                         "fieldLabel": "Subject Name",
                         "layout|anchor": "100%",
-                        "name": "name"
+                        "name": "subjName"
                     },
                     "designerId": "43b3cd48-e7c5-42e5-9f41-3091ed5aca77"
                 },
@@ -85,7 +86,7 @@
                     "userConfig": {
                         "fieldLabel": "Grade Level",
                         "layout|anchor": "100%",
-                        "name": "gradeLevel"
+                        "name": "subjGradeLevel"
                     },
                     "designerId": "bad29fb6-3682-4c44-af93-60dbef0d2957"
                 },
@@ -99,7 +100,7 @@
                     "userConfig": {
                         "fieldLabel": "Credit Hours",
                         "layout|anchor": "100%",
-                        "name": "creditHours"
+                        "name": "subjCreditHours"
                     },
                     "designerId": "86b61659-f9a6-46c3-b894-d73e5eec716b"
                 },
@@ -113,7 +114,7 @@
                     "userConfig": {
                         "fieldLabel": "Description",
                         "layout|anchor": "100%",
-                        "name": "description"
+                        "name": "subjDescription"
                     },
                     "designerId": "1109a2ed-bcfd-4f7d-9fcd-54b4b117d3d4"
                 },
@@ -127,7 +128,7 @@
                     "userConfig": {
                         "fieldLabel": "Objectives",
                         "layout|anchor": "100%",
-                        "name": "objectives"
+                        "name": "subjObjectives"
                     },
                     "designerId": "641907c1-bb99-4846-ac8a-d0572c385f49"
                 },
@@ -154,7 +155,7 @@
                     "userConfig": {
                         "fieldLabel": "Quarter Year",
                         "layout|anchor": "100%",
-                        "name": "qtr_year"
+                        "name": "qtrYear"
                     },
                     "designerId": "af04255e-82bd-4c5c-a2e1-cd5244d1e62c"
                 }

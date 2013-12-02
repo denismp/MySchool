@@ -7,8 +7,13 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,6 +36,7 @@ import com.app.myschool.model.Roles;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
+import com.app.myschool.model.SubjectView;
 import com.app.myschool.model.Weekly;
 
 /**
@@ -40,6 +46,131 @@ import com.app.myschool.model.Weekly;
 public class ControllerHelper {
 	private static final Logger logger = Logger.getLogger(ControllerHelper.class);
 	
+	public ResponseEntity<String> listJson(
+			@SuppressWarnings("rawtypes") Class myClass,
+			@SuppressWarnings("rawtypes") Map params) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=utf-8");
+
+		HttpStatus returnStatus = HttpStatus.OK;
+		JsonObjectResponse response = new JsonObjectResponse();
+		List<?> records = null;
+		String className = myClass.getSimpleName();
+		boolean statusGood = true;
+		try {
+			if (myClass.equals(SubjectView.class)) {
+				List<SubjectView> svl_ = new ArrayList<SubjectView>();
+				String k_ = "studentName";
+
+				if (params.containsKey(k_)) {
+					List<Student> lt_ = Student.findStudentsByUserNameEquals(
+							params.get(k_).toString()).getResultList();
+
+					if (lt_.size() == 1) {
+						List<Quarter> lq_ = Quarter.findQuartersByStudent(
+								lt_.get(0)).getResultList();
+
+						for (Quarter q_ : lq_) {
+							Set<Quarter> sq_ = new HashSet<Quarter>();
+
+							sq_.add(q_);
+
+							List<Subject> ls_ = Subject.findSubjectsByQuarters(
+									sq_).getResultList();
+
+							if (ls_.size() > 0) {
+								for (Subject s_ : ls_) {
+									SubjectView sv_ = new SubjectView();
+
+									sv_.setId(s_.getId());
+									sv_.setStudentName(params.get(k_)
+											.toString());
+
+									sv_.setSubjVersion(s_.getVersion());
+									sv_.setSubjCompleted(s_.getCompleted());
+									sv_.setSubjCreditHours(s_.getCreditHours());
+									sv_.setSubjDescription(s_.getDescription());
+									sv_.setSubjGradeLevel(s_.getGradeLevel());
+									sv_.setSubjLastUpdated(s_.getLastUpdated());
+									sv_.setSubjName(s_.getName());
+									sv_.setSubjObjectives(s_.getObjectives());
+									sv_.setSubjWhoUpdated(s_.getWhoUpdated());
+
+									sv_.setQtrId(q_.getId());
+									sv_.setQtrVersion(q_.getVersion());
+									sv_.setQtrGrade(q_.getGrade());
+									sv_.setQtrGradeType(q_.getGradeType());
+									sv_.setQtrLastUpdated(q_.getLastUpdated());
+									sv_.setQtrLocked(q_.getLocked());
+									sv_.setQtrYear(q_.getQtr_year());
+									sv_.setQtrName(q_.getQtrName());
+									sv_.setQtrWhoUpdated(q_.getWhoUpdated());
+
+									svl_.add(sv_);
+								}
+							}
+						}
+					}
+				}
+				records = svl_;
+			} else if (myClass.equals(Student.class)) {
+				List<HashMap<String, Object>> hl_ = new ArrayList<HashMap<String, Object>>();
+				HashMap<String, Object> hm_ = null;
+				String k_ = "studentName";
+
+				for (Student s_ : Student.findStudentsByUserNameEquals(
+						params.get(k_).toString()).getResultList()) {
+					hm_ = new HashMap<String, Object>();
+
+					hm_.put("id", s_.getId());
+					hm_.put("firstName", s_.getFirstName());
+					hm_.put("lastName", s_.getLastName());
+					hm_.put("middleName", s_.getMiddleName());
+					hm_.put("phone1", s_.getPhone1());
+					hm_.put("phone2", s_.getPhone2());
+					hm_.put("address1", s_.getAddress1());
+					hm_.put("address2", s_.getAddress2());
+					hm_.put("city", s_.getCity());
+					hm_.put("province", s_.getProvince());
+					hm_.put("postalCode", s_.getPostalCode());
+					hm_.put("country", s_.getCountry());
+					hm_.put("whoUpdated", s_.getWhoUpdated());
+					hm_.put("lastUpdated", s_.getLastUpdated());
+					hm_.put("userName", s_.getUserName());
+					hm_.put("userPassword", s_.getUserPassword());
+					hm_.put("enabled", s_.getEnabled());
+					hl_.add(hm_);
+				}
+
+				records = hl_;
+			} else {
+				response.setMessage("Unsupported class=" + className);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;
+			}
+			if (statusGood) {
+				response.setMessage("All " + className + "s retrieved: ");
+				response.setData(records);
+
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(records.size());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnStatus = HttpStatus.BAD_REQUEST;
+			response.setMessage(e.getMessage());
+			response.setSuccess(false);
+			response.setTotal(0L);
+		}
+
+		// Return retrieved object.
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
+	}
+
 	public ResponseEntity<String> listJson( @SuppressWarnings("rawtypes") Class myClass ) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
@@ -59,6 +190,7 @@ public class ControllerHelper {
 			}
 			else if (myClass.equals(Subject.class)) {
 				records = Subject.findAllSubjects();
+
 				/*
 				List<Subject> allSubjects = null;
 				
@@ -303,6 +435,10 @@ public class ControllerHelper {
 			{
 		        record = Faculty.fromJsonToFaculty(myJson);
 		        ((Faculty)record).persist();
+			}
+			else if (myClass.equals(SubjectView.class)) {
+				record = SubjectView.fromJsonToSubjectView(myJson);
+		        ((Subject)record).persist();
 			}
 			else if (myClass.equals(Subject.class)) {
 				record = Subject.fromJsonToSubject(myJson);

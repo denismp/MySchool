@@ -43,30 +43,30 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 {
                     xtype: 'gridcolumn',
                     width: 94,
-                    dataIndex: 'name',
+                    dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
                     xtype: 'numbercolumn',
                     width: 97,
-                    dataIndex: 'gradeLevel',
+                    dataIndex: 'subjGradeLevel',
                     text: 'Grade Level',
                     format: '00'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'creditHours',
+                    dataIndex: 'subjCreditHours',
                     text: 'Credit Hours'
                 },
                 {
                     xtype: 'datecolumn',
-                    dataIndex: 'lastUpdated',
+                    dataIndex: 'subjLastUpdated',
                     text: 'Date',
                     format: 'm/d/Y'
                 },
                 {
                     xtype: 'checkcolumn',
-                    dataIndex: 'completed',
+                    dataIndex: 'subjCompleted',
                     text: 'Complete?',
                     editor: {
                         xtype: 'checkboxfield'
@@ -75,49 +75,27 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 {
                     xtype: 'gridcolumn',
                     hidden: true,
-                    dataIndex: 'version',
+                    dataIndex: 'subjVersion',
                     text: 'version'
                 },
                 {
                     xtype: 'gridcolumn',
-                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                        //debugger;
-                        var quartersArray = record.get( 'quarter' );
-                        var myQtrName = quartersArray[0].qtrName;
-                        //var myQtrName = record.get( 'quarter' ).qtrName;
-                        window.console.log( 'quarter=' + myQtrName );
-                        return myQtrName;
-                    },
-                    dataIndex: 'quarter',
+                    dataIndex: 'qtrName',
                     text: 'Quarter'
                 },
                 {
                     xtype: 'gridcolumn',
-                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                        var myQtrYear = record.data.quarter[0].qtr_year;
-                        return myQtrYear;
-                    },
+                    dataIndex: 'qtrYear',
                     text: 'QtrYear'
                 },
                 {
                     xtype: 'gridcolumn',
-                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                        //debugger;
-                        //var myobj = record.get( 'quarter' ).student;
-                        var myuser = record.data.quarter[0].student.userName;
-                        window.console.log( 'userName=' + myuser );
-                        return myuser;
-                    },
-                    dataIndex: 'userName',
+                    dataIndex: 'studentName',
                     text: 'UserName'
                 },
                 {
                     xtype: 'gridcolumn',
-                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                        var grade = record.data.quarter[0].grade;
-                        return grade;
-                    },
-                    dataIndex: 'grade',
+                    dataIndex: 'qtrGrade',
                     text: 'Grade',
                     editor: {
                         xtype: 'numberfield'

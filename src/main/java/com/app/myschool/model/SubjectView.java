@@ -10,7 +10,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJson
 public class SubjectView {
 
-	private Long subjId;
+	private Long id;
+	
+	private String studentName;
 	
 	private Integer subjVersion;
 
@@ -48,4 +50,3 @@ public class SubjectView {
 
 	private String qtrYear;
 }
-
