@@ -16,4 +16,8 @@ public class Grades {
     @Min(0L)
     @Max(2L)
     private int grade_type;
+
+    @NotNull
+    @Min(0L)
+    private double grade;
 }

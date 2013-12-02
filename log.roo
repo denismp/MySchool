@@ -383,3 +383,4 @@ finder add --finderName findSubjectsByQuarters
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-12-01 19:17:18
 entity jpa --class ~.model.Grades --activeRecord --testAutomatically 
 field number --fieldName grade_type --type int --min 0 --max 2 --notNull
+field number --fieldName grade --type double --min 0 --notNull

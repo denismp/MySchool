@@ -37,6 +37,7 @@
 <aspect name="com.app.myschool.model.Weekly_Roo_Json"/>
 <aspect name="com.app.myschool.model.Subject_Roo_Json"/>
 <aspect name="com.app.myschool.web.GraduateTrackingController_Roo_Controller"/>
+<aspect name="com.app.myschool.model.Grades_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.BodyOfWork_Roo_Jpa_ActiveRecord"/>
 <aspect name="com.app.myschool.model.GraduateTracking_Roo_Json"/>
 <aspect name="com.app.myschool.model.Grades_Roo_Jpa_Entity"/>
@@ -121,8 +122,8 @@
 <aspect name="com.app.myschool.model.Subject_Roo_Configurable"/>
 <aspect name="com.app.myschool.model.PreviousTranscripts_Roo_Json"/>
 <aspect name="com.app.myschool.model.EvaluationRatings_Roo_Json"/>
-<aspect name="com.app.myschool.model.Weekly_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.MonthlyEvaluationRatings_Roo_Jpa_ActiveRecord"/>
+<aspect name="com.app.myschool.model.Weekly_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.Student_Roo_JavaBean"/>
 <aspect name="com.app.myschool.model.Weekly_Roo_ToString"/>
 <aspect name="com.app.myschool.model.BodyOfWork_Roo_Configurable"/>

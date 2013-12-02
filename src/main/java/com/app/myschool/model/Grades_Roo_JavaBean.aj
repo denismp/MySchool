@@ -15,4 +15,12 @@ privileged aspect Grades_Roo_JavaBean {
         this.grade_type = grade_type;
     }
     
+    public double Grades.getGrade() {
+        return this.grade;
+    }
+    
+    public void Grades.setGrade(double grade) {
+        this.grade = grade;
+    }
+    
 }
