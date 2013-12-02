@@ -386,3 +386,6 @@ field number --fieldName grade_type --type int --min 0 --max 2 --notNull
 field number --fieldName grade --type double --min 0 --notNull
 field date --fieldName lastUpdated --type java.util.Date --dateFormat SHORT --notNull
 field string --fieldName whoUpdated --notNull
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-12-01 21:27:49
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-12-01 21:29:45
+focus --class ~.model.Grades

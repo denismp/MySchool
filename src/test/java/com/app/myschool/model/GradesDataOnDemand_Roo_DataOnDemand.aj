@@ -5,6 +5,8 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Grades;
 import com.app.myschool.model.GradesDataOnDemand;
+import com.app.myschool.model.Quarter;
+import com.app.myschool.model.Student;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +32,8 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
         setGrade(obj, index);
         setGrade_type(obj, index);
         setLastUpdated(obj, index);
+        setQuarter(obj, index);
+        setStudent(obj, index);
         setWhoUpdated(obj, index);
         return obj;
     }
@@ -50,6 +54,16 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
     public void GradesDataOnDemand.setLastUpdated(Grades obj, int index) {
         Date lastUpdated = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
         obj.setLastUpdated(lastUpdated);
+    }
+    
+    public void GradesDataOnDemand.setQuarter(Grades obj, int index) {
+        Quarter quarter = null;
+        obj.setQuarter(quarter);
+    }
+    
+    public void GradesDataOnDemand.setStudent(Grades obj, int index) {
+        Student student = null;
+        obj.setStudent(student);
     }
     
     public void GradesDataOnDemand.setWhoUpdated(Grades obj, int index) {

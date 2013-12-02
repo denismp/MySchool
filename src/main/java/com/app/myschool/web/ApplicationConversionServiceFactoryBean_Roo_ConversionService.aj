@@ -247,7 +247,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Quarter, String> ApplicationConversionServiceFactoryBean.getQuarterToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Quarter, java.lang.String>() {
             public String convert(Quarter quarter) {
-                return new StringBuilder().append(quarter.getQtrName()).append(' ').append(quarter.getGradeType()).append(' ').append(quarter.getGrade()).append(' ').append(quarter.getWhoUpdated()).toString();
+                return new StringBuilder().append(quarter.getQtrName()).append(' ').append(quarter.getLastUpdated()).append(' ').append(quarter.getQtr_year()).toString();
             }
         };
     }

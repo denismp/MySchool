@@ -5,11 +5,10 @@
     <page:list id="pl_com_app_myschool_model_Quarter" items="${quarters}" z="whrb7B9BWZx+GM4wk0GOcLRfFc8=">
         <table:table data="${quarters}" id="l_com_app_myschool_model_Quarter" path="/quarters" z="HdYjaX34bnk28Y4pml+R9hRvNlY=">
             <table:column id="c_com_app_myschool_model_Quarter_qtrName" property="qtrName" z="ksJGL67zmU+iSDtOj6JgjkAkTGg="/>
-            <table:column id="c_com_app_myschool_model_Quarter_gradeType" property="gradeType" z="ItVSEZr9pNTkbEKmHQyXoD9U4iE="/>
-            <table:column id="c_com_app_myschool_model_Quarter_grade" property="grade" z="Hv9bgtKkLtoWibzPoJdTnEzJ98k="/>
-            <table:column id="c_com_app_myschool_model_Quarter_locked" property="locked" z="iFSiuvDI0b3w4eydt2Oo1jOPkhk="/>
-            <table:column id="c_com_app_myschool_model_Quarter_whoUpdated" property="whoUpdated" z="GydPhAz/wUclu7fTKPo2A/KC5Ok="/>
             <table:column date="true" dateTimePattern="${quarter_lastupdated_date_format}" id="c_com_app_myschool_model_Quarter_lastUpdated" property="lastUpdated" z="68J5tnCIgJYrTNMsr9OD8m77AAg="/>
+            <table:column id="c_com_app_myschool_model_Quarter_student" property="student" z="YBdBKIieo3cQvtJyWFo9QKih3sc="/>
+            <table:column id="c_com_app_myschool_model_Quarter_subject" property="subject" z="NWYNWOaFzomUCM29i81TyStz0Pc="/>
+            <table:column id="c_com_app_myschool_model_Quarter_qtr_year" property="qtr_year" z="TaFqOQdjJVvnmNupXycN1LrM8M0="/>
         </table:table>
     </page:list>
 </div>

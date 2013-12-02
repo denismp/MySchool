@@ -3,6 +3,7 @@
 
 package com.app.myschool.web;
 
+import com.app.myschool.model.Grades;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -97,6 +98,7 @@ privileged aspect QuarterController_Roo_Controller {
     void QuarterController.populateEditForm(Model uiModel, Quarter quarter) {
         uiModel.addAttribute("quarter", quarter);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("gradeses", Grades.findAllGradeses());
         uiModel.addAttribute("students", Student.findAllStudents());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }

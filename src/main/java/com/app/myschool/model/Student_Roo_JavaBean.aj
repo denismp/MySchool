@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.Faculty;
+import com.app.myschool.model.Grades;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
@@ -20,6 +21,14 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setMonthlyEvaluations(Set<MonthlyEvaluationRatings> monthlyEvaluations) {
         this.monthlyEvaluations = monthlyEvaluations;
+    }
+    
+    public Set<Grades> Student.getGrades() {
+        return this.grades;
+    }
+    
+    public void Student.setGrades(Set<Grades> grades) {
+        this.grades = grades;
     }
     
     public Set<Quarter> Student.getQuarters() {

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Max;
@@ -29,6 +30,7 @@ public class Quarter {
     @Size(max = 25)
     private String qtrName;
 
+    /*
     @NotNull
     @Min(1L)
     @Max(2L)
@@ -46,6 +48,7 @@ public class Quarter {
     @NotNull
     @Size(max = 45)
     private String whoUpdated;
+    */
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -64,4 +67,8 @@ public class Quarter {
     @NotNull
     @Size(max = 5)
     private String qtr_year;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Grades> grades = new HashSet<Grades>();
+
 }

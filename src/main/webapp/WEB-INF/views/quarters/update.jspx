@@ -4,13 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_app_myschool_model_Quarter" modelAttribute="quarter" path="/quarters" versionField="Version" z="Bo5APT8abQ5kvAmTG7bKiqtPEYU=">
         <field:input field="qtrName" id="c_com_app_myschool_model_Quarter_qtrName" max="25" required="true" z="7BOCtvZNN4FiU+nGJOcjHzgA2Mk="/>
-        <field:input field="gradeType" id="c_com_app_myschool_model_Quarter_gradeType" max="2" min="1" required="true" z="7+wn82dC/RDz/iaYQDGX9DB7H64="/>
-        <field:input field="grade" id="c_com_app_myschool_model_Quarter_grade" max="4" min="0" required="true" z="rmQPhDU5c7cGjO6cKJisXCPK+F4="/>
-        <field:checkbox field="locked" id="c_com_app_myschool_model_Quarter_locked" z="SoE9o69gi3M7q3g9PIfM1PWRl68="/>
-        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Quarter_whoUpdated" required="true" z="kwyVSo7YSwS2gRbkTUOvcXogWIU="/>
         <field:datetime dateTimePattern="${quarter_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Quarter_lastUpdated" required="true" z="jlo9uermJYfWonXE836mhgjPh5g="/>
         <field:select field="student" id="c_com_app_myschool_model_Quarter_student" itemValue="id" items="${students}" path="/students" z="EFwaBznw3Tn8hZC59BH2LskYDzs="/>
         <field:input field="qtr_year" id="c_com_app_myschool_model_Quarter_qtr_year" max="5" required="true" z="1kADR3J75HtWRgQoMa28eyfDMD0="/>
         <field:select field="subject" id="c_com_app_myschool_model_Quarter_subject" itemValue="id" items="${subjects}" path="/subjects" z="KiUoPcq6gDrHlWmmiYZWZ20A3OY="/>
+        <field:simple field="grades" id="c_com_app_myschool_model_Quarter_grades" messageCode="entity_reference_not_managed" messageCodeAttribute="Grades" z="fcSG89Wa55+xDV715eeWSwtiDic="/>
     </form:update>
 </div>

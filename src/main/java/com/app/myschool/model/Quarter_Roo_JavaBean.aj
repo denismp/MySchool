@@ -3,10 +3,12 @@
 
 package com.app.myschool.model;
 
+import com.app.myschool.model.Grades;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect Quarter_Roo_JavaBean {
     
@@ -16,38 +18,6 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setQtrName(String qtrName) {
         this.qtrName = qtrName;
-    }
-    
-    public int Quarter.getGradeType() {
-        return this.gradeType;
-    }
-    
-    public void Quarter.setGradeType(int gradeType) {
-        this.gradeType = gradeType;
-    }
-    
-    public int Quarter.getGrade() {
-        return this.grade;
-    }
-    
-    public void Quarter.setGrade(int grade) {
-        this.grade = grade;
-    }
-    
-    public Boolean Quarter.getLocked() {
-        return this.locked;
-    }
-    
-    public void Quarter.setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-    
-    public String Quarter.getWhoUpdated() {
-        return this.whoUpdated;
-    }
-    
-    public void Quarter.setWhoUpdated(String whoUpdated) {
-        this.whoUpdated = whoUpdated;
     }
     
     public Date Quarter.getLastUpdated() {
@@ -80,6 +50,14 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setQtr_year(String qtr_year) {
         this.qtr_year = qtr_year;
+    }
+    
+    public Set<Grades> Quarter.getGrades() {
+        return this.grades;
+    }
+    
+    public void Quarter.setGrades(Set<Grades> grades) {
+        this.grades = grades;
     }
     
 }
