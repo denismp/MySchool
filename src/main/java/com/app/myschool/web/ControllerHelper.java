@@ -98,13 +98,13 @@ public class ControllerHelper {
 
 									sv_.setQtrId(q_.getId());
 									sv_.setQtrVersion(q_.getVersion());
-									sv_.setQtrGrade(q_.getGrade());
-									sv_.setQtrGradeType(q_.getGradeType());
+									//sv_.setQtrGrade(q_.getGrade());
+									//sv_.setQtrGradeType(q_.getGradeType());
 									sv_.setQtrLastUpdated(q_.getLastUpdated());
-									sv_.setQtrLocked(q_.getLocked());
+									//sv_.setQtrLocked(q_.getLocked());
 									sv_.setQtrYear(q_.getQtr_year());
 									sv_.setQtrName(q_.getQtrName());
-									sv_.setQtrWhoUpdated(q_.getWhoUpdated());
+									//sv_.setQtrWhoUpdated(q_.getWhoUpdated());
 
 									svl_.add(sv_);
 								}
