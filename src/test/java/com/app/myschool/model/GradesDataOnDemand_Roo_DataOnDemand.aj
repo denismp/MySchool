@@ -24,7 +24,16 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
     
     public Grades GradesDataOnDemand.getNewTransientGrades(int index) {
         Grades obj = new Grades();
+        setGrade_type(obj, index);
         return obj;
+    }
+    
+    public void GradesDataOnDemand.setGrade_type(Grades obj, int index) {
+        int grade_type = index;
+        if (grade_type < 0 || grade_type > 2) {
+            grade_type = 2;
+        }
+        obj.setGrade_type(grade_type);
     }
     
     public Grades GradesDataOnDemand.getSpecificGrades(int index) {
