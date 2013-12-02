@@ -3,7 +3,6 @@ package com.app.myschool.model;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -39,10 +38,13 @@ public class Grades {
 
     @NotNull
     private String whoUpdated;
-    
+
     @ManyToOne
     private Quarter quarter;
-    
+
     @ManyToOne
     private Student student;
+
+    @NotNull
+    private Boolean locked;
 }

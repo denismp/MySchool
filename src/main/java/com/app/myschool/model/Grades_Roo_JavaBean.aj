@@ -58,4 +58,12 @@ privileged aspect Grades_Roo_JavaBean {
         this.student = student;
     }
     
+    public Boolean Grades.getLocked() {
+        return this.locked;
+    }
+    
+    public void Grades.setLocked(Boolean locked) {
+        this.locked = locked;
+    }
+    
 }
