@@ -32,4 +32,12 @@ privileged aspect Grades_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public String Grades.getWhoUpdated() {
+        return this.whoUpdated;
+    }
+    
+    public void Grades.setWhoUpdated(String whoUpdated) {
+        this.whoUpdated = whoUpdated;
+    }
+    
 }

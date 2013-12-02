@@ -29,4 +29,7 @@ public class Grades {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "S-")
     private Date lastUpdated;
+
+    @NotNull
+    private String whoUpdated;
 }

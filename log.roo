@@ -385,3 +385,4 @@ entity jpa --class ~.model.Grades --activeRecord --testAutomatically
 field number --fieldName grade_type --type int --min 0 --max 2 --notNull
 field number --fieldName grade --type double --min 0 --notNull
 field date --fieldName lastUpdated --type java.util.Date --dateFormat SHORT --notNull
+field string --fieldName whoUpdated --notNull
