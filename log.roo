@@ -390,3 +390,4 @@ field string --fieldName whoUpdated --notNull
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-12-01 21:29:45
 focus --class ~.model.Grades
 field boolean --fieldName locked --notNull
+json all --deepSerialize
