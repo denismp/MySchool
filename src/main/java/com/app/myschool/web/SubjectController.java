@@ -1,15 +1,12 @@
 package com.app.myschool.web;
 
-import java.util.*;
-
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
-
+import java.*;
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
@@ -38,15 +35,13 @@ public class SubjectController {
     @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map params) {
-    	ResponseEntity<java.lang.String> ret_ = null;
+        ResponseEntity<java.lang.String> ret_ = null;
         ControllerHelper controllerHelper = new ControllerHelper();
-    	
-    	if (params.containsKey("studentName")) {
-    		ret_ = controllerHelper.listJson(SubjectView.class, params);
-    	}
-    	else {
-    		ret_ = controllerHelper.listJson(Subject.class);
-    	}
+        if (params.containsKey("studentName")) {
+            ret_ = controllerHelper.listJson(SubjectView.class, params);
+        } else {
+            ret_ = controllerHelper.listJson(Subject.class);
+        }
         return ret_;
     }
 

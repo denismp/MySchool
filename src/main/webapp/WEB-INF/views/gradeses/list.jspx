@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_Grades" items="${gradeses}" z="TBE7B8wlVSMrvs8Kz4zzsNIisEY=">
+        <table:table data="${gradeses}" id="l_com_app_myschool_model_Grades" path="/gradeses" z="bcAMXBklOakraXz0EyPCHajWzPE=">
+            <table:column id="c_com_app_myschool_model_Grades_grade_type" property="grade_type" z="WwzeY76Kylw2GJjYp5maeVJA35w="/>
+            <table:column id="c_com_app_myschool_model_Grades_grade" property="grade" z="1EaAf3x6qH9YPqsnH+tzmFJcPu4="/>
+            <table:column date="true" dateTimePattern="${grades_lastupdated_date_format}" id="c_com_app_myschool_model_Grades_lastUpdated" property="lastUpdated" z="7FllwZeeDeaHAF7nudSJYB242II="/>
+            <table:column id="c_com_app_myschool_model_Grades_whoUpdated" property="whoUpdated" z="L1ngEs1IoHQbb1DIbEbU+Fah1CY="/>
+            <table:column id="c_com_app_myschool_model_Grades_quarter" property="quarter" z="Y0Syzf/Oh8HJ982SEk26dK6kQ7k="/>
+            <table:column id="c_com_app_myschool_model_Grades_student" property="student" z="tjv9H4TKNBbsLOR+/aqnvkw4u9w="/>
+        </table:table>
+    </page:list>
+</div>

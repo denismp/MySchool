@@ -1,5 +1,6 @@
 <aspectj>
 <aspects>
+<aspect name="com.app.myschool.model.Grades_Roo_Json"/>
 <aspect name="com.app.myschool.model.SubjectView_Roo_Json"/>
 <aspect name="com.app.myschool.model.Student_Roo_ToString"/>
 <aspect name="com.app.myschool.model.Artifact_Roo_Jpa_Entity"/>

@@ -8,6 +8,7 @@ import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Faculty;
+import com.app.myschool.model.Grades;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
@@ -144,6 +145,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Faculty>() {
             public com.app.myschool.model.Faculty convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), Faculty.class);
+            }
+        };
+    }
+    
+    public Converter<Grades, String> ApplicationConversionServiceFactoryBean.getGradesToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Grades, java.lang.String>() {
+            public String convert(Grades grades) {
+                return new StringBuilder().append(grades.getGrade_type()).append(' ').append(grades.getGrade()).append(' ').append(grades.getLastUpdated()).append(' ').append(grades.getWhoUpdated()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Grades> ApplicationConversionServiceFactoryBean.getIdToGradesConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Grades>() {
+            public com.app.myschool.model.Grades convert(java.lang.Long id) {
+                return Grades.findGrades(id);
+            }
+        };
+    }
+    
+    public Converter<String, Grades> ApplicationConversionServiceFactoryBean.getStringToGradesConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Grades>() {
+            public com.app.myschool.model.Grades convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Grades.class);
             }
         };
     }
@@ -428,6 +453,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getFacultyToStringConverter());
         registry.addConverter(getIdToFacultyConverter());
         registry.addConverter(getStringToFacultyConverter());
+        registry.addConverter(getGradesToStringConverter());
+        registry.addConverter(getIdToGradesConverter());
+        registry.addConverter(getStringToGradesConverter());
         registry.addConverter(getGraduateTrackingToStringConverter());
         registry.addConverter(getIdToGraduateTrackingConverter());
         registry.addConverter(getStringToGraduateTrackingConverter());

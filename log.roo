@@ -391,3 +391,4 @@ field string --fieldName whoUpdated --notNull
 focus --class ~.model.Grades
 field boolean --fieldName locked --notNull
 json all --deepSerialize
+ web mvc all --package ~.web

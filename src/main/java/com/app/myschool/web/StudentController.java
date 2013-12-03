@@ -1,11 +1,9 @@
 package com.app.myschool.web;
 
-import java.util.Map;
-
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
-
+import java.util.Map;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,14 +33,13 @@ public class StudentController {
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map params) {
-    	ResponseEntity<java.lang.String> ret_ = null;
+        ResponseEntity<java.lang.String> ret_ = null;
         ControllerHelper controllerHelper = new ControllerHelper();
-    	if (params.containsKey("studentName")) {
-    		ret_ = controllerHelper.listJson(Student.class, params);
-    	}
-    	else {
-    		ret_ = controllerHelper.listJson(Student.class);
-    	}
+        if (params.containsKey("studentName")) {
+            ret_ = controllerHelper.listJson(Student.class, params);
+        } else {
+            ret_ = controllerHelper.listJson(Student.class);
+        }
         return ret_;
     }
 
@@ -76,9 +73,9 @@ public class StudentController {
         return controllerHelper.createFromJsonArray(Student.class, json);
     }
 
-	@RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
+    @RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
+    public ResponseEntity<java.lang.String> jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.jsonFindStudentsByUserNameEquals(Student.class, userName);
     }

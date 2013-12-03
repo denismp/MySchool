@@ -1,136 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<div xmlns:jsp="http://java.sun.com/JSP/Page"
-	xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu"
-	xmlns:sec="http://www.springframework.org/security/tags" id="menu"
-	version="2.0">
-	<jsp:directive.page contentType="text/html;charset=UTF-8" />
-	<jsp:output omit-xml-declaration="yes" />
-	<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-		<!--  <sec:authorize access="hasRole('ROLE_ADMIN')">-->
-			<menu:category id="c_monthlyevaluationratings"
-				z="bLOuV8WmJk94bABNkmYFRmqTedc=">
-				<menu:item id="i_monthlyevaluationratings_new"
-					messageCode="global_menu_new"
-					url="/monthlyevaluationratingses?form"
-					z="Sod5sLCwCrTNK3wF6AB3J/e1+iY=" />
-				<menu:item id="i_monthlyevaluationratings_list"
-					messageCode="global_menu_list"
-					url="/monthlyevaluationratingses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="/nh0j54Qz8G4K2w+v/7wOipfKyc=" />
-			</menu:category>
-			<menu:category id="c_daily" z="NFkxHXrs3RHbcUzbzVxYdBL+0h8=">
-				<menu:item id="i_daily_new" messageCode="global_menu_new"
-					url="/dailys?form" z="an2jfPHNh7ouXAQ6voPS9Mq+QzI=" />
-				<menu:item id="i_daily_list" messageCode="global_menu_list"
-					url="/dailys?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="do7jyq5vh0p9Snztwoo2VLEQri0=" />
-			</menu:category>
-			<menu:category id="c_roles" z="rs8zfmLS6SJZoIvFFQfrlrSaJVU=">
-				<menu:item id="i_roles_new" messageCode="global_menu_new"
-					url="/roleses?form" z="3pwVBouHLA1zzuNbxsmScZYd3Ow=" />
-				<menu:item id="i_roles_list" messageCode="global_menu_list"
-					url="/roleses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="hajFcKWAQ9yfIfMWvLv3ooTzCFE=" />
-			</menu:category>
-			<menu:category id="c_previoustranscripts"
-				z="Ba7pcAtJhn+YSUFA88+RMlijhns=">
-				<menu:item id="i_previoustranscripts_new"
-					messageCode="global_menu_new" url="/previoustranscriptses?form"
-					z="WTFJqHXReDkgxBwjaT3P1LZtOts=" />
-				<menu:item id="i_previoustranscripts_list"
-					messageCode="global_menu_list"
-					url="/previoustranscriptses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="3DOq4yn1ppON+JQYnPAjTfrptTg=" />
-			</menu:category>
-			<menu:category id="c_subject" z="7o1gOZ254r8rrLkTPEMR4T4CYTs=">
-				<menu:item id="i_subject_new" messageCode="global_menu_new"
-					url="/subjects?form" z="K/cpx4U1MG0/LtXu68wamJ7ttg0=" />
-				<menu:item id="i_subject_list" messageCode="global_menu_list"
-					url="/subjects?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="EQd4RQgsWkj2hqqLFZF+zKoYy0I=" />
-			</menu:category>
-			<menu:category id="c_weekly" z="dL3QRDW0lZz/1C4xtjgy32iOuOE=">
-				<menu:item id="i_weekly_new" messageCode="global_menu_new"
-					url="/weeklys?form" z="uNPo9Bf6oVrTtvJmOOVDJQctTDk=" />
-				<menu:item id="i_weekly_list" messageCode="global_menu_list"
-					url="/weeklys?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="EYNZkf0lbPL+uyDMMBXI2XKR73k=" />
-			</menu:category>
-			<menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
-				<menu:item id="i_student_new" messageCode="global_menu_new"
-					url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM=" />
-				<menu:item id="i_student_list" messageCode="global_menu_list"
-					url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="PSLnBxZ6Z7hXmOglFNorqDjA2H0=" />
-			</menu:category>
-			<menu:category id="c_artifact" z="0Qe/hlVN3gyyJEnPX3vB0YIh8JY=">
-				<menu:item id="i_artifact_new" messageCode="global_menu_new"
-					url="/artifacts?form" z="G4UetoLhlArEkOXiXslETn/hg8M=" />
-				<menu:item id="i_artifact_list" messageCode="global_menu_list"
-					url="/artifacts?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="qG8D7WxbDs3tyOJsq7p6m3PndEM=" />
-			</menu:category>
-			<menu:category id="c_monthlysummaryratings"
-				z="/UtDvA3LHLTFB75gdPE+hr0MYl8=">
-				<menu:item id="i_monthlysummaryratings_new"
-					messageCode="global_menu_new" url="/monthlysummaryratingses?form"
-					z="n27p3h/SOgdU3XfbxdUql4bNCC8=" />
-				<menu:item id="i_monthlysummaryratings_list"
-					messageCode="global_menu_list"
-					url="/monthlysummaryratingses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="ZHiKTiCpy4U/sMAPMfpntA28ME8=" />
-			</menu:category>
-			<menu:category id="c_evaluationratings"
-				z="Z0jlHfO5SK9lWmC6OxJ+6qSSepk=">
-				<menu:item id="i_evaluationratings_new"
-					messageCode="global_menu_new" url="/evaluationratingses?form"
-					z="48atwlaTHORQ/tvdkPvz+Mqs8h8=" />
-				<menu:item id="i_evaluationratings_list"
-					messageCode="global_menu_list"
-					url="/evaluationratingses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="PYngOLTTnVwLDoDr4+DtM0O3nIE=" />
-			</menu:category>
-			<menu:category id="c_faculty" z="EIIASzPnfHV/MrsYqTMZ9qGTqqk=">
-				<menu:item id="i_faculty_new" messageCode="global_menu_new"
-					url="/facultys?form" z="VupbwMIN3M08zpIyYJCadbKCZv0=" />
-				<menu:item id="i_faculty_list" messageCode="global_menu_list"
-					url="/facultys?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="L49Ky0frHkV7zrZQ1Y72NJTe63w=" />
-			</menu:category>
-			<menu:category id="c_quarter" z="3/vwLtWRKJNbyJPdytGpGCp41j4=">
-				<menu:item id="i_quarter_new" messageCode="global_menu_new"
-					url="/quarters?form" z="bDMs6l3wS3zf1ySX0am4zvKllBk=" />
-				<menu:item id="i_quarter_list" messageCode="global_menu_list"
-					url="/quarters?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="8BKpujjjjOiTKstBG2Ga2G+m5d0=" />
-			</menu:category>
-			<menu:category id="c_bodyofwork" z="Vf4dhxA2lDaqI3DWutVRj1Si+Ek=">
-				<menu:item id="i_bodyofwork_new" messageCode="global_menu_new"
-					url="/bodyofworks?form" z="fqZCqi3JLEG19OaMZ0guAObMmZw=" />
-				<menu:item id="i_bodyofwork_list" messageCode="global_menu_list"
-					url="/bodyofworks?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="rUG35SmiJrjQ/2nt/l+s7EecqtE=" />
-			</menu:category>
-			<menu:category id="c_skillratings" z="C8Ka/Rq7hjwY8WNtvwjvMHO71Ts=">
-				<menu:item id="i_skillratings_new" messageCode="global_menu_new"
-					url="/skillratingses?form" z="Nv8g8tcr2PS2qM0n3xC38oFCARU=" />
-				<menu:item id="i_skillratings_list" messageCode="global_menu_list"
-					url="/skillratingses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="RujHG+4hAC/kT53nc00s2Hkdz3c=" />
-			</menu:category>
-			<menu:category id="c_quarternames" z="DESyZDTsVAFPQwC8v5p2HQhkDQo=">
-				<menu:item id="i_quarternames_new" messageCode="global_menu_new"
-					url="/quarternameses?form" z="sZN1lZAlesk89Tp2Swe1XvZF9bo=" />
-				<menu:item id="i_quarternames_list" messageCode="global_menu_list"
-					url="/quarternameses?page=1&amp;size=${empty param.size ? 10 : param.size}"
-					z="i+/1CYi/xGMQ+JZFXQprCceKV1w=" />
-			</menu:category>
-		<!--  </sec:authorize>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:sec="http://www.springframework.org/security/tags" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <!--  <sec:authorize access="hasRole('ROLE_ADMIN')">-->
+        <menu:category id="c_monthlyevaluationratings" z="bLOuV8WmJk94bABNkmYFRmqTedc=">
+            <menu:item id="i_monthlyevaluationratings_new" messageCode="global_menu_new" url="/monthlyevaluationratingses?form" z="Sod5sLCwCrTNK3wF6AB3J/e1+iY="/>
+            <menu:item id="i_monthlyevaluationratings_list" messageCode="global_menu_list" url="/monthlyevaluationratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="/nh0j54Qz8G4K2w+v/7wOipfKyc="/>
+        </menu:category>
+        <menu:category id="c_daily" z="NFkxHXrs3RHbcUzbzVxYdBL+0h8=">
+            <menu:item id="i_daily_new" messageCode="global_menu_new" url="/dailys?form" z="an2jfPHNh7ouXAQ6voPS9Mq+QzI="/>
+            <menu:item id="i_daily_list" messageCode="global_menu_list" url="/dailys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="do7jyq5vh0p9Snztwoo2VLEQri0="/>
+        </menu:category>
+        <menu:category id="c_roles" z="rs8zfmLS6SJZoIvFFQfrlrSaJVU=">
+            <menu:item id="i_roles_new" messageCode="global_menu_new" url="/roleses?form" z="3pwVBouHLA1zzuNbxsmScZYd3Ow="/>
+            <menu:item id="i_roles_list" messageCode="global_menu_list" url="/roleses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="hajFcKWAQ9yfIfMWvLv3ooTzCFE="/>
+        </menu:category>
+        <menu:category id="c_previoustranscripts" z="Ba7pcAtJhn+YSUFA88+RMlijhns=">
+            <menu:item id="i_previoustranscripts_new" messageCode="global_menu_new" url="/previoustranscriptses?form" z="WTFJqHXReDkgxBwjaT3P1LZtOts="/>
+            <menu:item id="i_previoustranscripts_list" messageCode="global_menu_list" url="/previoustranscriptses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="3DOq4yn1ppON+JQYnPAjTfrptTg="/>
+        </menu:category>
+        <menu:category id="c_subject" z="7o1gOZ254r8rrLkTPEMR4T4CYTs=">
+            <menu:item id="i_subject_new" messageCode="global_menu_new" url="/subjects?form" z="K/cpx4U1MG0/LtXu68wamJ7ttg0="/>
+            <menu:item id="i_subject_list" messageCode="global_menu_list" url="/subjects?page=1&amp;size=${empty param.size ? 10 : param.size}" z="EQd4RQgsWkj2hqqLFZF+zKoYy0I="/>
+        </menu:category>
+        <menu:category id="c_weekly" z="dL3QRDW0lZz/1C4xtjgy32iOuOE=">
+            <menu:item id="i_weekly_new" messageCode="global_menu_new" url="/weeklys?form" z="uNPo9Bf6oVrTtvJmOOVDJQctTDk="/>
+            <menu:item id="i_weekly_list" messageCode="global_menu_list" url="/weeklys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="EYNZkf0lbPL+uyDMMBXI2XKR73k="/>
+        </menu:category>
+        <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
+            <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
+            <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
+        </menu:category>
+        <menu:category id="c_artifact" z="0Qe/hlVN3gyyJEnPX3vB0YIh8JY=">
+            <menu:item id="i_artifact_new" messageCode="global_menu_new" url="/artifacts?form" z="G4UetoLhlArEkOXiXslETn/hg8M="/>
+            <menu:item id="i_artifact_list" messageCode="global_menu_list" url="/artifacts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="qG8D7WxbDs3tyOJsq7p6m3PndEM="/>
+        </menu:category>
+        <menu:category id="c_monthlysummaryratings" z="/UtDvA3LHLTFB75gdPE+hr0MYl8=">
+            <menu:item id="i_monthlysummaryratings_new" messageCode="global_menu_new" url="/monthlysummaryratingses?form" z="n27p3h/SOgdU3XfbxdUql4bNCC8="/>
+            <menu:item id="i_monthlysummaryratings_list" messageCode="global_menu_list" url="/monthlysummaryratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="ZHiKTiCpy4U/sMAPMfpntA28ME8="/>
+        </menu:category>
+        <menu:category id="c_evaluationratings" z="Z0jlHfO5SK9lWmC6OxJ+6qSSepk=">
+            <menu:item id="i_evaluationratings_new" messageCode="global_menu_new" url="/evaluationratingses?form" z="48atwlaTHORQ/tvdkPvz+Mqs8h8="/>
+            <menu:item id="i_evaluationratings_list" messageCode="global_menu_list" url="/evaluationratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PYngOLTTnVwLDoDr4+DtM0O3nIE="/>
+        </menu:category>
+        <menu:category id="c_faculty" z="EIIASzPnfHV/MrsYqTMZ9qGTqqk=">
+            <menu:item id="i_faculty_new" messageCode="global_menu_new" url="/facultys?form" z="VupbwMIN3M08zpIyYJCadbKCZv0="/>
+            <menu:item id="i_faculty_list" messageCode="global_menu_list" url="/facultys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="L49Ky0frHkV7zrZQ1Y72NJTe63w="/>
+        </menu:category>
+        <menu:category id="c_quarter" z="3/vwLtWRKJNbyJPdytGpGCp41j4=">
+            <menu:item id="i_quarter_new" messageCode="global_menu_new" url="/quarters?form" z="bDMs6l3wS3zf1ySX0am4zvKllBk="/>
+            <menu:item id="i_quarter_list" messageCode="global_menu_list" url="/quarters?page=1&amp;size=${empty param.size ? 10 : param.size}" z="8BKpujjjjOiTKstBG2Ga2G+m5d0="/>
+        </menu:category>
+        <menu:category id="c_bodyofwork" z="Vf4dhxA2lDaqI3DWutVRj1Si+Ek=">
+            <menu:item id="i_bodyofwork_new" messageCode="global_menu_new" url="/bodyofworks?form" z="fqZCqi3JLEG19OaMZ0guAObMmZw="/>
+            <menu:item id="i_bodyofwork_list" messageCode="global_menu_list" url="/bodyofworks?page=1&amp;size=${empty param.size ? 10 : param.size}" z="rUG35SmiJrjQ/2nt/l+s7EecqtE="/>
+        </menu:category>
+        <menu:category id="c_skillratings" z="C8Ka/Rq7hjwY8WNtvwjvMHO71Ts=">
+            <menu:item id="i_skillratings_new" messageCode="global_menu_new" url="/skillratingses?form" z="Nv8g8tcr2PS2qM0n3xC38oFCARU="/>
+            <menu:item id="i_skillratings_list" messageCode="global_menu_list" url="/skillratingses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="RujHG+4hAC/kT53nc00s2Hkdz3c="/>
+        </menu:category>
+        <menu:category id="c_quarternames" z="DESyZDTsVAFPQwC8v5p2HQhkDQo=">
+            <menu:item id="i_quarternames_new" messageCode="global_menu_new" url="/quarternameses?form" z="sZN1lZAlesk89Tp2Swe1XvZF9bo="/>
+            <menu:item id="i_quarternames_list" messageCode="global_menu_list" url="/quarternameses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="i+/1CYi/xGMQ+JZFXQprCceKV1w="/>
+        </menu:category>
+        <!--  </sec:authorize>
 		<sec:authorize access="isAuthenticated()">-->
-			<menu:category id="c_view" z="HjmI4Chx/kBYfS/6HjBLbCA+XpU=">
-				<menu:item id="i_view_myschoolapp_id" messageCode="global_generic"
-					url="/myschoolapp" z="/mhkWMIra2pQnWEiJ9iE47K98sM=" />
-			</menu:category>
-		<!--  </sec:authorize>-->
-	</menu:menu>
+        <menu:category id="c_view" z="HjmI4Chx/kBYfS/6HjBLbCA+XpU=">
+            <menu:item id="i_view_myschoolapp_id" messageCode="global_generic" url="/myschoolapp" z="/mhkWMIra2pQnWEiJ9iE47K98sM="/>
+        </menu:category>
+        <!--  </sec:authorize>-->
+        <menu:category id="c_grades" z="Fyokh6AQZwbi4cothYg8CqBjyck=">
+            <menu:item id="i_grades_new" messageCode="global_menu_new" url="/gradeses?form" z="qKJeos01OYmonxOhsVHMExyqKXg="/>
+            <menu:item id="i_grades_list" messageCode="global_menu_list" url="/gradeses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="8/DorLwnivIUDCqvkAz3QJ7OEdU="/>
+        </menu:category>
+    </menu:menu>
 </div>

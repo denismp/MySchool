@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_app_myschool_model_Grades" modelAttribute="grades" path="/gradeses" versionField="Version" z="9rERmHuFfmDGn3COU4hfzt7Yskk=">
+        <field:input field="grade_type" id="c_com_app_myschool_model_Grades_grade_type" max="2" min="0" required="true" z="89jvMS92NLgoDLpnbT/bZz9f6Cw="/>
+        <field:input field="grade" id="c_com_app_myschool_model_Grades_grade" min="0" required="true" z="qMqLh7XJz5mOUo1gKtD3QWx/Rew="/>
+        <field:datetime dateTimePattern="${grades_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Grades_lastUpdated" required="true" z="feIMzKO8fw8xo1JeYLzYx3rsoE8="/>
+        <field:input field="whoUpdated" id="c_com_app_myschool_model_Grades_whoUpdated" required="true" z="1AAxWX6sUCk7MnYwzoVQP6wb6Mo="/>
+        <field:select field="quarter" id="c_com_app_myschool_model_Grades_quarter" itemValue="id" items="${quarters}" path="/quarters" z="XItvZ5yOB6EOuRwdugFhwFxxeyE="/>
+        <field:select field="student" id="c_com_app_myschool_model_Grades_student" itemValue="id" items="${students}" path="/students" z="EyMs1RLPPRQh1JmY/iCCeJh6T0Q="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_Grades_locked" z="YNJNZpFEB1+8UjxtveaDj2SLTR0="/>
+    </form:update>
+</div>
