@@ -393,3 +393,4 @@ field boolean --fieldName locked --notNull
 json all --deepSerialize
  web mvc all --package ~.web
 json all --deepSerialize
+web mvc json all

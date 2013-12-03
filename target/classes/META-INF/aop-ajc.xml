@@ -59,6 +59,7 @@
 <aspect name="com.app.myschool.model.SkillRatings_Roo_Jpa_ActiveRecord"/>
 <aspect name="com.app.myschool.model.Weekly_Roo_Jpa_Entity"/>
 <aspect name="com.app.myschool.web.MonthlyEvaluationRatingsController_Roo_Controller"/>
+<aspect name="com.app.myschool.web.GradesController_Roo_Controller"/>
 <aspect name="com.app.myschool.web.QuarterController_Roo_Controller"/>
 <aspect name="com.app.myschool.model.Grades_Roo_ToString"/>
 <aspect name="com.app.myschool.model.Grades_Roo_Configurable"/>
