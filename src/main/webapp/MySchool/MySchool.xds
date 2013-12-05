@@ -22,7 +22,11 @@
                 "width": null
             }
         },
-        "generateArchitectVersion": true
+        "generateArchitectVersion": true,
+        "lastBuildSelection": {
+            "value": "webBuild",
+            "display": "Build web app"
+        }
     },
     "xdsVersion": "3.0.0",
     "xdsBuild": 1337,
