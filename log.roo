@@ -397,3 +397,4 @@ web mvc json all
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2013-12-03 10:13:54
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2013-12-07 18:57:12
 json all --deepSerialize
+web mvc json all
