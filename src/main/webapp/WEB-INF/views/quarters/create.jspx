@@ -8,7 +8,7 @@
         <field:select field="student" id="c_com_app_myschool_model_Quarter_student" itemValue="id" items="${students}" path="/students" z="EFwaBznw3Tn8hZC59BH2LskYDzs="/>
         <field:input field="qtr_year" id="c_com_app_myschool_model_Quarter_qtr_year" max="5" required="true" z="1kADR3J75HtWRgQoMa28eyfDMD0="/>
         <field:select field="subject" id="c_com_app_myschool_model_Quarter_subject" itemValue="id" items="${subjects}" path="/subjects" z="KiUoPcq6gDrHlWmmiYZWZ20A3OY="/>
-        <field:simple field="grades" id="c_com_app_myschool_model_Quarter_grades" messageCode="entity_reference_not_managed" messageCodeAttribute="Grades" z="fcSG89Wa55+xDV715eeWSwtiDic="/>
+        <field:select field="grade" id="c_com_app_myschool_model_Quarter_grade" itemValue="id" items="${gradeses}" path="/gradeses" z="XwHJpakpOXxI+BOB7y3z2qXyVUs="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

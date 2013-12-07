@@ -7,8 +7,8 @@
         <field:input field="grade" id="c_com_app_myschool_model_Grades_grade" min="0" required="true" z="qMqLh7XJz5mOUo1gKtD3QWx/Rew="/>
         <field:datetime dateTimePattern="${grades_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Grades_lastUpdated" required="true" z="feIMzKO8fw8xo1JeYLzYx3rsoE8="/>
         <field:input field="whoUpdated" id="c_com_app_myschool_model_Grades_whoUpdated" required="true" z="1AAxWX6sUCk7MnYwzoVQP6wb6Mo="/>
-        <field:select field="quarter" id="c_com_app_myschool_model_Grades_quarter" itemValue="id" items="${quarters}" path="/quarters" z="XItvZ5yOB6EOuRwdugFhwFxxeyE="/>
         <field:select field="student" id="c_com_app_myschool_model_Grades_student" itemValue="id" items="${students}" path="/students" z="EyMs1RLPPRQh1JmY/iCCeJh6T0Q="/>
         <field:checkbox field="locked" id="c_com_app_myschool_model_Grades_locked" z="YNJNZpFEB1+8UjxtveaDj2SLTR0="/>
+        <field:simple field="quarters" id="c_com_app_myschool_model_Grades_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="NdOKfGUrQX6i64Mw/KLTB+fSOVQ="/>
     </form:update>
 </div>

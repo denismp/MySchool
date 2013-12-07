@@ -8,7 +8,6 @@ import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import java.util.Date;
-import java.util.Set;
 
 privileged aspect Quarter_Roo_JavaBean {
     
@@ -52,12 +51,12 @@ privileged aspect Quarter_Roo_JavaBean {
         this.qtr_year = qtr_year;
     }
     
-    public Set<Grades> Quarter.getGrades() {
-        return this.grades;
+    public Grades Quarter.getGrade() {
+        return this.grade;
     }
     
-    public void Quarter.setGrades(Set<Grades> grades) {
-        this.grades = grades;
+    public void Quarter.setGrade(Grades grade) {
+        this.grade = grade;
     }
     
 }

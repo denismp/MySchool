@@ -41,8 +41,11 @@ public class Grades {
     @NotNull
     private String whoUpdated;
 
-    @ManyToOne
-    private Quarter quarter;
+    //@ManyToOne
+    //private Quarter quarter;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "grade")
+    private Set<Quarter> quarters = new HashSet<Quarter>();
 
     @ManyToOne
     private Student student;

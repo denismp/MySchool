@@ -9,6 +9,7 @@
             <table:column id="c_com_app_myschool_model_Quarter_student" property="student" z="YBdBKIieo3cQvtJyWFo9QKih3sc="/>
             <table:column id="c_com_app_myschool_model_Quarter_subject" property="subject" z="NWYNWOaFzomUCM29i81TyStz0Pc="/>
             <table:column id="c_com_app_myschool_model_Quarter_qtr_year" property="qtr_year" z="TaFqOQdjJVvnmNupXycN1LrM8M0="/>
+            <table:column id="c_com_app_myschool_model_Quarter_grade" property="grade" z="Hv9bgtKkLtoWibzPoJdTnEzJ98k="/>
         </table:table>
     </page:list>
 </div>

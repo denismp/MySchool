@@ -7,6 +7,7 @@ import com.app.myschool.model.Grades;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect Grades_Roo_JavaBean {
     
@@ -42,12 +43,12 @@ privileged aspect Grades_Roo_JavaBean {
         this.whoUpdated = whoUpdated;
     }
     
-    public Quarter Grades.getQuarter() {
-        return this.quarter;
+    public Set<Quarter> Grades.getQuarters() {
+        return this.quarters;
     }
     
-    public void Grades.setQuarter(Quarter quarter) {
-        this.quarter = quarter;
+    public void Grades.setQuarters(Set<Quarter> quarters) {
+        this.quarters = quarters;
     }
     
     public Student Grades.getStudent() {

@@ -68,7 +68,10 @@ public class Quarter {
     @Size(max = 5)
     private String qtr_year;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Grades> grades = new HashSet<Grades>();
+    //@OneToMany(cascade = CascadeType.ALL)
+    //private Set<Grades> grades = new HashSet<Grades>();
+    
+    @ManyToOne
+    private Grades grade;
 
 }

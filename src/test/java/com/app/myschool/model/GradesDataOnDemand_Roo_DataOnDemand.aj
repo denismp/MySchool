@@ -5,7 +5,6 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Grades;
 import com.app.myschool.model.GradesDataOnDemand;
-import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -33,7 +32,6 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
         setGrade_type(obj, index);
         setLastUpdated(obj, index);
         setLocked(obj, index);
-        setQuarter(obj, index);
         setStudent(obj, index);
         setWhoUpdated(obj, index);
         return obj;
@@ -60,11 +58,6 @@ privileged aspect GradesDataOnDemand_Roo_DataOnDemand {
     public void GradesDataOnDemand.setLocked(Grades obj, int index) {
         Boolean locked = Boolean.TRUE;
         obj.setLocked(locked);
-    }
-    
-    public void GradesDataOnDemand.setQuarter(Grades obj, int index) {
-        Quarter quarter = null;
-        obj.setQuarter(quarter);
     }
     
     public void GradesDataOnDemand.setStudent(Grades obj, int index) {

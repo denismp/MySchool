@@ -7,7 +7,6 @@
         <field:display field="grade" id="s_com_app_myschool_model_Grades_grade" object="${grades}" z="O58Th/iAtTL9dlcFy252aNuXZpQ="/>
         <field:display date="true" dateTimePattern="${grades_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Grades_lastUpdated" object="${grades}" z="2585rOwx+VtcqsCwHK9smTL48YE="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Grades_whoUpdated" object="${grades}" z="M7khOp5nXaIiQhYALVU+WPI73MY="/>
-        <field:display field="quarter" id="s_com_app_myschool_model_Grades_quarter" object="${grades}" z="fefhrZq3DmIX1A3Z3YqesLGWv6A="/>
         <field:display field="student" id="s_com_app_myschool_model_Grades_student" object="${grades}" z="tgd/qfp2W5kz2a/oqqsPE7OzEE0="/>
         <field:display field="locked" id="s_com_app_myschool_model_Grades_locked" object="${grades}" z="/9cM9kst49dCqDlfnDluVZ1EbCc="/>
     </page:show>
