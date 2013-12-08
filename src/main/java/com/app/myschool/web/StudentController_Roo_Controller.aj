@@ -4,7 +4,6 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Faculty;
-import com.app.myschool.model.Grades;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
@@ -104,7 +103,6 @@ privileged aspect StudentController_Roo_Controller {
         uiModel.addAttribute("student", student);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("facultys", Faculty.findAllFacultys());
-        uiModel.addAttribute("gradeses", Grades.findAllGradeses());
         uiModel.addAttribute("graduatetrackings", GraduateTracking.findAllGraduateTrackings());
         uiModel.addAttribute("monthlyevaluationratingses", MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses());
         uiModel.addAttribute("monthlysummaryratingses", MonthlySummaryRatings.findAllMonthlySummaryRatingses());

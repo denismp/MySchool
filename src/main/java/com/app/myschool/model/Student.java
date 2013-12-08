@@ -19,9 +19,6 @@ public class Student extends Person {
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<MonthlyEvaluationRatings> monthlyEvaluations = new HashSet<MonthlyEvaluationRatings>();
-    
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Grades> grades = new HashSet<Grades>();
 
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private Set<Quarter> quarters = new HashSet<Quarter>();

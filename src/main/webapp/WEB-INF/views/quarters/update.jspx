@@ -8,6 +8,9 @@
         <field:select field="student" id="c_com_app_myschool_model_Quarter_student" itemValue="id" items="${students}" path="/students" z="EFwaBznw3Tn8hZC59BH2LskYDzs="/>
         <field:input field="qtr_year" id="c_com_app_myschool_model_Quarter_qtr_year" max="5" required="true" z="1kADR3J75HtWRgQoMa28eyfDMD0="/>
         <field:select field="subject" id="c_com_app_myschool_model_Quarter_subject" itemValue="id" items="${subjects}" path="/subjects" z="KiUoPcq6gDrHlWmmiYZWZ20A3OY="/>
-        <field:select field="grade" id="c_com_app_myschool_model_Quarter_grade" itemValue="id" items="${gradeses}" path="/gradeses" z="XwHJpakpOXxI+BOB7y3z2qXyVUs="/>
+        <field:input field="grade_type" id="c_com_app_myschool_model_Quarter_grade_type" max="2" min="1" required="true" z="AGtzhVejgxxRBID/+/8V2y1B+c4="/>
+        <field:input field="grade" id="c_com_app_myschool_model_Quarter_grade" max="4" min="0" required="true" z="rmQPhDU5c7cGjO6cKJisXCPK+F4="/>
+        <field:checkbox field="locked" id="c_com_app_myschool_model_Quarter_locked" z="SoE9o69gi3M7q3g9PIfM1PWRl68="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Quarter_whoUpdated" required="true" z="kwyVSo7YSwS2gRbkTUOvcXogWIU="/>
     </form:update>
 </div>

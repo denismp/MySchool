@@ -8,6 +8,9 @@
         <field:display field="student" id="s_com_app_myschool_model_Quarter_student" object="${quarter}" z="GiiWQZK/L4D9qJi81YnqAvulxFE="/>
         <field:display field="qtr_year" id="s_com_app_myschool_model_Quarter_qtr_year" object="${quarter}" z="kKTRZbK/5SqpXUQEfCCxw0n9+v8="/>
         <field:display field="subject" id="s_com_app_myschool_model_Quarter_subject" object="${quarter}" z="BPCp5IQTY0ijHVaHwfItmTcLR58="/>
+        <field:display field="grade_type" id="s_com_app_myschool_model_Quarter_grade_type" object="${quarter}" z="EeDe59SPgIWMrSlDyNbpGFulBVA="/>
         <field:display field="grade" id="s_com_app_myschool_model_Quarter_grade" object="${quarter}" z="UGKmznYPbJkEDgQj4PlqTKzGNLE="/>
+        <field:display field="locked" id="s_com_app_myschool_model_Quarter_locked" object="${quarter}" z="PzXUPurDOrn97BRXjOzoxIJGomM="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Quarter_whoUpdated" object="${quarter}" z="psjXxX6zz+4VV+C2hpVLaV+MKtg="/>
     </page:show>
 </div>

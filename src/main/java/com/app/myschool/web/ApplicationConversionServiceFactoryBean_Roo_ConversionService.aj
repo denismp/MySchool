@@ -8,7 +8,6 @@ import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Faculty;
-import com.app.myschool.model.Grades;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
@@ -149,30 +148,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<Grades, String> ApplicationConversionServiceFactoryBean.getGradesToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Grades, java.lang.String>() {
-            public String convert(Grades grades) {
-                return new StringBuilder().append(grades.getGrade_type()).append(' ').append(grades.getGrade()).append(' ').append(grades.getLastUpdated()).append(' ').append(grades.getWhoUpdated()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, Grades> ApplicationConversionServiceFactoryBean.getIdToGradesConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Grades>() {
-            public com.app.myschool.model.Grades convert(java.lang.Long id) {
-                return Grades.findGrades(id);
-            }
-        };
-    }
-    
-    public Converter<String, Grades> ApplicationConversionServiceFactoryBean.getStringToGradesConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Grades>() {
-            public com.app.myschool.model.Grades convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Grades.class);
-            }
-        };
-    }
-    
     public Converter<GraduateTracking, String> ApplicationConversionServiceFactoryBean.getGraduateTrackingToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.GraduateTracking, java.lang.String>() {
             public String convert(GraduateTracking graduateTracking) {
@@ -272,7 +247,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Quarter, String> ApplicationConversionServiceFactoryBean.getQuarterToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Quarter, java.lang.String>() {
             public String convert(Quarter quarter) {
-                return new StringBuilder().append(quarter.getQtrName()).append(' ').append(quarter.getLastUpdated()).append(' ').append(quarter.getQtr_year()).toString();
+                return new StringBuilder().append(quarter.getQtrName()).append(' ').append(quarter.getGrade_type()).append(' ').append(quarter.getGrade()).append(' ').append(quarter.getWhoUpdated()).toString();
             }
         };
     }
@@ -453,9 +428,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getFacultyToStringConverter());
         registry.addConverter(getIdToFacultyConverter());
         registry.addConverter(getStringToFacultyConverter());
-        registry.addConverter(getGradesToStringConverter());
-        registry.addConverter(getIdToGradesConverter());
-        registry.addConverter(getStringToGradesConverter());
         registry.addConverter(getGraduateTrackingToStringConverter());
         registry.addConverter(getIdToGraduateTrackingConverter());
         registry.addConverter(getStringToGraduateTrackingConverter());

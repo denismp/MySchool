@@ -26,7 +26,6 @@ import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Faculty;
-import com.app.myschool.model.Grades;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
@@ -215,9 +214,6 @@ public class ControllerHelper {
 				System.out.println("DEBUG");
 				System.out.println( records.toString());
 			}
-			else if (myClass.equals(Grades.class)) {
-				records = Grades.findAllGradeses();
-			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				records = PreviousTranscripts.findAllPreviousTranscriptses();
 			}
@@ -352,9 +348,6 @@ public class ControllerHelper {
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				record = PreviousTranscripts.findPreviousTranscripts(id);
 			}
-			else if (myClass.equals(Grades.class)) {
-				record = Grades.findGrades(id);
-			}
 			else if (myClass.equals(Quarter.class)) {
 				record = Quarter.findQuarter(id);
 			}
@@ -438,11 +431,6 @@ public class ControllerHelper {
 			{
 		        record = Student.fromJsonToStudent(myJson);
 		        ((Student)record).persist();
-			}
-			else if( myClass.equals(Grades.class) )
-			{
-				record = Grades.fromJsonToGrades(myJson);
-		        ((Grades)record).persist();
 			}
 			else if( myClass.equals(Faculty.class) )
 			{
@@ -554,11 +542,6 @@ public class ControllerHelper {
 		        record = Student.findStudent(id);
 		        ((Student)record).remove();
 			} 
-			else if( myClass.equals( Grades.class ) )
-			{
-				record = Grades.findGrades(id);
-		        ((Grades)record).remove();
-			}
 			else if( myClass.equals( Faculty.class ) )
 			{
 		        record = Faculty.findFaculty(id);
@@ -672,13 +655,6 @@ public class ControllerHelper {
 		        	updateGood = true;
 		        }
 			} 
-			else if( myClass.equals(Grades.class) )
-			{
-				record = Grades.fromJsonToGrades(myJson);
-		        if (((Grades)record).merge() != null) {
-		        	updateGood = true;
-		        }				
-			}
 			else if( myClass.equals(Faculty.class) )
 			{
 		        record = Faculty.fromJsonToFaculty(myJson);
@@ -854,25 +830,6 @@ public class ControllerHelper {
 		        results = records;
 		        statusGood = true;
 			}
-			else if( myClass.equals(Grades.class) )
-			{
-				Collection <Grades>mycollection = Grades.fromJsonArrayToGradeses(myJson);
-				@SuppressWarnings("unchecked")
-				List<Grades> records = new ArrayList( mycollection );
-		
-		        for (Grades record: Grades.fromJsonArrayToGradeses(myJson)) {
-		
-	    	        if (record.merge() == null) {
-	    	            returnStatus = HttpStatus.NOT_FOUND;
-	    	            response.setMessage(className + " update failed for id=" + record.getId() );
-	    				response.setSuccess(false);
-	    				response.setTotal(0L);
-	    		        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-	    	        }
-	    		}
-		        results = records;
-		        statusGood = true;
-		    }
 			else if( myClass.equals(Faculty.class) )
 			{
 				Collection <Faculty>mycollection = Faculty.fromJsonArrayToFacultys(myJson);
@@ -1203,18 +1160,6 @@ public class ControllerHelper {
 		        for (Student student: Student.fromJsonArrayToStudents(myJson)) {
 					student.persist();
 		        }
-				statusGood = true;
-				results = records;
-			}
-			else if( myClass.equals(Grades.class) )
-			{
-				Collection <Grades>mycollection = Grades.fromJsonArrayToGradeses(myJson);
-				@SuppressWarnings("unchecked")
-				List<Grades> records = new ArrayList( mycollection );
-		
-		        for (Grades grades: Grades.fromJsonArrayToGradeses(myJson)) {
-					grades.persist();
-				}
 				statusGood = true;
 				results = records;
 			}

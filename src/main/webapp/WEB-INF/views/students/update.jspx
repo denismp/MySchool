@@ -28,6 +28,5 @@
         <field:textarea field="userName" id="c_com_app_myschool_model_Student_userName" required="true" z="V0HiC3w+xsiU32iLrWu8qCHmgPs="/>
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Student_userPassword" required="true" z="ldqdQ4f3jAxQt3ssD+K0t4TXPOk="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Student_enabled" z="FabZ3jyXKMa1Uy/QTGGWjuhbfO4="/>
-        <field:simple field="grades" id="c_com_app_myschool_model_Student_grades" messageCode="entity_reference_not_managed" messageCodeAttribute="Grades" z="e33qqucjyB0JnPwRp/0lh0hqYfo="/>
     </form:update>
 </div>

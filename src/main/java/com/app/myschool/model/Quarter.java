@@ -30,11 +30,10 @@ public class Quarter {
     @Size(max = 25)
     private String qtrName;
 
-    /*
     @NotNull
     @Min(1L)
     @Max(2L)
-    private int gradeType;
+    private int grade_type;
 
     @NotNull
     @Min(0L)
@@ -48,7 +47,6 @@ public class Quarter {
     @NotNull
     @Size(max = 45)
     private String whoUpdated;
-    */
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -67,11 +65,4 @@ public class Quarter {
     @NotNull
     @Size(max = 5)
     private String qtr_year;
-    
-    //@OneToMany(cascade = CascadeType.ALL)
-    //private Set<Grades> grades = new HashSet<Grades>();
-    
-    @ManyToOne
-    private Grades grade;
-
 }
