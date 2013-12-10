@@ -38,7 +38,7 @@ public class Quarter {
     @NotNull
     @Min(0L)
     @Max(4L)
-    private int grade;
+    private double grade;
 
     @NotNull
     @Value("false")

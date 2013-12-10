@@ -26,11 +26,11 @@ privileged aspect Quarter_Roo_JavaBean {
         this.grade_type = grade_type;
     }
     
-    public int Quarter.getGrade() {
+    public double Quarter.getGrade() {
         return this.grade;
     }
     
-    public void Quarter.setGrade(int grade) {
+    public void Quarter.setGrade(double grade) {
         this.grade = grade;
     }
     

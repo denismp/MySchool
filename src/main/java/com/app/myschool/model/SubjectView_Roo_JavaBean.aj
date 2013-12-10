@@ -128,11 +128,11 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.qtrGradeType = qtrGradeType;
     }
     
-    public Integer SubjectView.getQtrGrade() {
+    public Double SubjectView.getQtrGrade() {
         return this.qtrGrade;
     }
     
-    public void SubjectView.setQtrGrade(Integer qtrGrade) {
+    public void SubjectView.setQtrGrade(Double qtrGrade) {
         this.qtrGrade = qtrGrade;
     }
     

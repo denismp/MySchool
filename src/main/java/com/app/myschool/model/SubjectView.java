@@ -40,7 +40,7 @@ public class SubjectView {
 
 	private Integer qtrGradeType;
 
-	private Integer qtrGrade;
+	private Double qtrGrade;
 
 	private Boolean qtrLocked;
 
