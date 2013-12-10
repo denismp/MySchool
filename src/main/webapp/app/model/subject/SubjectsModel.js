@@ -59,7 +59,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'subjVersion',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'subjWhoUpdated',
@@ -67,7 +67,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'qtrGrade',
-            type: 'int'
+            type: 'double'
         },
         {
             name: 'qtrGradeType',
