@@ -7,11 +7,14 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -46,6 +49,23 @@ import com.app.myschool.model.Weekly;
 public class ControllerHelper {
 	private static final Logger logger = Logger.getLogger(ControllerHelper.class);
 	
+	static public String getParam(@SuppressWarnings("rawtypes") Map m, String p) {
+		String ret_ = null;
+
+		if (m != null && StringUtils.isNotBlank(p) && m.containsKey(p)) {
+			Object o_ = m.get(p);
+			
+			if (o_ != null) {
+				String v_ = o_.toString();
+				
+				if (StringUtils.isNotBlank(v_)) {
+					ret_ = v_;
+				}
+			}
+		}
+		return ret_;
+	}
+	
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Class myClass,
 			@SuppressWarnings("rawtypes") Map params) {
@@ -57,69 +77,115 @@ public class ControllerHelper {
 		List<?> records = null;
 		String className = myClass.getSimpleName();
 		boolean statusGood = true;
+		String studentId_ = getParam(params, "studentId");
+		String studentName_ = getParam(params, "studentName");
+		
 		try {
-			if (myClass.equals(SubjectView.class)) {
-				List<SubjectView> svl_ = new ArrayList<SubjectView>();
-				String k_ = "studentName";
+			if (myClass.equals(SubjectView.class) && studentId_ != null) {
+				Student student_ = Student.findStudent(Long.valueOf(studentId_));
+				if (student_ != null) {
+					List<SubjectView> svl_ = new ArrayList<SubjectView>();
+					Set<Quarter> qtrs_ = student_.getQuarters();
+					Set<Faculty> faculty_ = student_.getFaculty();
+					int size_ = faculty_.size();
 
-				if (params.containsKey(k_)) {
-					List<Student> lt_ = Student.findStudentsByUserNameEquals(
-							params.get(k_).toString()).getResultList();
+					for (Quarter q_ : qtrs_) {
+						Subject u_ = q_.getSubject();
+						SubjectView sv_ = new SubjectView();
 
-					if (lt_.size() == 1) {
-						List<Quarter> lq_ = Quarter.findQuartersByStudent(
-								lt_.get(0)).getResultList();
+						sv_.setId(u_.getId());
+						sv_.setQtrGrade(q_.getGrade());
+						sv_.setQtrGradeType(q_.getGrade_type());
+						sv_.setQtrId(q_.getId());
+						sv_.setQtrLastUpdated(q_.getLastUpdated());
+						sv_.setQtrLocked(q_.getLocked());
+						sv_.setQtrName(q_.getQtrName());
+						sv_.setQtrVersion(q_.getVersion());
+						sv_.setQtrWhoUpdated(q_.getWhoUpdated());
+						sv_.setQtrYear(q_.getQtr_year());
 
-						for (Quarter q_ : lq_) {
-							Set<Quarter> sq_ = new HashSet<Quarter>();
+						sv_.setStudentName(studentName_);
 
-							sq_.add(q_);
+						sv_.setSubjCompleted(u_.getCompleted());
+						sv_.setSubjCreditHours(u_.getCreditHours());
+						sv_.setSubjDescription(u_.getDescription());
+						sv_.setSubjGradeLevel(u_.getGradeLevel());
+						sv_.setSubjLastUpdated(u_.getLastUpdated());
+						sv_.setSubjName(u_.getName());
+						sv_.setSubjObjectives(u_.getObjectives());
+						sv_.setSubjVersion(u_.getVersion());
+						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
 
-							List<Subject> ls_ = Subject.findSubjectsByQuarters(
-									sq_).getResultList();
-
-							if (ls_.size() > 0) {
-								for (Subject s_ : ls_) {
-									SubjectView sv_ = new SubjectView();
-
-									sv_.setId(s_.getId());
-									sv_.setStudentName(params.get(k_)
-											.toString());
-
-									sv_.setSubjVersion(s_.getVersion());
-									sv_.setSubjCompleted(s_.getCompleted());
-									sv_.setSubjCreditHours(s_.getCreditHours());
-									sv_.setSubjDescription(s_.getDescription());
-									sv_.setSubjGradeLevel(s_.getGradeLevel());
-									sv_.setSubjLastUpdated(s_.getLastUpdated());
-									sv_.setSubjName(s_.getName());
-									sv_.setSubjObjectives(s_.getObjectives());
-									sv_.setSubjWhoUpdated(s_.getWhoUpdated());
-
-									sv_.setQtrId(q_.getId());
-									sv_.setQtrVersion(q_.getVersion());
-									//sv_.setQtrGrade(q_.getGrade());
-									//sv_.setQtrGradeType(q_.getGradeType());
-									sv_.setQtrLastUpdated(q_.getLastUpdated());
-									//sv_.setQtrLocked(q_.getLocked());
-									sv_.setQtrYear(q_.getQtr_year());
-									sv_.setQtrName(q_.getQtrName());
-									//sv_.setQtrWhoUpdated(q_.getWhoUpdated());
-
-									svl_.add(sv_);
-								}
-							}
-						}
+						svl_.add(sv_);
 					}
+					records = svl_;
+				}
+			}
+			else if (false && myClass.equals(SubjectView.class) && studentName_ != null) {
+				List<SubjectView> svl_ = new ArrayList<SubjectView>();
+				EntityManager em = Student.entityManager();
+				StringBuilder qs_ = new StringBuilder("select ");
+				qs_.append("  u.id as uid"); //0
+				qs_.append(", q.grade"); //1
+				qs_.append(", q.grade_type"); //2
+				qs_.append(", q.id as qid"); //3
+				qs_.append(", q.last_updated as q_last_updated"); //4
+				qs_.append(", q.locked"); //5
+				qs_.append(", qtr_name"); //6
+				qs_.append(", q.version as q_version"); //7
+				qs_.append(", q.who_updated as g_who_updated"); //8
+				qs_.append(", qtr_year"); //9
+				qs_.append(", u.completed"); //10
+				qs_.append(", u.credit_hours"); //11
+				qs_.append(", u.description"); //12
+				qs_.append(", u.grade_level"); //13
+				qs_.append(", u.last_updated as u_last_updated"); //14
+				qs_.append(", u.name"); //15
+				qs_.append(", u.objectives"); //16
+				qs_.append(", u.version as u_version"); //17
+				qs_.append(", u.who_updated as u_who_updated"); //18
+				qs_.append(" from quarter q, subject u, student t where q.subject = u.id and q.student = t.id and t.user_name = ?");
+				Query query = em.createNativeQuery(qs_.toString());
+				query.setParameter(1, studentName_);
+
+				List<Object[]> results = query.getResultList();
+
+				for (int i_ = 0; i_ < results.size(); i_++) {
+					SubjectView sv_ = new SubjectView();
+					int j_ = 0;
+
+					sv_.setId(Long.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrGrade(Double.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrGradeType(Integer.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrId(Long.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrLastUpdated((Date) results.get(i_)[j_++]);
+					sv_.setQtrLocked(Boolean.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrName(results.get(i_)[j_++].toString());
+					sv_.setQtrVersion(Integer.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrWhoUpdated(results.get(i_)[j_++].toString());
+					sv_.setQtrYear(results.get(i_)[j_++].toString());
+					
+					sv_.setStudentName(studentName_);
+
+					sv_.setSubjCompleted(Boolean.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setSubjCreditHours(Integer.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setSubjDescription(results.get(i_)[j_++].toString());
+					sv_.setSubjGradeLevel(Integer.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setSubjLastUpdated((Date) results.get(i_)[j_++]);
+					sv_.setSubjName(results.get(i_)[j_++].toString());
+					sv_.setSubjObjectives(results.get(i_)[j_++].toString());
+					sv_.setSubjVersion(Integer.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setSubjWhoUpdated(results.get(i_)[j_++].toString());
+
+					svl_.add(sv_);
 				}
 				records = svl_;
-			} else if (myClass.equals(Student.class)) {
+			} else if (myClass.equals(Student.class) && studentName_ != null) {
 				List<HashMap<String, Object>> hl_ = new ArrayList<HashMap<String, Object>>();
 				HashMap<String, Object> hm_ = null;
-				String k_ = "studentName";
 
 				for (Student s_ : Student.findStudentsByUserNameEquals(
-						params.get(k_).toString()).getResultList()) {
+						studentName_).getResultList()) {
 					hm_ = new HashMap<String, Object>();
 
 					hm_.put("id", s_.getId());
