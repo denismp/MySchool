@@ -737,24 +737,46 @@ public class ControllerHelper {
 		        //if (((SubjectView)record).merge() != null ) {
 		        //	updateGood = true;
 		        //}		
-				SubjectView subjectView = new JSONDeserializer<SubjectView>().use("values", SubjectView.class)
-	                    .deserialize(myJson);
-				Quarter quarter = Quarter.findQuarter(subjectView.getQtrId());
-				quarter.setLastUpdated(subjectView.getSubjLastUpdated());
-				quarter.setWhoUpdated(subjectView.getSubjWhoUpdated());
-				quarter.setCompleted(quarter.getCompleted());
-				Subject subject = Subject.findSubject( subjectView.getId() );
+				//SubjectView subjectView = new JSONDeserializer<SubjectView>().use("values", SubjectView.class)
+	            //        .deserialize(myJson);
+				//Quarter quarter = Quarter.findQuarter(subjectView.getQtrId());
+				//quarter.setLastUpdated(subjectView.getSubjLastUpdated());
+				//quarter.setWhoUpdated(subjectView.getSubjWhoUpdated());
 				//quarter.setCompleted(quarter.getCompleted());
-				subject.setLastUpdated(subjectView.getSubjLastUpdated());
-				subject.setWhoUpdated(subjectView.getSubjWhoUpdated());
-				subject.setObjectives(subjectView.getSubjObjectives());
-				subject.setDescription(subjectView.getSubjDescription());
-				subject.persist();
-				quarter.persist();
-				record = subjectView;
-		        //if (((Subject)record).merge() != null ) {
-		        	updateGood = true;
-		        //}								
+				//Subject subject = Subject.findSubject( subjectView.getId() );
+				////quarter.setCompleted(quarter.getCompleted());
+				//subject.setLastUpdated(subjectView.getSubjLastUpdated());
+				//subject.setWhoUpdated(subjectView.getSubjWhoUpdated());
+				//subject.setObjectives(subjectView.getSubjObjectives());
+				//subject.setDescription(subjectView.getSubjDescription());
+				//subject.persist();
+				//quarter.persist();
+				//record = subjectView;
+		        ////if (((Subject)record).merge() != null ) {
+		        //	updateGood = true;
+		        ////}	
+		        	
+                SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
+                Quarter q_ = Quarter.findQuarter(s_.getQtrId());
+                Subject u_ = q_.getSubject();
+                
+                q_.setGrade(s_.getQtrGrade());
+                q_.setLastUpdated(s_.getQtrLastUpdated());
+                q_.setWhoUpdated(s_.getQtrWhoUpdated());
+                q_.setCompleted(s_.getSubjCompleted());
+
+                u_.setDescription(s_.getSubjDescription());
+                u_.setObjectives(s_.getSubjObjectives());
+                //u_.setCompleted(s_.getSubjCompleted());
+                u_.setLastUpdated(s_.getSubjLastUpdated());
+                u_.setWhoUpdated(s_.getSubjWhoUpdated());
+                
+                if (q_.merge() != null) {
+                    s_.setQtrVersion(q_.getVersion());
+                    s_.setSubjVersion(u_.getVersion());
+                    updateGood = true;
+                }
+                record = s_;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				record = PreviousTranscripts.fromJsonToPreviousTranscripts(myJson);
