@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,8 +20,6 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
-
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
@@ -42,13 +39,14 @@ import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
 import com.app.myschool.model.Weekly;
 
+import flexjson.JSONDeserializer;
+
 /**
  * @author denisputnam
  *
  */
 public class ControllerHelper {
 	private static final Logger logger = Logger.getLogger(ControllerHelper.class);
-	
 	static public String getParam(@SuppressWarnings("rawtypes") Map m, String p) {
 		String ret_ = null;
 
@@ -106,7 +104,7 @@ public class ControllerHelper {
 
 						sv_.setStudentName(studentName_);
 
-						sv_.setSubjCompleted(u_.getCompleted());
+						sv_.setSubjCompleted(q_.getCompleted());
 						sv_.setSubjCreditHours(u_.getCreditHours());
 						sv_.setSubjDescription(u_.getDescription());
 						sv_.setSubjGradeLevel(u_.getGradeLevel());
@@ -733,6 +731,30 @@ public class ControllerHelper {
 		        if (((Subject)record).merge() != null ) {
 		        	updateGood = true;
 		        }				
+			}
+			else if (myClass.equals(SubjectView.class)) {
+				//record = SubjectView.fromJsonToSubject(myJson);
+		        //if (((SubjectView)record).merge() != null ) {
+		        //	updateGood = true;
+		        //}		
+				SubjectView subjectView = new JSONDeserializer<SubjectView>().use("values", SubjectView.class)
+	                    .deserialize(myJson);
+				Quarter quarter = Quarter.findQuarter(subjectView.getQtrId());
+				quarter.setLastUpdated(subjectView.getSubjLastUpdated());
+				quarter.setWhoUpdated(subjectView.getSubjWhoUpdated());
+				quarter.setCompleted(quarter.getCompleted());
+				Subject subject = Subject.findSubject( subjectView.getId() );
+				//quarter.setCompleted(quarter.getCompleted());
+				subject.setLastUpdated(subjectView.getSubjLastUpdated());
+				subject.setWhoUpdated(subjectView.getSubjWhoUpdated());
+				subject.setObjectives(subjectView.getSubjObjectives());
+				subject.setDescription(subjectView.getSubjDescription());
+				subject.persist();
+				quarter.persist();
+				record = subjectView;
+		        //if (((Subject)record).merge() != null ) {
+		        	updateGood = true;
+		        //}								
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				record = PreviousTranscripts.fromJsonToPreviousTranscripts(myJson);

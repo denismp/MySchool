@@ -12,5 +12,6 @@
         <field:display field="grade" id="s_com_app_myschool_model_Quarter_grade" object="${quarter}" z="UGKmznYPbJkEDgQj4PlqTKzGNLE="/>
         <field:display field="locked" id="s_com_app_myschool_model_Quarter_locked" object="${quarter}" z="PzXUPurDOrn97BRXjOzoxIJGomM="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Quarter_whoUpdated" object="${quarter}" z="psjXxX6zz+4VV+C2hpVLaV+MKtg="/>
+        <field:display field="completed" id="s_com_app_myschool_model_Quarter_completed" object="${quarter}" z="wnl/OMpQNa8LuNRqgyKmSs+W35g="/>
     </page:show>
 </div>

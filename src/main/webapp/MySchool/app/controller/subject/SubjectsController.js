@@ -309,7 +309,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
-            records[i].set( 'lastUpdated', new Date() );
+            records[i].set( 'subjLastUpdated', new Date() );
             //records[i].set( 'quarter.lastUpdated', new Date() );
             var form = this.getSubjectsForm().getForm();
             var formValues = form.getValues();
@@ -404,7 +404,6 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         // Use the automatically generated getter to get the store
         //    	debugger;
         var studentStore_ = Ext.getStore('student.StudentStore');
-        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
 
         studentStore_.load({
             callback: this.onStudentStoreLoad,
@@ -413,27 +412,26 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
                 studentName: 'denis'
             }
         });
-
-        subjectStore_.load({
-            callback: this.onSubjectStoreLoad,
-            scope: this,
-            params: {
-                studentName: 'denis'
-            }
-        });
-
     },
 
     onStudentStoreLoad: function() {
         var studentStore_ = Ext.getStore('student.StudentStore');
         var r_ = studentStore_.getAt(0);
-
+        //        debugger
         if ( typeof( r_ ) != "undefined" ) {
-            //   debugger;
+            var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
             var studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
             var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
 
             g_.setTitle('[' + studentName_ + '] Subjects');
+            subjectStore_.load({
+                callback: this.onSubjectStoreLoad,
+                scope: this,
+                params: {
+                    studentName: r_.get('userName'),
+                    studentId: r_.get('id')
+                }
+            });
         }
     },
 

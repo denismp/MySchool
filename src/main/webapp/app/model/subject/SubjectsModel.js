@@ -67,7 +67,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'qtrGrade',
-            type: 'double'
+            type: 'float'
         },
         {
             name: 'qtrGradeType',

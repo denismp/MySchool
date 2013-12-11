@@ -20,8 +20,7 @@ Ext.define('MySchool.store.subject.SubjectStore', {
     requires: [
         'MySchool.model.subject.SubjectsModel',
         'Ext.data.proxy.Rest',
-        'Ext.data.reader.Json',
-        'Ext.data.writer.Json'
+        'Ext.data.reader.Json'
     ],
 
     constructor: function(cfg) {
@@ -39,33 +38,6 @@ Ext.define('MySchool.store.subject.SubjectStore', {
                 },
                 reader: {
                     type: 'json',
-                    root: 'data'
-                },
-                writer: {
-                    type: 'json',
-                    write: function(request) {
-                        debugger;
-                        var operation = request.operation;
-                        var records   = operation.records || [];
-                        var len       = records.length;
-                        var i         = 0;
-                        var data      = [];
-
-                        for (; i < len; i++) {
-                            data.push(this.getRecordData(records[i], operation));
-                            if( data[i].quarter.lastUpdated !== "" )
-                            {
-                                data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );
-                            }
-                            if( data[i].quarter.student.lastUpdated !== "" )
-                            {
-                                data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );
-                            }
-                        }
-                        return this.writeRecords(request, data);
-                    },
-                    dateFormat: 'm/d/Y',
-                    encode: true,
                     root: 'data'
                 },
                 listeners: {

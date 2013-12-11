@@ -42,6 +42,14 @@ privileged aspect Quarter_Roo_JavaBean {
         this.locked = locked;
     }
     
+    public Boolean Quarter.getCompleted() {
+        return this.completed;
+    }
+    
+    public void Quarter.setCompleted(Boolean completed) {
+        this.completed = completed;
+    }
+    
     public String Quarter.getWhoUpdated() {
         return this.whoUpdated;
     }

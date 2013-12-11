@@ -58,9 +58,9 @@ public class Subject {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @NotNull
-    @Value("false")
-    private Boolean completed;
+    //@NotNull
+    //@Value("false")
+    //private Boolean completed;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
     private Set<Quarter> quarters = new HashSet<Quarter>();

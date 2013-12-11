@@ -43,58 +43,6 @@
                     "designerId": "e8431f32-bf2f-43cd-9c0e-dca5088b59d1"
                 },
                 {
-                    "type": "Ext.data.writer.Json",
-                    "reference": {
-                        "name": "writer",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dateFormat": "m/d/Y",
-                        "encode": true,
-                        "root": "data"
-                    },
-                    "designerId": "f38af594-d81f-4790-a8b0-1a9957ff8c8a",
-                    "cn": [
-                        {
-                            "type": "basicfunction",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "designer|params": [
-                                    "request"
-                                ],
-                                "fn": "write",
-                                "implHandler": [
-                                    "debugger;",
-                                    "var operation = request.operation;",
-                                    "var records   = operation.records || [];",
-                                    "var len       = records.length;",
-                                    "var i         = 0;",
-                                    "var data      = [];",
-                                    "",
-                                    "for (; i < len; i++) {",
-                                    "    data.push(this.getRecordData(records[i], operation));",
-                                    "    if( data[i].quarter.lastUpdated !== \"\" )",
-                                    "    {",
-                                    "        data[i].quarter.lastUpdated = Ext.Date.format(data[i].quarter.lastUpdated, 'm/d/Y' );",
-                                    "    }",
-                                    "    if( data[i].quarter.student.lastUpdated !== \"\" )",
-                                    "    {",
-                                    "        data[i].quarter.student.lastUpdated = Ext.Date.format( data[i].quarter.student.lastUpdated, 'm/d/Y' );",
-                                    "    }",
-                                    "}",
-                                    "return this.writeRecords(request, data);"
-                                ]
-                            },
-                            "designerId": "943805b0-2226-4a5b-896c-42978d91e68d"
-                        }
-                    ]
-                },
-                {
                     "type": "basiceventbinding",
                     "reference": {
                         "name": "listeners",
@@ -105,9 +53,9 @@
                         "fn": "onRestException",
                         "implHandler": [
                             "//debugger;",
-                            "var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data; ",
+                            "var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data;",
                             "Ext.MessageBox.show({",
-                            "    title: 'REMOTE EXCEPTION', ",
+                            "    title: 'REMOTE EXCEPTION',",
                             "    msg: smsg,",
                             "    icon: Ext.MessageBox.ERROR,",
                             "    buttons: Ext.Msg.OK",

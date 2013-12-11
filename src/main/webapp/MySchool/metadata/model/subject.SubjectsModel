@@ -148,7 +148,7 @@
             "userConfig": {
                 "mapping": null,
                 "name": "subjVersion",
-                "type": "string"
+                "type": "int"
             },
             "designerId": "2795f9de-2add-434c-a8f5-8a90ee4c2317"
         },
@@ -175,7 +175,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "qtrGrade",
-                "type": "int"
+                "type": "float"
             },
             "designerId": "8808533c-dc32-40eb-8a8d-97bd52eb2db6"
         },

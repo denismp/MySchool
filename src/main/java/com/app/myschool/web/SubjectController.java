@@ -62,7 +62,7 @@ public class SubjectController {
     @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJson(Subject.class, json);
+        return controllerHelper.updateFromJson(SubjectView.class, json);
     }
 
     @RequestMapping(value = "/json/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")

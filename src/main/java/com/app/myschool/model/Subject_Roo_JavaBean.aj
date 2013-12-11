@@ -69,14 +69,6 @@ privileged aspect Subject_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
-    public Boolean Subject.getCompleted() {
-        return this.completed;
-    }
-    
-    public void Subject.setCompleted(Boolean completed) {
-        this.completed = completed;
-    }
-    
     public Set<Quarter> Subject.getQuarters() {
         return this.quarters;
     }

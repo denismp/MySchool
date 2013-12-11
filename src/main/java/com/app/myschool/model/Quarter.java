@@ -43,6 +43,10 @@ public class Quarter {
     @NotNull
     @Value("false")
     private Boolean locked;
+    
+    @NotNull
+    @Value("false")
+    private Boolean completed;
 
     @NotNull
     @Size(max = 45)

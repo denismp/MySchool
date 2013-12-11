@@ -12,6 +12,7 @@
         <field:input field="grade" id="c_com_app_myschool_model_Quarter_grade" max="4" min="0" required="true" z="rmQPhDU5c7cGjO6cKJisXCPK+F4="/>
         <field:checkbox field="locked" id="c_com_app_myschool_model_Quarter_locked" z="SoE9o69gi3M7q3g9PIfM1PWRl68="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Quarter_whoUpdated" required="true" z="kwyVSo7YSwS2gRbkTUOvcXogWIU="/>
+        <field:checkbox field="completed" id="c_com_app_myschool_model_Quarter_completed" z="p0LwQcNL8QF9hiir/+KfJTWdcdM="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

@@ -24,7 +24,7 @@ privileged aspect QuarterNamesIntegrationTest_Roo_IntegrationTest {
     declare @type: QuarterNamesIntegrationTest: @Transactional;
     
     @Autowired
-    QuarterNamesDataOnDemand QuarterNamesIntegrationTest.dod;
+    private QuarterNamesDataOnDemand QuarterNamesIntegrationTest.dod;
     
     @Test
     public void QuarterNamesIntegrationTest.testCountQuarterNameses() {
