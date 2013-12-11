@@ -39,8 +39,6 @@ import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
 import com.app.myschool.model.Weekly;
 
-import flexjson.JSONDeserializer;
-
 /**
  * @author denisputnam
  *
