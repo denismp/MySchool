@@ -759,22 +759,29 @@ public class ControllerHelper {
 		        	
                 SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
                 Quarter q_ = Quarter.findQuarter(s_.getQtrId());
-                Subject u_ = q_.getSubject();
+                Subject u_ = null;
                 
                 q_.setGrade(s_.getQtrGrade());
                 q_.setLastUpdated(s_.getQtrLastUpdated());
                 q_.setWhoUpdated(s_.getQtrWhoUpdated());
                 q_.setCompleted(s_.getQtrCompleted());
 
-                u_.setDescription(s_.getSubjDescription());
-                u_.setObjectives(s_.getSubjObjectives());
-                //u_.setCompleted(s_.getSubjCompleted());
-                u_.setLastUpdated(s_.getSubjLastUpdated());
-                u_.setWhoUpdated(s_.getSubjWhoUpdated());
+                if (false) {
+                	u_ = q_.getSubject();
+                	
+	                u_.setDescription(s_.getSubjDescription());
+	                u_.setObjectives(s_.getSubjObjectives());
+	                u_.setLastUpdated(s_.getSubjLastUpdated());
+	                u_.setWhoUpdated(s_.getSubjWhoUpdated());
+                }
                 
                 if (q_.merge() != null) {
                     s_.setQtrVersion(q_.getVersion());
-                    s_.setSubjVersion(u_.getVersion());
+                    
+                    if (u_ != null) {
+                    	s_.setSubjVersion(u_.getVersion());
+                    }
+                    
                     updateGood = true;
                 }
                 record = s_;
