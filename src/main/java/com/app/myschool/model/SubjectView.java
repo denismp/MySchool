@@ -12,11 +12,10 @@ public class SubjectView {
 
 	private Long id;
 	
+	private Long subjId;
 	private String studentName;
 	
 	private Integer subjVersion;
-
-	private Boolean subjCompleted;
 
 	private Integer subjCreditHours;
 
@@ -41,6 +40,8 @@ public class SubjectView {
 	private Integer qtrGradeType;
 
 	private Double qtrGrade;
+
+	private Boolean qtrCompleted;
 
 	private Boolean qtrLocked;
 

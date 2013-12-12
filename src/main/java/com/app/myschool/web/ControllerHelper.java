@@ -84,16 +84,18 @@ public class ControllerHelper {
 					Set<Quarter> qtrs_ = student_.getQuarters();
 					Set<Faculty> faculty_ = student_.getFaculty();
 					int size_ = faculty_.size();
+					int i_ = 1;
 
 					for (Quarter q_ : qtrs_) {
 						Subject u_ = q_.getSubject();
 						SubjectView sv_ = new SubjectView();
 
-						sv_.setId(u_.getId());
+						sv_.setId((long)i_++);
 						sv_.setQtrGrade(q_.getGrade());
 						sv_.setQtrGradeType(q_.getGrade_type());
 						sv_.setQtrId(q_.getId());
 						sv_.setQtrLastUpdated(q_.getLastUpdated());
+						sv_.setQtrCompleted(q_.getCompleted());
 						sv_.setQtrLocked(q_.getLocked());
 						sv_.setQtrName(q_.getQtrName());
 						sv_.setQtrVersion(q_.getVersion());
@@ -102,10 +104,10 @@ public class ControllerHelper {
 
 						sv_.setStudentName(studentName_);
 
-						sv_.setSubjCompleted(q_.getCompleted());
 						sv_.setSubjCreditHours(u_.getCreditHours());
 						sv_.setSubjDescription(u_.getDescription());
 						sv_.setSubjGradeLevel(u_.getGradeLevel());
+						sv_.setSubjId(u_.getId());
 						sv_.setSubjLastUpdated(u_.getLastUpdated());
 						sv_.setSubjName(u_.getName());
 						sv_.setSubjObjectives(u_.getObjectives());
@@ -150,7 +152,8 @@ public class ControllerHelper {
 					SubjectView sv_ = new SubjectView();
 					int j_ = 0;
 
-					sv_.setId(Long.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setId((long)i_+1);
+					sv_.setSubjId(Long.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setQtrGrade(Double.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setQtrGradeType(Integer.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setQtrId(Long.valueOf(results.get(i_)[j_++].toString()));
@@ -163,7 +166,7 @@ public class ControllerHelper {
 					
 					sv_.setStudentName(studentName_);
 
-					sv_.setSubjCompleted(Boolean.valueOf(results.get(i_)[j_++].toString()));
+					sv_.setQtrCompleted(Boolean.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setSubjCreditHours(Integer.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setSubjDescription(results.get(i_)[j_++].toString());
 					sv_.setSubjGradeLevel(Integer.valueOf(results.get(i_)[j_++].toString()));
@@ -756,22 +759,29 @@ public class ControllerHelper {
 		        	
                 SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
                 Quarter q_ = Quarter.findQuarter(s_.getQtrId());
-                Subject u_ = q_.getSubject();
+                Subject u_ = null;
                 
                 q_.setGrade(s_.getQtrGrade());
                 q_.setLastUpdated(s_.getQtrLastUpdated());
                 q_.setWhoUpdated(s_.getQtrWhoUpdated());
-                q_.setCompleted(s_.getSubjCompleted());
+                q_.setCompleted(s_.getQtrCompleted());
 
-                u_.setDescription(s_.getSubjDescription());
-                u_.setObjectives(s_.getSubjObjectives());
-                //u_.setCompleted(s_.getSubjCompleted());
-                u_.setLastUpdated(s_.getSubjLastUpdated());
-                u_.setWhoUpdated(s_.getSubjWhoUpdated());
+                if (false) {
+                	u_ = q_.getSubject();
+                	
+	                u_.setDescription(s_.getSubjDescription());
+	                u_.setObjectives(s_.getSubjObjectives());
+	                u_.setLastUpdated(s_.getSubjLastUpdated());
+	                u_.setWhoUpdated(s_.getSubjWhoUpdated());
+                }
                 
                 if (q_.merge() != null) {
                     s_.setQtrVersion(q_.getVersion());
-                    s_.setSubjVersion(u_.getVersion());
+                    
+                    if (u_ != null) {
+                    	s_.setSubjVersion(u_.getVersion());
+                    }
+                    
                     updateGood = true;
                 }
                 record = s_;

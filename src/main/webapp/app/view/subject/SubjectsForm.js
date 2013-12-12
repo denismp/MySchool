@@ -33,7 +33,8 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
                     disabled: true,
                     itemId: 'subjectdescriptiontextarea',
                     fieldLabel: 'Description',
-                    name: 'subjDescription'
+                    name: 'subjDescription',
+                    readOnly: true
                 },
                 {
                     xtype: 'textareafield',
@@ -41,7 +42,8 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
                     disabled: true,
                     itemId: 'subjectobjectivetextarea',
                     fieldLabel: 'Objectives',
-                    name: 'subjObjectives'
+                    name: 'subjObjectives',
+                    readOnly: true
                 }
             ]
         });

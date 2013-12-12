@@ -37,8 +37,34 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'id',
-                    text: 'subjectid',
-                    format: '000000'
+                    format: '000000',
+                    text: 'id'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'subjId',
+                    format: '000000',
+                    text: 'subjId'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'qtrId',
+                    format: '000000',
+                    text: 'qtrId'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'subjVersion',
+                    text: 'subjVersion'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'qtrVersion',
+                    text: 'qtrVersion'
                 },
                 {
                     xtype: 'gridcolumn',
@@ -66,17 +92,11 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 },
                 {
                     xtype: 'checkcolumn',
-                    dataIndex: 'subjCompleted',
+                    dataIndex: 'qtrCompleted',
                     text: 'Complete?',
                     editor: {
                         xtype: 'checkboxfield'
                     }
-                },
-                {
-                    xtype: 'gridcolumn',
-                    hidden: true,
-                    dataIndex: 'subjVersion',
-                    text: 'version'
                 },
                 {
                     xtype: 'gridcolumn',
@@ -98,7 +118,10 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     dataIndex: 'qtrGrade',
                     text: 'Grade',
                     editor: {
-                        xtype: 'numberfield'
+                        xtype: 'numberfield',
+                        allowBlank : false,
+                        minValue : 0,
+                        maxValue : 5
                     }
                 }
             ],

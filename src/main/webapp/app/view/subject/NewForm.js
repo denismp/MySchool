@@ -25,7 +25,6 @@ Ext.define('MySchool.view.subject.NewForm', {
     draggable: true,
     floating: true,
     frame: true,
-    height: 490,
     itemId: 'newsubjectform',
     width: 500,
     title: 'New Subject',

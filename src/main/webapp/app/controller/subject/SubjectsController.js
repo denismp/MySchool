@@ -65,21 +65,23 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
-
-        window.console.log( 'selectedIndex=' + this.selectedIndex );
-        window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
-        var mystore = Ext.getStore("subject.SubjectStore");
-        var myrecord = mystore.getAt( this.selectedIndex );
-        myrecord.set( 'subjDescription', newValue );
+    	if (false) {
+            window.console.log( 'selectedIndex=' + this.selectedIndex );
+            window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
+            var mystore = Ext.getStore("subject.SubjectStore");
+            var myrecord = mystore.getAt( this.selectedIndex );
+            myrecord.set( 'subjDescription', newValue );
+    	}
     },
 
     onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
-
-        window.console.log( 'selectedIndex=' + this.selectedIndex );
-        window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
-        var mystore = Ext.getStore("subject.SubjectStore");
-        var myrecord = mystore.getAt( this.selectedIndex );
-        myrecord.set( 'subjObjectives', newValue );
+    	if (false) {
+            window.console.log( 'selectedIndex=' + this.selectedIndex );
+            window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
+            var mystore = Ext.getStore("subject.SubjectStore");
+            var myrecord = mystore.getAt( this.selectedIndex );
+            myrecord.set( 'subjObjectives', newValue );
+    	}
     },
 
     onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
@@ -309,16 +311,18 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
-            records[i].set( 'subjLastUpdated', new Date() );
-            //records[i].set( 'quarter.lastUpdated', new Date() );
-            if( false )
-            {
-            var form = this.getSubjectsForm().getForm();
-            var formValues = form.getValues();
-            records[i].set( 'subjDescription', formValues.subjDescription );
-            records[i].set( 'subjObjectives', formValues.subjObjectives );
-            window.console.log( 'objectives=' + formValues.subjObjectives );
-            window.console.log( 'description=' + formValues.subjDescription );
+
+            records[i].set( 'qtrLastUpdated', new Date() );
+            records[i].set( 'qtrWhoUpdated', 'app'); // replace with login id
+
+            if (false) {
+                var form = this.getSubjectsForm().getForm();
+                var formValues = form.getValues();
+                records[i].set( 'subjDescription', formValues.subjDescription );
+                records[i].set( 'subjObjectives', formValues.subjObjectives );
+                window.console.log( 'objectives=' + formValues.subjObjectives );
+                window.console.log( 'description=' + formValues.subjDescription );
+
             }
         }
 

@@ -16,6 +16,14 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.id = id;
     }
     
+    public Long SubjectView.getSubjId() {
+        return this.subjId;
+    }
+    
+    public void SubjectView.setSubjId(Long subjId) {
+        this.subjId = subjId;
+    }
+    
     public String SubjectView.getStudentName() {
         return this.studentName;
     }
@@ -30,14 +38,6 @@ privileged aspect SubjectView_Roo_JavaBean {
     
     public void SubjectView.setSubjVersion(Integer subjVersion) {
         this.subjVersion = subjVersion;
-    }
-    
-    public Boolean SubjectView.getSubjCompleted() {
-        return this.subjCompleted;
-    }
-    
-    public void SubjectView.setSubjCompleted(Boolean subjCompleted) {
-        this.subjCompleted = subjCompleted;
     }
     
     public Integer SubjectView.getSubjCreditHours() {
@@ -134,6 +134,14 @@ privileged aspect SubjectView_Roo_JavaBean {
     
     public void SubjectView.setQtrGrade(Double qtrGrade) {
         this.qtrGrade = qtrGrade;
+    }
+    
+    public Boolean SubjectView.getQtrCompleted() {
+        return this.qtrCompleted;
+    }
+    
+    public void SubjectView.setQtrCompleted(Boolean qtrCompleted) {
+        this.qtrCompleted = qtrCompleted;
     }
     
     public Boolean SubjectView.getQtrLocked() {
