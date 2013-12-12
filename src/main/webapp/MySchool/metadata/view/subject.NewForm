@@ -12,7 +12,7 @@
         "draggable": true,
         "floating": true,
         "frame": true,
-        "height": 490,
+        "height": null,
         "itemId": "newsubjectform",
         "jsonSubmit": true,
         "layout": null,

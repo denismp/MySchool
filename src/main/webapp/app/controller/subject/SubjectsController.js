@@ -302,7 +302,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     onSubjectsavetoolidClick: function(tool, e, eOpts) {
         window.console.log( "Save" );
-        debugger;
+        //debugger;
 
         var mystore = Ext.getStore("subject.SubjectStore");
 
@@ -311,12 +311,15 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         {
             records[i].set( 'subjLastUpdated', new Date() );
             //records[i].set( 'quarter.lastUpdated', new Date() );
+            if( false )
+            {
             var form = this.getSubjectsForm().getForm();
             var formValues = form.getValues();
             records[i].set( 'subjDescription', formValues.subjDescription );
             records[i].set( 'subjObjectives', formValues.subjObjectives );
             window.console.log( 'objectives=' + formValues.subjObjectives );
             window.console.log( 'description=' + formValues.subjDescription );
+            }
         }
 
         mystore.sync();

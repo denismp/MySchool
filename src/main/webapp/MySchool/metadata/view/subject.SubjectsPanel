@@ -36,6 +36,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": null,
                 "layout|flex": 1
             },
             "designerId": "274fba0e-235a-4977-a7b5-c8e67028288f",

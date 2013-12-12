@@ -65,21 +65,25 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
-
+        if( false )
+        {
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'subjDescription', newValue );
+        }
     },
 
     onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
-
+        if( false )
+        {
         window.console.log( 'selectedIndex=' + this.selectedIndex );
         window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
         var mystore = Ext.getStore("subject.SubjectStore");
         var myrecord = mystore.getAt( this.selectedIndex );
         myrecord.set( 'subjObjectives', newValue );
+        }
     },
 
     onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
@@ -302,7 +306,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     onSubjectsavetoolidClick: function(tool, e, eOpts) {
         window.console.log( "Save" );
-        debugger;
+        //debugger;
 
         var mystore = Ext.getStore("subject.SubjectStore");
 
@@ -311,12 +315,16 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         {
             records[i].set( 'subjLastUpdated', new Date() );
             //records[i].set( 'quarter.lastUpdated', new Date() );
+            records[i].set( 'qtrWhoUpdated', 'app'); // replace with login id
+            if( false )
+            {
             var form = this.getSubjectsForm().getForm();
             var formValues = form.getValues();
             records[i].set( 'subjDescription', formValues.subjDescription );
             records[i].set( 'subjObjectives', formValues.subjObjectives );
             window.console.log( 'objectives=' + formValues.subjObjectives );
             window.console.log( 'description=' + formValues.subjDescription );
+            }
         }
 
         mystore.sync();

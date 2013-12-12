@@ -22,15 +22,12 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 
     fields: [
         {
-            name: 'id'
+            name: 'id',
+            type: 'int'
         },
         {
             name: 'studentName',
             type: 'string'
-        },
-        {
-            name: 'subjCompleted',
-            type: 'boolean'
         },
         {
             name: 'subjCreditHours',
@@ -43,6 +40,9 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         {
             name: 'subjGradeLevel',
             type: 'int'
+        },
+        {
+            name: 'subjId'
         },
         {
             dateFormat: 'm/d/Y',
@@ -81,6 +81,10 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
             dateFormat: 'm/d/Y',
             name: 'qtrLastUpdated',
             type: 'date'
+        },
+        {
+            name: 'qtrCompleted',
+            type: 'boolean'
         },
         {
             name: 'qtrLocked',

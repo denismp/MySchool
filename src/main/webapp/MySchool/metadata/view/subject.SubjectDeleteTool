@@ -8,6 +8,7 @@
     "userConfig": {
         "designer|userAlias": "subjectdeletetool",
         "designer|userClassName": "subject.SubjectDeleteTool",
+        "disabled": true,
         "id": null,
         "itemId": "tooldeletestudentsbysubject",
         "tooltip": "Delete",

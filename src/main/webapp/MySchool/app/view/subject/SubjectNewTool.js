@@ -17,6 +17,7 @@ Ext.define('MySchool.view.subject.SubjectNewTool', {
     extend: 'Ext.panel.Tool',
     alias: 'widget.subjectnewtool',
 
+    disabled: true,
     id: 'toolnewsubjects',
     tooltip: 'New',
     type: 'plus',

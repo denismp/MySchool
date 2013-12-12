@@ -30,9 +30,67 @@
                 "dataIndex": "id",
                 "format": "000000",
                 "hidden": true,
-                "text": "subjectid"
+                "text": "id"
             },
             "designerId": "3c19373c-d4e6-4a91-94f8-7255e30365c3"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subjId",
+                "format": "000000",
+                "hidden": true,
+                "text": "subjId"
+            },
+            "designerId": "548d29c2-5965-4356-b971-886f9678ea11"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrId",
+                "format": "000000",
+                "hidden": true,
+                "text": "qtrId"
+            },
+            "designerId": "50c8a8de-1bee-4598-afc0-6f445dfe326b"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subjVersion",
+                "hidden": true,
+                "text": "subjVersion"
+            },
+            "designerId": "dffa39a4-cf1e-4370-ab61-689be79736fa"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrVersion",
+                "hidden": true,
+                "text": "qtrVersion"
+            },
+            "designerId": "6c212c2c-ce39-4367-ada1-6a603b5be723"
         },
         {
             "type": "Ext.grid.column.Column",
@@ -100,7 +158,7 @@
             "codeClass": null,
             "userConfig": {
                 "cls": null,
-                "dataIndex": "subjCompleted",
+                "dataIndex": "qtrCompleted",
                 "text": "Complete?"
             },
             "designerId": "9671afa8-1ac5-4e16-80cf-02095ee4ee5f",
@@ -142,20 +200,6 @@
                 "clicksToEdit": 1
             },
             "designerId": "5a1b14f6-e16e-447e-a090-316414fdf463"
-        },
-        {
-            "type": "Ext.grid.column.Column",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "subjVersion",
-                "hidden": true,
-                "text": "version"
-            },
-            "designerId": "dffa39a4-cf1e-4370-ab61-689be79736fa"
         },
         {
             "type": "Ext.grid.column.Column",
@@ -207,7 +251,22 @@
                 "dataIndex": "qtrGrade",
                 "text": "Grade"
             },
-            "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052"
+            "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "maxValue": 5,
+                        "minValue": 0
+                    },
+                    "designerId": "d0260bbd-64f6-4abd-be07-108a50076b4c"
+                }
+            ]
         }
     ]
 }

@@ -30,6 +30,7 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
+                    disabled: true,
                     itemId: 'subjectdescriptiontextarea',
                     fieldLabel: 'Description',
                     name: 'subjDescription'
@@ -37,6 +38,7 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
+                    disabled: true,
                     itemId: 'subjectobjectivetextarea',
                     fieldLabel: 'Objectives',
                     name: 'subjObjectives'

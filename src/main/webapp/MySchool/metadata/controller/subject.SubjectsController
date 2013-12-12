@@ -114,7 +114,7 @@
                 "fn": "onSubjectsavetoolidClick",
                 "implHandler": [
                     "window.console.log( \"Save\" );",
-                    "debugger;",
+                    "//debugger;",
                     "",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "",
@@ -123,12 +123,16 @@
                     "{",
                     "    records[i].set( 'subjLastUpdated', new Date() );",
                     "    //records[i].set( 'quarter.lastUpdated', new Date() );",
+                    "    records[i].set( 'qtrWhoUpdated', 'app'); // replace with login id",
+                    "    if( false )",
+                    "    {",
                     "    var form = this.getSubjectsForm().getForm();",
                     "    var formValues = form.getValues();",
                     "    records[i].set( 'subjDescription', formValues.subjDescription );",
                     "    records[i].set( 'subjObjectives', formValues.subjObjectives );",
                     "    window.console.log( 'objectives=' + formValues.subjObjectives );",
                     "    window.console.log( 'description=' + formValues.subjDescription );",
+                    "    }",
                     "}",
                     "",
                     "mystore.sync();",
@@ -174,12 +178,14 @@
                 "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onSubjectdescriptiontextareaChange",
                 "implHandler": [
-                    "",
+                    "if( false )",
+                    "{",
                     "window.console.log( 'selectedIndex=' + this.selectedIndex );",
                     "window.console.log( \"onSubjectdescriptiontextareraChange() field=\" + field );",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecord = mystore.getAt( this.selectedIndex );",
-                    "myrecord.set( 'subjDescription', newValue );"
+                    "myrecord.set( 'subjDescription', newValue );",
+                    "}"
                 ],
                 "name": "change",
                 "scope": "me"
@@ -198,12 +204,14 @@
                 "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onSubjectobjectivetextareaChange",
                 "implHandler": [
-                    "",
+                    "if( false )",
+                    "{",
                     "window.console.log( 'selectedIndex=' + this.selectedIndex );",
                     "window.console.log( \"onSubjectobjectivetextareraChange() field=\" + field );",
                     "var mystore = Ext.getStore(\"subject.SubjectStore\");",
                     "var myrecord = mystore.getAt( this.selectedIndex );",
-                    "myrecord.set( 'subjObjectives', newValue );"
+                    "myrecord.set( 'subjObjectives', newValue );",
+                    "}"
                 ],
                 "name": "change",
                 "scope": "me"
