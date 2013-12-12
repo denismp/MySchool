@@ -96,10 +96,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'qtrGrade',
-                    text: 'Grade',
-                    editor: {
-                        xtype: 'numberfield'
-                    }
+                    text: 'Grade'
                 }
             ],
             viewConfig: {

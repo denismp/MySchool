@@ -207,18 +207,7 @@
                 "dataIndex": "qtrGrade",
                 "text": "Grade"
             },
-            "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052",
-            "cn": [
-                {
-                    "type": "Ext.form.field.Number",
-                    "reference": {
-                        "name": "editor",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "designerId": "da5e6cb9-caa1-4691-8cb1-7b4284c7f3be"
-                }
-            ]
+            "designerId": "67f7eae4-a5ff-4d59-933f-1f0e2dbe0052"
         }
     ]
 }
