@@ -264,7 +264,60 @@
                         "maxValue": 5,
                         "minValue": 0
                     },
-                    "designerId": "d0260bbd-64f6-4abd-be07-108a50076b4c"
+                    "designerId": "6d3d04b1-a553-4bd8-931c-fe5f33922785"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrGradeType",
+                "text": "GradeType"
+            },
+            "designerId": "96f959d1-f5c2-4e1b-9d6a-30580f362d95",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "maxValue": 2,
+                        "maxWidth": null,
+                        "minValue": 1
+                    },
+                    "designerId": "18afdc24-85bf-4d47-a577-486dc79ab649"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrLocked",
+                "text": "Locked?"
+            },
+            "designerId": "94105066-09e2-4bd0-bcf8-f79595877a96",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "79597291-639f-4e16-964b-6976be1bc761"
                 }
             ]
         }

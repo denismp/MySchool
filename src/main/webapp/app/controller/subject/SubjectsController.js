@@ -65,23 +65,25 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectdescriptiontextareaChange: function(field, newValue, oldValue, eOpts) {
-    	if (false) {
-            window.console.log( 'selectedIndex=' + this.selectedIndex );
-            window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
-            var mystore = Ext.getStore("subject.SubjectStore");
-            var myrecord = mystore.getAt( this.selectedIndex );
-            myrecord.set( 'subjDescription', newValue );
-    	}
+        if( false )
+        {
+        window.console.log( 'selectedIndex=' + this.selectedIndex );
+        window.console.log( "onSubjectdescriptiontextareraChange() field=" + field );
+        var mystore = Ext.getStore("subject.SubjectStore");
+        var myrecord = mystore.getAt( this.selectedIndex );
+        myrecord.set( 'subjDescription', newValue );
+        }
     },
 
     onSubjectobjectivetextareaChange: function(field, newValue, oldValue, eOpts) {
-    	if (false) {
-            window.console.log( 'selectedIndex=' + this.selectedIndex );
-            window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
-            var mystore = Ext.getStore("subject.SubjectStore");
-            var myrecord = mystore.getAt( this.selectedIndex );
-            myrecord.set( 'subjObjectives', newValue );
-    	}
+        if( false )
+        {
+        window.console.log( 'selectedIndex=' + this.selectedIndex );
+        window.console.log( "onSubjectobjectivetextareraChange() field=" + field );
+        var mystore = Ext.getStore("subject.SubjectStore");
+        var myrecord = mystore.getAt( this.selectedIndex );
+        myrecord.set( 'subjObjectives', newValue );
+        }
     },
 
     onTooldeletestudentsbysubjectClick: function(tool, e, eOpts) {
@@ -253,6 +255,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         button.up().hide();
     },
 
+    onSubjectformeditClick: function(button, e, eOpts) {
+
+    },
+
+    onSubjectformsubmitClick: function(button, e, eOpts) {
+
+    },
+
     init: function(application) {
 
                 this.control({
@@ -293,6 +303,12 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             },
             "#newsubjectcancel": {
                 click: this.onNewsubjectcancelClick
+            },
+            "#subjectformedit": {
+                click: this.onSubjectformeditClick
+            },
+            "#subjectformsubmit": {
+                click: this.onSubjectformsubmitClick
             }
         });
     },
@@ -311,18 +327,17 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
-
-            records[i].set( 'qtrLastUpdated', new Date() );
+            records[i].set( 'subjLastUpdated', new Date() );
+            //records[i].set( 'quarter.lastUpdated', new Date() );
             records[i].set( 'qtrWhoUpdated', 'app'); // replace with login id
-
-            if (false) {
-                var form = this.getSubjectsForm().getForm();
-                var formValues = form.getValues();
-                records[i].set( 'subjDescription', formValues.subjDescription );
-                records[i].set( 'subjObjectives', formValues.subjObjectives );
-                window.console.log( 'objectives=' + formValues.subjObjectives );
-                window.console.log( 'description=' + formValues.subjDescription );
-
+            if( false )
+            {
+            var form = this.getSubjectsForm().getForm();
+            var formValues = form.getValues();
+            records[i].set( 'subjDescription', formValues.subjDescription );
+            records[i].set( 'subjObjectives', formValues.subjObjectives );
+            window.console.log( 'objectives=' + formValues.subjObjectives );
+            window.console.log( 'description=' + formValues.subjDescription );
             }
         }
 

@@ -122,6 +122,24 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                         maxValue: 5,
                         minValue: 0
                     }
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrGradeType',
+                    text: 'GradeType',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 2,
+                        minValue: 1
+                    }
+                },
+                {
+                    xtype: 'checkcolumn',
+                    dataIndex: 'qtrLocked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 }
             ],
             viewConfig: {

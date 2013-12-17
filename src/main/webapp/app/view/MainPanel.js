@@ -17,7 +17,8 @@ Ext.define('MySchool.view.MainPanel', {
     extend: 'Ext.panel.Panel',
 
     requires: [
-        'MySchool.view.subject.SubjectsPanel'
+        'MySchool.view.subject.SubjectsPanel',
+        'MySchool.view.bodiesofwork.BodiesOfWorkPanel'
     ],
 
     itemId: 'mainpanel',
@@ -49,7 +50,7 @@ Ext.define('MySchool.view.MainPanel', {
                                 align: 'stretch',
                                 type: 'hbox'
                             },
-                            title: 'Subjects',
+                            title: 'SubjectsByStudent',
                             items: [
                                 {
                                     xtype: 'subjectspanel',
@@ -69,183 +70,9 @@ Ext.define('MySchool.view.MainPanel', {
                             title: 'Bodies Of Work',
                             items: [
                                 {
-                                    xtype: 'panel',
+                                    xtype: 'mybodiesofworkpanel',
                                     flex: 1,
-                                    id: 'bodiesofworkpanel',
-                                    layout: {
-                                        align: 'stretch',
-                                        type: 'hbox'
-                                    },
-                                    title: 'Bodies Of Work By Student And Subject',
-                                    items: [
-                                        {
-                                            xtype: 'gridpanel',
-                                            flex: 1,
-                                            id: 'bodiesofworkssubjectsgrid',
-                                            autoScroll: true,
-                                            title: '[student name] Bodies Of Work',
-                                            forceFit: true,
-                                            columns: [
-                                                {
-                                                    xtype: 'gridcolumn',
-                                                    dataIndex: 'subject_name',
-                                                    text: 'Subject Name'
-                                                },
-                                                {
-                                                    xtype: 'gridcolumn',
-                                                    dataIndex: 'body_of_work',
-                                                    text: 'Body Of Work'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'grade_level',
-                                                    text: 'Grade Level',
-                                                    format: '00.00'
-                                                },
-                                                {
-                                                    xtype: 'datecolumn',
-                                                    dataIndex: 'date',
-                                                    text: 'Date'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'credit_hours',
-                                                    text: 'Credit Hours',
-                                                    format: '00.00'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    dataIndex: 'student_id',
-                                                    text: 'idstudent'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'idsubject'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'idbody_of_works'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'subjectid'
-                                                }
-                                            ],
-                                            viewConfig: {
-                                                id: 'bodiesofworksubjectsview'
-                                            }
-                                        },
-                                        {
-                                            xtype: 'form',
-                                            flex: 1,
-                                            id: 'bodyofworkform',
-                                            width: 508,
-                                            bodyPadding: 10,
-                                            title: 'Body Of Work',
-                                            items: [
-                                                {
-                                                    xtype: 'textfield',
-                                                    anchor: '100%',
-                                                    id: 'bodyofworknametextfield',
-                                                    fieldLabel: 'Name'
-                                                },
-                                                {
-                                                    xtype: 'textareafield',
-                                                    id: 'bodyofworkwhattextbox',
-                                                    width: 492,
-                                                    fieldLabel: 'What',
-                                                    size: 5
-                                                },
-                                                {
-                                                    xtype: 'textareafield',
-                                                    anchor: '100%',
-                                                    id: 'bodyofworkdescriptiontextbox',
-                                                    fieldLabel: 'Description'
-                                                },
-                                                {
-                                                    xtype: 'textareafield',
-                                                    anchor: '100%',
-                                                    id: 'bodyofworkobjectivetextbox',
-                                                    fieldLabel: 'Objective'
-                                                },
-                                                {
-                                                    xtype: 'checkboxfield',
-                                                    anchor: '100%',
-                                                    id: 'bodyofworkactivecheckbox',
-                                                    fieldLabel: '',
-                                                    boxLabel: 'Active?',
-                                                    checked: true
-                                                },
-                                                {
-                                                    xtype: 'checkboxfield',
-                                                    anchor: '100%',
-                                                    id: 'bodyofworklockcheckbox',
-                                                    fieldLabel: '',
-                                                    boxLabel: 'Lock?'
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    tools: [
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add refresh handler code here.  Use example from chapter 2 of book.
-                                            },
-                                            id: 'toolrefreshstudentsbysubject1',
-                                            tooltip: 'Refresh',
-                                            type: 'refresh'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add search handler code here.
-                                            },
-                                            id: 'toolsearchstudentsbysubject1',
-                                            tooltip: 'Search',
-                                            type: 'search'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add new/insert handler code here.
-                                            },
-                                            id: 'toolnewstudentsbysubject1',
-                                            tooltip: 'New',
-                                            type: 'plus'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add save/udate handler code here.
-                                            },
-                                            id: 'toolsavestudentsbysubject1',
-                                            tooltip: 'Save',
-                                            type: 'save'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add delete handler code here.
-                                            },
-                                            id: 'tooldeletestudentsbysubject1',
-                                            tooltip: 'Delete',
-                                            type: 'minus'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add lock handler code here.
-                                            },
-                                            id: 'toollockstudentsbysubject1',
-                                            tooltip: 'Lock?',
-                                            type: 'pin'
-                                        }
-                                    ]
+                                    itemId: 'bodiesofworkpaneel'
                                 }
                             ]
                         },

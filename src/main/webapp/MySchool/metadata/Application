@@ -35,7 +35,9 @@
             "subject.SubjectSaveTool",
             "subject.NewForm",
             "subject.GradeTypeComboBox",
-            "subject.QuarterNamesComboBox"
+            "subject.QuarterNamesComboBox",
+            "bodiesofwork.BodiesOfWorkPanel",
+            "bodiesofwork.MyGridPanel"
         ]
     },
     "designerId": "application"

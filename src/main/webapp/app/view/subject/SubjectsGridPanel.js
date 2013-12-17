@@ -37,22 +37,22 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'id',
-                    format: '000000',
-                    text: 'id'
+                    text: 'id',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'subjId',
-                    format: '000000',
-                    text: 'subjId'
+                    text: 'subjId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'qtrId',
-                    format: '000000',
-                    text: 'qtrId'
+                    text: 'qtrId',
+                    format: '000000'
                 },
                 {
                     xtype: 'gridcolumn',
@@ -119,9 +119,26 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     text: 'Grade',
                     editor: {
                         xtype: 'numberfield',
-                        allowBlank : false,
-                        minValue : 0,
-                        maxValue : 5
+                        maxValue: 5,
+                        minValue: 0
+                    }
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrGradeType',
+                    text: 'GradeType',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 2,
+                        minValue: 1
+                    }
+                },
+                {
+                    xtype: 'checkcolumn',
+                    dataIndex: 'qtrLocked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
                     }
                 }
             ],

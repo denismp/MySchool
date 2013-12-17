@@ -41,7 +41,7 @@ Ext.define('MySchool.view.subject.SubjectsPanel', {
             items: [
                 {
                     xtype: 'subjectsgridpanel',
-                    flex: 1
+                    flex: 2
                 },
                 {
                     xtype: 'subjectsform',

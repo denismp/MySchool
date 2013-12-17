@@ -1,0 +1,155 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "mybodiesofworkgridpanel",
+        "designer|userClassName": "bodiesofwork.MyGridPanel",
+        "forceFit": true,
+        "id": "bodiesofworkssubjectsgrid",
+        "title": "[student name] Bodies Of Work",
+        "width": null
+    },
+    "designerId": "49b7bdca-cc8d-4696-a931-47cb75438709",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subject_name",
+                "flex": null,
+                "text": "Subject Name"
+            },
+            "designerId": "565e1844-32b0-40b5-b75d-b0896c49615b"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "body_of_work",
+                "text": "Body Of Work"
+            },
+            "designerId": "a4d480bf-5fa0-4898-8e32-8f578e674b7c"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "grade_level",
+                "format": "00.00",
+                "text": "Grade Level"
+            },
+            "designerId": "1b733e03-f38b-4d5f-ab71-5ecda7c36fcc"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "date",
+                "text": "Date"
+            },
+            "designerId": "295fc172-cbb3-423b-a1bf-a412512b9fa5"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "credit_hours",
+                "format": "00.00",
+                "text": "Credit Hours"
+            },
+            "designerId": "0be8f3e9-fa4e-473c-8d47-e5f87a4b151e"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": null,
+                "id": "bodiesofworksubjectsview",
+                "minHeight": null
+            },
+            "designerId": "6daa62c9-27d4-4bfd-afe8-f7d8734f12b1"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "student_id",
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "8e83f2e4-0aee-4ac1-83b5-289edf308afe"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idsubject"
+            },
+            "designerId": "fe64f294-f046-498e-8fdb-8660ca62df5f"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idbody_of_works"
+            },
+            "designerId": "d4b05e50-aae7-4777-9954-d6dc9c999518"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "subjectid"
+            },
+            "designerId": "b38a446a-436d-4828-ac99-686d775f1db6"
+        }
+    ]
+}

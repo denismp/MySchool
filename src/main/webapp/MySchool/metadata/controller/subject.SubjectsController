@@ -733,6 +733,44 @@
                 ]
             },
             "designerId": "fe341c7d-e646-4b94-8a07-310ab8985ba2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#subjectformedit",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onSubjectformeditClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "5cf5f3f4-71aa-46fe-a0f1-501d02d77002"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#subjectformsubmit",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onSubjectformsubmitClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "fc79f5c9-b889-4595-b1d5-04d20e0e748b"
         }
     ]
 }

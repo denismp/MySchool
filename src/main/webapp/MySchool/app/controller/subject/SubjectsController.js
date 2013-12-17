@@ -255,6 +255,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         button.up().hide();
     },
 
+    onSubjectformeditClick: function(button, e, eOpts) {
+
+    },
+
+    onSubjectformsubmitClick: function(button, e, eOpts) {
+
+    },
+
     init: function(application) {
 
                 this.control({
@@ -295,6 +303,12 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             },
             "#newsubjectcancel": {
                 click: this.onNewsubjectcancelClick
+            },
+            "#subjectformedit": {
+                click: this.onSubjectformeditClick
+            },
+            "#subjectformsubmit": {
+                click: this.onSubjectformsubmitClick
             }
         });
     },

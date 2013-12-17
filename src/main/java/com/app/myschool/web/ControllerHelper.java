@@ -765,6 +765,8 @@ public class ControllerHelper {
                 q_.setLastUpdated(s_.getQtrLastUpdated());
                 q_.setWhoUpdated(s_.getQtrWhoUpdated());
                 q_.setCompleted(s_.getQtrCompleted());
+                q_.setLocked(s_.getQtrLocked());
+                q_.setGrade_type(s_.getQtrGradeType());
 
                 if (false) {
                 	u_ = q_.getSubject();
