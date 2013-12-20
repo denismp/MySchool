@@ -746,12 +746,18 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onSubjectformeditClick",
                 "implHandler": [
-                    ""
+                    "//debugger;",
+                    "window.console.log( 'Subject Edit' );",
+                    "var newDialog = Ext.create( 'MySchool.view.subject.EditForm' );",
+                    "",
+                    "",
+                    "newDialog.render( Ext.getBody() );",
+                    "newDialog.show();"
                 ],
                 "name": "click",
                 "scope": "me"
             },
-            "designerId": "5cf5f3f4-71aa-46fe-a0f1-501d02d77002"
+            "designerId": "96156d07-2149-40e7-85be-5b629f8f98fc"
         },
         {
             "type": "controlleraction",
@@ -761,16 +767,52 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#subjectformsubmit",
+                "designer|controlQuery": "#editsubjectcancelbutton",
                 "designer|targetType": "Ext.button.Button",
-                "fn": "onSubjectformsubmitClick",
+                "fn": "onEditsubjectcancelbuttonClick",
                 "implHandler": [
-                    ""
+                    "//debugger;",
+                    "window.console.log( \"Cancel Edit Subject\" );",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
                 ],
                 "name": "click",
                 "scope": "me"
             },
-            "designerId": "fc79f5c9-b889-4595-b1d5-04d20e0e748b"
+            "designerId": "3b7f9eea-bf1d-4f47-a753-223af6226923"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editsubjectsubmitbutton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditsubjectsubmitbuttonClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( \"Submit Edit Subject\" );",
+                    "var myForm = button.up().getForm();",
+                    "",
+                    "",
+                    "var formValues = myForm.getValues();",
+                    "records[this.selectedIndex].set( 'subjDescription', formValues.subjDescription );",
+                    "records[this.selectedIndex].set( 'subjObjectives', formValues.subjObjectives );",
+                    "window.console.log( 'objectives=' + formValues.subjObjectives );",
+                    "window.console.log( 'description=' + formValues.subjDescription );",
+                    "",
+                    "",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "e93ad8c1-845d-47e4-af16-59f9ebf49bbc"
         }
     ]
 }

@@ -37,7 +37,8 @@
             "subject.GradeTypeComboBox",
             "subject.QuarterNamesComboBox",
             "bodiesofwork.BodiesOfWorkPanel",
-            "bodiesofwork.MyGridPanel"
+            "bodiesofwork.MyGridPanel",
+            "subject.EditForm"
         ]
     },
     "designerId": "application"

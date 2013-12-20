@@ -256,11 +256,38 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectformeditClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( 'Subject Edit' );
+        var newDialog = Ext.create( 'MySchool.view.subject.EditForm' );
 
+
+        newDialog.render( Ext.getBody() );
+        newDialog.show();
     },
 
-    onSubjectformsubmitClick: function(button, e, eOpts) {
+    onEditsubjectcancelbuttonClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Cancel Edit Subject" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
+    },
 
+    onEditsubjectsubmitbuttonClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Submit Edit Subject" );
+        var myForm = button.up().getForm();
+
+
+        var formValues = myForm.getValues();
+        records[this.selectedIndex].set( 'subjDescription', formValues.subjDescription );
+        records[this.selectedIndex].set( 'subjObjectives', formValues.subjObjectives );
+        window.console.log( 'objectives=' + formValues.subjObjectives );
+        window.console.log( 'description=' + formValues.subjDescription );
+
+
+        myForm.reset();
+        button.up().hide();
     },
 
     init: function(application) {
@@ -307,8 +334,11 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             "#subjectformedit": {
                 click: this.onSubjectformeditClick
             },
-            "#subjectformsubmit": {
-                click: this.onSubjectformsubmitClick
+            "#editsubjectcancelbutton": {
+                click: this.onEditsubjectcancelbuttonClick
+            },
+            "#editsubjectsubmitbutton": {
+                click: this.onEditsubjectsubmitbuttonClick
             }
         });
     },

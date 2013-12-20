@@ -47,7 +47,8 @@ Ext.application({
         'subject.GradeTypeComboBox',
         'subject.QuarterNamesComboBox',
         'bodiesofwork.BodiesOfWorkPanel',
-        'bodiesofwork.MyGridPanel'
+        'bodiesofwork.MyGridPanel',
+        'subject.EditForm'
     ],
     controllers: [
         'subject.SubjectsController'

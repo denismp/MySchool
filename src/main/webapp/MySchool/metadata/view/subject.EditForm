@@ -1,0 +1,75 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userClassName": "subject.EditForm",
+        "draggable": true,
+        "floating": true,
+        "height": 413,
+        "itemId": "subjecteditform",
+        "title": "Edit Subject",
+        "width": 825
+    },
+    "designerId": "f8161bc0-0e48-4160-9c12-350c4b6038d3",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Description",
+                "itemId": "editsubjectdescription",
+                "layout|anchor": "100%"
+            },
+            "designerId": "4b730996-be6f-4d73-a3df-1199ba01bb42"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Objectives",
+                "itemId": "editsubjectobjectives",
+                "layout|anchor": "100%"
+            },
+            "designerId": "c1b2cba6-8114-4bbe-991a-45e50c9e5316"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "editsubjectcancelbutton",
+                "text": "Cancel"
+            },
+            "designerId": "0c861fad-0325-455e-a7b6-d494d7dc5f16"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "editsubjectsubmitbutton",
+                "text": "Submit"
+            },
+            "designerId": "2a340176-f7e5-49d4-a5d1-e2b8c3747c67"
+        }
+    ]
+}
