@@ -27,7 +27,8 @@
             "userConfig": {
                 "fieldLabel": "Description",
                 "itemId": "editsubjectdescription",
-                "layout|anchor": "100%"
+                "layout|anchor": "100%",
+                "name": "subjDescription"
             },
             "designerId": "4b730996-be6f-4d73-a3df-1199ba01bb42"
         },
@@ -41,7 +42,8 @@
             "userConfig": {
                 "fieldLabel": "Objectives",
                 "itemId": "editsubjectobjectives",
-                "layout|anchor": "100%"
+                "layout|anchor": "100%",
+                "name": "subjObjectives"
             },
             "designerId": "c1b2cba6-8114-4bbe-991a-45e50c9e5316"
         },

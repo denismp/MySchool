@@ -104,6 +104,7 @@
             "userConfig": {
                 "fn": "onJsonstoreWrite",
                 "implHandler": [
+                    "window.console.log( \"SubjectStore reload...\");",
                     "store.reload();"
                 ],
                 "name": "write",

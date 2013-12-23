@@ -746,10 +746,12 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onSubjectformeditClick",
                 "implHandler": [
-                    "//debugger;",
+                    "debugger;",
                     "window.console.log( 'Subject Edit' );",
                     "var newDialog = Ext.create( 'MySchool.view.subject.EditForm' );",
-                    "",
+                    "var mystore = Ext.getStore(\"subject.SubjectStore\");",
+                    "var myrecord = mystore.getAt( this.selectedIndex );",
+                    "newDialog.loadRecord(myrecord);",
                     "",
                     "newDialog.render( Ext.getBody() );",
                     "newDialog.show();"
@@ -794,17 +796,35 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onEditsubjectsubmitbuttonClick",
                 "implHandler": [
-                    "//debugger;",
+                    "debugger;",
                     "window.console.log( \"Submit Edit Subject\" );",
                     "var myForm = button.up().getForm();",
                     "",
                     "",
                     "var formValues = myForm.getValues();",
-                    "records[this.selectedIndex].set( 'subjDescription', formValues.subjDescription );",
-                    "records[this.selectedIndex].set( 'subjObjectives', formValues.subjObjectives );",
+                    "//var myrecords;",
+                    "//myrecords[this.selectedIndex].set( 'subjDescription', formValues.subjDescription );",
+                    "//myrecords[this.selectedIndex].set( 'subjObjectives', formValues.subjObjectives );",
                     "window.console.log( 'objectives=' + formValues.subjObjectives );",
                     "window.console.log( 'description=' + formValues.subjDescription );",
                     "",
+                    "var mystore = Ext.getStore(\"subject.SubjectStore\");",
+                    "var value = mystore.getAt( this.selectedIndex ).get( 'subjDescription' );",
+                    "window.console.log( \"Store subjDescription is \", value );",
+                    "value = mystore.getAt( this.selectedIndex ).get( 'subjObjectives' );",
+                    "window.console.log( \"Store subjObjectives are \", value );",
+                    "",
+                    "mystore.getAt( this.selectedIndex ).set( 'subjLastUpdated', new Date() );",
+                    "mystore.getAt( this.selectedIndex ).set( 'subjDescription', formValues.subjDescription );",
+                    "mystore.getAt( this.selectedIndex ).set( 'subjObjectives', formValues.subjObjectives );",
+                    "",
+                    "value = mystore.getAt( this.selectedIndex ).get( 'subjDescription' );",
+                    "window.console.log( \"NEW STORE subjDescription=\" + value );",
+                    "value = mystore.getAt( this.selectedIndex ).get( 'subjObjectives' );",
+                    "window.console.log( \"NEW STORE subjObjectives=\" + value );",
+                    "",
+                    "",
+                    "mystore.sync();",
                     "",
                     "myForm.reset();",
                     "button.up().hide();"
@@ -813,6 +833,45 @@
                 "scope": "me"
             },
             "designerId": "e93ad8c1-845d-47e4-af16-59f9ebf49bbc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editsubjectdescription",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onEditsubjectdescriptionChange",
+                "implHandler": [
+                    "window.console.log( \"oldValue=\" + oldValue );",
+                    "window.console.log( \"newValue=\" + newValue );"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "designerId": "3f4c750e-bc33-4918-b3ef-5609a96e78fe"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editsubjectobjectives",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onEditsubjectobjectivesChange",
+                "implHandler": [
+                    ""
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "designerId": "23ed66a9-56b0-4f0d-afca-578e83042a21"
         }
     ]
 }

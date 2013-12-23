@@ -758,6 +758,7 @@ public class ControllerHelper {
 		        ////}	
 		        	
                 SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
+                Subject subj = Subject.findSubject( s_.getSubjId() );
                 Quarter q_ = Quarter.findQuarter(s_.getQtrId());
                 Subject u_ = null;
                 
@@ -786,6 +787,14 @@ public class ControllerHelper {
                     
                     updateGood = true;
                 }
+                //if( subj.merge() != null )
+                //{
+                //	updateGood = true;
+                //}
+                //else
+                //{
+                //	updateGood = false;
+                //}
                 record = s_;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
