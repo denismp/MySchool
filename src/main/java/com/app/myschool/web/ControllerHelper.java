@@ -768,6 +768,10 @@ public class ControllerHelper {
                 q_.setCompleted(s_.getQtrCompleted());
                 q_.setLocked(s_.getQtrLocked());
                 q_.setGrade_type(s_.getQtrGradeType());
+                
+                subj.setDescription( s_.getSubjDescription() );
+                subj.setObjectives( s_.getSubjObjectives() );
+                subj.setLastUpdated( s_.getSubjLastUpdated() );
 
                 if (false) {
                 	u_ = q_.getSubject();
@@ -787,14 +791,14 @@ public class ControllerHelper {
                     
                     updateGood = true;
                 }
-                //if( subj.merge() != null )
-                //{
-                //	updateGood = true;
-                //}
-                //else
-                //{
-                //	updateGood = false;
-                //}
+                if( subj.merge() != null )
+                {
+                	updateGood = true;
+                }
+                else
+                {
+                	updateGood = false;
+                }
                 record = s_;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
