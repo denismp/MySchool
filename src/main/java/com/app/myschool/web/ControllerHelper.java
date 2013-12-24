@@ -77,13 +77,33 @@ public class ControllerHelper {
 		String studentName_ = getParam(params, "studentName");
 		
 		try {
-			if (myClass.equals(SubjectView.class) && studentId_ != null) {
+			// if studentId is null return all the subjects leaving the
+			// quarter part of SubjectView null
+			if (myClass.equals(SubjectView.class) && studentId_ == null) {
+				List<Subject> sl_ = Subject.findAllSubjects();
+				List<SubjectView> svl_ = new ArrayList<SubjectView>();
+				int i_ = 1;
+				for (Subject u_ : sl_) {
+					SubjectView sv_ = new SubjectView();
+					sv_.setId((long)i_++);
+					sv_.setSubjCreditHours(u_.getCreditHours());
+					sv_.setSubjDescription(u_.getDescription());
+					sv_.setSubjGradeLevel(u_.getGradeLevel());
+					sv_.setSubjId(u_.getId());
+					sv_.setSubjLastUpdated(u_.getLastUpdated());
+					sv_.setSubjName(u_.getName());
+					sv_.setSubjObjectives(u_.getObjectives());
+					sv_.setSubjVersion(u_.getVersion());
+					sv_.setSubjWhoUpdated(u_.getWhoUpdated());
+					svl_.add(sv_);
+				}
+				records = svl_;
+			}
+			else if (myClass.equals(SubjectView.class) && studentId_ != null) {
 				Student student_ = Student.findStudent(Long.valueOf(studentId_));
 				if (student_ != null) {
 					List<SubjectView> svl_ = new ArrayList<SubjectView>();
 					Set<Quarter> qtrs_ = student_.getQuarters();
-					Set<Faculty> faculty_ = student_.getFaculty();
-					int size_ = faculty_.size();
 					int i_ = 1;
 
 					for (Quarter q_ : qtrs_) {
@@ -734,33 +754,9 @@ public class ControllerHelper {
 		        }				
 			}
 			else if (myClass.equals(SubjectView.class)) {
-				//record = SubjectView.fromJsonToSubject(myJson);
-		        //if (((SubjectView)record).merge() != null ) {
-		        //	updateGood = true;
-		        //}		
-				//SubjectView subjectView = new JSONDeserializer<SubjectView>().use("values", SubjectView.class)
-	            //        .deserialize(myJson);
-				//Quarter quarter = Quarter.findQuarter(subjectView.getQtrId());
-				//quarter.setLastUpdated(subjectView.getSubjLastUpdated());
-				//quarter.setWhoUpdated(subjectView.getSubjWhoUpdated());
-				//quarter.setCompleted(quarter.getCompleted());
-				//Subject subject = Subject.findSubject( subjectView.getId() );
-				////quarter.setCompleted(quarter.getCompleted());
-				//subject.setLastUpdated(subjectView.getSubjLastUpdated());
-				//subject.setWhoUpdated(subjectView.getSubjWhoUpdated());
-				//subject.setObjectives(subjectView.getSubjObjectives());
-				//subject.setDescription(subjectView.getSubjDescription());
-				//subject.persist();
-				//quarter.persist();
-				//record = subjectView;
-		        ////if (((Subject)record).merge() != null ) {
-		        //	updateGood = true;
-		        ////}	
-		        	
                 SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
-                Subject subj = Subject.findSubject( s_.getSubjId() );
                 Quarter q_ = Quarter.findQuarter(s_.getQtrId());
-                Subject u_ = null;
+                Subject subj = q_.getSubject();
                 
                 q_.setGrade(s_.getQtrGrade());
                 q_.setLastUpdated(s_.getQtrLastUpdated());
@@ -772,33 +768,15 @@ public class ControllerHelper {
                 subj.setDescription( s_.getSubjDescription() );
                 subj.setObjectives( s_.getSubjObjectives() );
                 subj.setLastUpdated( s_.getSubjLastUpdated() );
-
-                if (false) {
-                	u_ = q_.getSubject();
-                	
-	                u_.setDescription(s_.getSubjDescription());
-	                u_.setObjectives(s_.getSubjObjectives());
-	                u_.setLastUpdated(s_.getSubjLastUpdated());
-	                u_.setWhoUpdated(s_.getSubjWhoUpdated());
-                }
+                subj.setWhoUpdated(s_.getSubjWhoUpdated());
                 
                 if (q_.merge() != null) {
                     s_.setQtrVersion(q_.getVersion());
-                    
-                    if (u_ != null) {
-                    	s_.setSubjVersion(u_.getVersion());
-                    }
+                    s_.setSubjVersion(subj.getVersion());
                     
                     updateGood = true;
                 }
-                if( subj.merge() != null )
-                {
-                	updateGood = true;
-                }
-                else
-                {
-                	updateGood = false;
-                }
+                
                 record = s_;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
