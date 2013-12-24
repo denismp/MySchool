@@ -37,14 +37,8 @@ public class SubjectController {
     @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
-        ResponseEntity<java.lang.String> ret_ = null;
         ControllerHelper controllerHelper = new ControllerHelper();
-        if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson(SubjectView.class, params);
-        } else {
-            ret_ = controllerHelper.listJson(Subject.class);
-        }
-        return ret_;
+        return controllerHelper.listJson(SubjectView.class, params);
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
