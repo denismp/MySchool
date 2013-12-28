@@ -523,8 +523,61 @@ public class ControllerHelper {
 		        ((Faculty)record).persist();
 			}
 			else if (myClass.equals(SubjectView.class)) {
-				record = SubjectView.fromJsonToSubjectView(myJson);
-		        ((Subject)record).persist();
+				SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
+
+				if (s_.getSubjId() < 1L) {
+					// we are creating a new subject
+					Subject subj_ = new Subject();
+
+					subj_.setCreditHours(s_.getSubjCreditHours());
+					subj_.setDescription(s_.getSubjDescription());
+					subj_.setGradeLevel(s_.getSubjGradeLevel());
+					subj_.setObjectives(s_.getSubjObjectives());
+					subj_.setLastUpdated(s_.getSubjLastUpdated());
+					subj_.setName(s_.getSubjName());
+					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
+
+					subj_.persist();
+					s_.setId(100000L + subj_.getId());
+					s_.setSubjVersion(subj_.getVersion());
+					s_.setSubjId(subj_.getId());
+				} else {
+					// we are creating a new subj/qtr relationship
+					// only passing subjId and studentName with qtr data
+					Subject subj_ = Subject.findSubject(s_.getSubjId());
+					Student stu_ = Student
+							.findStudentsByUserNameEquals(s_.getStudentName())
+							.getResultList().get(0);
+					Quarter q_ = new Quarter();
+
+					q_.setCompleted(s_.getQtrCompleted());
+					q_.setGrade(s_.getQtrGrade());
+					q_.setGrade_type(s_.getQtrGradeType());
+					q_.setLocked(s_.getQtrLocked());
+					q_.setLastUpdated(s_.getQtrLastUpdated());
+					q_.setQtr_year(s_.getQtrYear());
+					q_.setQtrName(s_.getQtrName());
+					q_.setWhoUpdated(s_.getQtrWhoUpdated());
+
+					q_.setStudent(stu_);
+					q_.setSubject(subj_);
+
+					q_.persist();
+					s_.setId(100000L + q_.getId());
+					s_.setQtrId(q_.getId());
+					s_.setQtrVersion(q_.getVersion());
+
+					s_.setSubjCreditHours(subj_.getCreditHours());
+					s_.setSubjDescription(subj_.getDescription());
+					s_.setSubjGradeLevel(subj_.getGradeLevel());
+					s_.setSubjLastUpdated(subj_.getLastUpdated());
+					s_.setSubjName(subj_.getName());
+					s_.setSubjObjectives(subj_.getObjectives());
+					s_.setSubjVersion(subj_.getVersion());
+					s_.setSubjWhoUpdated(subj_.getWhoUpdated());
+				}
+
+				record = s_;
 			}
 			else if (myClass.equals(Subject.class)) {
 				record = Subject.fromJsonToSubject(myJson);
@@ -754,30 +807,48 @@ public class ControllerHelper {
 		        }				
 			}
 			else if (myClass.equals(SubjectView.class)) {
-                SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
-                Quarter q_ = Quarter.findQuarter(s_.getQtrId());
-                Subject subj = q_.getSubject();
-                
-                q_.setGrade(s_.getQtrGrade());
-                q_.setLastUpdated(s_.getQtrLastUpdated());
-                q_.setWhoUpdated(s_.getQtrWhoUpdated());
-                q_.setCompleted(s_.getQtrCompleted());
-                q_.setLocked(s_.getQtrLocked());
-                q_.setGrade_type(s_.getQtrGradeType());
-                
-                subj.setDescription( s_.getSubjDescription() );
-                subj.setObjectives( s_.getSubjObjectives() );
-                subj.setLastUpdated( s_.getSubjLastUpdated() );
-                subj.setWhoUpdated(s_.getSubjWhoUpdated());
-                
-                if (q_.merge() != null) {
-                    s_.setQtrVersion(q_.getVersion());
-                    s_.setSubjVersion(subj.getVersion());
-                    
-                    updateGood = true;
-                }
-                
-                record = s_;
+				SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
+				Long qtrId_ = s_.getQtrId();
+
+				if (qtrId_.longValue() > 0L) {
+					// we are updating qtr
+					Quarter q_ = Quarter.findQuarter(qtrId_);
+
+					q_.setGrade(s_.getQtrGrade());
+					q_.setLastUpdated(s_.getQtrLastUpdated());
+					q_.setWhoUpdated(s_.getQtrWhoUpdated());
+					q_.setCompleted(s_.getQtrCompleted());
+					q_.setLocked(s_.getQtrLocked());
+					q_.setGrade_type(s_.getQtrGradeType());
+					q_.setVersion(s_.getQtrVersion());
+
+					if (q_.merge() != null) {
+						s_.setQtrVersion(q_.getVersion());
+
+						updateGood = true;
+					}
+				} else {
+					// Qtr id is zero so we are just updating the subject record
+					Long subjId_ = s_.getSubjId();
+					Subject subj_ = Subject.findSubject(subjId_);
+
+					subj_.setCreditHours(s_.getSubjCreditHours());
+					subj_.setDescription(s_.getSubjDescription());
+					subj_.setGradeLevel(s_.getSubjGradeLevel());
+					subj_.setObjectives(s_.getSubjObjectives());
+					subj_.setLastUpdated(s_.getSubjLastUpdated());
+					subj_.setName(s_.getSubjName());
+					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
+					subj_.setVersion(s_.getSubjVersion());
+
+					if (subj_.merge() != null) {
+						s_.setSubjVersion(subj_.getVersion());
+
+						updateGood = true;
+					}
+				}
+
+				record = s_;
 			}
 			else if (myClass.equals(PreviousTranscripts.class)) {
 				record = PreviousTranscripts.fromJsonToPreviousTranscripts(myJson);
@@ -863,7 +934,7 @@ public class ControllerHelper {
 			if( statusGood && updateGood )
 			{
 	            returnStatus = HttpStatus.OK;
-				response.setMessage( className = " updated." );
+				response.setMessage( className + " updated." );
 				response.setSuccess(true);
 				response.setTotal(1L);
 				response.setData(record);				
