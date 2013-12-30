@@ -6,40 +6,41 @@
     },
     "codeClass": null,
     "userConfig": {
-        "container|align": "stretch",
-        "designer|userAlias": "mybodiesofworkpanel",
-        "designer|userClassName": "bodiesofwork.BodiesOfWorkPanel",
-        "id": "bodiesofworkpanel",
-        "layout": "hbox",
-        "title": "Bodies Of Work By Student And Subject"
+        "designer|userAlias": "dailypanel",
+        "designer|userClassName": "daily.DailyPanel",
+        "height": 673,
+        "itemId": "dailydetailspanel",
+        "minHeight": null,
+        "title": "Daily Details",
+        "width": 1398
     },
-    "designerId": "78d64d6c-4176-4ac6-bb01-6d72ccf195b3",
+    "designerId": "516746d0-38a9-472f-a745-1b17006155e3",
     "cn": [
         {
             "type": "linkedinstance",
             "reference": {
-                "name": "items",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 1
+                "dock": "top"
             },
-            "designerId": "9a614e32-a30a-43ef-ab07-b2acb6a42663",
-            "masterInstanceId": "49b7bdca-cc8d-4696-a931-47cb75438709"
+            "designerId": "839555b8-2c04-47d6-99a4-539eb5234757",
+            "masterInstanceId": "0dbf8df5-9454-4045-bed5-06bead3b8e81"
         },
         {
             "type": "linkedinstance",
             "reference": {
-                "name": "items",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 1
+                "dock": "bottom"
             },
-            "designerId": "00f38f6b-36c6-41ea-9e2d-708fe926c258",
-            "masterInstanceId": "0e336dad-b722-4ffe-bf29-63246198e8ea"
+            "designerId": "49dd375e-8977-4b3f-a6de-296e059d2a75",
+            "masterInstanceId": "cf9350d0-8cca-44a7-a9c4-35a337fecf50"
         },
         {
             "type": "Ext.panel.Tool",
@@ -49,12 +50,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolrefreshbodiesofwork",
+                "id": "toolrefreshstudentsbysubject2",
                 "tooltip": "Refresh",
                 "type": "refresh"
             },
-            "designerId": "3ea04b3f-bc98-4c34-a817-d724a6c36752",
+            "designerId": "b435217a-ced9-4e8b-8140-bec1bdcfe49c",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -75,7 +75,7 @@
                             "// Add refresh handler code here.  Use example from chapter 2 of book."
                         ]
                     },
-                    "designerId": "92b8017d-1b39-4815-8d8b-2495aea480aa"
+                    "designerId": "618660e3-3cfe-461c-a12e-0a8356c73b6c"
                 }
             ]
         },
@@ -87,12 +87,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolsearchbodiesofwork",
+                "id": "toolsearchstudentsbysubject2",
                 "tooltip": "Search",
                 "type": "search"
             },
-            "designerId": "1fcff98b-16ea-47d0-9cf1-0434082f07da",
+            "designerId": "2892a093-498c-44ef-817c-80d25d90eec6",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -113,7 +112,7 @@
                             "// add search handler code here."
                         ]
                     },
-                    "designerId": "b2a42c23-6bc6-42ac-8932-6328e8161170"
+                    "designerId": "b9a6eaf3-ba91-4337-9ab6-0cb873c4473e"
                 }
             ]
         },
@@ -125,12 +124,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolnewbodiesofwork",
+                "id": "toolnewstudentsbysubject2",
                 "tooltip": "New",
                 "type": "plus"
             },
-            "designerId": "e8786f1a-d632-4f96-8b06-6571d03616c4",
+            "designerId": "a6b66708-54d6-4c51-a65f-d25ca2acaf5a",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -151,7 +149,7 @@
                             "// add new/insert handler code here."
                         ]
                     },
-                    "designerId": "515f61d9-cd08-4925-9cb8-404c68958e30"
+                    "designerId": "11ca0478-1964-446d-9882-03db5d7174d3"
                 }
             ]
         },
@@ -163,12 +161,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolsavebodiesofwork",
+                "id": "toolsavestudentsbysubject2",
                 "tooltip": "Save",
                 "type": "save"
             },
-            "designerId": "86f48da5-bd6f-4d3e-ba4e-cbc17e740fb6",
+            "designerId": "763408ea-0062-40d1-b762-4a74376543a0",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -189,7 +186,7 @@
                             "// Add save/udate handler code here."
                         ]
                     },
-                    "designerId": "51f5018e-ca80-47a3-ab9b-7b92344c8bc0"
+                    "designerId": "2f64d6fe-fadf-4290-91d0-71707acaf5ec"
                 }
             ]
         },
@@ -201,12 +198,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "tooldeletebodiesofwork",
+                "id": "tooldeletestudentsbysubject2",
                 "tooltip": "Delete",
                 "type": "minus"
             },
-            "designerId": "629e77d9-145b-4e54-84cc-edc972622834",
+            "designerId": "0d0d07b9-5fec-4c4c-95b6-f026694ce91b",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -227,7 +223,7 @@
                             "// Add delete handler code here."
                         ]
                     },
-                    "designerId": "34d77712-c821-4f09-9dfb-4572873216a2"
+                    "designerId": "f019bdee-7ea4-44f4-a37b-df8dabfe8285"
                 }
             ]
         },
@@ -239,12 +235,11 @@
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toollockbodiesofwork",
+                "id": "toollockstudentsbysubject2",
                 "tooltip": "Lock?",
                 "type": "pin"
             },
-            "designerId": "b255a753-ec4b-4364-b5b9-3e014e5ab25d",
+            "designerId": "69d3b3a3-73ea-46de-b179-1adce067a4d7",
             "cn": [
                 {
                     "type": "fixedfunction",
@@ -265,7 +260,7 @@
                             "// add lock handler code here."
                         ]
                     },
-                    "designerId": "c2937627-a881-42a7-b532-cc6094cb565a"
+                    "designerId": "b5aac943-80fb-45b2-b24d-dd0f7f9696ec"
                 }
             ]
         }

@@ -1,0 +1,219 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "dailygridpanel",
+        "designer|userClassName": "daily.DailyGridPanel",
+        "forceFit": true,
+        "height": 373,
+        "id": null,
+        "itemId": "dailygridpanel",
+        "minHeight": null,
+        "title": "[student name] Daily Details",
+        "width": 967
+    },
+    "designerId": "0dbf8df5-9454-4045-bed5-06bead3b8e81",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subject_name",
+                "text": "Subject Name"
+            },
+            "designerId": "64ddd63d-9fa3-4a86-a298-db0a0b77f4b9"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "body_of_work",
+                "text": "Body Of Work"
+            },
+            "designerId": "7d72e227-f47a-4b04-ba8d-abef5694f310"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "year",
+                "text": "Year"
+            },
+            "designerId": "65c36728-249d-4346-a28a-0301cf638a04"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "month",
+                "text": "Month"
+            },
+            "designerId": "3b287a50-4f5e-41c7-8178-c95a28ba99f6"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "week",
+                "text": "Week"
+            },
+            "designerId": "67697c02-9a81-4181-a4dc-db93a96a1243"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "day_number",
+                "text": "Day"
+            },
+            "designerId": "dc238f06-364e-43f9-8910-a2878b07b140"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "grade_level",
+                "text": "Grade Level",
+                "width": 105
+            },
+            "designerId": "67bb2b99-4f6a-4ed9-874b-ce10b6afb0dd"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "credit_hours",
+                "text": "Credit Hours"
+            },
+            "designerId": "387381d4-cc2d-4158-8ebf-9162a82f17ef"
+        },
+        {
+            "type": "Ext.grid.column.Boolean",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Locked?"
+            },
+            "designerId": "c86c2893-7051-41ef-88ad-2d0e46deff88"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "student_id",
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "07126645-d588-4a88-bef3-0713cad402e3"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "iddaily"
+            },
+            "designerId": "9c85b918-29dd-4edb-bfd5-6bdef2b51fac"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": null,
+                "itemId": "dailygridview"
+            },
+            "designerId": "89dbb99f-b354-49fc-afff-81d254a4da1f"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idbody_of_works"
+            },
+            "designerId": "4a6916ab-2938-4603-b9ae-f6cbcc263263"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idsubject"
+            },
+            "designerId": "ee2c451b-3646-4bf9-8de0-6239b3f78e03"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "a4a96f3b-9b02-4814-a831-aa38723aa744"
+        }
+    ]
+}

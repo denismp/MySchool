@@ -23,7 +23,7 @@ Ext.define('MySchool.view.bodiesofwork.MyGridPanel', {
         'Ext.grid.View'
     ],
 
-    id: 'bodiesofworkssubjectsgrid',
+    itemId: 'bodiesofworkssubjectsgrid',
     autoScroll: true,
     title: '[student name] Bodies Of Work',
     forceFit: true,

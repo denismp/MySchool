@@ -16,7 +16,7 @@
         "itemId": "newsubjectform",
         "jsonSubmit": true,
         "layout": null,
-        "title": "New Subject",
+        "title": "New Subject Quarter for Student",
         "url": null,
         "width": 500
     },
@@ -43,6 +43,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Student User Name",
+                        "itemId": "newsubjectform-studentName",
                         "layout|anchor": "100%",
                         "name": "studentName",
                         "readOnly": true
@@ -57,7 +58,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowBlank": false,
                         "fieldLabel": "Subject Name",
+                        "hidden": true,
+                        "itemId": "newsubjectform-subjName",
                         "layout|anchor": "100%",
                         "name": "subjName"
                     },
@@ -71,10 +75,11 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "editable": false,
                         "layout|anchor": "100%"
                     },
-                    "designerId": "283bdce7-4815-496a-923e-6a815b561214",
-                    "masterInstanceId": "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4"
+                    "designerId": "cf8de0f0-53d6-4f1b-9848-d8acea8822ec",
+                    "masterInstanceId": "9f409f6e-d366-471e-bb53-73e5dea67e78"
                 },
                 {
                     "type": "Ext.form.field.Number",
@@ -84,8 +89,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowBlank": false,
+                        "disabled": true,
                         "fieldLabel": "Grade Level",
+                        "itemId": "newsubjectform-subjGradeLevel",
                         "layout|anchor": "100%",
+                        "maxValue": 20,
+                        "minValue": 0,
                         "name": "subjGradeLevel"
                     },
                     "designerId": "bad29fb6-3682-4c44-af93-60dbef0d2957"
@@ -98,8 +108,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowBlank": false,
+                        "disabled": true,
                         "fieldLabel": "Credit Hours",
+                        "itemId": "newsubjectform-subjCreditHours",
                         "layout|anchor": "100%",
+                        "maxValue": 10,
+                        "minValue": 0,
                         "name": "subjCreditHours"
                     },
                     "designerId": "86b61659-f9a6-46c3-b894-d73e5eec716b"
@@ -112,7 +127,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowBlank": false,
+                        "disabled": true,
                         "fieldLabel": "Description",
+                        "itemId": "newsubjectform-subjDescription",
                         "layout|anchor": "100%",
                         "name": "subjDescription"
                     },
@@ -126,7 +144,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowBlank": false,
+                        "disabled": true,
                         "fieldLabel": "Objectives",
+                        "itemId": "newsubjectform-subjObjectives",
                         "layout|anchor": "100%",
                         "name": "subjObjectives"
                     },
@@ -140,24 +161,35 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "editable": false,
                         "layout|anchor": "100%"
                     },
                     "designerId": "d4ceadad-5eab-4143-be33-006230d69bed",
                     "masterInstanceId": "3286d8b6-1f11-4654-9fb5-1bcd21f6821a"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "designerId": "b1042f7d-91fe-403f-9d2e-a6f5aa1a51ae",
+                    "masterInstanceId": "a28834d9-6a53-4c28-a0a3-06fb624572d4"
+                },
+                {
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Quarter Year",
-                        "layout|anchor": "100%",
-                        "name": "qtrYear"
+                        "editable": false,
+                        "layout|anchor": "100%"
                     },
-                    "designerId": "af04255e-82bd-4c5c-a2e1-cd5244d1e62c"
+                    "designerId": "283bdce7-4815-496a-923e-6a815b561214",
+                    "masterInstanceId": "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4"
                 }
             ]
         },
@@ -186,6 +218,32 @@
                 "text": "Submit"
             },
             "designerId": "f0a757c8-ada0-4bbc-90a6-5a88158c2b37"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectedit",
+                "text": "Edit Subject"
+            },
+            "designerId": "cce17a23-7118-4548-a056-9630d0e33a55"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectcreate",
+                "text": "Create New Subject"
+            },
+            "designerId": "cccf58e8-e502-4846-afb1-df979e856a4f"
         }
     ]
 }

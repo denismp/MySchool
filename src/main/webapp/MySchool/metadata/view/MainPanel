@@ -51,7 +51,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "height": null,
-                        "id": "subjecttab",
+                        "id": null,
+                        "itemId": "subjecttab",
                         "layout": "hbox",
                         "minHeight": null,
                         "title": "SubjectsByStudent",
@@ -94,7 +95,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "height": 700,
-                        "id": "bodiesofworkstab",
+                        "id": null,
+                        "itemId": "bodiesofworkstab",
                         "layout": "hbox",
                         "minHeight": null,
                         "title": "Bodies Of Work",
@@ -137,7 +139,8 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "height": null,
-                        "id": "dailytab",
+                        "id": null,
+                        "itemId": "dailytab",
                         "layout": "vbox",
                         "minHeight": null,
                         "title": "Daily"
@@ -157,7 +160,7 @@
                             "designerId": "3eda966c-db0f-44f0-8737-e1ded1d43511"
                         },
                         {
-                            "type": "Ext.panel.Panel",
+                            "type": "linkedinstance",
                             "reference": {
                                 "name": "dockedItems",
                                 "type": "array"
@@ -165,765 +168,10 @@
                             "codeClass": null,
                             "userConfig": {
                                 "dock": "top",
-                                "height": 673,
-                                "layout|flex": 1,
-                                "minHeight": null,
-                                "title": "Daily Details",
-                                "width": 1398
+                                "layout|flex": 1
                             },
-                            "designerId": "baadcd12-5910-4e06-a46d-4268d00e4488",
-                            "cn": [
-                                {
-                                    "type": "Ext.grid.Panel",
-                                    "reference": {
-                                        "name": "dockedItems",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "autoScroll": true,
-                                        "dock": "top",
-                                        "forceFit": true,
-                                        "height": 373,
-                                        "id": "dailysubjectsgridpanel",
-                                        "minHeight": null,
-                                        "title": "[student name]Bodies of Work by Subject",
-                                        "width": 967
-                                    },
-                                    "designerId": "932f9720-6a6e-483d-9d2b-6f66fd019b0d",
-                                    "cn": [
-                                        {
-                                            "type": "Ext.grid.column.Column",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "subject_name",
-                                                "text": "Subject Name"
-                                            },
-                                            "designerId": "64ddd63d-9fa3-4a86-a298-db0a0b77f4b9"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Column",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "body_of_work",
-                                                "text": "Body Of Work"
-                                            },
-                                            "designerId": "7d72e227-f47a-4b04-ba8d-abef5694f310"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "year",
-                                                "text": "Year"
-                                            },
-                                            "designerId": "65c36728-249d-4346-a28a-0301cf638a04"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "month",
-                                                "text": "Month"
-                                            },
-                                            "designerId": "3b287a50-4f5e-41c7-8178-c95a28ba99f6"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "week",
-                                                "text": "Week"
-                                            },
-                                            "designerId": "67697c02-9a81-4181-a4dc-db93a96a1243"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "day_number",
-                                                "text": "Day"
-                                            },
-                                            "designerId": "dc238f06-364e-43f9-8910-a2878b07b140"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "grade_level",
-                                                "text": "Grade Level",
-                                                "width": 105
-                                            },
-                                            "designerId": "67bb2b99-4f6a-4ed9-874b-ce10b6afb0dd"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "credit_hours",
-                                                "text": "Credit Hours"
-                                            },
-                                            "designerId": "387381d4-cc2d-4158-8ebf-9162a82f17ef"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Boolean",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "text": "Locked?"
-                                            },
-                                            "designerId": "c86c2893-7051-41ef-88ad-2d0e46deff88"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "dataIndex": "student_id",
-                                                "hidden": true,
-                                                "text": "idstudent"
-                                            },
-                                            "designerId": "07126645-d588-4a88-bef3-0713cad402e3"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "hidden": true,
-                                                "text": "iddaily"
-                                            },
-                                            "designerId": "9c85b918-29dd-4edb-bfd5-6bdef2b51fac"
-                                        },
-                                        {
-                                            "type": "Ext.grid.View",
-                                            "reference": {
-                                                "name": "viewConfig",
-                                                "type": "object"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "id": "dailysubjectsgridview"
-                                            },
-                                            "designerId": "89dbb99f-b354-49fc-afff-81d254a4da1f"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "hidden": true,
-                                                "text": "idbody_of_works"
-                                            },
-                                            "designerId": "4a6916ab-2938-4603-b9ae-f6cbcc263263"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "hidden": true,
-                                                "text": "idsubject"
-                                            },
-                                            "designerId": "ee2c451b-3646-4bf9-8de0-6239b3f78e03"
-                                        },
-                                        {
-                                            "type": "Ext.grid.column.Number",
-                                            "reference": {
-                                                "name": "columns",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "hidden": true,
-                                                "text": "idstudent"
-                                            },
-                                            "designerId": "a4a96f3b-9b02-4814-a831-aa38723aa744"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.tab.Panel",
-                                    "reference": {
-                                        "name": "dockedItems",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "activeTab": 0,
-                                        "dock": "bottom",
-                                        "height": 300,
-                                        "minHeight": 300,
-                                        "title": null
-                                    },
-                                    "designerId": "bc1fca87-d7de-4139-808a-80dfd9de9ad3",
-                                    "cn": [
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "height": 100,
-                                                "title": "Hours"
-                                            },
-                                            "designerId": "02a3975f-bacd-464f-8f4f-101010cfa26d",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "designerId": "bf275acc-c115-4bb3-8baa-b31fb023fe89"
-                                                },
-                                                {
-                                                    "type": "Ext.form.Panel",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "autoScroll": true,
-                                                        "bodyPadding": 10,
-                                                        "dock": "top",
-                                                        "height": null,
-                                                        "id": "hours",
-                                                        "layout": "auto",
-                                                        "minHeight": 300,
-                                                        "title": null
-                                                    },
-                                                    "designerId": "01b90dea-2c3e-49e6-b8bd-89fcae2590e9",
-                                                    "cn": [
-                                                        {
-                                                            "type": "Ext.form.field.Number",
-                                                            "reference": {
-                                                                "name": "items",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "dock": null,
-                                                                "fieldLabel": null,
-                                                                "id": "dailydetailsformhournumberfield",
-                                                                "labelWidth": 50,
-                                                                "minHeight": null
-                                                            },
-                                                            "designerId": "8b5b0f93-31ca-4369-8ddb-02c4b96b1fa3"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "maxHeight": null,
-                                                "title": "Resources Used"
-                                            },
-                                            "designerId": "a3cfb924-3566-4d9a-b7dc-097b63ad5c11",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "maxHeight": null
-                                                    },
-                                                    "designerId": "fdecb6eb-1c48-491e-ba93-40504740bb07"
-                                                },
-                                                {
-                                                    "type": "Ext.form.field.TextArea",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "dock": "top",
-                                                        "fieldLabel": null,
-                                                        "id": "dailydetailsresoucesusedtextarea",
-                                                        "minHeight": 273
-                                                    },
-                                                    "designerId": "63010124-a777-4175-ab3c-3ab2795eb1d7"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "minHeight": 300,
-                                                "title": "Study Details"
-                                            },
-                                            "designerId": "c9d0673e-6d9e-482e-b60b-f26b6d09ffb9",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "designerId": "180aa12a-8f4b-4870-b558-c2c70656e12e"
-                                                },
-                                                {
-                                                    "type": "Ext.form.field.TextArea",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "dock": "top",
-                                                        "fieldLabel": null,
-                                                        "id": "dailydetailsstudydetailstextarea",
-                                                        "minHeight": 273
-                                                    },
-                                                    "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "bodyPadding": 10,
-                                                "height": null,
-                                                "layout": "fit",
-                                                "minHeight": 300,
-                                                "title": "Evaluation"
-                                            },
-                                            "designerId": "6f41f03f-1f0e-4ad9-83e9-ba3e606ab13f",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "designerId": "cbca7173-b804-47aa-b07b-40448ac54442"
-                                                },
-                                                {
-                                                    "type": "Ext.form.field.TextArea",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "dock": "top",
-                                                        "fieldLabel": null,
-                                                        "id": "dailydetailsevaluationtextarea",
-                                                        "minHeight": 273
-                                                    },
-                                                    "designerId": "4888bb3e-48cc-4e5e-8bca-72875f94bcf3"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "title": "Correction"
-                                            },
-                                            "designerId": "f9cdc8e4-16a8-461a-adb9-a4ca395bf958",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "designerId": "edecb977-d982-4aae-8ad5-f0344e7ebf75"
-                                                },
-                                                {
-                                                    "type": "Ext.form.Panel",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "bodyPadding": 10,
-                                                        "dock": "top",
-                                                        "layout": "fit",
-                                                        "title": null
-                                                    },
-                                                    "designerId": "267fb73e-c8fb-4a0b-8b6b-902063b68bf2",
-                                                    "cn": [
-                                                        {
-                                                            "type": "Ext.form.field.TextArea",
-                                                            "reference": {
-                                                                "name": "dockedItems",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "dock": "top",
-                                                                "fieldLabel": null,
-                                                                "id": "dailydetailscorrectiontextarea",
-                                                                "minHeight": 273
-                                                            },
-                                                            "designerId": "278bad8f-3d7a-4d3a-9c9f-65e98e93eb2f"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "Ext.panel.Panel",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "title": "Actions"
-                                            },
-                                            "designerId": "47a63c27-0171-4d38-bad1-7851a4530102",
-                                            "cn": [
-                                                {
-                                                    "type": "Ext.tab.Tab",
-                                                    "reference": {
-                                                        "name": "tabConfig",
-                                                        "type": "object"
-                                                    },
-                                                    "codeClass": null,
-                                                    "designerId": "5e50beab-a1be-4eab-9d54-859bc13d6864"
-                                                },
-                                                {
-                                                    "type": "Ext.form.Panel",
-                                                    "reference": {
-                                                        "name": "dockedItems",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "bodyPadding": 10,
-                                                        "dock": "top",
-                                                        "layout": "fit",
-                                                        "title": null
-                                                    },
-                                                    "designerId": "c03f0ec3-ce6a-46a7-8c8b-a15b58f36ac7",
-                                                    "cn": [
-                                                        {
-                                                            "type": "Ext.form.field.TextArea",
-                                                            "reference": {
-                                                                "name": "dockedItems",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "dock": "top",
-                                                                "fieldLabel": null,
-                                                                "id": "dailydetailsactiontextarea",
-                                                                "minHeight": 273
-                                                            },
-                                                            "designerId": "320279a1-83da-40db-ae45-b1cda9799201"
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "toolrefreshstudentsbysubject2",
-                                        "tooltip": "Refresh",
-                                        "type": "refresh"
-                                    },
-                                    "designerId": "b435217a-ced9-4e8b-8140-bec1bdcfe49c",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// Add refresh handler code here.  Use example from chapter 2 of book."
-                                                ]
-                                            },
-                                            "designerId": "618660e3-3cfe-461c-a12e-0a8356c73b6c"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "toolsearchstudentsbysubject2",
-                                        "tooltip": "Search",
-                                        "type": "search"
-                                    },
-                                    "designerId": "2892a093-498c-44ef-817c-80d25d90eec6",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// add search handler code here."
-                                                ]
-                                            },
-                                            "designerId": "b9a6eaf3-ba91-4337-9ab6-0cb873c4473e"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "toolnewstudentsbysubject2",
-                                        "tooltip": "New",
-                                        "type": "plus"
-                                    },
-                                    "designerId": "a6b66708-54d6-4c51-a65f-d25ca2acaf5a",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// add new/insert handler code here."
-                                                ]
-                                            },
-                                            "designerId": "11ca0478-1964-446d-9882-03db5d7174d3"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "toolsavestudentsbysubject2",
-                                        "tooltip": "Save",
-                                        "type": "save"
-                                    },
-                                    "designerId": "763408ea-0062-40d1-b762-4a74376543a0",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// Add save/udate handler code here."
-                                                ]
-                                            },
-                                            "designerId": "2f64d6fe-fadf-4290-91d0-71707acaf5ec"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "tooldeletestudentsbysubject2",
-                                        "tooltip": "Delete",
-                                        "type": "minus"
-                                    },
-                                    "designerId": "0d0d07b9-5fec-4c4c-95b6-f026694ce91b",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// Add delete handler code here."
-                                                ]
-                                            },
-                                            "designerId": "f019bdee-7ea4-44f4-a37b-df8dabfe8285"
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "Ext.panel.Tool",
-                                    "reference": {
-                                        "name": "tools",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "id": "toollockstudentsbysubject2",
-                                        "tooltip": "Lock?",
-                                        "type": "pin"
-                                    },
-                                    "designerId": "69d3b3a3-73ea-46de-b179-1adce067a4d7",
-                                    "cn": [
-                                        {
-                                            "type": "fixedfunction",
-                                            "reference": {
-                                                "name": "items",
-                                                "type": "array"
-                                            },
-                                            "codeClass": null,
-                                            "userConfig": {
-                                                "designer|params": [
-                                                    "event",
-                                                    "toolEl",
-                                                    "owner",
-                                                    "tool"
-                                                ],
-                                                "fn": "handler",
-                                                "implHandler": [
-                                                    "// add lock handler code here."
-                                                ]
-                                            },
-                                            "designerId": "b5aac943-80fb-45b2-b24d-dd0f7f9696ec"
-                                        }
-                                    ]
-                                }
-                            ]
+                            "designerId": "9a6b834e-5c25-4012-b118-56b5b462db15",
+                            "masterInstanceId": "516746d0-38a9-472f-a745-1b17006155e3"
                         }
                     ]
                 },
@@ -936,7 +184,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
-                        "id": "weeklyskillstab",
+                        "id": null,
+                        "itemId": "weeklyskillstab",
                         "layout": "vbox",
                         "minHeight": 700,
                         "title": "Weekly Skills"
@@ -1424,7 +673,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
-                        "id": "weeklyevaluatontab",
+                        "id": null,
+                        "itemId": "weeklyevaluatontab",
                         "layout": "hbox",
                         "minHeight": 700,
                         "title": "Weekly Evaluation"
@@ -1945,7 +1195,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
-                        "id": "montlysummarytab",
+                        "id": null,
+                        "itemId": "montlysummarytab",
                         "layout": "hbox",
                         "minHeight": 700,
                         "title": "Monthly Summary"
@@ -2650,7 +1901,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
-                        "id": "monthlyevaluationtab",
+                        "id": null,
+                        "itemId": "monthlyevaluationtab",
                         "layout": "hbox",
                         "minHeight": 700,
                         "title": "Monthly Evaluation"
@@ -3131,7 +2383,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "id": "gradestab",
+                        "id": null,
+                        "itemId": "gradestab",
                         "layout": "fit",
                         "minHeight": 600,
                         "title": "Grades"
@@ -3527,6 +2780,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "dock": null,
+                        "itemId": "studentprofilestab",
                         "minHeight": 600,
                         "title": "Student Profiles"
                     },
@@ -4138,6 +3392,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "itemId": "facultyprofilestab",
                         "title": "Faculty Profiles"
                     },
                     "designerId": "dd58e145-d5ac-4a8c-8f21-73a10eb677e4",

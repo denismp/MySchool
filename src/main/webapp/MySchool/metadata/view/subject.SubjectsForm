@@ -54,19 +54,6 @@
                 "readOnly": true
             },
             "designerId": "c0d2d172-bcf5-4923-899c-97187911820a"
-        },
-        {
-            "type": "Ext.button.Button",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "itemId": "subjectformedit",
-                "text": "Edit"
-            },
-            "designerId": "fd0e44b1-83e9-4ea0-9f98-1dffda37c431"
         }
     ]
 }

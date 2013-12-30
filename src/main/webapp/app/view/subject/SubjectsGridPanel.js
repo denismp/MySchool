@@ -92,7 +92,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 },
                 {
                     xtype: 'datecolumn',
-                    dataIndex: 'subjLastUpdated',
+                    dataIndex: 'qtrLastUpdated',
                     text: 'Date',
                     format: 'm/d/Y'
                 },

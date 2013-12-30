@@ -27,7 +27,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         'subject.SubjectStore',
         'quarter.QuarterStore',
         'student.StudentStore',
-        'subject.GradeTypeStore'
+        'subject.GradeTypeStore',
+        'subject.AllSubjectStore',
+        'subject.QuarterYearStore'
     ],
     views: [
         'MainPanel',
@@ -91,36 +93,92 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onToolnewsubjectsClick: function(tool, e, eOpts) {
-        //debugger;
+        //        debugger;
         window.console.log( 'New' );
         var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );
         //window.console.log( "DEBUG" );
         //newDialog.show();
 
         var mystore = Ext.getStore("subject.SubjectStore");
+        var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
+        var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
         var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+        var mygradetypestore = Ext.getStore( "subject.GradeTypeStore" );
+        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
         var myrecord = mystore.getAt( this.selectedIndex );
+
         //myrecord.set( 'description', newValue );
-        window.console.log( myrecord.data );
-        newDialog.loadRecord(myrecord);
+        //window.console.log( myrecord.data );
+        //        newDialog.loadRecord(myrecord);
+        var myForm = newDialog.getForm();
         var myFormFields = newDialog.getForm().getFields();
         //        var myuserName = myrecord.data.studentName;
-        var mygradeType = myrecord.data.qtrGradeType;
-        var myquarterName = myrecord.data.qtrName;
-        var myQtrNameRec = mynamestore.findRecord( 'qtrName', myquarterName );
+        var qtrNameId_;
+        var gradeType_;
+        var subjId_ = null;
+        var allSubjRec_;
 
-        if (mygradeType) {
-            var mycomboview = myFormFields.getAt( 2 );  // Grade type selection for combobox.
-            mycomboview.setValue( mygradeType );
+        var subjNameCombo_ = newDialog.down('subjectnamecombobox');
+        var qtrNameCombo_ = newDialog.down('quarternamescombobox');
+        var gradeTypeCombo_ = newDialog.down('gradetypecombobox');
+        var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
+        var studentName_ = newDialog.down('#newsubjectform-studentName');
+        var newsubjectedit_ = newDialog.down('#newsubjectedit');
+        var newsubjectcreate_ = newDialog.down('#newsubjectcreate');
+        var newsubjectsubmit_ = newDialog.down('#newsubjectsubmit');
+
+        if (myrecord) {
+            window.console.log( myrecord.data );
         }
 
-        if (myQtrNameRec) {
-            var qtrId = myQtrNameRec.get( 'id' );
-            var mycomboview = myFormFields.getAt( 7 ); // Quarter Name selection for combobox.
-            mycomboview.setValue( qtrId );
+        studentName_.setValue(this.studentName);
+
+        qtrYearCombo_.setValue(myrecord ? parseInt(myrecord.data.qtrYear) : new Date().getFullYear());
+
+        if (myrecord) {
+            qtrNameId_ = mynamestore.findRecord( 'qtrName', myrecord.data.qtrName ).get( 'id' );
         }
+        else {
+            qtrNameId_ = mynamestore.getAt(0).get( 'id' );
+        }
+        qtrNameCombo_.setValue( qtrNameId_ );
+
+        if (myrecord) {
+            allSubjRec_ = myAllSubjStore.findRecord( 'subjName', myrecord.data.subjName );
+            subjId_ = allSubjRec_.get( 'subjId' );
+        }
+        else {
+            allSubjRec_ = myAllSubjStore.getAt(0);
+            if (allSubjRec_) {
+                subjId_ = allSubjRec_.get( 'subjId' );
+            }
+        }
+
+        if (subjId_) {
+            subjNameCombo_.setValue(subjId_);
+            this.onSubjComboSelect( subjNameCombo_, allSubjRec_, eOpts);
+        }
+        else {
+            // no subject records in database
+            newsubjectedit_.setDisabled(true);
+            newsubjectsubmit_.setDisabled(true);
+            subjNameCombo_.setDisabled(true);
+            qtrNameCombo_.setDisabled(true);
+            gradeTypeCombo_.setDisabled(true);
+            qtrYearCombo_.setDisabled(true);
+        }
+
+        if (myrecord) {
+            gradeType_ = myrecord.data.qtrGradeType;
+        }
+        else {
+            gradeType_ = mygradetypestore.getAt(0).get( 'value' );
+        }
+        gradeTypeCombo_.setValue( gradeType_ );
 
         //        newDialog.getForm().setValues( { userName: myuserName } );
+
+        newDialog.subjEditMode = 'relate';
 
         newDialog.render( Ext.getBody() );
         newDialog.show();
@@ -140,111 +198,184 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onNewsubjectsubmitClick: function(button, e, eOpts) {
-        debugger;
+        //        debugger;
         //var mystore = this.getSubjectStoreStore();
         window.console.log( "Submit New Subject" );
-        var mysubjectstore = Ext.getStore("subject.SubjectStore");
-        var myqtrstore = Ext.getStore( "subject.QuarterNameStore" );
-        var myquarterstore = Ext.getStore( "quarter.QuarterStore" );
-        var mystudentstore = Ext.getStore( "student.StudentStore" );
-        var myrecords = myqtrstore.getRange( 0, 3 );
-        //var currentDate = Ext.Date.parse(new Date(),'m/d/Y');
-        //var currentDate = new Date();
-        //currentDate = Ext.Date.format( currentDate, 'm/d/Y' );
-        var currentDate = '10/20/2013';
-        for( var i = 0; i < 4; i++ )
-        {
-            window.console.log( "qtrName=" + myrecords[i].get( 'qtrName' ) );
+        var p_ = button.up('newsubjectform');
+        var f_ = button.up().getForm();
+        var cb_ = p_.down('subjectnamecombobox');
+        var okToSync_ = true;
+        var subjAllVal_ = cb_.getValue();
+        var subjAllIdx_ = cb_.getStore().findExact('subjId', subjAllVal_);
+        var subjAllRec_ = cb_.getStore().getAt(subjAllIdx_);
+        var subjName_ = null;
+        var subjAllEmpty_ = cb_.getStore().getCount() < 1 ? true : false;
+
+        if (p_.subjEditMode.charAt(0) == 'r') {
+            subjName_ = subjAllRec_.data.subjName;
         }
-        var myForm = button.up().getForm();
-        debugger;
-        // Get the data from the form and add a new subject record to the datbase.
-        var myvalues	= myForm.getFieldValues();
-        var myfields	= myForm.getFields();
-        var creditHours = myvalues.creditHours;
-        var description = myvalues.description;
-        var gradeLevel	= myvalues.gradeLevel;
-        var subjectName = myvalues.name;
-        var objectives	= myvalues.objectives;
-        var qtr_year	= myvalues.qtr_year;
-        var userName	= myvalues.userName;
-
-
-        var gradeTypeIntValue = myfields.getAt( 2 ).getValue();  // Grade type selection for combobox.
-
-        var quarterNameIntValue = myfields.getAt( 7 ).getValue(); // Quarter Name selection for combobox.
-
-
-        //	Now we need to put together the data to be inserted(and/or possibly updated).
-        //debugger;
-        var subjectRecord, studentRecord, myQtrName, qtrRecord;
-        subjectRecord	= this.getSubjectRecord( subjectName );
-        studentRecord	= this.getStudentRecord( userName );
-        myQtrName		= this.getQuarterName( quarterNameIntValue );
-
-        qtrRecord		= this.getQuarterRecord( myQtrName, qtr_year);
-
-
-        window.console.log( "subjectRecord type is " + typeof subjectRecord );
-        window.console.log( "studentRecord type is " + typeof studentRecord );
-        window.console.log( "qtrRecord type is " + typeof qtrRecord );
-
-        var qtrFlag = 1;
-        var subjectFlag = 1;
-        //debugger;
-        if( typeof qtrRecord == "undefined" )
-        {
-            // A new quarter is being requested.
-            qtrFlag = 0;
-            qtrRecord = Ext.create('MySchool.model.quarters.QuarterModel' );
-            qtrRecord.set( 'id', null );
-            qtrRecord.set( 'qtrName', myQtrName );
-            qtrRecord.set( 'qtr_year', qtr_year );
-            qtrRecord.set( 'gradeType', gradeTypeIntValue );
-            qtrRecord.set( 'grade', 0 );
-            qtrRecord.set( 'locked', 0 );
-            qtrRecord.set( 'whoUpdated', 'application' );
-            qtrRecord.set( 'lastUpdated', new Date() );
-            qtrRecord.set( 'version', 0 );
-            qtrRecord.set( 'student', studentRecord.data );
-            myquarterstore.add( qtrRecord );
-            //	Let's try sync() ing the qtrRecord and then getting
-            //	the id of the record before assigning it to the subject record.
-        }
-        else
-        {
-            qtrRecord.set( 'student', studentRecord.data );
-        }
-        myquarterstore.sync();
-        if( typeof subjectRecord == "undefined" )
-        {
-            // A new subject is being requested.
-            subjectFlag = 0;
-            subjectRecord = Ext.create( 'MySchool.model.subject.SubjectsModel' );
-            subjectRecord.set( 'id', null );
-            subjectRecord.set( 'name', subjectName );
-            subjectRecord.set( 'gradeLevel', gradeLevel );
-            subjectRecord.set( 'creditHours', creditHours );
-            subjectRecord.set( 'completed', 0 );
-            subjectRecord.set( 'whoUpdated', 'application' );
-            subjectRecord.set( 'lastUpdated', new Date() );
-            subjectRecord.set( 'description', description );
-            subjectRecord.set( 'objectives', objectives );
-            subjectRecord.set( 'version', 0 );
-            subjectRecord.set( 'quarter', qtrRecord.data );
-            subjectRecord.set( 'userName', userName );
-            mysubjectstore.add( subjectRecord );
-        }
-        if( qtrFlag === 0 || subjectFlag !== 0 )
-        {
-            //  Here we add the new quarter record to the existing subject record.
-            subjectRecord.set( 'quarter', qtrRecord.data );
+        else {
+            subjName_ = p_.down('#newsubjectform-subjName');
+            subjName_ = Ext.String.trim(subjName_.getValue());
         }
 
-        mysubjectstore.sync();
+        if (subjName_.length < 1) {
+            Ext.MessageBox.show({
+                title: 'Submit Exception',
+                msg: 'Subject name is empty.',
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+            okToSync_ = false;
+        }
 
-        myForm.reset();
+        if (okToSync_ && p_.subjEditMode.charAt(0) == 'r') {
+            var qnCB_ = p_.down('quarternamescombobox');
+            var qyCB_ = p_.down('quarteryearcombobox');
+            var gtCB_ = p_.down('gradetypecombobox');
+            var gStore_ = Ext.getStore("subject.SubjectStore");
+            var recCnt_ = gStore_.getTotalCount();
+            //          var recs_ = gStore_.getRange( 0, recCnt_ );
+            var sv_ = qnCB_.getValue();
+            var idx_ = qnCB_.getStore().findExact('id', sv_);
+            var r_;
+            var qtrName_;
+            var qtrYear_;
+
+            r_ = qnCB_.getStore().getAt(idx_);
+            qtrName_ = r_.data.qtrName;
+            qtrYear_ = qyCB_.getValue();
+
+            for( var i_ = 0; i_ < recCnt_; i_++ ) {
+                r_ = gStore_.getAt(i_);
+                if (r_ !== null && subjName_ == r_.get('subjName') && qtrName_ == r_.get('qtrName') && qtrYear_ == r_.get('qtrYear')) {
+                    okToSync_ = false;
+                    break;
+                }
+            }
+
+            if (okToSync_) {
+                r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
+
+                r_.set('subjId', subjAllRec_.get('subjId'));
+
+                r_.set('studentName', this.studentName);
+
+                r_.set('qtrGrade', 0);
+                r_.set('qtrGradeType', gtCB_.getValue());
+                r_.set('qtrLastUpdated', new Date());
+                r_.set('qtrName', qtrName_);
+                r_.set('qtrWhoUpdated', 'login');
+                r_.set('qtrYear', qtrYear_);
+
+                gStore_.add(r_);
+                gStore_.sync();
+            }
+            else {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject and Quarter already related.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            }
+        }
+        else if (okToSync_) {
+            var subjDescription_ = p_.down('#newsubjectform-subjDescription');
+            var subjObjectives_ = p_.down('#newsubjectform-subjObjectives');
+            var subjGradeLevel_ = p_.down('#newsubjectform-subjGradeLevel');
+            var subjCreditHours_ = p_.down('#newsubjectform-subjCreditHours');
+            var oldIdx_ = subjAllIdx_;
+            var idx_ = cb_.getStore().findExact('subjName', subjName_);
+            var edit_ = p_.subjEditMode.charAt(0) == 'e';
+
+            if (! subjDescription_.isValid()) {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject description is not valid.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                okToSync_ = false;
+            }
+
+            if (! subjObjectives_.isValid()) {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject objectives is not valid.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                okToSync_ = false;
+            }
+
+            if (! subjGradeLevel_.isValid()) {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject Grade Level is not valid.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                okToSync_ = false;
+            }
+
+            if (! subjCreditHours_.isValid()) {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject Credit Hours is not valid.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                okToSync_ = false;
+            }
+
+            if (idx_ > -1 && (edit_ &&  oldIdx_ != idx_ || ! edit_)) {
+                Ext.MessageBox.show({
+                    title: 'Submit Exception',
+                    msg: 'Subject name is already in use.',
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+                okToSync_ = false;
+            }
+
+            if (okToSync_) {
+                var r_;
+
+                if (edit_) {
+                    r_ = subjAllRec_;
+                }
+                else {
+                    r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
+                    cb_.getStore().add( r_ );
+                }
+
+                if (subjAllEmpty_ || oldIdx_ != idx_) {
+                    r_.set('subjName', subjName_);
+                }
+
+                subjDescription_ = Ext.String.trim(subjDescription_.getValue());
+                subjObjectives_ = Ext.String.trim(subjObjectives_.getValue());
+
+                r_.set('subjCreditHours', subjCreditHours_.getValue());
+                r_.set('subjDescription', subjDescription_);
+                r_.set('subjGradeLevel', subjGradeLevel_.getValue());
+                r_.set('subjLastUpdated', new Date());
+                r_.set('subjObjectives', subjObjectives_);
+                r_.set('subjWhoUpdated', 'login');
+
+                if (edit_) {
+                    cb_.getStore().sync({callback: this.onToolrefreshsubjectsClick});
+                }
+                else {
+                    cb_.getStore().sync();
+                }
+            }
+        }
+
+        f_.reset();
         button.up().hide();
+
     },
 
     onNewsubjectcancelClick: function(button, e, eOpts) {
@@ -319,6 +450,77 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     },
 
+    onNewsubjecteditClick: function(button, e, eOpts) {
+        //    	debugger;
+        var myPanel_ = button.up('newsubjectform');
+        var myForm_ = button.up().getForm();
+        var subjectnamecombobox_ = myPanel_.down('subjectnamecombobox');
+        var quarternamescombobox = myPanel_.down('quarternamescombobox');
+        var quarteryearcombobox = myPanel_.down('quarteryearcombobox');
+        var gradetypecombobox = myPanel_.down('gradetypecombobox');
+        var newsubjectformname_ = myPanel_.down('#newsubjectform-subjName');
+        var studentName_ = myPanel_.down('#newsubjectform-studentName');
+        var subjGradeLevel_ = myPanel_.down('#newsubjectform-subjGradeLevel');
+        var subjCreditHours_ = myPanel_.down('#newsubjectform-subjCreditHours');
+        var subjDescription_ = myPanel_.down('#newsubjectform-subjDescription');
+        var subjObjectives_ = myPanel_.down('#newsubjectform-subjObjectives');
+        var newsubjectedit_ = myPanel_.down('#newsubjectedit');
+        var newsubjectcreate_ = myPanel_.down('#newsubjectcreate');
+        var newsubjectsubmit_ = myPanel_.down('#newsubjectsubmit');
+
+        newsubjectsubmit_.setText('Submit');
+        newsubjectsubmit_.setDisabled(false);
+
+        newsubjectedit_.setDisabled(true);
+        newsubjectcreate_.setDisabled(true);
+
+        subjectnamecombobox_.setVisible(false);
+        newsubjectformname_.setVisible(true);
+        subjGradeLevel_.setDisabled(false);
+        subjCreditHours_.setDisabled(false);
+        subjDescription_.setDisabled(false);
+        subjObjectives_.setDisabled(false);
+        quarternamescombobox.setDisabled(true);
+        quarteryearcombobox.setDisabled(true);
+        gradetypecombobox.setDisabled(true);
+
+        if (button.getItemId().indexOf("create") > 0) {
+            newsubjectformname_.setValue("replace_me_with_name");
+            subjDescription_.setValue("replace_me_with_description");
+            subjObjectives_.setValue("replace_me_with_objectives");
+
+            myPanel_.subjEditMode = 'create';
+        }
+        else {
+            myPanel_.subjEditMode = 'edit';
+        }
+
+    },
+
+    onNewsubjectcreateClick: function(button, e, eOpts) {
+        this.onNewsubjecteditClick(button, e, eOpts);
+
+
+    },
+
+    onSubjComboSelect: function(combo, records, eOpts) {
+        //    	debugger;
+        window.console.log("onSubjComboSelect");
+        var p_ = combo.up('newsubjectform');
+        var subjName_ = p_.down('#newsubjectform-subjName');
+        var subjGradeLevel_ = p_.down('#newsubjectform-subjGradeLevel');
+        var subjCreditHours_ = p_.down('#newsubjectform-subjCreditHours');
+        var subjDescription_ = p_.down('#newsubjectform-subjDescription');
+        var subjObjectives_ = p_.down('#newsubjectform-subjObjectives');
+        var r_ = Ext.isArray(records) ? records[0] : records;
+
+        subjName_.setValue(r_.data.subjName);
+        subjGradeLevel_.setValue(r_.data.subjGradeLevel);
+        subjCreditHours_.setValue(r_.data.subjCreditHours);
+        subjDescription_.setValue(r_.data.subjDescription);
+        subjObjectives_.setValue(r_.data.subjObjectives);
+    },
+
     init: function(application) {
 
                 this.control({
@@ -374,6 +576,15 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             },
             "#editsubjectobjectives": {
                 change: this.onEditsubjectobjectivesChange
+            },
+            "#newsubjectedit": {
+                click: this.onNewsubjecteditClick
+            },
+            "#newsubjectcreate": {
+                click: this.onNewsubjectcreateClick
+            },
+            "#subjectnamecombobox": {
+                select: this.onSubjComboSelect
             }
         });
     },
@@ -392,22 +603,21 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         var records = mystore.getModifiedRecords();
         for( var i = 0; i < records.length; i++ )
         {
-            records[i].set( 'subjLastUpdated', new Date() );
+            records[i].set( 'qtrLastUpdated', new Date() );
             //records[i].set( 'quarter.lastUpdated', new Date() );
-            records[i].set( 'qtrWhoUpdated', 'app'); // replace with login id
+            records[i].set( 'qtrWhoUpdated', 'login');
             if( false )
             {
-            var form = this.getSubjectsForm().getForm();
-            var formValues = form.getValues();
-            records[i].set( 'subjDescription', formValues.subjDescription );
-            records[i].set( 'subjObjectives', formValues.subjObjectives );
-            window.console.log( 'objectives=' + formValues.subjObjectives );
-            window.console.log( 'description=' + formValues.subjDescription );
+                var form = this.getSubjectsForm().getForm();
+                var formValues = form.getValues();
+                records[i].set( 'subjDescription', formValues.subjDescription );
+                records[i].set( 'subjObjectives', formValues.subjObjectives );
+                window.console.log( 'objectives=' + formValues.subjObjectives );
+                window.console.log( 'description=' + formValues.subjDescription );
             }
         }
 
         mystore.sync();
-
     },
 
     gridSelectionChange: function(model, records) {
@@ -489,16 +699,40 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
     onLaunch: function() {
         // Use the automatically generated getter to get the store
-        //    	debugger;
+        //        debugger;
         var studentStore_ = Ext.getStore('student.StudentStore');
+        var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
+        var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
+        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+        var yr_ = new Date().getFullYear();
+
+        for (var i_ = yr_ - 5; i_ < yr_ + 5; i_++) {
+            qtrYrStore_.add({name: i_, value: i_});
+        }
+
+        this.studentName = 'denis';
 
         studentStore_.load({
             callback: this.onStudentStoreLoad,
             scope: this,
             params: {
-                studentName: 'denis'
+                studentName: this.studentName
             }
         });
+
+        allSubjectStore_.load({
+            callback: this.onAllSubjectStoreLoad,
+            scope: this
+        });
+
+        codeStore_.load({
+            callback: this.onCodeStoreLoad,
+            scope: this,
+            params: {
+                filterOn: 'QuarterNames'
+            }
+        });
+
     },
 
     onStudentStoreLoad: function() {
@@ -523,11 +757,21 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onSubjectStoreLoad: function() {
+        //    	debugger;
         var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
 
         if (g_.getStore().getCount() > 0) {
+            g_.getSelectionModel().deselectAll();
             g_.getSelectionModel().select( 0 );
         }
+    },
+
+    onAllSubjectStoreLoad: function() {
+
+    },
+
+    onCodeStoreLoad: function() {
+
     }
 
 });

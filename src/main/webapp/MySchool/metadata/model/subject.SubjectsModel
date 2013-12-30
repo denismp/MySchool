@@ -27,7 +27,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "id",
-                "type": "int"
+                "type": null
             },
             "designerId": "0eadef82-6d13-4762-9bbe-87d4d2697175"
         },
@@ -91,7 +91,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "subjId"
+                "name": "subjId",
+                "type": "int"
             },
             "designerId": "67de64c6-b025-4277-b97e-5ed08b177293"
         },
@@ -239,10 +240,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "qtrLocked",
-                "type": "boolean"
+                "name": "qtrName",
+                "type": "string"
             },
-            "designerId": "10a81888-539b-4e70-b1a2-850423298ca0"
+            "designerId": "d9d105a1-5a5a-412e-b7dc-3f680fe02988"
         },
         {
             "type": "Ext.data.Field",
@@ -252,10 +253,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "qtrName",
-                "type": "string"
+                "name": "qtrLocked",
+                "type": "boolean"
             },
-            "designerId": "d9d105a1-5a5a-412e-b7dc-3f680fe02988"
+            "designerId": "10a81888-539b-4e70-b1a2-850423298ca0"
         },
         {
             "type": "Ext.data.Field",

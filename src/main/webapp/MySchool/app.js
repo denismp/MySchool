@@ -31,7 +31,9 @@ Ext.application({
         'subject.QuarterNameStore',
         'quarter.QuarterStore',
         'student.StudentStore',
-        'subject.GradeTypeStore'
+        'subject.GradeTypeStore',
+        'subject.AllSubjectStore',
+        'subject.QuarterYearStore'
     ],
     views: [
         'MainPanel',
@@ -48,7 +50,13 @@ Ext.application({
         'subject.QuarterNamesComboBox',
         'bodiesofwork.BodiesOfWorkPanel',
         'bodiesofwork.MyGridPanel',
-        'subject.EditForm'
+        'subject.EditForm',
+        'subject.SubjectNameComboBox',
+        'subject.QuarterYearComboBox',
+        'bodiesofwork.BodyOfWorkForm',
+        'daily.DailyPanel',
+        'daily.DailyGridPanel',
+        'daily.DetailsTabPanel'
     ],
     controllers: [
         'subject.SubjectsController'

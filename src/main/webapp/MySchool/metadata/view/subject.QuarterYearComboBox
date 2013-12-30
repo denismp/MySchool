@@ -1,0 +1,21 @@
+{
+    "type": "Ext.form.field.ComboBox",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "quarteryearcombobox",
+        "designer|userClassName": "subject.QuarterYearComboBox",
+        "displayField": "name",
+        "emptyText": "Select one.",
+        "fieldLabel": "Quarter Year",
+        "forceSelection": true,
+        "itemId": "quarteryearcombobox",
+        "queryMode": "local",
+        "store": "subject.QuarterYearStore",
+        "valueField": "value"
+    },
+    "designerId": "a28834d9-6a53-4c28-a0a3-06fb624572d4"
+}

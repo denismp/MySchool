@@ -22,8 +22,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 
     fields: [
         {
-            name: 'id',
-            type: 'int'
+            name: 'id'
         },
         {
             name: 'studentName',
@@ -42,7 +41,8 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
             type: 'int'
         },
         {
-            name: 'subjId'
+            name: 'subjId',
+            type: 'int'
         },
         {
             dateFormat: 'm/d/Y',
@@ -87,12 +87,12 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
             type: 'boolean'
         },
         {
-            name: 'qtrLocked',
-            type: 'boolean'
-        },
-        {
             name: 'qtrName',
             type: 'string'
+        },
+        {
+            name: 'qtrLocked',
+            type: 'boolean'
         },
         {
             name: 'qtrVersion',

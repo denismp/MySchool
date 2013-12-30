@@ -143,7 +143,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "subjLastUpdated",
+                "dataIndex": "qtrLastUpdated",
                 "format": "m/d/Y",
                 "text": "Date"
             },

@@ -10,7 +10,8 @@
         "designer|userAlias": "mybodiesofworkgridpanel",
         "designer|userClassName": "bodiesofwork.MyGridPanel",
         "forceFit": true,
-        "id": "bodiesofworkssubjectsgrid",
+        "id": null,
+        "itemId": "bodiesofworkssubjectsgrid",
         "title": "[student name] Bodies Of Work",
         "width": null
     },

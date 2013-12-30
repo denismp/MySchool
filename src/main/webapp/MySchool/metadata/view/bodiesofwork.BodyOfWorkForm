@@ -1,0 +1,112 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "bodyofworkform",
+        "designer|userClassName": "bodiesofwork.BodyOfWorkForm",
+        "height": null,
+        "id": null,
+        "itemId": "bodyofworkform",
+        "minHeight": null,
+        "title": "Body Of Work",
+        "width": 508
+    },
+    "designerId": "0e336dad-b722-4ffe-bf29-63246198e8ea",
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": null,
+                "fieldLabel": "Name",
+                "id": "bodyofworknametextfield",
+                "layout|anchor": "100%"
+            },
+            "designerId": "0371a996-6cc4-488e-8a88-7ebefaa9217c"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "What",
+                "id": "bodyofworkwhattextbox",
+                "layout|anchor": null,
+                "size": 5,
+                "width": 492
+            },
+            "designerId": "912d34de-d360-45c5-9050-2d462bf94264"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Description",
+                "id": "bodyofworkdescriptiontextbox",
+                "layout|anchor": "100%"
+            },
+            "designerId": "534c08e9-82d7-4592-8e5d-1e166174e17f"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Objective",
+                "id": "bodyofworkobjectivetextbox",
+                "layout|anchor": "100%"
+            },
+            "designerId": "77fdd8cb-3a60-4df9-8380-01bb9c8632a4"
+        },
+        {
+            "type": "Ext.form.field.Checkbox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "boxLabel": "Active?",
+                "checked": true,
+                "fieldLabel": "",
+                "id": "bodyofworkactivecheckbox",
+                "layout|anchor": "100%"
+            },
+            "designerId": "56d804cc-6e99-4182-a41c-cf06629ad4da"
+        },
+        {
+            "type": "Ext.form.field.Checkbox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "boxLabel": "Lock?",
+                "fieldLabel": "",
+                "id": "bodyofworklockcheckbox",
+                "layout|anchor": "100%"
+            },
+            "designerId": "ab166049-ba71-4504-8cc6-ed80f89ebb72"
+        }
+    ]
+}

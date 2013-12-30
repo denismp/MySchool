@@ -18,8 +18,10 @@ Ext.define('MySchool.view.subject.NewForm', {
     alias: 'widget.newsubjectform',
 
     requires: [
-        'MySchool.view.subject.GradeTypeComboBox',
+        'MySchool.view.subject.SubjectNameComboBox',
         'MySchool.view.subject.QuarterNamesComboBox',
+        'MySchool.view.subject.QuarterYearComboBox',
+        'MySchool.view.subject.GradeTypeComboBox',
         'Ext.form.FieldSet',
         'Ext.form.field.ComboBox',
         'Ext.form.field.Number',
@@ -32,7 +34,7 @@ Ext.define('MySchool.view.subject.NewForm', {
     frame: true,
     itemId: 'newsubjectform',
     width: 500,
-    title: 'New Subject',
+    title: 'New Subject Quarter for Student',
     jsonSubmit: true,
 
     initComponent: function() {
@@ -51,6 +53,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                         {
                             xtype: 'textfield',
                             anchor: '100%',
+                            itemId: 'newsubjectform-studentName',
                             fieldLabel: 'Student User Name',
                             name: 'studentName',
                             readOnly: true
@@ -58,46 +61,69 @@ Ext.define('MySchool.view.subject.NewForm', {
                         {
                             xtype: 'textfield',
                             anchor: '100%',
+                            hidden: true,
+                            itemId: 'newsubjectform-subjName',
                             fieldLabel: 'Subject Name',
-                            name: 'subjName'
+                            name: 'subjName',
+                            allowBlank: false
                         },
                         {
-                            xtype: 'gradetypecombobox',
-                            anchor: '100%'
+                            xtype: 'subjectnamecombobox',
+                            anchor: '100%',
+                            editable: false
                         },
                         {
                             xtype: 'numberfield',
                             anchor: '100%',
+                            disabled: true,
+                            itemId: 'newsubjectform-subjGradeLevel',
                             fieldLabel: 'Grade Level',
-                            name: 'subjGradeLevel'
+                            name: 'subjGradeLevel',
+                            allowBlank: false,
+                            maxValue: 20,
+                            minValue: 0
                         },
                         {
                             xtype: 'numberfield',
                             anchor: '100%',
+                            disabled: true,
+                            itemId: 'newsubjectform-subjCreditHours',
                             fieldLabel: 'Credit Hours',
-                            name: 'subjCreditHours'
+                            name: 'subjCreditHours',
+                            allowBlank: false,
+                            maxValue: 10,
+                            minValue: 0
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
+                            disabled: true,
+                            itemId: 'newsubjectform-subjDescription',
                             fieldLabel: 'Description',
-                            name: 'subjDescription'
+                            name: 'subjDescription',
+                            allowBlank: false
                         },
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
+                            disabled: true,
+                            itemId: 'newsubjectform-subjObjectives',
                             fieldLabel: 'Objectives',
-                            name: 'subjObjectives'
+                            name: 'subjObjectives',
+                            allowBlank: false
                         },
                         {
                             xtype: 'quarternamescombobox',
+                            editable: false,
                             anchor: '100%'
                         },
                         {
-                            xtype: 'textfield',
-                            anchor: '100%',
-                            fieldLabel: 'Quarter Year',
-                            name: 'qtrYear'
+                            xtype: 'quarteryearcombobox'
+                        },
+                        {
+                            xtype: 'gradetypecombobox',
+                            editable: false,
+                            anchor: '100%'
                         }
                     ]
                 },
@@ -110,6 +136,16 @@ Ext.define('MySchool.view.subject.NewForm', {
                     xtype: 'button',
                     itemId: 'newsubjectsubmit',
                     text: 'Submit'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'newsubjectedit',
+                    text: 'Edit Subject'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'newsubjectcreate',
+                    text: 'Create New Subject'
                 }
             ]
         });

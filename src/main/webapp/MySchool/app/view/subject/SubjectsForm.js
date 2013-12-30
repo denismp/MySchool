@@ -18,8 +18,7 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
     alias: 'widget.subjectsform',
 
     requires: [
-        'Ext.form.field.TextArea',
-        'Ext.button.Button'
+        'Ext.form.field.TextArea'
     ],
 
     itemId: 'subjectdetailsform',
@@ -47,11 +46,6 @@ Ext.define('MySchool.view.subject.SubjectsForm', {
                     fieldLabel: 'Objectives',
                     name: 'subjObjectives',
                     readOnly: true
-                },
-                {
-                    xtype: 'button',
-                    itemId: 'subjectformedit',
-                    text: 'Edit'
                 }
             ]
         });

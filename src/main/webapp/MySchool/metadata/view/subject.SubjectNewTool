@@ -8,7 +8,6 @@
     "userConfig": {
         "designer|userAlias": "subjectnewtool",
         "designer|userClassName": "subject.SubjectNewTool",
-        "disabled": true,
         "id": "toolnewsubjects",
         "tooltip": "New",
         "type": "plus"

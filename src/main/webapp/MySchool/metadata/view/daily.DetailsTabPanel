@@ -1,0 +1,320 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTab": 0,
+        "designer|userAlias": "dailydetailstabpanel",
+        "designer|userClassName": "daily.DetailsTabPanel",
+        "height": 300,
+        "itemId": "bottomdailytabpanel",
+        "minHeight": 300,
+        "title": null
+    },
+    "designerId": "cf9350d0-8cca-44a7-a9c4-35a337fecf50",
+    "cn": [
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 100,
+                "itemId": "dailyhourstab",
+                "title": "Hours"
+            },
+            "designerId": "02a3975f-bacd-464f-8f4f-101010cfa26d",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "bf275acc-c115-4bb3-8baa-b31fb023fe89"
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoScroll": true,
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "height": null,
+                        "id": "hours",
+                        "layout": "auto",
+                        "minHeight": 300,
+                        "title": null
+                    },
+                    "designerId": "01b90dea-2c3e-49e6-b8bd-89fcae2590e9",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Number",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": null,
+                                "fieldLabel": null,
+                                "id": "dailydetailsformhournumberfield",
+                                "labelWidth": 50,
+                                "minHeight": null
+                            },
+                            "designerId": "8b5b0f93-31ca-4369-8ddb-02c4b96b1fa3"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailyresourcesusedtab",
+                "maxHeight": null,
+                "title": "Resources Used"
+            },
+            "designerId": "a3cfb924-3566-4d9a-b7dc-097b63ad5c11",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "maxHeight": null
+                    },
+                    "designerId": "fdecb6eb-1c48-491e-ba93-40504740bb07"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": "dailydetailsresoucesusedtextarea",
+                        "minHeight": 273
+                    },
+                    "designerId": "63010124-a777-4175-ab3c-3ab2795eb1d7"
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailystudydetailstab",
+                "minHeight": 300,
+                "title": "Study Details"
+            },
+            "designerId": "c9d0673e-6d9e-482e-b60b-f26b6d09ffb9",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "180aa12a-8f4b-4870-b558-c2c70656e12e"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": "dailydetailsstudydetailstextarea",
+                        "minHeight": 273
+                    },
+                    "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "height": null,
+                "itemId": "dailydetailsevaluationtab",
+                "layout": "fit",
+                "minHeight": 300,
+                "title": "Evaluation"
+            },
+            "designerId": "6f41f03f-1f0e-4ad9-83e9-ba3e606ab13f",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "cbca7173-b804-47aa-b07b-40448ac54442"
+                },
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": "dailydetailsevaluationtextarea",
+                        "minHeight": 273
+                    },
+                    "designerId": "4888bb3e-48cc-4e5e-8bca-72875f94bcf3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailydetailscorrectiontab",
+                "title": "Correction"
+            },
+            "designerId": "f9cdc8e4-16a8-461a-adb9-a4ca395bf958",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "edecb977-d982-4aae-8ad5-f0344e7ebf75"
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "layout": "fit",
+                        "title": null
+                    },
+                    "designerId": "267fb73e-c8fb-4a0b-8b6b-902063b68bf2",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "fieldLabel": null,
+                                "id": "dailydetailscorrectiontextarea",
+                                "minHeight": 273
+                            },
+                            "designerId": "278bad8f-3d7a-4d3a-9c9f-65e98e93eb2f"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.panel.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailydetailsactionstab",
+                "title": "Actions"
+            },
+            "designerId": "47a63c27-0171-4d38-bad1-7851a4530102",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "5e50beab-a1be-4eab-9d54-859bc13d6864"
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "layout": "fit",
+                        "title": null
+                    },
+                    "designerId": "c03f0ec3-ce6a-46a7-8c8b-a15b58f36ac7",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "fieldLabel": null,
+                                "id": "dailydetailsactiontextarea",
+                                "minHeight": 273
+                            },
+                            "designerId": "320279a1-83da-40db-ae45-b1cda9799201"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

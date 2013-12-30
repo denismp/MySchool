@@ -1,4 +1,4 @@
-package com.app.myschool;
+package com.app.myschool.web;
 
 import com.app.myschool.model.SubjectView;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;

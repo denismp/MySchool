@@ -19,17 +19,17 @@ Ext.define('MySchool.view.MainPanel', {
     requires: [
         'MySchool.view.subject.SubjectsPanel',
         'MySchool.view.bodiesofwork.BodiesOfWorkPanel',
+        'MySchool.view.daily.DailyPanel',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
         'Ext.grid.Panel',
         'Ext.grid.column.Number',
-        'Ext.grid.column.Boolean',
         'Ext.grid.View',
-        'Ext.form.Panel',
-        'Ext.form.field.Number',
-        'Ext.form.field.TextArea',
+        'Ext.grid.column.Boolean',
         'Ext.panel.Tool',
         'Ext.grid.column.Date',
+        'Ext.form.field.TextArea',
+        'Ext.form.Panel',
         'Ext.form.field.ComboBox'
     ],
 
@@ -54,7 +54,7 @@ Ext.define('MySchool.view.MainPanel', {
                     items: [
                         {
                             xtype: 'panel',
-                            id: 'subjecttab',
+                            itemId: 'subjecttab',
                             width: 1000,
                             title: 'SubjectsByStudent',
                             layout: {
@@ -72,7 +72,7 @@ Ext.define('MySchool.view.MainPanel', {
                         {
                             xtype: 'panel',
                             height: 700,
-                            id: 'bodiesofworkstab',
+                            itemId: 'bodiesofworkstab',
                             title: 'Bodies Of Work',
                             layout: {
                                 type: 'hbox',
@@ -88,7 +88,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            id: 'dailytab',
+                            itemId: 'dailytab',
                             title: 'Daily',
                             layout: {
                                 type: 'vbox',
@@ -96,274 +96,15 @@ Ext.define('MySchool.view.MainPanel', {
                             },
                             dockedItems: [
                                 {
-                                    xtype: 'panel',
+                                    xtype: 'dailypanel',
                                     flex: 1,
-                                    dock: 'top',
-                                    height: 673,
-                                    width: 1398,
-                                    title: 'Daily Details',
-                                    dockedItems: [
-                                        {
-                                            xtype: 'gridpanel',
-                                            dock: 'top',
-                                            height: 373,
-                                            id: 'dailysubjectsgridpanel',
-                                            width: 967,
-                                            autoScroll: true,
-                                            title: '[student name]Bodies of Work by Subject',
-                                            forceFit: true,
-                                            columns: [
-                                                {
-                                                    xtype: 'gridcolumn',
-                                                    dataIndex: 'subject_name',
-                                                    text: 'Subject Name'
-                                                },
-                                                {
-                                                    xtype: 'gridcolumn',
-                                                    dataIndex: 'body_of_work',
-                                                    text: 'Body Of Work'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'year',
-                                                    text: 'Year'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'month',
-                                                    text: 'Month'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'week',
-                                                    text: 'Week'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'day_number',
-                                                    text: 'Day'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    width: 105,
-                                                    dataIndex: 'grade_level',
-                                                    text: 'Grade Level'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'credit_hours',
-                                                    text: 'Credit Hours'
-                                                },
-                                                {
-                                                    xtype: 'booleancolumn',
-                                                    text: 'Locked?'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    dataIndex: 'student_id',
-                                                    text: 'idstudent'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'iddaily'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'idbody_of_works'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'idsubject'
-                                                },
-                                                {
-                                                    xtype: 'numbercolumn',
-                                                    hidden: true,
-                                                    text: 'idstudent'
-                                                }
-                                            ],
-                                            viewConfig: {
-                                                id: 'dailysubjectsgridview'
-                                            }
-                                        },
-                                        {
-                                            xtype: 'tabpanel',
-                                            dock: 'bottom',
-                                            height: 300,
-                                            minHeight: 300,
-                                            activeTab: 0,
-                                            items: [
-                                                {
-                                                    xtype: 'panel',
-                                                    height: 100,
-                                                    title: 'Hours',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'form',
-                                                            dock: 'top',
-                                                            id: 'hours',
-                                                            minHeight: 300,
-                                                            autoScroll: true,
-                                                            layout: 'auto',
-                                                            bodyPadding: 10,
-                                                            items: [
-                                                                {
-                                                                    xtype: 'numberfield',
-                                                                    id: 'dailydetailsformhournumberfield',
-                                                                    labelWidth: 50
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    xtype: 'panel',
-                                                    title: 'Resources Used',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'textareafield',
-                                                            dock: 'top',
-                                                            id: 'dailydetailsresoucesusedtextarea',
-                                                            minHeight: 273
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    xtype: 'panel',
-                                                    minHeight: 300,
-                                                    title: 'Study Details',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'textareafield',
-                                                            dock: 'top',
-                                                            id: 'dailydetailsstudydetailstextarea',
-                                                            minHeight: 273
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    xtype: 'panel',
-                                                    minHeight: 300,
-                                                    layout: 'fit',
-                                                    bodyPadding: 10,
-                                                    title: 'Evaluation',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'textareafield',
-                                                            dock: 'top',
-                                                            id: 'dailydetailsevaluationtextarea',
-                                                            minHeight: 273
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    xtype: 'panel',
-                                                    title: 'Correction',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'form',
-                                                            dock: 'top',
-                                                            layout: 'fit',
-                                                            bodyPadding: 10,
-                                                            dockedItems: [
-                                                                {
-                                                                    xtype: 'textareafield',
-                                                                    dock: 'top',
-                                                                    id: 'dailydetailscorrectiontextarea',
-                                                                    minHeight: 273
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    xtype: 'panel',
-                                                    title: 'Actions',
-                                                    dockedItems: [
-                                                        {
-                                                            xtype: 'form',
-                                                            dock: 'top',
-                                                            layout: 'fit',
-                                                            bodyPadding: 10,
-                                                            dockedItems: [
-                                                                {
-                                                                    xtype: 'textareafield',
-                                                                    dock: 'top',
-                                                                    id: 'dailydetailsactiontextarea',
-                                                                    minHeight: 273
-                                                                }
-                                                            ]
-                                                        }
-                                                    ]
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    tools: [
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add refresh handler code here.  Use example from chapter 2 of book.
-                                            },
-                                            id: 'toolrefreshstudentsbysubject2',
-                                            tooltip: 'Refresh',
-                                            type: 'refresh'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add search handler code here.
-                                            },
-                                            id: 'toolsearchstudentsbysubject2',
-                                            tooltip: 'Search',
-                                            type: 'search'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add new/insert handler code here.
-                                            },
-                                            id: 'toolnewstudentsbysubject2',
-                                            tooltip: 'New',
-                                            type: 'plus'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add save/udate handler code here.
-                                            },
-                                            id: 'toolsavestudentsbysubject2',
-                                            tooltip: 'Save',
-                                            type: 'save'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // Add delete handler code here.
-                                            },
-                                            id: 'tooldeletestudentsbysubject2',
-                                            tooltip: 'Delete',
-                                            type: 'minus'
-                                        },
-                                        {
-                                            xtype: 'tool',
-                                            handler: function(event, toolEl, owner, tool) {
-                                                // add lock handler code here.
-                                            },
-                                            id: 'toollockstudentsbysubject2',
-                                            tooltip: 'Lock?',
-                                            type: 'pin'
-                                        }
-                                    ]
+                                    dock: 'top'
                                 }
                             ]
                         },
                         {
                             xtype: 'panel',
-                            id: 'weeklyskillstab',
+                            itemId: 'weeklyskillstab',
                             minHeight: 700,
                             title: 'Weekly Skills',
                             layout: {
@@ -521,7 +262,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            id: 'weeklyevaluatontab',
+                            itemId: 'weeklyevaluatontab',
                             minHeight: 700,
                             title: 'Weekly Evaluation',
                             layout: {
@@ -698,7 +439,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            id: 'montlysummarytab',
+                            itemId: 'montlysummarytab',
                             minHeight: 700,
                             title: 'Monthly Summary',
                             layout: {
@@ -934,7 +675,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            id: 'monthlyevaluationtab',
+                            itemId: 'monthlyevaluationtab',
                             minHeight: 700,
                             title: 'Monthly Evaluation',
                             layout: {
@@ -1098,7 +839,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            id: 'gradestab',
+                            itemId: 'gradestab',
                             minHeight: 600,
                             layout: 'fit',
                             title: 'Grades',
@@ -1220,6 +961,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
+                            itemId: 'studentprofilestab',
                             minHeight: 600,
                             title: 'Student Profiles',
                             items: [
@@ -1433,6 +1175,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
+                            itemId: 'facultyprofilestab',
                             title: 'Faculty Profiles',
                             dockedItems: [
                                 {

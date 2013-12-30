@@ -19,10 +19,9 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
 
     requires: [
         'MySchool.view.bodiesofwork.MyGridPanel',
+        'MySchool.view.bodiesofwork.BodyOfWorkForm',
         'Ext.grid.Panel',
         'Ext.form.Panel',
-        'Ext.form.field.TextArea',
-        'Ext.form.field.Checkbox',
         'Ext.panel.Tool'
     ],
 
@@ -43,54 +42,8 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     flex: 1
                 },
                 {
-                    xtype: 'form',
-                    flex: 1,
-                    id: 'bodyofworkform',
-                    width: 508,
-                    bodyPadding: 10,
-                    title: 'Body Of Work',
-                    items: [
-                        {
-                            xtype: 'textfield',
-                            anchor: '100%',
-                            id: 'bodyofworknametextfield',
-                            fieldLabel: 'Name'
-                        },
-                        {
-                            xtype: 'textareafield',
-                            id: 'bodyofworkwhattextbox',
-                            width: 492,
-                            fieldLabel: 'What',
-                            size: 5
-                        },
-                        {
-                            xtype: 'textareafield',
-                            anchor: '100%',
-                            id: 'bodyofworkdescriptiontextbox',
-                            fieldLabel: 'Description'
-                        },
-                        {
-                            xtype: 'textareafield',
-                            anchor: '100%',
-                            id: 'bodyofworkobjectivetextbox',
-                            fieldLabel: 'Objective'
-                        },
-                        {
-                            xtype: 'checkboxfield',
-                            anchor: '100%',
-                            id: 'bodyofworkactivecheckbox',
-                            fieldLabel: '',
-                            boxLabel: 'Active?',
-                            checked: true
-                        },
-                        {
-                            xtype: 'checkboxfield',
-                            anchor: '100%',
-                            id: 'bodyofworklockcheckbox',
-                            fieldLabel: '',
-                            boxLabel: 'Lock?'
-                        }
-                    ]
+                    xtype: 'bodyofworkform',
+                    flex: 1
                 }
             ],
             tools: [
@@ -99,7 +52,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // Add refresh handler code here.  Use example from chapter 2 of book.
                     },
-                    id: 'toolrefreshstudentsbysubject1',
+                    itemId: 'toolrefreshbodiesofwork',
                     tooltip: 'Refresh',
                     type: 'refresh'
                 },
@@ -108,7 +61,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // add search handler code here.
                     },
-                    id: 'toolsearchstudentsbysubject1',
+                    itemId: 'toolsearchbodiesofwork',
                     tooltip: 'Search',
                     type: 'search'
                 },
@@ -117,7 +70,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // add new/insert handler code here.
                     },
-                    id: 'toolnewstudentsbysubject1',
+                    itemId: 'toolnewbodiesofwork',
                     tooltip: 'New',
                     type: 'plus'
                 },
@@ -126,7 +79,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // Add save/udate handler code here.
                     },
-                    id: 'toolsavestudentsbysubject1',
+                    itemId: 'toolsavebodiesofwork',
                     tooltip: 'Save',
                     type: 'save'
                 },
@@ -135,7 +88,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // Add delete handler code here.
                     },
-                    id: 'tooldeletestudentsbysubject1',
+                    itemId: 'tooldeletebodiesofwork',
                     tooltip: 'Delete',
                     type: 'minus'
                 },
@@ -144,7 +97,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                     handler: function(event, toolEl, owner, tool) {
                         // add lock handler code here.
                     },
-                    id: 'toollockstudentsbysubject1',
+                    itemId: 'toollockbodiesofwork',
                     tooltip: 'Lock?',
                     type: 'pin'
                 }
