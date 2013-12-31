@@ -1,0 +1,257 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "weeklyevaluationgridpanel",
+        "designer|userClassName": "weekly.evaluation.GridPanel",
+        "forceFit": true,
+        "height": null,
+        "id": null,
+        "itemId": "weeklyevaluationgridpanel",
+        "title": "[student name]Weekly Evaluation By Subject And Week",
+        "width": 150
+    },
+    "designerId": "c00921ce-f39c-4a16-8f7a-108ee06748f5",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subject_name",
+                "text": "Subject Name",
+                "width": 131
+            },
+            "designerId": "a05b70cb-f332-4720-ab3e-792f9dafdf09"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "year",
+                "text": "Year",
+                "width": 65
+            },
+            "designerId": "4141ab1d-6860-438d-a5fc-d81db9e136b4"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "month",
+                "text": "Month",
+                "width": 71
+            },
+            "designerId": "56cacd8d-c4b5-4530-8eaf-233d5c7c750c"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "week",
+                "text": "Week",
+                "width": 71
+            },
+            "designerId": "d556b5fa-c9b0-4a93-b96c-721d23ce14e9"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Motivation",
+                "width": 78
+            },
+            "designerId": "629ef139-7dfd-4489-a117-9da7d6e301aa"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Organization",
+                "width": 79
+            },
+            "designerId": "96981f1b-cd9e-4272-a49e-22d73eef85bb"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Effective Use Of Time",
+                "width": 127
+            },
+            "designerId": "fac45ae3-3e84-4abd-9eb5-b3c69c68ed1b"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Quality Of Work"
+            },
+            "designerId": "0f0fd767-9b96-4303-9d7f-814b621d48a4"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Accuracy Of Work"
+            },
+            "designerId": "a6f00808-fd44-49aa-8559-7a3a1a4a85b5"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Complexity Of Work",
+                "width": 115
+            },
+            "designerId": "768812ce-276d-43f2-92f3-dff57d3b2edf"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Growth"
+            },
+            "designerId": "7da92559-d36f-409b-bb0b-62f7fadd8788"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Consistency"
+            },
+            "designerId": "0bacbe8f-1592-45f3-b7fe-4c81767ed033"
+        },
+        {
+            "type": "Ext.grid.column.Boolean",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "menuText": "false",
+                "text": "Locked?"
+            },
+            "designerId": "d0a3bebe-524e-4fa3-83ac-889b70f763c0"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 700,
+                "id": "weeklyevaluationsubjectsgridview"
+            },
+            "designerId": "1dbab6e9-901b-4243-ab84-691142b244cf"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "student_id",
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "56d412b7-5aa4-436f-8a94-9dc90af8000a"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idsubject"
+            },
+            "designerId": "3ae2a1f7-5162-48e1-b636-bafb63194556"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idweekly"
+            },
+            "designerId": "b7cb40aa-cfd7-453b-a6df-42946a89e39a"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idevaluation"
+            },
+            "designerId": "b93aacd9-ee82-445d-82f3-de905225d560"
+        }
+    ]
+}

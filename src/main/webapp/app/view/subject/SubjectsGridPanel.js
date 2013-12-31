@@ -135,6 +135,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     text: 'GradeType',
                     editor: {
                         xtype: 'numberfield',
+                        allowOnlyWhitespace: false,
                         maxValue: 2,
                         minValue: 1
                     }

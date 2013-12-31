@@ -289,6 +289,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "allowOnlyWhitespace": false,
                         "maxValue": 2,
                         "maxWidth": null,
                         "minValue": 1

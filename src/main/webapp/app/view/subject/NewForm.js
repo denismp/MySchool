@@ -65,7 +65,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             itemId: 'newsubjectform-subjName',
                             fieldLabel: 'Subject Name',
                             name: 'subjName',
-                            allowBlank: false
+                            allowOnlyWhitespace: false
                         },
                         {
                             xtype: 'subjectnamecombobox',
@@ -101,7 +101,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             itemId: 'newsubjectform-subjDescription',
                             fieldLabel: 'Description',
                             name: 'subjDescription',
-                            allowBlank: false
+                            allowOnlyWhitespace: false
                         },
                         {
                             xtype: 'textareafield',
@@ -110,7 +110,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             itemId: 'newsubjectform-subjObjectives',
                             fieldLabel: 'Objectives',
                             name: 'subjObjectives',
-                            allowBlank: false
+                            allowOnlyWhitespace: false
                         },
                         {
                             xtype: 'quarternamescombobox',
@@ -129,23 +129,23 @@ Ext.define('MySchool.view.subject.NewForm', {
                 },
                 {
                     xtype: 'button',
-                    itemId: 'newsubjectcancel',
-                    text: 'Cancel'
-                },
-                {
-                    xtype: 'button',
-                    itemId: 'newsubjectsubmit',
-                    text: 'Submit'
-                },
-                {
-                    xtype: 'button',
                     itemId: 'newsubjectedit',
                     text: 'Edit Subject'
                 },
                 {
                     xtype: 'button',
                     itemId: 'newsubjectcreate',
-                    text: 'Create New Subject'
+                    text: 'Create Subject'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'newsubjectsubmit',
+                    text: 'Create Quarter'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'newsubjectcancel',
+                    text: 'Cancel'
                 }
             ]
         });

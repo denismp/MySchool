@@ -1,0 +1,35 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyfeelingstabpanel",
+        "designer|userClassName": "monthly.summary.FeelingTabPanel",
+        "itemId": "monthlyfeelingstabpanel",
+        "layout": "fit",
+        "title": "Feelings"
+    },
+    "designerId": "548846bf-4a7b-4c90-b694-ffe7e564111e",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "height": null,
+                "id": null,
+                "itemId": "feelingstextbox",
+                "minHeight": 320
+            },
+            "designerId": "ca1fb2df-8e41-4778-ae43-a0946d4fa2d2"
+        }
+    ]
+}

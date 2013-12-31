@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlycommentstabpanel",
+        "designer|userClassName": "monthly.summary.CommentsTabPanel",
+        "itemId": "monthlycommentstabpanel",
+        "layout": "fit",
+        "title": "Comments"
+    },
+    "designerId": "2a88b587-7983-4ddd-b524-318c6c26d23b",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "id": null,
+                "itemId": "commentstextbox",
+                "minHeight": 320
+            },
+            "designerId": "58f10870-5685-4d54-83d3-fa75ca4f10d8"
+        }
+    ]
+}

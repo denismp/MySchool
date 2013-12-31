@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyplannedchangestabpanel",
+        "designer|userClassName": "monthly.summary.PlannedChangesTabPanel",
+        "itemId": "monthlyplannedchangestabpanel",
+        "layout": "fit",
+        "title": "Planned Changes"
+    },
+    "designerId": "afe83451-67e9-4cbf-8658-b88b8331ee66",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "id": null,
+                "itemId": "plannedchangestextbox",
+                "minHeight": 320
+            },
+            "designerId": "1fefa92e-c4a2-4bca-90c4-1ae08d16996b"
+        }
+    ]
+}

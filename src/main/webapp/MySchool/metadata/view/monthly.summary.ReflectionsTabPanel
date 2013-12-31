@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyrelectionstabpanel",
+        "designer|userClassName": "monthly.summary.ReflectionsTabPanel",
+        "itemId": "monthlyreflectiontabpanel",
+        "layout": "fit",
+        "title": "Reflections"
+    },
+    "designerId": "2e14afee-b028-4105-b086-c80fd7fccc9b",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "id": "",
+                "itemId": "reflectionstextbox",
+                "minHeight": 320
+            },
+            "designerId": "a4654cd3-eb73-4b3e-842a-a41cc955a8a4"
+        }
+    ]
+}

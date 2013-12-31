@@ -1,0 +1,224 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "weeklyskillsgridpanel",
+        "designer|userClassName": "weekly.skills.GridPanel",
+        "forceFit": true,
+        "height": null,
+        "id": "weeklyskillsgridpanel",
+        "itemId": "weeklydetailsgridpanel",
+        "title": "[student name]Weekly Skills By Subject And Week",
+        "width": 963
+    },
+    "designerId": "28a657ce-b2f2-4333-b0b5-6a0211f34cb0",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subject_name",
+                "text": "Subject Name"
+            },
+            "designerId": "ef06654c-e165-4c5b-8f85-930bbf5a71f5"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "year",
+                "text": "Year"
+            },
+            "designerId": "d9049387-8fc9-4925-aff7-9ecca84fb034"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "month",
+                "text": "Month"
+            },
+            "designerId": "2595fecb-990f-40bf-bc51-63d1b4a57e11"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "week",
+                "text": "Week"
+            },
+            "designerId": "e03f264a-0ea6-408b-bcd6-3b4e893f9a38"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": null,
+                "id": "weeklyskillsgridview"
+            },
+            "designerId": "0e6ea0b7-57b5-4934-af58-cd725b07b29e"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Remembering"
+            },
+            "designerId": "fb119870-38c1-44cd-b143-92b5a567add1"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Understanding"
+            },
+            "designerId": "2023aa69-7e56-440b-bf48-016bbe79adcd"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Applying"
+            },
+            "designerId": "2b356f23-d48a-46d4-95bf-bcb2bae775ef"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Analyzing"
+            },
+            "designerId": "204716bc-63c5-40c2-9663-7e1dda6b5127"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Evaluating"
+            },
+            "designerId": "9bf870a0-b620-46bc-bae6-8cbe388dead3"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Creating"
+            },
+            "designerId": "ecc03121-e2cf-4383-8915-ae2e004ee4ed"
+        },
+        {
+            "type": "Ext.grid.column.Boolean",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Locked?"
+            },
+            "designerId": "0e95a67a-1fc9-4380-a9fd-f0651a05214b"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "student_id",
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "d3c8425e-a733-4dd9-87df-b927d4d66e69"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idsubject"
+            },
+            "designerId": "73d9e7b3-c69f-405f-b5a0-2acb55bdf53e"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idweekly"
+            },
+            "designerId": "ff48669d-1256-473d-a424-4134b9d80780"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idskill"
+            },
+            "designerId": "e4ff36dd-3f74-404f-9ef5-143124bc9c85"
+        }
+    ]
+}

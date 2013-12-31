@@ -58,7 +58,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "allowBlank": false,
+                        "allowOnlyWhitespace": false,
                         "fieldLabel": "Subject Name",
                         "hidden": true,
                         "itemId": "newsubjectform-subjName",
@@ -127,7 +127,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "allowBlank": false,
+                        "allowOnlyWhitespace": false,
                         "disabled": true,
                         "fieldLabel": "Description",
                         "itemId": "newsubjectform-subjDescription",
@@ -144,7 +144,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "allowBlank": false,
+                        "allowOnlyWhitespace": false,
                         "disabled": true,
                         "fieldLabel": "Objectives",
                         "itemId": "newsubjectform-subjObjectives",
@@ -201,32 +201,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "newsubjectcancel",
-                "text": "Cancel"
-            },
-            "designerId": "e6b91e21-c022-4b51-99c2-21d8e6bab477"
-        },
-        {
-            "type": "Ext.button.Button",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "itemId": "newsubjectsubmit",
-                "text": "Submit"
-            },
-            "designerId": "f0a757c8-ada0-4bbc-90a6-5a88158c2b37"
-        },
-        {
-            "type": "Ext.button.Button",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "itemId": "newsubjectedit",
                 "text": "Edit Subject"
             },
@@ -241,9 +215,35 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "newsubjectcreate",
-                "text": "Create New Subject"
+                "text": "Create Subject"
             },
             "designerId": "cccf58e8-e502-4846-afb1-df979e856a4f"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectsubmit",
+                "text": "Create Quarter"
+            },
+            "designerId": "f0a757c8-ada0-4bbc-90a6-5a88158c2b37"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newsubjectcancel",
+                "text": "Cancel"
+            },
+            "designerId": "e6b91e21-c022-4b51-99c2-21d8e6bab477"
         }
     ]
 }

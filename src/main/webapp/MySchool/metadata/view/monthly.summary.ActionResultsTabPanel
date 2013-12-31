@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyactionresultstabpanel",
+        "designer|userClassName": "monthly.summary.ActionResultsTabPanel",
+        "itemId": "monthlyactionresultstabpanel",
+        "layout": "fit",
+        "title": "Action Results"
+    },
+    "designerId": "ffa70255-3bd4-4f9d-af44-38c65acb3909",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "id": null,
+                "itemId": "actionresultstextbox",
+                "minHeight": 320
+            },
+            "designerId": "474264ad-a04f-4e6b-b850-39280b58ec20"
+        }
+    ]
+}

@@ -56,7 +56,22 @@ Ext.application({
         'bodiesofwork.BodyOfWorkForm',
         'daily.DailyPanel',
         'daily.DailyGridPanel',
-        'daily.DetailsTabPanel'
+        'daily.DetailsTabPanel',
+        'weekly.skills.TabPanel',
+        'weekly.skills.GridPanel',
+        'weekly.evaluation.DetailsPanel',
+        'weekly.evaluation.GridPanel',
+        'monthly.summary.DetailsPanel',
+        'monthly.summary.DetailsGridPanel',
+        'monthly.summary.DetailsTabPanel',
+        'monthly.summary.FeelingTabPanel',
+        'monthly.summary.ReflectionsTabPanel',
+        'monthly.summary.PatternsOfCorrectonsTabPanel',
+        'monthly.summary.EffectivenessOfActionsTabPanel',
+        'monthly.summary.ActionResultsTabPanel',
+        'monthly.summary.ReflectionTabPanel',
+        'monthly.summary.PlannedChangesTabPanel',
+        'monthly.summary.CommentsTabPanel'
     ],
     controllers: [
         'subject.SubjectsController'

@@ -1,0 +1,188 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTab": 0,
+        "designer|userAlias": "monthlysummarydetailstabpanel",
+        "designer|userClassName": "monthly.summary.DetailsTabPanel",
+        "height": 300,
+        "itemId": "monthlysummarydetailstabpanel",
+        "minHeight": 300,
+        "width": 1398
+    },
+    "designerId": "9e9c726b-df2f-4bc3-8596-052d13ab953d",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "fad30bc6-8036-416e-8869-851d8a2b1769",
+            "masterInstanceId": "548846bf-4a7b-4c90-b694-ffe7e564111e",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "e5da74b7-8c26-42bb-9d1c-dc98259860f6"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "c19142c6-2c94-4787-b362-65d2968c5e10",
+            "masterInstanceId": "2e14afee-b028-4105-b086-c80fd7fccc9b",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "6b0ec566-30b7-4377-93b4-de082305b75f"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "1946ea02-a30c-4e7e-9751-bf38d25b17ea",
+            "masterInstanceId": "ee132c9e-10d4-4976-9b64-69978fdde210",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "d3a3245f-7c2b-4125-8fa1-78d781aeef22"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "ff966562-a2ec-4d99-9bd3-5abbdf6a605c",
+            "masterInstanceId": "a9e0be59-fa99-4445-a543-69c2b4167042",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "2e0998df-a53b-4fc7-9d1e-442f1b4bd6e7"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "6fef6124-6c82-4281-8da3-0ae393e36c39",
+            "masterInstanceId": "ffa70255-3bd4-4f9d-af44-38c65acb3909",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "425dd09f-97e5-49ef-a9c6-0571de6d9d7b"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "59cc2e03-fc48-428b-8430-019a52215faf",
+            "masterInstanceId": "496d3c13-fa8c-43c0-9165-1a38fd773dc0",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "a0da180c-dfe2-4e39-92d3-62579c136b1c"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "f9861368-fa6a-42f0-8ba3-c1249e9f902f",
+            "masterInstanceId": "afe83451-67e9-4cbf-8658-b88b8331ee66",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "7fa14897-661f-4287-b55d-8590fbd63228"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "designerId": "d13c4793-3709-4c9b-aa8a-ecb6da642855",
+            "masterInstanceId": "2a88b587-7983-4ddd-b524-318c6c26d23b",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "2ab07e33-37ef-454b-ad59-8f57cc77de9c"
+                }
+            ]
+        }
+    ]
+}

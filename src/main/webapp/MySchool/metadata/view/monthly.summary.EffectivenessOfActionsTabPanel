@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyeffectivenessofactionstabpanel",
+        "designer|userClassName": "monthly.summary.EffectivenessOfActionsTabPanel",
+        "itemId": "monthlyeffectivenessofactionstabpanel",
+        "layout": "fit",
+        "title": "Effectivenes Of Actions"
+    },
+    "designerId": "a9e0be59-fa99-4445-a543-69c2b4167042",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": null,
+                "id": null,
+                "itemId": "effectivenestextbox",
+                "minHeight": 320
+            },
+            "designerId": "c7864aa3-4945-4d69-a52a-e2faf796b316"
+        }
+    ]
+}

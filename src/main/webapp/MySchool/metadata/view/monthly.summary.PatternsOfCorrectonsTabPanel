@@ -1,0 +1,34 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlypatternsofcorrectionstabpanel",
+        "designer|userClassName": "monthly.summary.PatternsOfCorrectonsTabPanel",
+        "itemId": "monthlypatternsofcorrectionstabpanel",
+        "layout": "fit",
+        "title": "Patterns Of Corrections"
+    },
+    "designerId": "ee132c9e-10d4-4976-9b64-69978fdde210",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "fieldLabel": "",
+                "id": null,
+                "itemId": "patcorrectionstextpad",
+                "minHeight": 320
+            },
+            "designerId": "372ed89c-e5f6-49e2-9cb5-65910951f8dc"
+        }
+    ]
+}
