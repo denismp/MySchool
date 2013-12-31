@@ -20,6 +20,7 @@ Ext.define('MySchool.view.subject.QuarterYearComboBox', {
     itemId: 'quarteryearcombobox',
     fieldLabel: 'Quarter Year',
     emptyText: 'Select one.',
+    editable: false,
     displayField: 'name',
     forceSelection: true,
     queryMode: 'local',

@@ -9,6 +9,7 @@
         "designer|userAlias": "quarteryearcombobox",
         "designer|userClassName": "subject.QuarterYearComboBox",
         "displayField": "name",
+        "editable": false,
         "emptyText": "Select one.",
         "fieldLabel": "Quarter Year",
         "forceSelection": true,

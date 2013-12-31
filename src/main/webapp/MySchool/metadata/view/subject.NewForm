@@ -201,6 +201,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "itemId": "newsubjectcancel",
+                "text": "Cancel"
+            },
+            "designerId": "e6b91e21-c022-4b51-99c2-21d8e6bab477"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "itemId": "newsubjectedit",
                 "text": "Edit Subject"
             },
@@ -231,19 +244,6 @@
                 "text": "Create Quarter"
             },
             "designerId": "f0a757c8-ada0-4bbc-90a6-5a88158c2b37"
-        },
-        {
-            "type": "Ext.button.Button",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "itemId": "newsubjectcancel",
-                "text": "Cancel"
-            },
-            "designerId": "e6b91e21-c022-4b51-99c2-21d8e6bab477"
         }
     ]
 }

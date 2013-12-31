@@ -129,6 +129,11 @@ Ext.define('MySchool.view.subject.NewForm', {
                 },
                 {
                     xtype: 'button',
+                    itemId: 'newsubjectcancel',
+                    text: 'Cancel'
+                },
+                {
+                    xtype: 'button',
                     itemId: 'newsubjectedit',
                     text: 'Edit Subject'
                 },
@@ -141,11 +146,6 @@ Ext.define('MySchool.view.subject.NewForm', {
                     xtype: 'button',
                     itemId: 'newsubjectsubmit',
                     text: 'Create Quarter'
-                },
-                {
-                    xtype: 'button',
-                    itemId: 'newsubjectcancel',
-                    text: 'Cancel'
                 }
             ]
         });
