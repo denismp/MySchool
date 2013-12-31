@@ -119,6 +119,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                         },
                         {
                             xtype: 'quarteryearcombobox',
+                            anchor: '100%',
                             editable: false
                         },
                         {
