@@ -112,8 +112,8 @@ Ext.define('MySchool.view.MainPanel', {
                             items: [
                                 {
                                     xtype: 'weeklydetailspanel',
-                                    flex: 1,
-                                    itemId: 'weeklyskillstabpanel'
+                                    itemId: 'weeklyskillstabpanel',
+                                    flex: 1
                                 }
                             ]
                         },

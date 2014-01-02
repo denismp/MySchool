@@ -8,7 +8,7 @@
         },
         "urlPrefix": "http://localhost:8080/MySchool",
         "spacesToIndent": 4,
-        "exportPath": "/Users/denisputnam/git/MySchool/src/main/webapp",
+        "exportPath": "/Users/denisputnam/git/MySchool/src/main/webapp/",
         "sdkPath": "",
         "lineEnding": "LF",
         "genTimestamps": false,

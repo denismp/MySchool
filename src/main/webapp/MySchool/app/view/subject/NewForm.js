@@ -69,8 +69,8 @@ Ext.define('MySchool.view.subject.NewForm', {
                         },
                         {
                             xtype: 'subjectnamecombobox',
-                            anchor: '100%',
-                            editable: false
+                            editable: false,
+                            anchor: '100%'
                         },
                         {
                             xtype: 'numberfield',
@@ -119,8 +119,8 @@ Ext.define('MySchool.view.subject.NewForm', {
                         },
                         {
                             xtype: 'quarteryearcombobox',
-                            anchor: '100%',
-                            editable: false
+                            editable: false,
+                            anchor: '100%'
                         },
                         {
                             xtype: 'gradetypecombobox',
