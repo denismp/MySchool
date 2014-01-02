@@ -65,8 +65,7 @@ Ext.define('MySchool.view.subject.SubjectsPanel', {
                     xtype: 'subjectsavetool'
                 },
                 {
-                    xtype: 'subjectdeletetool',
-                    id: 'tooldeletesubjects'
+                    xtype: 'subjectdeletetool'
                 }
             ]
         });
