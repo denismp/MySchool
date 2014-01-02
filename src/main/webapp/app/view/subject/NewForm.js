@@ -80,7 +80,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             fieldLabel: 'Grade Level',
                             name: 'subjGradeLevel',
                             allowBlank: false,
-                            maxValue: 20,
+                            maxValue: 4,
                             minValue: 0
                         },
                         {
@@ -91,7 +91,7 @@ Ext.define('MySchool.view.subject.NewForm', {
                             fieldLabel: 'Credit Hours',
                             name: 'subjCreditHours',
                             allowBlank: false,
-                            maxValue: 10,
+                            maxValue: 4,
                             minValue: 0
                         },
                         {
