@@ -81,7 +81,13 @@ Ext.application({
         'student.ProfileForm',
         'faculty.ProfilePanel',
         'faculty.ProfileGridPanel',
-        'faculty.ProfileForm'
+        'faculty.ProfileForm',
+        'bodiesofwork.RefreshTool',
+        'bodiesofwork.SearchTool',
+        'bodiesofwork.NewTool',
+        'bodiesofwork.DeleteTool',
+        'bodiesofwork.SaveTool',
+        'bodiesofwork.LockTool'
     ],
     controllers: [
         'subject.SubjectsController'

@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "bodiesofworknewtool",
+        "designer|userClassName": "bodiesofwork.NewTool",
+        "id": null,
+        "itemId": "toolnewbodiesofwork",
+        "tooltip": "New",
+        "type": "plus"
+    },
+    "designerId": "8f278347-452c-45e8-a8bf-770b6542025d",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add new/insert handler code here."
+                ]
+            },
+            "designerId": "515f61d9-cd08-4925-9cb8-404c68958e30"
+        }
+    ]
+}

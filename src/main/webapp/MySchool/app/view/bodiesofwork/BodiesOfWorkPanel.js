@@ -20,6 +20,12 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
     requires: [
         'MySchool.view.bodiesofwork.GridPanel',
         'MySchool.view.bodiesofwork.BodyOfWorkForm',
+        'MySchool.view.bodiesofwork.RefreshTool',
+        'MySchool.view.bodiesofwork.SearchTool',
+        'MySchool.view.bodiesofwork.NewTool',
+        'MySchool.view.bodiesofwork.SaveTool',
+        'MySchool.view.bodiesofwork.DeleteTool',
+        'MySchool.view.bodiesofwork.LockTool',
         'Ext.grid.Panel',
         'Ext.form.Panel',
         'Ext.panel.Tool'
@@ -43,63 +49,34 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                 },
                 {
                     xtype: 'bodyofworkform',
+                    itemId: 'bodiesofworkform',
                     flex: 1
                 }
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                    },
-                    itemId: 'toolrefreshbodiesofwork',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'bodiesofworkrefreshtool',
+                    flex: 1
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    itemId: 'toolsearchbodiesofwork',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'bodiesofworksearchtool',
+                    flex: 1
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    itemId: 'toolnewbodiesofwork',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'bodiesofworknewtool',
+                    flex: 1
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                    },
-                    itemId: 'toolsavebodiesofwork',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'bodiesofworksavetool',
+                    flex: 1
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    itemId: 'tooldeletebodiesofwork',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'bodiesofworkdeletetool',
+                    flex: 1
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add lock handler code here.
-                    },
-                    itemId: 'toollockbodiesofwork',
-                    tooltip: 'Lock?',
-                    type: 'pin'
+                    xtype: 'bodiesofworklocktool',
+                    flex: 1
                 }
             ]
         });

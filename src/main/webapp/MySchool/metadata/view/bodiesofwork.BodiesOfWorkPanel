@@ -36,238 +36,89 @@
             },
             "codeClass": null,
             "userConfig": {
+                "itemId": "bodiesofworkform",
                 "layout|flex": 1
             },
             "designerId": "00f38f6b-36c6-41ea-9e2d-708fe926c258",
             "masterInstanceId": "0e336dad-b722-4ffe-bf29-63246198e8ea"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolrefreshbodiesofwork",
-                "tooltip": "Refresh",
-                "type": "refresh"
+                "layout|flex": 1
             },
-            "designerId": "3ea04b3f-bc98-4c34-a817-d724a6c36752",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add refresh handler code here.  Use example from chapter 2 of book."
-                        ]
-                    },
-                    "designerId": "92b8017d-1b39-4815-8d8b-2495aea480aa"
-                }
-            ]
+            "designerId": "bfe25d1d-8d7d-4c3d-bcf3-cbcd31fe2d04",
+            "masterInstanceId": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolsearchbodiesofwork",
-                "tooltip": "Search",
-                "type": "search"
+                "layout|flex": 1
             },
-            "designerId": "1fcff98b-16ea-47d0-9cf1-0434082f07da",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add search handler code here."
-                        ]
-                    },
-                    "designerId": "b2a42c23-6bc6-42ac-8932-6328e8161170"
-                }
-            ]
+            "designerId": "eb97b706-4202-495e-be3f-cf08cf33246e",
+            "masterInstanceId": "2db3271c-d89b-445f-a612-8b164a47b14b"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolnewbodiesofwork",
-                "tooltip": "New",
-                "type": "plus"
+                "layout|flex": 1
             },
-            "designerId": "e8786f1a-d632-4f96-8b06-6571d03616c4",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add new/insert handler code here."
-                        ]
-                    },
-                    "designerId": "515f61d9-cd08-4925-9cb8-404c68958e30"
-                }
-            ]
+            "designerId": "28a22fa1-18aa-4c00-8a68-7146193caf4e",
+            "masterInstanceId": "8f278347-452c-45e8-a8bf-770b6542025d"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toolsavebodiesofwork",
-                "tooltip": "Save",
-                "type": "save"
+                "layout|flex": 1
             },
-            "designerId": "86f48da5-bd6f-4d3e-ba4e-cbc17e740fb6",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add save/udate handler code here."
-                        ]
-                    },
-                    "designerId": "51f5018e-ca80-47a3-ab9b-7b92344c8bc0"
-                }
-            ]
+            "designerId": "4c2215d5-8c2e-4bf9-8b80-72dddfdb9618",
+            "masterInstanceId": "7353affb-c701-4818-91ab-55590bb3f156"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "tooldeletebodiesofwork",
-                "tooltip": "Delete",
-                "type": "minus"
+                "layout|flex": 1
             },
-            "designerId": "629e77d9-145b-4e54-84cc-edc972622834",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add delete handler code here."
-                        ]
-                    },
-                    "designerId": "34d77712-c821-4f09-9dfb-4572873216a2"
-                }
-            ]
+            "designerId": "958f29be-7ebf-45fc-a3b9-06d118e75a0b",
+            "masterInstanceId": "413f8b4e-5e22-482d-87aa-3b770602a60b"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": null,
-                "itemId": "toollockbodiesofwork",
-                "tooltip": "Lock?",
-                "type": "pin"
+                "layout|flex": 1
             },
-            "designerId": "b255a753-ec4b-4364-b5b9-3e014e5ab25d",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add lock handler code here."
-                        ]
-                    },
-                    "designerId": "c2937627-a881-42a7-b532-cc6094cb565a"
-                }
-            ]
+            "designerId": "59f33e4c-0a79-4b75-9c4a-666e67cbc230",
+            "masterInstanceId": "1a664e44-a597-4e5b-a233-f4b79064e330"
         }
     ]
 }
