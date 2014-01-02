@@ -18,7 +18,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
     alias: 'widget.mybodiesofworkpanel',
 
     requires: [
-        'MySchool.view.bodiesofwork.MyGridPanel',
+        'MySchool.view.bodiesofwork.GridPanel',
         'MySchool.view.bodiesofwork.BodyOfWorkForm',
         'Ext.grid.Panel',
         'Ext.form.Panel',

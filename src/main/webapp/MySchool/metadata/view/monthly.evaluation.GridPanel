@@ -1,0 +1,220 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyevaluationgridpanel",
+        "designer|userClassName": "monthly.evaluation.GridPanel",
+        "forceFit": true,
+        "id": "montlyevaluationgridpanel",
+        "itemId": "monthlyevaluationgridpanel",
+        "title": "[student name]",
+        "width": 150
+    },
+    "designerId": "beb0a073-1b46-4d8f-9592-0ec60f737034",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "year",
+                "text": "Year",
+                "width": 30
+            },
+            "designerId": "839e04c4-3b50-4fdc-aadd-35dbee6d5ccf"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "month",
+                "text": "Month",
+                "width": 35
+            },
+            "designerId": "71c008a0-0374-447f-b282-0c108ad8b4b3"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "monthlyevaluationsubjectsgridview"
+            },
+            "designerId": "4c3196bb-8cdc-490b-af3c-037edf19fece"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultWidth": 70,
+                "text": "LevelOfDifficulty",
+                "width": 75
+            },
+            "designerId": "991f26be-8a71-428c-9723-46ffca3d0fc9"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "CriticalThinking",
+                "width": 70
+            },
+            "designerId": "421412dc-e838-4956-8e8c-d340096e7573"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultWidth": 70,
+                "text": "EffCorrectionActions",
+                "width": 90
+            },
+            "designerId": "21aa0d0a-06d2-430d-bc6a-d02d21841b39"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "AccuratelyIDsCorrections",
+                "width": 110
+            },
+            "designerId": "8d4fa7bc-1c46-45df-8db4-357f151bf1ea"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "CompletesCourseObjectives",
+                "width": 115
+            },
+            "designerId": "ec21f182-6d96-484a-9fe9-5d0ebcbf8f04"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "ThoughtfulnessOfReflections",
+                "width": 115
+            },
+            "designerId": "67263cf2-92f9-41fc-a97c-5fc4bd6c25a0"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "ResponsibilityOfProgress",
+                "width": 110
+            },
+            "designerId": "6978d133-e93f-455a-b4d7-538bfbf0a037"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "WorksEffWithAdvisor",
+                "width": 95
+            },
+            "designerId": "ffbfaa33-7d49-4045-bb21-be30aeb65fc6"
+        },
+        {
+            "type": "Ext.grid.column.Boolean",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Locked?",
+                "width": 50
+            },
+            "designerId": "a65b85c6-286f-416a-b54d-62ce208d404f"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "student_id",
+                "hidden": true,
+                "text": "idstudent"
+            },
+            "designerId": "3728e59f-6195-4d1e-a9dd-8761a1a1cbf4"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "text": "idmonthly_evaluation_ratings"
+            },
+            "designerId": "16a40a45-fc8c-44b5-9259-024f30252622"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "date",
+                "hidden": true,
+                "text": "Date"
+            },
+            "designerId": "2720fda3-2516-4bb2-a59d-498b5bfbe14c"
+        }
+    ]
+}

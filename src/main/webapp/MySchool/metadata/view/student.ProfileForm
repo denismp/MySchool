@@ -1,0 +1,227 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "bodyPadding": 10,
+        "collapseFirst": false,
+        "designer|userAlias": "studentprofileform",
+        "designer|userClassName": "student.ProfileForm",
+        "frameHeader": false,
+        "height": null,
+        "id": null,
+        "itemId": "studentprofileform",
+        "layout": "vbox",
+        "minHeight": 500,
+        "title": "Student Profile Form"
+    },
+    "designerId": "d0d053c2-4011-42ff-a834-85cfa995076d",
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "First Name",
+                "id": "idfirstname",
+                "width": 300
+            },
+            "designerId": "50a87de6-d373-41dc-843f-9d631900b77a"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Middle Name",
+                "id": "idmiddlename",
+                "width": 300
+            },
+            "designerId": "16dc1f4d-4471-4328-aa51-3ffa9a54dd14"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Last Name",
+                "id": "idlastname",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "d655c360-fcf1-4401-a50b-aea8aa55cfcb"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Mobile Phone",
+                "id": "idmobile",
+                "layout|flex": null
+            },
+            "designerId": "af996aea-d4bc-4d06-91e5-137e49a66866"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Phone",
+                "id": "idphone",
+                "layout|flex": null
+            },
+            "designerId": "db28b09c-d29e-4502-a397-e3d68f0f6acb"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Address1",
+                "id": "idaddress1",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "bdf2b650-0ff0-4a04-bbf7-74d2a36aa2d5"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Address2",
+                "id": "idaddress2",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "243080d5-d5a1-4aa1-9c07-7fd1fc37cd15"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Street",
+                "id": "idstreet",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "e8ae83c7-7d61-4521-aafa-7217ce03fae4"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "City",
+                "id": "idcity",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "a96afa92-bc90-4dd7-978a-acadd30b4351"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Province/State",
+                "id": "idprovince",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "b02fff11-40c8-48b1-8f37-3475e6fafa1e"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Postal Code",
+                "layout|flex": null
+            },
+            "designerId": "397a635e-166d-407e-808a-6d9da1ee2050"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Country",
+                "id": "idcountry",
+                "layout|flex": null
+            },
+            "designerId": "6760b060-44cf-4690-a611-8c8e71860906"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Email",
+                "id": "idemail",
+                "layout|flex": null,
+                "width": 300
+            },
+            "designerId": "db650021-66f0-4084-aae0-ed6a8ef6ce77"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Faculty ID",
+                "id": "idfacultyid",
+                "width": null
+            },
+            "designerId": "f7f657bb-2210-498e-b84f-0c56f5a106c1"
+        }
+    ]
+}

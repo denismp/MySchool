@@ -49,7 +49,7 @@ Ext.application({
         'subject.GradeTypeComboBox',
         'subject.QuarterNamesComboBox',
         'bodiesofwork.BodiesOfWorkPanel',
-        'bodiesofwork.MyGridPanel',
+        'bodiesofwork.GridPanel',
         'subject.EditForm',
         'subject.SubjectNameComboBox',
         'subject.QuarterYearComboBox',
@@ -71,7 +71,17 @@ Ext.application({
         'monthly.summary.ActionResultsTabPanel',
         'monthly.summary.ReflectionTabPanel',
         'monthly.summary.PlannedChangesTabPanel',
-        'monthly.summary.CommentsTabPanel'
+        'monthly.summary.CommentsTabPanel',
+        'monthly.evaluation.DetailsPanel',
+        'monthly.evaluation.GridPanel',
+        'grade.DetailsPanel',
+        'grade.GridPanel',
+        'student.ProfilePanel',
+        'student.ProfileGridPanel',
+        'student.ProfileForm',
+        'faculty.ProfilePanel',
+        'faculty.ProfileGridPanel',
+        'faculty.ProfileForm'
     ],
     controllers: [
         'subject.SubjectsController'
