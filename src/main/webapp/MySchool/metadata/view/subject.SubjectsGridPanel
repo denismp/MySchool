@@ -262,7 +262,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
-                        "maxValue": 5,
+                        "maxValue": 4,
                         "minValue": 0
                     },
                     "designerId": "6d3d04b1-a553-4bd8-931c-fe5f33922785"

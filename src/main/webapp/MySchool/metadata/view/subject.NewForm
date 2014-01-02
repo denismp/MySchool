@@ -94,7 +94,7 @@
                         "fieldLabel": "Grade Level",
                         "itemId": "newsubjectform-subjGradeLevel",
                         "layout|anchor": "100%",
-                        "maxValue": 20,
+                        "maxValue": 4,
                         "minValue": 0,
                         "name": "subjGradeLevel"
                     },
@@ -113,7 +113,7 @@
                         "fieldLabel": "Credit Hours",
                         "itemId": "newsubjectform-subjCreditHours",
                         "layout|anchor": "100%",
-                        "maxValue": 10,
+                        "maxValue": 4,
                         "minValue": 0,
                         "name": "subjCreditHours"
                     },
