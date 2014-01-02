@@ -55,28 +55,22 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
             ],
             tools: [
                 {
-                    xtype: 'bodiesofworkrefreshtool',
-                    flex: 1
+                    xtype: 'bodiesofworkrefreshtool'
                 },
                 {
-                    xtype: 'bodiesofworksearchtool',
-                    flex: 1
+                    xtype: 'bodiesofworksearchtool'
                 },
                 {
-                    xtype: 'bodiesofworknewtool',
-                    flex: 1
+                    xtype: 'bodiesofworknewtool'
                 },
                 {
-                    xtype: 'bodiesofworksavetool',
-                    flex: 1
+                    xtype: 'bodiesofworksavetool'
                 },
                 {
-                    xtype: 'bodiesofworkdeletetool',
-                    flex: 1
+                    xtype: 'bodiesofworkdeletetool'
                 },
                 {
-                    xtype: 'bodiesofworklocktool',
-                    flex: 1
+                    xtype: 'bodiesofworklocktool'
                 }
             ]
         });

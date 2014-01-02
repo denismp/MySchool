@@ -1591,6 +1591,7 @@
         },
         "c1c1938d-1838-4b7e-8032-af43f2bf008c": {
             "id": "c1c1938d-1838-4b7e-8032-af43f2bf008c",
+            "expanded": false,
             "cn": [
                 {
                     "id": "92b8017d-1b39-4815-8d8b-2495aea480aa"
@@ -1599,6 +1600,7 @@
         },
         "2db3271c-d89b-445f-a612-8b164a47b14b": {
             "id": "2db3271c-d89b-445f-a612-8b164a47b14b",
+            "expanded": false,
             "cn": [
                 {
                     "id": "b2a42c23-6bc6-42ac-8932-6328e8161170"
@@ -1607,6 +1609,7 @@
         },
         "8f278347-452c-45e8-a8bf-770b6542025d": {
             "id": "8f278347-452c-45e8-a8bf-770b6542025d",
+            "expanded": false,
             "cn": [
                 {
                     "id": "515f61d9-cd08-4925-9cb8-404c68958e30"
@@ -1615,6 +1618,7 @@
         },
         "413f8b4e-5e22-482d-87aa-3b770602a60b": {
             "id": "413f8b4e-5e22-482d-87aa-3b770602a60b",
+            "expanded": false,
             "cn": [
                 {
                     "id": "34d77712-c821-4f09-9dfb-4572873216a2"
@@ -1623,6 +1627,7 @@
         },
         "7353affb-c701-4818-91ab-55590bb3f156": {
             "id": "7353affb-c701-4818-91ab-55590bb3f156",
+            "expanded": false,
             "cn": [
                 {
                     "id": "51f5018e-ca80-47a3-ab9b-7b92344c8bc0"
@@ -2114,14 +2119,14 @@
         ]
     },
     "canvasState": {
-        "topInstance": null
+        "topInstance": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
     },
     "inspectorState": {
-        "topInstance": "1a664e44-a597-4e5b-a233-f4b79064e330",
-        "selectedInstance": "1a664e44-a597-4e5b-a233-f4b79064e330"
+        "topInstance": "c1c1938d-1838-4b7e-8032-af43f2bf008c",
+        "selectedInstance": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
     },
     "codeState": {
-        "topInstance": "1a664e44-a597-4e5b-a233-f4b79064e330"
+        "topInstance": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
     },
     "editMode": "code",
     "userSettings": {
