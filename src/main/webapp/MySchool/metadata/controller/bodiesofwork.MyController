@@ -1,0 +1,120 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "bodiesofworkcontroller",
+        "designer|userClassName": "bodiesofwork.MyController",
+        "models": [
+            "bodiesofwork.BodiesOfWorkModel"
+        ],
+        "stores": [
+            "bodiesofwork.MyJsonStore"
+        ],
+        "views": [
+            "bodiesofwork.BodyOfWorkForm",
+            "bodiesofwork.GridPanel"
+        ]
+    },
+    "designerId": "8319d64d-3c90-47c7-801a-1277ea5b7979",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    ""
+                ]
+            },
+            "designerId": "c50d820c-1b95-4b19-91ae-67ec1019f6e0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#bodiesofworkssubjectsgrid",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onBodiesofworkssubjectsgridViewReady",
+                "implHandler": [
+                    "debugger;",
+                    "//grid.getSelectionModel().select( 0 );",
+                    "tablepanel.getSelectionModel().select( 0 );"
+                ],
+                "name": "viewready",
+                "scope": "me"
+            },
+            "designerId": "766af778-34ac-43cf-96fe-83656525b639"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#bodiesofworkssubjectsgrid",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onBodiesofworkssubjectsgridSelectionChange",
+                "implHandler": [
+                    "debugger;",
+                    "if ( Ext.isDefined( selected  ) ) {",
+                    "    //var myFormView = this.getBodyOfWorksForm();",
+                    "    this.getBodyOfWorksForm().getForm().loadRecord( selected[0] );",
+                    "    console.log('onBodiesofworssubjectsgridSelectionChange()');",
+                    "}"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "designerId": "79d0805f-0619-458a-99d5-df04799ae503"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#bodyofworkform",
+                "designer|targetType": "Ext.form.Panel",
+                "fn": "onBodyofworkformBoxReady",
+                "implHandler": [
+                    "debugger;"
+                ],
+                "name": "boxready",
+                "scope": "me"
+            },
+            "designerId": "f7ab9105-ff08-43e9-babb-32f518f46c20"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "BodyOfWorksForm",
+                "selector": "bodyofworkform"
+            },
+            "designerId": "f80c08ad-aa32-42b2-9d2b-02d78a32dd9f"
+        }
+    ]
+}

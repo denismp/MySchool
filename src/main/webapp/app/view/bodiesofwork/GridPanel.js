@@ -27,6 +27,7 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
     autoScroll: true,
     title: '[student name] Bodies Of Work',
     forceFit: true,
+    store: 'bodiesofwork.MyJsonStore',
 
     initComponent: function() {
         var me = this;

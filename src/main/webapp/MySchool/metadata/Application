@@ -7,13 +7,15 @@
     "codeClass": null,
     "userConfig": {
         "controllers": [
-            "subject.SubjectsController"
+            "subject.SubjectsController",
+            "bodiesofwork.MyController"
         ],
         "models": [
             "subject.SubjectsModel",
             "subject.QuarterNamesModel",
             "quarters.QuarterModel",
-            "student.StudentModel"
+            "student.StudentModel",
+            "bodiesofwork.BodiesOfWorkModel"
         ],
         "name": "MySchool",
         "stores": [
@@ -23,7 +25,8 @@
             "student.StudentStore",
             "subject.GradeTypeStore",
             "subject.AllSubjectStore",
-            "subject.QuarterYearStore"
+            "subject.QuarterYearStore",
+            "bodiesofwork.MyJsonStore"
         ],
         "views": [
             "MainPanel",

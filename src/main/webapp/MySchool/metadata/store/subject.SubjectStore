@@ -80,9 +80,9 @@
                 "fn": "onJsonstoreBeforeSync",
                 "implHandler": [
                     "//debugger;",
-                    "var smsg = 'Before sync()'; ",
+                    "var smsg = 'Before sync()';",
                     "//Ext.MessageBox.show({",
-                    "//    title: 'REMOTE EXCEPTION', ",
+                    "//    title: 'REMOTE EXCEPTION',",
                     "//    msg: smsg,",
                     "//    icon: Ext.MessageBox.ERROR,",
                     "//    buttons: Ext.Msg.OK",

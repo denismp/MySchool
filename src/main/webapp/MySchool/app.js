@@ -24,7 +24,8 @@ Ext.application({
         'subject.SubjectsModel',
         'subject.QuarterNamesModel',
         'quarters.QuarterModel',
-        'student.StudentModel'
+        'student.StudentModel',
+        'bodiesofwork.BodiesOfWorkModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -33,7 +34,8 @@ Ext.application({
         'student.StudentStore',
         'subject.GradeTypeStore',
         'subject.AllSubjectStore',
-        'subject.QuarterYearStore'
+        'subject.QuarterYearStore',
+        'bodiesofwork.MyJsonStore'
     ],
     views: [
         'MainPanel',
@@ -90,7 +92,8 @@ Ext.application({
         'bodiesofwork.LockTool'
     ],
     controllers: [
-        'subject.SubjectsController'
+        'subject.SubjectsController',
+        'bodiesofwork.MyController'
     ],
     name: 'MySchool',
 

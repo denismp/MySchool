@@ -12,6 +12,7 @@
         "forceFit": true,
         "id": null,
         "itemId": "bodiesofworkssubjectsgrid",
+        "store": "bodiesofwork.MyJsonStore",
         "title": "[student name] Bodies Of Work",
         "width": null
     },
