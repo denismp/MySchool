@@ -12,6 +12,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class BodyOfWorkView {
 	private Long id;
 	
+	private Integer version;
+	
 	private String workName;
 	
 	private String objective;
@@ -24,8 +26,6 @@ public class BodyOfWorkView {
 	
 	private Date lastUpdated;
 		
-	private Boolean completed;
-
 	private Boolean locked;
 	
 	private String studentUserName;

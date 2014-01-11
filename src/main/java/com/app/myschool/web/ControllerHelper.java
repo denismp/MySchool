@@ -115,6 +115,7 @@ public class ControllerHelper {
 							BodyOfWorkView bwv_ = new BodyOfWorkView();
 							
 							bwv_.setId(bw_.getId());
+							bwv_.setVersion(bw_.getVersion());
 							bwv_.setWorkName(bw_.getWorkName());
 							bwv_.setObjective(bw_.getObjective());
 							bwv_.setWhat(bw_.getWhat());

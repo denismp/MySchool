@@ -16,6 +16,14 @@ privileged aspect BodyOfWorkView_Roo_JavaBean {
         this.id = id;
     }
     
+    public Integer BodyOfWorkView.getVersion() {
+        return this.version;
+    }
+    
+    public void BodyOfWorkView.setVersion(Integer version) {
+        this.version = version;
+    }
+    
     public String BodyOfWorkView.getWorkName() {
         return this.workName;
     }
@@ -62,14 +70,6 @@ privileged aspect BodyOfWorkView_Roo_JavaBean {
     
     public void BodyOfWorkView.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    
-    public Boolean BodyOfWorkView.getCompleted() {
-        return this.completed;
-    }
-    
-    public void BodyOfWorkView.setCompleted(Boolean completed) {
-        this.completed = completed;
     }
     
     public Boolean BodyOfWorkView.getLocked() {
