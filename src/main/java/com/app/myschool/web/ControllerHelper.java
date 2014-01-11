@@ -23,6 +23,7 @@ import org.springframework.http.ResponseEntity;
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.BodyOfWorkView;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Faculty;
@@ -98,6 +99,41 @@ public class ControllerHelper {
 					svl_.add(sv_);
 				}
 				records = svl_;
+			}
+			else if (myClass.equals(BodyOfWorkView.class) && studentId_ != null) {
+				Student student_ = Student.findStudent(Long.valueOf(studentId_));
+				if (student_ != null) {
+					List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
+					Set<Quarter> qtrs_ = student_.getQuarters();
+					int i_ = 1;
+
+					for (Quarter q_ : qtrs_) {
+						Subject u_ = q_.getSubject();
+						List<BodyOfWork> bwl_ = BodyOfWork.findBodyOfWorksBySubject(u_).getResultList();
+						
+						for (BodyOfWork bw_ : bwl_) {
+							BodyOfWorkView bwv_ = new BodyOfWorkView();
+							
+							bwv_.setId(bw_.getId());
+							bwv_.setWorkName(bw_.getWorkName());
+							bwv_.setObjective(bw_.getObjective());
+							bwv_.setWhat(bw_.getWhat());
+							bwv_.setDescription(bw_.getDescription());
+							bwv_.setWhoUpdated(bw_.getWhoUpdated());
+							bwv_.setLastUpdated(bw_.getLastUpdated());
+							bwv_.setLocked(bw_.getLocked());
+							bwv_.setStudentUserName(student_.getUserName());
+							bwv_.setStudentId(student_.getId());
+							bwv_.setSubjId(u_.getId());
+							bwv_.setSubjName(u_.getName());
+							bwv_.setSubjCreditHours(u_.getCreditHours());
+							bwv_.setSubjGradeLevel(u_.getGradeLevel());
+							
+							bvl_.add(bwv_);
+						}
+					}
+					records = bvl_;
+				}
 			}
 			else if (myClass.equals(SubjectView.class) && studentId_ != null) {
 				Student student_ = Student.findStudent(Long.valueOf(studentId_));
@@ -785,6 +821,7 @@ public class ControllerHelper {
 			String className = myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
+			boolean inSync = true;
 
 			if( myClass.equals(Student.class) )
 			{
@@ -820,9 +857,10 @@ public class ControllerHelper {
 					q_.setCompleted(s_.getQtrCompleted());
 					q_.setLocked(s_.getQtrLocked());
 					q_.setGrade_type(s_.getQtrGradeType());
-					q_.setVersion(s_.getQtrVersion());
+					
+					inSync = q_.getVersion() == s_.getQtrVersion();
 
-					if (q_.merge() != null) {
+					if (inSync && q_.merge() != null) {
 						s_.setQtrVersion(q_.getVersion());
 
 						updateGood = true;
@@ -839,9 +877,10 @@ public class ControllerHelper {
 					subj_.setLastUpdated(s_.getSubjLastUpdated());
 					subj_.setName(s_.getSubjName());
 					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
-					subj_.setVersion(s_.getSubjVersion());
 
-					if (subj_.merge() != null) {
+					inSync = subj_.getVersion() == s_.getSubjVersion();
+
+					if (inSync && subj_.merge() != null) {
 						s_.setSubjVersion(subj_.getVersion());
 
 						updateGood = true;
@@ -940,7 +979,7 @@ public class ControllerHelper {
 				response.setData(record);				
 			}
 			else if ( statusGood && !updateGood ) {
-	            returnStatus = HttpStatus.NOT_FOUND;
+				returnStatus = inSync ? HttpStatus.NOT_FOUND : HttpStatus.CONFLICT;
 				response.setMessage( className + " update failed." );
 				response.setSuccess(false);
 				response.setTotal(0L);				

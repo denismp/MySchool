@@ -1,6 +1,10 @@
 package com.app.myschool.web;
 
+import java.util.Map;
+
 import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.BodyOfWorkView;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/bodyofworks")
@@ -26,9 +31,9 @@ public class BodyOfWorkController {
 
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<java.lang.String> listJson() {
+    public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.listJson(BodyOfWork.class);
+        return controllerHelper.listJson(BodyOfWorkView.class, params);
     }
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
