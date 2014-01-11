@@ -8,14 +8,16 @@
     "userConfig": {
         "controllers": [
             "subject.SubjectsController",
-            "bodiesofwork.MyController"
+            "bodiesofwork.MyController",
+            "daily.MyController"
         ],
         "models": [
             "subject.SubjectsModel",
             "subject.QuarterNamesModel",
             "quarters.QuarterModel",
             "student.StudentModel",
-            "bodiesofwork.BodiesOfWorkModel"
+            "bodiesofwork.BodiesOfWorkModel",
+            "daily.DailyModel"
         ],
         "name": "MySchool",
         "stores": [
@@ -26,7 +28,8 @@
             "subject.GradeTypeStore",
             "subject.AllSubjectStore",
             "subject.QuarterYearStore",
-            "bodiesofwork.MyJsonStore"
+            "bodiesofwork.MyJsonStore",
+            "daily.MyJsonStore"
         ],
         "views": [
             "MainPanel",

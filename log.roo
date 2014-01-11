@@ -436,3 +436,6 @@ web mvc json all
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-09 16:41:56
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-01-10 15:29:00
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-10 15:32:12
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2014-01-10 15:26:38
+finder add --class ~.model.BodyOfWork --finderName findBodyOfWorksBySubject
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2014-01-10 15:28:32

@@ -25,7 +25,8 @@ Ext.application({
         'subject.QuarterNamesModel',
         'quarters.QuarterModel',
         'student.StudentModel',
-        'bodiesofwork.BodiesOfWorkModel'
+        'bodiesofwork.BodiesOfWorkModel',
+        'daily.DailyModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -35,7 +36,8 @@ Ext.application({
         'subject.GradeTypeStore',
         'subject.AllSubjectStore',
         'subject.QuarterYearStore',
-        'bodiesofwork.MyJsonStore'
+        'bodiesofwork.MyJsonStore',
+        'daily.MyJsonStore'
     ],
     views: [
         'MainPanel',
@@ -93,7 +95,8 @@ Ext.application({
     ],
     controllers: [
         'subject.SubjectsController',
-        'bodiesofwork.MyController'
+        'bodiesofwork.MyController',
+        'daily.MyController'
     ],
     name: 'MySchool',
 
