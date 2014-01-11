@@ -1,0 +1,39 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "daily.MyJsonStore",
+        "model": "daily.DailyModel",
+        "storeId": "daily.MyJsonStore"
+    },
+    "designerId": "70a28d12-0ade-4464-b35e-a937577bc1aa",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "dailys"
+            },
+            "designerId": "6e29c988-de39-457a-88c4-3a5e628b4865",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "4ed26173-929c-4531-83cf-8356d4d546fe"
+                }
+            ]
+        }
+    ]
+}

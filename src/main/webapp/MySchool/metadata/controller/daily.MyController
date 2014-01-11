@@ -1,0 +1,13 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailycontroller",
+        "designer|userClassName": "daily.MyController"
+    },
+    "designerId": "cc725caa-3895-4141-9f43-9ec30a87de9d"
+}
