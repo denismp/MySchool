@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.PreviousTranscripts;
+import com.app.myschool.model.Student;
 import com.app.myschool.web.PreviousTranscriptsController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +87,7 @@ privileged aspect PreviousTranscriptsController_Roo_Controller {
     
     void PreviousTranscriptsController.populateEditForm(Model uiModel, PreviousTranscripts previousTranscripts) {
         uiModel.addAttribute("previousTranscripts", previousTranscripts);
+        uiModel.addAttribute("students", Student.findAllStudents());
     }
     
     String PreviousTranscriptsController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

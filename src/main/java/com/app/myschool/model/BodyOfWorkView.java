@@ -39,4 +39,10 @@ public class BodyOfWorkView {
 	private Integer subjCreditHours;
 
 	private Integer subjGradeLevel;
+
+	private Long qtrId;
+	
+	private String qtrName;
+
+	private String qtrYear;
 }

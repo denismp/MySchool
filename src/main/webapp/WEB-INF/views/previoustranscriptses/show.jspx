@@ -4,5 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_PreviousTranscripts" object="${previoustranscripts}" path="/previoustranscriptses" z="X/MXA6H5ivUFjhhUNrNJ96BZTUQ=">
         <field:display field="type" id="s_com_app_myschool_model_PreviousTranscripts_type" object="${previoustranscripts}" z="7HHl+my1Se6C/EfF33nKliO0Kmw="/>
+        <field:display field="student" id="s_com_app_myschool_model_PreviousTranscripts_student" object="${previoustranscripts}" z="KDdCWSSvp7k7zvqoTKnBtJlHVhQ="/>
     </page:show>
 </div>

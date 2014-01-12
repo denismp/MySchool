@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.PreviousTranscripts;
+import com.app.myschool.model.Student;
 
 privileged aspect PreviousTranscripts_Roo_JavaBean {
     
@@ -13,6 +14,14 @@ privileged aspect PreviousTranscripts_Roo_JavaBean {
     
     public void PreviousTranscripts.setType(int type) {
         this.type = type;
+    }
+    
+    public Student PreviousTranscripts.getStudent() {
+        return this.student;
+    }
+    
+    public void PreviousTranscripts.setStudent(Student student) {
+        this.student = student;
     }
     
 }

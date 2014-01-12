@@ -59,9 +59,9 @@ public class Weekly {
     @ManyToOne
     private Subject subject;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "weekly")
     private Set<SkillRatings> skillRatings = new HashSet<SkillRatings>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "weekly")
     private Set<EvaluationRatings> evalRatings = new HashSet<EvaluationRatings>();
 }

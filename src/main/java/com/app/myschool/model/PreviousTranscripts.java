@@ -1,5 +1,6 @@
 package com.app.myschool.model;
 
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -18,4 +19,7 @@ public class PreviousTranscripts {
     @Min(0L)
     @Max(1L)
     private int type;
+    
+    @ManyToOne
+    private Student student;
 }

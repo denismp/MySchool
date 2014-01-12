@@ -30,14 +30,6 @@ privileged aspect Student_Roo_JavaBean {
         this.quarters = quarters;
     }
     
-    public Set<MonthlyEvaluationRatings> Student.getMonthlyEvaluationRatings() {
-        return this.monthlyEvaluationRatings;
-    }
-    
-    public void Student.setMonthlyEvaluationRatings(Set<MonthlyEvaluationRatings> monthlyEvaluationRatings) {
-        this.monthlyEvaluationRatings = monthlyEvaluationRatings;
-    }
-    
     public Set<MonthlySummaryRatings> Student.getMonthlySummaryRatings() {
         return this.monthlySummaryRatings;
     }

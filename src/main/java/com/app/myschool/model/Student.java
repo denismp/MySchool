@@ -17,22 +17,19 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord(finders = { "findStudentsByUserNameEquals" })
 public class Student extends Person {
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<MonthlyEvaluationRatings> monthlyEvaluations = new HashSet<MonthlyEvaluationRatings>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<Quarter> quarters = new HashSet<Quarter>();
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<MonthlyEvaluationRatings> monthlyEvaluationRatings = new HashSet<MonthlyEvaluationRatings>();
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<MonthlySummaryRatings> monthlySummaryRatings = new HashSet<MonthlySummaryRatings>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<PreviousTranscripts> previousTranscripts = new HashSet<PreviousTranscripts>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<GraduateTracking> graduateTracking = new HashSet<GraduateTracking>();
 
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students")

@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.GraduateTracking;
+import com.app.myschool.model.Student;
 import com.app.myschool.web.GraduateTrackingController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +87,7 @@ privileged aspect GraduateTrackingController_Roo_Controller {
     
     void GraduateTrackingController.populateEditForm(Model uiModel, GraduateTracking graduateTracking) {
         uiModel.addAttribute("graduateTracking", graduateTracking);
+        uiModel.addAttribute("students", Student.findAllStudents());
     }
     
     String GraduateTrackingController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

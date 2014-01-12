@@ -58,6 +58,6 @@ public class BodyOfWork {
     @ManyToOne
     private Quarter quarter;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="bodyOfWork")
     private Set<Artifact> artifacts = new HashSet<Artifact>();
 }
