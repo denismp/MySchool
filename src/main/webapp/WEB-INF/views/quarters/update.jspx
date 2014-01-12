@@ -15,5 +15,7 @@
         <field:checkbox field="completed" id="c_com_app_myschool_model_Quarter_completed" z="p0LwQcNL8QF9hiir/+KfJTWdcdM="/>
         <field:simple field="bodyofworks" id="c_com_app_myschool_model_Quarter_bodyofworks" messageCode="entity_reference_not_managed" messageCodeAttribute="Body Of Work" z="x5JwdnhgX2Bwa6OQ02HOtNQNc0s="/>
         <field:simple field="dailys" id="c_com_app_myschool_model_Quarter_dailys" messageCode="entity_reference_not_managed" messageCodeAttribute="Daily" z="GUhTWANYlnFps6p8QPz1VIemTPU="/>
+        <field:simple field="monthlysummaryratings" id="c_com_app_myschool_model_Quarter_monthlysummaryratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Summary Ratings" z="31Zr5Mxq9s6OwbI5jWzRTcQ037U="/>
+        <field:simple field="monthyevaluationratings" id="c_com_app_myschool_model_Quarter_monthyevaluationratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="yT9UzVjPbvpVfg4mwMdg3rEvgNY="/>
     </form:update>
 </div>

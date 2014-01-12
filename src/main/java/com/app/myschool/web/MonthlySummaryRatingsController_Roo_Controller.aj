@@ -4,7 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.MonthlySummaryRatings;
-import com.app.myschool.model.Student;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.web.MonthlySummaryRatingsController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -96,7 +96,7 @@ privileged aspect MonthlySummaryRatingsController_Roo_Controller {
     void MonthlySummaryRatingsController.populateEditForm(Model uiModel, MonthlySummaryRatings monthlySummaryRatings) {
         uiModel.addAttribute("monthlySummaryRatings", monthlySummaryRatings);
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("students", Student.findAllStudents());
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
     }
     
     String MonthlySummaryRatingsController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

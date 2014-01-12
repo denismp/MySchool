@@ -4,7 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.MonthlyEvaluationRatings;
-import com.app.myschool.model.Student;
+import com.app.myschool.model.Quarter;
 import java.util.Date;
 
 privileged aspect MonthlyEvaluationRatings_Roo_JavaBean {
@@ -121,12 +121,12 @@ privileged aspect MonthlyEvaluationRatings_Roo_JavaBean {
         this.whoUpdated = whoUpdated;
     }
     
-    public Student MonthlyEvaluationRatings.getStudent() {
-        return this.student;
+    public Quarter MonthlyEvaluationRatings.getQuarters() {
+        return this.quarters;
     }
     
-    public void MonthlyEvaluationRatings.setStudent(Student student) {
-        this.student = student;
+    public void MonthlyEvaluationRatings.setQuarters(Quarter quarters) {
+        this.quarters = quarters;
     }
     
 }

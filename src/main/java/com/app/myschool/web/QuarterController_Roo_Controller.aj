@@ -5,6 +5,8 @@ package com.app.myschool.web;
 
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
+import com.app.myschool.model.MonthlyEvaluationRatings;
+import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -101,6 +103,8 @@ privileged aspect QuarterController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("bodyofworks", BodyOfWork.findAllBodyOfWorks());
         uiModel.addAttribute("dailys", Daily.findAllDailys());
+        uiModel.addAttribute("monthlyevaluationratingses", MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses());
+        uiModel.addAttribute("monthlysummaryratingses", MonthlySummaryRatings.findAllMonthlySummaryRatingses());
         uiModel.addAttribute("students", Student.findAllStudents());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }

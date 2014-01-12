@@ -88,7 +88,7 @@ public class MonthlyEvaluationRatings {
     @NotNull
     @Size(max = 45)
     private String whoUpdated;
-
+       
     @ManyToOne
-    private Student student;
+    private Quarter quarters;
 }

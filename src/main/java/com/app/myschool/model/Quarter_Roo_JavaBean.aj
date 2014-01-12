@@ -5,6 +5,8 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
+import com.app.myschool.model.MonthlyEvaluationRatings;
+import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -99,6 +101,22 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setDailys(Set<Daily> dailys) {
         this.dailys = dailys;
+    }
+    
+    public Set<MonthlySummaryRatings> Quarter.getMonthlysummaryratings() {
+        return this.monthlysummaryratings;
+    }
+    
+    public void Quarter.setMonthlysummaryratings(Set<MonthlySummaryRatings> monthlysummaryratings) {
+        this.monthlysummaryratings = monthlysummaryratings;
+    }
+    
+    public Set<MonthlyEvaluationRatings> Quarter.getMonthyevaluationratings() {
+        return this.monthyevaluationratings;
+    }
+    
+    public void Quarter.setMonthyevaluationratings(Set<MonthlyEvaluationRatings> monthyevaluationratings) {
+        this.monthyevaluationratings = monthyevaluationratings;
     }
     
     public String Quarter.getQtr_year() {

@@ -17,7 +17,7 @@
         <field:checkbox field="locked" id="c_com_app_myschool_model_MonthlySummaryRatings_locked" z="Ty3KiqhgdftQtceb5YhCr/VjV/E="/>
         <field:datetime dateTimePattern="${monthlySummaryRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_MonthlySummaryRatings_lastUpdated" required="true" z="3O4ORZuaij5Mrp1tyRKBAIABa4o="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_MonthlySummaryRatings_whoUpdated" required="true" z="+R3sBjNakMuFXCTOj4OJh2idFK0="/>
-        <field:select field="student" id="c_com_app_myschool_model_MonthlySummaryRatings_student" itemValue="id" items="${students}" path="/students" z="KoAkmEGaMez3pVUXNxz/XnMGAVU="/>
+        <field:select field="quarters" id="c_com_app_myschool_model_MonthlySummaryRatings_quarters" itemValue="id" items="${quarters}" path="/quarters" z="XpC62CuZBbztHVxbGJt34e/Uu/E="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_MonthlySummaryRatings" render="${not empty dependencies}" z="+TOy/Uafg6UCqNF4WXVZm5uCQJA="/>
 </div>
