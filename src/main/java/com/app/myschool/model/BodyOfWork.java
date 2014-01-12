@@ -54,6 +54,9 @@ public class BodyOfWork {
 
     @ManyToOne
     private Subject subject;
+    
+    @ManyToOne
+    private Quarter quarter;
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Artifact> artifacts = new HashSet<Artifact>();

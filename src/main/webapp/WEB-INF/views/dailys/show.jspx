@@ -18,5 +18,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Daily_whoUpdated" object="${daily}" z="6sH+/Sp5vUFvhQYX7kXFIVvPAe8="/>
         <field:display date="true" dateTimePattern="${daily_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Daily_lastUpdated" object="${daily}" z="D9bq1wWbA9o3ZG1kramahE8qDOo="/>
         <field:display field="subject" id="s_com_app_myschool_model_Daily_subject" object="${daily}" z="ZgonI/uWDXTHub1TXh7BplxMUbM="/>
+        <field:display field="quarter" id="s_com_app_myschool_model_Daily_quarter" object="${daily}" z="UqbDDyXziCwN0UUfvYcSwwoEXJQ="/>
     </page:show>
 </div>

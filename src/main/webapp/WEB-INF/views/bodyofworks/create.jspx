@@ -12,6 +12,7 @@
         <field:datetime dateTimePattern="${bodyOfWork_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_BodyOfWork_lastUpdated" required="true" z="maG9Gi/xl/D3znTjCXEIHVw8Sn0="/>
         <field:select field="subject" id="c_com_app_myschool_model_BodyOfWork_subject" itemValue="id" items="${subjects}" path="/subjects" z="w6ijbSS7P3mY7sC1Qag/6zKUml4="/>
         <field:simple field="artifacts" id="c_com_app_myschool_model_BodyOfWork_artifacts" messageCode="entity_reference_not_managed" messageCodeAttribute="Artifact" z="/VjPNmMf2XXvUUZhqlwVO7lmOfE="/>
+        <field:select field="quarter" id="c_com_app_myschool_model_BodyOfWork_quarter" itemValue="id" items="${quarters}" path="/quarters" z="Vsw81x577BKfLu9t0Hg+dl6T4Go="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_BodyOfWork" render="${not empty dependencies}" z="WawZGvz+y6ow3QVVQe6KT/D1wrs="/>
 </div>

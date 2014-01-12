@@ -78,4 +78,7 @@ public class Daily {
 
     @ManyToOne
     private Subject subject;
+    
+    @ManyToOne
+    private Quarter quarter;
 }

@@ -13,6 +13,8 @@
         <field:checkbox field="locked" id="c_com_app_myschool_model_Quarter_locked" z="SoE9o69gi3M7q3g9PIfM1PWRl68="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Quarter_whoUpdated" required="true" z="kwyVSo7YSwS2gRbkTUOvcXogWIU="/>
         <field:checkbox field="completed" id="c_com_app_myschool_model_Quarter_completed" z="p0LwQcNL8QF9hiir/+KfJTWdcdM="/>
+        <field:simple field="bodyofworks" id="c_com_app_myschool_model_Quarter_bodyofworks" messageCode="entity_reference_not_managed" messageCodeAttribute="Body Of Work" z="x5JwdnhgX2Bwa6OQ02HOtNQNc0s="/>
+        <field:simple field="dailys" id="c_com_app_myschool_model_Quarter_dailys" messageCode="entity_reference_not_managed" messageCodeAttribute="Daily" z="GUhTWANYlnFps6p8QPz1VIemTPU="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

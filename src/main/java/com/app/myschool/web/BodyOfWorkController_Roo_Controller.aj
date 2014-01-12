@@ -5,6 +5,7 @@ package com.app.myschool.web;
 
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Subject;
 import com.app.myschool.web.BodyOfWorkController;
 import java.io.UnsupportedEncodingException;
@@ -98,6 +99,7 @@ privileged aspect BodyOfWorkController_Roo_Controller {
         uiModel.addAttribute("bodyOfWork", bodyOfWork);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("artifacts", Artifact.findAllArtifacts());
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
     

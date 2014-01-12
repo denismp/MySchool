@@ -3,6 +3,8 @@
 
 package com.app.myschool.web;
 
+import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.Daily;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -97,6 +99,8 @@ privileged aspect QuarterController_Roo_Controller {
     void QuarterController.populateEditForm(Model uiModel, Quarter quarter) {
         uiModel.addAttribute("quarter", quarter);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("bodyofworks", BodyOfWork.findAllBodyOfWorks());
+        uiModel.addAttribute("dailys", Daily.findAllDailys());
         uiModel.addAttribute("students", Student.findAllStudents());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }

@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Daily;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Subject;
 import com.app.myschool.web.DailyController;
 import java.io.UnsupportedEncodingException;
@@ -96,6 +97,7 @@ privileged aspect DailyController_Roo_Controller {
     void DailyController.populateEditForm(Model uiModel, Daily daily) {
         uiModel.addAttribute("daily", daily);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
     

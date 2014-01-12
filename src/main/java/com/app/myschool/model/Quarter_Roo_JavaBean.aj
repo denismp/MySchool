@@ -3,10 +3,13 @@
 
 package com.app.myschool.model;
 
+import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.Daily;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect Quarter_Roo_JavaBean {
     
@@ -80,6 +83,22 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setSubject(Subject subject) {
         this.subject = subject;
+    }
+    
+    public Set<BodyOfWork> Quarter.getBodyofworks() {
+        return this.bodyofworks;
+    }
+    
+    public void Quarter.setBodyofworks(Set<BodyOfWork> bodyofworks) {
+        this.bodyofworks = bodyofworks;
+    }
+    
+    public Set<Daily> Quarter.getDailys() {
+        return this.dailys;
+    }
+    
+    public void Quarter.setDailys(Set<Daily> dailys) {
+        this.dailys = dailys;
     }
     
     public String Quarter.getQtr_year() {

@@ -65,6 +65,13 @@ public class Quarter {
 
     @ManyToOne
     private Subject subject;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
+    private Set<BodyOfWork> bodyofworks = new HashSet<BodyOfWork>();
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
+    private Set<Daily> dailys = new HashSet<Daily>();
+
 
     @NotNull
     @Size(max = 5)
