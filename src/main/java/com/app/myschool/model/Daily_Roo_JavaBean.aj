@@ -10,14 +10,6 @@ import java.util.Date;
 
 privileged aspect Daily_Roo_JavaBean {
     
-    public int Daily.getDaily_year() {
-        return this.daily_year;
-    }
-    
-    public void Daily.setDaily_year(int daily_year) {
-        this.daily_year = daily_year;
-    }
-    
     public int Daily.getDaily_month() {
         return this.daily_month;
     }

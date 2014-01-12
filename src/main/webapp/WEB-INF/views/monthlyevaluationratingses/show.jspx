@@ -3,9 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_MonthlyEvaluationRatings" object="${monthlyevaluationratings}" path="/monthlyevaluationratingses" z="GO2kBXTIX5ewT0mLlNDKqHDbdMw=">
-        <field:display field="month_year" id="s_com_app_myschool_model_MonthlyEvaluationRatings_month_year" object="${monthlyevaluationratings}" z="PrYOLlXCe3IlAmPzj72arsTuWEE="/>
         <field:display field="month_number" id="s_com_app_myschool_model_MonthlyEvaluationRatings_month_number" object="${monthlyevaluationratings}" z="BFGAheoKOIjAfENBKGGfIJKw6OI="/>
-        <field:display field="week_number" id="s_com_app_myschool_model_MonthlyEvaluationRatings_week_number" object="${monthlyevaluationratings}" z="KAh91TPVxcpwJW/7U1ofTB3X0EE="/>
         <field:display field="levelOfDifficulty" id="s_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" object="${monthlyevaluationratings}" z="Yx6LBx04dINl0sI1HVRoS2QAcfM="/>
         <field:display field="criticalThinkingSkills" id="s_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" object="${monthlyevaluationratings}" z="ZtAWlZhXUmGSuH8qFY7LoYEreJU="/>
         <field:display field="effectiveCorrectionActions" id="s_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" object="${monthlyevaluationratings}" z="PpNfrSmD4OX+0R5W1pGA6NAuASg="/>

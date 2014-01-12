@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_app_myschool_model_MonthlySummaryRatings" items="${monthlysummaryratingses}" z="UkflYh5AYeonsAD6FShj2IOVgwg=">
         <table:table data="${monthlysummaryratingses}" id="l_com_app_myschool_model_MonthlySummaryRatings" path="/monthlysummaryratingses" z="kfR7l7IHznTIYc0Vd95NTavBGPI=">
-            <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_year_number" property="year_number" z="q3WtepMH1ro0NuNgDo4BMNxBPQk="/>
             <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_month_number" property="month_number" z="p/1TJuTcZ/nyXU+dFxc6ivYWBIY="/>
-            <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_week_number" property="week_number" z="dASPJOL1nYI+UvNyA4RFlY8P9Ws="/>
             <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_feelings" property="feelings" z="7jhGhUZbKd0BzacUzSMYuWUN03o="/>
             <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_reflections" property="reflections" z="SDzUrJ+kReA6IE8ElroRqLgFK74="/>
             <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_patternsOfCorrections" property="patternsOfCorrections" z="T342xgpbAfDzZoBkGhTar3Qk+Lw="/>
+            <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_effectivenessOfActions" property="effectivenessOfActions" z="4qxHq5bFmJGcN0I4pck82m50R1I="/>
+            <table:column id="c_com_app_myschool_model_MonthlySummaryRatings_actionResults" property="actionResults" z="QqeK/b9z6pZXN/T1v3VHOqCCiFk="/>
         </table:table>
     </page:list>
 </div>

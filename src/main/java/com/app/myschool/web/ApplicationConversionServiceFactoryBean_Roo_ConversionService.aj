@@ -79,7 +79,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Daily, String> ApplicationConversionServiceFactoryBean.getDailyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Daily, java.lang.String>() {
             public String convert(Daily daily) {
-                return new StringBuilder().append(daily.getDaily_year()).append(' ').append(daily.getDaily_month()).append(' ').append(daily.getDaily_week()).append(' ').append(daily.getDaily_day()).toString();
+                return new StringBuilder().append(daily.getDaily_month()).append(' ').append(daily.getDaily_week()).append(' ').append(daily.getDaily_day()).append(' ').append(daily.getDaily_hours()).toString();
             }
         };
     }
@@ -175,7 +175,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<MonthlyEvaluationRatings, String> ApplicationConversionServiceFactoryBean.getMonthlyEvaluationRatingsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.MonthlyEvaluationRatings, java.lang.String>() {
             public String convert(MonthlyEvaluationRatings monthlyEvaluationRatings) {
-                return new StringBuilder().append(monthlyEvaluationRatings.getMonth_year()).append(' ').append(monthlyEvaluationRatings.getMonth_number()).append(' ').append(monthlyEvaluationRatings.getWeek_number()).append(' ').append(monthlyEvaluationRatings.getLevelOfDifficulty()).toString();
+                return new StringBuilder().append(monthlyEvaluationRatings.getMonth_number()).append(' ').append(monthlyEvaluationRatings.getLevelOfDifficulty()).append(' ').append(monthlyEvaluationRatings.getCriticalThinkingSkills()).append(' ').append(monthlyEvaluationRatings.getEffectiveCorrectionActions()).toString();
             }
         };
     }
@@ -199,7 +199,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<MonthlySummaryRatings, String> ApplicationConversionServiceFactoryBean.getMonthlySummaryRatingsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.MonthlySummaryRatings, java.lang.String>() {
             public String convert(MonthlySummaryRatings monthlySummaryRatings) {
-                return new StringBuilder().append(monthlySummaryRatings.getYear_number()).append(' ').append(monthlySummaryRatings.getMonth_number()).append(' ').append(monthlySummaryRatings.getWeek_number()).append(' ').append(monthlySummaryRatings.getFeelings()).toString();
+                return new StringBuilder().append(monthlySummaryRatings.getMonth_number()).append(' ').append(monthlySummaryRatings.getFeelings()).append(' ').append(monthlySummaryRatings.getReflections()).append(' ').append(monthlySummaryRatings.getPatternsOfCorrections()).toString();
             }
         };
     }

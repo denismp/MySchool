@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_app_myschool_model_Daily" items="${dailys}" z="imkci8kvvYk69cAEcLeluVkxTAA=">
         <table:table data="${dailys}" id="l_com_app_myschool_model_Daily" path="/dailys" z="lM/2J8EspRTg2tV9QexUqy1uVOA=">
-            <table:column id="c_com_app_myschool_model_Daily_daily_year" property="daily_year" z="oKHpAaLjRHzlSH0AYBblUMybke8="/>
             <table:column id="c_com_app_myschool_model_Daily_daily_month" property="daily_month" z="+2sh3AvCVZCAALKFRd6KtKSvatw="/>
             <table:column id="c_com_app_myschool_model_Daily_daily_week" property="daily_week" z="grdMuT6q8LjMIBt3Qii/ubPdpek="/>
             <table:column id="c_com_app_myschool_model_Daily_daily_day" property="daily_day" z="wlW7ufu7SBV3QfYaLzXN1KNpdPw="/>
             <table:column id="c_com_app_myschool_model_Daily_daily_hours" property="daily_hours" z="kO2FZeX+plmA0UHkWrN7CCBSIbE="/>
             <table:column id="c_com_app_myschool_model_Daily_resourcesUsed" property="resourcesUsed" z="9uZDjbTeyx7wJwBTAavo8YydhNQ="/>
+            <table:column id="c_com_app_myschool_model_Daily_studyDetails" property="studyDetails" z="iTk+LJY+iSerieMjFNiuXFzo63M="/>
         </table:table>
     </page:list>
 </div>

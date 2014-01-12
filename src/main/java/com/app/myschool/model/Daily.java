@@ -20,12 +20,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 @RooJson
 public class Daily {
-
-    @NotNull
-    @Min(1111L)
-    @Max(9999L)
-    private int daily_year;
-
     @NotNull
     @Min(1L)
     @Max(12L)

@@ -9,28 +9,12 @@ import java.util.Date;
 
 privileged aspect MonthlyEvaluationRatings_Roo_JavaBean {
     
-    public int MonthlyEvaluationRatings.getMonth_year() {
-        return this.month_year;
-    }
-    
-    public void MonthlyEvaluationRatings.setMonth_year(int month_year) {
-        this.month_year = month_year;
-    }
-    
     public int MonthlyEvaluationRatings.getMonth_number() {
         return this.month_number;
     }
     
     public void MonthlyEvaluationRatings.setMonth_number(int month_number) {
         this.month_number = month_number;
-    }
-    
-    public int MonthlyEvaluationRatings.getWeek_number() {
-        return this.week_number;
-    }
-    
-    public void MonthlyEvaluationRatings.setWeek_number(int week_number) {
-        this.week_number = week_number;
     }
     
     public int MonthlyEvaluationRatings.getLevelOfDifficulty() {

@@ -17,6 +17,7 @@
         <field:simple field="dailys" id="c_com_app_myschool_model_Quarter_dailys" messageCode="entity_reference_not_managed" messageCodeAttribute="Daily" z="GUhTWANYlnFps6p8QPz1VIemTPU="/>
         <field:simple field="monthlysummaryratings" id="c_com_app_myschool_model_Quarter_monthlysummaryratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Summary Ratings" z="31Zr5Mxq9s6OwbI5jWzRTcQ037U="/>
         <field:simple field="monthyevaluationratings" id="c_com_app_myschool_model_Quarter_monthyevaluationratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="yT9UzVjPbvpVfg4mwMdg3rEvgNY="/>
+        <field:simple field="weeklys" id="c_com_app_myschool_model_Quarter_weeklys" messageCode="entity_reference_not_managed" messageCodeAttribute="Weekly" z="OyARS0P8SonrZV19yrMQqpZg7eU="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

@@ -3,9 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_app_myschool_model_MonthlySummaryRatings" modelAttribute="monthlySummaryRatings" path="/monthlysummaryratingses" versionField="Version" z="+69R8XGYrjGltyU8t0wQmfAItic=">
-        <field:input field="year_number" id="c_com_app_myschool_model_MonthlySummaryRatings_year_number" max="9999" min="1111" required="true" z="5bjUwZXpAnq8QvX361UnLp1Xp/E="/>
         <field:input field="month_number" id="c_com_app_myschool_model_MonthlySummaryRatings_month_number" max="12" min="1" required="true" z="bvn5A9lbUb/LOtyoW3ZdAAfv9n0="/>
-        <field:input field="week_number" id="c_com_app_myschool_model_MonthlySummaryRatings_week_number" max="5" min="1" required="true" z="7L6lRmjwnlZMD+Khtiq/jptZcz4="/>
         <field:textarea field="feelings" id="c_com_app_myschool_model_MonthlySummaryRatings_feelings" z="EJ9SV+VOzOkI6sMXrA7CfvzW4DQ="/>
         <field:textarea field="reflections" id="c_com_app_myschool_model_MonthlySummaryRatings_reflections" z="XsTLFr+IaRw5CHuLIijNbzTjcKE="/>
         <field:textarea field="patternsOfCorrections" id="c_com_app_myschool_model_MonthlySummaryRatings_patternsOfCorrections" z="+drolp/Lly7Zv0ydrFVdONrah88="/>

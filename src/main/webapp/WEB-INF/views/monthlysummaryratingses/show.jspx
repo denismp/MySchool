@@ -3,9 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_MonthlySummaryRatings" object="${monthlysummaryratings}" path="/monthlysummaryratingses" z="dQJTBxDEM0lZwn+UC9NCbdj3qYs=">
-        <field:display field="year_number" id="s_com_app_myschool_model_MonthlySummaryRatings_year_number" object="${monthlysummaryratings}" z="3eg09EE8wZumJuiYN7F2DekCrrw="/>
         <field:display field="month_number" id="s_com_app_myschool_model_MonthlySummaryRatings_month_number" object="${monthlysummaryratings}" z="sG9GWbZKQYOcn0qSuL+csYwXFZo="/>
-        <field:display field="week_number" id="s_com_app_myschool_model_MonthlySummaryRatings_week_number" object="${monthlysummaryratings}" z="OJfU9sqvgql6ftctNFfMnS5DzJk="/>
         <field:display field="feelings" id="s_com_app_myschool_model_MonthlySummaryRatings_feelings" object="${monthlysummaryratings}" z="bNj5WdYOxzhhB4xJ5gkXRjeu+HA="/>
         <field:display field="reflections" id="s_com_app_myschool_model_MonthlySummaryRatings_reflections" object="${monthlysummaryratings}" z="rk6+ZT02cf2OiJHQUxbQZAeJXf0="/>
         <field:display field="patternsOfCorrections" id="s_com_app_myschool_model_MonthlySummaryRatings_patternsOfCorrections" object="${monthlysummaryratings}" z="nm28+OzhmvQ5EK6xbfTYvfnZNew="/>

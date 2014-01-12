@@ -72,6 +72,9 @@ public class Quarter {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
     private Set<Daily> dailys = new HashSet<Daily>();
     
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
+    private Set<Weekly> weeklys = new HashSet<Weekly>();
+   
     @OneToMany(cascade = CascadeType.ALL, mappedBy="quarters")
     private Set<MonthlySummaryRatings> monthlysummaryratings = new HashSet<MonthlySummaryRatings>();
 

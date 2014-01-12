@@ -9,28 +9,12 @@ import java.util.Date;
 
 privileged aspect MonthlySummaryRatings_Roo_JavaBean {
     
-    public int MonthlySummaryRatings.getYear_number() {
-        return this.year_number;
-    }
-    
-    public void MonthlySummaryRatings.setYear_number(int year_number) {
-        this.year_number = year_number;
-    }
-    
     public int MonthlySummaryRatings.getMonth_number() {
         return this.month_number;
     }
     
     public void MonthlySummaryRatings.setMonth_number(int month_number) {
         this.month_number = month_number;
-    }
-    
-    public int MonthlySummaryRatings.getWeek_number() {
-        return this.week_number;
-    }
-    
-    public void MonthlySummaryRatings.setWeek_number(int week_number) {
-        this.week_number = week_number;
     }
     
     public String MonthlySummaryRatings.getFeelings() {

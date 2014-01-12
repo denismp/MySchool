@@ -22,19 +22,9 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class MonthlyEvaluationRatings {
 
     @NotNull
-    @Min(1111L)
-    @Max(9999L)
-    private int month_year;
-
-    @NotNull
     @Min(1L)
     @Max(12L)
     private int month_number;
-
-    @NotNull
-    @Min(1L)
-    @Max(5L)
-    private int week_number;
 
     @NotNull
     @Min(6L)

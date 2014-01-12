@@ -3,7 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_Daily" modelAttribute="daily" path="/dailys" render="${empty dependencies}" z="RpcCnkuT9URJ438Ih/oKaAeS4fs=">
-        <field:input field="daily_year" id="c_com_app_myschool_model_Daily_daily_year" max="9999" min="1111" required="true" z="NK3li+crU0IxQxiRWbgqLaiop0c="/>
         <field:input field="daily_month" id="c_com_app_myschool_model_Daily_daily_month" max="12" min="1" required="true" z="Zk+9ysxp+NGVMnawEBy59i34B6w="/>
         <field:input field="daily_week" id="c_com_app_myschool_model_Daily_daily_week" max="5" min="1" required="true" z="UocuU7AEQnPllxebVpO2RQ7z7X4="/>
         <field:input field="daily_day" id="c_com_app_myschool_model_Daily_daily_day" max="7" min="1" required="true" z="L1mf3rhLQOmLNO2tQpI3jjuFvTM="/>

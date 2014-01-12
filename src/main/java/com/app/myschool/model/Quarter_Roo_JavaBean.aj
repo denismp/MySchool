@@ -10,6 +10,7 @@ import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
+import com.app.myschool.model.Weekly;
 import java.util.Date;
 import java.util.Set;
 
@@ -101,6 +102,14 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setDailys(Set<Daily> dailys) {
         this.dailys = dailys;
+    }
+    
+    public Set<Weekly> Quarter.getWeeklys() {
+        return this.weeklys;
+    }
+    
+    public void Quarter.setWeeklys(Set<Weekly> weeklys) {
+        this.weeklys = weeklys;
     }
     
     public Set<MonthlySummaryRatings> Quarter.getMonthlysummaryratings() {

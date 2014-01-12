@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.EvaluationRatings;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.Weekly;
@@ -74,6 +75,14 @@ privileged aspect Weekly_Roo_JavaBean {
     
     public void Weekly.setSubject(Subject subject) {
         this.subject = subject;
+    }
+    
+    public Quarter Weekly.getQuarter() {
+        return this.quarter;
+    }
+    
+    public void Weekly.setQuarter(Quarter quarter) {
+        this.quarter = quarter;
     }
     
     public Set<SkillRatings> Weekly.getSkillRatings() {

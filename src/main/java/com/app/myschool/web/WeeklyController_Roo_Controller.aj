@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.EvaluationRatings;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.Weekly;
@@ -99,6 +100,7 @@ privileged aspect WeeklyController_Roo_Controller {
         uiModel.addAttribute("weekly", weekly);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("evaluationratingses", EvaluationRatings.findAllEvaluationRatingses());
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
         uiModel.addAttribute("skillratingses", SkillRatings.findAllSkillRatingses());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
