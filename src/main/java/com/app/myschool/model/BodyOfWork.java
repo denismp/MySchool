@@ -52,8 +52,8 @@ public class BodyOfWork {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @ManyToOne
-    private Subject subject;
+    //@ManyToOne
+    //private Subject subject;
     
     @ManyToOne
     private Quarter quarter;

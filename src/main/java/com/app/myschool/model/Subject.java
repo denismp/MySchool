@@ -65,12 +65,12 @@ public class Subject {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
     private Set<Quarter> quarters = new HashSet<Quarter>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-    private Set<Weekly> weeklys = new HashSet<Weekly>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
+    //private Set<Weekly> weeklys = new HashSet<Weekly>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-    private Set<BodyOfWork> bodiesOfWork = new HashSet<BodyOfWork>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
+    //private Set<BodyOfWork> bodiesOfWork = new HashSet<BodyOfWork>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
-    private Set<Daily> dailys = new HashSet<Daily>();
+    //@OneToMany(cascade = CascadeType.ALL, mappedBy="subject")
+    //private Set<Daily> dailys = new HashSet<Daily>();
 }

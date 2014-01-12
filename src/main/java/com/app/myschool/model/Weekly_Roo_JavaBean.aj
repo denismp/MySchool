@@ -6,7 +6,6 @@ package com.app.myschool.model;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
-import com.app.myschool.model.Subject;
 import com.app.myschool.model.Weekly;
 import java.util.Date;
 import java.util.Set;
@@ -59,14 +58,6 @@ privileged aspect Weekly_Roo_JavaBean {
     
     public void Weekly.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    
-    public Subject Weekly.getSubject() {
-        return this.subject;
-    }
-    
-    public void Weekly.setSubject(Subject subject) {
-        this.subject = subject;
     }
     
     public Quarter Weekly.getQuarter() {

@@ -6,7 +6,6 @@ package com.app.myschool.model;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Quarter;
-import com.app.myschool.model.Subject;
 import java.util.Date;
 import java.util.Set;
 
@@ -66,14 +65,6 @@ privileged aspect BodyOfWork_Roo_JavaBean {
     
     public void BodyOfWork.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    
-    public Subject BodyOfWork.getSubject() {
-        return this.subject;
-    }
-    
-    public void BodyOfWork.setSubject(Subject subject) {
-        this.subject = subject;
     }
     
     public Quarter BodyOfWork.getQuarter() {

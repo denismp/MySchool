@@ -9,7 +9,6 @@
         <field:display field="comments" id="s_com_app_myschool_model_Weekly_comments" object="${weekly}" z="1/eRHOPIr9RGeaXC0y61JCrbU8o="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Weekly_whoUpdated" object="${weekly}" z="xS7SN19kFMq0rlUW09rB95kMRJU="/>
         <field:display date="true" dateTimePattern="${weekly_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Weekly_lastUpdated" object="${weekly}" z="OjZbKEr4Uc9U1R/l0/+CttaVvmk="/>
-        <field:display field="subject" id="s_com_app_myschool_model_Weekly_subject" object="${weekly}" z="F2wqNNsc3p0eau9fHKwO0i9eSyA="/>
         <field:display field="quarter" id="s_com_app_myschool_model_Weekly_quarter" object="${weekly}" z="PZRyNeElzIP9W3exYJEDviClcCo="/>
     </page:show>
 </div>

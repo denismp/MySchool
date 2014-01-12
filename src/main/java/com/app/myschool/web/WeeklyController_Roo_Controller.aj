@@ -6,7 +6,6 @@ package com.app.myschool.web;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
-import com.app.myschool.model.Subject;
 import com.app.myschool.model.Weekly;
 import com.app.myschool.web.WeeklyController;
 import java.io.UnsupportedEncodingException;
@@ -102,7 +101,6 @@ privileged aspect WeeklyController_Roo_Controller {
         uiModel.addAttribute("evaluationratingses", EvaluationRatings.findAllEvaluationRatingses());
         uiModel.addAttribute("quarters", Quarter.findAllQuarters());
         uiModel.addAttribute("skillratingses", SkillRatings.findAllSkillRatingses());
-        uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
     
     String WeeklyController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

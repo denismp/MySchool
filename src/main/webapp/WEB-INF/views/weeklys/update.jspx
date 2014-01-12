@@ -9,7 +9,6 @@
         <field:textarea field="comments" id="c_com_app_myschool_model_Weekly_comments" z="Wv7Agy3YBw/gwucYb2WYxAdbF6A="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Weekly_whoUpdated" required="true" z="bW3PiItr8tmm8/8XobY+P0MoHVc="/>
         <field:datetime dateTimePattern="${weekly_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Weekly_lastUpdated" required="true" z="pb7fazXhLXJyVKBNCl3re8y+HKU="/>
-        <field:select field="subject" id="c_com_app_myschool_model_Weekly_subject" itemValue="id" items="${subjects}" path="/subjects" z="gKYZgJBpmwJzs1hgcKwvk8u+bsg="/>
         <field:simple field="skillRatings" id="c_com_app_myschool_model_Weekly_skillRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Skill Ratings" z="1nReDnUNPvHD4wVUtsj+qnACGw8="/>
         <field:simple field="evalRatings" id="c_com_app_myschool_model_Weekly_evalRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Evaluation Ratings" z="8WNSzJtgfdbqiS6c7hJozrUZRGg="/>
         <field:select field="quarter" id="c_com_app_myschool_model_Weekly_quarter" itemValue="id" items="${quarters}" path="/quarters" z="utaE1x4l/6ARd/lwqVhLoF+oOvg="/>

@@ -3,11 +3,8 @@
 
 package com.app.myschool.model;
 
-import com.app.myschool.model.BodyOfWork;
-import com.app.myschool.model.Daily;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.Weekly;
 import java.util.Date;
 import java.util.Set;
 
@@ -75,30 +72,6 @@ privileged aspect Subject_Roo_JavaBean {
     
     public void Subject.setQuarters(Set<Quarter> quarters) {
         this.quarters = quarters;
-    }
-    
-    public Set<Weekly> Subject.getWeeklys() {
-        return this.weeklys;
-    }
-    
-    public void Subject.setWeeklys(Set<Weekly> weeklys) {
-        this.weeklys = weeklys;
-    }
-    
-    public Set<BodyOfWork> Subject.getBodiesOfWork() {
-        return this.bodiesOfWork;
-    }
-    
-    public void Subject.setBodiesOfWork(Set<BodyOfWork> bodiesOfWork) {
-        this.bodiesOfWork = bodiesOfWork;
-    }
-    
-    public Set<Daily> Subject.getDailys() {
-        return this.dailys;
-    }
-    
-    public void Subject.setDailys(Set<Daily> dailys) {
-        this.dailys = dailys;
     }
     
 }

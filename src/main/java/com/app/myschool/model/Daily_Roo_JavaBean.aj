@@ -5,7 +5,6 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.Quarter;
-import com.app.myschool.model.Subject;
 import java.util.Date;
 
 privileged aspect Daily_Roo_JavaBean {
@@ -112,14 +111,6 @@ privileged aspect Daily_Roo_JavaBean {
     
     public void Daily.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    
-    public Subject Daily.getSubject() {
-        return this.subject;
-    }
-    
-    public void Daily.setSubject(Subject subject) {
-        this.subject = subject;
     }
     
     public Quarter Daily.getQuarter() {

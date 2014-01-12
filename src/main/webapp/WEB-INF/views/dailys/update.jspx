@@ -16,7 +16,6 @@
         <field:checkbox field="locked" id="c_com_app_myschool_model_Daily_locked" z="dblroawiwZ0CzSum/HW/KctqAdo="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Daily_whoUpdated" required="true" z="n7cGIZrjqoQTKzetftO+NJqKl2g="/>
         <field:datetime dateTimePattern="${daily_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Daily_lastUpdated" required="true" z="g+vdgWBpsIF3/SfMJx4SiZsssC0="/>
-        <field:select field="subject" id="c_com_app_myschool_model_Daily_subject" itemValue="id" items="${subjects}" path="/subjects" z="YcaOjJ35P0XuJJyFm9oHEFqgh2E="/>
         <field:select field="quarter" id="c_com_app_myschool_model_Daily_quarter" itemValue="id" items="${quarters}" path="/quarters" z="5H6tOeLjvtie/6FJbHEmLLwd81o="/>
     </form:update>
 </div>

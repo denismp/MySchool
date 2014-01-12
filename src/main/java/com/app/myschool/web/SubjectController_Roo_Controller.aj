@@ -3,11 +3,8 @@
 
 package com.app.myschool.web;
 
-import com.app.myschool.model.BodyOfWork;
-import com.app.myschool.model.Daily;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.Weekly;
 import com.app.myschool.web.SubjectController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -99,10 +96,7 @@ privileged aspect SubjectController_Roo_Controller {
     void SubjectController.populateEditForm(Model uiModel, Subject subject) {
         uiModel.addAttribute("subject", subject);
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("bodyofworks", BodyOfWork.findAllBodyOfWorks());
-        uiModel.addAttribute("dailys", Daily.findAllDailys());
         uiModel.addAttribute("quarters", Quarter.findAllQuarters());
-        uiModel.addAttribute("weeklys", Weekly.findAllWeeklys());
     }
     
     String SubjectController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
