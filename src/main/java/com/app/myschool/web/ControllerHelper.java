@@ -108,10 +108,8 @@ public class ControllerHelper {
 					StringBuilder qs_ = new StringBuilder("select b.*");
 					List<BodyOfWork> bowl_;
 					
-					qs_.append(" from body_of_work b, quarter q, subject s, student t");
+					qs_.append(" from body_of_work b, quarter q, student t");
 					qs_.append(" where b.quarter = q.id");
-					qs_.append(" and b.subject = s.id");
-					qs_.append(" and q.subject = s.id");
 					qs_.append(" and q.student = t.id");
 					qs_.append(" and t.id = ");
 					qs_.append(studentId_);
@@ -119,8 +117,8 @@ public class ControllerHelper {
 					bowl_ = (List<BodyOfWork>)em.createNativeQuery(qs_.toString(), BodyOfWork.class).getResultList(); 
 					
 					for (BodyOfWork bw_ : bowl_) {
-						Subject u_ = bw_.getSubject();
 						Quarter q_ = bw_.getQuarter();
+						Subject u_ = q_.getSubject();
 						BodyOfWorkView bwv_ = new BodyOfWorkView();
 
 						bwv_.setId(bw_.getId());
