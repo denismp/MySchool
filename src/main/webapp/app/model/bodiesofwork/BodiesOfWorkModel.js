@@ -29,6 +29,9 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
             name: 'subjId'
         },
         {
+            name: 'qtrId'
+        },
+        {
             name: 'version'
         },
         {
@@ -40,6 +43,14 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
         },
         {
             name: 'subjName',
+            type: 'string'
+        },
+        {
+            name: 'qtrName',
+            type: 'string'
+        },
+        {
+            name: 'qtrYear',
             type: 'string'
         },
         {

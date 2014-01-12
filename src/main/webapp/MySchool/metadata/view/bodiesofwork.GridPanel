@@ -33,19 +33,6 @@
             "designerId": "565e1844-32b0-40b5-b75d-b0896c49615b"
         },
         {
-            "type": "Ext.grid.column.Column",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "workName",
-                "text": "Body Of Work"
-            },
-            "designerId": "a4d480bf-5fa0-4898-8e32-8f578e674b7c"
-        },
-        {
             "type": "Ext.grid.column.Number",
             "reference": {
                 "name": "columns",
@@ -60,19 +47,6 @@
             "designerId": "1b733e03-f38b-4d5f-ab71-5ecda7c36fcc"
         },
         {
-            "type": "Ext.grid.column.Date",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "lastUpdated",
-                "text": "Date"
-            },
-            "designerId": "295fc172-cbb3-423b-a1bf-a412512b9fa5"
-        },
-        {
             "type": "Ext.grid.column.Number",
             "reference": {
                 "name": "columns",
@@ -85,6 +59,58 @@
                 "text": "Credit Hours"
             },
             "designerId": "0be8f3e9-fa4e-473c-8d47-e5f87a4b151e"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrName",
+                "text": "Quarter"
+            },
+            "designerId": "abaa8438-4d34-427a-a693-53e77fbd6524"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrYear",
+                "text": "QtrYear"
+            },
+            "designerId": "c3ac24bc-61dc-4a43-9155-af4cdfd83e6e"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "workName",
+                "text": "Body Of Work"
+            },
+            "designerId": "a4d480bf-5fa0-4898-8e32-8f578e674b7c"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lastUpdated",
+                "text": "Date"
+            },
+            "designerId": "295fc172-cbb3-423b-a1bf-a412512b9fa5"
         },
         {
             "type": "Ext.grid.column.CheckColumn",
@@ -197,6 +223,21 @@
                 "text": "subjId"
             },
             "designerId": "b38a446a-436d-4828-ac99-686d775f1db6"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrId",
+                "format": "000000",
+                "hidden": true,
+                "text": "qtrId"
+            },
+            "designerId": "b9fab75f-31a8-4ed0-9c8e-fd6dfa321a26"
         }
     ]
 }

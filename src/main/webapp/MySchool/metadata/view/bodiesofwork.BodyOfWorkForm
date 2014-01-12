@@ -19,23 +19,6 @@
     "designerId": "0e336dad-b722-4ffe-bf29-63246198e8ea",
     "cn": [
         {
-            "type": "Ext.form.field.Text",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dock": null,
-                "fieldLabel": "Name",
-                "id": "bodyofworknametextfield",
-                "layout|anchor": "100%",
-                "name": "workName",
-                "readOnly": true
-            },
-            "designerId": "0371a996-6cc4-488e-8a88-7ebefaa9217c"
-        },
-        {
             "type": "Ext.form.field.TextArea",
             "reference": {
                 "name": "items",

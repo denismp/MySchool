@@ -42,26 +42,36 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
                     text: 'Subject Name'
                 },
                 {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'workName',
-                    text: 'Body Of Work'
-                },
-                {
                     xtype: 'numbercolumn',
                     dataIndex: 'subjGradeLevel',
                     text: 'Grade Level',
                     format: '00.00'
                 },
                 {
-                    xtype: 'datecolumn',
-                    dataIndex: 'lastUpdated',
-                    text: 'Date'
-                },
-                {
                     xtype: 'numbercolumn',
                     dataIndex: 'subjCreditHours',
                     text: 'Credit Hours',
                     format: '00.00'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrName',
+                    text: 'Quarter'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrYear',
+                    text: 'QtrYear'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'workName',
+                    text: 'Body Of Work'
+                },
+                {
+                    xtype: 'datecolumn',
+                    dataIndex: 'lastUpdated',
+                    text: 'Date'
                 },
                 {
                     xtype: 'checkcolumn',
@@ -103,6 +113,13 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
                     hidden: true,
                     dataIndex: 'subjId',
                     text: 'subjId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'qtrId',
+                    text: 'qtrId',
                     format: '000000'
                 }
             ],

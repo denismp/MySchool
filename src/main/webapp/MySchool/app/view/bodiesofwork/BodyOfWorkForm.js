@@ -32,14 +32,6 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'textfield',
-                    anchor: '100%',
-                    id: 'bodyofworknametextfield',
-                    fieldLabel: 'Name',
-                    name: 'workName',
-                    readOnly: true
-                },
-                {
                     xtype: 'textareafield',
                     id: 'bodyofworkwhattextbox',
                     width: 492,
