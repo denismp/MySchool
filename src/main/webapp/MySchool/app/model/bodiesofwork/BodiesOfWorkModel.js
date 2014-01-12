@@ -26,12 +26,24 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
             name: 'id'
         },
         {
+            name: 'subjId'
+        },
+        {
+            name: 'version'
+        },
+        {
+            name: 'studentId'
+        },
+        {
+            name: 'studentUserName',
+            type: 'string'
+        },
+        {
             name: 'subjName',
             type: 'string'
         },
         {
-            mapping: 'workName',
-            name: 'name',
+            name: 'workName',
             type: 'string'
         },
         {
@@ -47,15 +59,7 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
             type: 'string'
         },
         {
-            name: 'active',
-            type: 'boolean'
-        },
-        {
             name: 'locked',
-            type: 'boolean'
-        },
-        {
-            name: 'completed',
             type: 'boolean'
         },
         {
@@ -63,7 +67,7 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
             type: 'string'
         },
         {
-            dateFormat: 'd/m/Y',
+            dateFormat: 'm/d/Y',
             name: 'lastUpdated',
             type: 'date'
         },

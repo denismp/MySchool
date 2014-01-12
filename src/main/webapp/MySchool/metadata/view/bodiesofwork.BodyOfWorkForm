@@ -29,7 +29,9 @@
                 "dock": null,
                 "fieldLabel": "Name",
                 "id": "bodyofworknametextfield",
-                "layout|anchor": "100%"
+                "layout|anchor": "100%",
+                "name": "workName",
+                "readOnly": true
             },
             "designerId": "0371a996-6cc4-488e-8a88-7ebefaa9217c"
         },
@@ -44,6 +46,8 @@
                 "fieldLabel": "What",
                 "id": "bodyofworkwhattextbox",
                 "layout|anchor": null,
+                "name": "what",
+                "readOnly": true,
                 "size": 5,
                 "width": 492
             },
@@ -59,7 +63,9 @@
             "userConfig": {
                 "fieldLabel": "Description",
                 "id": "bodyofworkdescriptiontextbox",
-                "layout|anchor": "100%"
+                "layout|anchor": "100%",
+                "name": "description",
+                "readOnly": true
             },
             "designerId": "534c08e9-82d7-4592-8e5d-1e166174e17f"
         },
@@ -73,40 +79,11 @@
             "userConfig": {
                 "fieldLabel": "Objective",
                 "id": "bodyofworkobjectivetextbox",
-                "layout|anchor": "100%"
+                "layout|anchor": "100%",
+                "name": "objective",
+                "readOnly": true
             },
             "designerId": "77fdd8cb-3a60-4df9-8380-01bb9c8632a4"
-        },
-        {
-            "type": "Ext.form.field.Checkbox",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "boxLabel": "Active?",
-                "checked": true,
-                "fieldLabel": "",
-                "id": "bodyofworkactivecheckbox",
-                "layout|anchor": "100%"
-            },
-            "designerId": "56d804cc-6e99-4182-a41c-cf06629ad4da"
-        },
-        {
-            "type": "Ext.form.field.Checkbox",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "boxLabel": "Lock?",
-                "fieldLabel": "",
-                "id": "bodyofworklockcheckbox",
-                "layout|anchor": "100%"
-            },
-            "designerId": "ab166049-ba71-4504-8cc6-ed80f89ebb72"
         }
     ]
 }

@@ -52,8 +52,27 @@
                 "fn": "onBodiesofworkssubjectsgridViewReady",
                 "implHandler": [
                     "debugger;",
+                    "console.log('onBodiesofworkssubjectsgridViewReady()');",
+                    "var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');",
+                    "var ss_ = Ext.getStore('student.StudentStore');",
+                    "var r_ = ss_.getAt(0);",
+                    "//        debugger",
+                    "if ( typeof( r_ ) != \"undefined\" ) {",
+                    "    var studentName_ = r_.get('firstName') + \" \" + r_.get('middleName') + ' ' + r_.get('lastName');",
+                    "    var g_ = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "    g_.setTitle('[' + studentName_ + '] Bodies Of Work');",
+                    "    bws_.load({",
+                    "        callback: this.onMyJsonStoreLoad,",
+                    "        scope: this,",
+                    "        params: {",
+                    "            studentName: r_.get('userName'),",
+                    "            studentId: r_.get('id')",
+                    "        }",
+                    "    });",
+                    "}",
                     "//grid.getSelectionModel().select( 0 );",
-                    "tablepanel.getSelectionModel().select( 0 );"
+                    "//tablepanel.getSelectionModel().select( 0 );",
+                    ""
                 ],
                 "name": "viewready",
                 "scope": "me"
@@ -73,11 +92,14 @@
                 "fn": "onBodiesofworkssubjectsgridSelectionChange",
                 "implHandler": [
                     "debugger;",
-                    "if ( Ext.isDefined( selected  ) ) {",
+                    "// in the onMyJsonStoreLoad we do a deselect so we need to test",
+                    "// if selected[0] has a value",
+                    "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
                     "    //var myFormView = this.getBodyOfWorksForm();",
                     "    this.getBodyOfWorksForm().getForm().loadRecord( selected[0] );",
                     "    console.log('onBodiesofworssubjectsgridSelectionChange()');",
-                    "}"
+                    "}",
+                    ""
                 ],
                 "name": "selectionchange",
                 "scope": "me"
@@ -96,7 +118,8 @@
                 "designer|targetType": "Ext.form.Panel",
                 "fn": "onBodyofworkformBoxReady",
                 "implHandler": [
-                    "debugger;"
+                    "debugger;",
+                    "console.log('onBodyofworkformBoxReady()');"
                 ],
                 "name": "boxready",
                 "scope": "me"
@@ -115,6 +138,58 @@
                 "selector": "bodyofworkform"
             },
             "designerId": "f80c08ad-aa32-42b2-9d2b-02d78a32dd9f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMyJsonStoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "var g_ = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "",
+                    "if (g_.getStore().getCount() > 0) {",
+                    "    g_.getSelectionModel().deselectAll();",
+                    "    g_.getSelectionModel().select( 0 );",
+                    "}",
+                    "",
+                    "this.gridViewReady = true;",
+                    ""
+                ]
+            },
+            "designerId": "a3e4420d-ad2d-4a5e-acc0-ce0b0bc360f5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#bodiesofworkstab",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onBodiesofworkstabActivate",
+                "implHandler": [
+                    "// catch the tab activate but only reload if we have processed",
+                    "// the viewready indicated by this.gridViewReady",
+                    "console.log('#bodiesofworkstab.activate()');",
+                    "",
+                    "if ( Ext.isDefined( this.gridViewReady  ) ) {",
+                    "    var g_ = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "    ",
+                    "    g_.getStore().reload();",
+                    "}",
+                    ""
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "designerId": "2fa0d2d1-36c0-4373-8d15-7e07916f4f04"
         }
     ]
 }

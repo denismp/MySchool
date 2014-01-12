@@ -20,6 +20,8 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
     requires: [
         'Ext.grid.column.Number',
         'Ext.grid.column.Date',
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
         'Ext.grid.View'
     ],
 
@@ -36,51 +38,72 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'subject_name',
+                    dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'body_of_work',
+                    dataIndex: 'workName',
                     text: 'Body Of Work'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'grade_level',
+                    dataIndex: 'subjGradeLevel',
                     text: 'Grade Level',
                     format: '00.00'
                 },
                 {
                     xtype: 'datecolumn',
-                    dataIndex: 'date',
+                    dataIndex: 'lastUpdated',
                     text: 'Date'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'credit_hours',
+                    dataIndex: 'subjCreditHours',
                     text: 'Credit Hours',
                     format: '00.00'
                 },
                 {
-                    xtype: 'numbercolumn',
-                    hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
+                    xtype: 'checkcolumn',
+                    dataIndex: 'locked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idsubject'
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'studentUserName',
+                    text: 'Student Name'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idbody_of_works'
+                    dataIndex: 'id',
+                    text: 'id',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'subjectid'
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'subjId',
+                    text: 'subjId',
+                    format: '000000'
                 }
             ],
             viewConfig: {

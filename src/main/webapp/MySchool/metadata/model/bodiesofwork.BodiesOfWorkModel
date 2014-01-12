@@ -31,6 +31,55 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "subjId"
+            },
+            "designerId": "68663bb9-ca33-42fa-ad31-19e6b811348e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "version"
+            },
+            "designerId": "46ed1086-3930-4662-8561-66433e68beaa"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "studentId"
+            },
+            "designerId": "e8d28a11-7fff-4b42-a157-1b36fc0e343e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "studentUserName",
+                "type": "string"
+            },
+            "designerId": "299b784e-104f-4098-be3c-12e92f7a1796"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "subjName",
                 "type": "string"
             },
@@ -44,8 +93,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "mapping": "workName",
-                "name": "name",
+                "mapping": null,
+                "name": "workName",
                 "type": "string"
             },
             "designerId": "50f99744-4ba6-4446-ac77-ccb5999db637"
@@ -97,36 +146,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "active",
-                "type": "boolean"
-            },
-            "designerId": "8f6410f0-9ce0-4bee-a803-9ff812207128"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "name": "locked",
                 "type": "boolean"
             },
             "designerId": "3180f083-272a-4c41-b094-702f5d05f486"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "completed",
-                "type": "boolean"
-            },
-            "designerId": "31437ce2-b520-4685-8632-f8222d2a8625"
         },
         {
             "type": "Ext.data.Field",
@@ -149,7 +172,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dateFormat": "d/m/Y",
+                "dateFormat": "m/d/Y",
                 "name": "lastUpdated",
                 "type": "date"
             },

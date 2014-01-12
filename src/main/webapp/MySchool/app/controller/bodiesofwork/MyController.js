@@ -37,21 +37,57 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
     onBodiesofworkssubjectsgridViewReady: function(tablepanel, eOpts) {
         debugger;
+        console.log('onBodiesofworkssubjectsgridViewReady()');
+        var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
+        var ss_ = Ext.getStore('student.StudentStore');
+        var r_ = ss_.getAt(0);
+        //        debugger
+        if ( typeof( r_ ) != "undefined" ) {
+            var studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+            var g_ = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+            g_.setTitle('[' + studentName_ + '] Bodies Of Work');
+            bws_.load({
+                callback: this.onMyJsonStoreLoad,
+                scope: this,
+                params: {
+                    studentName: r_.get('userName'),
+                    studentId: r_.get('id')
+                }
+            });
+        }
         //grid.getSelectionModel().select( 0 );
-        tablepanel.getSelectionModel().select( 0 );
+        //tablepanel.getSelectionModel().select( 0 );
+
     },
 
     onBodiesofworkssubjectsgridSelectionChange: function(model, selected, eOpts) {
         debugger;
-        if ( Ext.isDefined( selected  ) ) {
+        // in the onMyJsonStoreLoad we do a deselect so we need to test
+        // if selected[0] has a value
+        if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
             //var myFormView = this.getBodyOfWorksForm();
             this.getBodyOfWorksForm().getForm().loadRecord( selected[0] );
             console.log('onBodiesofworssubjectsgridSelectionChange()');
         }
+
     },
 
     onBodyofworkformBoxReady: function(component, width, height, eOpts) {
         debugger;
+        console.log('onBodyofworkformBoxReady()');
+    },
+
+    onBodiesofworkstabActivate: function(component, eOpts) {
+        // catch the tab activate but only reload if we have processed
+        // the viewready indicated by this.gridViewReady
+        console.log('#bodiesofworkstab.activate()');
+
+        if ( Ext.isDefined( this.gridViewReady  ) ) {
+            var g_ = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+
+            g_.getStore().reload();
+        }
+
     },
 
     init: function(application) {
@@ -62,8 +98,24 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             },
             "#bodyofworkform": {
                 boxready: this.onBodyofworkformBoxReady
+            },
+            "#bodiesofworkstab": {
+                activate: this.onBodiesofworkstabActivate
             }
         });
+    },
+
+    onMyJsonStoreLoad: function() {
+        //debugger;
+        var g_ = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+
+        if (g_.getStore().getCount() > 0) {
+            g_.getSelectionModel().deselectAll();
+            g_.getSelectionModel().select( 0 );
+        }
+
+        this.gridViewReady = true;
+
     }
 
 });

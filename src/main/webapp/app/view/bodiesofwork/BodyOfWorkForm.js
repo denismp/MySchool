@@ -18,8 +18,7 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
     alias: 'widget.bodyofworkform',
 
     requires: [
-        'Ext.form.field.TextArea',
-        'Ext.form.field.Checkbox'
+        'Ext.form.field.TextArea'
     ],
 
     itemId: 'bodyofworkform',
@@ -36,41 +35,34 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
                     xtype: 'textfield',
                     anchor: '100%',
                     id: 'bodyofworknametextfield',
-                    fieldLabel: 'Name'
+                    fieldLabel: 'Name',
+                    name: 'workName',
+                    readOnly: true
                 },
                 {
                     xtype: 'textareafield',
                     id: 'bodyofworkwhattextbox',
                     width: 492,
                     fieldLabel: 'What',
+                    name: 'what',
+                    readOnly: true,
                     size: 5
                 },
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
                     id: 'bodyofworkdescriptiontextbox',
-                    fieldLabel: 'Description'
+                    fieldLabel: 'Description',
+                    name: 'description',
+                    readOnly: true
                 },
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
                     id: 'bodyofworkobjectivetextbox',
-                    fieldLabel: 'Objective'
-                },
-                {
-                    xtype: 'checkboxfield',
-                    anchor: '100%',
-                    id: 'bodyofworkactivecheckbox',
-                    fieldLabel: '',
-                    boxLabel: 'Active?',
-                    checked: true
-                },
-                {
-                    xtype: 'checkboxfield',
-                    anchor: '100%',
-                    id: 'bodyofworklockcheckbox',
-                    fieldLabel: '',
-                    boxLabel: 'Lock?'
+                    fieldLabel: 'Objective',
+                    name: 'objective',
+                    readOnly: true
                 }
             ]
         });
