@@ -3,7 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_Weekly" modelAttribute="weekly" path="/weeklys" render="${empty dependencies}" z="vqsukCEK4SlLZtWBVBCmrbq4Qlg=">
-        <field:input field="week_year" id="c_com_app_myschool_model_Weekly_week_year" max="9999" min="1111" required="true" z="pk0tMN2Eu8tVFbtPDuCUFet5UzQ="/>
         <field:input field="week_month" id="c_com_app_myschool_model_Weekly_week_month" max="12" min="1" required="true" z="+8jruy9bdHqJiAG/PR5wj4EAuz8="/>
         <field:input field="week_number" id="c_com_app_myschool_model_Weekly_week_number" max="5" min="1" required="true" z="nDQIdiGxg2yixXkvbDcV4lXPC7Q="/>
         <field:checkbox field="locked" id="c_com_app_myschool_model_Weekly_locked" z="qTPXgzkTHPmBDqM8QhjmD7r2UVo="/>

@@ -3,7 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_Weekly" object="${weekly}" path="/weeklys" z="DZwEYXB1QACQHZAV0fZrVQK5GhE=">
-        <field:display field="week_year" id="s_com_app_myschool_model_Weekly_week_year" object="${weekly}" z="UvzRehE1+HjSACX2embNS78Up0U="/>
         <field:display field="week_month" id="s_com_app_myschool_model_Weekly_week_month" object="${weekly}" z="aTcbxWN8VtdCiD3cY14zuSAYNI8="/>
         <field:display field="week_number" id="s_com_app_myschool_model_Weekly_week_number" object="${weekly}" z="BfaKVihVo3U0y6xvb5UQ6ARXaEY="/>
         <field:display field="locked" id="s_com_app_myschool_model_Weekly_locked" object="${weekly}" z="xfGURlvdafJE17TfKqGUCqClPC8="/>

@@ -24,12 +24,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 @RooJson
 public class Weekly {
-
-    @NotNull
-    @Min(1111L)
-    @Max(9999L)
-    private int week_year;
-
     @NotNull
     @Min(1L)
     @Max(12L)

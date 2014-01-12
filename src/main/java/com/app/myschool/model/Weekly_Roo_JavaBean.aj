@@ -13,14 +13,6 @@ import java.util.Set;
 
 privileged aspect Weekly_Roo_JavaBean {
     
-    public int Weekly.getWeek_year() {
-        return this.week_year;
-    }
-    
-    public void Weekly.setWeek_year(int week_year) {
-        this.week_year = week_year;
-    }
-    
     public int Weekly.getWeek_month() {
         return this.week_month;
     }
