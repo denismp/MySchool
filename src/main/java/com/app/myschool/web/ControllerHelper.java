@@ -104,34 +104,45 @@ public class ControllerHelper {
 				Student student_ = Student.findStudent(Long.valueOf(studentId_));
 				if (student_ != null) {
 					List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
-					Set<Quarter> qtrs_ = student_.getQuarters();
-					int i_ = 1;
+					EntityManager em = BodyOfWork.entityManager();
+					StringBuilder qs_ = new StringBuilder("select b.*");
+					List<BodyOfWork> bowl_;
+					
+					qs_.append(" from body_of_work b, quarter q, subject s, student t");
+					qs_.append(" where b.quarter = q.id");
+					qs_.append(" and b.subject = s.id");
+					qs_.append(" and q.subject = s.id");
+					qs_.append(" and q.student = t.id");
+					qs_.append(" and t.id = ");
+					qs_.append(studentId_);
+					
+					bowl_ = (List<BodyOfWork>)em.createNativeQuery(qs_.toString(), BodyOfWork.class).getResultList(); 
+					
+					for (BodyOfWork bw_ : bowl_) {
+						Subject u_ = bw_.getSubject();
+						Quarter q_ = bw_.getQuarter();
+						BodyOfWorkView bwv_ = new BodyOfWorkView();
 
-					for (Quarter q_ : qtrs_) {
-						Subject u_ = q_.getSubject();
-						List<BodyOfWork> bwl_ = BodyOfWork.findBodyOfWorksBySubject(u_).getResultList();
-						
-						for (BodyOfWork bw_ : bwl_) {
-							BodyOfWorkView bwv_ = new BodyOfWorkView();
-							
-							bwv_.setId(bw_.getId());
-							bwv_.setVersion(bw_.getVersion());
-							bwv_.setWorkName(bw_.getWorkName());
-							bwv_.setObjective(bw_.getObjective());
-							bwv_.setWhat(bw_.getWhat());
-							bwv_.setDescription(bw_.getDescription());
-							bwv_.setWhoUpdated(bw_.getWhoUpdated());
-							bwv_.setLastUpdated(bw_.getLastUpdated());
-							bwv_.setLocked(bw_.getLocked());
-							bwv_.setStudentUserName(student_.getUserName());
-							bwv_.setStudentId(student_.getId());
-							bwv_.setSubjId(u_.getId());
-							bwv_.setSubjName(u_.getName());
-							bwv_.setSubjCreditHours(u_.getCreditHours());
-							bwv_.setSubjGradeLevel(u_.getGradeLevel());
-							
-							bvl_.add(bwv_);
-						}
+						bwv_.setId(bw_.getId());
+						bwv_.setVersion(bw_.getVersion());
+						bwv_.setWorkName(bw_.getWorkName());
+						bwv_.setObjective(bw_.getObjective());
+						bwv_.setWhat(bw_.getWhat());
+						bwv_.setDescription(bw_.getDescription());
+						bwv_.setWhoUpdated(bw_.getWhoUpdated());
+						bwv_.setLastUpdated(bw_.getLastUpdated());
+						bwv_.setLocked(bw_.getLocked());
+						bwv_.setStudentUserName(student_.getUserName());
+						bwv_.setStudentId(student_.getId());
+						bwv_.setSubjId(u_.getId());
+						bwv_.setSubjName(u_.getName());
+						bwv_.setSubjCreditHours(u_.getCreditHours());
+						bwv_.setSubjGradeLevel(u_.getGradeLevel());
+						bwv_.setQtrId(q_.getId());
+						bwv_.setQtrName(q_.getQtrName());
+						bwv_.setQtrYear(q_.getQtr_year());
+
+						bvl_.add(bwv_);
 					}
 					records = bvl_;
 				}

@@ -128,4 +128,28 @@ privileged aspect BodyOfWorkView_Roo_JavaBean {
         this.subjGradeLevel = subjGradeLevel;
     }
     
+    public Long BodyOfWorkView.getQtrId() {
+        return this.qtrId;
+    }
+    
+    public void BodyOfWorkView.setQtrId(Long qtrId) {
+        this.qtrId = qtrId;
+    }
+    
+    public String BodyOfWorkView.getQtrName() {
+        return this.qtrName;
+    }
+    
+    public void BodyOfWorkView.setQtrName(String qtrName) {
+        this.qtrName = qtrName;
+    }
+    
+    public String BodyOfWorkView.getQtrYear() {
+        return this.qtrYear;
+    }
+    
+    public void BodyOfWorkView.setQtrYear(String qtrYear) {
+        this.qtrYear = qtrYear;
+    }
+    
 }

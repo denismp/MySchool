@@ -444,3 +444,5 @@ finder add --class ~.model.BodyOfWork --finderName findBodyOfWorksBySubject
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-11 19:07:01
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-01-11 21:17:11
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-01-11 21:18:54
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2014-01-11 23:37:24
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2014-01-11 23:38:04
