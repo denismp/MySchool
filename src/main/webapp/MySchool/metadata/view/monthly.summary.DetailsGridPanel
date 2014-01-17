@@ -12,21 +12,62 @@
         "height": 373,
         "id": null,
         "itemId": "monthlysummarygridpanel",
+        "store": "monthly.SummaryRatingsStore",
         "title": "[student name]",
         "width": 150
     },
     "designerId": "43f6c12d-de56-482f-aa24-fc9779485195",
     "cn": [
         {
-            "type": "Ext.grid.column.Number",
+            "type": "Ext.grid.column.Column",
             "reference": {
                 "name": "columns",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "year",
-                "text": "Year"
+                "dataIndex": "id",
+                "hidden": true,
+                "text": "id"
+            },
+            "designerId": "516138e7-73d8-4788-b330-ee3adb0abff3"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subjName",
+                "text": "subjName"
+            },
+            "designerId": "58a3ad1a-49bf-4008-8445-6ae617955d60"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrName",
+                "text": "qtrName"
+            },
+            "designerId": "0ad0e23a-29f3-430d-8934-504805f57f54"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrYear",
+                "text": "qtrYear"
             },
             "designerId": "4ffe0591-119f-4ea9-bb02-d7f02f8e2ecf"
         },
@@ -38,7 +79,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "month",
+                "dataIndex": "month_number",
+                "format": "00",
                 "text": "Month"
             },
             "designerId": "e2a4bd86-e3fd-4f99-aaf2-316f9cf2c86d"
@@ -51,7 +93,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "date",
+                "dataIndex": "lastUpdated",
                 "text": "Date"
             },
             "designerId": "20bba2e7-a80b-46db-88cd-1bdeac348973"
@@ -64,9 +106,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "student_id",
+                "dataIndex": "studentId",
+                "format": "00000",
                 "hidden": true,
-                "text": "idstudent"
+                "text": "studentId"
             },
             "designerId": "6c402dec-0b36-4964-bae6-d0a398b1e408"
         },
@@ -83,19 +126,6 @@
             "designerId": "5eb5c92a-aeb5-40bb-89a4-2f7110277258"
         },
         {
-            "type": "Ext.grid.column.Number",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "hidden": true,
-                "text": "idmonthly_summary_ratings"
-            },
-            "designerId": "516138e7-73d8-4788-b330-ee3adb0abff3"
-        },
-        {
             "type": "Ext.grid.column.Boolean",
             "reference": {
                 "name": "columns",
@@ -103,9 +133,38 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "locked",
                 "text": "Locked?"
             },
             "designerId": "37278d86-1dc7-485c-a171-83c75fe3aa44"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "studentUserName",
+                "hidden": true,
+                "text": "studentUserName"
+            },
+            "designerId": "b2230a9f-d275-43ff-b2a9-faadd98815b9"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lastUpdated",
+                "format": "m/d/Y",
+                "text": "lastUpdated"
+            },
+            "designerId": "2aacf8c9-2f5a-409c-9f58-22ff4e90442a"
         }
     ]
 }

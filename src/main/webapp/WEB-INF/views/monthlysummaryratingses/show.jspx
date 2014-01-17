@@ -15,6 +15,6 @@
         <field:display field="locked" id="s_com_app_myschool_model_MonthlySummaryRatings_locked" object="${monthlysummaryratings}" z="z2W+xITcRIJ0KtV6t9m2ryvGXv4="/>
         <field:display date="true" dateTimePattern="${monthlySummaryRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_MonthlySummaryRatings_lastUpdated" object="${monthlysummaryratings}" z="OPmJum8u2uIs9KlY2+it6nY15Zg="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_MonthlySummaryRatings_whoUpdated" object="${monthlysummaryratings}" z="wgpCsnXOSsL5R/OZKdEtjZM3nA4="/>
-        <field:display field="quarters" id="s_com_app_myschool_model_MonthlySummaryRatings_quarters" object="${monthlysummaryratings}" z="gwdeUkx4fJFDGKsstk/tgQMj4OI="/>
+        <field:display field="quarter" id="s_com_app_myschool_model_MonthlySummaryRatings_quarter" object="${monthlysummaryratings}" z="D0gfOmfv1wzT154PjudkuJQAjYo="/>
     </page:show>
 </div>

@@ -105,12 +105,12 @@ privileged aspect MonthlySummaryRatings_Roo_JavaBean {
         this.whoUpdated = whoUpdated;
     }
     
-    public Quarter MonthlySummaryRatings.getQuarters() {
-        return this.quarters;
+    public Quarter MonthlySummaryRatings.getQuarter() {
+        return this.quarter;
     }
     
-    public void MonthlySummaryRatings.setQuarters(Quarter quarters) {
-        this.quarters = quarters;
+    public void MonthlySummaryRatings.setQuarter(Quarter quarter) {
+        this.quarter = quarter;
     }
     
 }

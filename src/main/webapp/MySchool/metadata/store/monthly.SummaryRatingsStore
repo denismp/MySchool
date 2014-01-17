@@ -1,0 +1,46 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "montlysummaryratingsstore",
+        "designer|userClassName": "monthly.SummaryRatingsStore",
+        "model": "monthly.SummaryRatings",
+        "storeId": "monthly.SummaryRatingsStore"
+    },
+    "designerId": "3a6649d5-2ee6-421d-ab65-98eed7c3cc38",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
+                "url": "monthlysummaryratingses"
+            },
+            "designerId": "8fd5f966-db30-46ff-9357-66ea3bb9ba26",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "620d94cc-5844-442d-8f19-7004a1a0ac78"
+                }
+            ]
+        }
+    ]
+}

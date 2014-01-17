@@ -80,5 +80,5 @@ public class MonthlyEvaluationRatings {
     private String whoUpdated;
        
     @ManyToOne
-    private Quarter quarters;
+    private Quarter quarter;
 }

@@ -1,0 +1,42 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "monthly.EvaluationRatingsStore",
+        "model": "monthly.EvaluationRatings",
+        "storeId": "monthly.EvaluationRatingsStore"
+    },
+    "designerId": "4f46f288-3f53-43dd-b6c0-2b0e2f27a41c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "monthlyevaluationratingses"
+            },
+            "designerId": "f09b64f6-b905-438b-836a-b2fd2687555d",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "48214823-b2d5-41a2-b603-f34b7efcd1ad"
+                }
+            ]
+        }
+    ]
+}
