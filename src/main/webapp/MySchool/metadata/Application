@@ -9,7 +9,8 @@
         "controllers": [
             "subject.SubjectsController",
             "bodiesofwork.MyController",
-            "daily.MyController"
+            "daily.MyController",
+            "monthly.SummaryRatingsController"
         ],
         "models": [
             "subject.SubjectsModel",

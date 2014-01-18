@@ -21,6 +21,7 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
         'Ext.tab.Tab',
         'Ext.form.Panel',
         'Ext.form.field.Number',
+        'Ext.toolbar.Toolbar',
         'Ext.form.field.TextArea'
     ],
 
@@ -39,11 +40,15 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     height: 100,
                     itemId: 'dailyhourstab',
                     title: 'Hours',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
                             xtype: 'form',
                             dock: 'top',
-                            id: 'hours',
+                            itemId: 'hours',
                             minHeight: 300,
                             autoScroll: true,
                             layout: 'auto',
@@ -51,8 +56,25 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                             items: [
                                 {
                                     xtype: 'numberfield',
+                                    disabled: true,
                                     id: 'dailydetailsformhournumberfield',
                                     labelWidth: 50
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailyhourstab',
+                                    text: 'Edit'
                                 }
                             ]
                         }
@@ -62,42 +84,127 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     xtype: 'panel',
                     itemId: 'dailyresourcesusedtab',
                     title: 'Resources Used',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
-                            xtype: 'textareafield',
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailyresourcesusedtab',
+                                    text: 'Edit'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'form',
                             dock: 'top',
-                            id: 'dailydetailsresoucesusedtextarea',
-                            minHeight: 273
+                            layout: 'fit',
+                            bodyPadding: 10,
+                            dockedItems: [
+                                {
+                                    xtype: 'textareafield',
+                                    dock: 'top',
+                                    disabled: true,
+                                    itemId: 'dailydetailsresoucesusedtextarea',
+                                    minHeight: 273
+                                }
+                            ]
                         }
                     ]
                 },
                 {
                     xtype: 'panel',
                     itemId: 'dailystudydetailstab',
-                    minHeight: 300,
                     title: 'Study Details',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
-                            xtype: 'textareafield',
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailystudydetailstab',
+                                    text: 'Edit'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'form',
                             dock: 'top',
-                            id: 'dailydetailsstudydetailstextarea',
-                            minHeight: 273
+                            layout: 'fit',
+                            bodyPadding: 10,
+                            dockedItems: [
+                                {
+                                    xtype: 'textareafield',
+                                    dock: 'top',
+                                    disabled: true,
+                                    id: 'dailydetailsstudydetailstextarea',
+                                    minHeight: 273
+                                }
+                            ]
                         }
                     ]
                 },
                 {
                     xtype: 'panel',
                     itemId: 'dailydetailsevaluationtab',
-                    minHeight: 300,
                     layout: 'fit',
                     bodyPadding: 10,
                     title: 'Evaluation',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
-                            xtype: 'textareafield',
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailydetailsevaluationtab',
+                                    text: 'Edit'
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'form',
                             dock: 'top',
-                            id: 'dailydetailsevaluationtextarea',
-                            minHeight: 273
+                            layout: 'fit',
+                            bodyPadding: 10,
+                            dockedItems: [
+                                {
+                                    xtype: 'textareafield',
+                                    dock: 'top',
+                                    disabled: true,
+                                    itemId: 'dailydetailsevaluationtextarea',
+                                    minHeight: 273
+                                }
+                            ]
                         }
                     ]
                 },
@@ -105,6 +212,10 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     xtype: 'panel',
                     itemId: 'dailydetailscorrectiontab',
                     title: 'Correction',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
                             xtype: 'form',
@@ -115,8 +226,25 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                                 {
                                     xtype: 'textareafield',
                                     dock: 'top',
-                                    id: 'dailydetailscorrectiontextarea',
+                                    disabled: true,
+                                    itemId: 'dailydetailscorrectiontextarea',
                                     minHeight: 273
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailydetailscorrectiontab',
+                                    text: 'Edit'
                                 }
                             ]
                         }
@@ -126,6 +254,10 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     xtype: 'panel',
                     itemId: 'dailydetailsactionstab',
                     title: 'Actions',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    },
                     dockedItems: [
                         {
                             xtype: 'form',
@@ -136,8 +268,25 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                                 {
                                     xtype: 'textareafield',
                                     dock: 'top',
-                                    id: 'dailydetailsactiontextarea',
+                                    disabled: true,
+                                    itemId: 'dailydetailsactiontextarea',
                                     minHeight: 273
+                                }
+                            ]
+                        },
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            ui: 'footer',
+                            items: [
+                                {
+                                    xtype: 'component',
+                                    flex: 1
+                                },
+                                {
+                                    xtype: 'button',
+                                    itemId: 'editdailydetailsactionstab',
+                                    text: 'Edit'
                                 }
                             ]
                         }

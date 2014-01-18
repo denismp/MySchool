@@ -79,9 +79,8 @@ public class Quarter {
     private Set<MonthlySummaryRatings> monthlysummaryratings = new HashSet<MonthlySummaryRatings>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
-    private Set<MonthlyEvaluationRatings> monthyevaluationratings = new HashSet<MonthlyEvaluationRatings>();
+    private Set<MonthlyEvaluationRatings> monthlyevaluationratings = new HashSet<MonthlyEvaluationRatings>();
 
     @NotNull
-    @Size(max = 5)
-    private String qtr_year;
+    private int qtr_year;
 }

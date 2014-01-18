@@ -29,6 +29,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
     width: 150,
     title: '[student name]',
     forceFit: true,
+    store: 'monthly.SummaryRatingsStore',
 
     initComponent: function() {
         var me = this;
@@ -36,34 +37,60 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
         Ext.applyIf(me, {
             columns: [
                 {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'year',
-                    text: 'Year'
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'id',
+                    text: 'id'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'subjName',
+                    text: 'subjName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrName',
+                    text: 'qtrName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrYear',
+                    text: 'qtrYear'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'month',
-                    text: 'Month'
+                    dataIndex: 'month_number',
+                    text: 'Month',
+                    format: '00'
                 },
                 {
                     xtype: 'datecolumn',
-                    dataIndex: 'date',
+                    dataIndex: 'lastUpdated',
                     text: 'Date'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    hidden: true,
-                    text: 'idmonthly_summary_ratings'
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '00000'
                 },
                 {
                     xtype: 'booleancolumn',
+                    dataIndex: 'locked',
                     text: 'Locked?'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
+                },
+                {
+                    xtype: 'datecolumn',
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated',
+                    format: 'm/d/Y'
                 }
             ],
             viewConfig: {

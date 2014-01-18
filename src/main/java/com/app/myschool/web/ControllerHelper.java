@@ -185,6 +185,7 @@ public class ControllerHelper {
 					records = svl_;
 				}
 			}
+			/*
 			else if (false && myClass.equals(SubjectView.class) && studentName_ != null) {
 				List<SubjectView> svl_ = new ArrayList<SubjectView>();
 				EntityManager em = Student.entityManager();
@@ -228,7 +229,7 @@ public class ControllerHelper {
 					sv_.setQtrName(results.get(i_)[j_++].toString());
 					sv_.setQtrVersion(Integer.valueOf(results.get(i_)[j_++].toString()));
 					sv_.setQtrWhoUpdated(results.get(i_)[j_++].toString());
-					sv_.setQtrYear(results.get(i_)[j_++].toString());
+					sv_.setQtrYear(Integer.valueOf(results.get(i_)[j_++].toString()));
 					
 					sv_.setStudentName(studentName_);
 
@@ -244,8 +245,10 @@ public class ControllerHelper {
 
 					svl_.add(sv_);
 				}
-				records = svl_;
-			} else if (myClass.equals(Student.class) && studentName_ != null) {
+				records = svl_;				
+			} 
+			*/
+			else if (myClass.equals(Student.class) && studentName_ != null) {
 				List<HashMap<String, Object>> hl_ = new ArrayList<HashMap<String, Object>>();
 				HashMap<String, Object> hm_ = null;
 

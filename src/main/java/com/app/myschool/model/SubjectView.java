@@ -49,5 +49,5 @@ public class SubjectView {
 
 	private Date qtrLastUpdated;
 
-	private String qtrYear;
+	private Integer qtrYear;
 }

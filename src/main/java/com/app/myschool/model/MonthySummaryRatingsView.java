@@ -29,7 +29,7 @@ public class MonthySummaryRatingsView {
 	private String whoUpdated;
 	private Long qtrId;
 	private String qtrName;
-	private String qtrYear;
+	private Integer qtrYear;
 	private Long studentId;
 	private String studentUserName;
 	private Long subjId;

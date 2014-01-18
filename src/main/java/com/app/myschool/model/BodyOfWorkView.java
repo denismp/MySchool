@@ -44,5 +44,5 @@ public class BodyOfWorkView {
 	
 	private String qtrName;
 
-	private String qtrYear;
+	private Integer qtrYear;
 }

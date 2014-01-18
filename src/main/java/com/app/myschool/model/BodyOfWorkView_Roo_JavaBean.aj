@@ -144,11 +144,11 @@ privileged aspect BodyOfWorkView_Roo_JavaBean {
         this.qtrName = qtrName;
     }
     
-    public String BodyOfWorkView.getQtrYear() {
+    public Integer BodyOfWorkView.getQtrYear() {
         return this.qtrYear;
     }
     
-    public void BodyOfWorkView.setQtrYear(String qtrYear) {
+    public void BodyOfWorkView.setQtrYear(Integer qtrYear) {
         this.qtrYear = qtrYear;
     }
     

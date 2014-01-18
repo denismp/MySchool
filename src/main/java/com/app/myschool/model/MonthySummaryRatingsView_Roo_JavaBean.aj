@@ -128,11 +128,11 @@ privileged aspect MonthySummaryRatingsView_Roo_JavaBean {
         this.qtrName = qtrName;
     }
     
-    public String MonthySummaryRatingsView.getQtrYear() {
+    public Integer MonthySummaryRatingsView.getQtrYear() {
         return this.qtrYear;
     }
     
-    public void MonthySummaryRatingsView.setQtrYear(String qtrYear) {
+    public void MonthySummaryRatingsView.setQtrYear(Integer qtrYear) {
         this.qtrYear = qtrYear;
     }
     

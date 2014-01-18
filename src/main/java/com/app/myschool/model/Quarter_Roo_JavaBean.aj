@@ -120,19 +120,19 @@ privileged aspect Quarter_Roo_JavaBean {
         this.monthlysummaryratings = monthlysummaryratings;
     }
     
-    public Set<MonthlyEvaluationRatings> Quarter.getMonthyevaluationratings() {
-        return this.monthyevaluationratings;
+    public Set<MonthlyEvaluationRatings> Quarter.getMonthlyevaluationratings() {
+        return this.monthlyevaluationratings;
     }
     
-    public void Quarter.setMonthyevaluationratings(Set<MonthlyEvaluationRatings> monthyevaluationratings) {
-        this.monthyevaluationratings = monthyevaluationratings;
+    public void Quarter.setMonthlyevaluationratings(Set<MonthlyEvaluationRatings> monthlyevaluationratings) {
+        this.monthlyevaluationratings = monthlyevaluationratings;
     }
     
-    public String Quarter.getQtr_year() {
+    public int Quarter.getQtr_year() {
         return this.qtr_year;
     }
     
-    public void Quarter.setQtr_year(String qtr_year) {
+    public void Quarter.setQtr_year(int qtr_year) {
         this.qtr_year = qtr_year;
     }
     

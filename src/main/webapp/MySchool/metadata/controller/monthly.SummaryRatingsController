@@ -1,0 +1,347 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlysummaryratingscontroller",
+        "designer|userClassName": "monthly.SummaryRatingsController",
+        "models": [
+            "monthly.SummaryRatings"
+        ],
+        "stores": [
+            "monthly.SummaryRatingsStore"
+        ]
+    },
+    "designerId": "1498b0c6-fccd-43d7-ac5c-46f2ee7d0be5",
+    "cn": [
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyDetailsTabPanel",
+                "selector": "monthlydetailstabpanel"
+            },
+            "designerId": "6d707be4-b0c9-40d3-8fc4-363dd7168757"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyFeeliingsTabPanel",
+                "selector": "monthlyfeelingstabpanel"
+            },
+            "designerId": "05143a08-59ac-4355-8965-8c33921adef0"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyReflectionTabPanel",
+                "selector": "monthlyreflectiontabpanel"
+            },
+            "designerId": "88426b1b-8ae8-44f4-a1fe-5426b1404e8b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyPatternsOfCorrectionsTabPanel",
+                "selector": "monthlypatternsofcorrectionstabpanel"
+            },
+            "designerId": "e09d6cdd-fd6a-4883-af7e-67b7a4f677a7"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyEffectivenessOfActionsTabPanel",
+                "selector": "monthlyeffectivenessofactionstabpanel"
+            },
+            "designerId": "648e924b-d1eb-4ab0-942d-a61a7cbea6d5"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyActionsResultsTabPanel",
+                "selector": "monthlyactionsresultstabpanel"
+            },
+            "designerId": "b4b413d0-9e09-4234-bde5-27763e77eb9c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyRelizationsTabPanel",
+                "selector": "monthlyrealizationstabpanel"
+            },
+            "designerId": "b2713fd8-4816-44eb-96c2-44cbcaf00019"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyPlannedChangesTabPanel",
+                "selector": "monthlyplannedchangestabpanel"
+            },
+            "designerId": "254fd10c-c754-4e0c-9c09-9c7ae99ea5d3"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyCommentsTabPanel",
+                "selector": "monthlycommentstabpanel"
+            },
+            "designerId": "befc0581-b8ec-4ec2-ab5b-775a90d8d555"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyfeelingstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyfeelingstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "11a7d74a-a7e4-413c-929a-5dd8ffaf0740"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyreflectiontabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyreflectiontabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "bd86bda0-5e7f-4775-a162-997181921e3a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlypatternsofcorrectionstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlypatternsofcorrectionstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "c189731f-ea13-46ca-987f-2f01725c92a1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyeffectivenessofactionstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyeffectivenessofactionstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "81b3bf45-9f61-4eab-b2f1-e889ed90e91b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyactionresultstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyactionresultstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "183b76b4-624c-4927-b91d-3dcbffafd811"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyrealizationstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyrealizationstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "5a64304b-1ddc-4665-8475-6d2f4e513d9f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyplannedchangestabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyplannedchangestabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "775ebe8a-f033-4092-a026-850abc0898d6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlycommentstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlycommentstabpanelShow",
+                "implHandler": [
+                    ""
+                ],
+                "name": "show",
+                "scope": "me"
+            },
+            "designerId": "f6bba8b6-2c1c-4cf8-b2b6-bdfd92d00bcf"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlysummarygridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onMonthlysummarygridpanelSelectionChange",
+                "implHandler": [
+                    ""
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "designerId": "ba848037-a799-4f9b-933b-f2040836d9d5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlysummarydetailspanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlysummarydetailspanelActivate",
+                "implHandler": [
+                    ""
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "designerId": "515ae10e-ca10-4ce3-9425-cede4060062a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyfeelingstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyfeelingstabpanelDeactivate",
+                "implHandler": [
+                    ""
+                ],
+                "name": "deactivate",
+                "scope": "me"
+            },
+            "designerId": "6769b9bb-742a-440d-af59-9cf7bf7b383d"
+        }
+    ]
+}

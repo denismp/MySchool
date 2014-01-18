@@ -168,11 +168,11 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.qtrLastUpdated = qtrLastUpdated;
     }
     
-    public String SubjectView.getQtrYear() {
+    public Integer SubjectView.getQtrYear() {
         return this.qtrYear;
     }
     
-    public void SubjectView.setQtrYear(String qtrYear) {
+    public void SubjectView.setQtrYear(Integer qtrYear) {
         this.qtrYear = qtrYear;
     }
     

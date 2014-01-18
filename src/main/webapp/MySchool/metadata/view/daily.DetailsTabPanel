@@ -37,6 +37,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "bf275acc-c115-4bb3-8baa-b31fb023fe89"
                 },
                 {
@@ -51,7 +56,8 @@
                         "bodyPadding": 10,
                         "dock": "top",
                         "height": null,
-                        "id": "hours",
+                        "id": null,
+                        "itemId": "hours",
                         "layout": "auto",
                         "minHeight": 300,
                         "title": null
@@ -66,6 +72,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "disabled": true,
                                 "dock": null,
                                 "fieldLabel": null,
                                 "id": "dailydetailsformhournumberfield",
@@ -73,6 +80,49 @@
                                 "minHeight": null
                             },
                             "designerId": "8b5b0f93-31ca-4369-8ddb-02c4b96b1fa3"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
+                    },
+                    "designerId": "acb95b00-7a4d-4f9e-8d16-e5894adf0812",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "65b8e799-dc6e-47eb-8ad2-23e1c22ef358"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailyhourstab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "ff6b22a9-4682-4d5e-bb23-7f4cf40da409"
                         }
                     ]
                 }
@@ -100,24 +150,89 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "maxHeight": null
+                        "maxHeight": null,
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "fdecb6eb-1c48-491e-ba93-40504740bb07"
                 },
                 {
-                    "type": "Ext.form.field.TextArea",
+                    "type": "Ext.toolbar.Toolbar",
                     "reference": {
                         "name": "dockedItems",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": "dailydetailsresoucesusedtextarea",
-                        "minHeight": 273
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
                     },
-                    "designerId": "63010124-a777-4175-ab3c-3ab2795eb1d7"
+                    "designerId": "a0f0c7a4-43ca-4681-a9d2-d03feb37c137",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "f7a5f906-a8b2-4e3f-9dc3-01685b57f31c"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailyresourcesusedtab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "7b126433-d49a-4b9b-85f4-4018d41f9f90"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "layout": "fit",
+                        "title": null
+                    },
+                    "designerId": "536db7b5-c6c9-4165-883f-40c745afbafb",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "dock": "top",
+                                "fieldLabel": null,
+                                "id": null,
+                                "itemId": "dailydetailsresoucesusedtextarea",
+                                "minHeight": 273
+                            },
+                            "designerId": "63010124-a777-4175-ab3c-3ab2795eb1d7"
+                        }
+                    ]
                 }
             ]
         },
@@ -130,7 +245,7 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "dailystudydetailstab",
-                "minHeight": 300,
+                "minHeight": null,
                 "title": "Study Details"
             },
             "designerId": "c9d0673e-6d9e-482e-b60b-f26b6d09ffb9",
@@ -142,22 +257,88 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "180aa12a-8f4b-4870-b558-c2c70656e12e"
                 },
                 {
-                    "type": "Ext.form.field.TextArea",
+                    "type": "Ext.toolbar.Toolbar",
                     "reference": {
                         "name": "dockedItems",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": "dailydetailsstudydetailstextarea",
-                        "minHeight": 273
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
                     },
-                    "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
+                    "designerId": "6df57772-16a9-45cd-b471-35cf57162833",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "8bc1fcf7-9621-4a45-9a32-976879a11f2e"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailystudydetailstab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "fb2779d1-8f6f-44da-8700-59649a0328a5"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "layout": "fit",
+                        "title": null
+                    },
+                    "designerId": "1ca13718-e785-4fe5-b4ad-68034a702c8c",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "dock": "top",
+                                "fieldLabel": null,
+                                "id": "dailydetailsstudydetailstextarea",
+                                "minHeight": 273
+                            },
+                            "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
+                        }
+                    ]
                 }
             ]
         },
@@ -173,7 +354,7 @@
                 "height": null,
                 "itemId": "dailydetailsevaluationtab",
                 "layout": "fit",
-                "minHeight": 300,
+                "minHeight": null,
                 "title": "Evaluation"
             },
             "designerId": "6f41f03f-1f0e-4ad9-83e9-ba3e606ab13f",
@@ -185,22 +366,89 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "cbca7173-b804-47aa-b07b-40448ac54442"
                 },
                 {
-                    "type": "Ext.form.field.TextArea",
+                    "type": "Ext.toolbar.Toolbar",
                     "reference": {
                         "name": "dockedItems",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": "dailydetailsevaluationtextarea",
-                        "minHeight": 273
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
                     },
-                    "designerId": "4888bb3e-48cc-4e5e-8bca-72875f94bcf3"
+                    "designerId": "0081db40-731f-4700-ac04-f89a92f0fde1",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "98dfc284-1322-4f27-8446-9f5036d029ca"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailydetailsevaluationtab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "58c483ae-3ccc-46f6-8e41-5a7f2733cac9"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "dock": "top",
+                        "layout": "fit",
+                        "title": null
+                    },
+                    "designerId": "434f2cb1-3f3e-4849-98f3-e9c53a06fce1",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "disabled": true,
+                                "dock": "top",
+                                "fieldLabel": null,
+                                "id": null,
+                                "itemId": "dailydetailsevaluationtextarea",
+                                "minHeight": 273
+                            },
+                            "designerId": "4888bb3e-48cc-4e5e-8bca-72875f94bcf3"
+                        }
+                    ]
                 }
             ]
         },
@@ -224,6 +472,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "edecb977-d982-4aae-8ad5-f0344e7ebf75"
                 },
                 {
@@ -249,12 +502,57 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "disabled": true,
                                 "dock": "top",
                                 "fieldLabel": null,
-                                "id": "dailydetailscorrectiontextarea",
+                                "id": null,
+                                "itemId": "dailydetailscorrectiontextarea",
                                 "minHeight": 273
                             },
                             "designerId": "278bad8f-3d7a-4d3a-9c9f-65e98e93eb2f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
+                    },
+                    "designerId": "8b1af43c-4ea2-4653-898a-c0c95dabd34b",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "3d64b4c2-1827-44d1-af46-97f30fbac67e"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailydetailscorrectiontab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "b5d75205-e96c-48e0-b23c-cb0f4729a113"
                         }
                     ]
                 }
@@ -280,6 +578,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "5e50beab-a1be-4eab-9d54-859bc13d6864"
                 },
                 {
@@ -305,12 +608,57 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "disabled": true,
                                 "dock": "top",
                                 "fieldLabel": null,
-                                "id": "dailydetailsactiontextarea",
+                                "id": null,
+                                "itemId": "dailydetailsactiontextarea",
                                 "minHeight": 273
                             },
                             "designerId": "320279a1-83da-40db-ae45-b1cda9799201"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "defaults": null,
+                        "designer|uiInterfaceName": "footer",
+                        "dock": "bottom",
+                        "ui": "footer"
+                    },
+                    "designerId": "29e45917-43de-44d4-a714-d5e08dba38e9",
+                    "cn": [
+                        {
+                            "type": "Ext.Component",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1
+                            },
+                            "designerId": "01ad9884-699c-48f4-8d95-6161a94be40b"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "itemId": "editdailydetailsactionstab",
+                                "layout|flex": null,
+                                "text": "Edit"
+                            },
+                            "designerId": "3cbc016a-25c2-48f6-9e73-d42523da4315"
                         }
                     ]
                 }

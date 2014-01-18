@@ -3,9 +3,6 @@ package com.app.myschool.web;
 import java.util.Map;
 
 import com.app.myschool.model.MonthlySummaryRatings;
-import com.app.myschool.model.MonthySummaryRatingsView;
-import com.app.myschool.model.Student;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;

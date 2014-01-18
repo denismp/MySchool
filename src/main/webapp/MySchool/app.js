@@ -100,7 +100,8 @@ Ext.application({
     controllers: [
         'subject.SubjectsController',
         'bodiesofwork.MyController',
-        'daily.MyController'
+        'daily.MyController',
+        'monthly.SummaryRatingsController'
     ],
     name: 'MySchool',
 
