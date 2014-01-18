@@ -35,7 +35,7 @@ Ext.define('MySchool.model.quarters.QuarterModel', {
         },
         {
             name: 'qtr_year',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'gradeType',

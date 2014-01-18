@@ -51,7 +51,7 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
         },
         {
             name: 'qtrYear',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'workName',

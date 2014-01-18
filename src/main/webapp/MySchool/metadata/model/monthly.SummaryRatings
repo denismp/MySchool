@@ -213,7 +213,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "qtrYear",
-                "type": "string"
+                "type": "int"
             },
             "designerId": "f4c3244c-80f1-4f91-a105-b27c21e15cb2"
         },

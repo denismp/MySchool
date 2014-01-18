@@ -104,7 +104,7 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'qtrYear',
-            type: 'string'
+            type: 'int'
         }
     ]
 });

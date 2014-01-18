@@ -82,7 +82,7 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
         },
         {
             name: 'qtrYear',
-            type: 'string'
+            type: 'int'
         },
         {
             name: 'studentId'
