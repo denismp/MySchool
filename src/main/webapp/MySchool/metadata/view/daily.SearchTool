@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailysearchtool",
+        "designer|userClassName": "daily.SearchTool",
+        "id": null,
+        "itemId": "dailysearchtool",
+        "tooltip": "Search",
+        "type": "search"
+    },
+    "designerId": "ec8690d7-56bb-47c4-a0d0-c5800c79cfee",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add search handler code here."
+                ]
+            },
+            "designerId": "b9a6eaf3-ba91-4337-9ab6-0cb873c4473e"
+        }
+    ]
+}

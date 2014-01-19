@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailylocktool",
+        "designer|userClassName": "daily.LockTool",
+        "id": null,
+        "itemId": "dailylocktool",
+        "tooltip": "Lock?",
+        "type": "pin"
+    },
+    "designerId": "89a1ee17-4852-4444-9814-0d266603854d",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add lock handler code here."
+                ]
+            },
+            "designerId": "b5aac943-80fb-45b2-b24d-dd0f7f9696ec"
+        }
+    ]
+}

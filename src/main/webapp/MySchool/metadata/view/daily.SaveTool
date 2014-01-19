@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailysavetool",
+        "designer|userClassName": "daily.SaveTool",
+        "id": null,
+        "itemId": "dailysavetool",
+        "tooltip": "Save",
+        "type": "save"
+    },
+    "designerId": "b757e584-9794-46a9-8e02-66353b5755bb",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// Add save/udate handler code here."
+                ]
+            },
+            "designerId": "2f64d6fe-fadf-4290-91d0-71707acaf5ec"
+        }
+    ]
+}

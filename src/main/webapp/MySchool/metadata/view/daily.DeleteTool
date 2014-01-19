@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailydeletetool",
+        "designer|userClassName": "daily.DeleteTool",
+        "id": null,
+        "itemId": "dailydeletetool",
+        "tooltip": "Delete",
+        "type": "minus"
+    },
+    "designerId": "a32ff741-a13e-438d-8972-a53fb41f833e",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// Add delete handler code here."
+                ]
+            },
+            "designerId": "f019bdee-7ea4-44f4-a37b-df8dabfe8285"
+        }
+    ]
+}

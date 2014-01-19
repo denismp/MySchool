@@ -67,6 +67,30 @@ Ext.define('MySchool.controller.daily.MyController', {
 
     },
 
+    onDailyrefreshtoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailysearchtoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailynewtoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailysavetoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailydeletetoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailylocktoolClick: function(tool, e, eOpts) {
+
+    },
+
     buttonHandler: function(button, e, eOpts) {
         debugger;
         window.console.log(button);
@@ -166,6 +190,24 @@ Ext.define('MySchool.controller.daily.MyController', {
             },
             "#dailydetailscorrectiontextarea": {
                 blur: this.onDailydetailscorrectiontextareaBlur
+            },
+            "#dailyrefreshtool": {
+                click: this.onDailyrefreshtoolClick
+            },
+            "#dailysearchtool": {
+                click: this.onDailysearchtoolClick
+            },
+            "#dailynewtool": {
+                click: this.onDailynewtoolClick
+            },
+            "#dailysavetool": {
+                click: this.onDailysavetoolClick
+            },
+            "#dailydeletetool": {
+                click: this.onDailydeletetoolClick
+            },
+            "#dailylocktool": {
+                click: this.onDailylocktoolClick
             }
         });
     }

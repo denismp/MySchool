@@ -331,6 +331,120 @@
                 ]
             },
             "designerId": "7cdfdf47-4058-452e-9f13-c1402aa55b2f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailyrefreshtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailyrefreshtoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "fe778c87-7a5e-442a-92b7-b8046bcbbd66"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailysearchtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailysearchtoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "9290a015-8d82-4806-9b1a-223203da7f00"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailynewtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailynewtoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "91893362-d4ef-4433-ac0e-03ced7607173"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailysavetool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailysavetoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "0bfb34a3-a4f5-496e-b649-8eef8d54a483"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailydeletetool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailydeletetoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "e7f7746f-f711-41dd-b520-7250834f32cb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailylocktool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onDailylocktoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "fd2a4fd4-698c-4c72-b17a-27aaafb7bffa"
         }
     ]
 }

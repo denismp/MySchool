@@ -101,7 +101,13 @@ Ext.application({
         'daily.StudyDetailsTabPanel',
         'daily.EvaluationsTabPanel',
         'daily.CorrectionsTabPanel',
-        'daily.ActionsTabPanel'
+        'daily.ActionsTabPanel',
+        'daily.RefreshTool',
+        'daily.SearchTool',
+        'daily.NewTool',
+        'daily.SaveTool',
+        'daily.DeleteTool',
+        'daily.LockTool'
     ],
     controllers: [
         'subject.SubjectsController',

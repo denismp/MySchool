@@ -18,6 +18,9 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
     alias: 'widget.monthlyfeelingstabpanel',
 
     requires: [
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button',
+        'Ext.form.Panel',
         'Ext.form.field.TextArea'
     ],
 
@@ -31,10 +34,37 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
         Ext.applyIf(me, {
             dockedItems: [
                 {
-                    xtype: 'textareafield',
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'component',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'editfeelingstextbox',
+                            text: 'Edit'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'form',
                     dock: 'top',
-                    itemId: 'feelingstextbox',
-                    minHeight: 320
+                    minHeight: 273,
+                    autoScroll: true,
+                    layout: 'fit',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            disabled: true,
+                            itemId: 'feelingstextbox',
+                            minHeight: 273
+                        }
+                    ]
                 }
             ]
         });

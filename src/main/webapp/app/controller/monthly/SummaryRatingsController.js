@@ -63,48 +63,11 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         }
     ],
 
-    onMonthlyfeelingstabpanelShow: function(component, eOpts) {
-        //debugger;
-        console.log( "onMonthlyfeelingstabpanelShow");
-    },
-
-    onMonthlyreflectiontabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlypatternsofcorrectionstabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlyeffectivenessofactionstabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlyactionresultstabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlyrealizationstabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlyplannedchangestabpanelShow: function(component, eOpts) {
-
-    },
-
-    onMonthlycommentstabpanelShow: function(component, eOpts) {
-
-    },
-
     onMonthlysummarygridpanelSelectionChange: function(model, selected, eOpts) {
 
     },
 
     onMonthlysummarydetailspanelActivate: function(component, eOpts) {
-
-    },
-
-    onMonthlyfeelingstabpanelDeactivate: function(component, eOpts) {
 
     },
 
@@ -115,37 +78,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     init: function(application) {
         this.control({
-            "#monthlyfeelingstabpanel": {
-                show: this.onMonthlyfeelingstabpanelShow,
-                deactivate: this.onMonthlyfeelingstabpanelDeactivate,
-                activate: this.onMonthlyfeelingstabpanelActivate
-            },
-            "#monthlyreflectiontabpanel": {
-                show: this.onMonthlyreflectiontabpanelShow
-            },
-            "#monthlypatternsofcorrectionstabpanel": {
-                show: this.onMonthlypatternsofcorrectionstabpanelShow
-            },
-            "#monthlyeffectivenessofactionstabpanel": {
-                show: this.onMonthlyeffectivenessofactionstabpanelShow
-            },
-            "#monthlyactionresultstabpanel": {
-                show: this.onMonthlyactionresultstabpanelShow
-            },
-            "#monthlyrealizationstabpanel": {
-                show: this.onMonthlyrealizationstabpanelShow
-            },
-            "#monthlyplannedchangestabpanel": {
-                show: this.onMonthlyplannedchangestabpanelShow
-            },
-            "#monthlycommentstabpanel": {
-                show: this.onMonthlycommentstabpanelShow
-            },
             "#monthlysummarygridpanel": {
                 selectionchange: this.onMonthlysummarygridpanelSelectionChange
             },
             "#monthlysummarydetailspanel": {
                 activate: this.onMonthlysummarydetailspanelActivate
+            },
+            "#monthlyfeelingstabpanel": {
+                activate: this.onMonthlyfeelingstabpanelActivate
             }
         });
     }

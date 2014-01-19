@@ -34,23 +34,6 @@
                     },
                     "codeClass": null,
                     "designerId": "e5da74b7-8c26-42bb-9d1c-dc98259860f6"
-                },
-                {
-                    "type": "basiceventbinding",
-                    "reference": {
-                        "name": "listeners",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fn": "onMonthlyfeelingstabpanelBlur",
-                        "implHandler": [
-                            "console.log('onMonthlyfeellingstabpanelBlur');"
-                        ],
-                        "name": "blur",
-                        "scope": "me"
-                    },
-                    "designerId": "70e0da37-0a2e-4aac-ae53-b28bc3e65636"
                 }
             ]
         },

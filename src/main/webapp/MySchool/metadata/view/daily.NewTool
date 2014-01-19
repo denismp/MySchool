@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dailynewtool",
+        "designer|userClassName": "daily.NewTool",
+        "id": null,
+        "itemId": "dailynewtool",
+        "tooltip": "New",
+        "type": "plus"
+    },
+    "designerId": "a30de5fe-be45-40af-b437-a1c675ff0118",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add new/insert handler code here."
+                ]
+            },
+            "designerId": "11ca0478-1964-446d-9882-03db5d7174d3"
+        }
+    ]
+}
