@@ -18,11 +18,14 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
     alias: 'widget.dailydetailstabpanel',
 
     requires: [
-        'Ext.tab.Tab',
-        'Ext.form.Panel',
-        'Ext.form.field.Number',
-        'Ext.toolbar.Toolbar',
-        'Ext.form.field.TextArea'
+        'MySchool.view.daily.DailyHoursTabPanel',
+        'MySchool.view.daily.ResourcesUsedTabPanel',
+        'MySchool.view.daily.StudyDetailsTabPanel',
+        'MySchool.view.daily.EvaluationsTabPanel',
+        'MySchool.view.daily.CorrectionsTabPanel',
+        'MySchool.view.daily.ActionsTabPanel',
+        'Ext.panel.Panel',
+        'Ext.tab.Tab'
     ],
 
     height: 300,
@@ -36,261 +39,22 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'panel',
-                    height: 100,
-                    itemId: 'dailyhourstab',
-                    title: 'Hours',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            itemId: 'hours',
-                            minHeight: 300,
-                            autoScroll: true,
-                            layout: 'auto',
-                            bodyPadding: 10,
-                            items: [
-                                {
-                                    xtype: 'numberfield',
-                                    disabled: true,
-                                    id: 'dailydetailsformhournumberfield',
-                                    labelWidth: 50
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailyhourstab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailyhourstabpanel'
                 },
                 {
-                    xtype: 'panel',
-                    itemId: 'dailyresourcesusedtab',
-                    title: 'Resources Used',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailyresourcesusedtab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            layout: 'fit',
-                            bodyPadding: 10,
-                            dockedItems: [
-                                {
-                                    xtype: 'textareafield',
-                                    dock: 'top',
-                                    disabled: true,
-                                    itemId: 'dailydetailsresoucesusedtextarea',
-                                    minHeight: 273
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailyresourcesusedtabpanel'
                 },
                 {
-                    xtype: 'panel',
-                    itemId: 'dailystudydetailstab',
-                    title: 'Study Details',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailystudydetailstab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            layout: 'fit',
-                            bodyPadding: 10,
-                            dockedItems: [
-                                {
-                                    xtype: 'textareafield',
-                                    dock: 'top',
-                                    disabled: true,
-                                    id: 'dailydetailsstudydetailstextarea',
-                                    minHeight: 273
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailystudydetailstabpanel'
                 },
                 {
-                    xtype: 'panel',
-                    itemId: 'dailydetailsevaluationtab',
-                    layout: 'fit',
-                    bodyPadding: 10,
-                    title: 'Evaluation',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailydetailsevaluationtab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            layout: 'fit',
-                            bodyPadding: 10,
-                            dockedItems: [
-                                {
-                                    xtype: 'textareafield',
-                                    dock: 'top',
-                                    disabled: true,
-                                    itemId: 'dailydetailsevaluationtextarea',
-                                    minHeight: 273
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailyevaluationstabpanel'
                 },
                 {
-                    xtype: 'panel',
-                    itemId: 'dailydetailscorrectiontab',
-                    title: 'Correction',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            layout: 'fit',
-                            bodyPadding: 10,
-                            dockedItems: [
-                                {
-                                    xtype: 'textareafield',
-                                    dock: 'top',
-                                    disabled: true,
-                                    itemId: 'dailydetailscorrectiontextarea',
-                                    minHeight: 273
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailydetailscorrectiontab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailycorrectionstabpanel'
                 },
                 {
-                    xtype: 'panel',
-                    itemId: 'dailydetailsactionstab',
-                    title: 'Actions',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    },
-                    dockedItems: [
-                        {
-                            xtype: 'form',
-                            dock: 'top',
-                            layout: 'fit',
-                            bodyPadding: 10,
-                            dockedItems: [
-                                {
-                                    xtype: 'textareafield',
-                                    dock: 'top',
-                                    disabled: true,
-                                    itemId: 'dailydetailsactiontextarea',
-                                    minHeight: 273
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'toolbar',
-                            dock: 'bottom',
-                            ui: 'footer',
-                            items: [
-                                {
-                                    xtype: 'component',
-                                    flex: 1
-                                },
-                                {
-                                    xtype: 'button',
-                                    itemId: 'editdailydetailsactionstab',
-                                    text: 'Edit'
-                                }
-                            ]
-                        }
-                    ]
+                    xtype: 'dailyactionstabpanel'
                 }
             ]
         });

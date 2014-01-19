@@ -42,7 +42,13 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'monthlyfeelingstabpanel'
+                    xtype: 'monthlyfeelingstabpanel',
+                    listeners: {
+                        blur: {
+                            fn: me.onMonthlyfeelingstabpanelBlur,
+                            scope: me
+                        }
+                    }
                 },
                 {
                     xtype: 'monthlyrelectionstabpanel'
@@ -69,6 +75,10 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
         });
 
         me.callParent(arguments);
+    },
+
+    onMonthlyfeelingstabpanelBlur: function(component, e, eOpts) {
+        console.log('onMonthlyfeellingstabpanelBlur');
     }
 
 });

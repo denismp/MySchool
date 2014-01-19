@@ -146,7 +146,8 @@
                 "designer|targetType": "Ext.panel.Panel",
                 "fn": "onMonthlyfeelingstabpanelShow",
                 "implHandler": [
-                    ""
+                    "//debugger;",
+                    "console.log( \"onMonthlyfeelingstabpanelShow\");"
                 ],
                 "name": "show",
                 "scope": "me"
@@ -342,6 +343,26 @@
                 "scope": "me"
             },
             "designerId": "6769b9bb-742a-440d-af59-9cf7bf7b383d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlyfeelingstabpanel",
+                "designer|targetType": "Ext.panel.Panel",
+                "fn": "onMonthlyfeelingstabpanelActivate",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log( \"onMonthlyfeelingstabpanelActivate\");"
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "designerId": "b5f6c780-a29e-4b7f-9b85-dd1c498691eb"
         }
     ]
 }

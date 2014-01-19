@@ -95,7 +95,13 @@ Ext.application({
         'bodiesofwork.NewTool',
         'bodiesofwork.DeleteTool',
         'bodiesofwork.SaveTool',
-        'bodiesofwork.LockTool'
+        'bodiesofwork.LockTool',
+        'daily.DailyHoursTabPanel',
+        'daily.ResourcesUsedTabPanel',
+        'daily.StudyDetailsTabPanel',
+        'daily.EvaluationsTabPanel',
+        'daily.CorrectionsTabPanel',
+        'daily.ActionsTabPanel'
     ],
     controllers: [
         'subject.SubjectsController',

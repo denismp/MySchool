@@ -64,7 +64,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     ],
 
     onMonthlyfeelingstabpanelShow: function(component, eOpts) {
-
+        //debugger;
+        console.log( "onMonthlyfeelingstabpanelShow");
     },
 
     onMonthlyreflectiontabpanelShow: function(component, eOpts) {
@@ -107,11 +108,17 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     },
 
+    onMonthlyfeelingstabpanelActivate: function(component, eOpts) {
+        //debugger;
+        console.log( "onMonthlyfeelingstabpanelActivate");
+    },
+
     init: function(application) {
         this.control({
             "#monthlyfeelingstabpanel": {
                 show: this.onMonthlyfeelingstabpanelShow,
-                deactivate: this.onMonthlyfeelingstabpanelDeactivate
+                deactivate: this.onMonthlyfeelingstabpanelDeactivate,
+                activate: this.onMonthlyfeelingstabpanelActivate
             },
             "#monthlyreflectiontabpanel": {
                 show: this.onMonthlyreflectiontabpanelShow
