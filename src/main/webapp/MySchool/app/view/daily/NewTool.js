@@ -25,10 +25,6 @@ Ext.define('MySchool.view.daily.NewTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // add new/insert handler code here.
     }
 
 });

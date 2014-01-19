@@ -13,28 +13,5 @@
         "tooltip": "Refresh",
         "type": "refresh"
     },
-    "designerId": "c1c1938d-1838-4b7e-8032-af43f2bf008c",
-    "cn": [
-        {
-            "type": "fixedfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "event",
-                    "toolEl",
-                    "owner",
-                    "tool"
-                ],
-                "fn": "handler",
-                "implHandler": [
-                    "// Add refresh handler code here.  Use example from chapter 2 of book."
-                ]
-            },
-            "designerId": "92b8017d-1b39-4815-8d8b-2495aea480aa"
-        }
-    ]
+    "designerId": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
 }

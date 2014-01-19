@@ -13,28 +13,5 @@
         "tooltip": "Delete",
         "type": "minus"
     },
-    "designerId": "413f8b4e-5e22-482d-87aa-3b770602a60b",
-    "cn": [
-        {
-            "type": "fixedfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "event",
-                    "toolEl",
-                    "owner",
-                    "tool"
-                ],
-                "fn": "handler",
-                "implHandler": [
-                    "// Add delete handler code here."
-                ]
-            },
-            "designerId": "34d77712-c821-4f09-9dfb-4572873216a2"
-        }
-    ]
+    "designerId": "413f8b4e-5e22-482d-87aa-3b770602a60b"
 }

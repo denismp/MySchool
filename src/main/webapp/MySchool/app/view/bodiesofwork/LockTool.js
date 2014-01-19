@@ -25,10 +25,6 @@ Ext.define('MySchool.view.bodiesofwork.LockTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // add lock handler code here.
     }
 
 });

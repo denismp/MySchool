@@ -25,10 +25,6 @@ Ext.define('MySchool.view.bodiesofwork.SearchTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // add search handler code here.
     }
 
 });

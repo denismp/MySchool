@@ -190,6 +190,120 @@
                 "scope": "me"
             },
             "designerId": "2fa0d2d1-36c0-4373-8d15-7e07916f4f04"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#toolrefreshbodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onToolrefreshbodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "12cc3baa-92d6-44eb-824b-ea2d81998492"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#toolsearchbodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onToolsearchbodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "4d1d2f84-5dcb-4b2b-8311-76af271286c5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#toolnewbodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onToolnewbodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "522f6424-1ae5-41b3-85e7-3278709b5254"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#toolsavebodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onToolsavebodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "2fd49992-fab7-4841-b35d-0ae3e19f0f99"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#tooldeletebodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onTooldeletebodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "fee12276-70bb-4a8d-a773-bc715de8bf9d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#toollockbodiesofwork",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onToollockbodiesofworkClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "ff5bc491-f051-42ca-becd-34b15514e2cd"
         }
     ]
 }

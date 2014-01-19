@@ -25,10 +25,6 @@ Ext.define('MySchool.view.daily.SaveTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // Add save/udate handler code here.
     }
 
 });

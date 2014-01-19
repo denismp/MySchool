@@ -13,28 +13,5 @@
         "tooltip": "Save",
         "type": "save"
     },
-    "designerId": "7353affb-c701-4818-91ab-55590bb3f156",
-    "cn": [
-        {
-            "type": "fixedfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "event",
-                    "toolEl",
-                    "owner",
-                    "tool"
-                ],
-                "fn": "handler",
-                "implHandler": [
-                    "// Add save/udate handler code here."
-                ]
-            },
-            "designerId": "51f5018e-ca80-47a3-ab9b-7b92344c8bc0"
-        }
-    ]
+    "designerId": "7353affb-c701-4818-91ab-55590bb3f156"
 }

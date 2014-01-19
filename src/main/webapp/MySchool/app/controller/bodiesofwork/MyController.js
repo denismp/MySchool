@@ -90,6 +90,30 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
     },
 
+    onToolrefreshbodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
+    onToolsearchbodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
+    onToolnewbodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
+    onToolsavebodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
+    onTooldeletebodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
+    onToollockbodiesofworkClick: function(tool, e, eOpts) {
+
+    },
+
     init: function(application) {
         this.control({
             "#bodiesofworkssubjectsgrid": {
@@ -101,6 +125,24 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             },
             "#bodiesofworkstab": {
                 activate: this.onBodiesofworkstabActivate
+            },
+            "#toolrefreshbodiesofwork": {
+                click: this.onToolrefreshbodiesofworkClick
+            },
+            "#toolsearchbodiesofwork": {
+                click: this.onToolsearchbodiesofworkClick
+            },
+            "#toolnewbodiesofwork": {
+                click: this.onToolnewbodiesofworkClick
+            },
+            "#toolsavebodiesofwork": {
+                click: this.onToolsavebodiesofworkClick
+            },
+            "#tooldeletebodiesofwork": {
+                click: this.onTooldeletebodiesofworkClick
+            },
+            "#toollockbodiesofwork": {
+                click: this.onToollockbodiesofworkClick
             }
         });
     },

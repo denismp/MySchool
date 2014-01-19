@@ -13,28 +13,5 @@
         "tooltip": "Search",
         "type": "search"
     },
-    "designerId": "2db3271c-d89b-445f-a612-8b164a47b14b",
-    "cn": [
-        {
-            "type": "fixedfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "event",
-                    "toolEl",
-                    "owner",
-                    "tool"
-                ],
-                "fn": "handler",
-                "implHandler": [
-                    "// add search handler code here."
-                ]
-            },
-            "designerId": "b2a42c23-6bc6-42ac-8932-6328e8161170"
-        }
-    ]
+    "designerId": "2db3271c-d89b-445f-a612-8b164a47b14b"
 }
