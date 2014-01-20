@@ -51,7 +51,10 @@
                     "userConfig": {
                         "itemId": "editdailyresourcesusedtab",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "7b126433-d49a-4b9b-85f4-4018d41f9f90"
                 }

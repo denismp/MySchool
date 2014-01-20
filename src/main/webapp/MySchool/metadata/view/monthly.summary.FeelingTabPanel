@@ -51,7 +51,10 @@
                     "userConfig": {
                         "itemId": "editfeelingstextbox",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "40542c29-45a5-4c2c-95b7-e7bf3f3b306f",
                     "cn": [

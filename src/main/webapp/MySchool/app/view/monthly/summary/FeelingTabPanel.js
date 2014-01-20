@@ -46,6 +46,7 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
                             xtype: 'button',
                             itemId: 'editfeelingstextbox',
                             text: 'Edit',
+                            tooltip: 'Click edit to modify',
                             listeners: {
                                 click: {
                                     fn: me.onEditfeelingstextboxClick,

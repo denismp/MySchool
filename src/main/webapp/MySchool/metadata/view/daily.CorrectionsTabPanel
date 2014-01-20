@@ -84,7 +84,10 @@
                     "userConfig": {
                         "itemId": "editdailydetailscorrectiontab",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "b5d75205-e96c-48e0-b23c-cb0f4729a113"
                 }

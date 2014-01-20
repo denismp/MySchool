@@ -44,7 +44,8 @@ Ext.define('MySchool.view.daily.StudyDetailsTabPanel', {
                         {
                             xtype: 'button',
                             itemId: 'editdailystudydetailstab',
-                            text: 'Edit'
+                            text: 'Edit',
+                            tooltip: 'Click edit to modify'
                         }
                     ]
                 },

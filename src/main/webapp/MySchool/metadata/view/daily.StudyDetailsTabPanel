@@ -51,7 +51,10 @@
                     "userConfig": {
                         "itemId": "editdailystudydetailstab",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "fb2779d1-8f6f-44da-8700-59649a0328a5"
                 }

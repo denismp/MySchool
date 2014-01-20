@@ -46,7 +46,8 @@ Ext.define('MySchool.view.daily.EvaluationsTabPanel', {
                         {
                             xtype: 'button',
                             itemId: 'editdailydetailsevaluationtab',
-                            text: 'Edit'
+                            text: 'Edit',
+                            tooltip: 'Click edit to modify'
                         }
                     ]
                 },

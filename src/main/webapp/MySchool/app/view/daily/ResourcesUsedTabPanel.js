@@ -44,7 +44,8 @@ Ext.define('MySchool.view.daily.ResourcesUsedTabPanel', {
                         {
                             xtype: 'button',
                             itemId: 'editdailyresourcesusedtab',
-                            text: 'Edit'
+                            text: 'Edit',
+                            tooltip: 'Click edit to modify'
                         }
                     ]
                 },

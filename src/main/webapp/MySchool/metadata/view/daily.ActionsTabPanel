@@ -84,7 +84,10 @@
                     "userConfig": {
                         "itemId": "editdailydetailsactionstab",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "3cbc016a-25c2-48f6-9e73-d42523da4315"
                 }
