@@ -45,7 +45,8 @@
                         "disabled": true,
                         "dock": null,
                         "fieldLabel": null,
-                        "id": "dailydetailsformhournumberfield",
+                        "id": null,
+                        "itemId": "dailydetailsformhournumberfield",
                         "labelWidth": 50,
                         "minHeight": null
                     },

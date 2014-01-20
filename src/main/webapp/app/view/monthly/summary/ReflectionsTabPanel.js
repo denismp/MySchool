@@ -18,7 +18,10 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
     alias: 'widget.monthlyrelectionstabpanel',
 
     requires: [
-        'Ext.form.field.TextArea'
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea',
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button'
     ],
 
     itemId: 'monthlyreflectiontabpanel',
@@ -29,13 +32,38 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'form',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            disabled: true,
+                            id: '',
+                            itemId: 'reflectionstextbox',
+                            minHeight: 273
+                        }
+                    ]
+                }
+            ],
             dockedItems: [
                 {
-                    xtype: 'textareafield',
-                    dock: 'top',
-                    id: '',
-                    itemId: 'reflectionstextbox',
-                    minHeight: 320
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'component',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'editreflectionstextbox',
+                            text: 'Edit'
+                        }
+                    ]
                 }
             ]
         });

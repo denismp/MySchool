@@ -18,7 +18,10 @@ Ext.define('MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel', {
     alias: 'widget.monthlypatternsofcorrectionstabpanel',
 
     requires: [
-        'Ext.form.field.TextArea'
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea',
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button'
     ],
 
     itemId: 'monthlypatternsofcorrectionstabpanel',
@@ -29,13 +32,38 @@ Ext.define('MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'form',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            disabled: true,
+                            itemId: 'patternofcorrectionstextpad',
+                            minHeight: 273,
+                            fieldLabel: ''
+                        }
+                    ]
+                }
+            ],
             dockedItems: [
                 {
-                    xtype: 'textareafield',
-                    dock: 'top',
-                    itemId: 'patcorrectionstextpad',
-                    minHeight: 320,
-                    fieldLabel: ''
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'component',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'editpatternofcorrectionstextpad',
+                            text: 'Edit'
+                        }
+                    ]
                 }
             ]
         });

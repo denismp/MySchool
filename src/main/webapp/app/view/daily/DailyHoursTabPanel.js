@@ -45,7 +45,7 @@ Ext.define('MySchool.view.daily.DailyHoursTabPanel', {
                         {
                             xtype: 'numberfield',
                             disabled: true,
-                            id: 'dailydetailsformhournumberfield',
+                            itemId: 'dailydetailsformhournumberfield',
                             labelWidth: 50
                         }
                     ]

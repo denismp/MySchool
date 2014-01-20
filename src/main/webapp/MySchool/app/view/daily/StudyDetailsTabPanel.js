@@ -58,7 +58,7 @@ Ext.define('MySchool.view.daily.StudyDetailsTabPanel', {
                             xtype: 'textareafield',
                             dock: 'top',
                             disabled: true,
-                            id: 'dailydetailsstudydetailstextarea',
+                            itemId: 'dailydetailsstudydetailstextarea',
                             minHeight: 273
                         }
                     ]

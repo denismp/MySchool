@@ -15,20 +15,78 @@
     "designerId": "ee132c9e-10d4-4976-9b64-69978fdde210",
     "cn": [
         {
-            "type": "Ext.form.field.TextArea",
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": null
+            },
+            "designerId": "3825f604-f264-4671-9960-d859e97786bd",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": "",
+                        "id": null,
+                        "itemId": "patternofcorrectionstextpad",
+                        "minHeight": 273
+                    },
+                    "designerId": "372ed89c-e5f6-49e2-9cb5-65910951f8dc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "top",
-                "fieldLabel": "",
-                "id": null,
-                "itemId": "patcorrectionstextpad",
-                "minHeight": 320
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "ui": "footer"
             },
-            "designerId": "372ed89c-e5f6-49e2-9cb5-65910951f8dc"
+            "designerId": "1e6646ea-f105-496b-94a0-01b49c34692f",
+            "cn": [
+                {
+                    "type": "Ext.Component",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "designerId": "cc3ca9c2-f09a-4e47-9658-ff76364e1284"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "editpatternofcorrectionstextpad",
+                        "layout|flex": null,
+                        "text": "Edit"
+                    },
+                    "designerId": "6d965391-ed67-4d6f-9522-a2f4acea363c"
+                }
+            ]
         }
     ]
 }

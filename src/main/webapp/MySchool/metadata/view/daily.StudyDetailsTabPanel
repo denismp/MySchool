@@ -83,7 +83,8 @@
                         "disabled": true,
                         "dock": "top",
                         "fieldLabel": null,
-                        "id": "dailydetailsstudydetailstextarea",
+                        "id": null,
+                        "itemId": "dailydetailsstudydetailstextarea",
                         "minHeight": 273
                     },
                     "designerId": "e83eb7fe-a7eb-40b0-90f9-2da758c53ddc"
