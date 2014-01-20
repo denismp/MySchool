@@ -351,46 +351,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "id": null,
-                        "itemId": "gradestab",
-                        "layout": "fit",
-                        "minHeight": 600,
-                        "title": "Grades"
-                    },
-                    "designerId": "0dfa15dc-f357-46ab-be8c-613623b4bbf8",
-                    "cn": [
-                        {
-                            "type": "Ext.tab.Tab",
-                            "reference": {
-                                "name": "tabConfig",
-                                "type": "object"
-                            },
-                            "codeClass": null,
-                            "designerId": "dcbab472-7cc0-4b0a-a726-6706f186d2da"
-                        },
-                        {
-                            "type": "linkedinstance",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "itemId": "gradedetailspanel"
-                            },
-                            "designerId": "b60c94f9-037f-47fe-98f5-b7f7f729b83f",
-                            "masterInstanceId": "76b777c6-cc12-4104-91b6-4e24a660ddb5"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.panel.Panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
                         "dock": null,
                         "itemId": "studentprofilestab",
                         "minHeight": 600,

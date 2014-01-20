@@ -24,7 +24,6 @@ Ext.define('MySchool.view.MainPanel', {
         'MySchool.view.weekly.evaluation.DetailsPanel',
         'MySchool.view.monthly.summary.DetailsPanel',
         'MySchool.view.monthly.evaluation.DetailsPanel',
-        'MySchool.view.grade.DetailsPanel',
         'MySchool.view.student.ProfilePanel',
         'MySchool.view.faculty.ProfilePanel',
         'Ext.tab.Panel',
@@ -163,19 +162,6 @@ Ext.define('MySchool.view.MainPanel', {
                                 {
                                     xtype: 'monthlyevaluationdetailspanel',
                                     flex: 1
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'panel',
-                            itemId: 'gradestab',
-                            minHeight: 600,
-                            layout: 'fit',
-                            title: 'Grades',
-                            items: [
-                                {
-                                    xtype: 'gradedetailspanel',
-                                    itemId: 'gradedetailspanel'
                                 }
                             ]
                         },
