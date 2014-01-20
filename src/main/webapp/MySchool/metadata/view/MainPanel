@@ -269,7 +269,7 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "id": null,
-                        "itemId": "montlysummarytab",
+                        "itemId": "monthlysummarytab",
                         "layout": "hbox",
                         "minHeight": 700,
                         "title": "Monthly Summary"
@@ -288,11 +288,13 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dock": "top",
+                                "layout": null,
                                 "layout|flex": 1
                             },
                             "designerId": "7ef6e8f5-595c-48db-90d6-48df8cd8c1b9",

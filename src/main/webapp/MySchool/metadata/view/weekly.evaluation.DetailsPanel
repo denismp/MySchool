@@ -10,7 +10,6 @@
         "designer|userClassName": "weekly.evaluation.DetailsPanel",
         "height": 700,
         "itemId": "weeklyevaluationpanel",
-        "layout": "fit",
         "title": "Weekly Evaluation Details"
     },
     "designerId": "a110d1b6-6c61-45cc-a6e7-f038c820a467",

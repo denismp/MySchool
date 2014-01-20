@@ -9,12 +9,14 @@
         "designer|userAlias": "monthlydetailsgridpanel",
         "designer|userClassName": "monthly.summary.DetailsGridPanel",
         "forceFit": true,
-        "height": 373,
+        "height": null,
         "id": null,
         "itemId": "monthlysummarygridpanel",
+        "minHeight": 150,
+        "minWidth": null,
         "store": "monthly.SummaryRatingsStore",
         "title": "[student name]",
-        "width": 150
+        "width": null
     },
     "designerId": "43f6c12d-de56-482f-aa24-fc9779485195",
     "cn": [

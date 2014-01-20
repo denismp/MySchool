@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlysummarysearchtool",
+        "designer|userClassName": "monthly.summary.SearchTool",
+        "id": null,
+        "itemId": "searchmonthlysummariestool",
+        "tooltip": "Search",
+        "type": "search"
+    },
+    "designerId": "0e3d39d2-00b1-49c8-a9e8-4e3abc817595",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add search handler code here."
+                ]
+            },
+            "designerId": "c0f1f96f-c8aa-4f20-bb0f-5a38548b4d28"
+        }
+    ]
+}

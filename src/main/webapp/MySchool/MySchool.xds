@@ -28,8 +28,8 @@
             "display": "Build web app"
         }
     },
-    "xdsVersion": "3.0.1",
-    "xdsBuild": 1343,
+    "xdsVersion": "3.0.2",
+    "xdsBuild": 1375,
     "schemaVersion": 1,
     "upgradeVersion": 300000000004,
     "framework": "ext42",
@@ -98,7 +98,13 @@
             "a30de5fe-be45-40af-b437-a1c675ff0118",
             "b757e584-9794-46a9-8e02-66353b5755bb",
             "a32ff741-a13e-438d-8972-a53fb41f833e",
-            "89a1ee17-4852-4444-9814-0d266603854d"
+            "89a1ee17-4852-4444-9814-0d266603854d",
+            "cc3db7fc-ad61-4847-89cd-5243015bcf60",
+            "0e3d39d2-00b1-49c8-a9e8-4e3abc817595",
+            "b9ab0a07-6899-4f73-8477-065772f2110a",
+            "ddc57a3f-2cf2-4636-85e7-f70c8c5bf230",
+            "9aa6a1fc-ec08-460e-88be-a44b3d03f321",
+            "256e813f-4e62-4018-a78c-48ca360a2a89"
         ],
         "store": [
             "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",

@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlysummarylocktool",
+        "designer|userClassName": "monthly.summary.LockTool",
+        "id": null,
+        "itemId": "lockmonthlysummariestool",
+        "tooltip": "Lock?",
+        "type": "pin"
+    },
+    "designerId": "256e813f-4e62-4018-a78c-48ca360a2a89",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// add lock handler code here."
+                ]
+            },
+            "designerId": "eb441b6d-449c-4af4-95b2-203136fd4758"
+        }
+    ]
+}

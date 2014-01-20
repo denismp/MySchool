@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlysummarydeletetool",
+        "designer|userClassName": "monthly.summary.DeleteTool",
+        "id": null,
+        "itemId": "deletemonthlysummariestool",
+        "tooltip": "Delete",
+        "type": "minus"
+    },
+    "designerId": "9aa6a1fc-ec08-460e-88be-a44b3d03f321",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// Add delete handler code here."
+                ]
+            },
+            "designerId": "42f81955-f016-4b43-9c79-a554e258b962"
+        }
+    ]
+}

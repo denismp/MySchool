@@ -1,0 +1,40 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlysummarysavetool",
+        "designer|userClassName": "monthly.summary.SaveTool",
+        "id": null,
+        "itemId": "savemonthlysummariestool",
+        "tooltip": "Save",
+        "type": "save"
+    },
+    "designerId": "ddc57a3f-2cf2-4636-85e7-f70c8c5bf230",
+    "cn": [
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "toolEl",
+                    "owner",
+                    "tool"
+                ],
+                "fn": "handler",
+                "implHandler": [
+                    "// Add save/udate handler code here."
+                ]
+            },
+            "designerId": "f6819784-cb21-4609-aa27-f9fb806e4993"
+        }
+    ]
+}
