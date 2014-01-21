@@ -76,6 +76,81 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         console.log( "onMonthlyfeelingstabpanelActivate");
     },
 
+    onMonthlysummarygridviewViewReady: function(dataview, eOpts) {
+
+    },
+
+    onFeelingstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthlyfeelingstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    blurHandler: function(o, event, eOpts) {
+        debugger;
+        var p_ = o.up('form').up('panel');
+        var topP_ = p_.up('panel');
+        var pItemId_ = p_.getItemId();
+        var edit_ = p_.down('#edit' + pItemId_);
+
+        Ext.Msg.show({
+            title:'Save Changes?',
+            msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',
+            buttons: Ext.Msg.YESNO,
+            icon: Ext.Msg.QUESTION,
+            fn: function(buttonId) {
+                if (buttonId == 'yes') {
+                    Ext.Msg.show({
+                        title: 'Save',
+                        msg: 'record saved',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.window.MessageBox.INFO
+                    });
+                }
+                else {
+                    Ext.Msg.show({
+                        title: 'Cancel',
+                        msg: 'record restored',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.window.MessageBox.INFO
+                    });
+                }
+                topP_ = eOpts;
+                //topP_.buttonHandler.call(edit_);
+                topP_.buttonHandler(edit_);
+            }
+        });
+    },
+
+    buttonHandler: function(button, e, eOpts) {
+        debugger;
+        window.console.log(button);
+        var b_ = button;
+        var p_ = b_.up('panel');
+        var pItemId_ = p_.getItemId();
+        var field_;
+
+        //if (pItemId_ == 'monthlyfeelingstabpanel') {
+        //    field_ = p_.down('numberfield');
+        //} else {
+        //    field_ = p_.down('textareafield');
+        //}
+        field_ = p_.down('textareafield');
+
+        if (b_.getText().charAt(0) == 'D') {
+            b_ = p_.down('#edit' + pItemId_);
+            b_.setText('Edit');
+            b_.setDisabled(false);
+            field_.setDisabled(true);
+        } else {
+            b_.setText('Done');
+            field_.setDisabled(false);
+            field_.focus();
+        }
+    },
+
     init: function(application) {
         this.control({
             "#monthlysummarygridpanel": {
@@ -86,6 +161,15 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#monthlyfeelingstabpanel": {
                 activate: this.onMonthlyfeelingstabpanelActivate
+            },
+            "#monthlysummarygridview": {
+                viewready: this.onMonthlysummarygridviewViewReady
+            },
+            "#feelingstextbox": {
+                blur: this.onFeelingstextboxBlur
+            },
+            "#editmonthlyfeelingstabpanel": {
+                click: this.onEditmonthlyfeelingstabpanelClick
             }
         });
     }

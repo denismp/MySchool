@@ -39,22 +39,46 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'dailyhourstabpanel'
+                    xtype: 'dailyhourstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'dailyresourcesusedtabpanel'
+                    xtype: 'dailyresourcesusedtabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'dailystudydetailstabpanel'
+                    xtype: 'dailystudydetailstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'dailyevaluationstabpanel'
+                    xtype: 'dailyevaluationstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'dailycorrectionstabpanel'
+                    xtype: 'dailycorrectionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'dailyactionstabpanel'
+                    xtype: 'dailyactionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 }
             ]
         });

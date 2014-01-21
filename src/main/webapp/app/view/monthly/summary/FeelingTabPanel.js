@@ -44,15 +44,9 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
                         },
                         {
                             xtype: 'button',
-                            itemId: 'editfeelingstextbox',
+                            itemId: 'editmonthlyfeelingstabpanel',
                             text: 'Edit',
-                            tooltip: 'Click edit to modify',
-                            listeners: {
-                                click: {
-                                    fn: me.onEditfeelingstextboxClick,
-                                    scope: me
-                                }
-                            }
+                            tooltip: 'Click edit to modify'
                         }
                     ]
                 },
@@ -77,10 +71,6 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
         });
 
         me.callParent(arguments);
-    },
-
-    onEditfeelingstextboxClick: function(button, e, eOpts) {
-
     }
 
 });

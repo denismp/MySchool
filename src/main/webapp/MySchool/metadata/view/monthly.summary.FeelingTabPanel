@@ -49,33 +49,14 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "editfeelingstextbox",
+                        "itemId": "editmonthlyfeelingstabpanel",
                         "layout|flex": null,
                         "text": "Edit",
                         "tooltip": [
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "40542c29-45a5-4c2c-95b7-e7bf3f3b306f",
-                    "cn": [
-                        {
-                            "type": "basiceventbinding",
-                            "reference": {
-                                "name": "listeners",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fn": "onEditfeelingstextboxClick",
-                                "implHandler": [
-                                    ""
-                                ],
-                                "name": "click",
-                                "scope": "me"
-                            },
-                            "designerId": "b0a8f29c-c80e-4b92-82c8-2faf158b5cbd"
-                        }
-                    ]
+                    "designerId": "40542c29-45a5-4c2c-95b7-e7bf3f3b306f"
                 }
             ]
         },

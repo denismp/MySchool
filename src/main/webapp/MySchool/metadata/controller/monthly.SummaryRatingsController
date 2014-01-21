@@ -191,6 +191,155 @@
                 "scope": "me"
             },
             "designerId": "b5f6c780-a29e-4b7f-9b85-dd1c498691eb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#monthlysummarygridview",
+                "designer|targetType": "Ext.grid.View",
+                "fn": "onMonthlysummarygridviewViewReady",
+                "name": "viewready",
+                "scope": "me"
+            },
+            "designerId": "cac21ed2-018c-4f9d-8f3e-02a4fc250eaa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#feelingstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onFeelingstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "489bb1e9-0724-4660-acc9-36ac7f28d492"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "o",
+                    "event",
+                    "eOpts"
+                ],
+                "fn": "blurHandler",
+                "implHandler": [
+                    "debugger;",
+                    "var p_ = o.up('form').up('panel');",
+                    "var topP_ = p_.up('panel');",
+                    "var pItemId_ = p_.getItemId();",
+                    "var edit_ = p_.down('#edit' + pItemId_);",
+                    "",
+                    "Ext.Msg.show({",
+                    "    title:'Save Changes?',",
+                    "    msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',",
+                    "    buttons: Ext.Msg.YESNO,",
+                    "    icon: Ext.Msg.QUESTION,",
+                    "    fn: function(buttonId) {",
+                    "        if (buttonId == 'yes') {",
+                    "            Ext.Msg.show({",
+                    "                title: 'Save',",
+                    "                msg: 'record saved',",
+                    "                buttons: Ext.Msg.OK,",
+                    "                icon: Ext.window.MessageBox.INFO",
+                    "            });",
+                    "        }",
+                    "        else {",
+                    "            Ext.Msg.show({",
+                    "                title: 'Cancel',",
+                    "                msg: 'record restored',",
+                    "                buttons: Ext.Msg.OK,",
+                    "                icon: Ext.window.MessageBox.INFO",
+                    "            });",
+                    "        }",
+                    "        topP_ = eOpts;",
+                    "        //topP_.buttonHandler.call(edit_);",
+                    "        topP_.buttonHandler(edit_);",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "67e3b996-eacd-4e0d-b912-362efb4383c2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "button",
+                    "e",
+                    "eOpts"
+                ],
+                "fn": "buttonHandler",
+                "implHandler": [
+                    "debugger;",
+                    "window.console.log(button);",
+                    "var b_ = button;",
+                    "var p_ = b_.up('panel');",
+                    "var pItemId_ = p_.getItemId();",
+                    "var field_;",
+                    "",
+                    "//if (pItemId_ == 'monthlyfeelingstabpanel') {",
+                    "//    field_ = p_.down('numberfield');",
+                    "//} else {",
+                    "//    field_ = p_.down('textareafield');",
+                    "//}",
+                    "field_ = p_.down('textareafield');",
+                    "",
+                    "if (b_.getText().charAt(0) == 'D') {",
+                    "    b_ = p_.down('#edit' + pItemId_);",
+                    "    b_.setText('Edit');",
+                    "    b_.setDisabled(false);",
+                    "    field_.setDisabled(true);",
+                    "} else {",
+                    "    b_.setText('Done');",
+                    "    field_.setDisabled(false);",
+                    "    field_.focus();",
+                    "}"
+                ]
+            },
+            "designerId": "3e645079-f408-4e71-8d03-7b9c3fae211c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyfeelingstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyfeelingstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "b7f4d35b-8fe8-456d-950d-2b74709bd5a9"
         }
     ]
 }

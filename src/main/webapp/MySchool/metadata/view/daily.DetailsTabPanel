@@ -33,6 +33,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "8762608b-69a8-4dba-85d8-999beed5243a"
                 }
             ]
@@ -54,6 +59,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "3f475df4-597a-4c68-8037-49712692989c"
                 }
             ]
@@ -75,6 +85,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "0f4ee530-2e6a-493f-a2d5-d1c468dc0aeb"
                 }
             ]
@@ -96,6 +111,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "ce9dec0e-75d5-4994-a89f-68a2af8cdfce"
                 }
             ]
@@ -117,6 +137,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "24c355d7-dbdb-42f9-8be5-52142a333c5e"
                 }
             ]
@@ -138,6 +163,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "928a79f9-f68b-4ce1-94ad-ddf42628687d"
                 }
             ]
