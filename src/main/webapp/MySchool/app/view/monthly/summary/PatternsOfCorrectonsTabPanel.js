@@ -60,7 +60,7 @@ Ext.define('MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel', {
                         },
                         {
                             xtype: 'button',
-                            itemId: 'editpatternofcorrectionstextpad',
+                            itemId: 'editmonthlypatternsofcorrectionstabpanel',
                             text: 'Edit'
                         }
                     ]

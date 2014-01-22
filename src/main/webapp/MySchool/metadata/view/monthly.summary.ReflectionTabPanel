@@ -15,20 +15,77 @@
     "designerId": "496d3c13-fa8c-43c0-9165-1a38fd773dc0",
     "cn": [
         {
-            "type": "Ext.form.field.TextArea",
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": null
+            },
+            "designerId": "97ff0bda-2ae2-456a-ae09-0dd5dc4faa2b",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "realizationstextbox",
+                        "minHeight": 320
+                    },
+                    "designerId": "582f84f6-8247-4c9d-a78f-85e7479ab3e8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "top",
-                "fieldLabel": null,
-                "id": null,
-                "itemId": "realizationstextbox",
-                "minHeight": 320
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "ui": "footer"
             },
-            "designerId": "582f84f6-8247-4c9d-a78f-85e7479ab3e8"
+            "designerId": "23de4d85-236f-40e1-b7e6-d7b8a6662151",
+            "cn": [
+                {
+                    "type": "Ext.Component",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "designerId": "1c441d72-3dd0-4fd7-b3e1-c05e8207a9e0"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "editmonthlyrealizationstabpanel",
+                        "layout|flex": null,
+                        "text": "Edit"
+                    },
+                    "designerId": "9ed88256-1ab4-4062-84c0-51d772348d53"
+                }
+            ]
         }
     ]
 }

@@ -18,7 +18,10 @@ Ext.define('MySchool.view.monthly.summary.ActionResultsTabPanel', {
     alias: 'widget.monthlyactionresultstabpanel',
 
     requires: [
-        'Ext.form.field.TextArea'
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea',
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button'
     ],
 
     itemId: 'monthlyactionresultstabpanel',
@@ -29,12 +32,36 @@ Ext.define('MySchool.view.monthly.summary.ActionResultsTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'form',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            itemId: 'actionresultstextbox',
+                            minHeight: 320
+                        }
+                    ]
+                }
+            ],
             dockedItems: [
                 {
-                    xtype: 'textareafield',
-                    dock: 'top',
-                    itemId: 'actionresultstextbox',
-                    minHeight: 320
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'component',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'editmonthyactionresultstabpanel',
+                            text: 'Edit'
+                        }
+                    ]
                 }
             ]
         });

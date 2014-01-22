@@ -60,6 +60,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         {
             ref: 'MonthlyCommentsTabPanel',
             selector: 'monthlycommentstabpanel'
+        },
+        {
+            ref: 'EditMonthlyPlannedChangesTabPanel',
+            selector: '#editmonthlyplannedchangestabpanel'
+        },
+        {
+            ref: 'MonthlyDetailsGridPanel',
+            selector: 'monthlydetailsgridpanel'
         }
     ],
 
@@ -77,6 +85,30 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     onMonthlysummarygridviewViewReady: function(dataview, eOpts) {
+        debugger;
+        console.log('onMonthlysummarygridviewViewReady()');
+        var myStore = Ext.getStore('monthly.SummaryRatingsStore');
+        var myStudentStore = Ext.getStore('student.StudentStore');
+        var studentRecord = myStudentStore.getAt(0);
+        //        debugger
+        if ( typeof( studentRecord ) != "undefined" ) {
+            var studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
+            //MonthlyDetailsGridPanel
+            //var myGrid = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+            var myGrid = this.getMonthlyDetailsGridPanel();
+
+            myGrid.setTitle('[' + studentName_ + ']');
+            myStore.load({
+                callback: this.onMyJsonStoreLoad,
+                scope: this,
+                params: {
+                    studentName: studentStore.get('userName'),
+                    studentId: studentStore.get('id')
+                }
+            });
+        }
+        //grid.getSelectionModel().select( 0 );
+        //tablepanel.getSelectionModel().select( 0 );
 
     },
 
@@ -86,6 +118,58 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     onEditmonthlyfeelingstabpanelClick: function(button, e, eOpts) {
         this.buttonHandler( button, e, eOpts );
+    },
+
+    onEditmonthlyreflectiontabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onReflectionstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthlypatternsofcorrectionstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onPatternofcorrectionstextpadBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEffectivenestextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthlyeffectivenessofactionstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onActionresultstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthyactionresultstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onEditmonthlyrealizationstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onRealizationstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onPlannedchangestextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthlyplannedchangestabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onCommentstextboxBlur: function(component, e, eOpts) {
+
     },
 
     blurHandler: function(o, event, eOpts) {
@@ -151,6 +235,19 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         }
     },
 
+    onMyJsonStoreLoad: function() {
+        debugger;
+        //var g_ = Ext.ComponentQuery.query("#monthlysummarygridpanel")[0];
+        var g_ = this.getMonthlyDetailsGridPanel();
+
+        if (g_.getStore().getCount() > 0) {
+            g_.getSelectionModel().deselectAll();
+            g_.getSelectionModel().select( 0 );
+        }
+
+        this.gridViewReady = true;
+    },
+
     init: function(application) {
         this.control({
             "#monthlysummarygridpanel": {
@@ -170,6 +267,45 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#editmonthlyfeelingstabpanel": {
                 click: this.onEditmonthlyfeelingstabpanelClick
+            },
+            "#editmonthlyreflectiontabpanel": {
+                click: this.onEditmonthlyreflectiontabpanelClick
+            },
+            "#reflectionstextbox": {
+                blur: this.onReflectionstextboxBlur
+            },
+            "#editmonthlypatternsofcorrectionstabpanel": {
+                click: this.onEditmonthlypatternsofcorrectionstabpanelClick
+            },
+            "#patternofcorrectionstextpad": {
+                blur: this.onPatternofcorrectionstextpadBlur
+            },
+            "#effectivenestextbox": {
+                blur: this.onEffectivenestextboxBlur
+            },
+            "#editmonthlyeffectivenessofactionstabpanel": {
+                click: this.onEditmonthlyeffectivenessofactionstabpanelClick
+            },
+            "#actionresultstextbox": {
+                blur: this.onActionresultstextboxBlur
+            },
+            "#editmonthyactionresultstabpanel": {
+                click: this.onEditmonthyactionresultstabpanelClick
+            },
+            "#editmonthlyrealizationstabpanel": {
+                click: this.onEditmonthlyrealizationstabpanelClick
+            },
+            "#realizationstextbox": {
+                blur: this.onRealizationstextboxBlur
+            },
+            "#plannedchangestextbox": {
+                blur: this.onPlannedchangestextboxBlur
+            },
+            "#editmonthlyplannedchangestabpanel": {
+                click: this.onEditmonthlyplannedchangestabpanelClick
+            },
+            "#commentstextbox": {
+                blur: this.onCommentstextboxBlur
             }
         });
     }

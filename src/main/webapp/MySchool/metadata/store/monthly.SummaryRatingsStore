@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoLoad": true,
         "designer|userAlias": "montlysummaryratingsstore",
         "designer|userClassName": "monthly.SummaryRatingsStore",
         "model": "monthly.SummaryRatings",
@@ -41,6 +42,42 @@
                     "designerId": "620d94cc-5844-442d-8f19-7004a1a0ac78"
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonstoreLoad",
+                "implHandler": [
+                    "debugger;",
+                    "console.log(\"monthly.SummaryRatingsStore.onJsonstoreLoad() called...\");"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "1fadeb34-a79c-471d-bca8-d63489921942"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonstoreWrite",
+                "implHandler": [
+                    "debugger;",
+                    "console.log(\"monthly.SummaryRatingsStore.onJsonstoreWrite(): called...\");"
+                ],
+                "name": "write",
+                "scope": "me"
+            },
+            "designerId": "0d313aba-d1ac-4517-b969-3710e42a6e55"
         }
     ]
 }

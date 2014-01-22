@@ -62,6 +62,24 @@ public class ControllerHelper {
 		}
 		return ret_;
 	}
+	@SuppressWarnings("unchecked")
+	private List<BodyOfWork>getBodyOfWorkList( String studentId ) throws Exception
+	{
+		List<BodyOfWork> rList = null;
+		EntityManager em = BodyOfWork.entityManager();
+		StringBuilder queryString = new StringBuilder("select b.*");
+		queryString.append(" from body_of_work b, quarter q, student t");
+		queryString.append(" where b.quarter = q.id");
+		queryString.append(" and q.student = t.id");
+		if( studentId != null )
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);	
+		}
+		rList = (List<BodyOfWork>)em.createNativeQuery(queryString.toString(), BodyOfWork.class).getResultList(); 
+
+		return rList;
+	}
 	
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Class myClass,
@@ -99,6 +117,46 @@ public class ControllerHelper {
 					svl_.add(sv_);
 				}
 				records = svl_;
+			}
+			else if (myClass.equals(SubjectView.class) && studentId_ != null) {
+				Student student_ = Student.findStudent(Long.valueOf(studentId_));
+				if (student_ != null) {
+					List<SubjectView> svl_ = new ArrayList<SubjectView>();
+					Set<Quarter> qtrs_ = student_.getQuarters();
+					int i_ = 1;
+
+					for (Quarter q_ : qtrs_) {
+						Subject u_ = q_.getSubject();
+						SubjectView sv_ = new SubjectView();
+
+						sv_.setId((long)i_++);
+						sv_.setQtrGrade(q_.getGrade());
+						sv_.setQtrGradeType(q_.getGrade_type());
+						sv_.setQtrId(q_.getId());
+						sv_.setQtrLastUpdated(q_.getLastUpdated());
+						sv_.setQtrCompleted(q_.getCompleted());
+						sv_.setQtrLocked(q_.getLocked());
+						sv_.setQtrName(q_.getQtrName());
+						sv_.setQtrVersion(q_.getVersion());
+						sv_.setQtrWhoUpdated(q_.getWhoUpdated());
+						sv_.setQtrYear(q_.getQtr_year());
+
+						sv_.setStudentName(studentName_);
+
+						sv_.setSubjCreditHours(u_.getCreditHours());
+						sv_.setSubjDescription(u_.getDescription());
+						sv_.setSubjGradeLevel(u_.getGradeLevel());
+						sv_.setSubjId(u_.getId());
+						sv_.setSubjLastUpdated(u_.getLastUpdated());
+						sv_.setSubjName(u_.getName());
+						sv_.setSubjObjectives(u_.getObjectives());
+						sv_.setSubjVersion(u_.getVersion());
+						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
+
+						svl_.add(sv_);
+					}
+					records = svl_;
+				}
 			}
 			else if (myClass.equals(BodyOfWorkView.class) && studentId_ != null) {
 				Student student_ = Student.findStudent(Long.valueOf(studentId_));
@@ -145,45 +203,54 @@ public class ControllerHelper {
 					records = bvl_;
 				}
 			}
-			else if (myClass.equals(SubjectView.class) && studentId_ != null) {
-				Student student_ = Student.findStudent(Long.valueOf(studentId_));
-				if (student_ != null) {
-					List<SubjectView> svl_ = new ArrayList<SubjectView>();
-					Set<Quarter> qtrs_ = student_.getQuarters();
-					int i_ = 1;
-
-					for (Quarter q_ : qtrs_) {
+			else if (myClass.equals(BodyOfWorkView.class) && studentId_ == null) {
+				//Student student_ = Student.findStudent(Long.valueOf(studentId_));
+				//if (student_ == null) {
+				
+					List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
+					/*
+					EntityManager em = BodyOfWork.entityManager();
+					StringBuilder qs_ = new StringBuilder("select b.*");
+					List<BodyOfWork> bowl_;
+					
+					qs_.append(" from body_of_work b, quarter q, student t");
+					qs_.append(" where b.quarter = q.id");
+					qs_.append(" and q.student = t.id");
+					//qs_.append(" and t.id = ");
+					//qs_.append(studentId_);
+					
+					bowl_ = (List<BodyOfWork>)em.createNativeQuery(qs_.toString(), BodyOfWork.class).getResultList(); 
+					*/
+					List<BodyOfWork> bowl_ = this.getBodyOfWorkList(null);
+					for (BodyOfWork bw_ : bowl_) {
+						Quarter q_ = bw_.getQuarter();
 						Subject u_ = q_.getSubject();
-						SubjectView sv_ = new SubjectView();
+						Student student_ = q_.getStudent();
+						BodyOfWorkView bwv_ = new BodyOfWorkView();
 
-						sv_.setId((long)i_++);
-						sv_.setQtrGrade(q_.getGrade());
-						sv_.setQtrGradeType(q_.getGrade_type());
-						sv_.setQtrId(q_.getId());
-						sv_.setQtrLastUpdated(q_.getLastUpdated());
-						sv_.setQtrCompleted(q_.getCompleted());
-						sv_.setQtrLocked(q_.getLocked());
-						sv_.setQtrName(q_.getQtrName());
-						sv_.setQtrVersion(q_.getVersion());
-						sv_.setQtrWhoUpdated(q_.getWhoUpdated());
-						sv_.setQtrYear(q_.getQtr_year());
+						bwv_.setId(bw_.getId());
+						bwv_.setVersion(bw_.getVersion());
+						bwv_.setWorkName(bw_.getWorkName());
+						bwv_.setObjective(bw_.getObjective());
+						bwv_.setWhat(bw_.getWhat());
+						bwv_.setDescription(bw_.getDescription());
+						bwv_.setWhoUpdated(bw_.getWhoUpdated());
+						bwv_.setLastUpdated(bw_.getLastUpdated());
+						bwv_.setLocked(bw_.getLocked());
+						bwv_.setStudentUserName(student_.getUserName());
+						bwv_.setStudentId(student_.getId());
+						bwv_.setSubjId(u_.getId());
+						bwv_.setSubjName(u_.getName());
+						bwv_.setSubjCreditHours(u_.getCreditHours());
+						bwv_.setSubjGradeLevel(u_.getGradeLevel());
+						bwv_.setQtrId(q_.getId());
+						bwv_.setQtrName(q_.getQtrName());
+						bwv_.setQtrYear(q_.getQtr_year());
 
-						sv_.setStudentName(studentName_);
-
-						sv_.setSubjCreditHours(u_.getCreditHours());
-						sv_.setSubjDescription(u_.getDescription());
-						sv_.setSubjGradeLevel(u_.getGradeLevel());
-						sv_.setSubjId(u_.getId());
-						sv_.setSubjLastUpdated(u_.getLastUpdated());
-						sv_.setSubjName(u_.getName());
-						sv_.setSubjObjectives(u_.getObjectives());
-						sv_.setSubjVersion(u_.getVersion());
-						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
-
-						svl_.add(sv_);
+						bvl_.add(bwv_);
 					}
-					records = svl_;
-				}
+					records = bvl_;
+				//}
 			}
 			/*
 			else if (false && myClass.equals(SubjectView.class) && studentName_ != null) {

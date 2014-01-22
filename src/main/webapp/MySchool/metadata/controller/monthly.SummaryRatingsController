@@ -203,6 +203,33 @@
                 "designer|controlQuery": "#monthlysummarygridview",
                 "designer|targetType": "Ext.grid.View",
                 "fn": "onMonthlysummarygridviewViewReady",
+                "implHandler": [
+                    "debugger;",
+                    "console.log('onMonthlysummarygridviewViewReady()');",
+                    "var myStore = Ext.getStore('monthly.SummaryRatingsStore');",
+                    "var myStudentStore = Ext.getStore('student.StudentStore');",
+                    "var studentRecord = myStudentStore.getAt(0);",
+                    "//        debugger",
+                    "if ( typeof( studentRecord ) != \"undefined\" ) {",
+                    "    var studentName_ = studentRecord.get('firstName') + \" \" + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');",
+                    "    //MonthlyDetailsGridPanel",
+                    "    //var myGrid = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "    var myGrid = this.getMonthlyDetailsGridPanel();",
+                    "",
+                    "    myGrid.setTitle('[' + studentName_ + ']');",
+                    "    myStore.load({",
+                    "        callback: this.onMyJsonStoreLoad,",
+                    "        scope: this,",
+                    "        params: {",
+                    "            studentName: studentStore.get('userName'),",
+                    "            studentId: studentStore.get('id')",
+                    "        }",
+                    "    });",
+                    "}",
+                    "//grid.getSelectionModel().select( 0 );",
+                    "//tablepanel.getSelectionModel().select( 0 );",
+                    ""
+                ],
                 "name": "viewready",
                 "scope": "me"
             },
@@ -340,6 +367,303 @@
                 "scope": "me"
             },
             "designerId": "b7f4d35b-8fe8-456d-950d-2b74709bd5a9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyreflectiontabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyreflectiontabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "99143220-5334-4539-822d-0d1f9227e6ed"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#reflectionstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onReflectionstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "024391fc-6766-4cf7-ab0c-74389547a623"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlypatternsofcorrectionstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlypatternsofcorrectionstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "4a6f5e09-fb0f-4387-ae71-b9119be87513"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#patternofcorrectionstextpad",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onPatternofcorrectionstextpadBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "4351b3a5-e986-4850-a116-fe779008db26"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#effectivenestextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onEffectivenestextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "079961f7-9cff-4a2b-b1af-794352bb29d9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyeffectivenessofactionstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyeffectivenessofactionstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "0f7fe806-6b95-46c5-9c98-ee683ba6321c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#actionresultstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onActionresultstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "4b8e3de4-294f-4455-8323-5434da97f0c2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthyactionresultstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthyactionresultstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "15f415f1-3cff-4d1b-baf0-fd5d9669699c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyrealizationstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyrealizationstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "1acefb8e-514c-416f-8eef-34befaa66a05"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#realizationstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onRealizationstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "0e2b2584-3536-4530-8f26-b61ce2425d6c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "EditMonthlyPlannedChangesTabPanel",
+                "selector": "#editmonthlyplannedchangestabpanel"
+            },
+            "designerId": "a49fb491-e364-418f-a381-f0aa01db9843"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#plannedchangestextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onPlannedchangestextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "b5b86cf9-5db8-4eba-bcba-f0434c6d4ad5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyplannedchangestabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyplannedchangestabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "946c3714-d62d-4d79-94ae-2c19e6037ea1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#commentstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onCommentstextboxBlur",
+                "implHandler": [
+                    ""
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "a0e1becf-b148-4544-86d5-1c4f73fa63e2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMyJsonStoreLoad",
+                "implHandler": [
+                    "debugger;",
+                    "//var g_ = Ext.ComponentQuery.query(\"#monthlysummarygridpanel\")[0];",
+                    "var g_ = this.getMonthlyDetailsGridPanel();",
+                    "",
+                    "if (g_.getStore().getCount() > 0) {",
+                    "    g_.getSelectionModel().deselectAll();",
+                    "    g_.getSelectionModel().select( 0 );",
+                    "}",
+                    "",
+                    "this.gridViewReady = true;"
+                ]
+            },
+            "designerId": "4d80a520-8953-415b-a88c-09a9e3cbe5fd"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "MonthlyDetailsGridPanel",
+                "selector": "monthlydetailsgridpanel"
+            },
+            "designerId": "4f02c5a7-6ea9-4c0a-b077-1d3186819012"
         }
     ]
 }

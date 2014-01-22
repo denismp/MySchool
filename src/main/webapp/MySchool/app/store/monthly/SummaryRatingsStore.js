@@ -27,6 +27,7 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
+            autoLoad: true,
             model: 'MySchool.model.monthly.SummaryRatings',
             storeId: 'monthly.SummaryRatingsStore',
             proxy: {
@@ -39,7 +40,28 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
                     type: 'json',
                     root: 'data'
                 }
+            },
+            listeners: {
+                load: {
+                    fn: me.onJsonstoreLoad,
+                    scope: me
+                },
+                write: {
+                    fn: me.onJsonstoreWrite,
+                    scope: me
+                }
             }
         }, cfg)]);
+    },
+
+    onJsonstoreLoad: function(store, records, successful, eOpts) {
+        debugger;
+        console.log("monthly.SummaryRatingsStore.onJsonstoreLoad() called...");
+    },
+
+    onJsonstoreWrite: function(store, operation, eOpts) {
+        debugger;
+        console.log("monthly.SummaryRatingsStore.onJsonstoreWrite(): called...");
     }
+
 });

@@ -60,7 +60,7 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
                         },
                         {
                             xtype: 'button',
-                            itemId: 'editreflectionstextbox',
+                            itemId: 'editmonthlyreflectiontabpanel',
                             text: 'Edit'
                         }
                     ]

@@ -80,7 +80,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "editreflectionstextbox",
+                        "itemId": "editmonthlyreflectiontabpanel",
                         "layout|flex": null,
                         "text": "Edit"
                     },

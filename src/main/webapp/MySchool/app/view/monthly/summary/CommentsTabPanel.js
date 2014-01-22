@@ -18,7 +18,10 @@ Ext.define('MySchool.view.monthly.summary.CommentsTabPanel', {
     alias: 'widget.monthlycommentstabpanel',
 
     requires: [
-        'Ext.form.field.TextArea'
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea',
+        'Ext.toolbar.Toolbar',
+        'Ext.button.Button'
     ],
 
     itemId: 'monthlycommentstabpanel',
@@ -29,12 +32,36 @@ Ext.define('MySchool.view.monthly.summary.CommentsTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
+            items: [
+                {
+                    xtype: 'form',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            itemId: 'commentstextbox',
+                            minHeight: 320
+                        }
+                    ]
+                }
+            ],
             dockedItems: [
                 {
-                    xtype: 'textareafield',
-                    dock: 'top',
-                    itemId: 'commentstextbox',
-                    minHeight: 320
+                    xtype: 'toolbar',
+                    dock: 'bottom',
+                    ui: 'footer',
+                    items: [
+                        {
+                            xtype: 'component',
+                            flex: 1
+                        },
+                        {
+                            xtype: 'button',
+                            itemId: 'editmonthlycommentstabpanel',
+                            text: 'Edit'
+                        }
+                    ]
                 }
             ]
         });

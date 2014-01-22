@@ -15,20 +15,77 @@
     "designerId": "2a88b587-7983-4ddd-b524-318c6c26d23b",
     "cn": [
         {
-            "type": "Ext.form.field.TextArea",
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "title": null
+            },
+            "designerId": "bd1b38e9-10f8-4336-b804-a7a91f63b44c",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "commentstextbox",
+                        "minHeight": 320
+                    },
+                    "designerId": "58f10870-5685-4d54-83d3-fa75ca4f10d8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "top",
-                "fieldLabel": null,
-                "id": null,
-                "itemId": "commentstextbox",
-                "minHeight": 320
+                "designer|uiInterfaceName": "footer",
+                "dock": "bottom",
+                "ui": "footer"
             },
-            "designerId": "58f10870-5685-4d54-83d3-fa75ca4f10d8"
+            "designerId": "1b170898-a63a-4c6a-9231-2d81774c7cc7",
+            "cn": [
+                {
+                    "type": "Ext.Component",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "designerId": "03ec1666-2293-4b97-8727-4a886fcd5b39"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "editmonthlycommentstabpanel",
+                        "layout|flex": null,
+                        "text": "Edit"
+                    },
+                    "designerId": "9a9832f2-0b3e-47d7-bf36-b011ba5d082f"
+                }
+            ]
         }
     ]
 }

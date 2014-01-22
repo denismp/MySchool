@@ -42,28 +42,60 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'monthlyfeelingstabpanel'
+                    xtype: 'monthlyfeelingstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlyrelectionstabpanel'
+                    xtype: 'monthlyrelectionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlypatternsofcorrectionstabpanel'
+                    xtype: 'monthlypatternsofcorrectionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlyeffectivenessofactionstabpanel'
+                    xtype: 'monthlyeffectivenessofactionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlyactionresultstabpanel'
+                    xtype: 'monthlyactionresultstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlyreflectionstabpanel'
+                    xtype: 'monthlyreflectionstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlyplannedchangestabpanel'
+                    xtype: 'monthlyplannedchangestabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 },
                 {
-                    xtype: 'monthlycommentstabpanel'
+                    xtype: 'monthlycommentstabpanel',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
                 }
             ]
         });

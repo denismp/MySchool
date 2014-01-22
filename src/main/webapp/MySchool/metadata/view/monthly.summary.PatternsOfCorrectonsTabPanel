@@ -80,7 +80,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "editpatternofcorrectionstextpad",
+                        "itemId": "editmonthlypatternsofcorrectionstabpanel",
                         "layout|flex": null,
                         "text": "Edit"
                     },

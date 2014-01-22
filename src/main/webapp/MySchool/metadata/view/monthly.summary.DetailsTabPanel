@@ -33,6 +33,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "e5da74b7-8c26-42bb-9d1c-dc98259860f6"
                 }
             ]
@@ -54,6 +59,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "6b0ec566-30b7-4377-93b4-de082305b75f"
                 }
             ]
@@ -75,6 +85,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "d3a3245f-7c2b-4125-8fa1-78d781aeef22"
                 }
             ]
@@ -96,6 +111,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "2e0998df-a53b-4fc7-9d1e-442f1b4bd6e7"
                 }
             ]
@@ -117,6 +137,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "425dd09f-97e5-49ef-a9c6-0571de6d9d7b"
                 }
             ]
@@ -138,6 +163,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "a0da180c-dfe2-4e39-92d3-62579c136b1c"
                 }
             ]
@@ -159,6 +189,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "7fa14897-661f-4287-b55d-8590fbd63228"
                 }
             ]
@@ -180,6 +215,11 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
                     "designerId": "2ab07e33-37ef-454b-ad59-8f57cc77de9c"
                 }
             ]
