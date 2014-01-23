@@ -36,7 +36,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     ],
 
     onBodiesofworkssubjectsgridViewReady: function(tablepanel, eOpts) {
-        debugger;
+        //debugger;
         console.log('onBodiesofworkssubjectsgridViewReady()');
         var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
         var ss_ = Ext.getStore('student.StudentStore');
@@ -61,7 +61,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     },
 
     onBodiesofworkssubjectsgridSelectionChange: function(model, selected, eOpts) {
-        debugger;
+        //debugger;
         // in the onMyJsonStoreLoad we do a deselect so we need to test
         // if selected[0] has a value
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
@@ -73,7 +73,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     },
 
     onBodyofworkformBoxReady: function(component, width, height, eOpts) {
-        debugger;
+        //debugger;
         console.log('onBodyofworkformBoxReady()');
     },
 

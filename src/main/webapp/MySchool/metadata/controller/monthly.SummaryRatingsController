@@ -38,7 +38,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "ref": "MonthlyFeeliingsTabPanel",
+                "ref": "MonthlyFeelingsTabPanel",
                 "selector": "monthlyfeelingstabpanel"
             },
             "designerId": "05143a08-59ac-4355-8965-8c33921adef0"
@@ -146,7 +146,22 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onMonthlysummarygridpanelSelectionChange",
                 "implHandler": [
-                    ""
+                    "//debugger;",
+                    "// in the onMyJsonStoreLoad we do a deselect so we need to test",
+                    "// if selected[0] has a value",
+                    "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
+                    "    var tabPanel = this.getMonthlyFeelingsTabPanel();",
+                    "    var dockedItems = tabPanel.getDockedItems();",
+                    "    console.log( tabPanel );",
+                    "    var myForm = dockedItems[0].getForm();",
+                    "    if( Ext.isDefined( myForm ) === false )",
+                    "    {",
+                    "        myForm = dockedItems[1].getForm();",
+                    "    }",
+                    "    console.log( myForm );",
+                    "    myForm.loadRecord( selected[0] );",
+                    "    console.log('onMonthlysummarygridpanelSelectionChange()');",
+                    "}"
                 ],
                 "name": "selectionchange",
                 "scope": "me"
@@ -621,7 +636,7 @@
                 "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onCommentstextboxBlur",
                 "implHandler": [
-                    ""
+                    "this.blurHandler( component, e, this );"
                 ],
                 "name": "blur",
                 "scope": "me"
@@ -664,6 +679,45 @@
                 "selector": "monthlydetailsgridpanel"
             },
             "designerId": "4f02c5a7-6ea9-4c0a-b077-1d3186819012"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#refreshmonthlysummariestool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onRefreshmonthlysummariestoolClick",
+                "implHandler": [
+                    "var myStore = Ext.getStore('monthly.SummaryRatingsStore');",
+                    "myStore.reload();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "99c0d8f9-504a-45d1-99d2-2f6bfc9c39c0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlycommentstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlycommentstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "f2ad7965-0f68-4598-9d07-d083875a7bbb"
         }
     ]
 }

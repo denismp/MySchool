@@ -51,7 +51,7 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onBodiesofworkssubjectsgridViewReady",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "console.log('onBodiesofworkssubjectsgridViewReady()');",
                     "var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');",
                     "var ss_ = Ext.getStore('student.StudentStore');",
@@ -91,7 +91,7 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onBodiesofworkssubjectsgridSelectionChange",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "// in the onMyJsonStoreLoad we do a deselect so we need to test",
                     "// if selected[0] has a value",
                     "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
@@ -118,7 +118,7 @@
                 "designer|targetType": "Ext.form.Panel",
                 "fn": "onBodyofworkformBoxReady",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "console.log('onBodyofworkformBoxReady()');"
                 ],
                 "name": "boxready",

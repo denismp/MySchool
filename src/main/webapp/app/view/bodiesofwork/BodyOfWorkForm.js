@@ -33,7 +33,7 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
             items: [
                 {
                     xtype: 'textareafield',
-                    id: 'bodyofworkwhattextbox',
+                    itemId: 'bodyofworkwhattextbox',
                     width: 492,
                     fieldLabel: 'What',
                     name: 'what',
@@ -43,7 +43,7 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
-                    id: 'bodyofworkdescriptiontextbox',
+                    itemId: 'bodyofworkdescriptiontextbox',
                     fieldLabel: 'Description',
                     name: 'description',
                     readOnly: true
@@ -51,7 +51,7 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
                 {
                     xtype: 'textareafield',
                     anchor: '100%',
-                    id: 'bodyofworkobjectivetextbox',
+                    itemId: 'bodyofworkobjectivetextbox',
                     fieldLabel: 'Objective',
                     name: 'objective',
                     readOnly: true

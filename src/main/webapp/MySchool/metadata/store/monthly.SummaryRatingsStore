@@ -53,7 +53,7 @@
             "userConfig": {
                 "fn": "onJsonstoreLoad",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "console.log(\"monthly.SummaryRatingsStore.onJsonstoreLoad() called...\");"
                 ],
                 "name": "load",
@@ -71,7 +71,7 @@
             "userConfig": {
                 "fn": "onJsonstoreWrite",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "console.log(\"monthly.SummaryRatingsStore.onJsonstoreWrite(): called...\");"
                 ],
                 "name": "write",

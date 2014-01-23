@@ -71,7 +71,7 @@
             "userConfig": {
                 "fn": "onJsonstoreLoad",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "console.log( \"bodiesofwork.MyJsonStore(): load event called...\");"
                 ],
                 "name": "load",

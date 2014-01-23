@@ -63,7 +63,8 @@ Ext.define('MySchool.view.monthly.summary.FeelingTabPanel', {
                             dock: 'top',
                             disabled: true,
                             itemId: 'feelingstextbox',
-                            minHeight: 273
+                            minHeight: 273,
+                            name: 'feelings'
                         }
                     ]
                 }

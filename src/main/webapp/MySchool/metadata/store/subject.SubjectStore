@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
+        "autoLoad": false,
         "designer|userAlias": "subjectstore",
         "designer|userClassName": "subject.SubjectStore",
         "model": "subject.SubjectsModel",

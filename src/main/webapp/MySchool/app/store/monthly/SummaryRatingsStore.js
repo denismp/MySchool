@@ -55,12 +55,12 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
     },
 
     onJsonstoreLoad: function(store, records, successful, eOpts) {
-        debugger;
+        //debugger;
         console.log("monthly.SummaryRatingsStore.onJsonstoreLoad() called...");
     },
 
     onJsonstoreWrite: function(store, operation, eOpts) {
-        debugger;
+        //debugger;
         console.log("monthly.SummaryRatingsStore.onJsonstoreWrite(): called...");
     }
 

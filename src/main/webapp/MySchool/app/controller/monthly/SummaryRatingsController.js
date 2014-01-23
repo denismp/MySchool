@@ -30,7 +30,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             selector: 'monthlydetailstabpanel'
         },
         {
-            ref: 'MonthlyFeeliingsTabPanel',
+            ref: 'MonthlyFeelingsTabPanel',
             selector: 'monthlyfeelingstabpanel'
         },
         {
@@ -72,7 +72,22 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     ],
 
     onMonthlysummarygridpanelSelectionChange: function(model, selected, eOpts) {
-
+        //debugger;
+        // in the onMyJsonStoreLoad we do a deselect so we need to test
+        // if selected[0] has a value
+        if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
+            var tabPanel = this.getMonthlyFeelingsTabPanel();
+            var dockedItems = tabPanel.getDockedItems();
+            console.log( tabPanel );
+            var myForm = dockedItems[0].getForm();
+            if( Ext.isDefined( myForm ) === false )
+            {
+                myForm = dockedItems[1].getForm();
+            }
+            console.log( myForm );
+            myForm.loadRecord( selected[0] );
+            console.log('onMonthlysummarygridpanelSelectionChange()');
+        }
     },
 
     onMonthlysummarydetailspanelActivate: function(component, eOpts) {
@@ -169,7 +184,16 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     onCommentstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
 
+    onRefreshmonthlysummariestoolClick: function(tool, e, eOpts) {
+        var myStore = Ext.getStore('monthly.SummaryRatingsStore');
+        myStore.reload();
+    },
+
+    onEditmonthlycommentstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
     },
 
     blurHandler: function(o, event, eOpts) {
@@ -306,6 +330,12 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#commentstextbox": {
                 blur: this.onCommentstextboxBlur
+            },
+            "#refreshmonthlysummariestool": {
+                click: this.onRefreshmonthlysummariestoolClick
+            },
+            "#editmonthlycommentstabpanel": {
+                click: this.onEditmonthlycommentstabpanelClick
             }
         });
     }

@@ -60,7 +60,7 @@ Ext.define('MySchool.store.bodiesofwork.MyJsonStore', {
     },
 
     onJsonstoreLoad: function(store, records, successful, eOpts) {
-        debugger;
+        //debugger;
         console.log( "bodiesofwork.MyJsonStore(): load event called...");
     }
 

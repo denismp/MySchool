@@ -27,7 +27,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "What",
-                "id": "bodyofworkwhattextbox",
+                "id": null,
+                "itemId": "bodyofworkwhattextbox",
                 "layout|anchor": null,
                 "name": "what",
                 "readOnly": true,
@@ -45,7 +46,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Description",
-                "id": "bodyofworkdescriptiontextbox",
+                "id": null,
+                "itemId": "bodyofworkdescriptiontextbox",
                 "layout|anchor": "100%",
                 "name": "description",
                 "readOnly": true
@@ -61,7 +63,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Objective",
-                "id": "bodyofworkobjectivetextbox",
+                "id": null,
+                "itemId": "bodyofworkobjectivetextbox",
                 "layout|anchor": "100%",
                 "name": "objective",
                 "readOnly": true
