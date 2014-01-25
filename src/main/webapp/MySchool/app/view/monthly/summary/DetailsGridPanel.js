@@ -26,6 +26,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
 
     itemId: 'monthlysummarygridpanel',
     minHeight: 150,
+    autoScroll: true,
     title: '[student name]',
     forceFit: true,
     store: 'monthly.SummaryRatingsStore',

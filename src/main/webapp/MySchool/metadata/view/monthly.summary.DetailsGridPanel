@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "autoScroll": true,
         "designer|userAlias": "monthlydetailsgridpanel",
         "designer|userClassName": "monthly.summary.DetailsGridPanel",
         "forceFit": true,

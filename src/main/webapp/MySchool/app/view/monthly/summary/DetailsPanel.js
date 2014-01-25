@@ -42,6 +42,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsPanel', {
             dockedItems: [
                 {
                     xtype: 'monthlydetailsgridpanel',
+                    height: 334,
                     dock: 'top'
                 },
                 {
