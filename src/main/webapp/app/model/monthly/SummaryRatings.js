@@ -46,7 +46,7 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
             type: 'string'
         },
         {
-            name: 'actonsResults',
+            name: 'actionResults',
             type: 'string'
         },
         {

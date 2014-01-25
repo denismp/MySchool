@@ -15,37 +15,6 @@
     "designerId": "ffa70255-3bd4-4f9d-af44-38c65acb3909",
     "cn": [
         {
-            "type": "Ext.form.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "bodyPadding": 10,
-                "title": null
-            },
-            "designerId": "ab413677-e3c6-4490-81d5-b66a242763ed",
-            "cn": [
-                {
-                    "type": "Ext.form.field.TextArea",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": null,
-                        "itemId": "actionresultstextbox",
-                        "minHeight": 320
-                    },
-                    "designerId": "474264ad-a04f-4e6b-b850-39280b58ec20"
-                }
-            ]
-        },
-        {
             "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
@@ -84,6 +53,40 @@
                         "text": "Edit"
                     },
                     "designerId": "0b7223eb-2cc0-4f28-8816-05a5c9279652"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "dock": "top",
+                "title": null
+            },
+            "designerId": "ab413677-e3c6-4490-81d5-b66a242763ed",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "actionresultstextbox",
+                        "minHeight": 273,
+                        "name": "actionResults"
+                    },
+                    "designerId": "474264ad-a04f-4e6b-b850-39280b58ec20"
                 }
             ]
         }

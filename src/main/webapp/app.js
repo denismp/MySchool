@@ -77,7 +77,7 @@ Ext.application({
         'monthly.summary.PatternsOfCorrectonsTabPanel',
         'monthly.summary.EffectivenessOfActionsTabPanel',
         'monthly.summary.ActionResultsTabPanel',
-        'monthly.summary.ReflectionTabPanel',
+        'monthly.summary.RealizationsTabPanel',
         'monthly.summary.PlannedChangesTabPanel',
         'monthly.summary.CommentsTabPanel',
         'monthly.evaluation.DetailsPanel',
@@ -107,7 +107,7 @@ Ext.application({
         'daily.LockTool',
         'monthly.summary.RefreshTool',
         'monthly.summary.SearchTool',
-        'monthly.summarry.NewTool',
+        'monthly.summary.NewTool',
         'monthly.summary.SaveTool',
         'monthly.summary.DeleteTool',
         'monthly.summary.LockTool'

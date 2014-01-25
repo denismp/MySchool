@@ -18,10 +18,10 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
     alias: 'widget.monthlyrelectionstabpanel',
 
     requires: [
-        'Ext.form.Panel',
-        'Ext.form.field.TextArea',
         'Ext.toolbar.Toolbar',
-        'Ext.button.Button'
+        'Ext.button.Button',
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea'
     ],
 
     itemId: 'monthlyreflectiontabpanel',
@@ -32,22 +32,6 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [
-                {
-                    xtype: 'form',
-                    bodyPadding: 10,
-                    dockedItems: [
-                        {
-                            xtype: 'textareafield',
-                            dock: 'top',
-                            disabled: true,
-                            id: '',
-                            itemId: 'reflectionstextbox',
-                            minHeight: 273
-                        }
-                    ]
-                }
-            ],
             dockedItems: [
                 {
                     xtype: 'toolbar',
@@ -62,6 +46,21 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
                             xtype: 'button',
                             itemId: 'editmonthlyreflectiontabpanel',
                             text: 'Edit'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'form',
+                    dock: 'top',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            disabled: true,
+                            itemId: 'reflectionstextbox',
+                            minHeight: 273,
+                            name: 'reflections'
                         }
                     ]
                 }

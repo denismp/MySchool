@@ -12,7 +12,8 @@
             "monthly.SummaryRatings"
         ],
         "stores": [
-            "monthly.SummaryRatingsStore"
+            "monthly.SummaryRatingsStore",
+            "student.StudentStore"
         ]
     },
     "designerId": "1498b0c6-fccd-43d7-ac5c-46f2ee7d0be5",
@@ -51,8 +52,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "ref": "MonthlyReflectionTabPanel",
-                "selector": "monthlyreflectiontabpanel"
+                "ref": "MonthlyReflectionsTabPanel",
+                "selector": "monthlyrelectionstabpanel"
             },
             "designerId": "88426b1b-8ae8-44f4-a1fe-5426b1404e8b"
         },
@@ -90,8 +91,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "ref": "MonthlyActionsResultsTabPanel",
-                "selector": "monthlyactionsresultstabpanel"
+                "ref": "MonthlyActionResultsTabPanel",
+                "selector": "monthlyactionresultstabpanel"
             },
             "designerId": "b4b413d0-9e09-4234-bde5-27763e77eb9c"
         },
@@ -103,7 +104,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "ref": "MonthlyRelizationsTabPanel",
+                "ref": "MonthlyRealizationsTabPanel",
                 "selector": "monthlyrealizationstabpanel"
             },
             "designerId": "b2713fd8-4816-44eb-96c2-44cbcaf00019"
@@ -146,20 +147,35 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onMonthlysummarygridpanelSelectionChange",
                 "implHandler": [
-                    "//debugger;",
+                    "debugger;",
                     "// in the onMyJsonStoreLoad we do a deselect so we need to test",
                     "// if selected[0] has a value",
                     "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
                     "    var tabPanel = this.getMonthlyFeelingsTabPanel();",
-                    "    var dockedItems = tabPanel.getDockedItems();",
-                    "    console.log( tabPanel );",
-                    "    var myForm = dockedItems[0].getForm();",
-                    "    if( Ext.isDefined( myForm ) === false )",
-                    "    {",
-                    "        myForm = dockedItems[1].getForm();",
-                    "    }",
-                    "    console.log( myForm );",
-                    "    myForm.loadRecord( selected[0] );",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyReflectionsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyPatternsOfCorrectionsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyEffectivenessOfActionsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyActionResultsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyRealizationsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyPlannedChangesTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    tabPanel = this.getMonthlyCommentsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "",
                     "    console.log('onMonthlysummarygridpanelSelectionChange()');",
                     "}"
                 ],
@@ -236,8 +252,8 @@
                     "        callback: this.onMyJsonStoreLoad,",
                     "        scope: this,",
                     "        params: {",
-                    "            studentName: studentStore.get('userName'),",
-                    "            studentId: studentStore.get('id')",
+                    "            studentName: studentRecord.get('userName'),",
+                    "            studentId: studentRecord.get('id')",
                     "        }",
                     "    });",
                     "}",
@@ -653,7 +669,7 @@
             "userConfig": {
                 "fn": "onMyJsonStoreLoad",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "//var g_ = Ext.ComponentQuery.query(\"#monthlysummarygridpanel\")[0];",
                     "var g_ = this.getMonthlyDetailsGridPanel();",
                     "",
@@ -718,6 +734,40 @@
                 "scope": "me"
             },
             "designerId": "f2ad7965-0f68-4598-9d07-d083875a7bbb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tabPanel",
+                    "selected"
+                ],
+                "fn": "loadTabPanelForm",
+                "implHandler": [
+                    "var dockedItems = tabPanel.getDockedItems();",
+                    "var myForm = dockedItems[0].getForm();",
+                    "if( Ext.isDefined( myForm ) === false )",
+                    "{",
+                    "    myForm = dockedItems[1].getForm();",
+                    "}",
+                    "if( Ext.isDefined( myForm ) )",
+                    "{",
+                    "    console.log( myForm );",
+                    "    myForm.loadRecord( selected[0] );",
+                    "}",
+                    "else",
+                    "{",
+                    "    console.log( 'No form' );",
+                    "    console.log( tabPenel );",
+                    "}"
+                ]
+            },
+            "designerId": "b72047fc-27e8-434a-bdd3-f25d051dd7a8"
         }
     ]
 }

@@ -100,6 +100,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				
 				monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
 				monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
+				monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
 				monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
 				monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
 				monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());

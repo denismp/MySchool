@@ -21,7 +21,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         'monthly.SummaryRatings'
     ],
     stores: [
-        'monthly.SummaryRatingsStore'
+        'monthly.SummaryRatingsStore',
+        'student.StudentStore'
     ],
 
     refs: [
@@ -34,8 +35,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             selector: 'monthlyfeelingstabpanel'
         },
         {
-            ref: 'MonthlyReflectionTabPanel',
-            selector: 'monthlyreflectiontabpanel'
+            ref: 'MonthlyReflectionsTabPanel',
+            selector: 'monthlyrelectionstabpanel'
         },
         {
             ref: 'MonthlyPatternsOfCorrectionsTabPanel',
@@ -46,11 +47,11 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             selector: 'monthlyeffectivenessofactionstabpanel'
         },
         {
-            ref: 'MonthlyActionsResultsTabPanel',
-            selector: 'monthlyactionsresultstabpanel'
+            ref: 'MonthlyActionResultsTabPanel',
+            selector: 'monthlyactionresultstabpanel'
         },
         {
-            ref: 'MonthlyRelizationsTabPanel',
+            ref: 'MonthlyRealizationsTabPanel',
             selector: 'monthlyrealizationstabpanel'
         },
         {
@@ -72,20 +73,35 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     ],
 
     onMonthlysummarygridpanelSelectionChange: function(model, selected, eOpts) {
-        //debugger;
+        debugger;
         // in the onMyJsonStoreLoad we do a deselect so we need to test
         // if selected[0] has a value
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
             var tabPanel = this.getMonthlyFeelingsTabPanel();
-            var dockedItems = tabPanel.getDockedItems();
-            console.log( tabPanel );
-            var myForm = dockedItems[0].getForm();
-            if( Ext.isDefined( myForm ) === false )
-            {
-                myForm = dockedItems[1].getForm();
-            }
-            console.log( myForm );
-            myForm.loadRecord( selected[0] );
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyReflectionsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyPatternsOfCorrectionsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyEffectivenessOfActionsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyActionResultsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyRealizationsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyPlannedChangesTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+            tabPanel = this.getMonthlyCommentsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected );
+
             console.log('onMonthlysummarygridpanelSelectionChange()');
         }
     },
@@ -117,8 +133,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                 callback: this.onMyJsonStoreLoad,
                 scope: this,
                 params: {
-                    studentName: studentStore.get('userName'),
-                    studentId: studentStore.get('id')
+                    studentName: studentRecord.get('userName'),
+                    studentId: studentRecord.get('id')
                 }
             });
         }
@@ -260,7 +276,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     onMyJsonStoreLoad: function() {
-        debugger;
+        //debugger;
         //var g_ = Ext.ComponentQuery.query("#monthlysummarygridpanel")[0];
         var g_ = this.getMonthlyDetailsGridPanel();
 
@@ -270,6 +286,25 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         }
 
         this.gridViewReady = true;
+    },
+
+    loadTabPanelForm: function(tabPanel, selected) {
+        var dockedItems = tabPanel.getDockedItems();
+        var myForm = dockedItems[0].getForm();
+        if( Ext.isDefined( myForm ) === false )
+        {
+            myForm = dockedItems[1].getForm();
+        }
+        if( Ext.isDefined( myForm ) )
+        {
+            console.log( myForm );
+            myForm.loadRecord( selected[0] );
+        }
+        else
+        {
+            console.log( 'No form' );
+            console.log( tabPenel );
+        }
     },
 
     init: function(application) {

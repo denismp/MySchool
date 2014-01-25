@@ -96,7 +96,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "actonsResults",
+                "name": "actionResults",
                 "type": "string"
             },
             "designerId": "d6086084-8e81-4039-b57e-05df17ae3130"

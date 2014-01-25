@@ -18,10 +18,10 @@ Ext.define('MySchool.view.monthly.summary.PlannedChangesTabPanel', {
     alias: 'widget.monthlyplannedchangestabpanel',
 
     requires: [
-        'Ext.form.Panel',
-        'Ext.form.field.TextArea',
         'Ext.toolbar.Toolbar',
-        'Ext.button.Button'
+        'Ext.button.Button',
+        'Ext.form.Panel',
+        'Ext.form.field.TextArea'
     ],
 
     itemId: 'monthlyplannedchangestabpanel',
@@ -32,20 +32,6 @@ Ext.define('MySchool.view.monthly.summary.PlannedChangesTabPanel', {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [
-                {
-                    xtype: 'form',
-                    bodyPadding: 10,
-                    dockedItems: [
-                        {
-                            xtype: 'textareafield',
-                            dock: 'top',
-                            itemId: 'plannedchangestextbox',
-                            minHeight: 320
-                        }
-                    ]
-                }
-            ],
             dockedItems: [
                 {
                     xtype: 'toolbar',
@@ -60,6 +46,21 @@ Ext.define('MySchool.view.monthly.summary.PlannedChangesTabPanel', {
                             xtype: 'button',
                             itemId: 'editmonthlyplannedchangestabpanel',
                             text: 'Edit'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'form',
+                    dock: 'top',
+                    bodyPadding: 10,
+                    dockedItems: [
+                        {
+                            xtype: 'textareafield',
+                            dock: 'top',
+                            disabled: true,
+                            itemId: 'plannedchangestextbox',
+                            minHeight: 273,
+                            name: 'plannedChanges'
                         }
                     ]
                 }

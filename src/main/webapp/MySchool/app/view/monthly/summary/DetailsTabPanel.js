@@ -23,7 +23,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
         'MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel',
         'MySchool.view.monthly.summary.EffectivenessOfActionsTabPanel',
         'MySchool.view.monthly.summary.ActionResultsTabPanel',
-        'MySchool.view.monthly.summary.ReflectionTabPanel',
+        'MySchool.view.monthly.summary.RealizationsTabPanel',
         'MySchool.view.monthly.summary.PlannedChangesTabPanel',
         'MySchool.view.monthly.summary.CommentsTabPanel',
         'Ext.panel.Panel',
@@ -77,7 +77,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
                     }
                 },
                 {
-                    xtype: 'monthlyreflectionstabpanel',
+                    xtype: 'monthlyrealizationstabpanel',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'

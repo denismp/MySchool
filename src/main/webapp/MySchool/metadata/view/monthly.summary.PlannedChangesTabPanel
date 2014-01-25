@@ -15,37 +15,6 @@
     "designerId": "afe83451-67e9-4cbf-8658-b88b8331ee66",
     "cn": [
         {
-            "type": "Ext.form.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "bodyPadding": 10,
-                "title": null
-            },
-            "designerId": "31fb1a93-4284-45d6-b3fc-98b7cf4d8a61",
-            "cn": [
-                {
-                    "type": "Ext.form.field.TextArea",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": null,
-                        "itemId": "plannedchangestextbox",
-                        "minHeight": 320
-                    },
-                    "designerId": "1fefa92e-c4a2-4bca-90c4-1ae08d16996b"
-                }
-            ]
-        },
-        {
             "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
@@ -84,6 +53,40 @@
                         "text": "Edit"
                     },
                     "designerId": "7f981978-deaa-4f81-84c3-710e1c8758f2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "dock": "top",
+                "title": null
+            },
+            "designerId": "31fb1a93-4284-45d6-b3fc-98b7cf4d8a61",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "plannedchangestextbox",
+                        "minHeight": 273,
+                        "name": "plannedChanges"
+                    },
+                    "designerId": "1fefa92e-c4a2-4bca-90c4-1ae08d16996b"
                 }
             ]
         }

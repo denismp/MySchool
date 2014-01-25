@@ -15,37 +15,6 @@
     "designerId": "a9e0be59-fa99-4445-a543-69c2b4167042",
     "cn": [
         {
-            "type": "Ext.form.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "bodyPadding": 10,
-                "title": null
-            },
-            "designerId": "fd0e8a29-7d86-41f3-8fa8-737e94ce8308",
-            "cn": [
-                {
-                    "type": "Ext.form.field.TextArea",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": null,
-                        "itemId": "effectivenestextbox",
-                        "minHeight": 320
-                    },
-                    "designerId": "c7864aa3-4945-4d69-a52a-e2faf796b316"
-                }
-            ]
-        },
-        {
             "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
@@ -84,6 +53,40 @@
                         "text": "Edit"
                     },
                     "designerId": "d7003cab-ca50-48fd-8f96-507be2ce6946"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "dock": "top",
+                "title": null
+            },
+            "designerId": "fd0e8a29-7d86-41f3-8fa8-737e94ce8308",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "effectivenestextbox",
+                        "minHeight": 273,
+                        "name": "effectivenessOfActions"
+                    },
+                    "designerId": "c7864aa3-4945-4d69-a52a-e2faf796b316"
                 }
             ]
         }

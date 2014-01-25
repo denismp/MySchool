@@ -15,38 +15,6 @@
     "designerId": "2e14afee-b028-4105-b086-c80fd7fccc9b",
     "cn": [
         {
-            "type": "Ext.form.Panel",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "bodyPadding": 10,
-                "title": null
-            },
-            "designerId": "cf85434d-b765-44bb-8094-321cbe542173",
-            "cn": [
-                {
-                    "type": "Ext.form.field.TextArea",
-                    "reference": {
-                        "name": "dockedItems",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "disabled": true,
-                        "dock": "top",
-                        "fieldLabel": null,
-                        "id": "",
-                        "itemId": "reflectionstextbox",
-                        "minHeight": 273
-                    },
-                    "designerId": "a4654cd3-eb73-4b3e-842a-a41cc955a8a4"
-                }
-            ]
-        },
-        {
             "type": "Ext.toolbar.Toolbar",
             "reference": {
                 "name": "dockedItems",
@@ -85,6 +53,40 @@
                         "text": "Edit"
                     },
                     "designerId": "69f2ef8a-83db-4a03-85d6-77d81638f436"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "dock": "top",
+                "title": null
+            },
+            "designerId": "cf85434d-b765-44bb-8094-321cbe542173",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "id": null,
+                        "itemId": "reflectionstextbox",
+                        "minHeight": 273,
+                        "name": "reflections"
+                    },
+                    "designerId": "a4654cd3-eb73-4b3e-842a-a41cc955a8a4"
                 }
             ]
         }

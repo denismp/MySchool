@@ -22,7 +22,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsPanel', {
         'MySchool.view.monthly.summary.DetailsTabPanel',
         'MySchool.view.monthly.summary.RefreshTool',
         'MySchool.view.monthly.summary.SearchTool',
-        'MySchool.view.monthly.summarry.NewTool',
+        'MySchool.view.monthly.summary.NewTool',
         'MySchool.view.monthly.summary.SaveTool',
         'MySchool.view.monthly.summary.DeleteTool',
         'MySchool.view.monthly.summary.LockTool',
