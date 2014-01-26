@@ -176,7 +176,6 @@
             "userConfig": {
                 "dataIndex": "version",
                 "format": "000000",
-                "hidden": true,
                 "text": "version"
             },
             "designerId": "78f092e2-f000-448f-898f-a2905e7921f8"
@@ -191,6 +190,7 @@
             "userConfig": {
                 "dataIndex": "qtrId",
                 "format": "000000",
+                "hidden": true,
                 "text": "qtrId"
             },
             "designerId": "f8703ab9-6b47-4bbf-af7c-1a3b7b1acb70"
@@ -205,6 +205,7 @@
             "userConfig": {
                 "dataIndex": "subjId",
                 "format": "000000",
+                "hidden": true,
                 "text": "subjId"
             },
             "designerId": "a77abfbe-95d1-4d6f-a732-b62c81d8d346"

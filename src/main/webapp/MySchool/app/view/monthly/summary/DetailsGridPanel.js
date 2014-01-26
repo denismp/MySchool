@@ -92,19 +92,20 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                 },
                 {
                     xtype: 'numbercolumn',
-                    hidden: true,
                     dataIndex: 'version',
                     text: 'version',
                     format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
+                    hidden: true,
                     dataIndex: 'qtrId',
                     text: 'qtrId',
                     format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
+                    hidden: true,
                     dataIndex: 'subjId',
                     text: 'subjId',
                     format: '000000'
