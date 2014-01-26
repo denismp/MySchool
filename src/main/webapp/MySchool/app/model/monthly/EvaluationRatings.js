@@ -66,6 +66,7 @@ Ext.define('MySchool.model.monthly.EvaluationRatings', {
             type: 'boolean'
         },
         {
+            dateFormat: 'm/d/Y',
             name: 'lastUpdated',
             type: 'date'
         },
@@ -97,6 +98,10 @@ Ext.define('MySchool.model.monthly.EvaluationRatings', {
         {
             name: 'studentUserName',
             type: 'string'
+        },
+        {
+            name: 'version',
+            type: 'int'
         }
     ]
 });

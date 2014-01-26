@@ -89,19 +89,6 @@
             "designerId": "e2a4bd86-e3fd-4f99-aaf2-316f9cf2c86d"
         },
         {
-            "type": "Ext.grid.column.Date",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "lastUpdated",
-                "text": "Date"
-            },
-            "designerId": "20bba2e7-a80b-46db-88cd-1bdeac348973"
-        },
-        {
             "type": "Ext.grid.column.Number",
             "reference": {
                 "name": "columns",
@@ -129,7 +116,7 @@
             "designerId": "5eb5c92a-aeb5-40bb-89a4-2f7110277258"
         },
         {
-            "type": "Ext.grid.column.Boolean",
+            "type": "Ext.grid.column.CheckColumn",
             "reference": {
                 "name": "columns",
                 "type": "array"
@@ -139,7 +126,18 @@
                 "dataIndex": "locked",
                 "text": "Locked?"
             },
-            "designerId": "37278d86-1dc7-485c-a171-83c75fe3aa44"
+            "designerId": "37278d86-1dc7-485c-a171-83c75fe3aa44",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "e6dab472-453b-4e21-8c37-feeae0eeb5b1"
+                }
+            ]
         },
         {
             "type": "Ext.grid.column.Column",
@@ -150,7 +148,6 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "studentUserName",
-                "hidden": true,
                 "text": "studentUserName"
             },
             "designerId": "b2230a9f-d275-43ff-b2a9-faadd98815b9"
@@ -168,6 +165,49 @@
                 "text": "lastUpdated"
             },
             "designerId": "2aacf8c9-2f5a-409c-9f58-22ff4e90442a"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "version",
+                "format": "000000",
+                "hidden": true,
+                "text": "version"
+            },
+            "designerId": "78f092e2-f000-448f-898f-a2905e7921f8"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrId",
+                "format": "000000",
+                "text": "qtrId"
+            },
+            "designerId": "f8703ab9-6b47-4bbf-af7c-1a3b7b1acb70"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "subjId",
+                "format": "000000",
+                "text": "subjId"
+            },
+            "designerId": "a77abfbe-95d1-4d6f-a732-b62c81d8d346"
         }
     ]
 }

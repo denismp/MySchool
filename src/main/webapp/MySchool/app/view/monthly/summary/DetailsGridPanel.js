@@ -19,9 +19,10 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
-        'Ext.grid.column.Date',
         'Ext.grid.View',
-        'Ext.grid.column.Boolean'
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
+        'Ext.grid.column.Date'
     ],
 
     itemId: 'monthlysummarygridpanel',
@@ -64,11 +65,6 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                     format: '00'
                 },
                 {
-                    xtype: 'datecolumn',
-                    dataIndex: 'lastUpdated',
-                    text: 'Date'
-                },
-                {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'studentId',
@@ -76,13 +72,15 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                     format: '00000'
                 },
                 {
-                    xtype: 'booleancolumn',
+                    xtype: 'checkcolumn',
                     dataIndex: 'locked',
-                    text: 'Locked?'
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 },
                 {
                     xtype: 'gridcolumn',
-                    hidden: true,
                     dataIndex: 'studentUserName',
                     text: 'studentUserName'
                 },
@@ -91,6 +89,25 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                     dataIndex: 'lastUpdated',
                     text: 'lastUpdated',
                     format: 'm/d/Y'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'qtrId',
+                    text: 'qtrId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'subjId',
+                    text: 'subjId',
+                    format: '000000'
                 }
             ],
             viewConfig: {

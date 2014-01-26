@@ -212,6 +212,22 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         this.buttonHandler( button, e, eOpts );
     },
 
+    onSavemonthlysummariestoolClick: function(tool, e, eOpts) {
+        window.console.log( "monthly.SummaryRatingsController.Save" );
+        debugger;
+
+        var mystore = Ext.getStore("monthly.SummaryRatingsStore");
+
+        var records = mystore.getModifiedRecords();
+        for( var i = 0; i < records.length; i++ )
+        {
+            records[i].set( 'lastUpdated', new Date() );
+            records[i].set( 'whoUpdated', 'login');
+        }
+
+        mystore.sync();
+    },
+
     blurHandler: function(o, event, eOpts) {
         debugger;
         var p_ = o.up('form').up('panel');
@@ -371,6 +387,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#editmonthlycommentstabpanel": {
                 click: this.onEditmonthlycommentstabpanelClick
+            },
+            "#savemonthlysummariestool": {
+                click: this.onSavemonthlysummariestoolClick
             }
         });
     }

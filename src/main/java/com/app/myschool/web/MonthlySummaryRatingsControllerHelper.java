@@ -353,14 +353,32 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
-			MonthlySummaryRatings record = null;
+			MonthySummaryRatingsView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
-			boolean inSync = true;
+			boolean inSync = false;
 
-			record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
-		    if (((MonthlySummaryRatings)record).merge() != null ) {
+			myView = MonthySummaryRatingsView.fromJsonToMonthySummaryRatingsView(myJson);
+			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getId());
+			
+			record.setLastUpdated(myView.getLastUpdated());
+			record.setLocked(myView.getLocked());
+			record.setFeelings(myView.getFeelings());
+			record.setReflections(myView.getReflections());
+			record.setRealizations(myView.getRealizations());
+			record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
+			record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
+			record.setActionResults(myView.getActionResults());
+			record.setPlannedChanges(myView.getPlannedChanges());
+			record.setComments(myView.getComments());
+			record.setWhoUpdated(myView.getWhoUpdated());
+
+			inSync = record.getVersion() == myView.getVersion();
+			
+			if( inSync && record.merge() != null ) {			
+		    //if (((MonthlySummaryRatings)record).merge() != null ) {
+				myView.setVersion(record.getVersion());
 	        	updateGood = true;
 		    }				
 			else {
@@ -372,7 +390,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				response.setMessage( className + " updated." );
 				response.setSuccess(true);
 				response.setTotal(1L);
-				response.setData(record);				
+				response.setData(myView);				
 			}
 			else if ( statusGood && !updateGood ) {
 				returnStatus = inSync ? HttpStatus.NOT_FOUND : HttpStatus.CONFLICT;
@@ -402,7 +420,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			returnStatus = HttpStatus.BAD_REQUEST;
 		}
 
-		// Return the updated record
+		// Return the updated myView
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 

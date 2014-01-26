@@ -161,6 +161,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dateFormat": "m/d/Y",
+                "dateWriteFormat": null,
                 "name": "lastUpdated",
                 "type": "date"
             },
@@ -266,6 +268,19 @@
                 "type": "string"
             },
             "designerId": "ed7a64d9-830d-46f5-ae24-767ba8569eac"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "version",
+                "type": "int"
+            },
+            "designerId": "90b01281-b8b1-4e99-bc59-3f68becff1a1"
         }
     ]
 }

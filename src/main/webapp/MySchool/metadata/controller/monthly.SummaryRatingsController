@@ -768,6 +768,37 @@
                 ]
             },
             "designerId": "b72047fc-27e8-434a-bdd3-f25d051dd7a8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#savemonthlysummariestool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onSavemonthlysummariestoolClick",
+                "implHandler": [
+                    "window.console.log( \"monthly.SummaryRatingsController.Save\" );",
+                    "debugger;",
+                    "",
+                    "var mystore = Ext.getStore(\"monthly.SummaryRatingsStore\");",
+                    "",
+                    "var records = mystore.getModifiedRecords();",
+                    "for( var i = 0; i < records.length; i++ )",
+                    "{",
+                    "    records[i].set( 'lastUpdated', new Date() );",
+                    "    records[i].set( 'whoUpdated', 'login');",
+                    "}",
+                    "",
+                    "mystore.sync();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "4cb39bad-03f1-4918-b29a-6312f9ba659a"
         }
     ]
 }
