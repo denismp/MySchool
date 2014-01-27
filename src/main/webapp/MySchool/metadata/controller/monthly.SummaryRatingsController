@@ -816,12 +816,37 @@
                     "window.console.log( 'New Monthly Summary Dialog' );",
                     "var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );",
                     "//window.console.log( \"DEBUG\" );",
+                    "//newDialog.show();",
+                    "newDialog.render( Ext.getBody() );",
                     "newDialog.show();"
                 ],
                 "name": "click",
                 "scope": "me"
             },
             "designerId": "5596a764-b8f5-4f90-8c03-0885d534746f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#newmonthlysummarycanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onNewmonthlysummarycanelClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( \"Cancel New Monthly Summary\" );",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "ed5731b4-9698-46b0-80b3-5006c7fd41e4"
         }
     ]
 }

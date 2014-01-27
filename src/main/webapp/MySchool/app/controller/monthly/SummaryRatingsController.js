@@ -233,7 +233,17 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         window.console.log( 'New Monthly Summary Dialog' );
         var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
         //window.console.log( "DEBUG" );
+        //newDialog.show();
+        newDialog.render( Ext.getBody() );
         newDialog.show();
+    },
+
+    onNewmonthlysummarycanelClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Cancel New Monthly Summary" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
     },
 
     blurHandler: function(o, event, eOpts) {
@@ -401,6 +411,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#newmonthlysummariestool": {
                 click: this.onNewmonthlysummariestoolClick
+            },
+            "#newmonthlysummarycanel": {
+                click: this.onNewmonthlysummarycanelClick
             }
         });
     }

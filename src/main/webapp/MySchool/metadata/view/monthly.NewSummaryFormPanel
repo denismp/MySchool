@@ -9,9 +9,190 @@
         "bodyPadding": 10,
         "designer|userAlias": "monthlynewsummaryformpanel",
         "designer|userClassName": "monthly.NewSummaryFormPanel",
-        "height": 250,
-        "title": "My Form",
-        "width": 400
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": 620,
+        "itemId": "monthlynewsummaryformpanel",
+        "title": "New Monthly Summary Form",
+        "width": 700
     },
-    "designerId": "4ac4e250-47e0-4afc-b71f-60981c5c1ccc"
+    "designerId": "4ac4e250-47e0-4afc-b71f-60981c5c1ccc",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "monthlysummaryfieldset",
+                "title": "Monthly Summary Fields"
+            },
+            "designerId": "033ee53b-a574-497b-bb61-24fad7ca68a9",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Month Number(1-12)",
+                        "itemId": "newmonthlysummary-month_number",
+                        "layout|anchor": "100%",
+                        "maxValue": 12,
+                        "minValue": 1,
+                        "name": "month_number"
+                    },
+                    "designerId": "0d0062b9-d3f6-494c-868c-eaa62dc42547"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Feelings",
+                        "itemId": "newmonthlysummary-feelings",
+                        "layout|anchor": "100%",
+                        "maxHeight": null,
+                        "minHeight": 50,
+                        "name": "feelings"
+                    },
+                    "designerId": "f9281de1-579f-473d-9fcc-12d5b0f75036"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Reflections",
+                        "itemId": "newmonthlysummary-reflections",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "reflections"
+                    },
+                    "designerId": "7ece0335-f687-4426-b0a2-1d89b3473dde"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Patterns Of Corrections",
+                        "itemId": "newmonthlysummary-patternsofcorrections",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "patternsofcorrections"
+                    },
+                    "designerId": "747b61b0-5760-4de0-9463-e6edce371a36"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Effectiveness Of Actions",
+                        "itemId": "newmonthlysummary-effectivenesofactions",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "effectivenesofactions"
+                    },
+                    "designerId": "9ce00fd7-9f09-4029-a71c-e1c67ca91940"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Action Results",
+                        "itemId": "newmonthlysummary-actionresults",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "actionresults"
+                    },
+                    "designerId": "f1908d60-98df-4f90-b49e-11ae14b2f96a"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Realizations",
+                        "itemId": "newmonthlysummary-realizations",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "realizations"
+                    },
+                    "designerId": "4bf9f513-8a0a-47ee-b108-02cf6f8c9cfb"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Planned Changes",
+                        "itemId": "newmonthlysummary-plannedchanges",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "name": "plannedchanges"
+                    },
+                    "designerId": "ce07681c-b0bd-4f1f-b531-7d75fc5b08a5"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Comments",
+                        "itemId": "newmonthlysummary-comments",
+                        "layout|anchor": "100%",
+                        "minHeight": 50,
+                        "minWidth": null,
+                        "name": "comments"
+                    },
+                    "designerId": "ed4234fe-d5b8-43c8-8187-1fd566e9b277"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newmonthlysummarycanel",
+                "text": "Canel"
+            },
+            "designerId": "395a3a8c-5cb8-473d-81b1-e02df1819903"
+        }
+    ]
 }

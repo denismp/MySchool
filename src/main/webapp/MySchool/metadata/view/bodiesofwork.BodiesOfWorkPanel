@@ -37,7 +37,7 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "bodiesofworkform",
-                "layout|flex": 1
+                "layout|flex": null
             },
             "designerId": "00f38f6b-36c6-41ea-9e2d-708fe926c258",
             "masterInstanceId": "0e336dad-b722-4ffe-bf29-63246198e8ea"

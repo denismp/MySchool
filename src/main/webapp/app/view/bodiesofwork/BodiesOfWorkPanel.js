@@ -50,8 +50,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
                 },
                 {
                     xtype: 'bodyofworkform',
-                    itemId: 'bodiesofworkform',
-                    flex: 1
+                    itemId: 'bodiesofworkform'
                 }
             ],
             tools: [
