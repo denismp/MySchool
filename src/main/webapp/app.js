@@ -77,7 +77,6 @@ Ext.application({
         'monthly.summary.PatternsOfCorrectonsTabPanel',
         'monthly.summary.EffectivenessOfActionsTabPanel',
         'monthly.summary.ActionResultsTabPanel',
-        'monthly.summary.RealizationsTabPanel',
         'monthly.summary.PlannedChangesTabPanel',
         'monthly.summary.CommentsTabPanel',
         'monthly.evaluation.DetailsPanel',
@@ -110,7 +109,8 @@ Ext.application({
         'monthly.summary.NewTool',
         'monthly.summary.SaveTool',
         'monthly.summary.DeleteTool',
-        'monthly.summary.LockTool'
+        'monthly.summary.LockTool',
+        'monthly.NewSummaryFormPanel'
     ],
     controllers: [
         'subject.SubjectsController',

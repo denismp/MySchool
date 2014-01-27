@@ -24,7 +24,7 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
         'Ext.form.field.TextArea'
     ],
 
-    itemId: 'monthlyreflectiontabpanel',
+    itemId: 'monthlyreflectionstabpanel',
     layout: 'fit',
     title: 'Reflections',
 

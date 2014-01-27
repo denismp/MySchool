@@ -799,6 +799,29 @@
                 "scope": "me"
             },
             "designerId": "4cb39bad-03f1-4918-b29a-6312f9ba659a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#newmonthlysummariestool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onNewmonthlysummariestoolClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( 'New Monthly Summary Dialog' );",
+                    "var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );",
+                    "//window.console.log( \"DEBUG\" );",
+                    "newDialog.show();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "5596a764-b8f5-4f90-8c03-0885d534746f"
         }
     ]
 }

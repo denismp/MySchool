@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userAlias": "monthlyrelectionstabpanel",
         "designer|userClassName": "monthly.summary.ReflectionsTabPanel",
-        "itemId": "monthlyreflectiontabpanel",
+        "itemId": "monthlyreflectionstabpanel",
         "layout": "fit",
         "title": "Reflections"
     },

@@ -228,6 +228,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         mystore.sync();
     },
 
+    onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
+        //debugger;
+        window.console.log( 'New Monthly Summary Dialog' );
+        var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
+        //window.console.log( "DEBUG" );
+        newDialog.show();
+    },
+
     blurHandler: function(o, event, eOpts) {
         debugger;
         var p_ = o.up('form').up('panel');
@@ -390,6 +398,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#savemonthlysummariestool": {
                 click: this.onSavemonthlysummariestoolClick
+            },
+            "#newmonthlysummariestool": {
+                click: this.onNewmonthlysummariestoolClick
             }
         });
     }
