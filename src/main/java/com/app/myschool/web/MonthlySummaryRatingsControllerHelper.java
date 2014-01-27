@@ -64,6 +64,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
+		queryString.append( " order by rs.month_number");
 		rList = (List<MonthlySummaryRatings>)em.createNativeQuery(queryString.toString(), MonthlySummaryRatings.class).getResultList(); 
 
 		return rList;

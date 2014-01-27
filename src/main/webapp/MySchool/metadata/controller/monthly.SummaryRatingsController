@@ -847,6 +847,29 @@
                 "scope": "me"
             },
             "designerId": "ed5731b4-9698-46b0-80b3-5006c7fd41e4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#newmonthlysummarysubmit",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onNewmonthlysummarysubmitClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( \"Submit New Monthly Summary\" );",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "75b92922-fdf2-4b0b-9b17-5d9cb87d2651"
         }
     ]
 }

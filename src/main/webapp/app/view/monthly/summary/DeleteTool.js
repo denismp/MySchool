@@ -25,10 +25,6 @@ Ext.define('MySchool.view.monthly.summary.DeleteTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // Add delete handler code here.
     }
 
 });

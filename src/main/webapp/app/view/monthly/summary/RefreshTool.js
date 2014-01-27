@@ -25,10 +25,6 @@ Ext.define('MySchool.view.monthly.summary.RefreshTool', {
         var me = this;
 
         me.callParent(arguments);
-    },
-
-    handler: function(event, toolEl, owner, tool) {
-        // Add refresh handler code here.  Use example from chapter 2 of book.
     }
 
 });

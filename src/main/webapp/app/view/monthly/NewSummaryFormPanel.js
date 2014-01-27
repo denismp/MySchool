@@ -19,16 +19,16 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
 
     requires: [
         'Ext.form.FieldSet',
+        'Ext.form.field.Display',
         'Ext.form.field.Number',
+        'Ext.form.field.Hidden',
         'Ext.button.Button'
     ],
 
     draggable: true,
     floating: true,
     frame: true,
-    height: 620,
     itemId: 'monthlynewsummaryformpanel',
-    width: 700,
     bodyPadding: 10,
     title: 'New Monthly Summary Form',
 
@@ -43,77 +43,99 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                     title: 'Monthly Summary Fields',
                     items: [
                         {
+                            xtype: 'displayfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-subject',
+                            fieldLabel: 'Subject',
+                            value: 'subject1'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-quarter',
+                            fieldLabel: 'Quarter',
+                            value: 'First'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-year',
+                            fieldLabel: 'Year',
+                            value: '2014'
+                        },
+                        {
                             xtype: 'numberfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-month_number',
                             fieldLabel: 'Month Number(1-12)',
                             name: 'month_number',
+                            validateBlank: true,
                             maxValue: 12,
                             minValue: 1
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-feelings',
-                            minHeight: 50,
-                            fieldLabel: 'Feelings',
-                            name: 'feelings'
+                            fieldLabel: 'feelings',
+                            name: 'feelings',
+                            value: 'feelings'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-reflections',
-                            minHeight: 50,
-                            fieldLabel: 'Reflections',
-                            name: 'reflections'
+                            fieldLabel: 'reflections',
+                            name: 'reflections',
+                            value: 'reflections'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-patternsofcorrections',
-                            minHeight: 50,
-                            fieldLabel: 'Patterns Of Corrections',
-                            name: 'patternsofcorrections'
+                            fieldLabel: 'patterns of correctons',
+                            name: 'patternsofcorrections',
+                            value: 'patterns of corrections'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
-                            itemId: 'newmonthlysummary-effectivenesofactions',
-                            minHeight: 50,
-                            fieldLabel: 'Effectiveness Of Actions',
-                            name: 'effectivenesofactions'
+                            itemId: 'newmonthlysummary-effectivenessofactions',
+                            fieldLabel: 'effectivenes of actions',
+                            name: 'effectivenessofactions',
+                            value: 'effectiveness of actions'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-actionresults',
-                            minHeight: 50,
-                            fieldLabel: 'Action Results',
-                            name: 'actionresults'
+                            fieldLabel: 'action results',
+                            name: 'actionresults',
+                            value: 'action results'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-realizations',
-                            minHeight: 50,
-                            fieldLabel: 'Realizations',
-                            name: 'realizations'
+                            fieldLabel: 'realizations',
+                            name: 'realizations',
+                            value: 'realizations'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-plannedchanges',
-                            minHeight: 50,
-                            fieldLabel: 'Planned Changes',
-                            name: 'plannedchanges'
+                            fieldLabel: 'planned changes',
+                            name: 'plannedchanges',
+                            value: 'planned changes'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'hiddenfield',
                             anchor: '100%',
                             itemId: 'newmonthlysummary-comments',
-                            minHeight: 50,
-                            fieldLabel: 'Comments',
-                            name: 'comments'
+                            fieldLabel: 'comments',
+                            name: 'comments',
+                            value: 'comments'
                         }
                     ]
                 },
@@ -121,6 +143,11 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                     xtype: 'button',
                     itemId: 'newmonthlysummarycanel',
                     text: 'Canel'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'newmonthlysummarysubmit',
+                    text: 'Submit'
                 }
             ]
         });

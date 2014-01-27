@@ -246,6 +246,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         button.up().hide();
     },
 
+    onNewmonthlysummarysubmitClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Submit New Monthly Summary" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
+    },
+
     blurHandler: function(o, event, eOpts) {
         debugger;
         var p_ = o.up('form').up('panel');
@@ -414,6 +422,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#newmonthlysummarycanel": {
                 click: this.onNewmonthlysummarycanelClick
+            },
+            "#newmonthlysummarysubmit": {
+                click: this.onNewmonthlysummarysubmitClick
             }
         });
     }

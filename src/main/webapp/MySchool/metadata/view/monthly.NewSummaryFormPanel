@@ -12,10 +12,10 @@
         "draggable": true,
         "floating": true,
         "frame": true,
-        "height": 620,
+        "height": null,
         "itemId": "monthlynewsummaryformpanel",
         "title": "New Monthly Summary Form",
-        "width": 700
+        "width": null
     },
     "designerId": "4ac4e250-47e0-4afc-b71f-60981c5c1ccc",
     "cn": [
@@ -33,6 +33,57 @@
             "designerId": "033ee53b-a574-497b-bb61-24fad7ca68a9",
             "cn": [
                 {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Subject",
+                        "itemId": "newmonthlysummary-subject",
+                        "layout|anchor": "100%",
+                        "value": [
+                            "'subject1'"
+                        ]
+                    },
+                    "designerId": "016d0570-3d49-4f33-8e8c-5d7e995b86f4"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Quarter",
+                        "itemId": "newmonthlysummary-quarter",
+                        "layout|anchor": "100%",
+                        "value": [
+                            "'First'"
+                        ]
+                    },
+                    "designerId": "d0cfffc6-7e8a-40ab-9966-f4db6901cf0e"
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Year",
+                        "itemId": "newmonthlysummary-year",
+                        "layout|anchor": "100%",
+                        "value": [
+                            "'2014'"
+                        ]
+                    },
+                    "designerId": "1232f750-7263-4e97-8315-5a311dfb7a01"
+                },
+                {
                     "type": "Ext.form.field.Number",
                     "reference": {
                         "name": "items",
@@ -45,139 +96,154 @@
                         "layout|anchor": "100%",
                         "maxValue": 12,
                         "minValue": 1,
-                        "name": "month_number"
+                        "name": "month_number",
+                        "validateBlank": true
                     },
                     "designerId": "0d0062b9-d3f6-494c-868c-eaa62dc42547"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Feelings",
+                        "fieldLabel": "feelings",
                         "itemId": "newmonthlysummary-feelings",
                         "layout|anchor": "100%",
-                        "maxHeight": null,
-                        "minHeight": 50,
-                        "name": "feelings"
+                        "name": "feelings",
+                        "value": [
+                            "'feelings'"
+                        ]
                     },
-                    "designerId": "f9281de1-579f-473d-9fcc-12d5b0f75036"
+                    "designerId": "c67021d3-512c-40ca-8bd2-f9aa31667d46"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Reflections",
+                        "fieldLabel": "reflections",
                         "itemId": "newmonthlysummary-reflections",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "reflections"
+                        "name": "reflections",
+                        "value": [
+                            "'reflections'"
+                        ]
                     },
-                    "designerId": "7ece0335-f687-4426-b0a2-1d89b3473dde"
+                    "designerId": "04ed9475-f38f-4ea2-8f64-ba03a5e86031"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Patterns Of Corrections",
+                        "fieldLabel": "patterns of correctons",
                         "itemId": "newmonthlysummary-patternsofcorrections",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "patternsofcorrections"
+                        "name": "patternsofcorrections",
+                        "value": [
+                            "'patterns of corrections'"
+                        ]
                     },
-                    "designerId": "747b61b0-5760-4de0-9463-e6edce371a36"
+                    "designerId": "db58899c-3ec0-4b02-bb71-a85faa6d1036"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Effectiveness Of Actions",
-                        "itemId": "newmonthlysummary-effectivenesofactions",
+                        "fieldLabel": "effectivenes of actions",
+                        "itemId": "newmonthlysummary-effectivenessofactions",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "effectivenesofactions"
+                        "name": "effectivenessofactions",
+                        "value": [
+                            "'effectiveness of actions'"
+                        ]
                     },
-                    "designerId": "9ce00fd7-9f09-4029-a71c-e1c67ca91940"
+                    "designerId": "a56bff37-7fd2-4d11-b53b-cd9bb67f3ffc"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Action Results",
+                        "fieldLabel": "action results",
                         "itemId": "newmonthlysummary-actionresults",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "actionresults"
+                        "name": "actionresults",
+                        "value": [
+                            "'action results'"
+                        ]
                     },
-                    "designerId": "f1908d60-98df-4f90-b49e-11ae14b2f96a"
+                    "designerId": "96735579-a767-43a8-9e72-3610a7bfde62"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Realizations",
+                        "fieldLabel": "realizations",
                         "itemId": "newmonthlysummary-realizations",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "realizations"
+                        "name": "realizations",
+                        "value": [
+                            "'realizations'"
+                        ]
                     },
-                    "designerId": "4bf9f513-8a0a-47ee-b108-02cf6f8c9cfb"
+                    "designerId": "bef8684c-b967-4de9-8296-4391a09a24a1"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Planned Changes",
+                        "fieldLabel": "planned changes",
                         "itemId": "newmonthlysummary-plannedchanges",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "name": "plannedchanges"
+                        "name": "plannedchanges",
+                        "value": [
+                            "'planned changes'"
+                        ]
                     },
-                    "designerId": "ce07681c-b0bd-4f1f-b531-7d75fc5b08a5"
+                    "designerId": "10f37c54-cc1e-402e-b579-82eed8858a3e"
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Hidden",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Comments",
+                        "fieldLabel": "comments",
                         "itemId": "newmonthlysummary-comments",
                         "layout|anchor": "100%",
-                        "minHeight": 50,
-                        "minWidth": null,
-                        "name": "comments"
+                        "name": "comments",
+                        "value": [
+                            "'comments'"
+                        ]
                     },
-                    "designerId": "ed4234fe-d5b8-43c8-8187-1fd566e9b277"
+                    "designerId": "02930241-3a6b-491a-8a3b-b92675685b33"
                 }
             ]
         },
@@ -193,6 +259,19 @@
                 "text": "Canel"
             },
             "designerId": "395a3a8c-5cb8-473d-81b1-e02df1819903"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "newmonthlysummarysubmit",
+                "text": "Submit"
+            },
+            "designerId": "ce43ae7b-079b-4c8a-a28b-41e03abff15c"
         }
     ]
 }
