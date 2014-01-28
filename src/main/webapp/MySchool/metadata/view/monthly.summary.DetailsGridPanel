@@ -209,6 +209,21 @@
                 "text": "subjId"
             },
             "designerId": "a77abfbe-95d1-4d6f-a732-b62c81d8d346"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "studentId",
+                "format": "000000",
+                "hidden": true,
+                "text": "studentId"
+            },
+            "designerId": "38edaf98-ba2d-41e8-8eee-1004dd27178a"
         }
     ]
 }

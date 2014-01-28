@@ -47,6 +47,7 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                             anchor: '100%',
                             itemId: 'newmonthlysummary-subject',
                             fieldLabel: 'Subject',
+                            name: 'subject',
                             value: 'subject1'
                         },
                         {
@@ -54,6 +55,7 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                             anchor: '100%',
                             itemId: 'newmonthlysummary-quarter',
                             fieldLabel: 'Quarter',
+                            name: 'quarter',
                             value: 'First'
                         },
                         {
@@ -61,6 +63,7 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                             anchor: '100%',
                             itemId: 'newmonthlysummary-year',
                             fieldLabel: 'Year',
+                            name: 'year',
                             value: '2014'
                         },
                         {
@@ -136,6 +139,41 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                             fieldLabel: 'comments',
                             name: 'comments',
                             value: 'comments'
+                        },
+                        {
+                            xtype: 'hiddenfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-subjectid',
+                            fieldLabel: 'subjectId',
+                            name: 'subjectId'
+                        },
+                        {
+                            xtype: 'hiddenfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-quarterid',
+                            fieldLabel: 'quarterid',
+                            name: 'quarterId'
+                        },
+                        {
+                            xtype: 'hiddenfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-studentname',
+                            fieldLabel: 'studentname',
+                            name: 'studentname'
+                        },
+                        {
+                            xtype: 'hiddenfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-subjectname',
+                            fieldLabel: 'subjectname',
+                            name: 'subjectname'
+                        },
+                        {
+                            xtype: 'hiddenfield',
+                            anchor: '100%',
+                            itemId: 'newmonthlysummary-studentid',
+                            fieldLabel: 'studentid',
+                            name: 'studentid'
                         }
                     ]
                 },

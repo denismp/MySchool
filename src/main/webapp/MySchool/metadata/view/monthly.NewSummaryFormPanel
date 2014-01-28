@@ -43,6 +43,7 @@
                         "fieldLabel": "Subject",
                         "itemId": "newmonthlysummary-subject",
                         "layout|anchor": "100%",
+                        "name": "subject",
                         "value": [
                             "'subject1'"
                         ]
@@ -60,6 +61,7 @@
                         "fieldLabel": "Quarter",
                         "itemId": "newmonthlysummary-quarter",
                         "layout|anchor": "100%",
+                        "name": "quarter",
                         "value": [
                             "'First'"
                         ]
@@ -77,6 +79,7 @@
                         "fieldLabel": "Year",
                         "itemId": "newmonthlysummary-year",
                         "layout|anchor": "100%",
+                        "name": "year",
                         "value": [
                             "'2014'"
                         ]
@@ -244,6 +247,81 @@
                         ]
                     },
                     "designerId": "02930241-3a6b-491a-8a3b-b92675685b33"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectId",
+                        "itemId": "newmonthlysummary-subjectid",
+                        "layout|anchor": "100%",
+                        "name": "subjectId"
+                    },
+                    "designerId": "505ebdc2-cc79-4dd9-abf2-c9700766e2a8"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarterid",
+                        "itemId": "newmonthlysummary-quarterid",
+                        "layout|anchor": "100%",
+                        "name": "quarterId"
+                    },
+                    "designerId": "8fa0d29c-aea6-4cd1-9aa4-9066836cd13a"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentname",
+                        "itemId": "newmonthlysummary-studentname",
+                        "layout|anchor": "100%",
+                        "name": "studentname"
+                    },
+                    "designerId": "076a9241-a389-4ec8-b39f-2022a12d917b"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectname",
+                        "itemId": "newmonthlysummary-subjectname",
+                        "layout|anchor": "100%",
+                        "name": "subjectname"
+                    },
+                    "designerId": "50386598-de22-4553-8ca2-11cb0bb40fb4"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentid",
+                        "itemId": "newmonthlysummary-studentid",
+                        "layout|anchor": "100%",
+                        "name": "studentid"
+                    },
+                    "designerId": "964ea03f-5bcf-48ba-b869-cd9a5d4bea69"
                 }
             ]
         },

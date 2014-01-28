@@ -229,11 +229,32 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
-        //debugger;
+        debugger;
+
+        var myGrid = this.getMonthlyDetailsGridPanel();
+        var mySelected = myGrid.getSelectionModel().getLastSelected();
+        var subjName = mySelected.get( 'subjName' );
+        var qtrName = mySelected.get( 'qtrName' );
+        var qtrYear = mySelected.get( 'qtrYear' );
+        var qtrId = mySelected.get( 'qtrId');
+        var subjId = mySelected.get( 'subjId');
+        var studentId = mySelected.get( 'studentId');
+        var studentName = mySelected.get('studentUserName');
+        var subjName = mySelected.get('subjName');
         window.console.log( 'New Monthly Summary Dialog' );
+
         var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
-        //window.console.log( "DEBUG" );
-        //newDialog.show();
+
+        //var myForm = newDialog.getForm();
+        newDialog.down('#newmonthlysummary-subject').setValue( subjName );
+        newDialog.down('#newmonthlysummary-quarter').setValue( qtrName );
+        newDialog.down('#newmonthlysummary-year').setValue( qtrYear );
+        newDialog.down('#newmonthlysummary-quarterid').setValue( qtrId );
+        newDialog.down('#newmonthlysummary-subjectid').setValue( subjId );
+        newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
+        newDialog.down('#newmonthlysummary-subjectname').setValue( subjName );
+        newDialog.down('#newmonthlysummary-studentname').setValue( studentName );
+
         newDialog.render( Ext.getBody() );
         newDialog.show();
     },
@@ -247,9 +268,15 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     onNewmonthlysummarysubmitClick: function(button, e, eOpts) {
-        //debugger;
+        debugger;
         window.console.log( "Submit New Monthly Summary" );
         var myForm = button.up().getForm();
+
+        //Get the values from the form and insert a new record into the MonthlySummaryView.
+
+        var formValues = myForm.getValues();
+
+
         myForm.reset();
         button.up().hide();
     },

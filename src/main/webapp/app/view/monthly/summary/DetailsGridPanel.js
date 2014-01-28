@@ -109,6 +109,13 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                     dataIndex: 'subjId',
                     text: 'subjId',
                     format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
                 }
             ],
             viewConfig: {
