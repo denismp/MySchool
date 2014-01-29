@@ -46,6 +46,12 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
                     dateFormat: 'm/d/Y',
                     encode: true,
                     root: 'data'
+                },
+                listeners: {
+                    exception: {
+                        fn: me.onRestException,
+                        scope: me
+                    }
                 }
             },
             listeners: {
@@ -61,6 +67,18 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
         }, cfg)]);
     },
 
+    onRestException: function(proxy, response, operation, eOpts) {
+        //debugger;
+        var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data;
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION',
+            msg: smsg,
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK
+        });
+        window.console.log( smsg );
+    },
+
     onJsonstoreLoad: function(store, records, successful, eOpts) {
         //debugger;
         console.log("monthly.SummaryRatingsStore.onJsonstoreLoad() called...");
@@ -69,6 +87,7 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
     onJsonstoreWrite: function(store, operation, eOpts) {
         //debugger;
         console.log("monthly.SummaryRatingsStore.onJsonstoreWrite(): called...");
+        store.reload();
     }
 
 });

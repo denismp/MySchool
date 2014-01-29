@@ -263,28 +263,51 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			MonthlySummaryRatings record = null;
+			MonthlySummaryRatings record = new MonthlySummaryRatings();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
+			MonthySummaryRatingsView myView = MonthySummaryRatingsView.fromJsonToMonthySummaryRatingsView(myJson);
+			Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+			//Subject u_ = quarter.getSubject();
+			//Student student_ = quarter.getStudent();
+			
+			record.setActionResults(myView.getActionResults());
+			record.setComments(myView.getComments());
+			record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
+			record.setFeelings(myView.getFeelings());
+			record.setLastUpdated(myView.getLastUpdated());
+			record.setLocked(myView.getLocked());
+			record.setMonth_number(myView.getMonth_number());
+			record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
+			record.setPlannedChanges(myView.getPlannedChanges());
+			record.setQuarter(quarter);
+			record.setRealizations(myView.getRealizations());
+			record.setReflections(myView.getReflections());
+			record.setWhoUpdated(myView.getWhoUpdated());
+			
+			((MonthlySummaryRatings)record).persist();
+			
+			myView.setVersion(record.getVersion());
+			myView.setId(record.getId());
 
-			record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
-			if( record != null )
-				((MonthlySummaryRatings)record).persist();
-			else
-			{
-				response.setMessage( "No data for class=" + className );
-				response.setSuccess(false);
-				response.setTotal(0L);	
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
+			//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
+			//if( record != null )
+			//	((MonthlySummaryRatings)record).persist();
+			//else
+			//{
+			//	response.setMessage( "No data for class=" + className );
+			//	response.setSuccess(false);
+			//	response.setTotal(0L);	
+			//	statusGood = false;
+			//	returnStatus = HttpStatus.BAD_REQUEST;
+			//}
 			if( statusGood )
 			{
 	            returnStatus = HttpStatus.CREATED;
 				response.setMessage( className + " created." );
 				response.setSuccess(true);
 				response.setTotal(1L);
-				response.setData(record);
+				response.setData(myView);
 			}
 
 		} catch(Exception e) {

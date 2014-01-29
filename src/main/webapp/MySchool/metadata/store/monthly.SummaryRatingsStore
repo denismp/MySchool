@@ -54,6 +54,31 @@
                         "root": "data"
                     },
                     "designerId": "adf9230e-6e53-47ed-ad4b-b57d20090e39"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRestException",
+                        "implHandler": [
+                            "//debugger;",
+                            "var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data;",
+                            "Ext.MessageBox.show({",
+                            "    title: 'REMOTE EXCEPTION',",
+                            "    msg: smsg,",
+                            "    icon: Ext.MessageBox.ERROR,",
+                            "    buttons: Ext.Msg.OK",
+                            "});",
+                            "window.console.log( smsg );"
+                        ],
+                        "name": "exception",
+                        "scope": "me"
+                    },
+                    "designerId": "5e7e27b3-9575-4ba8-ba6c-fc067034bf43"
                 }
             ]
         },
@@ -86,7 +111,8 @@
                 "fn": "onJsonstoreWrite",
                 "implHandler": [
                     "//debugger;",
-                    "console.log(\"monthly.SummaryRatingsStore.onJsonstoreWrite(): called...\");"
+                    "console.log(\"monthly.SummaryRatingsStore.onJsonstoreWrite(): called...\");",
+                    "store.reload();"
                 ],
                 "name": "write",
                 "scope": "me"

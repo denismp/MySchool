@@ -246,9 +246,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
 
         //var myForm = newDialog.getForm();
+        newDialog.down('#newmonthlysummary-dsubject').setValue( subjName );
+        newDialog.down('#newmonthlysummary-dquarter').setValue( qtrName );
+        newDialog.down('#newmonthlysummary-dyear').setValue( qtrYear );
+
         newDialog.down('#newmonthlysummary-subject').setValue( subjName );
         newDialog.down('#newmonthlysummary-quarter').setValue( qtrName );
         newDialog.down('#newmonthlysummary-year').setValue( qtrYear );
+
         newDialog.down('#newmonthlysummary-quarterid').setValue( qtrId );
         newDialog.down('#newmonthlysummary-subjectid').setValue( subjId );
         newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
@@ -275,10 +280,54 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         //Get the values from the form and insert a new record into the MonthlySummaryView.
 
         var formValues = myForm.getValues();
+        var record = Ext.create('MySchool.model.monthly.SummaryRatings');
+        var myStore = this.getStore( 'monthly.SummaryRatingsStore' );
 
+        //Add the data to the new record.
+        if( formValues.month_number > 0 )
+        {
+            record.set('month_number', formValues.month_number);
 
-        myForm.reset();
-        button.up().hide();
+            record.set('subjName', formValues.subjectname );
+            record.set('subjId', formValues.subjectId );
+            record.set('qtrName', formValues.quarter);
+            record.set('qtrId', formValues.quarterId);
+            record.set('studentId', formValues.studentId);
+            record.set('studentUserName', formValues.studentname);
+            record.set('qtrYear', formValues.year);
+            record.set('locked', 0 );
+            record.set('feelings', formValues.feelings);
+            record.set('patternsOfCorrections', formValues.patternsofcorrections);
+            record.set('effectivenessOfActions', formValues.effectivenessofactions);
+            record.set('realizations', formValues.realizations);
+            record.set('reflections', formValues.reflections);
+            record.set('plannedChanges', formValues.plannedchanges);
+            record.set('comments', formValues.comments);
+            record.set('actionResults', formValues.actionresults);
+            record.set('whoUpdated', 'login');
+            record.set('lastUpdated', new Date());
+
+            //add to the store
+
+            myStore.add( record );
+
+            //sync the store.
+            myStore.sync();
+
+            myForm.reset();
+            button.up().hide();
+        }
+        else
+        {
+            var smsg = "You must enter a value for month";
+            Ext.MessageBox.show({
+                title: 'REMOTE EXCEPTION',
+                msg: smsg,
+                icon: Ext.MessageBox.ERROR,
+                buttons: Ext.Msg.OK
+            });
+        }
+
     },
 
     blurHandler: function(o, event, eOpts) {

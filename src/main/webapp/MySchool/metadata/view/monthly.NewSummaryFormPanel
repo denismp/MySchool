@@ -41,12 +41,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Subject",
-                        "itemId": "newmonthlysummary-subject",
+                        "itemId": "newmonthlysummary-dsubject",
                         "layout|anchor": "100%",
-                        "name": "subject",
-                        "value": [
-                            "'subject1'"
-                        ]
+                        "name": "dsubject"
                     },
                     "designerId": "016d0570-3d49-4f33-8e8c-5d7e995b86f4"
                 },
@@ -59,12 +56,10 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Quarter",
-                        "itemId": "newmonthlysummary-quarter",
+                        "itemId": "newmonthlysummary-dquarter",
                         "layout|anchor": "100%",
-                        "name": "quarter",
-                        "value": [
-                            "'First'"
-                        ]
+                        "name": "dquarter",
+                        "value": null
                     },
                     "designerId": "d0cfffc6-7e8a-40ab-9966-f4db6901cf0e"
                 },
@@ -77,12 +72,10 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Year",
-                        "itemId": "newmonthlysummary-year",
+                        "itemId": "newmonthlysummary-dyear",
                         "layout|anchor": "100%",
-                        "name": "year",
-                        "value": [
-                            "'2014'"
-                        ]
+                        "name": "dyear",
+                        "value": null
                     },
                     "designerId": "1232f750-7263-4e97-8315-5a311dfb7a01"
                 },
@@ -319,9 +312,54 @@
                         "fieldLabel": "studentid",
                         "itemId": "newmonthlysummary-studentid",
                         "layout|anchor": "100%",
-                        "name": "studentid"
+                        "name": "studentId"
                     },
                     "designerId": "964ea03f-5bcf-48ba-b869-cd9a5d4bea69"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subject",
+                        "itemId": "newmonthlysummary-subject",
+                        "layout|anchor": "100%",
+                        "name": "subject"
+                    },
+                    "designerId": "50b99c84-c479-4937-9e1a-26974e4a1318"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarter",
+                        "itemId": "newmonthlysummary-quarter",
+                        "layout|anchor": "100%",
+                        "name": "quarter"
+                    },
+                    "designerId": "6ce49ebe-7ca2-4e35-b295-7a0947738f61"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "year",
+                        "itemId": "newmonthlysummary-year",
+                        "layout|anchor": "100%",
+                        "name": "year"
+                    },
+                    "designerId": "9098cd00-bbd0-43dd-8a8f-8f7cc8297d30"
                 }
             ]
         },
