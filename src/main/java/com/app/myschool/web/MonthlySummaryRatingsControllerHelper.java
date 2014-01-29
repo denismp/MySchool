@@ -251,6 +251,32 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	private boolean isDup( MonthySummaryRatingsView myView ) throws Exception
+	{
+		//Integer monthNumber = myView.getMonth_number();
+		Long studentId = myView.getStudentId();
+		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Student student = Student.findStudent(myView.getStudentId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
+		List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId.toString());
+		
+
+		for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+		{
+			if( 
+					monthlySummaryRatings.getMonth_number() == myView.getMonth_number() && 
+					monthlySummaryRatings.getQuarter() == quarter &&
+					quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -267,47 +293,59 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			MonthySummaryRatingsView myView = MonthySummaryRatingsView.fromJsonToMonthySummaryRatingsView(myJson);
-			Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-			//Subject u_ = quarter.getSubject();
-			//Student student_ = quarter.getStudent();
-			
-			record.setActionResults(myView.getActionResults());
-			record.setComments(myView.getComments());
-			record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-			record.setFeelings(myView.getFeelings());
-			record.setLastUpdated(myView.getLastUpdated());
-			record.setLocked(myView.getLocked());
-			record.setMonth_number(myView.getMonth_number());
-			record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-			record.setPlannedChanges(myView.getPlannedChanges());
-			record.setQuarter(quarter);
-			record.setRealizations(myView.getRealizations());
-			record.setReflections(myView.getReflections());
-			record.setWhoUpdated(myView.getWhoUpdated());
-			
-			((MonthlySummaryRatings)record).persist();
-			
-			myView.setVersion(record.getVersion());
-			myView.setId(record.getId());
-
-			//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
-			//if( record != null )
-			//	((MonthlySummaryRatings)record).persist();
-			//else
-			//{
-			//	response.setMessage( "No data for class=" + className );
-			//	response.setSuccess(false);
-			//	response.setTotal(0L);	
-			//	statusGood = false;
-			//	returnStatus = HttpStatus.BAD_REQUEST;
-			//}
-			if( statusGood )
+			if( !this.isDup(myView) )
 			{
-	            returnStatus = HttpStatus.CREATED;
-				response.setMessage( className + " created." );
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);
+				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//Subject u_ = quarter.getSubject();
+				//Student student_ = quarter.getStudent();
+				
+				record.setActionResults(myView.getActionResults());
+				record.setComments(myView.getComments());
+				record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
+				record.setFeelings(myView.getFeelings());
+				record.setLastUpdated(myView.getLastUpdated());
+				record.setLocked(myView.getLocked());
+				record.setMonth_number(myView.getMonth_number());
+				record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
+				record.setPlannedChanges(myView.getPlannedChanges());
+				record.setQuarter(quarter);
+				record.setRealizations(myView.getRealizations());
+				record.setReflections(myView.getReflections());
+				record.setWhoUpdated(myView.getWhoUpdated());
+				
+				((MonthlySummaryRatings)record).persist();
+				
+				myView.setVersion(record.getVersion());
+				myView.setId(record.getId());
+	
+				//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
+				//if( record != null )
+				//	((MonthlySummaryRatings)record).persist();
+				//else
+				//{
+				//	response.setMessage( "No data for class=" + className );
+				//	response.setSuccess(false);
+				//	response.setTotal(0L);	
+				//	statusGood = false;
+				//	returnStatus = HttpStatus.BAD_REQUEST;
+				//}
+				if( statusGood )
+				{
+		            returnStatus = HttpStatus.CREATED;
+					response.setMessage( className + " created." );
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+			}
+			else
+			{
+				statusGood = false;
+				response.setMessage( "Duplicated month number." );
+				response.setSuccess(false);
+				response.setTotal(0L);
+				returnStatus = HttpStatus.CONFLICT;
+				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
 		} catch(Exception e) {
