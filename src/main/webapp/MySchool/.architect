@@ -2017,7 +2017,6 @@
         },
         "3a6649d5-2ee6-421d-ab65-98eed7c3cc38": {
             "id": "3a6649d5-2ee6-421d-ab65-98eed7c3cc38",
-            "expanded": false,
             "cn": [
                 {
                     "id": "8fd5f966-db30-46ff-9357-66ea3bb9ba26",
@@ -2865,11 +2864,11 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "1498b0c6-fccd-43d7-ac5c-46f2ee7d0be5",
-        "selectedInstance": "75b92922-fdf2-4b0b-9b17-5d9cb87d2651"
+        "topInstance": "3a6649d5-2ee6-421d-ab65-98eed7c3cc38",
+        "selectedInstance": "adf9230e-6e53-47ed-ad4b-b57d20090e39"
     },
     "codeState": {
-        "topInstance": "1498b0c6-fccd-43d7-ac5c-46f2ee7d0be5"
+        "topInstance": "3a6649d5-2ee6-421d-ab65-98eed7c3cc38"
     },
     "editMode": "code",
     "userSettings": {

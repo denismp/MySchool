@@ -77,6 +77,8 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
             buttons: Ext.Msg.OK
         });
         window.console.log( smsg );
+        this.reload();
+
     },
 
     onJsonstoreLoad: function(store, records, successful, eOpts) {

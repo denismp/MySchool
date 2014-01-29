@@ -73,7 +73,9 @@
                             "    icon: Ext.MessageBox.ERROR,",
                             "    buttons: Ext.Msg.OK",
                             "});",
-                            "window.console.log( smsg );"
+                            "window.console.log( smsg );",
+                            "this.reload();",
+                            ""
                         ],
                         "name": "exception",
                         "scope": "me"
