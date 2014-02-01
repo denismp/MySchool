@@ -8,7 +8,7 @@
     "userConfig": {
         "bodyPadding": 10,
         "designer|userAlias": "monthlynewsummaryformpanel",
-        "designer|userClassName": "monthly.NewSummaryFormPanel",
+        "designer|userClassName": "monthly.summary.NewSummaryFormPanel",
         "draggable": true,
         "floating": true,
         "frame": true,

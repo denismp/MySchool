@@ -110,7 +110,7 @@ Ext.application({
         'monthly.summary.SaveTool',
         'monthly.summary.DeleteTool',
         'monthly.summary.LockTool',
-        'monthly.NewSummaryFormPanel',
+        'monthly.summary.NewSummaryFormPanel',
         'common.QuarterComboBox'
     ],
     controllers: [

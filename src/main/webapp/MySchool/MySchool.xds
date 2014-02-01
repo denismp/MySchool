@@ -2,9 +2,9 @@
     "name": "MySchool",
     "settings": {
         "cmd": {
-            "license": "gpl",
-            "cmdVersion": "4.0.2.67",
-            "frameworkVersion": "4.2.1.883"
+            "license": "",
+            "cmdVersion": "",
+            "frameworkVersion": ""
         },
         "urlPrefix": "http://localhost:8080/MySchool",
         "spacesToIndent": 4,
@@ -28,7 +28,8 @@
         "displayfield-ExtBox1-1329-inputEl": "Not Installed",
         "displayfield-ExtBox1-1379-inputEl": "Not Installed",
         "displayfield-ExtBox1-1429-inputEl": "Not Installed",
-        "displayfield-ExtBox1-1479-inputEl": "Not Installed"
+        "displayfield-ExtBox1-1479-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1484-inputEl": "Not Installed"
     },
     "xdsVersion": "3.0.2",
     "xdsBuild": 1375,

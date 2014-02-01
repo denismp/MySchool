@@ -243,7 +243,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         var studentId = r_.get( 'id' );
         var studentName = r_.get( 'userName' );
 
-        var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
+        var newDialog = Ext.create( 'MySchool.view.monthly.summary.NewSummaryFormPanel' );
 
         var myFormFields = newDialog.getForm().getFields();
         //        var myuserName = myrecord.data.studentName;
@@ -268,7 +268,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
         window.console.log( 'New Monthly Summary Dialog' );
 
-        var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
+        //var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
 
         //var myForm = newDialog.getForm();
 
