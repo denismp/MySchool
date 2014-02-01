@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
+        "autoLoad": false,
         "designer|userAlias": "bodiesofworkjsonstore",
         "designer|userClassName": "bodiesofwork.MyJsonStore",
         "model": "bodiesofwork.BodiesOfWorkModel",

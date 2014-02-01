@@ -27,7 +27,7 @@ Ext.define('MySchool.store.bodiesofwork.MyJsonStore', {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            autoLoad: true,
+            autoLoad: false,
             model: 'MySchool.model.bodiesofwork.BodiesOfWorkModel',
             storeId: 'bodiesofwork.MyJsonStore',
             proxy: {

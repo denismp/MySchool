@@ -3,7 +3,7 @@
     "settings": {
         "cmd": {
             "license": "gpl",
-            "cmdVersion": "4.0.1.45",
+            "cmdVersion": "4.0.2.67",
             "frameworkVersion": "4.2.1.883"
         },
         "urlPrefix": "http://localhost:8080/MySchool",
@@ -23,11 +23,12 @@
             }
         },
         "generateArchitectVersion": true,
-        "lastBuildSelection": {
-            "value": "webBuild",
-            "display": "Build web app"
-        },
-        "displayfield-ExtBox1-1278-inputEl": "Not Installed"
+        "displayfield-ExtBox1-1278-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1274-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1329-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1379-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1429-inputEl": "Not Installed",
+        "displayfield-ExtBox1-1479-inputEl": "Not Installed"
     },
     "xdsVersion": "3.0.2",
     "xdsBuild": 1375,
@@ -104,7 +105,8 @@
             "ddc57a3f-2cf2-4636-85e7-f70c8c5bf230",
             "9aa6a1fc-ec08-460e-88be-a44b3d03f321",
             "256e813f-4e62-4018-a78c-48ca360a2a89",
-            "4ac4e250-47e0-4afc-b71f-60981c5c1ccc"
+            "4ac4e250-47e0-4afc-b71f-60981c5c1ccc",
+            "41872b83-972c-4338-a84b-63ceea0340bc"
         ],
         "store": [
             "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",

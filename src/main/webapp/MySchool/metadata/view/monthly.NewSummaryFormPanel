@@ -33,51 +33,17 @@
             "designerId": "033ee53b-a574-497b-bb61-24fad7ca68a9",
             "cn": [
                 {
-                    "type": "Ext.form.field.Display",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Subject",
-                        "itemId": "newmonthlysummary-dsubject",
-                        "layout|anchor": "100%",
-                        "name": "dsubject"
+                        "layout|anchor": "100%"
                     },
-                    "designerId": "016d0570-3d49-4f33-8e8c-5d7e995b86f4"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "Quarter",
-                        "itemId": "newmonthlysummary-dquarter",
-                        "layout|anchor": "100%",
-                        "name": "dquarter",
-                        "value": null
-                    },
-                    "designerId": "d0cfffc6-7e8a-40ab-9966-f4db6901cf0e"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "Year",
-                        "itemId": "newmonthlysummary-dyear",
-                        "layout|anchor": "100%",
-                        "name": "dyear",
-                        "value": null
-                    },
-                    "designerId": "1232f750-7263-4e97-8315-5a311dfb7a01"
+                    "designerId": "0b19ee26-badf-4347-8f8e-ae932270ff2f",
+                    "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
                 },
                 {
                     "type": "Ext.form.field.Number",

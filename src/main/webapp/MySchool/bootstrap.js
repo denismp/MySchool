@@ -8,7 +8,22 @@ Ext.Loader.addClassPathMappings({
   "Ext": "ext/src",
   "Ext.Msg": "ext/src/window/MessageBox.js",
   "Ext.rtl.EventObjectImpl": "ext/src/rtl/EventObject.js",
-  "ExtThemeNeptune": "ext/packages/ext-theme-neptune/overrides",
+  "ExtThemeNeptune.Component": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.container.ButtonGroup": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.form.field.HtmlEditor": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.grid.RowEditor": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.grid.column.RowNumberer": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.layout.component.Dock": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.menu.Menu": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.menu.Separator": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.panel.Panel": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.panel.Table": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.panel.Tool": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.picker.Month": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.resizer.Splitter": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.tab.Tab": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.toolbar.Paging": "ext/ext-theme-neptune.js",
+  "ExtThemeNeptune.toolbar.Toolbar": "ext/ext-theme-neptune.js",
   "MySchool": "app"
 });
 Ext.ClassManager.addNameAlternateMappings({
@@ -846,30 +861,101 @@ Ext.ClassManager.addNameAlternateMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "MySchool.Application": [],
   "MySchool.controller.Main": [],
+  "MySchool.controller.bodiesofwork.MyController": [],
+  "MySchool.controller.daily.MyController": [],
+  "MySchool.controller.monthly.SummaryRatingsController": [],
   "MySchool.controller.subject.SubjectsController": [],
+  "MySchool.model.bodiesofwork.BodiesOfWorkModel": [],
+  "MySchool.model.daily.DailyModel": [],
+  "MySchool.model.monthly.EvaluationRatings": [],
+  "MySchool.model.monthly.SummaryRatings": [],
   "MySchool.model.quarters.QuarterModel": [],
   "MySchool.model.student.StudentModel": [],
   "MySchool.model.subject.QuarterNamesModel": [],
   "MySchool.model.subject.SubjectsModel": [],
+  "MySchool.store.bodiesofwork.MyJsonStore": [],
+  "MySchool.store.daily.MyJsonStore": [],
+  "MySchool.store.monthly.EvaluationRatingsStore": [],
+  "MySchool.store.monthly.SummaryRatingsStore": [],
   "MySchool.store.quarter.QuarterStore": [],
   "MySchool.store.student.StudentStore": [],
+  "MySchool.store.subject.AllSubjectStore": [],
   "MySchool.store.subject.GradeTypeStore": [],
   "MySchool.store.subject.QuarterNameStore": [],
+  "MySchool.store.subject.QuarterYearStore": [],
   "MySchool.store.subject.SubjectStore": [],
   "MySchool.view.Main": [],
   "MySchool.view.MainPanel": [],
   "MySchool.view.Viewport": [],
+  "MySchool.view.bodiesofwork.BodiesOfWorkPanel": [],
+  "MySchool.view.bodiesofwork.BodyOfWorkForm": [],
+  "MySchool.view.bodiesofwork.DeleteTool": [],
+  "MySchool.view.bodiesofwork.GridPanel": [],
+  "MySchool.view.bodiesofwork.LockTool": [],
+  "MySchool.view.bodiesofwork.NewTool": [],
+  "MySchool.view.bodiesofwork.RefreshTool": [],
+  "MySchool.view.bodiesofwork.SaveTool": [],
+  "MySchool.view.bodiesofwork.SearchTool": [],
+  "MySchool.view.common.QuarterComboBox": [],
+  "MySchool.view.daily.ActionsTabPanel": [],
+  "MySchool.view.daily.CorrectionsTabPanel": [],
+  "MySchool.view.daily.DailyGridPanel": [],
+  "MySchool.view.daily.DailyHoursTabPanel": [],
+  "MySchool.view.daily.DailyPanel": [],
+  "MySchool.view.daily.DeleteTool": [],
+  "MySchool.view.daily.DetailsTabPanel": [],
+  "MySchool.view.daily.EvaluationsTabPanel": [],
+  "MySchool.view.daily.LockTool": [],
+  "MySchool.view.daily.NewTool": [],
+  "MySchool.view.daily.RefreshTool": [],
+  "MySchool.view.daily.ResourcesUsedTabPanel": [],
+  "MySchool.view.daily.SaveTool": [],
+  "MySchool.view.daily.SearchTool": [],
+  "MySchool.view.daily.StudyDetailsTabPanel": [],
+  "MySchool.view.faculty.ProfileForm": [],
+  "MySchool.view.faculty.ProfileGridPanel": [],
+  "MySchool.view.faculty.ProfilePanel": [],
+  "MySchool.view.monthly.NewSummaryFormPanel": [],
+  "MySchool.view.monthly.evaluation.DetailsPanel": [],
+  "MySchool.view.monthly.evaluation.GridPanel": [],
+  "MySchool.view.monthly.summary.ActionResultsTabPanel": [],
+  "MySchool.view.monthly.summary.CommentsTabPanel": [],
+  "MySchool.view.monthly.summary.DeleteTool": [],
+  "MySchool.view.monthly.summary.DetailsGridPanel": [],
+  "MySchool.view.monthly.summary.DetailsPanel": [],
+  "MySchool.view.monthly.summary.DetailsTabPanel": [],
+  "MySchool.view.monthly.summary.EffectivenessOfActionsTabPanel": [],
+  "MySchool.view.monthly.summary.FeelingTabPanel": [],
+  "MySchool.view.monthly.summary.LockTool": [],
+  "MySchool.view.monthly.summary.NewTool": [],
+  "MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel": [],
+  "MySchool.view.monthly.summary.PlannedChangesTabPanel": [],
+  "MySchool.view.monthly.summary.RealizationsTabPanel": [],
+  "MySchool.view.monthly.summary.ReflectionsTabPanel": [],
+  "MySchool.view.monthly.summary.RefreshTool": [],
+  "MySchool.view.monthly.summary.SaveTool": [],
+  "MySchool.view.monthly.summary.SearchTool": [],
+  "MySchool.view.student.ProfileForm": [],
+  "MySchool.view.student.ProfileGridPanel": [],
+  "MySchool.view.student.ProfilePanel": [],
+  "MySchool.view.subject.EditForm": [],
   "MySchool.view.subject.GradeTypeComboBox": [],
   "MySchool.view.subject.NewForm": [],
   "MySchool.view.subject.QuarterNamesComboBox": [],
+  "MySchool.view.subject.QuarterYearComboBox": [],
   "MySchool.view.subject.SubjectDeleteTool": [],
+  "MySchool.view.subject.SubjectNameComboBox": [],
   "MySchool.view.subject.SubjectNewTool": [],
   "MySchool.view.subject.SubjectRefreshTool": [],
   "MySchool.view.subject.SubjectSaveTool": [],
   "MySchool.view.subject.SubjectSearchTool": [],
   "MySchool.view.subject.SubjectsForm": [],
   "MySchool.view.subject.SubjectsGridPanel": [],
-  "MySchool.view.subject.SubjectsPanel": []
+  "MySchool.view.subject.SubjectsPanel": [],
+  "MySchool.view.weekly.evaluation.DetailsPanel": [],
+  "MySchool.view.weekly.evaluation.GridPanel": [],
+  "MySchool.view.weekly.skills.GridPanel": [],
+  "MySchool.view.weekly.skills.TabPanel": []
 });
 Ext.ClassManager.addNameAliasMappings({
   "Ext.AbstractComponent": [],
@@ -1874,15 +1960,48 @@ Ext.ClassManager.addNameAliasMappings({
   "ExtThemeNeptune.toolbar.Toolbar": [],
   "MySchool.Application": [],
   "MySchool.controller.Main": [],
+  "MySchool.controller.bodiesofwork.MyController": [
+    "controller.bodiesofworkcontroller"
+  ],
+  "MySchool.controller.daily.MyController": [
+    "controller.dailycontroller"
+  ],
+  "MySchool.controller.monthly.SummaryRatingsController": [
+    "controller.monthlysummaryratingscontroller"
+  ],
   "MySchool.controller.subject.SubjectsController": [],
+  "MySchool.model.bodiesofwork.BodiesOfWorkModel": [
+    "model.bodiesofworkmodel"
+  ],
+  "MySchool.model.daily.DailyModel": [
+    "model.dailymodel"
+  ],
+  "MySchool.model.monthly.EvaluationRatings": [
+    "model.monthlyevaluationratingsmodel"
+  ],
+  "MySchool.model.monthly.SummaryRatings": [
+    "model.monthlysummaryratingsmodel"
+  ],
   "MySchool.model.quarters.QuarterModel": [],
   "MySchool.model.student.StudentModel": [],
   "MySchool.model.subject.QuarterNamesModel": [],
   "MySchool.model.subject.SubjectsModel": [],
+  "MySchool.store.bodiesofwork.MyJsonStore": [
+    "store.bodiesofworkjsonstore"
+  ],
+  "MySchool.store.daily.MyJsonStore": [],
+  "MySchool.store.monthly.EvaluationRatingsStore": [],
+  "MySchool.store.monthly.SummaryRatingsStore": [
+    "store.montlysummaryratingsstore"
+  ],
   "MySchool.store.quarter.QuarterStore": [],
   "MySchool.store.student.StudentStore": [],
+  "MySchool.store.subject.AllSubjectStore": [
+    "store.allsubjectstore"
+  ],
   "MySchool.store.subject.GradeTypeStore": [],
   "MySchool.store.subject.QuarterNameStore": [],
+  "MySchool.store.subject.QuarterYearStore": [],
   "MySchool.store.subject.SubjectStore": [
     "store.subjectstore"
   ],
@@ -1891,6 +2010,160 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "MySchool.view.MainPanel": [],
   "MySchool.view.Viewport": [],
+  "MySchool.view.bodiesofwork.BodiesOfWorkPanel": [
+    "widget.mybodiesofworkpanel"
+  ],
+  "MySchool.view.bodiesofwork.BodyOfWorkForm": [
+    "widget.bodyofworkform"
+  ],
+  "MySchool.view.bodiesofwork.DeleteTool": [
+    "widget.bodiesofworkdeletetool"
+  ],
+  "MySchool.view.bodiesofwork.GridPanel": [
+    "widget.mybodiesofworkgridpanel"
+  ],
+  "MySchool.view.bodiesofwork.LockTool": [
+    "widget.bodiesofworklocktool"
+  ],
+  "MySchool.view.bodiesofwork.NewTool": [
+    "widget.bodiesofworknewtool"
+  ],
+  "MySchool.view.bodiesofwork.RefreshTool": [
+    "widget.bodiesofworkrefreshtool"
+  ],
+  "MySchool.view.bodiesofwork.SaveTool": [
+    "widget.bodiesofworksavetool"
+  ],
+  "MySchool.view.bodiesofwork.SearchTool": [
+    "widget.bodiesofworksearchtool"
+  ],
+  "MySchool.view.common.QuarterComboBox": [
+    "widget.commonquartercombobox"
+  ],
+  "MySchool.view.daily.ActionsTabPanel": [
+    "widget.dailyactionstabpanel"
+  ],
+  "MySchool.view.daily.CorrectionsTabPanel": [
+    "widget.dailycorrectionstabpanel"
+  ],
+  "MySchool.view.daily.DailyGridPanel": [
+    "widget.dailygridpanel"
+  ],
+  "MySchool.view.daily.DailyHoursTabPanel": [
+    "widget.dailyhourstabpanel"
+  ],
+  "MySchool.view.daily.DailyPanel": [
+    "widget.dailypanel"
+  ],
+  "MySchool.view.daily.DeleteTool": [
+    "widget.dailydeletetool"
+  ],
+  "MySchool.view.daily.DetailsTabPanel": [
+    "widget.dailydetailstabpanel"
+  ],
+  "MySchool.view.daily.EvaluationsTabPanel": [
+    "widget.dailyevaluationstabpanel"
+  ],
+  "MySchool.view.daily.LockTool": [
+    "widget.dailylocktool"
+  ],
+  "MySchool.view.daily.NewTool": [
+    "widget.dailynewtool"
+  ],
+  "MySchool.view.daily.RefreshTool": [
+    "widget.dailyrefreshtool"
+  ],
+  "MySchool.view.daily.ResourcesUsedTabPanel": [
+    "widget.dailyresourcesusedtabpanel"
+  ],
+  "MySchool.view.daily.SaveTool": [
+    "widget.dailysavetool"
+  ],
+  "MySchool.view.daily.SearchTool": [
+    "widget.dailysearchtool"
+  ],
+  "MySchool.view.daily.StudyDetailsTabPanel": [
+    "widget.dailystudydetailstabpanel"
+  ],
+  "MySchool.view.faculty.ProfileForm": [
+    "widget.facultyprofileform"
+  ],
+  "MySchool.view.faculty.ProfileGridPanel": [
+    "widget.facultyprofilegridpanel"
+  ],
+  "MySchool.view.faculty.ProfilePanel": [
+    "widget.facultyprofilepanel"
+  ],
+  "MySchool.view.monthly.NewSummaryFormPanel": [
+    "widget.monthlynewsummaryformpanel"
+  ],
+  "MySchool.view.monthly.evaluation.DetailsPanel": [
+    "widget.monthlyevaluationdetailspanel"
+  ],
+  "MySchool.view.monthly.evaluation.GridPanel": [
+    "widget.monthlyevaluationgridpanel"
+  ],
+  "MySchool.view.monthly.summary.ActionResultsTabPanel": [
+    "widget.monthlyactionresultstabpanel"
+  ],
+  "MySchool.view.monthly.summary.CommentsTabPanel": [
+    "widget.monthlycommentstabpanel"
+  ],
+  "MySchool.view.monthly.summary.DeleteTool": [
+    "widget.monthlysummarydeletetool"
+  ],
+  "MySchool.view.monthly.summary.DetailsGridPanel": [
+    "widget.monthlydetailsgridpanel"
+  ],
+  "MySchool.view.monthly.summary.DetailsPanel": [
+    "widget.monthlysummarydetailspanel"
+  ],
+  "MySchool.view.monthly.summary.DetailsTabPanel": [
+    "widget.monthlysummarydetailstabpanel"
+  ],
+  "MySchool.view.monthly.summary.EffectivenessOfActionsTabPanel": [
+    "widget.monthlyeffectivenessofactionstabpanel"
+  ],
+  "MySchool.view.monthly.summary.FeelingTabPanel": [
+    "widget.monthlyfeelingstabpanel"
+  ],
+  "MySchool.view.monthly.summary.LockTool": [
+    "widget.monthlysummarylocktool"
+  ],
+  "MySchool.view.monthly.summary.NewTool": [
+    "widget.monthlysummarynewtool"
+  ],
+  "MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel": [
+    "widget.monthlypatternsofcorrectionstabpanel"
+  ],
+  "MySchool.view.monthly.summary.PlannedChangesTabPanel": [
+    "widget.monthlyplannedchangestabpanel"
+  ],
+  "MySchool.view.monthly.summary.RealizationsTabPanel": [
+    "widget.monthlyrealizationstabpanel"
+  ],
+  "MySchool.view.monthly.summary.ReflectionsTabPanel": [
+    "widget.monthlyrelectionstabpanel"
+  ],
+  "MySchool.view.monthly.summary.RefreshTool": [
+    "widget.monthlysummaryrefreshtool"
+  ],
+  "MySchool.view.monthly.summary.SaveTool": [
+    "widget.monthlysummarysavetool"
+  ],
+  "MySchool.view.monthly.summary.SearchTool": [
+    "widget.monthlysummarysearchtool"
+  ],
+  "MySchool.view.student.ProfileForm": [
+    "widget.studentprofileform"
+  ],
+  "MySchool.view.student.ProfileGridPanel": [
+    "widget.studentprofilegridpanel"
+  ],
+  "MySchool.view.student.ProfilePanel": [
+    "widget.studentprofilepanel"
+  ],
+  "MySchool.view.subject.EditForm": [],
   "MySchool.view.subject.GradeTypeComboBox": [
     "widget.gradetypecombobox"
   ],
@@ -1900,8 +2173,14 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.view.subject.QuarterNamesComboBox": [
     "widget.quarternamescombobox"
   ],
+  "MySchool.view.subject.QuarterYearComboBox": [
+    "widget.quarteryearcombobox"
+  ],
   "MySchool.view.subject.SubjectDeleteTool": [
     "widget.subjectdeletetool"
+  ],
+  "MySchool.view.subject.SubjectNameComboBox": [
+    "widget.subjectnamecombobox"
   ],
   "MySchool.view.subject.SubjectNewTool": [
     "widget.subjectnewtool"
@@ -1923,6 +2202,18 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "MySchool.view.subject.SubjectsPanel": [
     "widget.subjectspanel"
+  ],
+  "MySchool.view.weekly.evaluation.DetailsPanel": [
+    "widget.weeklyevaluationdetailspanel"
+  ],
+  "MySchool.view.weekly.evaluation.GridPanel": [
+    "widget.weeklyevaluationgridpanel"
+  ],
+  "MySchool.view.weekly.skills.GridPanel": [
+    "widget.weeklyskillsgridpanel"
+  ],
+  "MySchool.view.weekly.skills.TabPanel": [
+    "widget.weeklydetailspanel"
   ]
 });
 Ext.setVersion("ext-theme-base", "4.2.1");
@@ -1949,7 +2240,7 @@ Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/tab/Tab.js");;
  * @author Jacky Nguyen <jacky@sencha.com>
  */
 (function() {
-    var head = document.head;
+    var head = document.head || document.getElementsByTagName('head')[0];
 
     function write(content) {
         document.write(content);
@@ -2102,9 +2393,13 @@ Ext.Loader.loadScript("ext/packages/ext-theme-neptune/overrides/tab/Tab.js");;
             if (!filterPlatform(platform) || filterPlatform(exclude)) {
                 continue;
             }
-            Ext.theme = {
-                name: theme || 'Default'
-            };
+
+            if(!Ext.theme) {
+                Ext.theme = {};
+            }
+            if(!Ext.theme.name) {
+                Ext.theme.name = theme || 'Default';
+            }
         }
 
         write('<link rel="stylesheet" href="'+path+'">');

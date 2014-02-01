@@ -1,0 +1,72 @@
+{
+    "type": "Ext.form.field.ComboBox",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowOnlyWhitespace": false,
+        "designer|userAlias": "commonquartercombobox",
+        "designer|userClassName": "common.QuarterComboBox",
+        "emptyText": "Select one",
+        "fieldBodyCls": null,
+        "fieldLabel": "Choose Quarter Subject",
+        "forceSelection": true,
+        "itemId": "common-quartersubject",
+        "name": "comboquarter",
+        "queryMode": "local",
+        "store": "subject.SubjectStore",
+        "valueField": "id"
+    },
+    "designerId": "41872b83-972c-4338-a84b-63ceea0340bc",
+    "cn": [
+        {
+            "type": "Ext.view.BoundList",
+            "reference": {
+                "name": "listConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemSelector": "div"
+            },
+            "designerId": "2c109ddc-3af8-4113-80b1-0a4dde432582",
+            "cn": [
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "itemTpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "itemTpl",
+                        "implHandler": [
+                            "{qtrYear}/{qtrName} - {subjName}"
+                        ]
+                    },
+                    "designerId": "61864b38-9ea4-4c0c-856f-7fc5f888ce83"
+                },
+                {
+                    "type": "Ext.XTemplate",
+                    "reference": {
+                        "name": "tpl",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "tpl",
+                        "implHandler": [
+                            "        '<tpl for=\".\">',",
+                            "            '<div class=\"x-boundlist-item\">{qtrYear}/{qtrName} - {subjName}</div>',",
+                            "        '</tpl>'",
+                            ""
+                        ]
+                    },
+                    "designerId": "e084e975-d9e9-44a0-8758-bf40a904ef8c"
+                }
+            ]
+        }
+    ]
+}

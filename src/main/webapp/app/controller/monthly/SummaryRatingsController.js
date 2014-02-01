@@ -22,7 +22,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     ],
     stores: [
         'monthly.SummaryRatingsStore',
-        'student.StudentStore'
+        'student.StudentStore',
+        'subject.SubjectStore'
     ],
 
     refs: [
@@ -230,35 +231,47 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
         debugger;
+        var studentStore_ = Ext.getStore('student.StudentStore');
+        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
+        var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
+        var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
+        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
 
-        var myGrid = this.getMonthlyDetailsGridPanel();
-        var mySelected = myGrid.getSelectionModel().getLastSelected();
-        var subjName = mySelected.get( 'subjName' );
-        var qtrName = mySelected.get( 'qtrName' );
-        var qtrYear = mySelected.get( 'qtrYear' );
-        var qtrId = mySelected.get( 'qtrId');
-        var subjId = mySelected.get( 'subjId');
-        var studentId = mySelected.get( 'studentId');
-        var studentName = mySelected.get('studentUserName');
-        var subjName = mySelected.get('subjName');
+        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+
+        var r_ = studentStore_.getAt(0);
+        var studentId = r_.get( 'id' );
+        var studentName = r_.get( 'userName' );
+
+        var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
+
+        var myFormFields = newDialog.getForm().getFields();
+        //        var myuserName = myrecord.data.studentName;
+        var qtrNameId_;
+        var gradeType_;
+        var subjId_ = null;
+        var allSubjRec_;
+
+        //var subjNameCombo_ = newDialog.down('subjectnamecombobox');
+        //var qtrNameCombo_ = newDialog.down('quarternamescombobox');
+        //var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
+
+        //var myGrid = this.getMonthlyDetailsGridPanel();
+        //var mySelected = myGrid.getSelectionModel().getLastSelected();
+        //var subjName = mySelected.get( 'subjName' );
+        //var qtrName = mySelected.get( 'qtrName' );
+        //var qtrYear = mySelected.get( 'qtrYear' );
+        //var qtrId = mySelected.get( 'qtrId');
+        //var subjId = mySelected.get( 'subjId');
+        var quarterSubjectCombo = newDialog.down('common-quartersubject');
+
+
         window.console.log( 'New Monthly Summary Dialog' );
 
         var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
 
         //var myForm = newDialog.getForm();
-        newDialog.down('#newmonthlysummary-dsubject').setValue( subjName );
-        newDialog.down('#newmonthlysummary-dquarter').setValue( qtrName );
-        newDialog.down('#newmonthlysummary-dyear').setValue( qtrYear );
 
-        newDialog.down('#newmonthlysummary-subject').setValue( subjName );
-        newDialog.down('#newmonthlysummary-quarter').setValue( qtrName );
-        newDialog.down('#newmonthlysummary-year').setValue( qtrYear );
-
-        newDialog.down('#newmonthlysummary-quarterid').setValue( qtrId );
-        newDialog.down('#newmonthlysummary-subjectid').setValue( subjId );
-        newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
-        newDialog.down('#newmonthlysummary-subjectname').setValue( subjName );
-        newDialog.down('#newmonthlysummary-studentname').setValue( studentName );
 
         newDialog.render( Ext.getBody() );
         newDialog.show();
@@ -283,18 +296,53 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         var record = Ext.create('MySchool.model.monthly.SummaryRatings');
         var myStore = this.getStore( 'monthly.SummaryRatingsStore' );
 
+        var studentStore_ = Ext.getStore('student.StudentStore');
+        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
+        var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
+        var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
+        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+
+        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+
+        var r_ = studentStore_.getAt(0);
+        var studentId = r_.get( 'id' );
+        var studentName = r_.get( 'userName' );
+
+        var myFormFields = newDialog.getForm().getFields();
+        //        var myuserName = myrecord.data.studentName;
+        var qtrNameId_;
+        var gradeType_;
+        var subjId_ = null;
+        var allSubjRec_;
+
+        var subjNameCombo_ = newDialog.down('subjectnamecombobox');
+        var qtrNameCombo_ = newDialog.down('quarternamescombobox');
+        var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
+
+        var myGrid = this.getMonthlyDetailsGridPanel();
+        //var mySelected = myGrid.getSelectionModel().getLastSelected();
+        var subjName = subjNameCombo_.getValue();
+        var qtrName = qtrNameCombo_.getValue();
+        var qtrYear = qtrYearCombo_.getValue();
+        //var qtrId = mySelected.get( 'qtrId');
+        //var subjId = mySelected.get( 'subjId');
+
+        var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );
+        var subjId_ = allSubjRec_.get( 'subjId' );
+
+
         //Add the data to the new record.
         if( formValues.month_number > 0 )
         {
             record.set('month_number', formValues.month_number);
 
-            record.set('subjName', formValues.subjectname );
-            record.set('subjId', formValues.subjectId );
-            record.set('qtrName', formValues.quarter);
+            record.set('subjName', subjName );
+            record.set('subjId', subjId_ );
+            record.set('qtrName', qtrName );
             record.set('qtrId', formValues.quarterId);
-            record.set('studentId', formValues.studentId);
-            record.set('studentUserName', formValues.studentname);
-            record.set('qtrYear', formValues.year);
+            record.set('studentId', studentId);
+            record.set('studentUserName', studentName);
+            record.set('qtrYear', qtrYear);
             record.set('locked', 0 );
             record.set('feelings', formValues.feelings);
             record.set('patternsOfCorrections', formValues.patternsofcorrections);

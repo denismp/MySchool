@@ -18,8 +18,9 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
     alias: 'widget.monthlynewsummaryformpanel',
 
     requires: [
+        'MySchool.view.common.QuarterComboBox',
         'Ext.form.FieldSet',
-        'Ext.form.field.Display',
+        'Ext.form.field.ComboBox',
         'Ext.form.field.Number',
         'Ext.form.field.Hidden',
         'Ext.button.Button'
@@ -43,25 +44,8 @@ Ext.define('MySchool.view.monthly.NewSummaryFormPanel', {
                     title: 'Monthly Summary Fields',
                     items: [
                         {
-                            xtype: 'displayfield',
-                            anchor: '100%',
-                            itemId: 'newmonthlysummary-dsubject',
-                            fieldLabel: 'Subject',
-                            name: 'dsubject'
-                        },
-                        {
-                            xtype: 'displayfield',
-                            anchor: '100%',
-                            itemId: 'newmonthlysummary-dquarter',
-                            fieldLabel: 'Quarter',
-                            name: 'dquarter'
-                        },
-                        {
-                            xtype: 'displayfield',
-                            anchor: '100%',
-                            itemId: 'newmonthlysummary-dyear',
-                            fieldLabel: 'Year',
-                            name: 'dyear'
+                            xtype: 'commonquartercombobox',
+                            anchor: '100%'
                         },
                         {
                             xtype: 'numberfield',
