@@ -9,7 +9,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-public class MonthySummaryRatingsView {
+public class MonthlySummaryRatingsView {
 	private Long id;
 	
 	private Integer month_number;

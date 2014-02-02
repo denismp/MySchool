@@ -1,0 +1,76 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "data": [
+            "[]"
+        ],
+        "designer|userAlias": "commonmonthStore",
+        "designer|userClassName": "common.MonthStore",
+        "model": "common.MonthModel",
+        "storeId": "common.MonthStore"
+    },
+    "designerId": "d81d84d7-8144-4a7c-80f8-dcc16597ac3e",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "id",
+                "type": "int"
+            },
+            "designerId": "2e85903a-daa4-4e13-b184-29da9ed6a807"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "name",
+                "type": "string"
+            },
+            "designerId": "8b06d1cc-761f-4218-8a52-d7f72f062037"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "myLoad",
+                "implHandler": [
+                    "this.removeAll();",
+                    "",
+                    "this.add( { name: \"Jan\", id: 1});",
+                    "this.add( { name: \"Feb\", id: 2});",
+                    "this.add( { name: \"Mar\", id: 3});",
+                    "this.add( { name: \"Apr\", id: 4});",
+                    "this.add( { name: \"May\", id: 5});",
+                    "this.add( { name: \"Jun\", id: 6});",
+                    "this.add( { name: \"Jul\", id: 7});",
+                    "this.add( { name: \"Aug\", id: 8});",
+                    "this.add( { name: \"Sep\", id: 9});",
+                    "this.add( { name: \"Oct\", id: 10});",
+                    "this.add( { name: \"Nov\", id: 11});",
+                    "this.add( { name: \"Dec\", id: 12});",
+                    ""
+                ]
+            },
+            "designerId": "ceeb9dd4-5c9e-4467-9d3c-9ab6d04dd112"
+        }
+    ]
+}

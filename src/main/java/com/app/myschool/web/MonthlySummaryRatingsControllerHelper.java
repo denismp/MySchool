@@ -23,7 +23,7 @@ import org.springframework.http.ResponseEntity;
 import com.app.myschool.extjs.JsonObjectResponse;
 
 import com.app.myschool.model.MonthlySummaryRatings;
-import com.app.myschool.model.MonthySummaryRatingsView;
+import com.app.myschool.model.MonthlySummaryRatingsView;
 
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
@@ -73,11 +73,11 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<MonthySummaryRatingsView> myViewClass = MonthySummaryRatingsView.class;
+		Class<MonthlySummaryRatingsView> myViewClass = MonthlySummaryRatingsView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<MonthySummaryRatingsView> records = null;
+		List<MonthlySummaryRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
@@ -86,7 +86,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		try
 		{
 			List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId_);
-			List<MonthySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthySummaryRatingsView>();
+			List<MonthlySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthlySummaryRatingsView>();
 
 			for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
 			{
@@ -94,7 +94,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				Quarter quarter = monthlySummaryRatings.getQuarter();
 				Subject u_ = quarter.getSubject();
 				Student student_ = quarter.getStudent();
-				MonthySummaryRatingsView monthlySummaryRatingsView = new MonthySummaryRatingsView();
+				MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
 
 				monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
 				monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
@@ -251,7 +251,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( MonthySummaryRatingsView myView ) throws Exception
+	private boolean isDup( MonthlySummaryRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -292,7 +292,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			MonthlySummaryRatings record = new MonthlySummaryRatings();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			MonthySummaryRatingsView myView = MonthySummaryRatingsView.fromJsonToMonthySummaryRatingsView(myJson);
+			MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
 			if( !this.isDup(myView) )
 			{
 				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
@@ -415,13 +415,13 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
-			MonthySummaryRatingsView myView = null;
+			MonthlySummaryRatingsView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
 
-			myView = MonthySummaryRatingsView.fromJsonToMonthySummaryRatingsView(myJson);
+			myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
 			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getId());
 			
 			record.setLastUpdated(myView.getLastUpdated());

@@ -3,13 +3,13 @@
 
 package com.app.myschool.model;
 
-import com.app.myschool.model.MonthySummaryRatingsView;
+import com.app.myschool.model.MonthlySummaryRatingsView;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-privileged aspect MonthySummaryRatingsView_Roo_ToString {
+privileged aspect MonthlySummaryRatingsView_Roo_ToString {
     
-    public String MonthySummaryRatingsView.toString() {
+    public String MonthlySummaryRatingsView.toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
     

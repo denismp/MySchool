@@ -19,9 +19,9 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 
     requires: [
         'MySchool.view.common.QuarterComboBox',
+        'MySchool.view.common.MonthComboBox',
         'Ext.form.FieldSet',
         'Ext.form.field.ComboBox',
-        'Ext.form.field.Number',
         'Ext.form.field.Hidden',
         'Ext.button.Button'
     ],
@@ -30,6 +30,7 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
     floating: true,
     frame: true,
     itemId: 'monthlynewsummaryformpanel',
+    width: 500,
     bodyPadding: 10,
     title: 'New Monthly Summary Form',
 
@@ -48,14 +49,8 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
                             anchor: '100%'
                         },
                         {
-                            xtype: 'numberfield',
-                            anchor: '100%',
-                            itemId: 'newmonthlysummary-month_number',
-                            fieldLabel: 'Month Number(1-12)',
-                            name: 'month_number',
-                            validateBlank: true,
-                            maxValue: 12,
-                            minValue: 1
+                            xtype: 'commonmonthcombobox',
+                            anchor: '100%'
                         },
                         {
                             xtype: 'hiddenfield',

@@ -1,0 +1,23 @@
+{
+    "type": "Ext.form.field.ComboBox",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "allowOnlyWhitespace": false,
+        "designer|userAlias": "commonmonthcombobox",
+        "designer|userClassName": "common.MonthComboBox",
+        "displayField": "name",
+        "emptyText": "Select one.",
+        "fieldLabel": "Month",
+        "forceSelection": true,
+        "itemId": "common-month",
+        "name": "combomonth",
+        "queryMode": "local",
+        "store": "common.MonthStore",
+        "valueField": "id"
+    },
+    "designerId": "013dec09-40b4-43be-9cd0-ecf74b1836c2"
+}

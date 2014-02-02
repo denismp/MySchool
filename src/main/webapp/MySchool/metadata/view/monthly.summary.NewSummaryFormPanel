@@ -15,7 +15,7 @@
         "height": null,
         "itemId": "monthlynewsummaryformpanel",
         "title": "New Monthly Summary Form",
-        "width": null
+        "width": 500
     },
     "designerId": "4ac4e250-47e0-4afc-b71f-60981c5c1ccc",
     "cn": [
@@ -46,22 +46,17 @@
                     "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
                 },
                 {
-                    "type": "Ext.form.field.Number",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Month Number(1-12)",
-                        "itemId": "newmonthlysummary-month_number",
-                        "layout|anchor": "100%",
-                        "maxValue": 12,
-                        "minValue": 1,
-                        "name": "month_number",
-                        "validateBlank": true
+                        "layout|anchor": "100%"
                     },
-                    "designerId": "0d0062b9-d3f6-494c-868c-eaa62dc42547"
+                    "designerId": "7011b6d9-245a-4348-9bf3-91cdba2c000d",
+                    "masterInstanceId": "013dec09-40b4-43be-9cd0-ecf74b1836c2"
                 },
                 {
                     "type": "Ext.form.field.Hidden",

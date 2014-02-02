@@ -15,7 +15,7 @@
 
 Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
     extend: 'Ext.data.Store',
-    alias: 'store.montlysummaryratingsstore',
+    alias: 'store.monthlysummaryratingsstore',
 
     requires: [
         'MySchool.model.monthly.SummaryRatings',

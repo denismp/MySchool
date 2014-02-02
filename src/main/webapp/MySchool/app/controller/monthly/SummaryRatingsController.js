@@ -231,46 +231,66 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
         debugger;
-        var studentStore_ = Ext.getStore('student.StudentStore');
-        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
-        var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
-        var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
-        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+        var studentStore = Ext.getStore('student.StudentStore');
+        var subjectStore = Ext.getStore( 'subject.SubjectStore');
+        var commonQuarterSubjectStore = Ext.getStore( 'common.QuarterSubjectStore');
+        var commonMonthStore = Ext.getStore('common.MonthStore');
 
-        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
-
-        var r_ = studentStore_.getAt(0);
-        var studentId = r_.get( 'id' );
-        var studentName = r_.get( 'userName' );
+        var studentRecord = studentStore.getAt(0);
+        var studentId = studentRecord.get( 'id' );
+        var studentName = studentRecord.get( 'userName' );
 
         var newDialog = Ext.create( 'MySchool.view.monthly.summary.NewSummaryFormPanel' );
 
-        var myFormFields = newDialog.getForm().getFields();
-        //        var myuserName = myrecord.data.studentName;
-        var qtrNameId_;
-        var gradeType_;
-        var subjId_ = null;
-        var allSubjRec_;
+        newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
+        newDialog.down('#newmonthlysummary-studentname').setValue( studentName );
 
-        //var subjNameCombo_ = newDialog.down('subjectnamecombobox');
-        //var qtrNameCombo_ = newDialog.down('quarternamescombobox');
-        //var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
+        commonQuarterSubjectStore.myLoad();
+        commonMonthStore.myLoad();
 
-        //var myGrid = this.getMonthlyDetailsGridPanel();
-        //var mySelected = myGrid.getSelectionModel().getLastSelected();
-        //var subjName = mySelected.get( 'subjName' );
-        //var qtrName = mySelected.get( 'qtrName' );
-        //var qtrYear = mySelected.get( 'qtrYear' );
-        //var qtrId = mySelected.get( 'qtrId');
-        //var subjId = mySelected.get( 'subjId');
-        var quarterSubjectCombo = newDialog.down('common-quartersubject');
+        //commonQuarterSubjectStore.removeAll();
+
+
+        //var numSubjects = subjectStore.count();
+
+
+        //for( var i = 0; i < numSubjects; i++ )
+        //{
+        //    var record = subjectStore.getAt(i);
+        //    var qtrName = record.get( 'qtrName' );
+        //    var qtrYear = record.get( 'qtrYear' );
+        //    var subjName = record.get( 'subjName' );
+        //    var subjId = record.get( 'subjId' );
+        //    var qtrId = record.get( 'qtrId' );
+        //    var name = qtrName + '/' + qtrYear + '-' + subjName;
+        //    console.log( 'name=' + name );
+        //    commonQuarterSubjectStore.add({
+        //        name: name,
+        //        id: i,
+        //        qtrName: qtrName,
+        //        subjName: subjName,
+        //        qtrId: qtrId,
+        //        subjId: subjId
+        //    });
+        //}
+
+        //commonMonthStore.removeAll();
+
+        //commonMonthStore.add( { name: "Jan", id: 1});
+        //commonMonthStore.add( { name: "Feb", id: 2});
+        //commonMonthStore.add( { name: "Mar", id: 3});
+        //commonMonthStore.add( { name: "Apr", id: 4});
+        //commonMonthStore.add( { name: "May", id: 5});
+        //commonMonthStore.add( { name: "Jun", id: 6});
+        //commonMonthStore.add( { name: "Jul", id: 7});
+        //commonMonthStore.add( { name: "Aug", id: 8});
+        //commonMonthStore.add( { name: "Sep", id: 9});
+        //commonMonthStore.add( { name: "Oct", id: 10});
+        //commonMonthStore.add( { name: "Nov", id: 11});
+        //commonMonthStore.add( { name: "Dec", id: 12});
 
 
         window.console.log( 'New Monthly Summary Dialog' );
-
-        //var newDialog = Ext.create( 'MySchool.view.monthly.NewSummaryFormPanel' );
-
-        //var myForm = newDialog.getForm();
 
 
         newDialog.render( Ext.getBody() );

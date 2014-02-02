@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "autoLoad": false,
-        "designer|userAlias": "montlysummaryratingsstore",
+        "designer|userAlias": "monthlysummaryratingsstore",
         "designer|userClassName": "monthly.SummaryRatingsStore",
         "model": "monthly.SummaryRatings",
         "storeId": "monthly.SummaryRatingsStore"

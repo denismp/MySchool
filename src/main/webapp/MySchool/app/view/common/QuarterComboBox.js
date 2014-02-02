@@ -17,39 +17,19 @@ Ext.define('MySchool.view.common.QuarterComboBox', {
     extend: 'Ext.form.field.ComboBox',
     alias: 'widget.commonquartercombobox',
 
-    requires: [
-        'Ext.view.BoundList',
-        'Ext.XTemplate'
-    ],
-
     itemId: 'common-quartersubject',
     fieldLabel: 'Choose Quarter Subject',
     name: 'comboquarter',
     allowOnlyWhitespace: false,
     emptyText: 'Select one',
+    displayField: 'name',
     forceSelection: true,
     queryMode: 'local',
-    store: 'subject.SubjectStore',
+    store: 'common.QuarterSubjectStore',
     valueField: 'id',
 
     initComponent: function() {
         var me = this;
-
-        Ext.applyIf(me, {
-            listConfig: {
-                xtype: 'boundlist',
-                tpl: [
-                    '        \'<tpl for=".">\',',
-                    '            \'<div class="x-boundlist-item">{qtrYear}/{qtrName} - {subjName}</div>\',',
-                    '        \'</tpl>\'',
-                    ''
-                ],
-                itemSelector: 'div',
-                itemTpl: [
-                    '{qtrYear}/{qtrName} - {subjName}'
-                ]
-            }
-        });
 
         me.callParent(arguments);
     }

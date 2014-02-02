@@ -28,7 +28,9 @@ Ext.application({
         'bodiesofwork.BodiesOfWorkModel',
         'daily.DailyModel',
         'monthly.EvaluationRatings',
-        'monthly.SummaryRatings'
+        'monthly.SummaryRatings',
+        'common.QuarterSubjectModel',
+        'common.MonthModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -41,7 +43,9 @@ Ext.application({
         'bodiesofwork.MyJsonStore',
         'daily.MyJsonStore',
         'monthly.SummaryRatingsStore',
-        'monthly.EvaluationRatingsStore'
+        'monthly.EvaluationRatingsStore',
+        'common.QuarterSubjectStore',
+        'common.MonthStore'
     ],
     views: [
         'MainPanel',
@@ -111,7 +115,8 @@ Ext.application({
         'monthly.summary.DeleteTool',
         'monthly.summary.LockTool',
         'monthly.summary.NewSummaryFormPanel',
-        'common.QuarterComboBox'
+        'common.QuarterComboBox',
+        'common.MonthComboBox'
     ],
     controllers: [
         'subject.SubjectsController',
