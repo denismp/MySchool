@@ -245,49 +245,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
         newDialog.down('#newmonthlysummary-studentname').setValue( studentName );
 
-        commonQuarterSubjectStore.myLoad();
+        //commonQuarterSubjectStore.myLoad();
         commonMonthStore.myLoad();
 
-        //commonQuarterSubjectStore.removeAll();
-
-
-        //var numSubjects = subjectStore.count();
-
-
-        //for( var i = 0; i < numSubjects; i++ )
-        //{
-        //    var record = subjectStore.getAt(i);
-        //    var qtrName = record.get( 'qtrName' );
-        //    var qtrYear = record.get( 'qtrYear' );
-        //    var subjName = record.get( 'subjName' );
-        //    var subjId = record.get( 'subjId' );
-        //    var qtrId = record.get( 'qtrId' );
-        //    var name = qtrName + '/' + qtrYear + '-' + subjName;
-        //    console.log( 'name=' + name );
-        //    commonQuarterSubjectStore.add({
-        //        name: name,
-        //        id: i,
-        //        qtrName: qtrName,
-        //        subjName: subjName,
-        //        qtrId: qtrId,
-        //        subjId: subjId
-        //    });
-        //}
-
-        //commonMonthStore.removeAll();
-
-        //commonMonthStore.add( { name: "Jan", id: 1});
-        //commonMonthStore.add( { name: "Feb", id: 2});
-        //commonMonthStore.add( { name: "Mar", id: 3});
-        //commonMonthStore.add( { name: "Apr", id: 4});
-        //commonMonthStore.add( { name: "May", id: 5});
-        //commonMonthStore.add( { name: "Jun", id: 6});
-        //commonMonthStore.add( { name: "Jul", id: 7});
-        //commonMonthStore.add( { name: "Aug", id: 8});
-        //commonMonthStore.add( { name: "Sep", id: 9});
-        //commonMonthStore.add( { name: "Oct", id: 10});
-        //commonMonthStore.add( { name: "Nov", id: 11});
-        //commonMonthStore.add( { name: "Dec", id: 12});
 
 
         window.console.log( 'New Monthly Summary Dialog' );

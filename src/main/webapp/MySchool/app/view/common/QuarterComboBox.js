@@ -22,16 +22,23 @@ Ext.define('MySchool.view.common.QuarterComboBox', {
     name: 'comboquarter',
     allowOnlyWhitespace: false,
     emptyText: 'Select one',
-    displayField: 'name',
     forceSelection: true,
     queryMode: 'local',
-    store: 'common.QuarterSubjectStore',
+    store: 'subject.SubjectStore',
     valueField: 'id',
 
     initComponent: function() {
         var me = this;
 
+        me.processCommonQuarterComboBox(me);
         me.callParent(arguments);
+    },
+
+    processCommonQuarterComboBox: function(config) {
+        config.tpl = Ext.create("Ext.XTemplate",
+                                '<tpl for="."><div class="x-boundlist-item">{qtrYear}/{qtrName} - {subjName}</div></tpl>');
+        config.displayTpl = Ext.create("Ext.XTemplate",'<tpl for=".">{qtrYear}/{qtrName} - {subjName}</tpl>');
+        return config;
     }
 
 });

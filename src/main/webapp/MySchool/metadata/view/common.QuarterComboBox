@@ -9,7 +9,7 @@
         "allowOnlyWhitespace": false,
         "designer|userAlias": "commonquartercombobox",
         "designer|userClassName": "common.QuarterComboBox",
-        "displayField": "name",
+        "displayField": null,
         "emptyText": "Select one",
         "fieldBodyCls": null,
         "fieldLabel": "Choose Quarter Subject",
@@ -17,8 +17,31 @@
         "itemId": "common-quartersubject",
         "name": "comboquarter",
         "queryMode": "local",
-        "store": "common.QuarterSubjectStore",
+        "store": "subject.SubjectStore",
         "valueField": "id"
     },
-    "designerId": "41872b83-972c-4338-a84b-63ceea0340bc"
+    "designerId": "41872b83-972c-4338-a84b-63ceea0340bc",
+    "cn": [
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processCommonQuarterComboBox",
+                "implHandler": [
+                    "config.tpl = Ext.create(\"Ext.XTemplate\",",
+                    "                        '<tpl for=\".\"><div class=\"x-boundlist-item\">{qtrYear}/{qtrName} - {subjName}</div></tpl>');",
+                    "config.displayTpl = Ext.create(\"Ext.XTemplate\",'<tpl for=\".\">{qtrYear}/{qtrName} - {subjName}</tpl>');",
+                    "return config;"
+                ]
+            },
+            "designerId": "ab08e742-c5b5-4d71-b398-e7a0cc9787d9"
+        }
+    ]
 }
