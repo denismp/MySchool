@@ -15,7 +15,7 @@
         "fieldLabel": "Choose Quarter Subject",
         "forceSelection": true,
         "itemId": "common-quartersubject",
-        "name": "comboquarter",
+        "name": "comboquartersubject",
         "queryMode": "local",
         "store": "subject.SubjectStore",
         "valueField": "id"

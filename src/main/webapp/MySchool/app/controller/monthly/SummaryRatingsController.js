@@ -268,92 +268,108 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     onNewmonthlysummarysubmitClick: function(button, e, eOpts) {
         debugger;
         window.console.log( "Submit New Monthly Summary" );
-        var myForm = button.up().getForm();
+        var myForm					= button.up().getForm();
+        //var newDialog = button.up('monthlynewsummaryformpanel');
 
         //Get the values from the form and insert a new record into the MonthlySummaryView.
 
-        var formValues = myForm.getValues();
-        var record = Ext.create('MySchool.model.monthly.SummaryRatings');
-        var myStore = this.getStore( 'monthly.SummaryRatingsStore' );
+        var formValues				= myForm.getValues();
 
-        var studentStore_ = Ext.getStore('student.StudentStore');
-        var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
-        var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
-        var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
-        var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
+        //	Create an empty record
+        var summaryRatingsRecord	= Ext.create('MySchool.model.monthly.SummaryRatings');
 
-        var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+        //	Get the stores that we will need
+        var summaryRatingsStore		= this.getStore( 'monthly.SummaryRatingsStore' );
 
-        var r_ = studentStore_.getAt(0);
-        var studentId = r_.get( 'id' );
-        var studentName = r_.get( 'userName' );
+        var studentStore = Ext.getStore('student.StudentStore');
+        var subjectStore = Ext.getStore( 'subject.SubjectStore' );
 
-        var myFormFields = newDialog.getForm().getFields();
-        //        var myuserName = myrecord.data.studentName;
-        var qtrNameId_;
-        var gradeType_;
-        var subjId_ = null;
-        var allSubjRec_;
+        //	Get the student info
+        var studentRecord	= studentStore.getAt(0);
+        var studentId		= studentRecord.get( 'id' );
+        var studentName		= studentRecord.get( 'userName' );
 
-        var subjNameCombo_ = newDialog.down('subjectnamecombobox');
-        var qtrNameCombo_ = newDialog.down('quarternamescombobox');
-        var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
-
-        var myGrid = this.getMonthlyDetailsGridPanel();
-        //var mySelected = myGrid.getSelectionModel().getLastSelected();
-        var subjName = subjNameCombo_.getValue();
-        var qtrName = qtrNameCombo_.getValue();
-        var qtrYear = qtrYearCombo_.getValue();
-        //var qtrId = mySelected.get( 'qtrId');
-        //var subjId = mySelected.get( 'subjId');
-
-        var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );
-        var subjId_ = allSubjRec_.get( 'subjId' );
-
-
-        //Add the data to the new record.
-        if( formValues.month_number > 0 )
+        //	Get the quarterSubject record from the form.
+        var quarterSubjectId		= formValues.comboquartersubject;
+        var quarterSubjectRecord;
+        for( var i = 0; i < subjectStore.count(); i++ )
         {
-            record.set('month_number', formValues.month_number);
+            if( subjectStore.getAt(i).get('id') === quarterSubjectId )
+            {
+                quarterSubjectRecord = subjectStore.getAt(i);
+                break;
+            }
+        }
 
-            record.set('subjName', subjName );
-            record.set('subjId', subjId_ );
-            record.set('qtrName', qtrName );
-            record.set('qtrId', formValues.quarterId);
-            record.set('studentId', studentId);
-            record.set('studentUserName', studentName);
-            record.set('qtrYear', qtrYear);
-            record.set('locked', 0 );
-            record.set('feelings', formValues.feelings);
-            record.set('patternsOfCorrections', formValues.patternsofcorrections);
-            record.set('effectivenessOfActions', formValues.effectivenessofactions);
-            record.set('realizations', formValues.realizations);
-            record.set('reflections', formValues.reflections);
-            record.set('plannedChanges', formValues.plannedchanges);
-            record.set('comments', formValues.comments);
-            record.set('actionResults', formValues.actionresults);
-            record.set('whoUpdated', 'login');
-            record.set('lastUpdated', new Date());
+        if( typeof quarterSubjectRecord !== 'undefined')
+        {
+            //	Get the other information that we need for the new record.
+            var subjName	= quarterSubjectRecord.get('subjName');
+            var subjId		= quarterSubjectRecord.get('subjId');
+            var qtrName		= quarterSubjectRecord.get('qtrName');
+            var qtrId		= quarterSubjectRecord.get('qtrId');
+            var qtrYear		= quarterSubjectRecord.get('qtrYear');
+            //var month_number = formValues.combomonth;
 
-            //add to the store
+            //var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );
+            //var subjId_ = allSubjRec_.get( 'subjId' );
 
-            myStore.add( record );
 
-            //sync the store.
-            myStore.sync();
+            //Add the data to the new record.
+            if( formValues.combomonth > 0 )
+            {
+                summaryRatingsRecord.set('month_number', formValues.combomonth);
 
-            myForm.reset();
-            button.up().hide();
+                summaryRatingsRecord.set('subjName', subjName );
+                summaryRatingsRecord.set('subjId', subjId );
+                summaryRatingsRecord.set('qtrName', qtrName );
+                summaryRatingsRecord.set('qtrId', qtrId);
+                summaryRatingsRecord.set('studentId', studentId);
+                summaryRatingsRecord.set('studentUserName', studentName);
+                summaryRatingsRecord.set('qtrYear', qtrYear);
+                summaryRatingsRecord.set('locked', 0 );
+                summaryRatingsRecord.set('feelings', formValues.feelings);
+                summaryRatingsRecord.set('patternsOfCorrections', formValues.patternsofcorrections);
+                summaryRatingsRecord.set('effectivenessOfActions', formValues.effectivenessofactions);
+                summaryRatingsRecord.set('realizations', formValues.realizations);
+                summaryRatingsRecord.set('reflections', formValues.reflections);
+                summaryRatingsRecord.set('plannedChanges', formValues.plannedchanges);
+                summaryRatingsRecord.set('comments', formValues.comments);
+                summaryRatingsRecord.set('actionResults', formValues.actionresults);
+                summaryRatingsRecord.set('whoUpdated', 'login');
+                summaryRatingsRecord.set('lastUpdated', new Date());
+                summaryRatingsRecord.set('version', null);
+
+                //add to the store
+
+                summaryRatingsStore.add( summaryRatingsRecord );
+
+                //sync the store.
+                summaryRatingsStore.sync();
+
+                myForm.reset();
+                button.up().hide();
+            }
+            else
+            {
+                var smsg = "You must enter a value for month";
+                Ext.MessageBox.show({
+                    title: 'REMOTE EXCEPTION',
+                    msg: smsg,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            }
         }
         else
         {
-            var smsg = "You must enter a value for month";
-            Ext.MessageBox.show({
-                title: 'REMOTE EXCEPTION',
-                msg: smsg,
-                icon: Ext.MessageBox.ERROR,
-                buttons: Ext.Msg.OK
-            });
+            var msg = "You must have student/faculty/subject/quarter records.";
+                    Ext.MessageBox.show({
+                    title: 'NO DATA',
+                    msg: smsg,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
         }
 
     },

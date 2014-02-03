@@ -19,7 +19,7 @@ Ext.define('MySchool.view.common.QuarterSubjectComboBox', {
 
     itemId: 'common-quartersubject',
     fieldLabel: 'Choose Quarter Subject',
-    name: 'comboquarter',
+    name: 'comboquartersubject',
     allowOnlyWhitespace: false,
     emptyText: 'Select one',
     forceSelection: true,
