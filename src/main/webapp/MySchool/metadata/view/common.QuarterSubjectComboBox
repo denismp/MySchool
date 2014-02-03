@@ -7,8 +7,8 @@
     "codeClass": null,
     "userConfig": {
         "allowOnlyWhitespace": false,
-        "designer|userAlias": "commonquartercombobox",
-        "designer|userClassName": "common.QuarterComboBox",
+        "designer|userAlias": "commonquartersubjectcombobox",
+        "designer|userClassName": "common.QuarterSubjectComboBox",
         "displayField": null,
         "emptyText": "Select one",
         "fieldBodyCls": null,
@@ -33,7 +33,7 @@
                 "designer|params": [
                     "config"
                 ],
-                "fn": "processCommonQuarterComboBox",
+                "fn": "processCommonQuarterSubjectComboBox",
                 "implHandler": [
                     "config.tpl = Ext.create(\"Ext.XTemplate\",",
                     "                        '<tpl for=\".\"><div class=\"x-boundlist-item\">{qtrYear}/{qtrName} - {subjName}</div></tpl>');",
