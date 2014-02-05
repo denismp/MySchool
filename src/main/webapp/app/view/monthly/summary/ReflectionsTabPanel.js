@@ -44,14 +44,18 @@ Ext.define('MySchool.view.monthly.summary.ReflectionsTabPanel', {
                         },
                         {
                             xtype: 'button',
-                            itemId: 'editmonthlyreflectiontabpanel',
-                            text: 'Edit'
+                            itemId: 'editmonthlyreflectionstabpanel',
+                            text: 'Edit',
+                            tooltip: 'Click edit to modify'
                         }
                     ]
                 },
                 {
                     xtype: 'form',
                     dock: 'top',
+                    minHeight: 273,
+                    autoScroll: true,
+                    layout: 'fit',
                     bodyPadding: 10,
                     dockedItems: [
                         {

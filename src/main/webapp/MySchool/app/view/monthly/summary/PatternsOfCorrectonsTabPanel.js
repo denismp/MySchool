@@ -58,7 +58,7 @@ Ext.define('MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel', {
                             xtype: 'textareafield',
                             dock: 'top',
                             disabled: true,
-                            itemId: 'patternofcorrectionstextpad',
+                            itemId: 'patternofcorrectionstextbox',
                             minHeight: 273,
                             name: 'patternsOfCorrections'
                         }

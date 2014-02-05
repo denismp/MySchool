@@ -408,44 +408,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#editmonthlyreflectiontabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyreflectiontabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "99143220-5334-4539-822d-0d1f9227e6ed"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#reflectionstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onReflectionstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "024391fc-6766-4cf7-ab0c-74389547a623"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|controlQuery": "#editmonthlypatternsofcorrectionstabpanel",
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onEditmonthlypatternsofcorrectionstabpanelClick",
@@ -455,26 +417,7 @@
                 "name": "click",
                 "scope": "me"
             },
-            "designerId": "4a6f5e09-fb0f-4387-ae71-b9119be87513"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#patternofcorrectionstextpad",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onPatternofcorrectionstextpadBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "4351b3a5-e986-4850-a116-fe779008db26"
+            "designerId": "270ffbca-9221-4ba1-bac2-69a2f3f8e6a5"
         },
         {
             "type": "controlleraction",
@@ -923,16 +866,16 @@
                     "    var qtrId\t\t= quarterSubjectRecord.get('qtrId');",
                     "    var qtrYear\t\t= quarterSubjectRecord.get('qtrYear');",
                     "    //var month_number = formValues.combomonth;",
-                    "    ",
+                    "",
                     "    //var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );",
                     "    //var subjId_ = allSubjRec_.get( 'subjId' );",
-                    "    ",
-                    "    ",
+                    "",
+                    "",
                     "    //Add the data to the new record.",
                     "    if( formValues.combomonth > 0 )",
                     "    {",
                     "        summaryRatingsRecord.set('month_number', formValues.combomonth);",
-                    "    ",
+                    "",
                     "        summaryRatingsRecord.set('subjName', subjName );",
                     "        summaryRatingsRecord.set('subjId', subjId );",
                     "        summaryRatingsRecord.set('qtrName', qtrName );",
@@ -952,14 +895,14 @@
                     "        summaryRatingsRecord.set('whoUpdated', 'login');",
                     "        summaryRatingsRecord.set('lastUpdated', new Date());",
                     "        summaryRatingsRecord.set('version', null);",
-                    "    ",
+                    "",
                     "        //add to the store",
-                    "    ",
+                    "",
                     "        summaryRatingsStore.add( summaryRatingsRecord );",
-                    "    ",
+                    "",
                     "        //sync the store.",
                     "        summaryRatingsStore.sync();",
-                    "    ",
+                    "",
                     "        myForm.reset();",
                     "        button.up().hide();",
                     "    }",
@@ -990,6 +933,63 @@
                 "scope": "me"
             },
             "designerId": "75b92922-fdf2-4b0b-9b17-5d9cb87d2651"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#reflectionstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onReflectionstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "16dd56e0-912b-4573-adba-66fffd29c19c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#editmonthlyreflectionstabpanel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onEditmonthlyreflectionstabpanelClick",
+                "implHandler": [
+                    "this.buttonHandler( button, e, eOpts );"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "ba09bc96-4bb0-4f72-acc0-cfbff2496a27"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#patternofcorrectionstextbox",
+                "designer|targetType": "Ext.form.field.TextArea",
+                "fn": "onPatternofcorrectionstextboxBlur",
+                "implHandler": [
+                    "this.blurHandler( component, e, this );"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "894fe512-d386-4f30-8104-f3e58875e801"
         }
     ]
 }

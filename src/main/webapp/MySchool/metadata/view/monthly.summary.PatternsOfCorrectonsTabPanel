@@ -82,7 +82,7 @@
                         "dock": "top",
                         "fieldLabel": null,
                         "id": null,
-                        "itemId": "patternofcorrectionstextpad",
+                        "itemId": "patternofcorrectionstextbox",
                         "minHeight": 273,
                         "name": "patternsOfCorrections"
                     },

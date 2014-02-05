@@ -152,20 +152,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         this.buttonHandler( button, e, eOpts );
     },
 
-    onEditmonthlyreflectiontabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onReflectionstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
     onEditmonthlypatternsofcorrectionstabpanelClick: function(button, e, eOpts) {
         this.buttonHandler( button, e, eOpts );
-    },
-
-    onPatternofcorrectionstextpadBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
     },
 
     onEffectivenestextboxBlur: function(component, e, eOpts) {
@@ -374,6 +362,18 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     },
 
+    onReflectionstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
+    onEditmonthlyreflectionstabpanelClick: function(button, e, eOpts) {
+        this.buttonHandler( button, e, eOpts );
+    },
+
+    onPatternofcorrectionstextboxBlur: function(component, e, eOpts) {
+        this.blurHandler( component, e, this );
+    },
+
     blurHandler: function(o, event, eOpts) {
         debugger;
         var p_ = o.up('form').up('panel');
@@ -489,17 +489,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             "#editmonthlyfeelingstabpanel": {
                 click: this.onEditmonthlyfeelingstabpanelClick
             },
-            "#editmonthlyreflectiontabpanel": {
-                click: this.onEditmonthlyreflectiontabpanelClick
-            },
-            "#reflectionstextbox": {
-                blur: this.onReflectionstextboxBlur
-            },
             "#editmonthlypatternsofcorrectionstabpanel": {
                 click: this.onEditmonthlypatternsofcorrectionstabpanelClick
-            },
-            "#patternofcorrectionstextpad": {
-                blur: this.onPatternofcorrectionstextpadBlur
             },
             "#effectivenestextbox": {
                 blur: this.onEffectivenestextboxBlur
@@ -545,6 +536,15 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#newmonthlysummarysubmit": {
                 click: this.onNewmonthlysummarysubmitClick
+            },
+            "#reflectionstextbox": {
+                blur: this.onReflectionstextboxBlur
+            },
+            "#editmonthlyreflectionstabpanel": {
+                click: this.onEditmonthlyreflectionstabpanelClick
+            },
+            "#patternofcorrectionstextbox": {
+                blur: this.onPatternofcorrectionstextboxBlur
             }
         });
     }

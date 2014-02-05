@@ -48,9 +48,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "editmonthlyreflectiontabpanel",
+                        "itemId": "editmonthlyreflectionstabpanel",
                         "layout|flex": null,
-                        "text": "Edit"
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
                     },
                     "designerId": "69f2ef8a-83db-4a03-85d6-77d81638f436"
                 }
@@ -64,8 +67,11 @@
             },
             "codeClass": null,
             "userConfig": {
+                "autoScroll": true,
                 "bodyPadding": 10,
                 "dock": "top",
+                "layout": "fit",
+                "minHeight": 273,
                 "title": null
             },
             "designerId": "cf85434d-b765-44bb-8094-321cbe542173",
