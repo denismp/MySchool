@@ -69,7 +69,7 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
 
     onRestException: function(proxy, response, operation, eOpts) {
         debugger;
-        var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data;
+        var smsg = response.request.options.method + '&#13;&#10;' + response.request.options.action + '&#13;&#10;' + response.responseText + '&#13;&#10;' + response.status + '&#13;&#10;' + response.statusText + '&#13;&#10;' + operation.params.data;
         Ext.MessageBox.show({
             title: 'REMOTE EXCEPTION',
             msg: smsg,

@@ -3,6 +3,8 @@ package com.app.myschool.web;
 import java.util.Map;
 
 import com.app.myschool.model.MonthlySummaryRatings;
+
+import org.apache.log4j.Logger;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RooWebScaffold(path = "monthlysummaryratingses", formBackingObject = MonthlySummaryRatings.class)
 @RooWebJson(jsonObject = MonthlySummaryRatings.class)
 public class MonthlySummaryRatingsController {
+	private static final Logger logger = Logger.getLogger(MonthlySummaryRatingsController.class);
 
     @RequestMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
@@ -64,6 +67,7 @@ public class MonthlySummaryRatingsController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
+    	logger.info("updateFromJson() json=" + json );
     	MonthlySummaryRatingsControllerHelper controllerHelper = new MonthlySummaryRatingsControllerHelper();
         return controllerHelper.updateFromJson(json);
     }
