@@ -422,8 +422,9 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			boolean updateGood = false;
 			boolean inSync = false;
 
+			logger.info("updateFromJson(): Debug just before call to MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson)");
 			myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
-			logger.debug("Debug1");
+			logger.info("Debug1");
 			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getId());
 			
 			record.setLastUpdated(myView.getLastUpdated());
@@ -437,11 +438,11 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			record.setPlannedChanges(myView.getPlannedChanges());
 			record.setComments(myView.getComments());
 			record.setWhoUpdated(myView.getWhoUpdated());
-			logger.debug("Debug2");
+			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			
 			if( inSync && record.merge() != null ) {	
-				logger.debug("Debug3");
+				logger.info("Debug3");
 		    //if (((MonthlySummaryRatings)record).merge() != null ) {
 				myView.setVersion(record.getVersion());
 	        	updateGood = true;
@@ -479,8 +480,8 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			}
 
 		} catch(Exception e) {
-			logger.debug("Debug4");
-			logger.debug(e.getMessage());
+			logger.info("Debug4");
+			logger.info(e.getMessage());
 			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
