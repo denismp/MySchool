@@ -412,6 +412,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		JsonObjectResponse response = new JsonObjectResponse();
 
 		try {
+			logger.info( "updateFromJson(): Before decode() is " + json );
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
