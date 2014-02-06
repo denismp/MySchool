@@ -74,7 +74,8 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
             title: 'REMOTE EXCEPTION',
             msg: smsg,
             icon: Ext.MessageBox.ERROR,
-            buttons: Ext.Msg.OK
+            buttons: Ext.Msg.OK,
+            resizeable: true
         });
         window.console.log( smsg );
         if( this.getCount() > 0 )
