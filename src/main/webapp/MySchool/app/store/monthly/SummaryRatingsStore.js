@@ -44,7 +44,6 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
                 writer: {
                     type: 'json',
                     dateFormat: 'm/d/Y',
-                    encode: true,
                     root: 'data'
                 },
                 listeners: {

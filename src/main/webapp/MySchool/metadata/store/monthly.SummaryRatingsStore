@@ -50,7 +50,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "dateFormat": "m/d/Y",
-                        "encode": true,
                         "root": "data"
                     },
                     "designerId": "adf9230e-6e53-47ed-ad4b-b57d20090e39"
