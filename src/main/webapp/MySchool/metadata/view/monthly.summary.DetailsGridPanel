@@ -103,21 +103,6 @@
             "designerId": "e2a4bd86-e3fd-4f99-aaf2-316f9cf2c86d"
         },
         {
-            "type": "Ext.grid.column.Number",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "studentId",
-                "format": "00000",
-                "hidden": true,
-                "text": "studentId"
-            },
-            "designerId": "6c402dec-0b36-4964-bae6-d0a398b1e408"
-        },
-        {
             "type": "Ext.grid.View",
             "reference": {
                 "name": "viewConfig",

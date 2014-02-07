@@ -71,13 +71,6 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                     format: '00'
                 },
                 {
-                    xtype: 'numbercolumn',
-                    hidden: true,
-                    dataIndex: 'studentId',
-                    text: 'studentId',
-                    format: '00000'
-                },
-                {
                     xtype: 'checkcolumn',
                     dataIndex: 'locked',
                     text: 'Locked?',
