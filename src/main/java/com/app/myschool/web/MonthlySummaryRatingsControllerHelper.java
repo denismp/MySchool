@@ -88,6 +88,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId_);
 			List<MonthlySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthlySummaryRatingsView>();
 
+			//long i = 0;
 			for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
 			{
 				statusGood = true;
@@ -96,7 +97,9 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				Student student_ = quarter.getStudent();
 				MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
 
+				//monthlySummaryRatingsView.setId(++i);
 				monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
+				monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
 				monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
 				
 				monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
@@ -293,6 +296,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
+			//MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
 			if( !this.isDup(myView) )
 			{
 				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
@@ -317,6 +321,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
+				//myView.setId(100000L + record.getId());
 	
 				//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
 				//if( record != null )
@@ -425,7 +430,8 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			logger.info("updateFromJson(): Debug just before call to MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson)");
 			myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
 			logger.info("Debug1");
-			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getId());
+			logger.info("updateFromJson(): MonthlySummaryRatings id=" + myView.getSummaryId());
+			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getSummaryId());
 			
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setLocked(myView.getLocked());

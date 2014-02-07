@@ -45,6 +45,12 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
                 },
                 {
                     xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'summaryId',
+                    text: 'summaryId'
+                },
+                {
+                    xtype: 'gridcolumn',
                     dataIndex: 'subjName',
                     text: 'subjName'
                 },

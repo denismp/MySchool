@@ -327,6 +327,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                 summaryRatingsRecord.set('whoUpdated', 'login');
                 summaryRatingsRecord.set('lastUpdated', new Date());
                 summaryRatingsRecord.set('version', null);
+                summaryRatingsRecord.set( 'summaryId', 0 );
 
                 //add to the store
 

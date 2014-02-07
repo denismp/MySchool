@@ -43,6 +43,20 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "summaryId",
+                "hidden": true,
+                "text": "summaryId"
+            },
+            "designerId": "d1f05d5f-c18d-4cc9-8a33-8f41bab34522"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "dataIndex": "subjName",
                 "text": "subjName"
             },

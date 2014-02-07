@@ -11,7 +11,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJson
 public class MonthlySummaryRatingsView {
 	private Long id;
-	
+	private Long summaryId;
 	private Integer month_number;
 	
 	private String feelings;

@@ -866,6 +866,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.controller.monthly.SummaryRatingsController": [],
   "MySchool.controller.subject.SubjectsController": [],
   "MySchool.model.bodiesofwork.BodiesOfWorkModel": [],
+  "MySchool.model.common.MonthModel": [],
+  "MySchool.model.common.QuarterSubjectModel": [],
   "MySchool.model.daily.DailyModel": [],
   "MySchool.model.monthly.EvaluationRatings": [],
   "MySchool.model.monthly.SummaryRatings": [],
@@ -874,6 +876,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.model.subject.QuarterNamesModel": [],
   "MySchool.model.subject.SubjectsModel": [],
   "MySchool.store.bodiesofwork.MyJsonStore": [],
+  "MySchool.store.common.MonthStore": [],
+  "MySchool.store.common.QuarterSubjectStore": [],
   "MySchool.store.daily.MyJsonStore": [],
   "MySchool.store.monthly.EvaluationRatingsStore": [],
   "MySchool.store.monthly.SummaryRatingsStore": [],
@@ -896,7 +900,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.view.bodiesofwork.RefreshTool": [],
   "MySchool.view.bodiesofwork.SaveTool": [],
   "MySchool.view.bodiesofwork.SearchTool": [],
-  "MySchool.view.common.QuarterComboBox": [],
+  "MySchool.view.common.MonthComboBox": [],
+  "MySchool.view.common.QuarterSubjectComboBox": [],
   "MySchool.view.daily.ActionsTabPanel": [],
   "MySchool.view.daily.CorrectionsTabPanel": [],
   "MySchool.view.daily.DailyGridPanel": [],
@@ -915,7 +920,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.view.faculty.ProfileForm": [],
   "MySchool.view.faculty.ProfileGridPanel": [],
   "MySchool.view.faculty.ProfilePanel": [],
-  "MySchool.view.monthly.NewSummaryFormPanel": [],
   "MySchool.view.monthly.evaluation.DetailsPanel": [],
   "MySchool.view.monthly.evaluation.GridPanel": [],
   "MySchool.view.monthly.summary.ActionResultsTabPanel": [],
@@ -927,6 +931,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.view.monthly.summary.EffectivenessOfActionsTabPanel": [],
   "MySchool.view.monthly.summary.FeelingTabPanel": [],
   "MySchool.view.monthly.summary.LockTool": [],
+  "MySchool.view.monthly.summary.NewSummaryFormPanel": [],
   "MySchool.view.monthly.summary.NewTool": [],
   "MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel": [],
   "MySchool.view.monthly.summary.PlannedChangesTabPanel": [],
@@ -1973,6 +1978,12 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.model.bodiesofwork.BodiesOfWorkModel": [
     "model.bodiesofworkmodel"
   ],
+  "MySchool.model.common.MonthModel": [
+    "model.commonmonthmodel"
+  ],
+  "MySchool.model.common.QuarterSubjectModel": [
+    "model.commonquartersubjectmodel"
+  ],
   "MySchool.model.daily.DailyModel": [
     "model.dailymodel"
   ],
@@ -1989,10 +2000,16 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.store.bodiesofwork.MyJsonStore": [
     "store.bodiesofworkjsonstore"
   ],
+  "MySchool.store.common.MonthStore": [
+    "store.commonmonthStore"
+  ],
+  "MySchool.store.common.QuarterSubjectStore": [
+    "store.commonquartersubjectstore"
+  ],
   "MySchool.store.daily.MyJsonStore": [],
   "MySchool.store.monthly.EvaluationRatingsStore": [],
   "MySchool.store.monthly.SummaryRatingsStore": [
-    "store.montlysummaryratingsstore"
+    "store.monthlysummaryratingsstore"
   ],
   "MySchool.store.quarter.QuarterStore": [],
   "MySchool.store.student.StudentStore": [],
@@ -2037,8 +2054,11 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.view.bodiesofwork.SearchTool": [
     "widget.bodiesofworksearchtool"
   ],
-  "MySchool.view.common.QuarterComboBox": [
-    "widget.commonquartercombobox"
+  "MySchool.view.common.MonthComboBox": [
+    "widget.commonmonthcombobox"
+  ],
+  "MySchool.view.common.QuarterSubjectComboBox": [
+    "widget.commonquartersubjectcombobox"
   ],
   "MySchool.view.daily.ActionsTabPanel": [
     "widget.dailyactionstabpanel"
@@ -2094,9 +2114,6 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.view.faculty.ProfilePanel": [
     "widget.facultyprofilepanel"
   ],
-  "MySchool.view.monthly.NewSummaryFormPanel": [
-    "widget.monthlynewsummaryformpanel"
-  ],
   "MySchool.view.monthly.evaluation.DetailsPanel": [
     "widget.monthlyevaluationdetailspanel"
   ],
@@ -2129,6 +2146,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "MySchool.view.monthly.summary.LockTool": [
     "widget.monthlysummarylocktool"
+  ],
+  "MySchool.view.monthly.summary.NewSummaryFormPanel": [
+    "widget.monthlynewsummaryformpanel"
   ],
   "MySchool.view.monthly.summary.NewTool": [
     "widget.monthlysummarynewtool"

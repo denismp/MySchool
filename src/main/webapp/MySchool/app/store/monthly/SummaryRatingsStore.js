@@ -20,8 +20,7 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
     requires: [
         'MySchool.model.monthly.SummaryRatings',
         'Ext.data.proxy.Rest',
-        'Ext.data.reader.Json',
-        'Ext.data.writer.Json'
+        'Ext.data.reader.Json'
     ],
 
     constructor: function(cfg) {
@@ -39,11 +38,6 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
                 },
                 reader: {
                     type: 'json',
-                    root: 'data'
-                },
-                writer: {
-                    type: 'json',
-                    dateFormat: 'm/d/Y',
                     root: 'data'
                 },
                 listeners: {

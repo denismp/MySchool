@@ -16,6 +16,14 @@ privileged aspect MonthlySummaryRatingsView_Roo_JavaBean {
         this.id = id;
     }
     
+    public Long MonthlySummaryRatingsView.getSummaryId() {
+        return this.summaryId;
+    }
+    
+    public void MonthlySummaryRatingsView.setSummaryId(Long summaryId) {
+        this.summaryId = summaryId;
+    }
+    
     public Integer MonthlySummaryRatingsView.getMonth_number() {
         return this.month_number;
     }

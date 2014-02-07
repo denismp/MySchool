@@ -42,19 +42,6 @@
                     "designerId": "620d94cc-5844-442d-8f19-7004a1a0ac78"
                 },
                 {
-                    "type": "Ext.data.writer.Json",
-                    "reference": {
-                        "name": "writer",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dateFormat": "m/d/Y",
-                        "root": "data"
-                    },
-                    "designerId": "adf9230e-6e53-47ed-ad4b-b57d20090e39"
-                },
-                {
                     "type": "basiceventbinding",
                     "reference": {
                         "name": "listeners",

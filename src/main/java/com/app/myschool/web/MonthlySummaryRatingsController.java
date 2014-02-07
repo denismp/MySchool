@@ -67,7 +67,7 @@ public class MonthlySummaryRatingsController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
-    	logger.info("updateFromJson() json=" + json );
+    	//logger.info("updateFromJson() json=" + json );
     	MonthlySummaryRatingsControllerHelper controllerHelper = new MonthlySummaryRatingsControllerHelper();
         return controllerHelper.updateFromJson(json);
     }

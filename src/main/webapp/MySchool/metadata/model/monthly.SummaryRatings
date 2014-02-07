@@ -280,6 +280,18 @@
                 "type": "int"
             },
             "designerId": "55735811-8250-40a4-85ba-5be3b35f0ed6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "summaryId"
+            },
+            "designerId": "28366692-ac34-4e2a-9aff-06d6e020c3d8"
         }
     ]
 }
