@@ -17,38 +17,12 @@ Ext.define('MySchool.controller.daily.MyController', {
     extend: 'Ext.app.Controller',
     alias: 'controller.dailycontroller',
 
-    id: 'dailycontroller',
-
     onEditdailyhourstabClick: function(button, e, eOpts) {
         this.buttonHandler( button, e, eOpts );
     },
 
-    onEditdailydetailsevaluationtabClick: function(button, e, eOpts) {
-
-    },
-
-    onEditdailydetailscorrectiontabClick: function(button, e, eOpts) {
-
-    },
-
-    onEditdailydetailsactionstabClick: function(button, e, eOpts) {
-
-    },
-
     onDailydetailsformhournumberfieldBlur: function(component, e, eOpts) {
         this.blurHandler( component, e, this );
-    },
-
-    onDailydetailsevaluationtextareaBlur: function(component, e, eOpts) {
-
-    },
-
-    onDailydetailsactiontextareaBlur: function(component, e, eOpts) {
-
-    },
-
-    onDailydetailscorrectiontextareaBlur: function(component, e, eOpts) {
-
     },
 
     onDailyrefreshtoolClick: function(tool, e, eOpts) {
@@ -191,26 +165,8 @@ Ext.define('MySchool.controller.daily.MyController', {
             "#editdailyhourstab": {
                 click: this.onEditdailyhourstabClick
             },
-            "#editdailydetailsevaluationtab": {
-                click: this.onEditdailydetailsevaluationtabClick
-            },
-            "#editdailydetailscorrectiontab": {
-                click: this.onEditdailydetailscorrectiontabClick
-            },
-            "#editdailydetailsactionstab": {
-                click: this.onEditdailydetailsactionstabClick
-            },
             "#dailydetailsformhournumberfield": {
                 blur: this.onDailydetailsformhournumberfieldBlur
-            },
-            "#dailydetailsevaluationtextarea": {
-                blur: this.onDailydetailsevaluationtextareaBlur
-            },
-            "#dailydetailsactiontextarea": {
-                blur: this.onDailydetailsactiontextareaBlur
-            },
-            "#dailydetailscorrectiontextarea": {
-                blur: this.onDailydetailscorrectiontextareaBlur
             },
             "#dailyrefreshtool": {
                 click: this.onDailyrefreshtoolClick

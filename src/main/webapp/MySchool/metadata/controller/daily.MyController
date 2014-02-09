@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userAlias": "dailycontroller",
         "designer|userClassName": "daily.MyController",
-        "id": "dailycontroller"
+        "id": null
     },
     "designerId": "cc725caa-3895-4141-9f43-9ec30a87de9d",
     "cn": [
@@ -39,63 +39,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#editdailydetailsevaluationtab",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditdailydetailsevaluationtabClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "aa20928f-4554-4da5-9a90-70f5c2da7fc4"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editdailydetailscorrectiontab",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditdailydetailscorrectiontabClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "602be60e-d000-4322-a4a5-b2b0571e4d1f"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editdailydetailsactionstab",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditdailydetailsactionstabClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "846e1744-d688-4dac-8f1d-910a8e41823c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|controlQuery": "#dailydetailsformhournumberfield",
                 "designer|targetType": "Ext.form.field.Number",
                 "fn": "onDailydetailsformhournumberfieldBlur",
@@ -106,63 +49,6 @@
                 "scope": "me"
             },
             "designerId": "06e024bd-3c3a-4de1-a668-8bd3dc445c8b"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#dailydetailsevaluationtextarea",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onDailydetailsevaluationtextareaBlur",
-                "implHandler": [
-                    ""
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "17507493-6a4f-4598-97b7-1f37f6dbba71"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#dailydetailsactiontextarea",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onDailydetailsactiontextareaBlur",
-                "implHandler": [
-                    ""
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "6bb0e8c4-ddc4-4516-9936-f5e5a98f1e3d"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#dailydetailscorrectiontextarea",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onDailydetailscorrectiontextareaBlur",
-                "implHandler": [
-                    ""
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "75e01ebf-7c4b-43bd-b1ed-c21d4fb1596d"
         },
         {
             "type": "basicfunction",

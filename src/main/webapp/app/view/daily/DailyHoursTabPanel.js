@@ -20,12 +20,12 @@ Ext.define('MySchool.view.daily.DailyHoursTabPanel', {
     requires: [
         'Ext.form.Panel',
         'Ext.form.field.Number',
-        'Ext.toolbar.Toolbar',
         'Ext.button.Button'
     ],
 
     height: 100,
     itemId: 'dailyhourstab',
+    layout: 'fit',
     title: 'Hours',
 
     initComponent: function() {
@@ -47,17 +47,6 @@ Ext.define('MySchool.view.daily.DailyHoursTabPanel', {
                             disabled: true,
                             itemId: 'dailydetailsformhournumberfield',
                             labelWidth: 50
-                        }
-                    ]
-                },
-                {
-                    xtype: 'toolbar',
-                    dock: 'bottom',
-                    ui: 'footer',
-                    items: [
-                        {
-                            xtype: 'component',
-                            flex: 1
                         },
                         {
                             xtype: 'button',

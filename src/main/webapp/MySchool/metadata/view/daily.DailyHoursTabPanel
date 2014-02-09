@@ -10,6 +10,7 @@
         "designer|userClassName": "daily.DailyHoursTabPanel",
         "height": 100,
         "itemId": "dailyhourstab",
+        "layout": "fit",
         "title": "Hours"
     },
     "designerId": "4f7ba901-b9db-430f-b6bb-e7d27d3c7080",
@@ -51,35 +52,6 @@
                         "minHeight": null
                     },
                     "designerId": "8b5b0f93-31ca-4369-8ddb-02c4b96b1fa3"
-                }
-            ]
-        },
-        {
-            "type": "Ext.toolbar.Toolbar",
-            "reference": {
-                "name": "dockedItems",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "defaults": null,
-                "designer|uiInterfaceName": "footer",
-                "dock": "bottom",
-                "ui": "footer"
-            },
-            "designerId": "acb95b00-7a4d-4f9e-8d16-e5894adf0812",
-            "cn": [
-                {
-                    "type": "Ext.Component",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "layout|flex": 1
-                    },
-                    "designerId": "65b8e799-dc6e-47eb-8ad2-23e1c22ef358"
                 },
                 {
                     "type": "Ext.button.Button",
@@ -89,8 +61,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "dock": null,
                         "itemId": "editdailyhourstab",
-                        "layout|flex": null,
                         "text": "Edit"
                     },
                     "designerId": "ff6b22a9-4682-4d5e-bb23-7f4cf40da409"
