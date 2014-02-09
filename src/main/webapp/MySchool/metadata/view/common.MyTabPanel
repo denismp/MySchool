@@ -48,7 +48,7 @@
                         "height": null,
                         "id": null,
                         "itemId": "mytextbox",
-                        "minHeight": 230,
+                        "minHeight": 220,
                         "name": "mytextbox"
                     },
                     "designerId": "d6ecf17d-f503-4ce0-8765-5c15312061d3"
@@ -56,12 +56,12 @@
                 {
                     "type": "Ext.button.Button",
                     "reference": {
-                        "name": "dockedItems",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "right",
+                        "dock": null,
                         "itemId": "editmytabpanel",
                         "text": "Edit",
                         "tooltip": [
@@ -90,7 +90,8 @@
                     "",
                     "var dockedItems = config.dockedItems;",
                     "var form\t\t= dockedItems[0];",
-                    "var button\t\t= form.dockedItems[1];",
+                    "//var button\t\t= form.dockedItems[1];",
+                    "var button\t\t= form.items[0];",
                     "button.itemId\t= 'edit' + itemId;",
                     "var textbox\t\t= form.dockedItems[0];",
                     "textbox.itemId\t= itemId + 'textbox';",

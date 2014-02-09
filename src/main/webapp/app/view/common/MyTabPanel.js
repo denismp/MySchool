@@ -45,12 +45,13 @@ Ext.define('MySchool.view.common.MyTabPanel', {
                             dock: 'top',
                             disabled: true,
                             itemId: 'mytextbox',
-                            minHeight: 230,
+                            minHeight: 220,
                             name: 'mytextbox'
-                        },
+                        }
+                    ],
+                    items: [
                         {
                             xtype: 'button',
-                            dock: 'right',
                             itemId: 'editmytabpanel',
                             text: 'Edit',
                             tooltip: 'Click edit to modify'
@@ -70,7 +71,8 @@ Ext.define('MySchool.view.common.MyTabPanel', {
 
         var dockedItems = config.dockedItems;
         var form		= dockedItems[0];
-        var button		= form.dockedItems[1];
+        //var button		= form.dockedItems[1];
+        var button		= form.items[0];
         button.itemId	= 'edit' + itemId;
         var textbox		= form.dockedItems[0];
         textbox.itemId	= itemId + 'textbox';
