@@ -28,7 +28,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyDetailsTabPanel",
-                "selector": "monthlydetailstabpanel"
+                "selector": "#monthlysummarydetailstabpanel"
             },
             "designerId": "6d707be4-b0c9-40d3-8fc4-363dd7168757"
         },
@@ -41,7 +41,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyFeelingsTabPanel",
-                "selector": "monthlyfeelingstabpanel"
+                "selector": "#monthlyfeelingstabpanel"
             },
             "designerId": "05143a08-59ac-4355-8965-8c33921adef0"
         },
@@ -54,7 +54,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyReflectionsTabPanel",
-                "selector": "monthlyrelectionstabpanel"
+                "selector": "#monthlyreflectionstabpanel"
             },
             "designerId": "88426b1b-8ae8-44f4-a1fe-5426b1404e8b"
         },
@@ -67,7 +67,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyPatternsOfCorrectionsTabPanel",
-                "selector": "monthlypatternsofcorrectionstabpanel"
+                "selector": "#monthlypatternsofcorrectionstabpanel"
             },
             "designerId": "e09d6cdd-fd6a-4883-af7e-67b7a4f677a7"
         },
@@ -80,7 +80,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyEffectivenessOfActionsTabPanel",
-                "selector": "monthlyeffectivenessofactionstabpanel"
+                "selector": "#monthlyeffectivenessofactionstabpanel"
             },
             "designerId": "648e924b-d1eb-4ab0-942d-a61a7cbea6d5"
         },
@@ -93,7 +93,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyActionResultsTabPanel",
-                "selector": "monthlyactionresultstabpanel"
+                "selector": "#monthlyactionresultstabpanel"
             },
             "designerId": "b4b413d0-9e09-4234-bde5-27763e77eb9c"
         },
@@ -106,7 +106,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyRealizationsTabPanel",
-                "selector": "monthlyrealizationstabpanel"
+                "selector": "#monthlyrealizationstabpanel"
             },
             "designerId": "b2713fd8-4816-44eb-96c2-44cbcaf00019"
         },
@@ -119,7 +119,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyPlannedChangesTabPanel",
-                "selector": "monthlyplannedchangestabpanel"
+                "selector": "#monthlyplannedchangestabpanel"
             },
             "designerId": "254fd10c-c754-4e0c-9c09-9c7ae99ea5d3"
         },
@@ -132,7 +132,7 @@
             "codeClass": null,
             "userConfig": {
                 "ref": "MonthlyCommentsTabPanel",
-                "selector": "monthlycommentstabpanel"
+                "selector": "#monthlycommentstabpanel"
             },
             "designerId": "befc0581-b8ec-4ec2-ab5b-775a90d8d555"
         },
@@ -154,28 +154,28 @@
                     "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
                     "    var tabPanel = this.getMonthlyFeelingsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'feelings' );",
                     "    tabPanel = this.getMonthlyReflectionsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'reflections' );",
                     "    tabPanel = this.getMonthlyPatternsOfCorrectionsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'patternsOfCorrections' );",
                     "    tabPanel = this.getMonthlyEffectivenessOfActionsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'effectivenessOfActions' );",
                     "    tabPanel = this.getMonthlyActionResultsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'actionResults' );",
                     "    tabPanel = this.getMonthlyRealizationsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'realizations' );",
                     "    tabPanel = this.getMonthlyPlannedChangesTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'plannedChanges' );",
                     "    tabPanel = this.getMonthlyCommentsTabPanel();",
                     "        console.log( tabPanel );",
-                    "    this.loadTabPanelForm( tabPanel, selected );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'comments' );",
                     "",
                     "    console.log('onMonthlysummarygridpanelSelectionChange()');",
                     "}"
@@ -268,25 +268,6 @@
             "designerId": "cac21ed2-018c-4f9d-8f3e-02a4fc250eaa"
         },
         {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#feelingstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onFeelingstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "489bb1e9-0724-4660-acc9-36ac7f28d492"
-        },
-        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",
@@ -301,11 +282,14 @@
                 ],
                 "fn": "blurHandler",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "var p_ = o.up('form').up('panel');",
                     "var topP_ = p_.up('panel');",
                     "var pItemId_ = p_.getItemId();",
                     "var edit_ = p_.down('#edit' + pItemId_);",
+                    "console.log( edit_ );",
+                    "console.log( topP_ );",
+                    "//topP_.buttonHandler(edit_);",
                     "",
                     "Ext.Msg.show({",
                     "    title:'Save Changes?',",
@@ -329,14 +313,19 @@
                     "                icon: Ext.window.MessageBox.INFO",
                     "            });",
                     "        }",
-                    "        topP_ = eOpts;",
+                    "        //topP_ = eOpts;",
                     "        //topP_.buttonHandler.call(edit_);",
+                    "        //edit.setText('Edit');",
+                    "        console.log( topP_ );",
                     "        topP_.buttonHandler(edit_);",
+                    "        //p_.buttonHandler(edit_);",
                     "    }",
-                    "});"
+                    "});",
+                    "debugger;",
+                    "this.buttonHandler( edit_ );"
                 ]
             },
-            "designerId": "67e3b996-eacd-4e0d-b912-362efb4383c2"
+            "designerId": "01e3b66a-c5ca-4115-b2a5-90e6c93cf086"
         },
         {
             "type": "basicfunction",
@@ -355,17 +344,17 @@
                 "implHandler": [
                     "debugger;",
                     "window.console.log(button);",
-                    "var b_ = button;",
-                    "var p_ = b_.up('panel');",
+                    "var b_\t\t= button;",
+                    "var form\t= b_.up('panel');",
+                    "var p_\t\t= form.up();",
                     "var pItemId_ = p_.getItemId();",
                     "var field_;",
                     "",
-                    "//if (pItemId_ == 'monthlyfeelingstabpanel') {",
-                    "//    field_ = p_.down('numberfield');",
-                    "//} else {",
-                    "//    field_ = p_.down('textareafield');",
-                    "//}",
-                    "field_ = p_.down('textareafield');",
+                    "if (pItemId_ == 'dailyhourstab') {",
+                    "    field_ = p_.down('numberfield');",
+                    "} else {",
+                    "    field_ = p_.down('textareafield');",
+                    "}",
                     "",
                     "if (b_.getText().charAt(0) == 'D') {",
                     "    b_ = p_.down('#edit' + pItemId_);",
@@ -379,159 +368,7 @@
                     "}"
                 ]
             },
-            "designerId": "3e645079-f408-4e71-8d03-7b9c3fae211c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlyfeelingstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyfeelingstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "b7f4d35b-8fe8-456d-950d-2b74709bd5a9"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlypatternsofcorrectionstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlypatternsofcorrectionstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "270ffbca-9221-4ba1-bac2-69a2f3f8e6a5"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#effectivenestextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onEffectivenestextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "079961f7-9cff-4a2b-b1af-794352bb29d9"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlyeffectivenessofactionstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyeffectivenessofactionstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "0f7fe806-6b95-46c5-9c98-ee683ba6321c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#actionresultstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onActionresultstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "4b8e3de4-294f-4455-8323-5434da97f0c2"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthyactionresultstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthyactionresultstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "15f415f1-3cff-4d1b-baf0-fd5d9669699c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlyrealizationstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyrealizationstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "1acefb8e-514c-416f-8eef-34befaa66a05"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#realizationstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onRealizationstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "0e2b2584-3536-4530-8f26-b61ce2425d6c"
+            "designerId": "34191153-7906-4698-af4e-8c52a09e96f8"
         },
         {
             "type": "controllerref",
@@ -545,63 +382,6 @@
                 "selector": "#editmonthlyplannedchangestabpanel"
             },
             "designerId": "a49fb491-e364-418f-a381-f0aa01db9843"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#plannedchangestextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onPlannedchangestextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "b5b86cf9-5db8-4eba-bcba-f0434c6d4ad5"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlyplannedchangestabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyplannedchangestabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "946c3714-d62d-4d79-94ae-2c19e6037ea1"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#commentstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onCommentstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "a0e1becf-b148-4544-86d5-1c4f73fa63e2"
         },
         {
             "type": "basicfunction",
@@ -661,25 +441,6 @@
             "designerId": "99c0d8f9-504a-45d1-99d2-2f6bfc9c39c0"
         },
         {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlycommentstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlycommentstabpanelClick",
-                "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "f2ad7965-0f68-4598-9d07-d083875a7bbb"
-        },
-        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",
@@ -689,19 +450,21 @@
             "userConfig": {
                 "designer|params": [
                     "tabPanel",
-                    "selected"
+                    "selected",
+                    "fieldname"
                 ],
                 "fn": "loadTabPanelForm",
                 "implHandler": [
+                    "debugger;",
                     "var dockedItems = tabPanel.getDockedItems();",
-                    "var myForm = dockedItems[0].getForm();",
-                    "if( Ext.isDefined( myForm ) === false )",
-                    "{",
-                    "    myForm = dockedItems[1].getForm();",
-                    "}",
+                    "var myForm = dockedItems[0];",
+                    "",
                     "if( Ext.isDefined( myForm ) )",
                     "{",
                     "    console.log( myForm );",
+                    "    //var textBox = myForm.dockedItems.items[0];",
+                    "    var textBox = myForm.down('textareafield');",
+                    "    textBox.name = fieldname;",
                     "    myForm.loadRecord( selected[0] );",
                     "}",
                     "else",
@@ -936,61 +699,65 @@
             "designerId": "75b92922-fdf2-4b0b-9b17-5d9cb87d2651"
         },
         {
-            "type": "controlleraction",
+            "type": "fixedfunction",
             "reference": {
-                "name": "listeners",
+                "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#reflectionstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onReflectionstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
+                "designer|params": [
+                    "application"
                 ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "16dd56e0-912b-4573-adba-66fffd29c19c"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editmonthlyreflectionstabpanel",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditmonthlyreflectionstabpanelClick",
+                "fn": "init",
                 "implHandler": [
-                    "this.buttonHandler( button, e, eOpts );"
-                ],
-                "name": "click",
-                "scope": "me"
+                    "this.control({",
+                    "    \"#monthlyfeelingstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlyfeelingstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#editmonthlyreflectionstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlyreflectionstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlyeffectivenessofactionstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlyeffectivenessofactionstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlyactionresultstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlyactionresultstabpaneltextbox\": {",
+                    "        click: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlyrealizationstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlyrealizationstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlyplannedchangestabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlyplannedchangestabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editmonthlycommentstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#monthlycommentstabpaneltextbox\": {",
+                    "        click: this.blurHandler",
+                    "    }",
+                    "});"
+                ]
             },
-            "designerId": "ba09bc96-4bb0-4f72-acc0-cfbff2496a27"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#patternofcorrectionstextbox",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onPatternofcorrectionstextboxBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "894fe512-d386-4f30-8104-f3e58875e801"
+            "designerId": "6c976bb4-85f3-4c45-9eaa-487aca564e0a"
         }
     ]
 }

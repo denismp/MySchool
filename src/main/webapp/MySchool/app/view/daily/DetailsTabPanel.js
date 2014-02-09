@@ -85,15 +85,6 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
-                },
-                {
-                    xtype: 'commonmytabpanel',
-                    itemId: 'dailytesttabpanel',
-                    title: 'Test',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    }
                 }
             ]
         });

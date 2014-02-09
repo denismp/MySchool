@@ -18,14 +18,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
     alias: 'widget.monthlysummarydetailstabpanel',
 
     requires: [
-        'MySchool.view.monthly.summary.FeelingTabPanel',
-        'MySchool.view.monthly.summary.ReflectionsTabPanel',
-        'MySchool.view.monthly.summary.PatternsOfCorrectonsTabPanel',
-        'MySchool.view.monthly.summary.EffectivenessOfActionsTabPanel',
-        'MySchool.view.monthly.summary.ActionResultsTabPanel',
-        'MySchool.view.monthly.summary.RealizationsTabPanel',
-        'MySchool.view.monthly.summary.PlannedChangesTabPanel',
-        'MySchool.view.monthly.summary.CommentsTabPanel',
+        'MySchool.view.common.MyTabPanel',
         'Ext.panel.Panel',
         'Ext.tab.Tab'
     ],
@@ -42,56 +35,72 @@ Ext.define('MySchool.view.monthly.summary.DetailsTabPanel', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'monthlyfeelingstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyfeelingstabpanel',
+                    title: 'Feelings',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlyrelectionstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyreflectionstabpanel',
+                    title: 'Reflections',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlypatternsofcorrectionstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlypatternsofcorrectionstabpanel',
+                    title: 'Patterns Of Corrections',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlyeffectivenessofactionstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyeffectivenessofactionstabpanel',
+                    title: 'Effectivenes Of Actions',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlyactionresultstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyactionresultstabpanel',
+                    title: 'Action Results',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlyrealizationstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyrealizationstabpanel',
+                    title: 'Realizations',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlyplannedchangestabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlyplannedchangestabpanel',
+                    title: 'Planned Changes',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'monthlycommentstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'monthlycommentstabpanel',
+                    title: 'Comments',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'

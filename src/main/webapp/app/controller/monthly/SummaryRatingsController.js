@@ -29,39 +29,39 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     refs: [
         {
             ref: 'MonthlyDetailsTabPanel',
-            selector: 'monthlydetailstabpanel'
+            selector: '#monthlysummarydetailstabpanel'
         },
         {
             ref: 'MonthlyFeelingsTabPanel',
-            selector: 'monthlyfeelingstabpanel'
+            selector: '#monthlyfeelingstabpanel'
         },
         {
             ref: 'MonthlyReflectionsTabPanel',
-            selector: 'monthlyrelectionstabpanel'
+            selector: '#monthlyreflectionstabpanel'
         },
         {
             ref: 'MonthlyPatternsOfCorrectionsTabPanel',
-            selector: 'monthlypatternsofcorrectionstabpanel'
+            selector: '#monthlypatternsofcorrectionstabpanel'
         },
         {
             ref: 'MonthlyEffectivenessOfActionsTabPanel',
-            selector: 'monthlyeffectivenessofactionstabpanel'
+            selector: '#monthlyeffectivenessofactionstabpanel'
         },
         {
             ref: 'MonthlyActionResultsTabPanel',
-            selector: 'monthlyactionresultstabpanel'
+            selector: '#monthlyactionresultstabpanel'
         },
         {
             ref: 'MonthlyRealizationsTabPanel',
-            selector: 'monthlyrealizationstabpanel'
+            selector: '#monthlyrealizationstabpanel'
         },
         {
             ref: 'MonthlyPlannedChangesTabPanel',
-            selector: 'monthlyplannedchangestabpanel'
+            selector: '#monthlyplannedchangestabpanel'
         },
         {
             ref: 'MonthlyCommentsTabPanel',
-            selector: 'monthlycommentstabpanel'
+            selector: '#monthlycommentstabpanel'
         },
         {
             ref: 'EditMonthlyPlannedChangesTabPanel',
@@ -80,28 +80,28 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
             var tabPanel = this.getMonthlyFeelingsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'feelings' );
             tabPanel = this.getMonthlyReflectionsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'reflections' );
             tabPanel = this.getMonthlyPatternsOfCorrectionsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'patternsOfCorrections' );
             tabPanel = this.getMonthlyEffectivenessOfActionsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'effectivenessOfActions' );
             tabPanel = this.getMonthlyActionResultsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'actionResults' );
             tabPanel = this.getMonthlyRealizationsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'realizations' );
             tabPanel = this.getMonthlyPlannedChangesTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'plannedChanges' );
             tabPanel = this.getMonthlyCommentsTabPanel();
                 console.log( tabPanel );
-            this.loadTabPanelForm( tabPanel, selected );
+            this.loadTabPanelForm( tabPanel, selected, 'comments' );
 
             console.log('onMonthlysummarygridpanelSelectionChange()');
         }
@@ -144,61 +144,9 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     },
 
-    onFeelingstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onEditmonthlyfeelingstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onEditmonthlypatternsofcorrectionstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onEffectivenestextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onEditmonthlyeffectivenessofactionstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onActionresultstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onEditmonthyactionresultstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onEditmonthlyrealizationstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onRealizationstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onPlannedchangestextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onEditmonthlyplannedchangestabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onCommentstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
     onRefreshmonthlysummariestoolClick: function(tool, e, eOpts) {
         var myStore = Ext.getStore('monthly.SummaryRatingsStore');
         myStore.reload();
-    },
-
-    onEditmonthlycommentstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
     },
 
     onSavemonthlysummariestoolClick: function(tool, e, eOpts) {
@@ -363,24 +311,15 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
     },
 
-    onReflectionstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
-    onEditmonthlyreflectionstabpanelClick: function(button, e, eOpts) {
-        this.buttonHandler( button, e, eOpts );
-    },
-
-    onPatternofcorrectionstextboxBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
     blurHandler: function(o, event, eOpts) {
-        debugger;
+        //debugger;
         var p_ = o.up('form').up('panel');
         var topP_ = p_.up('panel');
         var pItemId_ = p_.getItemId();
         var edit_ = p_.down('#edit' + pItemId_);
+        console.log( edit_ );
+        console.log( topP_ );
+        //topP_.buttonHandler(edit_);
 
         Ext.Msg.show({
             title:'Save Changes?',
@@ -404,27 +343,32 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                         icon: Ext.window.MessageBox.INFO
                     });
                 }
-                topP_ = eOpts;
+                //topP_ = eOpts;
                 //topP_.buttonHandler.call(edit_);
+                //edit.setText('Edit');
+                console.log( topP_ );
                 topP_.buttonHandler(edit_);
+                //p_.buttonHandler(edit_);
             }
         });
+        debugger;
+        this.buttonHandler( edit_ );
     },
 
     buttonHandler: function(button, e, eOpts) {
         debugger;
         window.console.log(button);
-        var b_ = button;
-        var p_ = b_.up('panel');
+        var b_		= button;
+        var form	= b_.up('panel');
+        var p_		= form.up();
         var pItemId_ = p_.getItemId();
         var field_;
 
-        //if (pItemId_ == 'monthlyfeelingstabpanel') {
-        //    field_ = p_.down('numberfield');
-        //} else {
-        //    field_ = p_.down('textareafield');
-        //}
-        field_ = p_.down('textareafield');
+        if (pItemId_ == 'dailyhourstab') {
+            field_ = p_.down('numberfield');
+        } else {
+            field_ = p_.down('textareafield');
+        }
 
         if (b_.getText().charAt(0) == 'D') {
             b_ = p_.down('#edit' + pItemId_);
@@ -451,16 +395,17 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         this.gridViewReady = true;
     },
 
-    loadTabPanelForm: function(tabPanel, selected) {
+    loadTabPanelForm: function(tabPanel, selected, fieldname) {
+        debugger;
         var dockedItems = tabPanel.getDockedItems();
-        var myForm = dockedItems[0].getForm();
-        if( Ext.isDefined( myForm ) === false )
-        {
-            myForm = dockedItems[1].getForm();
-        }
+        var myForm = dockedItems[0];
+
         if( Ext.isDefined( myForm ) )
         {
             console.log( myForm );
+            //var textBox = myForm.dockedItems.items[0];
+            var textBox = myForm.down('textareafield');
+            textBox.name = fieldname;
             myForm.loadRecord( selected[0] );
         }
         else
@@ -471,6 +416,51 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
     },
 
     init: function(application) {
+                this.control({
+                    "#monthlyfeelingstabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editmonthlyfeelingstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#editmonthlyreflectionstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlyreflectionstabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editmonthlyeffectivenessofactionstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlyeffectivenessofactionstabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editmonthlyactionresultstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlyactionresultstabpaneltextbox": {
+                        click: this.blurHandler
+                    },
+                    "#editmonthlyrealizationstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlyrealizationstabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editmonthlyplannedchangestabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlyplannedchangestabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editmonthlycommentstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#monthlycommentstabpaneltextbox": {
+                        click: this.blurHandler
+                    }
+                });
+
         this.control({
             "#monthlysummarygridpanel": {
                 selectionchange: this.onMonthlysummarygridpanelSelectionChange
@@ -484,47 +474,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             "#monthlysummarygridview": {
                 viewready: this.onMonthlysummarygridviewViewReady
             },
-            "#feelingstextbox": {
-                blur: this.onFeelingstextboxBlur
-            },
-            "#editmonthlyfeelingstabpanel": {
-                click: this.onEditmonthlyfeelingstabpanelClick
-            },
-            "#editmonthlypatternsofcorrectionstabpanel": {
-                click: this.onEditmonthlypatternsofcorrectionstabpanelClick
-            },
-            "#effectivenestextbox": {
-                blur: this.onEffectivenestextboxBlur
-            },
-            "#editmonthlyeffectivenessofactionstabpanel": {
-                click: this.onEditmonthlyeffectivenessofactionstabpanelClick
-            },
-            "#actionresultstextbox": {
-                blur: this.onActionresultstextboxBlur
-            },
-            "#editmonthyactionresultstabpanel": {
-                click: this.onEditmonthyactionresultstabpanelClick
-            },
-            "#editmonthlyrealizationstabpanel": {
-                click: this.onEditmonthlyrealizationstabpanelClick
-            },
-            "#realizationstextbox": {
-                blur: this.onRealizationstextboxBlur
-            },
-            "#plannedchangestextbox": {
-                blur: this.onPlannedchangestextboxBlur
-            },
-            "#editmonthlyplannedchangestabpanel": {
-                click: this.onEditmonthlyplannedchangestabpanelClick
-            },
-            "#commentstextbox": {
-                blur: this.onCommentstextboxBlur
-            },
             "#refreshmonthlysummariestool": {
                 click: this.onRefreshmonthlysummariestoolClick
-            },
-            "#editmonthlycommentstabpanel": {
-                click: this.onEditmonthlycommentstabpanelClick
             },
             "#savemonthlysummariestool": {
                 click: this.onSavemonthlysummariestoolClick
@@ -537,15 +488,6 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             },
             "#newmonthlysummarysubmit": {
                 click: this.onNewmonthlysummarysubmitClick
-            },
-            "#reflectionstextbox": {
-                blur: this.onReflectionstextboxBlur
-            },
-            "#editmonthlyreflectionstabpanel": {
-                click: this.onEditmonthlyreflectionstabpanelClick
-            },
-            "#patternofcorrectionstextbox": {
-                blur: this.onPatternofcorrectionstextboxBlur
             }
         });
     }
