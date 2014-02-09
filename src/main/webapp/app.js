@@ -97,11 +97,6 @@ Ext.application({
         'bodiesofwork.SaveTool',
         'bodiesofwork.LockTool',
         'daily.DailyHoursTabPanel',
-        'daily.ResourcesUsedTabPanel',
-        'daily.StudyDetailsTabPanel',
-        'daily.EvaluationsTabPanel',
-        'daily.CorrectionsTabPanel',
-        'daily.ActionsTabPanel',
         'daily.RefreshTool',
         'daily.SearchTool',
         'daily.NewTool',
@@ -116,7 +111,8 @@ Ext.application({
         'monthly.summary.LockTool',
         'monthly.summary.NewSummaryFormPanel',
         'common.QuarterSubjectComboBox',
-        'common.MonthComboBox'
+        'common.MonthComboBox',
+        'common.MyTabPanel'
     ],
     controllers: [
         'subject.SubjectsController',

@@ -14,6 +14,7 @@
         "id": null,
         "itemId": "dailygridpanel",
         "minHeight": null,
+        "store": "daily.MyJsonStore",
         "title": "[student name] Daily Details",
         "width": 967
     },

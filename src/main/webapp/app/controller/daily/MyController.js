@@ -23,14 +23,6 @@ Ext.define('MySchool.controller.daily.MyController', {
         this.buttonHandler( button, e, eOpts );
     },
 
-    onEditdailyresourcesusedtabClick: function(button, e, eOpts) {
-
-    },
-
-    onEditdailystudydetailstabClick: function(button, e, eOpts) {
-
-    },
-
     onEditdailydetailsevaluationtabClick: function(button, e, eOpts) {
 
     },
@@ -45,14 +37,6 @@ Ext.define('MySchool.controller.daily.MyController', {
 
     onDailydetailsformhournumberfieldBlur: function(component, e, eOpts) {
         this.blurHandler( component, e, this );
-    },
-
-    onDailydetailsresoucesusedtextareaBlur: function(component, e, eOpts) {
-
-    },
-
-    onDailydetailsstudydetailstextareaBlur: function(component, e, eOpts) {
-
     },
 
     onDailydetailsevaluationtextareaBlur: function(component, e, eOpts) {
@@ -94,8 +78,9 @@ Ext.define('MySchool.controller.daily.MyController', {
     buttonHandler: function(button, e, eOpts) {
         debugger;
         window.console.log(button);
-        var b_ = button;
-        var p_ = b_.up('panel');
+        var b_		= button;
+        var form	= b_.up('panel');
+        var p_		= form.up();
         var pItemId_ = p_.getItemId();
         var field_;
 
@@ -118,11 +103,14 @@ Ext.define('MySchool.controller.daily.MyController', {
     },
 
     blurHandler: function(o, event, eOpts) {
-        debugger;
+        //debugger;
         var p_ = o.up('form').up('panel');
         var topP_ = p_.up('panel');
         var pItemId_ = p_.getItemId();
         var edit_ = p_.down('#edit' + pItemId_);
+        console.log( edit_ );
+        console.log( topP_ );
+        //topP_.buttonHandler(edit_);
 
         Ext.Msg.show({
             title:'Save Changes?',
@@ -146,23 +134,62 @@ Ext.define('MySchool.controller.daily.MyController', {
                         icon: Ext.window.MessageBox.INFO
                     });
                 }
-                topP_ = eOpts;
+                //topP_ = eOpts;
                 //topP_.buttonHandler.call(edit_);
+                //edit.setText('Edit');
+                console.log( topP_ );
                 topP_.buttonHandler(edit_);
+                //p_.buttonHandler(edit_);
             }
         });
+        debugger;
+        this.buttonHandler( edit_ );
     },
 
     init: function(application) {
+                this.control({
+                    "#editdailytesttabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailytesttabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editdailyresourcesusedtabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailyresourcesusedtabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editdailystudydetailstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailystudydetailstabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editdailydetailsevaluationtabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailydetailsevaluationtabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editdailydetailscorrectiontabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailydetailscorrectiontabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#editdailydetailsactionstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailydetailsactionstabpaneltextbox": {
+                        blur: this.blurHandler
+                    }
+
+                });
+
         this.control({
             "#editdailyhourstab": {
                 click: this.onEditdailyhourstabClick
-            },
-            "#editdailyresourcesusedtab": {
-                click: this.onEditdailyresourcesusedtabClick
-            },
-            "#editdailystudydetailstab": {
-                click: this.onEditdailystudydetailstabClick
             },
             "#editdailydetailsevaluationtab": {
                 click: this.onEditdailydetailsevaluationtabClick
@@ -175,12 +202,6 @@ Ext.define('MySchool.controller.daily.MyController', {
             },
             "#dailydetailsformhournumberfield": {
                 blur: this.onDailydetailsformhournumberfieldBlur
-            },
-            "#dailydetailsresoucesusedtextarea": {
-                blur: this.onDailydetailsresoucesusedtextareaBlur
-            },
-            "#dailydetailsstudydetailstextarea": {
-                blur: this.onDailydetailsstudydetailstextareaBlur
             },
             "#dailydetailsevaluationtextarea": {
                 blur: this.onDailydetailsevaluationtextareaBlur

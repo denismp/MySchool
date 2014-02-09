@@ -29,6 +29,7 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
     autoScroll: true,
     title: '[student name] Daily Details',
     forceFit: true,
+    store: 'daily.MyJsonStore',
 
     initComponent: function() {
         var me = this;

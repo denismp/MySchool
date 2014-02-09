@@ -1,0 +1,105 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoScroll": true,
+        "designer|userAlias": "commonmytabpanel",
+        "designer|userClassName": "common.MyTabPanel",
+        "itemId": null,
+        "layout": "fit",
+        "minHeight": null,
+        "minWidth": 273,
+        "title": "MyTapPanel"
+    },
+    "designerId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "autoScroll": true,
+                "bodyPadding": 10,
+                "dock": "top",
+                "layout": null,
+                "minHeight": 250,
+                "title": null
+            },
+            "designerId": "6aa88a64-7ae6-468e-817f-aacec42d1ab7",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "disabled": true,
+                        "dock": "top",
+                        "fieldLabel": null,
+                        "height": null,
+                        "id": null,
+                        "itemId": "mytextbox",
+                        "minHeight": 230,
+                        "name": "mytextbox"
+                    },
+                    "designerId": "d6ecf17d-f503-4ce0-8765-5c15312061d3"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "right",
+                        "itemId": "editmytabpanel",
+                        "text": "Edit",
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
+                    "designerId": "aea036ee-cf76-4d3a-a2a1-b27e90f10a63"
+                }
+            ]
+        },
+        {
+            "type": "processcfgfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "config"
+                ],
+                "fn": "processCommonMyTabPanel",
+                "implHandler": [
+                    "debugger;",
+                    "var itemId = this.getItemId();",
+                    "",
+                    "var dockedItems = config.dockedItems;",
+                    "var form\t\t= dockedItems[0];",
+                    "var button\t\t= form.dockedItems[1];",
+                    "button.itemId\t= 'edit' + itemId;",
+                    "var textbox\t\t= form.dockedItems[0];",
+                    "textbox.itemId\t= itemId + 'textbox';",
+                    "textbox.name\t= textbox.itemId;",
+                    "",
+                    "return config;"
+                ]
+            },
+            "designerId": "dc4c49f4-8f18-47f6-b5be-374eab189813"
+        }
+    ]
+}

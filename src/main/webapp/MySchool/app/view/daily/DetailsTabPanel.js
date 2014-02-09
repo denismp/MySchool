@@ -19,11 +19,7 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
 
     requires: [
         'MySchool.view.daily.DailyHoursTabPanel',
-        'MySchool.view.daily.ResourcesUsedTabPanel',
-        'MySchool.view.daily.StudyDetailsTabPanel',
-        'MySchool.view.daily.EvaluationsTabPanel',
-        'MySchool.view.daily.CorrectionsTabPanel',
-        'MySchool.view.daily.ActionsTabPanel',
+        'MySchool.view.common.MyTabPanel',
         'Ext.panel.Panel',
         'Ext.tab.Tab'
     ],
@@ -46,35 +42,54 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     }
                 },
                 {
-                    xtype: 'dailyresourcesusedtabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailyresourcesusedtabpanel',
+                    title: 'Resources Used',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'dailystudydetailstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailystudydetailstabpanel',
+                    title: 'Study Details',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'dailyevaluationstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailydetailsevaluationtabpanel',
+                    title: 'Evaluations',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'dailycorrectionstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailydetailscorrectiontabpanel',
+                    title: 'Corrections',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'
                     }
                 },
                 {
-                    xtype: 'dailyactionstabpanel',
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailydetailsactionstabpanel',
+                    title: 'Actions',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
+                },
+                {
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailytesttabpanel',
+                    title: 'Test',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'

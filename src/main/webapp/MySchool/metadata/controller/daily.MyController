@@ -39,44 +39,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#editdailyresourcesusedtab",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditdailyresourcesusedtabClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "2462fddb-54c2-4c89-b52f-2d83852340fb"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#editdailystudydetailstab",
-                "designer|targetType": "Ext.button.Button",
-                "fn": "onEditdailystudydetailstabClick",
-                "implHandler": [
-                    ""
-                ],
-                "name": "click",
-                "scope": "me"
-            },
-            "designerId": "c555f257-cd3a-4839-935c-1faee132898a"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|controlQuery": "#editdailydetailsevaluationtab",
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onEditdailydetailsevaluationtabClick",
@@ -153,44 +115,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|controlQuery": "#dailydetailsresoucesusedtextarea",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onDailydetailsresoucesusedtextareaBlur",
-                "implHandler": [
-                    ""
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "104b265a-2380-4a06-b70e-126ff57dd635"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#dailydetailsstudydetailstextarea",
-                "designer|targetType": "Ext.form.field.TextArea",
-                "fn": "onDailydetailsstudydetailstextareaBlur",
-                "implHandler": [
-                    ""
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "af25a9a1-b08a-4196-9410-1a16d3d7fd91"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "designer|controlQuery": "#dailydetailsevaluationtextarea",
                 "designer|targetType": "Ext.form.field.TextArea",
                 "fn": "onDailydetailsevaluationtextareaBlur",
@@ -255,8 +179,9 @@
                 "implHandler": [
                     "debugger;",
                     "window.console.log(button);",
-                    "var b_ = button;",
-                    "var p_ = b_.up('panel');",
+                    "var b_\t\t= button;",
+                    "var form\t= b_.up('panel');",
+                    "var p_\t\t= form.up();",
                     "var pItemId_ = p_.getItemId();",
                     "var field_;",
                     "",
@@ -295,11 +220,14 @@
                 ],
                 "fn": "blurHandler",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "var p_ = o.up('form').up('panel');",
                     "var topP_ = p_.up('panel');",
                     "var pItemId_ = p_.getItemId();",
                     "var edit_ = p_.down('#edit' + pItemId_);",
+                    "console.log( edit_ );",
+                    "console.log( topP_ );",
+                    "//topP_.buttonHandler(edit_);",
                     "",
                     "Ext.Msg.show({",
                     "    title:'Save Changes?',",
@@ -323,11 +251,16 @@
                     "                icon: Ext.window.MessageBox.INFO",
                     "            });",
                     "        }",
-                    "        topP_ = eOpts;",
+                    "        //topP_ = eOpts;",
                     "        //topP_.buttonHandler.call(edit_);",
+                    "        //edit.setText('Edit');",
+                    "        console.log( topP_ );",
                     "        topP_.buttonHandler(edit_);",
+                    "        //p_.buttonHandler(edit_);",
                     "    }",
-                    "});"
+                    "});",
+                    "debugger;",
+                    "this.buttonHandler( edit_ );"
                 ]
             },
             "designerId": "7cdfdf47-4058-452e-9f13-c1402aa55b2f"
@@ -445,6 +378,62 @@
                 "scope": "me"
             },
             "designerId": "fd2a4fd4-698c-4c72-b17a-27aaafb7bffa"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    \"#editdailytesttabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailytesttabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailyresourcesusedtabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailyresourcesusedtabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailystudydetailstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailystudydetailstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailydetailsevaluationtabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailydetailsevaluationtabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailydetailscorrectiontabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailydetailscorrectiontabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailydetailsactionstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailydetailsactionstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    }",
+                    "",
+                    "});"
+                ]
+            },
+            "designerId": "136da0e8-8283-4d19-b956-df5b8910590f"
         }
     ]
 }

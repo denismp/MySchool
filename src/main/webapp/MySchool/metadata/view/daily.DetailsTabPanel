@@ -49,8 +49,13 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "dd8c7af1-4e3c-4e1b-be8f-4ad92548449e",
-            "masterInstanceId": "bdee2c8f-6217-4388-a1c1-e2ae01b7b2a0",
+            "userConfig": {
+                "designer|displayName": "",
+                "itemId": "dailyresourcesusedtabpanel",
+                "title": "Resources Used"
+            },
+            "designerId": "a82fa162-5c5b-4085-a2d3-2b67c7b1147b",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
             "cn": [
                 {
                     "type": "Ext.tab.Tab",
@@ -60,11 +65,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "designer|displayName": null,
                         "tooltip": [
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "3f475df4-597a-4c68-8037-49712692989c"
+                    "designerId": "ecf25006-36fa-42e1-ac18-acded441fb44"
                 }
             ]
         },
@@ -75,8 +81,13 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "6f93b093-0a78-4e97-900a-b4ef9d5b6ee4",
-            "masterInstanceId": "19342618-9143-4615-b513-d10b818e3bd7",
+            "userConfig": {
+                "designer|displayName": "",
+                "itemId": "dailystudydetailstabpanel",
+                "title": "Study Details"
+            },
+            "designerId": "4ba18b92-1e6c-4209-a2f4-cb0248786944",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
             "cn": [
                 {
                     "type": "Ext.tab.Tab",
@@ -86,11 +97,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "designer|displayName": null,
                         "tooltip": [
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "0f4ee530-2e6a-493f-a2d5-d1c468dc0aeb"
+                    "designerId": "5b0f84c4-c7a2-4110-8179-d19b30200137"
                 }
             ]
         },
@@ -101,8 +113,12 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "7c583351-15ca-4354-b0e0-b244359be20b",
-            "masterInstanceId": "4d9e13e2-3809-41e4-b13c-6c31f5c9af46",
+            "userConfig": {
+                "itemId": "dailydetailsevaluationtabpanel",
+                "title": "Evaluations"
+            },
+            "designerId": "c7fcb50d-1cca-4d59-a4bd-bcf730cff2ad",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
             "cn": [
                 {
                     "type": "Ext.tab.Tab",
@@ -116,7 +132,7 @@
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "ce9dec0e-75d5-4994-a89f-68a2af8cdfce"
+                    "designerId": "d71bb82f-11fe-4ae4-b7ae-53ea63b9f2d3"
                 }
             ]
         },
@@ -127,8 +143,12 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "929ec3da-13e8-421f-ac18-a59a8d9d0fee",
-            "masterInstanceId": "94a81dcd-01b4-4387-90e4-9af3049d5762",
+            "userConfig": {
+                "itemId": "dailydetailscorrectiontabpanel",
+                "title": "Corrections"
+            },
+            "designerId": "526b3f36-8b75-4861-a2b1-b0083d827f37",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
             "cn": [
                 {
                     "type": "Ext.tab.Tab",
@@ -142,7 +162,7 @@
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "24c355d7-dbdb-42f9-8be5-52142a333c5e"
+                    "designerId": "3c50a161-9193-4365-a1ff-718fb270818a"
                 }
             ]
         },
@@ -153,8 +173,12 @@
                 "type": "array"
             },
             "codeClass": null,
-            "designerId": "65a05d6b-e939-4921-8c31-2e4e8ac152cd",
-            "masterInstanceId": "c4828d95-78ac-4656-88cb-86909f390700",
+            "userConfig": {
+                "itemId": "dailydetailsactionstabpanel",
+                "title": "Actions"
+            },
+            "designerId": "b14b914d-0109-468e-a58c-092ef7bab392",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
             "cn": [
                 {
                     "type": "Ext.tab.Tab",
@@ -168,7 +192,39 @@
                             "'Click edit to modify'"
                         ]
                     },
-                    "designerId": "928a79f9-f68b-4ce1-94ad-ddf42628687d"
+                    "designerId": "5c2d9f1c-488f-4dec-b9a1-bdc07be47035"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "",
+                "itemId": "dailytesttabpanel",
+                "title": "Test"
+            },
+            "designerId": "b3c52a75-1f0f-4895-8e6a-f96cb3ea8c79",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": null,
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
+                    "designerId": "0a4d326a-21d0-46c6-abc8-63daae183759"
                 }
             ]
         }
