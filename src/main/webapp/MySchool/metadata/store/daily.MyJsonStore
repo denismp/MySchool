@@ -20,6 +20,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
                 "url": "dailys"
             },
             "designerId": "6e29c988-de39-457a-88c4-3a5e628b4865",
@@ -31,6 +34,9 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
                     "designerId": "4ed26173-929c-4531-83cf-8356d4d546fe"
                 }
             ]

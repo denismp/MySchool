@@ -12,11 +12,13 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class DailyView {
 	private Long id;
 
+	private Long dailyId;
+	
     private Integer daily_year;
 
     private Integer daily_month;
 
-    private Integer daily_week;
+    //private Integer daily_week;
 
     private Integer daily_day;
 
@@ -47,4 +49,13 @@ public class DailyView {
     private String studentUserName;
     
     private Long studentId;
+    
+	private Long qtrId;
+	private String qtrName;
+	private Integer qtrYear;
+
+	//private Long bodyOfWorkId;
+	//private String bodyOfWorkName;
+    
+	private Integer version;
 }

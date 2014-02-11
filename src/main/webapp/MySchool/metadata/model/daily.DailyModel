@@ -31,6 +31,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "qtrName",
+                "type": "string"
+            },
+            "designerId": "ec215ebb-a236-4dda-8125-06a326416564"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "daily_year",
                 "type": "int"
             },
@@ -48,19 +61,6 @@
                 "type": "int"
             },
             "designerId": "7f61f93e-3e6c-4e49-9980-de6cde3dba90"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "daily_week",
-                "type": "int"
-            },
-            "designerId": "8388a74e-2e95-40fb-a484-4a82a42cba45"
         },
         {
             "type": "Ext.data.Field",
@@ -257,6 +257,32 @@
                 "type": "int"
             },
             "designerId": "0e0cab6e-d97d-4f9a-8a12-48d046a69005"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "qtrId",
+                "type": "int"
+            },
+            "designerId": "00056f76-e96c-474e-a0bb-fb5bff64f186"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "dailyId",
+                "type": "int"
+            },
+            "designerId": "816d0305-df0d-4ba0-952b-b6e6ba94f8f4"
         }
     ]
 }

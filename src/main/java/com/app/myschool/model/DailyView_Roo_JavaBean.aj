@@ -16,6 +16,14 @@ privileged aspect DailyView_Roo_JavaBean {
         this.id = id;
     }
     
+    public Long DailyView.getDailyId() {
+        return this.dailyId;
+    }
+    
+    public void DailyView.setDailyId(Long dailyId) {
+        this.dailyId = dailyId;
+    }
+    
     public Integer DailyView.getDaily_year() {
         return this.daily_year;
     }
@@ -30,14 +38,6 @@ privileged aspect DailyView_Roo_JavaBean {
     
     public void DailyView.setDaily_month(Integer daily_month) {
         this.daily_month = daily_month;
-    }
-    
-    public Integer DailyView.getDaily_week() {
-        return this.daily_week;
-    }
-    
-    public void DailyView.setDaily_week(Integer daily_week) {
-        this.daily_week = daily_week;
     }
     
     public Integer DailyView.getDaily_day() {
@@ -158,6 +158,38 @@ privileged aspect DailyView_Roo_JavaBean {
     
     public void DailyView.setStudentId(Long studentId) {
         this.studentId = studentId;
+    }
+    
+    public Long DailyView.getQtrId() {
+        return this.qtrId;
+    }
+    
+    public void DailyView.setQtrId(Long qtrId) {
+        this.qtrId = qtrId;
+    }
+    
+    public String DailyView.getQtrName() {
+        return this.qtrName;
+    }
+    
+    public void DailyView.setQtrName(String qtrName) {
+        this.qtrName = qtrName;
+    }
+    
+    public Integer DailyView.getQtrYear() {
+        return this.qtrYear;
+    }
+    
+    public void DailyView.setQtrYear(Integer qtrYear) {
+        this.qtrYear = qtrYear;
+    }
+    
+    public Integer DailyView.getVersion() {
+        return this.version;
+    }
+    
+    public void DailyView.setVersion(Integer version) {
+        this.version = version;
     }
     
 }

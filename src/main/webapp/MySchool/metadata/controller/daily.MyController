@@ -8,7 +8,15 @@
     "userConfig": {
         "designer|userAlias": "dailycontroller",
         "designer|userClassName": "daily.MyController",
-        "id": null
+        "id": null,
+        "models": [
+            "daily.DailyModel"
+        ],
+        "stores": [
+            "daily.MyJsonStore",
+            "subject.SubjectStore",
+            "student.StudentStore"
+        ]
     },
     "designerId": "cc725caa-3895-4141-9f43-9ec30a87de9d",
     "cn": [
@@ -163,7 +171,8 @@
                 "designer|targetType": "Ext.panel.Tool",
                 "fn": "onDailyrefreshtoolClick",
                 "implHandler": [
-                    ""
+                    "var myStore = Ext.getStore('daily.MyJsonStore');",
+                    "myStore.reload();"
                 ],
                 "name": "click",
                 "scope": "me"
@@ -320,6 +329,105 @@
                 ]
             },
             "designerId": "136da0e8-8283-4d19-b956-df5b8910590f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailygridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onDailygridpanelSelectionChange",
+                "implHandler": [
+                    ""
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "designerId": "0618fe22-9b90-49ff-8221-68c9463c2fef"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dailygridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onDailygridpanelViewReady",
+                "implHandler": [
+                    "debugger;",
+                    "console.log('onDailygridpanelViewReady()');",
+                    "var myStore = Ext.getStore('daily.MyJsonStore');",
+                    "var myStudentStore = Ext.getStore('student.StudentStore');",
+                    "var studentRecord = myStudentStore.getAt(0);",
+                    "//        debugger",
+                    "if ( typeof( studentRecord ) != \"undefined\" ) {",
+                    "    var studentName_ = studentRecord.get('firstName') + \" \" + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');",
+                    "    //MonthlyDetailsGridPanel",
+                    "    //var myGrid = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "    var myGrid = this.getDailyGridPanel();",
+                    "",
+                    "    myGrid.setTitle('[' + studentName_ + ']');",
+                    "    myStore.load({",
+                    "        callback: this.onMyJsonStoreLoad,",
+                    "        scope: this,",
+                    "        params: {",
+                    "            studentName: studentRecord.get('userName'),",
+                    "            studentId: studentRecord.get('id')",
+                    "        }",
+                    "    });",
+                    "}",
+                    "//grid.getSelectionModel().select( 0 );",
+                    "//tablepanel.getSelectionModel().select( 0 );",
+                    ""
+                ],
+                "name": "viewready",
+                "scope": "me"
+            },
+            "designerId": "51167911-33d0-467f-a28e-9b7d04eceaf6"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyGridPanel",
+                "selector": "#dailygridpanel"
+            },
+            "designerId": "06052f2e-bc33-458a-8269-c05198769634"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMyJsonStoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "//var g_ = Ext.ComponentQuery.query(\"#monthlysummarygridpanel\")[0];",
+                    "var g_ = this.getDailyGridPanel();",
+                    "",
+                    "if (g_.getStore().getCount() > 0) {",
+                    "    g_.getSelectionModel().deselectAll();",
+                    "    g_.getSelectionModel().select( 0 );",
+                    "}",
+                    "",
+                    "this.gridViewReady = true;"
+                ]
+            },
+            "designerId": "87071baf-996f-479c-a569-d9d0c38b388b"
         }
     ]
 }

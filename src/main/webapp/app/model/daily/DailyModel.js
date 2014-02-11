@@ -26,15 +26,15 @@ Ext.define('MySchool.model.daily.DailyModel', {
             name: 'id'
         },
         {
+            name: 'qtrName',
+            type: 'string'
+        },
+        {
             name: 'daily_year',
             type: 'int'
         },
         {
             name: 'daily_month',
-            type: 'int'
-        },
-        {
-            name: 'daily_week',
             type: 'int'
         },
         {
@@ -96,6 +96,14 @@ Ext.define('MySchool.model.daily.DailyModel', {
         },
         {
             name: 'studentId',
+            type: 'int'
+        },
+        {
+            name: 'qtrId',
+            type: 'int'
+        },
+        {
+            name: 'dailyId',
             type: 'int'
         }
     ]

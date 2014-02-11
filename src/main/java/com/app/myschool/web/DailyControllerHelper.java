@@ -5,7 +5,6 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -21,16 +20,16 @@ import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 
-import com.app.myschool.model.MonthlySummaryRatings;
-import com.app.myschool.model.MonthlySummaryRatingsView;
+import com.app.myschool.model.Daily;
+import com.app.myschool.model.DailyView;
 
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 
-public class MonthlySummaryRatingsControllerHelper implements ControllerHelperInterface{
-	private static final Logger logger = Logger.getLogger(MonthlySummaryRatingsControllerHelper.class);
-    private Class<MonthlySummaryRatings> myClass = MonthlySummaryRatings.class;
+public class DailyControllerHelper implements ControllerHelperInterface{
+	private static final Logger logger = Logger.getLogger(DailyControllerHelper.class);
+    private Class<Daily> myClass = Daily.class;
 	@Override
 	public String getParam(@SuppressWarnings("rawtypes") Map m, String p) {
 		String ret_ = null;
@@ -50,21 +49,23 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 	}
 	
 	@SuppressWarnings("unchecked")
-	private List<MonthlySummaryRatings>getList( String studentId ) throws Exception
+	private List<Daily>getList( String studentId ) throws Exception
 	{
-		List<MonthlySummaryRatings> rList = null;
-		EntityManager em = MonthlySummaryRatings.entityManager();
-		StringBuilder queryString = new StringBuilder("select rs.*");
-		queryString.append(" from monthly_summary_ratings rs, quarter q, student t");
-		queryString.append(" where rs.quarter = q.id");
+		List<Daily> rList = null;
+		EntityManager em = Daily.entityManager();
+		StringBuilder queryString = new StringBuilder("select d.*");
+		queryString.append(" from daily d, quarter q, student t");
+		queryString.append(" where d.quarter = q.id");
+		//queryString.append(" and b.quarter = d.quarter");
 		queryString.append(" and q.student = t.id");
+
 		if( studentId != null )
 		{
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
-		queryString.append( " order by rs.month_number");
-		rList = (List<MonthlySummaryRatings>)em.createNativeQuery(queryString.toString(), MonthlySummaryRatings.class).getResultList(); 
+		queryString.append( " order by d.daily_month, d.daily_day");
+		rList = (List<Daily>)em.createNativeQuery(queryString.toString(), Daily.class).getResultList(); 
 
 		return rList;
 	}
@@ -72,11 +73,11 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<MonthlySummaryRatingsView> myViewClass = MonthlySummaryRatingsView.class;
+		Class<DailyView> myViewClass = DailyView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<MonthlySummaryRatingsView> records = null;
+		List<DailyView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
@@ -84,52 +85,52 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		
 		try
 		{
-			List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId_);
-			List<MonthlySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthlySummaryRatingsView>();
-
-			//long i = 0;
-			for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+			List<Daily> dailyList			= this.getList(studentId_);
+			List<DailyView> dailyViewList	= new ArrayList<DailyView>();
+			
+			long i = 0;
+			for (Daily daily : dailyList) 
 			{
-				statusGood = true;
-				Quarter quarter = monthlySummaryRatings.getQuarter();
-				Subject u_ = quarter.getSubject();
-				Student student_ = quarter.getStudent();
-				MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
-
-				//monthlySummaryRatingsView.setId(++i);
-				monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
-				monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
-				monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
+				statusGood						= true;
+				Quarter quarter					= daily.getQuarter();
+				Subject u_						= quarter.getSubject();
+				Student student_				= quarter.getStudent();
+				//Set<BodyOfWork> bodyOfWorkList	= quarter.getBodyofworks();
 				
-				monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
-				monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
-				monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
-				monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
-				monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
-				monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());
-				monthlySummaryRatingsView.setRealizations(monthlySummaryRatings.getRealizations());
-				monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-				monthlySummaryRatingsView.setComments(monthlySummaryRatings.getComments());
-				monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-
-				monthlySummaryRatingsView.setWhoUpdated(monthlySummaryRatings.getWhoUpdated());
-				monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
-				monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
-				monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
-				monthlySummaryRatingsView.setStudentId(student_.getId());
-				monthlySummaryRatingsView.setSubjId(u_.getId());
-				monthlySummaryRatingsView.setSubjName(u_.getName());
-				monthlySummaryRatingsView.setQtrId(quarter.getId());
-				monthlySummaryRatingsView.setQtrName(quarter.getQtrName());
-				monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
-
-
-				monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);
-				
+				//for( BodyOfWork bodyOfWork: bodyOfWorkList )
+				//{
+					DailyView myView			= new DailyView();
+					myView.setId(++i);
+					//myView.setId(daily.getId());
+					//myView.setBodyOfWorkId(bodyOfWork.getId());
+					//myView.setBodyOfWorkName(bodyOfWork.getWorkName());
+					myView.setComments(daily.getComments());
+					myView.setCorrection(daily.getCorrection());
+					myView.setDaily_day(daily.getDaily_day());
+					myView.setDaily_hours(daily.getDaily_hours());
+					myView.setDaily_month(daily.getDaily_month());
+					//myView.setDaily_week(daily.getDaily_week());
+					myView.setDaily_year(quarter.getQtr_year());
+					myView.setDailyAction(daily.getDailyAction());
+					myView.setDailyId(daily.getId());
+					myView.setEvaluation(daily.getEvaluation());
+					myView.setLastUpdated(daily.getLastUpdated());
+					myView.setWhoUpdated(daily.getWhoUpdated());
+					myView.setLocked(daily.getLocked());
+					myView.setStudentUserName(student_.getUserName());
+					myView.setStudentId(student_.getId());
+					myView.setSubjId(u_.getId());
+					myView.setSubjName(u_.getName());
+					myView.setQtrId(quarter.getId());
+					myView.setQtrName(quarter.getQtrName());
+					myView.setQtrYear(quarter.getQtr_year());
+					myView.setVersion(daily.getVersion());
+					dailyViewList.add( myView );
+				//}
 			}
 			if (statusGood)
 			{
-				records = monthlySummaryRatingsViewList;			
+				records = dailyViewList;			
 
 				response.setMessage("All " + className + "s retrieved: ");
 				response.setData(records);
@@ -171,13 +172,13 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		// Class<MonthlySummaryRatings> myClass = MonthlySummaryRatings.class;
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<MonthlySummaryRatings> records = null;
+		List<Daily> records = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 
 		try {
 			logger.info("GET");
-			records = MonthlySummaryRatings.findAllMonthlySummaryRatingses();
+			records = Daily.findAllDailys();
 			if (records == null)
 			{
 				response.setMessage("No records for class=" + className);
@@ -219,7 +220,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		MonthlySummaryRatings record = null;
+		Daily record = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 		try {	
@@ -253,21 +254,23 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( MonthlySummaryRatingsView myView ) throws Exception
+	private boolean isDup( DailyView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
 		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId.toString());
+		List<Daily> dailyList = this.getList(studentId.toString());
 		
 
-		for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+		for (Daily daily : dailyList) 
 		{
 			if( 
-					monthlySummaryRatings.getMonth_number() == myView.getMonth_number() && 
-					monthlySummaryRatings.getQuarter() == quarter &&
+					daily.getDaily_month() == myView.getDaily_month() &&
+					//daily.getDaily_week() == myView.getDaily_week() && 
+					daily.getDaily_day() == myView.getDaily_day() &&
+					daily.getQuarter() == quarter &&
 					quarter.getStudent().getId() == myView.getStudentId() &&
 					quarter.getSubject().getId() == myView.getSubjId()
 					)
@@ -291,50 +294,36 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			MonthlySummaryRatings record = new MonthlySummaryRatings();
+			Daily record = new Daily();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
-			//MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
+			DailyView myView = DailyView.fromJsonToDailyView(myJson);
+
 			if( !this.isDup(myView) )
 			{
 				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				//Subject u_ = quarter.getSubject();
-				//Student student_ = quarter.getStudent();
-				
-				record.setActionResults(myView.getActionResults());
+				record.setDaily_day(myView.getDaily_day());
+				//record.setDaily_week(myView.getDaily_week());
+				record.setDaily_month(myView.getDaily_month());
 				record.setComments(myView.getComments());
-				record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-				record.setFeelings(myView.getFeelings());
+				record.setCorrection(myView.getCorrection());
+				record.setDaily_hours(myView.getDaily_hours());
+				record.setDailyAction(myView.getDailyAction());
+				record.setEvaluation(myView.getEvaluation());
+				record.setResourcesUsed(myView.getResourcesUsed());
+				record.setStudyDetails(myView.getStudyDetails());
 				record.setLastUpdated(myView.getLastUpdated());
 				record.setLocked(myView.getLocked());
-				record.setMonth_number(myView.getMonth_number());
-				record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-				record.setPlannedChanges(myView.getPlannedChanges());
 				record.setQuarter(quarter);
-				record.setRealizations(myView.getRealizations());
-				record.setReflections(myView.getReflections());
 				record.setWhoUpdated(myView.getWhoUpdated());
 				
-				((MonthlySummaryRatings)record).persist();
+				((Daily)record).persist();
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
-				myView.setSummaryId(record.getId());
-				
+				myView.setDailyId(record.getId());
 				//myView.setId(100000L + record.getId());
 	
-				//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
-				//if( record != null )
-				//	((MonthlySummaryRatings)record).persist();
-				//else
-				//{
-				//	response.setMessage( "No data for class=" + className );
-				//	response.setSuccess(false);
-				//	response.setTotal(0L);	
-				//	statusGood = false;
-				//	returnStatus = HttpStatus.BAD_REQUEST;
-				//}
 				if( statusGood )
 				{
 		            returnStatus = HttpStatus.CREATED;
@@ -373,13 +362,13 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		JsonObjectResponse response = new JsonObjectResponse();
 		
 		try {
-			MonthlySummaryRatings record = null;
+			Daily record = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 
-			record = MonthlySummaryRatings.findMonthlySummaryRatings(id);
+			record = Daily.findDaily(id);
 			if( record != null )
-		        ((MonthlySummaryRatings)record).remove();
+		        ((Daily)record).remove();
 
 			else {
 				response.setMessage( "No data for class=" + className );
@@ -422,35 +411,43 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
-			MonthlySummaryRatingsView myView = null;
+			DailyView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
 
 			logger.info("updateFromJson(): Debug just before call to MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson)");
-			myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
+			myView = DailyView.fromJsonToDailyView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): MonthlySummaryRatings id=" + myView.getSummaryId());
-			MonthlySummaryRatings record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getSummaryId());
+			logger.info("updateFromJson(): Daily id=" + myView.getDailyId());
+			Daily record = Daily.findDaily(myView.getDailyId());
+			//Daily record = MonthlySummaryRatings.findMonthlySummaryRatings(myView.getSummaryId());
 			
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setLocked(myView.getLocked());
-			record.setFeelings(myView.getFeelings());
-			record.setReflections(myView.getReflections());
-			record.setRealizations(myView.getRealizations());
-			record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-			record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-			record.setActionResults(myView.getActionResults());
-			record.setPlannedChanges(myView.getPlannedChanges());
+			
+			record.setDaily_day(myView.getDaily_day());
+			//record.setDaily(myView.getDaily_week());
+			record.setDaily_month(myView.getDaily_month());
 			record.setComments(myView.getComments());
+			record.setCorrection(myView.getCorrection());
+			record.setDaily_hours(myView.getDaily_hours());
+			record.setDailyAction(myView.getDailyAction());
+			record.setEvaluation(myView.getEvaluation());
+			record.setResourcesUsed(myView.getResourcesUsed());
+			record.setStudyDetails(myView.getStudyDetails());
+			record.setLastUpdated(myView.getLastUpdated());
+			record.setLocked(myView.getLocked());
+			//record.setQuarter(quarter);
 			record.setWhoUpdated(myView.getWhoUpdated());
+
+
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			
 			if( inSync && record.merge() != null ) {	
 				logger.info("Debug3");
-		    //if (((MonthlySummaryRatings)record).merge() != null ) {
 				myView.setVersion(record.getVersion());
 	        	updateGood = true;
 		    }				
@@ -506,7 +503,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         headers.add("Content-Type", "application/json");
         
 		HttpStatus returnStatus = HttpStatus.OK;
-		List<MonthlySummaryRatings> results = null;
+		List<Daily> results = null;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try {
@@ -522,10 +519,11 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = false;
 		try {
-			Collection <MonthlySummaryRatings>mycollection = MonthlySummaryRatings.fromJsonArrayToMonthlySummaryRatingses(myJson);
-			List<MonthlySummaryRatings> records = new ArrayList<MonthlySummaryRatings>( mycollection );
+			Collection <Daily>mycollection = Daily.fromJsonArrayToDailys(myJson);
+			//Collection <Daily>mycollection = MonthlySummaryRatings.fromJsonArrayToMonthlySummaryRatingses(myJson);
+			List<Daily> records = new ArrayList<Daily>( mycollection );
 	
-	        for (MonthlySummaryRatings record: MonthlySummaryRatings.fromJsonArrayToMonthlySummaryRatingses(myJson)) {
+	        for (Daily record: Daily.fromJsonArrayToDailys(myJson)) {
 	
     	        if (record.merge() == null) {
     	            returnStatus = HttpStatus.NOT_FOUND;
@@ -589,10 +587,10 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 
 		try {
 
-			Collection <MonthlySummaryRatings>mycollection = MonthlySummaryRatings.fromJsonArrayToMonthlySummaryRatingses(myJson);
-			List<MonthlySummaryRatings> records = new ArrayList<MonthlySummaryRatings>( mycollection );
+			Collection <Daily>mycollection = Daily.fromJsonArrayToDailys(myJson);
+			List<Daily> records = new ArrayList<Daily>( mycollection );
 	
-	        for (MonthlySummaryRatings record: MonthlySummaryRatings.fromJsonArrayToMonthlySummaryRatingses(myJson)) {
+	        for (Daily record: Daily.fromJsonArrayToDailys(myJson)) {
     	        record.persist();
     		}
 	        results = records;

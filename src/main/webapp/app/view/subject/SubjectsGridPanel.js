@@ -74,13 +74,11 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                 },
                 {
                     xtype: 'gridcolumn',
-                    width: 94,
                     dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 97,
                     dataIndex: 'subjGradeLevel',
                     text: 'Grade Level',
                     format: '00'
@@ -148,6 +146,18 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
                     editor: {
                         xtype: 'checkboxfield'
                     }
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'qtrWhoUpdated',
+                    text: 'whoUpdated'
+                },
+                {
+                    xtype: 'datecolumn',
+                    hidden: true,
+                    dataIndex: 'qtrLastUpdated',
+                    text: 'lastUpdated'
                 }
             ],
             viewConfig: {

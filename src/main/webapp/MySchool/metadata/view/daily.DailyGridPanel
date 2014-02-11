@@ -28,23 +28,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "subject_name",
+                "dataIndex": "subjName",
                 "text": "Subject Name"
             },
             "designerId": "64ddd63d-9fa3-4a86-a298-db0a0b77f4b9"
-        },
-        {
-            "type": "Ext.grid.column.Column",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "body_of_work",
-                "text": "Body Of Work"
-            },
-            "designerId": "7d72e227-f47a-4b04-ba8d-abef5694f310"
         },
         {
             "type": "Ext.grid.column.Number",
@@ -54,7 +41,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "year",
+                "dataIndex": "daily_year",
+                "format": "0000",
                 "text": "Year"
             },
             "designerId": "65c36728-249d-4346-a28a-0301cf638a04"
@@ -67,7 +55,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "month",
+                "dataIndex": "daily_month",
+                "format": "00",
                 "text": "Month"
             },
             "designerId": "3b287a50-4f5e-41c7-8178-c95a28ba99f6"
@@ -80,62 +69,65 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "week",
-                "text": "Week"
-            },
-            "designerId": "67697c02-9a81-4181-a4dc-db93a96a1243"
-        },
-        {
-            "type": "Ext.grid.column.Number",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "day_number",
+                "dataIndex": "daily_day",
+                "format": "0",
                 "text": "Day"
             },
             "designerId": "dc238f06-364e-43f9-8910-a2878b07b140"
         },
         {
-            "type": "Ext.grid.column.Number",
+            "type": "Ext.grid.column.Column",
             "reference": {
                 "name": "columns",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "grade_level",
-                "text": "Grade Level",
-                "width": 105
+                "dataIndex": "daily_hours",
+                "text": "daily_hours",
+                "width": null
             },
-            "designerId": "67bb2b99-4f6a-4ed9-874b-ce10b6afb0dd"
+            "designerId": "67bb2b99-4f6a-4ed9-874b-ce10b6afb0dd",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "allowOnlyWhitespace": false,
+                        "maxValue": 24,
+                        "minValue": 0
+                    },
+                    "designerId": "a6527ead-02d6-4395-9088-c87082fdbe89"
+                }
+            ]
         },
         {
-            "type": "Ext.grid.column.Number",
+            "type": "Ext.grid.column.CheckColumn",
             "reference": {
                 "name": "columns",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "credit_hours",
-                "text": "Credit Hours"
-            },
-            "designerId": "387381d4-cc2d-4158-8ebf-9162a82f17ef"
-        },
-        {
-            "type": "Ext.grid.column.Boolean",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
+                "dataIndex": "locked",
                 "text": "Locked?"
             },
-            "designerId": "c86c2893-7051-41ef-88ad-2d0e46deff88"
+            "designerId": "c86c2893-7051-41ef-88ad-2d0e46deff88",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Checkbox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "10b4c236-cdd1-4210-9ad6-b2efd8ed61af"
+                }
+            ]
         },
         {
             "type": "Ext.grid.column.Number",
@@ -145,9 +137,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dataIndex": "student_id",
+                "dataIndex": "studentId",
+                "format": "000000",
                 "hidden": true,
-                "text": "idstudent"
+                "text": "studentId"
             },
             "designerId": "07126645-d588-4a88-bef3-0713cad402e3"
         },
@@ -159,8 +152,10 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "dailyId",
+                "format": "000000",
                 "hidden": true,
-                "text": "iddaily"
+                "text": "dailyId"
             },
             "designerId": "9c85b918-29dd-4edb-bfd5-6bdef2b51fac"
         },
@@ -185,36 +180,64 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "subjId",
                 "hidden": true,
-                "text": "idbody_of_works"
-            },
-            "designerId": "4a6916ab-2938-4603-b9ae-f6cbcc263263"
-        },
-        {
-            "type": "Ext.grid.column.Number",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "hidden": true,
-                "text": "idsubject"
+                "text": "subjectId"
             },
             "designerId": "ee2c451b-3646-4bf9-8de0-6239b3f78e03"
         },
         {
-            "type": "Ext.grid.column.Number",
+            "type": "Ext.grid.plugin.CellEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.CellEditing",
+            "userConfig": {
+                "clicksToEdit": 1
+            },
+            "designerId": "b872ff21-25df-4923-ae73-f57ce763d4a9"
+        },
+        {
+            "type": "Ext.grid.column.Column",
             "reference": {
                 "name": "columns",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "studentUserName",
                 "hidden": true,
-                "text": "idstudent"
+                "text": "studentUserName"
             },
-            "designerId": "a4a96f3b-9b02-4814-a831-aa38723aa744"
+            "designerId": "46cea841-0007-42c6-83a9-e1dd5784c274"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "lastUpdated",
+                "format": "m/d/Y",
+                "text": "lastUpdated"
+            },
+            "designerId": "f0d8bf3b-a068-42cc-8fc8-714b24663d82"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "whoUpdated",
+                "text": "whoUpdated"
+            },
+            "designerId": "1a561ca6-577a-4bdf-8c35-71be5972900d"
         }
     ]
 }

@@ -31,8 +31,12 @@ Ext.define('MySchool.store.daily.MyJsonStore', {
             proxy: {
                 type: 'rest',
                 url: 'dailys',
+                headers: {
+                    Accept: 'application/json'
+                },
                 reader: {
-                    type: 'json'
+                    type: 'json',
+                    root: 'data'
                 }
             }
         }, cfg)]);

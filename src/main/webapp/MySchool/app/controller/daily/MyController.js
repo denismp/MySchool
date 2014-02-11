@@ -17,6 +17,22 @@ Ext.define('MySchool.controller.daily.MyController', {
     extend: 'Ext.app.Controller',
     alias: 'controller.dailycontroller',
 
+    models: [
+        'daily.DailyModel'
+    ],
+    stores: [
+        'daily.MyJsonStore',
+        'subject.SubjectStore',
+        'student.StudentStore'
+    ],
+
+    refs: [
+        {
+            ref: 'DailyGridPanel',
+            selector: '#dailygridpanel'
+        }
+    ],
+
     onEditdailyhourstabClick: function(button, e, eOpts) {
         this.buttonHandler( button, e, eOpts );
     },
@@ -26,7 +42,8 @@ Ext.define('MySchool.controller.daily.MyController', {
     },
 
     onDailyrefreshtoolClick: function(tool, e, eOpts) {
-
+        var myStore = Ext.getStore('daily.MyJsonStore');
+        myStore.reload();
     },
 
     onDailysearchtoolClick: function(tool, e, eOpts) {
@@ -46,6 +63,38 @@ Ext.define('MySchool.controller.daily.MyController', {
     },
 
     onDailylocktoolClick: function(tool, e, eOpts) {
+
+    },
+
+    onDailygridpanelSelectionChange: function(model, selected, eOpts) {
+
+    },
+
+    onDailygridpanelViewReady: function(tablepanel, eOpts) {
+        debugger;
+        console.log('onDailygridpanelViewReady()');
+        var myStore = Ext.getStore('daily.MyJsonStore');
+        var myStudentStore = Ext.getStore('student.StudentStore');
+        var studentRecord = myStudentStore.getAt(0);
+        //        debugger
+        if ( typeof( studentRecord ) != "undefined" ) {
+            var studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
+            //MonthlyDetailsGridPanel
+            //var myGrid = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+            var myGrid = this.getDailyGridPanel();
+
+            myGrid.setTitle('[' + studentName_ + ']');
+            myStore.load({
+                callback: this.onMyJsonStoreLoad,
+                scope: this,
+                params: {
+                    studentName: studentRecord.get('userName'),
+                    studentId: studentRecord.get('id')
+                }
+            });
+        }
+        //grid.getSelectionModel().select( 0 );
+        //tablepanel.getSelectionModel().select( 0 );
 
     },
 
@@ -185,8 +234,25 @@ Ext.define('MySchool.controller.daily.MyController', {
             },
             "#dailylocktool": {
                 click: this.onDailylocktoolClick
+            },
+            "#dailygridpanel": {
+                selectionchange: this.onDailygridpanelSelectionChange,
+                viewready: this.onDailygridpanelViewReady
             }
         });
+    },
+
+    onMyJsonStoreLoad: function() {
+        //debugger;
+        //var g_ = Ext.ComponentQuery.query("#monthlysummarygridpanel")[0];
+        var g_ = this.getDailyGridPanel();
+
+        if (g_.getStore().getCount() > 0) {
+            g_.getSelectionModel().deselectAll();
+            g_.getSelectionModel().select( 0 );
+        }
+
+        this.gridViewReady = true;
     }
 
 });

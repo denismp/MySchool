@@ -19,8 +19,12 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
-        'Ext.grid.column.Boolean',
-        'Ext.grid.View'
+        'Ext.form.field.Number',
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
+        'Ext.grid.View',
+        'Ext.grid.plugin.CellEditing',
+        'Ext.grid.column.Date'
     ],
 
     height: 373,
@@ -38,79 +42,92 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'subject_name',
+                    dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'daily_year',
+                    text: 'Year',
+                    format: '0000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'daily_month',
+                    text: 'Month',
+                    format: '00'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'daily_day',
+                    text: 'Day',
+                    format: '0'
+                },
+                {
                     xtype: 'gridcolumn',
-                    dataIndex: 'body_of_work',
-                    text: 'Body Of Work'
+                    dataIndex: 'daily_hours',
+                    text: 'daily_hours',
+                    editor: {
+                        xtype: 'numberfield',
+                        allowOnlyWhitespace: false,
+                        maxValue: 24,
+                        minValue: 0
+                    }
                 },
                 {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'year',
-                    text: 'Year'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'month',
-                    text: 'Month'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'week',
-                    text: 'Week'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'day_number',
-                    text: 'Day'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    width: 105,
-                    dataIndex: 'grade_level',
-                    text: 'Grade Level'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'credit_hours',
-                    text: 'Credit Hours'
-                },
-                {
-                    xtype: 'booleancolumn',
-                    text: 'Locked?'
+                    xtype: 'checkcolumn',
+                    dataIndex: 'locked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'iddaily'
+                    dataIndex: 'dailyId',
+                    text: 'dailyId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idbody_of_works'
+                    dataIndex: 'subjId',
+                    text: 'subjectId'
                 },
                 {
-                    xtype: 'numbercolumn',
+                    xtype: 'gridcolumn',
                     hidden: true,
-                    text: 'idsubject'
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
                 },
                 {
-                    xtype: 'numbercolumn',
-                    hidden: true,
-                    text: 'idstudent'
+                    xtype: 'datecolumn',
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated',
+                    format: 'm/d/Y'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'whoUpdated',
+                    text: 'whoUpdated'
                 }
             ],
             viewConfig: {
                 itemId: 'dailygridview'
-            }
+            },
+            plugins: [
+                Ext.create('Ext.grid.plugin.CellEditing', {
+                    clicksToEdit: 1
+                })
+            ]
         });
 
         me.callParent(arguments);

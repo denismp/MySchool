@@ -25,10 +25,10 @@ public class Daily {
     @Max(12L)
     private int daily_month;
 
-    @NotNull
-    @Min(1L)
-    @Max(5L)
-    private int daily_week;
+    //@NotNull
+    //@Min(1L)
+    //@Max(5L)
+    //private int daily_week;
 
     @NotNull
     @Min(1L)

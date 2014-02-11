@@ -103,7 +103,7 @@
                 "dataIndex": "subjName",
                 "flex": null,
                 "text": "Subject Name",
-                "width": 94
+                "width": null
             },
             "designerId": "3d8e707c-25ca-4a62-87ae-86e43a3aeda0"
         },
@@ -118,7 +118,7 @@
                 "dataIndex": "subjGradeLevel",
                 "format": "00",
                 "text": "Grade Level",
-                "width": 97
+                "width": null
             },
             "designerId": "5b7f4241-70f0-47f3-946b-581e795845e8"
         },
@@ -322,6 +322,34 @@
                     "designerId": "79597291-639f-4e16-964b-6976be1bc761"
                 }
             ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrWhoUpdated",
+                "hidden": true,
+                "text": "whoUpdated"
+            },
+            "designerId": "7401fa6c-3c1c-4d9b-9ff3-9b587e3aa052"
+        },
+        {
+            "type": "Ext.grid.column.Date",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "qtrLastUpdated",
+                "hidden": true,
+                "text": "lastUpdated"
+            },
+            "designerId": "35608455-2668-40ad-8abc-6c58ca37cdea"
         }
     ]
 }

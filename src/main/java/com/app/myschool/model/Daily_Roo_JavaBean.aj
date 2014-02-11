@@ -17,14 +17,6 @@ privileged aspect Daily_Roo_JavaBean {
         this.daily_month = daily_month;
     }
     
-    public int Daily.getDaily_week() {
-        return this.daily_week;
-    }
-    
-    public void Daily.setDaily_week(int daily_week) {
-        this.daily_week = daily_week;
-    }
-    
     public int Daily.getDaily_day() {
         return this.daily_day;
     }

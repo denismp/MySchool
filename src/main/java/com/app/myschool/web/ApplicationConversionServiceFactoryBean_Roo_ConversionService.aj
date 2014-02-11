@@ -79,7 +79,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Daily, String> ApplicationConversionServiceFactoryBean.getDailyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Daily, java.lang.String>() {
             public String convert(Daily daily) {
-                return new StringBuilder().append(daily.getDaily_month()).append(' ').append(daily.getDaily_week()).append(' ').append(daily.getDaily_day()).append(' ').append(daily.getDaily_hours()).toString();
+                return new StringBuilder().append(daily.getDaily_month()).append(' ').append(daily.getDaily_day()).append(' ').append(daily.getDaily_hours()).append(' ').append(daily.getResourcesUsed()).toString();
             }
         };
     }
