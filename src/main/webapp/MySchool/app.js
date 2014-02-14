@@ -89,7 +89,6 @@ Ext.application({
         'bodiesofwork.DeleteTool',
         'bodiesofwork.SaveTool',
         'bodiesofwork.LockTool',
-        'daily.DailyHoursTabPanel',
         'daily.RefreshTool',
         'daily.SearchTool',
         'daily.NewTool',

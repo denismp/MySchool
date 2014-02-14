@@ -411,7 +411,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
         else
         {
             console.log( 'No form' );
-            console.log( tabPenel );
+            console.log( tabPanel );
         }
     },
 

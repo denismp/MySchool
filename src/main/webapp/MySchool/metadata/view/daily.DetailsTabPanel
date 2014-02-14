@@ -6,7 +6,6 @@
     },
     "codeClass": null,
     "userConfig": {
-        "activeTab": 0,
         "designer|userAlias": "dailydetailstabpanel",
         "designer|userClassName": "daily.DetailsTabPanel",
         "height": 300,
@@ -16,32 +15,6 @@
     },
     "designerId": "cf9350d0-8cca-44a7-a9c4-35a337fecf50",
     "cn": [
-        {
-            "type": "linkedinstance",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "designerId": "06ab8d68-b37a-4e74-971c-4c8e8e55ce31",
-            "masterInstanceId": "4f7ba901-b9db-430f-b6bb-e7d27d3c7080",
-            "cn": [
-                {
-                    "type": "Ext.tab.Tab",
-                    "reference": {
-                        "name": "tabConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "tooltip": [
-                            "'Click edit to modify'"
-                        ]
-                    },
-                    "designerId": "8762608b-69a8-4dba-85d8-999beed5243a"
-                }
-            ]
-        },
         {
             "type": "linkedinstance",
             "reference": {
@@ -193,6 +166,36 @@
                         ]
                     },
                     "designerId": "5c2d9f1c-488f-4dec-b9a1-bdc07be47035"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailydetailscommentstabpanel",
+                "title": "Comments"
+            },
+            "designerId": "3d40736f-b310-477f-9bc2-0559f1b2cc02",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
+                    "designerId": "de193fde-6260-43a3-9a30-6230d20f5d18"
                 }
             ]
         }

@@ -18,7 +18,6 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
     alias: 'widget.dailydetailstabpanel',
 
     requires: [
-        'MySchool.view.daily.DailyHoursTabPanel',
         'MySchool.view.common.MyTabPanel',
         'Ext.panel.Panel',
         'Ext.tab.Tab'
@@ -27,20 +26,12 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
     height: 300,
     itemId: 'bottomdailytabpanel',
     minHeight: 300,
-    activeTab: 0,
 
     initComponent: function() {
         var me = this;
 
         Ext.applyIf(me, {
             items: [
-                {
-                    xtype: 'dailyhourstabpanel',
-                    tabConfig: {
-                        xtype: 'tab',
-                        tooltip: 'Click edit to modify'
-                    }
-                },
                 {
                     xtype: 'commonmytabpanel',
                     itemId: 'dailyresourcesusedtabpanel',
@@ -81,6 +72,15 @@ Ext.define('MySchool.view.daily.DetailsTabPanel', {
                     xtype: 'commonmytabpanel',
                     itemId: 'dailydetailsactionstabpanel',
                     title: 'Actions',
+                    tabConfig: {
+                        xtype: 'tab',
+                        tooltip: 'Click edit to modify'
+                    }
+                },
+                {
+                    xtype: 'commonmytabpanel',
+                    itemId: 'dailydetailscommentstabpanel',
+                    title: 'Comments',
                     tabConfig: {
                         xtype: 'tab',
                         tooltip: 'Click edit to modify'

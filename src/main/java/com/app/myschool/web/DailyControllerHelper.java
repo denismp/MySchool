@@ -124,6 +124,8 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 					myView.setQtrId(quarter.getId());
 					myView.setQtrName(quarter.getQtrName());
 					myView.setQtrYear(quarter.getQtr_year());
+					myView.setResourcesUsed(daily.getResourcesUsed());
+					myView.setStudyDetails(daily.getStudyDetails());
 					myView.setVersion(daily.getVersion());
 					dailyViewList.add( myView );
 				//}

@@ -30,6 +30,30 @@ Ext.define('MySchool.controller.daily.MyController', {
         {
             ref: 'DailyGridPanel',
             selector: '#dailygridpanel'
+        },
+        {
+            ref: 'DailyResourcesUsedTabPanel',
+            selector: '#dailyresourcesusedtabpanel'
+        },
+        {
+            ref: 'DailyStudyDetailsTabPanel',
+            selector: '#dailystudydetailstabpanel'
+        },
+        {
+            ref: 'DailyDetailsEvaluationTabPanel',
+            selector: '#dailydetailsevaluationtabpanel'
+        },
+        {
+            ref: 'DailyDetailsActionsTabPanel',
+            selector: '#dailydetailsactionstabpanel'
+        },
+        {
+            ref: 'DailyCommentsTabPanel',
+            selector: '#dailydetailscommentstabpanel'
+        },
+        {
+            ref: 'DailyDetailsCorrectionTabPanel',
+            selector: '#dailydetailscorrectiontabpanel'
         }
     ],
 
@@ -67,7 +91,31 @@ Ext.define('MySchool.controller.daily.MyController', {
     },
 
     onDailygridpanelSelectionChange: function(model, selected, eOpts) {
+        debugger;
+        // in the onMyJsonStoreLoad we do a deselect so we need to test
+        // if selected[0] has a value
+        if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
+            var tabPanel = this.getDailyResourcesUsedTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'resourcesUsed' );
+            tabPanel = this.getDailyStudyDetailsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'studyDetails' );
+            tabPanel = this.getDailyDetailsEvaluationTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'evaluation' );
+            tabPanel = this.getDailyDetailsCorrectionTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'correction' );
+            tabPanel = this.getDailyDetailsActionsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'dailyAction' );
+            tabPanel = this.getDailyCommentsTabPanel();
+                console.log( tabPanel );
+            this.loadTabPanelForm( tabPanel, selected, 'comments' );
 
+            console.log('onDailygridpanelSelectionChange()');
+        }
     },
 
     onDailygridpanelViewReady: function(tablepanel, eOpts) {
@@ -253,6 +301,26 @@ Ext.define('MySchool.controller.daily.MyController', {
         }
 
         this.gridViewReady = true;
+    },
+
+    loadTabPanelForm: function(tabPanel, selected, fieldname) {
+        debugger;
+        var dockedItems = tabPanel.getDockedItems();
+        var myForm = dockedItems[0];
+
+        if( Ext.isDefined( myForm ) )
+        {
+            console.log( myForm );
+            //var textBox = myForm.dockedItems.items[0];
+            var textBox = myForm.down('textareafield');
+            textBox.name = fieldname;
+            myForm.loadRecord( selected[0] );
+        }
+        else
+        {
+            console.log( 'loadTabPanelForm(): No form' );
+            //console.log( tabPanel );
+        }
     }
 
 });

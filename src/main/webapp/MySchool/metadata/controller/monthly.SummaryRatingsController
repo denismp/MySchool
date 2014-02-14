@@ -470,7 +470,7 @@
                     "else",
                     "{",
                     "    console.log( 'No form' );",
-                    "    console.log( tabPenel );",
+                    "    console.log( tabPanel );",
                     "}"
                 ]
             },

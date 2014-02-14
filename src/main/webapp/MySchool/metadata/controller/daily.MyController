@@ -342,7 +342,31 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onDailygridpanelSelectionChange",
                 "implHandler": [
-                    ""
+                    "debugger;",
+                    "// in the onMyJsonStoreLoad we do a deselect so we need to test",
+                    "// if selected[0] has a value",
+                    "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
+                    "    var tabPanel = this.getDailyResourcesUsedTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'resourcesUsed' );",
+                    "    tabPanel = this.getDailyStudyDetailsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'studyDetails' );",
+                    "    tabPanel = this.getDailyDetailsEvaluationTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'evaluation' );",
+                    "    tabPanel = this.getDailyDetailsCorrectionTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'correction' );",
+                    "    tabPanel = this.getDailyDetailsActionsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'dailyAction' );",
+                    "    tabPanel = this.getDailyCommentsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'comments' );",
+                    "",
+                    "    console.log('onDailygridpanelSelectionChange()');",
+                    "}"
                 ],
                 "name": "selectionchange",
                 "scope": "me"
@@ -428,6 +452,120 @@
                 ]
             },
             "designerId": "87071baf-996f-479c-a569-d9d0c38b388b"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyResourcesUsedTabPanel",
+                "selector": "#dailyresourcesusedtabpanel"
+            },
+            "designerId": "353629c2-b9a8-40fa-98a4-e37e84ef8c3f"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyStudyDetailsTabPanel",
+                "selector": "#dailystudydetailstabpanel"
+            },
+            "designerId": "a0143eeb-e7f0-4246-be7b-b50709674f1a"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyDetailsEvaluationTabPanel",
+                "selector": "#dailydetailsevaluationtabpanel"
+            },
+            "designerId": "37c0e248-f8e0-4752-b7ee-1b267492feb2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tabPanel",
+                    "selected",
+                    "fieldname"
+                ],
+                "fn": "loadTabPanelForm",
+                "implHandler": [
+                    "debugger;",
+                    "var dockedItems = tabPanel.getDockedItems();",
+                    "var myForm = dockedItems[0];",
+                    "",
+                    "if( Ext.isDefined( myForm ) )",
+                    "{",
+                    "    console.log( myForm );",
+                    "    //var textBox = myForm.dockedItems.items[0];",
+                    "    var textBox = myForm.down('textareafield');",
+                    "    textBox.name = fieldname;",
+                    "    myForm.loadRecord( selected[0] );",
+                    "}",
+                    "else",
+                    "{",
+                    "    console.log( 'loadTabPanelForm(): No form' );",
+                    "    //console.log( tabPanel );",
+                    "}"
+                ]
+            },
+            "designerId": "ce92ed91-667b-4c28-82de-7d2145b47a3c"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyDetailsActionsTabPanel",
+                "selector": "#dailydetailsactionstabpanel"
+            },
+            "designerId": "f6b87f69-ece9-490b-93a2-188f9b28b634"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyCommentsTabPanel",
+                "selector": "#dailydetailscommentstabpanel"
+            },
+            "designerId": "6ff21a5f-0c00-481d-951b-9219f7ddce31"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "DailyDetailsCorrectionTabPanel",
+                "selector": "#dailydetailscorrectiontabpanel"
+            },
+            "designerId": "624b72bc-73f4-4037-945c-b3a2ac17b7fa"
         }
     ]
 }
