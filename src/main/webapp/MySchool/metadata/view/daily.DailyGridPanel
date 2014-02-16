@@ -238,6 +238,20 @@
                 "text": "whoUpdated"
             },
             "designerId": "1a561ca6-577a-4bdf-8c35-71be5972900d"
+        },
+        {
+            "type": "Ext.grid.column.Number",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "version",
+                "format": "000000",
+                "text": "version"
+            },
+            "designerId": "9656ee1e-1730-49f9-a152-2ed54dd7c662"
         }
     ]
 }

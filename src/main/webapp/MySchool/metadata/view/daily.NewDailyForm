@@ -1,0 +1,320 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "dailynewdailyform",
+        "designer|userClassName": "daily.NewDailyForm",
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": null,
+        "itemId": "monthlynewsummaryformpanel",
+        "title": "New Monthly Summary Form",
+        "width": 500
+    },
+    "designerId": "fa6ef1fb-9e87-48eb-8e70-9f9324f1f822",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailyfieldset",
+                "title": "Monthly Summary Fields"
+            },
+            "designerId": "942703ff-2aaa-42ce-b984-de890ffd403f",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "b494faff-62e4-439f-a369-bf08c2a55126",
+                    "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "45f88312-e096-4854-8382-30a924794f5f",
+                    "masterInstanceId": "013dec09-40b4-43be-9cd0-ecf74b1836c2"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "day",
+                        "itemId": "daily-day",
+                        "layout|anchor": "100%",
+                        "maxValue": 31,
+                        "minValue": 1,
+                        "name": "daily_day"
+                    },
+                    "designerId": "08e2795c-2148-476e-aacc-cae75faeabcf"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "resourcesUsed",
+                        "itemId": "daily-resourcesused",
+                        "layout|anchor": "100%",
+                        "name": "resourcesUsed",
+                        "value": [
+                            "'resources used'"
+                        ]
+                    },
+                    "designerId": "7ebbd0c4-a8a4-49fd-8981-74a8b84eba6a"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studyDetails",
+                        "itemId": "daily-studydetails",
+                        "layout|anchor": "100%",
+                        "name": "studyDetails",
+                        "value": [
+                            "'study details'"
+                        ]
+                    },
+                    "designerId": "14e75db2-8c57-4ee5-9d15-9d8bc647d8a3"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "evaluation",
+                        "itemId": "daily-evaluation",
+                        "layout|anchor": "100%",
+                        "name": "evaluation",
+                        "value": [
+                            "'evaluation'"
+                        ]
+                    },
+                    "designerId": "88c343ec-002d-4469-a0a7-5e36d37ed707"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "correction",
+                        "itemId": "daily-correction",
+                        "layout|anchor": "100%",
+                        "name": "correction",
+                        "value": [
+                            "'corrections'"
+                        ]
+                    },
+                    "designerId": "56230422-7cb7-4215-b227-dfabd2fd9393"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "dailyAction",
+                        "itemId": "daily-dailyaction",
+                        "layout|anchor": "100%",
+                        "name": "dailyAction",
+                        "value": [
+                            "'daily actions'"
+                        ]
+                    },
+                    "designerId": "34e1cb3b-b683-40d0-be28-53fce3d9ce4f"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "comments",
+                        "itemId": "daily-comments",
+                        "layout|anchor": "100%",
+                        "name": "comments",
+                        "value": [
+                            "'comments'"
+                        ]
+                    },
+                    "designerId": "d52d4786-d4e5-4451-a4ad-f19b6821e888"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentname",
+                        "itemId": "daily-studentname",
+                        "layout|anchor": "100%",
+                        "name": "studentUserName"
+                    },
+                    "designerId": "67ba8c12-9395-4794-aedf-7c13baedb3cf"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectname",
+                        "itemId": "daily-subjectname",
+                        "layout|anchor": "100%",
+                        "name": "subjName"
+                    },
+                    "designerId": "e46b5094-d5db-4acc-a373-d3d95e69cd45"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarter",
+                        "itemId": "daily-quarter",
+                        "layout|anchor": "100%",
+                        "name": "qtrName"
+                    },
+                    "designerId": "c910e165-8dd3-43f2-9e35-2be51d53f591"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "year",
+                        "itemId": "daily-quarteryear",
+                        "layout|anchor": "100%",
+                        "name": "daily_year"
+                    },
+                    "designerId": "6b5a936c-8ac7-45e7-aa88-5ed6f9d8d262"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentid",
+                        "itemId": "daily-studentid",
+                        "layout|anchor": "100%",
+                        "name": "studentId"
+                    },
+                    "designerId": "4b68486d-9446-482a-a86b-e5d1bb4b629f"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectId",
+                        "itemId": "daily-subjectid",
+                        "layout|anchor": "100%",
+                        "name": "subjId"
+                    },
+                    "designerId": "dda8dfee-3681-4363-acca-7abb244d95e8"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarterid",
+                        "itemId": "daily-quarterid",
+                        "layout|anchor": "100%",
+                        "name": "qtrId"
+                    },
+                    "designerId": "b9c13844-1545-47fc-812c-abd92e438471"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailycancel",
+                "text": "Canel"
+            },
+            "designerId": "ac7c1862-b012-4c63-82e2-089f18a3caac"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailysubmit",
+                "text": "Submit"
+            },
+            "designerId": "87803fde-a70d-49e7-b4d9-b916605cde2b"
+        }
+    ]
+}

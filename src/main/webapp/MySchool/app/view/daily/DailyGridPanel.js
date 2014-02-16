@@ -118,6 +118,12 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
                     xtype: 'gridcolumn',
                     dataIndex: 'whoUpdated',
                     text: 'whoUpdated'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
                 }
             ],
             viewConfig: {

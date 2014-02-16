@@ -105,7 +105,8 @@ Ext.application({
         'common.QuarterSubjectComboBox',
         'common.MonthComboBox',
         'common.MyTabPanel',
-        'bodiesofwork.NewForm'
+        'bodiesofwork.NewForm',
+        'daily.NewDailyForm'
     ],
     controllers: [
         'subject.SubjectsController',

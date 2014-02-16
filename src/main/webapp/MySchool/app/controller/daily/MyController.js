@@ -75,11 +75,44 @@ Ext.define('MySchool.controller.daily.MyController', {
     },
 
     onDailynewtoolClick: function(tool, e, eOpts) {
+        debugger;
+        var studentStore				= Ext.getStore('student.StudentStore');
+        var subjectStore				= Ext.getStore('subject.SubjectStore');
+        var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+        var commonMonthStore			= Ext.getStore('common.MonthStore');
 
+        var studentRecord	= studentStore.getAt(0);
+        var studentId		= studentRecord.get( 'id' );
+        var studentName		= studentRecord.get( 'userName' );
+
+        var newDialog = Ext.create( 'MySchool.view.daily.NewDailyForm' );
+
+        newDialog.down('#daily-studentid').setValue( studentId );
+        newDialog.down('#daily-studentname').setValue( studentName );
+
+        //commonQuarterSubjectStore.myLoad();
+        commonMonthStore.myLoad();
+
+        window.console.log( 'New Daily Dialog' );
+
+        newDialog.render( Ext.getBody() );
+        newDialog.show();
     },
 
     onDailysavetoolClick: function(tool, e, eOpts) {
+        window.console.log( "daily.MyController.Save" );
+        debugger;
 
+        var mystore = Ext.getStore("daily.MyJsonStore");
+
+        var records = mystore.getModifiedRecords();
+        for( var i = 0; i < records.length; i++ )
+        {
+            records[i].set( 'lastUpdated', new Date() );
+            records[i].set( 'whoUpdated', 'login');
+        }
+
+        mystore.sync();
     },
 
     onDailydeletetoolClick: function(tool, e, eOpts) {
@@ -144,6 +177,126 @@ Ext.define('MySchool.controller.daily.MyController', {
         //grid.getSelectionModel().select( 0 );
         //tablepanel.getSelectionModel().select( 0 );
 
+    },
+
+    onDailysubmitClick: function(button, e, eOpts) {
+        debugger;
+        window.console.log( "Submit New Daily" );
+        var myForm					= button.up().getForm();
+        //var newDialog = button.up('monthlynewsummaryformpanel');
+
+        //Get the values from the form and insert a new record into the MonthlySummaryView.
+
+        var formValues				= myForm.getValues();
+
+        //	Create an empty record
+        var dailyRecord	= Ext.create('MySchool.model.daily.DailyModel');
+
+        //	Get the stores that we will need
+        var dailyStore		= this.getStore( 'daily.MyJsonStore' );
+
+        var studentStore = Ext.getStore('student.StudentStore');
+        var subjectStore = Ext.getStore( 'subject.SubjectStore' );
+
+        //	Get the student info
+        var studentRecord	= studentStore.getAt(0);
+        var studentId		= studentRecord.get( 'id' );
+        var studentName		= studentRecord.get( 'userName' );
+
+        //	Get the quarterSubject record from the form.
+        var quarterSubjectId		= formValues.comboquartersubject;
+        var quarterSubjectRecord;
+        for( var i = 0; i < subjectStore.count(); i++ )
+        {
+            if( subjectStore.getAt(i).get('id') === quarterSubjectId )
+            {
+                quarterSubjectRecord = subjectStore.getAt(i);
+                break;
+            }
+        }
+
+        if( typeof quarterSubjectRecord !== 'undefined')
+        {
+            //	Get the other information that we need for the new record.
+            var subjName	= quarterSubjectRecord.get('subjName');
+            var subjId		= quarterSubjectRecord.get('subjId');
+            var qtrName		= quarterSubjectRecord.get('qtrName');
+            var qtrId		= quarterSubjectRecord.get('qtrId');
+            var qtrYear		= quarterSubjectRecord.get('qtrYear');
+            //var month_number = formValues.combomonth;
+
+            //var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );
+            //var subjId_ = allSubjRec_.get( 'subjId' );
+
+
+            //Add the data to the new record.
+            if( formValues.combomonth > 0 )
+            {
+                dailyRecord.set('daily_month', formValues.combomonth);
+                dailyRecord.set('daily_day', formValues.daily_day);
+                dailyRecord.set('daily_hours', 0);
+
+                dailyRecord.set('subjName', subjName );
+                dailyRecord.set('subjId', subjId );
+                dailyRecord.set('qtrName', qtrName );
+                dailyRecord.set('qtrId', qtrId);
+                dailyRecord.set('studentId', studentId);
+                dailyRecord.set('studentUserName', studentName);
+                //dailyRecord.set('qtrYear', qtrYear);
+                dailyRecord.set('daily_year', qtrYear );
+                dailyRecord.set('locked', 0 );
+                dailyRecord.set('resourcesUsed', formValues.resourcesUsed);
+                dailyRecord.set('studyDetails', formValues.studyDetails);
+                dailyRecord.set('evaluation', formValues.evaluation);
+                dailyRecord.set('correction', formValues.correction);
+                dailyRecord.set('dailyAction', formValues.dailyAction);
+                dailyRecord.set('comments', formValues.comments);
+
+                dailyRecord.set('whoUpdated', 'login');
+                dailyRecord.set('lastUpdated', new Date());
+                dailyRecord.set('version', null);
+                dailyRecord.set( 'dailyId', 0 );
+
+                //add to the store
+
+                dailyStore.add( dailyRecord );
+
+                //sync the store.
+                dailyStore.sync();
+
+                myForm.reset();
+                button.up().hide();
+            }
+            else
+            {
+                var smsg = "You must enter a value for month";
+                Ext.MessageBox.show({
+                    title: 'REMOTE EXCEPTION',
+                    msg: smsg,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+            }
+        }
+        else
+        {
+            var msg = "You must have student/faculty/subject/quarter records.";
+                    Ext.MessageBox.show({
+                    title: 'NO DATA',
+                    msg: smsg,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+        }
+
+    },
+
+    onDailycancelClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Cancel New Daily" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -292,6 +445,12 @@ Ext.define('MySchool.controller.daily.MyController', {
             "#dailygridpanel": {
                 selectionchange: this.onDailygridpanelSelectionChange,
                 viewready: this.onDailygridpanelViewReady
+            },
+            "#dailysubmit": {
+                click: this.onDailysubmitClick
+            },
+            "#dailycancel": {
+                click: this.onDailycancelClick
             }
         });
     },

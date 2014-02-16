@@ -105,6 +105,10 @@ Ext.define('MySchool.model.daily.DailyModel', {
         {
             name: 'dailyId',
             type: 'int'
+        },
+        {
+            name: 'version',
+            type: 'int'
         }
     ]
 });

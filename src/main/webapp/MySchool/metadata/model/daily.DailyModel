@@ -283,6 +283,19 @@
                 "type": "int"
             },
             "designerId": "816d0305-df0d-4ba0-952b-b6e6ba94f8f4"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "version",
+                "type": "int"
+            },
+            "designerId": "04de8bc5-8c90-41cf-8444-47526e1d1794"
         }
     ]
 }

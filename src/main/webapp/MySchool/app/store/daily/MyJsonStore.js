@@ -37,8 +37,55 @@ Ext.define('MySchool.store.daily.MyJsonStore', {
                 reader: {
                     type: 'json',
                     root: 'data'
+                },
+                listeners: {
+                    exception: {
+                        fn: me.onRestException,
+                        scope: me
+                    }
+                }
+            },
+            listeners: {
+                load: {
+                    fn: me.onJsonstoreLoad,
+                    scope: me
+                },
+                write: {
+                    fn: me.onJsonstoreWrite,
+                    scope: me
                 }
             }
         }, cfg)]);
+    },
+
+    onRestException: function(proxy, response, operation, eOpts) {
+        debugger;
+        var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION',
+            msg: smsg,
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK,
+            resizeable: true
+        });
+        window.console.log( smsg );
+        if( this.getCount() > 0 )
+        {
+            this.reload();
+        }
+        //this.reload();
+
+    },
+
+    onJsonstoreLoad: function(store, records, successful, eOpts) {
+        //debugger;
+        console.log("daily.MyJsonStore.onJsonstoreLoad() called...");
+    },
+
+    onJsonstoreWrite: function(store, operation, eOpts) {
+        //debugger;
+        console.log("daily.MyJsonStore.onJsonstoreWrite(): called...");
+        store.reload();
     }
+
 });
