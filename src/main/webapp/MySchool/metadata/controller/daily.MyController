@@ -323,6 +323,12 @@
                     "    },",
                     "    \"#dailydetailsactionstabpaneltextbox\": {",
                     "        blur: this.blurHandler",
+                    "    },",
+                    "    \"#editdailydetailscommentstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#dailydetailscommentstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
                     "    }",
                     "",
                     "});"

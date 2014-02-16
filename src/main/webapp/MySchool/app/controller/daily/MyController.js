@@ -254,6 +254,12 @@ Ext.define('MySchool.controller.daily.MyController', {
                     },
                     "#dailydetailsactionstabpaneltextbox": {
                         blur: this.blurHandler
+                    },
+                    "#editdailydetailscommentstabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#dailydetailscommentstabpaneltextbox": {
+                        blur: this.blurHandler
                     }
 
                 });
