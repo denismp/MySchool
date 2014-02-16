@@ -104,7 +104,8 @@ Ext.application({
         'monthly.summary.NewSummaryFormPanel',
         'common.QuarterSubjectComboBox',
         'common.MonthComboBox',
-        'common.MyTabPanel'
+        'common.MyTabPanel',
+        'bodiesofwork.NewForm'
     ],
     controllers: [
         'subject.SubjectsController',

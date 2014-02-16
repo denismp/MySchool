@@ -97,7 +97,8 @@
             "monthly.summary.NewSummaryFormPanel",
             "common.QuarterSubjectComboBox",
             "common.MonthComboBox",
-            "common.MyTabPanel"
+            "common.MyTabPanel",
+            "bodiesofwork.NewForm"
         ]
     },
     "designerId": "application"

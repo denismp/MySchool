@@ -21,7 +21,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
         'bodiesofwork.BodiesOfWorkModel'
     ],
     stores: [
-        'bodiesofwork.MyJsonStore'
+        'bodiesofwork.MyJsonStore',
+        'subject.SubjectStore'
     ],
     views: [
         'bodiesofwork.BodyOfWorkForm',
@@ -99,6 +100,68 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     },
 
     onToolnewbodiesofworkClick: function(tool, e, eOpts) {
+        debugger;
+        var qs_ = Ext.getStore('subject.SubjectStore');
+        var recCnt_ = qs_.getTotalCount();
+
+        if (recCnt_ < 1) {
+            Ext.MessageBox.show({
+                title : 'Body of Work Exception',
+                msg : 'Subjects by Student is empty, please add a record there first.',
+                icon : Ext.MessageBox.ERROR,
+                buttons : Ext.Msg.OK
+            });
+
+            return;
+        }
+
+        var newDialog = Ext.create( 'MySchool.view.bodiesofwork.NewForm' );
+        var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
+        var ss_ = Ext.getStore('student.StudentStore');
+        var r_ = bws_.getAt( this.selectedIndex );
+        var studentName_ = newDialog.down('#newbodiesofworkform-studentName');
+        var qsCB_ = newDialog.down('#newbodiesofworkform-quarter');
+
+        studentName_.setValue(ss_.getAt(0).get('userName'));
+
+        if (r_ === null) {
+            r_ = bws_.getAt(0);
+        }
+
+        if (r_) {
+            var qtrId_ = r_.get('qtrId');
+            var subjId_ = r_.get('subjId');
+
+            newDialog.loadRecord(r_);
+
+            for( var i_ = 0; i_ < recCnt_; i_++ ) {
+                r_ = qs_.getAt(i_);
+                if (r_ !== null && qtrId_ == r_.get('qtrId') && subjId_ == r_.get('subjId')) {
+                    qsCB_.setValue(r_.get('id'));
+                    qsCB_.setDisabled(true);
+                    break;
+                }
+            }
+        }
+        else {
+        // no body of works records in database
+            var b_ = newDialog.down('#newbodiesofworkcreate');
+            var workName_ = newDialog.down('#newbodiesofworkform-workName');
+            var what_ = newDialog.down('#newbodiesofworkform-what');
+            var desc_ = newDialog.down('#newbodiesofworkform-description');
+            var obj_ = newDialog.down('#newbodiesofworkform-objective');
+
+            b_.setDisabled(true);
+            qsCB_.setValue(qs_.getAt(0).get('id'));
+            workName_.setValue("replace_me_with_name");
+            what_.setValue("replace_me_with_what");
+            desc_.setValue("replace_me_with_description");
+            obj_.setValue("replace_me_with_objectives");
+        }
+
+        window.console.log( 'New' );
+        newDialog.render( Ext.getBody() );
+        newDialog.show();
 
     },
 
@@ -114,11 +177,96 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
     },
 
+    onNewbodiesofworkcancelClick: function(button, e, eOpts) {
+            var bId_ = button.getItemId();
+            var newDialog = button.up('newbodiesofworkform');
+            var myForm = newDialog.getForm();
+            var hide_ = true;
+            var okToSync_ = false;
+
+            if (bId_.indexOf("cancel") < 0) {
+                debugger;
+                var qsCB_ = newDialog.down('quartersubjectcombobox');
+
+                if (bId_.indexOf("submit") > 0){
+                    if (newDialog.down('#newbodiesofworkcreate').isDisabled()) {
+                        var r_;
+                        var qsId_ = qsCB_.getValue();
+
+                        if (qsId_ === null) {
+                            Ext.MessageBox.show({
+                                title : 'Submit Exception',
+                                msg : 'You must pick a Quarter and Subject.',
+                                icon : Ext.MessageBox.ERROR,
+                                buttons : Ext.Msg.OK
+                            });
+                        }
+                        else {
+                            Ext.MessageBox.show({
+                                title : 'Submit BOW',
+                                msg : 'CREATE',
+                                icon : Ext.MessageBox.ERROR,
+                                buttons : Ext.Msg.OK
+                            });
+                        }
+                    }
+                    else {
+                        var r_ = myForm.getRecord();
+                        myForm.updateRecord(r_);
+                        Ext.MessageBox.show({
+                            title : 'Submit BOW',
+                            msg : 'UPDATE',
+                            icon : Ext.MessageBox.ERROR,
+                            buttons : Ext.Msg.OK
+                        });
+                    }
+                }
+                else {
+                    var b_ = newDialog.down('#newbodiesofworkcreate');
+                    var workName_ = newDialog.down('#newbodiesofworkform-workName');
+                    var what_ = newDialog.down('#newbodiesofworkform-what');
+                    var desc_ = newDialog.down('#newbodiesofworkform-description');
+                    var obj_ = newDialog.down('#newbodiesofworkform-objective');
+
+                    b_.setDisabled(true);
+                    qsCB_.setDisabled(false);
+                    hide_ = false;
+
+                    workName_.setValue("replace_me_with_name");
+                    what_.setValue("replace_me_with_what");
+                    desc_.setValue("replace_me_with_description");
+                    obj_.setValue("replace_me_with_objectives");
+                }
+            }
+
+            if (hide_) {
+                myForm.reset();
+                button.up().hide();
+            }
+    },
+
+    onNewbodiesofworksubmitClick: function(button, e, eOpts) {
+            this.onNewbodiesofworkcancelClick(button, e, eOpts);
+    },
+
+    onNewbodiesofworkcreateClick: function(button, e, eOpts) {
+            this.onNewbodiesofworkcancelClick(button, e, eOpts);
+    },
+
+    onBodiesofworkssubjectsgridSelect: function(rowmodel, record, index, eOpts) {
+            window.console.log( "selected row in grid." );
+            window.console.log( "index=" + index );
+            this.selectedIndex = index;
+    },
+
     init: function(application) {
+                this.selectedIndex = 0;
+
         this.control({
             "#bodiesofworkssubjectsgrid": {
                 viewready: this.onBodiesofworkssubjectsgridViewReady,
-                selectionchange: this.onBodiesofworkssubjectsgridSelectionChange
+                selectionchange: this.onBodiesofworkssubjectsgridSelectionChange,
+                select: this.onBodiesofworkssubjectsgridSelect
             },
             "#bodyofworkform": {
                 boxready: this.onBodyofworkformBoxReady
@@ -143,6 +291,15 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             },
             "#toollockbodiesofwork": {
                 click: this.onToollockbodiesofworkClick
+            },
+            "#newbodiesofworkcancel": {
+                click: this.onNewbodiesofworkcancelClick
+            },
+            "#newbodiesofworksubmit": {
+                click: this.onNewbodiesofworksubmitClick
+            },
+            "#newbodiesofworkcreate": {
+                click: this.onNewbodiesofworkcreateClick
             }
         });
     },
@@ -153,7 +310,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
         if (g_.getStore().getCount() > 0) {
             g_.getSelectionModel().deselectAll();
-            g_.getSelectionModel().select( 0 );
+            g_.getSelectionModel().select( this.selectedIndex );
         }
 
         this.gridViewReady = true;
