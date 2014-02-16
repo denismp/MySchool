@@ -328,17 +328,26 @@ Ext.define('MySchool.controller.daily.MyController', {
 
     blurHandler: function(o, event, eOpts) {
         //debugger;
-        var p_ = o.up('form').up('panel');
-        var topP_ = p_.up('panel');
-        var pItemId_ = p_.getItemId();
-        var edit_ = p_.down('#edit' + pItemId_);
+        var p_			= o.up('form').up('panel');
+        var myForm		= o.up('form');
+        //var topP_		= p_.up('panel');
+        var pItemId_	= p_.getItemId();
+        var edit_		= p_.down('#edit' + pItemId_);
+        var myTitle		= p_.title;
         console.log( edit_ );
-        console.log( topP_ );
+        //console.log( topP_ );
+        console.log( myForm );
+        console.log( "pItemId_=" + pItemId_);
+        //var myController = this;
+
+        console.log( 'title=' + myTitle );
+
         //topP_.buttonHandler(edit_);
 
         Ext.Msg.show({
             title:'Save Changes?',
-            msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',
+            //msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',
+            msg: 'Would you like to save your changes to ' + myTitle + ' ?',
             buttons: Ext.Msg.YESNO,
             icon: Ext.Msg.QUESTION,
             fn: function(buttonId) {
@@ -349,6 +358,17 @@ Ext.define('MySchool.controller.daily.MyController', {
                         buttons: Ext.Msg.OK,
                         icon: Ext.window.MessageBox.INFO
                     });
+                    //debugger;
+                    var mystore		= Ext.getStore("daily.MyJsonStore");
+                    var myTextArea	= myForm.down('textareafield');
+                    var myName		= myTextArea.getName();
+                    var myValue		= myTextArea.getValue();
+                    var record		= myForm.getRecord();
+                    record.set( myName, myValue );
+                    record.set( 'lastUpdated', new Date() );
+                    record.set( 'whoUpdated', 'login' );
+
+                    mystore.sync();
                 }
                 else {
                     Ext.Msg.show({
@@ -358,15 +378,10 @@ Ext.define('MySchool.controller.daily.MyController', {
                         icon: Ext.window.MessageBox.INFO
                     });
                 }
-                //topP_ = eOpts;
-                //topP_.buttonHandler.call(edit_);
-                //edit.setText('Edit');
-                console.log( topP_ );
-                topP_.buttonHandler(edit_);
-                //p_.buttonHandler(edit_);
+
             }
         });
-        debugger;
+        //debugger;
         this.buttonHandler( edit_ );
     },
 
