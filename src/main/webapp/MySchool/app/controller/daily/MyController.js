@@ -351,6 +351,7 @@ Ext.define('MySchool.controller.daily.MyController', {
             buttons: Ext.Msg.YESNO,
             icon: Ext.Msg.QUESTION,
             fn: function(buttonId) {
+                var mystore		= Ext.getStore("daily.MyJsonStore");
                 if (buttonId == 'yes') {
                     Ext.Msg.show({
                         title: 'Save',
@@ -359,7 +360,7 @@ Ext.define('MySchool.controller.daily.MyController', {
                         icon: Ext.window.MessageBox.INFO
                     });
                     //debugger;
-                    var mystore		= Ext.getStore("daily.MyJsonStore");
+
                     var myTextArea	= myForm.down('textareafield');
                     var myName		= myTextArea.getName();
                     var myValue		= myTextArea.getValue();
@@ -377,6 +378,7 @@ Ext.define('MySchool.controller.daily.MyController', {
                         buttons: Ext.Msg.OK,
                         icon: Ext.window.MessageBox.INFO
                     });
+                    mystore.reload();
                 }
 
             }

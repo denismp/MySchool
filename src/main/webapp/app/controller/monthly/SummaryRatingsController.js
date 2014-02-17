@@ -336,6 +336,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
             buttons: Ext.Msg.YESNO,
             icon: Ext.Msg.QUESTION,
             fn: function(buttonId) {
+                var mystore		= Ext.getStore("monthly.SummaryRatingsStore");
                 if (buttonId == 'yes') {
                     Ext.Msg.show({
                         title: 'Save',
@@ -344,7 +345,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                         icon: Ext.window.MessageBox.INFO
                     });
                     //debugger;
-                    var mystore		= Ext.getStore("monthly.SummaryRatingsStore");
+
                     var myTextArea	= myForm.down('textareafield');
                     var myName		= myTextArea.getName();
                     var myValue		= myTextArea.getValue();
@@ -362,6 +363,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                         buttons: Ext.Msg.OK,
                         icon: Ext.window.MessageBox.INFO
                     });
+                    mystore.reload();
                 }
 
             }
