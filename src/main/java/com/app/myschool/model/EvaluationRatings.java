@@ -65,6 +65,8 @@ public class EvaluationRatings {
     @Value("false")
     private Boolean locked;
 
+    @Size(max = 4096)
+    private String comments;
     @NotNull
     @Size(max = 45)
     private String whoUpdated;

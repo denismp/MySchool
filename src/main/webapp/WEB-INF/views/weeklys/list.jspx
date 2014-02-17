@@ -6,10 +6,9 @@
         <table:table data="${weeklys}" id="l_com_app_myschool_model_Weekly" path="/weeklys" z="D8Rc/+Z1iJntKBGlucLBXAIQAro=">
             <table:column id="c_com_app_myschool_model_Weekly_week_month" property="week_month" z="rKyUb+CkTqvw22dJaw1UwAIexQA="/>
             <table:column id="c_com_app_myschool_model_Weekly_week_number" property="week_number" z="PppXNQefiIB3qppkih5MnL6Ayes="/>
-            <table:column id="c_com_app_myschool_model_Weekly_locked" property="locked" z="JGnQy4ItnecwYZCBW6caAZMSVxY="/>
-            <table:column id="c_com_app_myschool_model_Weekly_comments" property="comments" z="0JoeoZK4pufSHb9FR9YG7zZ1hsw="/>
             <table:column id="c_com_app_myschool_model_Weekly_whoUpdated" property="whoUpdated" z="oKHEod8B7HAMf7jtNyVccWT4Af8="/>
             <table:column date="true" dateTimePattern="${weekly_lastupdated_date_format}" id="c_com_app_myschool_model_Weekly_lastUpdated" property="lastUpdated" z="BniEidzdocDat44ci+Pve1IXWck="/>
+            <table:column id="c_com_app_myschool_model_Weekly_quarter" property="quarter" z="tKykc+qYJXQ6IE9znkvim5Zy10g="/>
         </table:table>
     </page:list>
 </div>

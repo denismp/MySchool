@@ -15,5 +15,6 @@
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_EvaluationRatings_whoUpdated" required="true" z="2k0+3LKDjpm3gxg2BA79pkWtitE="/>
         <field:datetime dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_EvaluationRatings_lastUpdated" required="true" z="1x/uL2bH87t6CfKbYnq0vHX/BA4="/>
         <field:select field="weekly" id="c_com_app_myschool_model_EvaluationRatings_weekly" itemValue="id" items="${weeklys}" path="/weeklys" z="rVBgnwQEKXYXGheXvSrruAqNIVg="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_EvaluationRatings_comments" z="r7FkciAHBoSI9eFpTZlLwraXASM="/>
     </form:update>
 </div>

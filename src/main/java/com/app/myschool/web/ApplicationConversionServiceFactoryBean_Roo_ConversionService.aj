@@ -391,7 +391,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Weekly, String> ApplicationConversionServiceFactoryBean.getWeeklyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Weekly, java.lang.String>() {
             public String convert(Weekly weekly) {
-                return new StringBuilder().append(weekly.getWeek_month()).append(' ').append(weekly.getWeek_number()).append(' ').append(weekly.getComments()).append(' ').append(weekly.getWhoUpdated()).toString();
+                return new StringBuilder().append(weekly.getWeek_month()).append(' ').append(weekly.getWeek_number()).append(' ').append(weekly.getWhoUpdated()).append(' ').append(weekly.getLastUpdated()).toString();
             }
         };
     }

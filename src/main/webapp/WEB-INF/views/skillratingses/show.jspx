@@ -12,5 +12,7 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_SkillRatings_whoUpdated" object="${skillratings}" z="6fblRSmYcO7433EiZ+WEjTNNopU="/>
         <field:display date="true" dateTimePattern="${skillRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_SkillRatings_lastUpdated" object="${skillratings}" z="VF4/VZwwnaUlchj2M+nYAAjtSRo="/>
         <field:display field="weekly" id="s_com_app_myschool_model_SkillRatings_weekly" object="${skillratings}" z="9vPNPGdF85rROnvrDfZyxotW4Tk="/>
+        <field:display field="comments" id="s_com_app_myschool_model_SkillRatings_comments" object="${skillratings}" z="Hi0aNBA92PcOWNldTFcCrD5rIc8="/>
+        <field:display field="evaluating" id="s_com_app_myschool_model_SkillRatings_evaluating" object="${skillratings}" z="XQg5xeg44xqN0y93fNFzffWxIrQ="/>
     </page:show>
 </div>

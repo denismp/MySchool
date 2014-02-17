@@ -1,0 +1,113 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "weekly.SkillRatingsStore",
+        "model": "weekly.SkillRatingsModel",
+        "storeId": "weekly.SkillRatingsStore"
+    },
+    "designerId": "a62bc472-f47e-4884-961a-51a082cdb54a",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
+                "url": "skillratingses"
+            },
+            "designerId": "a1d0e4d8-6b33-4a59-8350-fa7a97a22e07",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "c0ed0ea2-53f3-4bb8-a4cb-544adade8298"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRestException",
+                        "implHandler": [
+                            "debugger;",
+                            "var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;",
+                            "Ext.MessageBox.show({",
+                            "    title: 'REMOTE EXCEPTION',",
+                            "    msg: smsg,",
+                            "    icon: Ext.MessageBox.ERROR,",
+                            "    buttons: Ext.Msg.OK,",
+                            "    resizeable: true",
+                            "});",
+                            "window.console.log( smsg );",
+                            "if( this.getCount() > 0 )",
+                            "{",
+                            "    this.reload();",
+                            "}",
+                            "//this.reload();"
+                        ],
+                        "name": "exception",
+                        "scope": "me"
+                    },
+                    "designerId": "ff84fed5-5385-4ffe-9ff2-430740dec371"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"weekly.SkillRatingsStore.onJsonstoreLoad() called...\");"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "c038555c-78a5-4b0d-a525-64fc02c017db"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreWrite",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"weekly.SkillRatingsStore.onJsonstoreWrite(): called...\");",
+                    "store.reload();"
+                ],
+                "name": "write",
+                "scope": "me"
+            },
+            "designerId": "b2744f87-ca10-42c4-9886-22102e500d94"
+        }
+    ]
+}

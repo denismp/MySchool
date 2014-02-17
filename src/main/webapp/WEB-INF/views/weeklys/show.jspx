@@ -5,8 +5,6 @@
     <page:show id="ps_com_app_myschool_model_Weekly" object="${weekly}" path="/weeklys" z="DZwEYXB1QACQHZAV0fZrVQK5GhE=">
         <field:display field="week_month" id="s_com_app_myschool_model_Weekly_week_month" object="${weekly}" z="aTcbxWN8VtdCiD3cY14zuSAYNI8="/>
         <field:display field="week_number" id="s_com_app_myschool_model_Weekly_week_number" object="${weekly}" z="BfaKVihVo3U0y6xvb5UQ6ARXaEY="/>
-        <field:display field="locked" id="s_com_app_myschool_model_Weekly_locked" object="${weekly}" z="xfGURlvdafJE17TfKqGUCqClPC8="/>
-        <field:display field="comments" id="s_com_app_myschool_model_Weekly_comments" object="${weekly}" z="1/eRHOPIr9RGeaXC0y61JCrbU8o="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Weekly_whoUpdated" object="${weekly}" z="xS7SN19kFMq0rlUW09rB95kMRJU="/>
         <field:display date="true" dateTimePattern="${weekly_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Weekly_lastUpdated" object="${weekly}" z="OjZbKEr4Uc9U1R/l0/+CttaVvmk="/>
         <field:display field="quarter" id="s_com_app_myschool_model_Weekly_quarter" object="${weekly}" z="PZRyNeElzIP9W3exYJEDviClcCo="/>

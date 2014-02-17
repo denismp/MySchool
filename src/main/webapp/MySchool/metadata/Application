@@ -22,7 +22,8 @@
             "monthly.EvaluationRatings",
             "monthly.SummaryRatings",
             "common.QuarterSubjectModel",
-            "common.MonthModel"
+            "common.MonthModel",
+            "weekly.SkillRatingsModel"
         ],
         "name": "MySchool",
         "stores": [
@@ -38,7 +39,8 @@
             "monthly.SummaryRatingsStore",
             "monthly.EvaluationRatingsStore",
             "common.QuarterSubjectStore",
-            "common.MonthStore"
+            "common.MonthStore",
+            "weekly.SkillRatingsStore"
         ],
         "views": [
             "MainPanel",

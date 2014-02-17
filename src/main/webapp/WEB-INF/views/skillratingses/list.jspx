@@ -9,7 +9,7 @@
             <table:column id="c_com_app_myschool_model_SkillRatings_applying" property="applying" z="ibqHmasKUU9FVDRvTRXqj/NVub0="/>
             <table:column id="c_com_app_myschool_model_SkillRatings_analyzing" property="analyzing" z="TslmtTHPULinQfU3EKjBw+OFV/M="/>
             <table:column id="c_com_app_myschool_model_SkillRatings_creating" property="creating" z="y+ZgotC1Yn0Vzs3y/rxfmHCUY+8="/>
-            <table:column id="c_com_app_myschool_model_SkillRatings_locked" property="locked" z="T8WuM9xZPFU5hLo8KDePKCueRJs="/>
+            <table:column id="c_com_app_myschool_model_SkillRatings_evaluating" property="evaluating" z="cF2o/GFNmNHOSTIylDzkMEW59Sc="/>
         </table:table>
     </page:list>
 </div>

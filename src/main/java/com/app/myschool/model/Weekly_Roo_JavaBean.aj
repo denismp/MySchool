@@ -28,22 +28,6 @@ privileged aspect Weekly_Roo_JavaBean {
         this.week_number = week_number;
     }
     
-    public Boolean Weekly.getLocked() {
-        return this.locked;
-    }
-    
-    public void Weekly.setLocked(Boolean locked) {
-        this.locked = locked;
-    }
-    
-    public String Weekly.getComments() {
-        return this.comments;
-    }
-    
-    public void Weekly.setComments(String comments) {
-        this.comments = comments;
-    }
-    
     public String Weekly.getWhoUpdated() {
         return this.whoUpdated;
     }

@@ -41,6 +41,14 @@ privileged aspect SkillRatings_Roo_JavaBean {
         this.analyzing = analyzing;
     }
     
+    public int SkillRatings.getEvaluating() {
+        return this.evaluating;
+    }
+    
+    public void SkillRatings.setEvaluating(int evaluating) {
+        this.evaluating = evaluating;
+    }
+    
     public int SkillRatings.getCreating() {
         return this.creating;
     }
@@ -55,6 +63,14 @@ privileged aspect SkillRatings_Roo_JavaBean {
     
     public void SkillRatings.setLocked(Boolean locked) {
         this.locked = locked;
+    }
+    
+    public String SkillRatings.getComments() {
+        return this.comments;
+    }
+    
+    public void SkillRatings.setComments(String comments) {
+        this.comments = comments;
     }
     
     public String SkillRatings.getWhoUpdated() {

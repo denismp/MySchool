@@ -30,7 +30,8 @@ Ext.application({
         'monthly.EvaluationRatings',
         'monthly.SummaryRatings',
         'common.QuarterSubjectModel',
-        'common.MonthModel'
+        'common.MonthModel',
+        'weekly.SkillRatingsModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -45,7 +46,8 @@ Ext.application({
         'monthly.SummaryRatingsStore',
         'monthly.EvaluationRatingsStore',
         'common.QuarterSubjectStore',
-        'common.MonthStore'
+        'common.MonthStore',
+        'weekly.SkillRatingsStore'
     ],
     views: [
         'MainPanel',

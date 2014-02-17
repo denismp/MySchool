@@ -12,5 +12,7 @@
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_SkillRatings_whoUpdated" required="true" z="u67IujOYAW25SCCUa6pHa4usIaY="/>
         <field:datetime dateTimePattern="${skillRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_SkillRatings_lastUpdated" required="true" z="TEdVUrwcY0WeQ5YeaNxjdpF+a0Y="/>
         <field:select field="weekly" id="c_com_app_myschool_model_SkillRatings_weekly" itemValue="id" items="${weeklys}" path="/weeklys" z="m6RnGfZYh5MYtriUsvG3tuItR8A="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_SkillRatings_comments" z="BTuegWrRO7EpvteTGGLGHPH/FJA="/>
+        <field:input field="evaluating" id="c_com_app_myschool_model_SkillRatings_evaluating" max="10" min="6" required="true" z="cY95oaUgakAJjWyIwDT24TYRBS0="/>
     </form:update>
 </div>

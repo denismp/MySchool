@@ -40,7 +40,12 @@ public class SkillRatings {
     @Min(6L)
     @Max(10L)
     private int analyzing;
-
+    
+    @NotNull
+    @Min(6L)
+    @Max(10L)
+    private int evaluating;
+    
     @NotNull
     @Min(6L)
     @Max(10L)
@@ -49,7 +54,8 @@ public class SkillRatings {
     @NotNull
     @Value("false")
     private Boolean locked;
-
+    @Size(max = 4096)
+    private String comments;
     @NotNull
     @Size(max = 45)
     private String whoUpdated;

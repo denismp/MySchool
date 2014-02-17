@@ -81,6 +81,14 @@ privileged aspect EvaluationRatings_Roo_JavaBean {
         this.locked = locked;
     }
     
+    public String EvaluationRatings.getComments() {
+        return this.comments;
+    }
+    
+    public void EvaluationRatings.setComments(String comments) {
+        this.comments = comments;
+    }
+    
     public String EvaluationRatings.getWhoUpdated() {
         return this.whoUpdated;
     }
