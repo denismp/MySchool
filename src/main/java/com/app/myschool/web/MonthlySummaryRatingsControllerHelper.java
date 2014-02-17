@@ -55,15 +55,16 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		List<MonthlySummaryRatings> rList = null;
 		EntityManager em = MonthlySummaryRatings.entityManager();
 		StringBuilder queryString = new StringBuilder("select rs.*");
-		queryString.append(" from monthly_summary_ratings rs, quarter q, student t");
+		queryString.append(" from monthly_summary_ratings rs, quarter q, subject s, student t");
 		queryString.append(" where rs.quarter = q.id");
+		queryString.append(" and q.subject = s.id");
 		queryString.append(" and q.student = t.id");
 		if( studentId != null )
 		{
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
-		queryString.append( " order by rs.month_number");
+		queryString.append( " order by s.name, q.qtr_name, q.qtr_year, rs.month_number");
 		rList = (List<MonthlySummaryRatings>)em.createNativeQuery(queryString.toString(), MonthlySummaryRatings.class).getResultList(); 
 
 		return rList;
