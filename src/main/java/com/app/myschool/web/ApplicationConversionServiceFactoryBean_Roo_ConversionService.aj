@@ -18,7 +18,6 @@ import com.app.myschool.model.Roles;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.Weekly;
 import com.app.myschool.web.ApplicationConversionServiceFactoryBean;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
@@ -103,7 +102,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<EvaluationRatings, String> ApplicationConversionServiceFactoryBean.getEvaluationRatingsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.EvaluationRatings, java.lang.String>() {
             public String convert(EvaluationRatings evaluationRatings) {
-                return new StringBuilder().append(evaluationRatings.getMotivation()).append(' ').append(evaluationRatings.getOrganization()).append(' ').append(evaluationRatings.getEffectiveUseOfStudyTime()).append(' ').append(evaluationRatings.getQualityOfWork()).toString();
+                return new StringBuilder().append(evaluationRatings.getWeek_month()).append(' ').append(evaluationRatings.getWeek_number()).append(' ').append(evaluationRatings.getMotivation()).append(' ').append(evaluationRatings.getOrganization()).toString();
             }
         };
     }
@@ -319,7 +318,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<SkillRatings, String> ApplicationConversionServiceFactoryBean.getSkillRatingsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.SkillRatings, java.lang.String>() {
             public String convert(SkillRatings skillRatings) {
-                return new StringBuilder().append(skillRatings.getRemembering()).append(' ').append(skillRatings.getUnderstanding()).append(' ').append(skillRatings.getApplying()).append(' ').append(skillRatings.getAnalyzing()).toString();
+                return new StringBuilder().append(skillRatings.getWeek_month()).append(' ').append(skillRatings.getWeek_number()).append(' ').append(skillRatings.getRemembering()).append(' ').append(skillRatings.getUnderstanding()).toString();
             }
         };
     }
@@ -388,30 +387,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<Weekly, String> ApplicationConversionServiceFactoryBean.getWeeklyToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Weekly, java.lang.String>() {
-            public String convert(Weekly weekly) {
-                return new StringBuilder().append(weekly.getWeek_month()).append(' ').append(weekly.getWeek_number()).append(' ').append(weekly.getWhoUpdated()).append(' ').append(weekly.getLastUpdated()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, Weekly> ApplicationConversionServiceFactoryBean.getIdToWeeklyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Weekly>() {
-            public com.app.myschool.model.Weekly convert(java.lang.Long id) {
-                return Weekly.findWeekly(id);
-            }
-        };
-    }
-    
-    public Converter<String, Weekly> ApplicationConversionServiceFactoryBean.getStringToWeeklyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Weekly>() {
-            public com.app.myschool.model.Weekly convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Weekly.class);
-            }
-        };
-    }
-    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getArtifactToStringConverter());
         registry.addConverter(getIdToArtifactConverter());
@@ -458,9 +433,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getSubjectToStringConverter());
         registry.addConverter(getIdToSubjectConverter());
         registry.addConverter(getStringToSubjectConverter());
-        registry.addConverter(getWeeklyToStringConverter());
-        registry.addConverter(getIdToWeeklyConverter());
-        registry.addConverter(getStringToWeeklyConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

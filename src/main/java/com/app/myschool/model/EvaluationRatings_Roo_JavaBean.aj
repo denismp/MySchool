@@ -4,10 +4,26 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.EvaluationRatings;
-import com.app.myschool.model.Weekly;
+import com.app.myschool.model.Quarter;
 import java.util.Date;
 
 privileged aspect EvaluationRatings_Roo_JavaBean {
+    
+    public int EvaluationRatings.getWeek_month() {
+        return this.week_month;
+    }
+    
+    public void EvaluationRatings.setWeek_month(int week_month) {
+        this.week_month = week_month;
+    }
+    
+    public int EvaluationRatings.getWeek_number() {
+        return this.week_number;
+    }
+    
+    public void EvaluationRatings.setWeek_number(int week_number) {
+        this.week_number = week_number;
+    }
     
     public int EvaluationRatings.getMotivation() {
         return this.motivation;
@@ -105,12 +121,12 @@ privileged aspect EvaluationRatings_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
-    public Weekly EvaluationRatings.getWeekly() {
-        return this.weekly;
+    public Quarter EvaluationRatings.getQuarter() {
+        return this.quarter;
     }
     
-    public void EvaluationRatings.setWeekly(Weekly weekly) {
-        this.weekly = weekly;
+    public void EvaluationRatings.setQuarter(Quarter quarter) {
+        this.quarter = quarter;
     }
     
 }

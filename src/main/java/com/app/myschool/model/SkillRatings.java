@@ -20,7 +20,15 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord
 @RooJson
 public class SkillRatings {
+    @NotNull
+    @Min(1L)
+    @Max(12L)
+    private int week_month;
 
+    @NotNull
+    @Min(1L)
+    @Max(5L)
+    private int week_number;
     @NotNull
     @Min(6L)
     @Max(10L)
@@ -66,5 +74,5 @@ public class SkillRatings {
     private Date lastUpdated;
 
     @ManyToOne
-    private Weekly weekly;
+    private Quarter quarter;
 }

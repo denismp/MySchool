@@ -5,12 +5,13 @@ package com.app.myschool.web;
 
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
+import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.Weekly;
 import com.app.myschool.web.QuarterController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -104,11 +105,12 @@ privileged aspect QuarterController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("bodyofworks", BodyOfWork.findAllBodyOfWorks());
         uiModel.addAttribute("dailys", Daily.findAllDailys());
+        uiModel.addAttribute("evaluationratingses", EvaluationRatings.findAllEvaluationRatingses());
         uiModel.addAttribute("monthlyevaluationratingses", MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses());
         uiModel.addAttribute("monthlysummaryratingses", MonthlySummaryRatings.findAllMonthlySummaryRatingses());
+        uiModel.addAttribute("skillratingses", SkillRatings.findAllSkillRatingses());
         uiModel.addAttribute("students", Student.findAllStudents());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
-        uiModel.addAttribute("weeklys", Weekly.findAllWeeklys());
     }
     
     String QuarterController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

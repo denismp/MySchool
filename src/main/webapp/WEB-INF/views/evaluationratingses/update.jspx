@@ -14,7 +14,9 @@
         <field:checkbox field="locked" id="c_com_app_myschool_model_EvaluationRatings_locked" z="2i8ohEZR4Kk0hGQb+P5jSNwEcCU="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_EvaluationRatings_whoUpdated" required="true" z="2k0+3LKDjpm3gxg2BA79pkWtitE="/>
         <field:datetime dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_EvaluationRatings_lastUpdated" required="true" z="1x/uL2bH87t6CfKbYnq0vHX/BA4="/>
-        <field:select field="weekly" id="c_com_app_myschool_model_EvaluationRatings_weekly" itemValue="id" items="${weeklys}" path="/weeklys" z="rVBgnwQEKXYXGheXvSrruAqNIVg="/>
         <field:textarea field="comments" id="c_com_app_myschool_model_EvaluationRatings_comments" z="r7FkciAHBoSI9eFpTZlLwraXASM="/>
+        <field:input field="week_month" id="c_com_app_myschool_model_EvaluationRatings_week_month" max="12" min="1" required="true" z="WjZ95n/LsMrRJ4wePzqFWU2kHxo="/>
+        <field:input field="week_number" id="c_com_app_myschool_model_EvaluationRatings_week_number" max="5" min="1" required="true" z="2VEDh5/0asDstMcfzkbrYfaAfJY="/>
+        <field:select field="quarter" id="c_com_app_myschool_model_EvaluationRatings_quarter" itemValue="id" items="${quarters}" path="/quarters" z="tgTvdkTcuRMq65d5YnKaYzsRgL0="/>
     </form:update>
 </div>

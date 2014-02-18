@@ -8,8 +8,8 @@
             <table:column id="c_com_app_myschool_model_EvaluationRatings_organization" property="organization" z="ZITzZjpAN1sZKxpl8FXHLdFBOrw="/>
             <table:column id="c_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" property="effectiveUseOfStudyTime" z="kCUfG1SF5F9Jv0fWdnEUUuVKxGI="/>
             <table:column id="c_com_app_myschool_model_EvaluationRatings_qualityOfWork" property="qualityOfWork" z="fwOyM0blLY+2VEvMMjiaLRCX30o="/>
-            <table:column id="c_com_app_myschool_model_EvaluationRatings_accuracyOfWork" property="accuracyOfWork" z="BJ6jZ4GKzURkuueDHORzZtm+bAo="/>
-            <table:column id="c_com_app_myschool_model_EvaluationRatings_complexityOfWork" property="complexityOfWork" z="1N6iqy+dutRwLJserEeZI2ptLVk="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_week_month" property="week_month" z="o8LnGbIILsgRsCNf0fGs8oKo/cg="/>
+            <table:column id="c_com_app_myschool_model_EvaluationRatings_week_number" property="week_number" z="MGPQv7kgAduRcVixDBSEjnaHbBc="/>
         </table:table>
     </page:list>
 </div>

@@ -3,11 +3,27 @@
 
 package com.app.myschool.model;
 
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
-import com.app.myschool.model.Weekly;
 import java.util.Date;
 
 privileged aspect SkillRatings_Roo_JavaBean {
+    
+    public int SkillRatings.getWeek_month() {
+        return this.week_month;
+    }
+    
+    public void SkillRatings.setWeek_month(int week_month) {
+        this.week_month = week_month;
+    }
+    
+    public int SkillRatings.getWeek_number() {
+        return this.week_number;
+    }
+    
+    public void SkillRatings.setWeek_number(int week_number) {
+        this.week_number = week_number;
+    }
     
     public int SkillRatings.getRemembering() {
         return this.remembering;
@@ -89,12 +105,12 @@ privileged aspect SkillRatings_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
-    public Weekly SkillRatings.getWeekly() {
-        return this.weekly;
+    public Quarter SkillRatings.getQuarter() {
+        return this.quarter;
     }
     
-    public void SkillRatings.setWeekly(Weekly weekly) {
-        this.weekly = weekly;
+    public void SkillRatings.setQuarter(Quarter quarter) {
+        this.quarter = quarter;
     }
     
 }

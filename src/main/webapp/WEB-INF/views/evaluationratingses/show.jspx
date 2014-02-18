@@ -14,7 +14,9 @@
         <field:display field="locked" id="s_com_app_myschool_model_EvaluationRatings_locked" object="${evaluationratings}" z="SsRVQNAlD6Xk78QlbsLnV6FvDRg="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_EvaluationRatings_whoUpdated" object="${evaluationratings}" z="4BOsUmdswSy8YbC8eavfv8vz6Yc="/>
         <field:display date="true" dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_EvaluationRatings_lastUpdated" object="${evaluationratings}" z="JJDzGLtXfyOb3JidcuVAc172Nek="/>
-        <field:display field="weekly" id="s_com_app_myschool_model_EvaluationRatings_weekly" object="${evaluationratings}" z="i/UrW+Jqlnnr+I3+VL6/nGUTTkA="/>
         <field:display field="comments" id="s_com_app_myschool_model_EvaluationRatings_comments" object="${evaluationratings}" z="ShjtQ8vw+vg9HBeN8nXjQG9AbnM="/>
+        <field:display field="week_month" id="s_com_app_myschool_model_EvaluationRatings_week_month" object="${evaluationratings}" z="3l8MknheyBOqMQaZoBa/O631OFc="/>
+        <field:display field="week_number" id="s_com_app_myschool_model_EvaluationRatings_week_number" object="${evaluationratings}" z="kv3DJakUm2C4U3VviCAhNGhQVwg="/>
+        <field:display field="quarter" id="s_com_app_myschool_model_EvaluationRatings_quarter" object="${evaluationratings}" z="JssMHjrBJ0RcrR7NxzoqSCI6tHo="/>
     </page:show>
 </div>

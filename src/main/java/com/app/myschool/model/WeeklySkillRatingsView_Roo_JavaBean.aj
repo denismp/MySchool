@@ -32,12 +32,12 @@ privileged aspect WeeklySkillRatingsView_Roo_JavaBean {
         this.weeklyId = weeklyId;
     }
     
-    public Integer WeeklySkillRatingsView.getMonth_number() {
-        return this.month_number;
+    public Integer WeeklySkillRatingsView.getWeek_month() {
+        return this.week_month;
     }
     
-    public void WeeklySkillRatingsView.setMonth_number(Integer month_number) {
-        this.month_number = month_number;
+    public void WeeklySkillRatingsView.setWeek_month(Integer week_month) {
+        this.week_month = week_month;
     }
     
     public Integer WeeklySkillRatingsView.getWeek_number() {

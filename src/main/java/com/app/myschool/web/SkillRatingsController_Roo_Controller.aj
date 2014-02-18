@@ -3,8 +3,8 @@
 
 package com.app.myschool.web;
 
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
-import com.app.myschool.model.Weekly;
 import com.app.myschool.web.SkillRatingsController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -96,7 +96,7 @@ privileged aspect SkillRatingsController_Roo_Controller {
     void SkillRatingsController.populateEditForm(Model uiModel, SkillRatings skillRatings) {
         uiModel.addAttribute("skillRatings", skillRatings);
         addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("weeklys", Weekly.findAllWeeklys());
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
     }
     
     String SkillRatingsController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

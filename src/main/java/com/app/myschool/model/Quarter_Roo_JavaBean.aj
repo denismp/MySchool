@@ -5,12 +5,13 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
+import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.Weekly;
 import java.util.Date;
 import java.util.Set;
 
@@ -104,12 +105,20 @@ privileged aspect Quarter_Roo_JavaBean {
         this.dailys = dailys;
     }
     
-    public Set<Weekly> Quarter.getWeeklys() {
-        return this.weeklys;
+    public Set<SkillRatings> Quarter.getSkillRatings() {
+        return this.skillRatings;
     }
     
-    public void Quarter.setWeeklys(Set<Weekly> weeklys) {
-        this.weeklys = weeklys;
+    public void Quarter.setSkillRatings(Set<SkillRatings> skillRatings) {
+        this.skillRatings = skillRatings;
+    }
+    
+    public Set<EvaluationRatings> Quarter.getEvaluationRatings() {
+        return this.evaluationRatings;
+    }
+    
+    public void Quarter.setEvaluationRatings(Set<EvaluationRatings> evaluationRatings) {
+        this.evaluationRatings = evaluationRatings;
     }
     
     public Set<MonthlySummaryRatings> Quarter.getMonthlysummaryratings() {

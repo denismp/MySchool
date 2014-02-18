@@ -16,7 +16,8 @@
         <field:simple field="bodyofworks" id="c_com_app_myschool_model_Quarter_bodyofworks" messageCode="entity_reference_not_managed" messageCodeAttribute="Body Of Work" z="x5JwdnhgX2Bwa6OQ02HOtNQNc0s="/>
         <field:simple field="dailys" id="c_com_app_myschool_model_Quarter_dailys" messageCode="entity_reference_not_managed" messageCodeAttribute="Daily" z="GUhTWANYlnFps6p8QPz1VIemTPU="/>
         <field:simple field="monthlysummaryratings" id="c_com_app_myschool_model_Quarter_monthlysummaryratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Summary Ratings" z="31Zr5Mxq9s6OwbI5jWzRTcQ037U="/>
-        <field:simple field="weeklys" id="c_com_app_myschool_model_Quarter_weeklys" messageCode="entity_reference_not_managed" messageCodeAttribute="Weekly" z="OyARS0P8SonrZV19yrMQqpZg7eU="/>
         <field:simple field="monthlyevaluationratings" id="c_com_app_myschool_model_Quarter_monthlyevaluationratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="sBkVAwJo9CPkV2DIPQGPn0ifsK0="/>
+        <field:simple field="skillRatings" id="c_com_app_myschool_model_Quarter_skillRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Skill Ratings" z="4/F55W3xRdXFfxko9EoTdSNnCkA="/>
+        <field:simple field="evaluationRatings" id="c_com_app_myschool_model_Quarter_evaluationRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Evaluation Ratings" z="7UtXkFeRT+lgemneERvp86COMRA="/>
     </form:update>
 </div>

@@ -7,14 +7,11 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -38,7 +35,6 @@ import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
-import com.app.myschool.model.Weekly;
 
 /**
  * @author denisputnam
@@ -430,9 +426,6 @@ public class ControllerHelper {
 			else if (myClass.equals(SkillRatings.class)) {
 				records  = SkillRatings.findAllSkillRatingses();
 			}
-			else if (myClass.equals(Weekly.class)) {
-				records  = Weekly.findAllWeeklys();
-			}
 			else if (myClass.equals(Artifact.class)) {
 				records  = Artifact.findAllArtifacts();
 			}
@@ -560,9 +553,6 @@ public class ControllerHelper {
 			}
 			else if (myClass.equals(SkillRatings.class)) {
 				record = SkillRatings.findSkillRatings(id);
-			}
-			else if (myClass.equals(Weekly.class)) {
-				record = Weekly.findWeekly(id);
 			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.findArtifact(id);
@@ -719,10 +709,6 @@ public class ControllerHelper {
 				record = SkillRatings.fromJsonToSkillRatings(myJson);
 		        ((SkillRatings)record).persist();
 			}
-			else if (myClass.equals(Weekly.class)) {
-				record = Weekly.fromJsonToWeekly(myJson);
-		        ((Weekly)record).persist();
-			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.fromJsonToArtifact(myJson);
 		        ((Artifact)record).persist();
@@ -824,10 +810,6 @@ public class ControllerHelper {
 			else if (myClass.equals(SkillRatings.class)) {
 				record = SkillRatings.findSkillRatings(id);
 		        ((SkillRatings)record).remove();
-			}
-			else if (myClass.equals(Weekly.class)) {
-				record = Weekly.findWeekly(id);
-		        ((Weekly)record).remove();
 			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.findArtifact(id);
@@ -996,12 +978,6 @@ public class ControllerHelper {
 			else if (myClass.equals(SkillRatings.class)) {
 				record = SkillRatings.fromJsonToSkillRatings(myJson);
 		        if (((SkillRatings)record).merge() != null ) {
-		        	updateGood = true;
-		        }				
-			}
-			else if (myClass.equals(Weekly.class)) {
-				record = Weekly.fromJsonToWeekly(myJson);
-		        if (((Weekly)record).merge() != null ) {
 		        	updateGood = true;
 		        }				
 			}
@@ -1246,24 +1222,6 @@ public class ControllerHelper {
 				List<SkillRatings> records = new ArrayList( mycollection );
 		
 		        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
-		
-	    	        if (record.merge() == null) {
-	    	            returnStatus = HttpStatus.NOT_FOUND;
-	    	            response.setMessage(className + " update failed for id=" + record.getId() );
-	    				response.setSuccess(false);
-	    				response.setTotal(0L);
-	    		        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-	    	        }
-	    		}
-		        results = records;
-		        statusGood = true;
-			}
-			else if (myClass.equals(Weekly.class)) {
-				Collection <Weekly>mycollection = Weekly.fromJsonArrayToWeeklys(myJson);
-				@SuppressWarnings("unchecked")
-				List<Weekly> records = new ArrayList( mycollection );
-		
-		        for (Weekly record: Weekly.fromJsonArrayToWeeklys(myJson)) {
 		
 	    	        if (record.merge() == null) {
 	    	            returnStatus = HttpStatus.NOT_FOUND;
@@ -1537,17 +1495,6 @@ public class ControllerHelper {
 				List<SkillRatings> records = new ArrayList( mycollection );
 		
 		        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
-	    	        record.persist();
-	    		}
-		        results = records;
-		        statusGood = true;
-			}
-			else if (myClass.equals(Weekly.class)) {
-				Collection <Weekly>mycollection = Weekly.fromJsonArrayToWeeklys(myJson);
-				@SuppressWarnings("unchecked")
-				List<Weekly> records = new ArrayList( mycollection );
-		
-		        for (Weekly record: Weekly.fromJsonArrayToWeeklys(myJson)) {
 	    	        record.persist();
 	    		}
 		        results = records;

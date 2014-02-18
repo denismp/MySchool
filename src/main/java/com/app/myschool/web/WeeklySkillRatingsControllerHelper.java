@@ -21,7 +21,6 @@ import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 
-import com.app.myschool.model.Weekly;
 import com.app.myschool.model.WeeklySkillRatingsView;
 
 import com.app.myschool.model.Quarter;
@@ -48,27 +47,6 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			}
 		}
 		return ret_;
-	}
-	
-	@SuppressWarnings("unchecked")
-	private List<Weekly>getList( String studentId ) throws Exception
-	{
-		List<Weekly> rList = null;
-		EntityManager em = Weekly.entityManager();
-		StringBuilder queryString = new StringBuilder("select w.*");
-		queryString.append(" from weekly w, quarter q, subject s, student t");
-		queryString.append(" where w.quarter = q.id");
-		queryString.append(" and q.subject = s.id");
-		queryString.append(" and q.student = t.id");
-		if( studentId != null )
-		{
-			queryString.append(" and t.id = ");
-			queryString.append(studentId);	
-		}
-		queryString.append( " order by s.name, q.qtr_name, q.qtr_year, w.month_number, w.week_number");
-		rList = (List<Weekly>)em.createNativeQuery(queryString.toString(), Weekly.class).getResultList(); 
-
-		return rList;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -117,18 +95,18 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			for (SkillRatings skillRatings : weeklySkillRatingsList) 
 			{
 				statusGood = true;
-				Weekly weekly = skillRatings.getWeekly();
-				Quarter quarter = weekly.getQuarter();
+				//Weekly weekly = skillRatings.getWeekly();
+				Quarter quarter = skillRatings.getQuarter();
 				Subject u_ = quarter.getSubject();
 				Student student_ = quarter.getStudent();
 				WeeklySkillRatingsView weeklySkillRatingsView = new WeeklySkillRatingsView();
 
 				//weeklySkillRatingsView.setId(++i);
-				weeklySkillRatingsView.setMonth_number(weekly.getWeek_month());
-				weeklySkillRatingsView.setWeek_number(weekly.getWeek_number());
+				weeklySkillRatingsView.setWeek_month(skillRatings.getWeek_month());
+				weeklySkillRatingsView.setWeek_number(skillRatings.getWeek_number());
 				weeklySkillRatingsView.setId(skillRatings.getId());
 				weeklySkillRatingsView.setWeeklyskillId(skillRatings.getId());
-				weeklySkillRatingsView.setWeeklyId(weekly.getId());
+				//weeklySkillRatingsView.setWeeklyId(weekly.getId());
 				weeklySkillRatingsView.setRemembering(skillRatings.getRemembering());
 				weeklySkillRatingsView.setUnderstanding(skillRatings.getUnderstanding());
 				weeklySkillRatingsView.setApplying(skillRatings.getApplying());
@@ -196,13 +174,14 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		// Class<Weekly> myClass = Weekly.class;
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<Weekly> records = null;
+		List<SkillRatings> records = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 
 		try {
 			logger.info("GET");
-			records = Weekly.findAllWeeklys();
+			records = SkillRatings.findAllSkillRatingses();
+			//records = Weekly.findAllWeeklys();
 			//records = Weekly.findAllMonthlySummaryRatingses();
 			if (records == null)
 			{
@@ -215,7 +194,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 
 			if (statusGood)
 			{
-				response.setMessage("All " + className + "s retrieved: ");
+				response.setMessage("All " + className + "s retrieved");
 				response.setData(records);
 				returnStatus = HttpStatus.OK;
 				response.setSuccess(true);
@@ -245,7 +224,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
         
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		Weekly record = null;
+		SkillRatings record = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 		try {	
@@ -286,15 +265,17 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<Weekly> weeklySkillRatingsList = this.getList(studentId.toString());
+		//List<Weekly> weeklySkillRatingsList = this.getList(studentId.toString());
+		List<SkillRatings> weeklySkillRatingsList = this.getSkillRatingsList(studentId.toString());
 		
 
-		for (Weekly weekly : weeklySkillRatingsList) 
+		for (SkillRatings skillRatings : weeklySkillRatingsList) 
 		{
+			//Weekly week = skillRatings.getWeekly();
 			if( 
-					weekly.getWeek_month() == myView.getMonth_number() &&
-					weekly.getWeek_number() == myView.getWeek_number() &&
-					weekly.getQuarter() == quarter &&
+					skillRatings.getWeek_month() == myView.getWeek_month() &&
+					skillRatings.getWeek_number() == myView.getWeek_number() &&
+					skillRatings.getQuarter() == quarter &&
 					quarter.getStudent().getId() == myView.getStudentId() &&
 					quarter.getSubject().getId() == myView.getSubjId()
 					)
@@ -318,7 +299,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			Weekly record = new Weekly();
+			SkillRatings record = new SkillRatings();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			WeeklySkillRatingsView myView = WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
@@ -343,7 +324,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 				//record.setReflections(myView.getReflections());
 				record.setWhoUpdated(myView.getWhoUpdated());
 				
-				((Weekly)record).persist();
+				((SkillRatings)record).persist();
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
@@ -401,13 +382,14 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		JsonObjectResponse response = new JsonObjectResponse();
 		
 		try {
-			Weekly record = null;
+			SkillRatings record = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 
-			record = Weekly.findWeekly(id);
+			record = SkillRatings.findSkillRatings(id);
+			//record = Weekly.findWeekly(id);
 			if( record != null )
-		        ((Weekly)record).remove();
+		        ((SkillRatings)record).remove();
 
 			else {
 				response.setMessage( "No data for class=" + className );
@@ -460,7 +442,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			myView = WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
 			logger.info("Debug1");
 			logger.info("updateFromJson(): Weekly id=" + myView.getWeeklyskillId());
-			Weekly record = Weekly.findWeekly(myView.getWeeklyskillId());
+			SkillRatings record = SkillRatings.findSkillRatings(myView.getWeeklyskillId());
 			
 			record.setLastUpdated(myView.getLastUpdated());
 			//record.setLocked(myView.getLocked());
@@ -534,7 +516,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
         headers.add("Content-Type", "application/json");
         
 		HttpStatus returnStatus = HttpStatus.OK;
-		List<Weekly> results = null;
+		List<SkillRatings> results = null;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try {
@@ -550,10 +532,10 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = false;
 		try {
-			Collection <Weekly>mycollection = Weekly.fromJsonArrayToWeeklys(myJson);
-			List<Weekly> records = new ArrayList<Weekly>( mycollection );
+			Collection <SkillRatings>mycollection = SkillRatings.fromJsonArrayToSkillRatingses(myJson);
+			List<SkillRatings> records = new ArrayList<SkillRatings>( mycollection );
 	
-	        for (Weekly record: Weekly.fromJsonArrayToWeeklys(myJson)) {
+	        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
 	
     	        if (record.merge() == null) {
     	            returnStatus = HttpStatus.NOT_FOUND;
@@ -617,10 +599,10 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 
 		try {
 
-			Collection <Weekly>mycollection = Weekly.fromJsonArrayToWeeklys(myJson);
-			List<Weekly> records = new ArrayList<Weekly>( mycollection );
+			Collection <SkillRatings>mycollection = SkillRatings.fromJsonArrayToSkillRatingses(myJson);
+			List<SkillRatings> records = new ArrayList<SkillRatings>( mycollection );
 	
-	        for (Weekly record: Weekly.fromJsonArrayToWeeklys(myJson)) {
+	        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
     	        record.persist();
     		}
 	        results = records;
@@ -676,7 +658,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			
 			if( statusGood )
 			{
-				response.setMessage( "All " + className + "s retrieved: ");
+				response.setMessage( "All " + className + "s retrieved");
 				response.setData( records );
 	
 				returnStatus = HttpStatus.OK;

@@ -13,7 +13,7 @@ public class WeeklySkillRatingsView {
 	private Long id;
 	private Long weeklyskillId;
 	private Long weeklyId;
-	private Integer month_number;
+	private Integer week_month;
 	private Integer week_number;
 	
 	private Integer remembering;
