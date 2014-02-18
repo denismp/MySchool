@@ -55,9 +55,8 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		List<SkillRatings> rList = null;
 		EntityManager em = SkillRatings.entityManager();
 		StringBuilder queryString = new StringBuilder("select sr.*");
-		queryString.append(" from skill_ratings sr, weekly w, quarter q, subject s, student t");
-		queryString.append(" where w.quarter = q.id");
-		queryString.append(" and sr.weekly = w.id");
+		queryString.append(" from skill_ratings sr, quarter q, subject s, student t");
+		queryString.append(" where sr.quarter = q.id");
 		queryString.append(" and q.subject = s.id");
 		queryString.append(" and q.student = t.id");
 		if( studentId != null )
@@ -65,7 +64,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
-		queryString.append( " order by s.name, q.qtr_name, q.qtr_year, w.week_month, w.week_number");
+		queryString.append( " order by s.name, q.qtr_name, q.qtr_year, sr.week_month, sr.week_number");
 		rList = (List<SkillRatings>)em.createNativeQuery(queryString.toString(), SkillRatings.class).getResultList(); 
 
 		return rList;
