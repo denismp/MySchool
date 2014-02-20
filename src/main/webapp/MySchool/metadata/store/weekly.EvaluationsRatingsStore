@@ -1,0 +1,114 @@
+{
+    "type": "jsonpstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyevaluationsratingsstore",
+        "designer|userClassName": "weekly.EvaluationsRatingsStore",
+        "model": "weekly.EvaluationsModel",
+        "storeId": "weekly.EvaluationsRatingsStore"
+    },
+    "designerId": "a330b1e6-5e4e-4988-bcaa-6d7407127f87",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
+                "url": "evaluationratingses"
+            },
+            "designerId": "d2144c0e-59b3-49e6-9ff8-687e5a894757",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "0a42412b-1555-4795-ad13-cbcafa85a0e5"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRestException",
+                        "implHandler": [
+                            "debugger;",
+                            "var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;",
+                            "Ext.MessageBox.show({",
+                            "    title: 'REMOTE EXCEPTION',",
+                            "    msg: smsg,",
+                            "    icon: Ext.MessageBox.ERROR,",
+                            "    buttons: Ext.Msg.OK,",
+                            "    resizeable: true",
+                            "});",
+                            "window.console.log( smsg );",
+                            "if( this.getCount() > 0 )",
+                            "{",
+                            "    this.reload();",
+                            "}",
+                            "//this.reload();"
+                        ],
+                        "name": "exception",
+                        "scope": "me"
+                    },
+                    "designerId": "5d6b01c3-4ead-4a56-a69a-afdc39f66ce0"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"weekly.EvaluationsRatingsStore.onJsonstoreLoad() called...\");"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "fe11ef28-9fbb-4132-876e-c11ed9179657"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreWrite",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"weekly.EvaluationsRatingsStore.onJsonstoreWrite(): called...\");",
+                    "store.reload();"
+                ],
+                "name": "write",
+                "scope": "me"
+            },
+            "designerId": "7b00c2ab-cb47-4350-9ec2-b0d493544150"
+        }
+    ]
+}

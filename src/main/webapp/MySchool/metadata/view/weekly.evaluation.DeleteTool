@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyevaluationdeletetool",
+        "designer|userClassName": "weekly.evaluation.DeleteTool",
+        "id": null,
+        "itemId": "weeklyevaluationdeletetool",
+        "tooltip": "Delete",
+        "type": "minus"
+    },
+    "designerId": "0b7da60c-ca11-44e0-8c7f-63580de59b4f"
+}

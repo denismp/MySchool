@@ -1,0 +1,374 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "weeklyevaluationsnewform",
+        "designer|userClassName": "weekly.evaluations.NewForm",
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": null,
+        "itemId": "weeklyevaluatiionsnewformpanel",
+        "title": "New Weekly Evaluations Form",
+        "width": 500
+    },
+    "designerId": "a1495fd8-578c-4fe3-8dce-e3662800b20f",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "evaluationsfieldset",
+                "title": "Evaluations Fields"
+            },
+            "designerId": "ff03d98f-40c9-49c4-9d42-40ef1968f7a8",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "560f490b-f7ad-4e5a-8328-1a10a9ffb67f",
+                    "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "59d7fa5c-2bcf-41dc-929d-54691d7535c5",
+                    "masterInstanceId": "013dec09-40b4-43be-9cd0-ecf74b1836c2"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Week Number",
+                        "itemId": "evaluation-week_number",
+                        "layout|anchor": "100%",
+                        "maxValue": 5,
+                        "minValue": 1,
+                        "name": "week_number"
+                    },
+                    "designerId": "ae91b8f4-909b-4ac2-b1b2-65e11e5dab2e"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "motivation",
+                        "itemId": "evaluation-motivation",
+                        "layout|anchor": "100%",
+                        "name": "motivation",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "de58c87b-bcfc-42bd-9280-928d0224d820"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "organization",
+                        "itemId": "evaluation-organization",
+                        "layout|anchor": "100%",
+                        "name": "organization",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "d4cb7988-7803-43ed-b9bf-8d9e0df99856"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "effectiveUseOfStudyTime",
+                        "itemId": "evaluation-effetiveuseofstudytime",
+                        "layout|anchor": "100%",
+                        "name": "effectiveUseOfStudyTime",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "325ca8e0-7ade-4414-bf90-08c2093fedb5"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "qualityOfWork",
+                        "itemId": "evaluation-qualityofwork",
+                        "layout|anchor": "100%",
+                        "name": "qualityOfWork",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "6d08a658-d153-488a-8462-f48734463690"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "accuracyOfWork",
+                        "itemId": "evaluation-accuracyofwork",
+                        "layout|anchor": "100%",
+                        "name": "accuracyOfWork",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "ccf014e3-0146-474f-94f1-531027a6eb1a"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "complexityOfWork",
+                        "itemId": "evaluation-complexityofwork",
+                        "layout|anchor": "100%",
+                        "name": "complexityOfWork",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "af05d36a-5801-4449-9de8-9396d43f2ebe"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "growth",
+                        "itemId": "evaluation-growth",
+                        "layout|anchor": "100%",
+                        "name": "growth",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "13d590b2-ba47-4536-99dd-d5f375dad1d7"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "consistency",
+                        "itemId": "evaluation-consistency",
+                        "layout|anchor": "100%",
+                        "name": "consistency",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "1963068d-acfe-4d9e-8b34-cb996553b94c"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "comments",
+                        "itemId": "evaluation-comments",
+                        "layout|anchor": "100%",
+                        "name": "comments",
+                        "value": [
+                            "'comments'"
+                        ]
+                    },
+                    "designerId": "afd035bd-7feb-44ba-97e5-39d6cc7c066d"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentname",
+                        "itemId": "evaluation-studentname",
+                        "layout|anchor": "100%",
+                        "name": "studentUserName"
+                    },
+                    "designerId": "0ef61121-6169-4703-85d4-01070992aa67"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectname",
+                        "itemId": "evaluation-subjectname",
+                        "layout|anchor": "100%",
+                        "name": "subjName"
+                    },
+                    "designerId": "41ef1cc3-afcd-444a-ab41-2918a0a74129"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarter",
+                        "itemId": "evaluation-quarter",
+                        "layout|anchor": "100%",
+                        "name": "qtrName"
+                    },
+                    "designerId": "76b1bf21-4ddd-4d4f-9fb4-84505209eab6"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "year",
+                        "itemId": "evaluation-quarteryear",
+                        "layout|anchor": "100%",
+                        "name": "qtrYear"
+                    },
+                    "designerId": "6ea28c84-8c91-4350-8787-04e193c971b0"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentid",
+                        "itemId": "evaluation-studentid",
+                        "layout|anchor": "100%",
+                        "name": "studentId"
+                    },
+                    "designerId": "d1280e65-6dc7-4ddd-a08c-070b4c6a0f4b"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectId",
+                        "itemId": "evaluation-subjectid",
+                        "layout|anchor": "100%",
+                        "name": "subjId"
+                    },
+                    "designerId": "b5bc21d4-850a-4f26-a079-f4eec21d2b36"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarterid",
+                        "itemId": "evaluation-quarterid",
+                        "layout|anchor": "100%",
+                        "name": "qtrId"
+                    },
+                    "designerId": "4e1ede2d-7701-4658-8d25-5c3794e9937c"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "evaluationcancel",
+                "text": "Canel"
+            },
+            "designerId": "f95e1815-2d78-4f85-a21d-6b6cbd11ade1"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "evaluationsubmit",
+                "text": "Submit"
+            },
+            "designerId": "150c2df7-5c09-4241-a223-f4c015d62dbe"
+        }
+    ]
+}

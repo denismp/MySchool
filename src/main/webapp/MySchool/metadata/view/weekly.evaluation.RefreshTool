@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyevaluationrefreshtool",
+        "designer|userClassName": "weekly.evaluation.RefreshTool",
+        "id": null,
+        "itemId": "weeklyevaluationrefreshtool",
+        "tooltip": "Refresh",
+        "type": "refresh"
+    },
+    "designerId": "cad069e2-2042-46c9-8ed1-24a3a9ec8514"
+}

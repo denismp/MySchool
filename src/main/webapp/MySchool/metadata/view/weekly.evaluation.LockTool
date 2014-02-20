@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyevaluationlocktool",
+        "designer|userClassName": "weekly.evaluation.LockTool",
+        "id": null,
+        "itemId": "weeklyevaluationlocktool",
+        "tooltip": "Lock?",
+        "type": "pin"
+    },
+    "designerId": "150fe4e6-adda-4c8d-87f0-835937c2bc5d"
+}
