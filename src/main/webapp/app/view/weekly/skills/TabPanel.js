@@ -19,77 +19,58 @@ Ext.define('MySchool.view.weekly.skills.TabPanel', {
 
     requires: [
         'MySchool.view.weekly.skills.GridPanel',
+        'MySchool.view.weekly.skills.DetailsTabPanel',
+        'MySchool.view.weekly.skills.RefreshTool',
+        'MySchool.view.weekly.skills.SearchTool',
+        'MySchool.view.weekly.skills.NewTool',
+        'MySchool.view.weekly.skills.SaveTool',
+        'MySchool.view.weekly.skills.DeleteTool',
+        'MySchool.view.weekly.skills.LockTool',
         'Ext.grid.Panel',
+        'Ext.tab.Panel',
         'Ext.panel.Tool'
     ],
 
+    height: 673,
     itemId: 'weeklydetailspanel',
-    layout: 'fit',
+    width: 1398,
     title: 'Weekly Details',
 
     initComponent: function() {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [
+            dockedItems: [
                 {
-                    xtype: 'weeklyskillsgridpanel'
+                    xtype: 'weeklyskillsgridpanel',
+                    itemId: 'weeklyskillsgridpanel',
+                    minHeight: 150,
+                    dock: 'top'
+                },
+                {
+                    xtype: 'weeklyskillsdetailstabpanel',
+                    itemId: 'weeklyskillsdetailstabpanel',
+                    dock: 'bottom'
                 }
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                    },
-                    id: 'toolrefreshstudentsbysubject3',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'weeklyskillsrefreshtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    id: 'toolsearchstudentsbysubject3',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'weeklyskillssearchtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    id: 'toolnewstudentsbysubject3',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'weeklyskillsnewtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                    },
-                    id: 'toolsavestudentsbysubject3',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'weeklyskillssavetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    id: 'tooldeletestudentsbysubject3',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'weeklyskillsdeletetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add lock handler code here.
-                    },
-                    id: 'toollockstudentsbysubject3',
-                    tooltip: 'Lock?',
-                    type: 'pin'
+                    xtype: 'weeklyskillslocktool'
                 }
             ]
         });

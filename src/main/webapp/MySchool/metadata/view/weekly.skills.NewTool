@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyskillsnewtool",
+        "designer|userClassName": "weekly.skills.NewTool",
+        "id": null,
+        "itemId": "weeklyskillsnewtool",
+        "tooltip": "New",
+        "type": "plus"
+    },
+    "designerId": "56af5350-d0f0-41be-9202-fe7da1df4549"
+}

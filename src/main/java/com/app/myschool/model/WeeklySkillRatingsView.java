@@ -12,7 +12,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 public class WeeklySkillRatingsView {
 	private Long id;
 	private Long weeklyskillId;
-	private Long weeklyId;
+	//private Long weeklyId;
 	private Integer week_month;
 	private Integer week_number;
 	

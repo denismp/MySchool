@@ -24,7 +24,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "top"
+                "dock": "top",
+                "minHeight": 150
             },
             "designerId": "839555b8-2c04-47d6-99a4-539eb5234757",
             "masterInstanceId": "0dbf8df5-9454-4045-bed5-06bead3b8e81"

@@ -61,10 +61,6 @@ Ext.define('MySchool.controller.daily.MyController', {
         this.buttonHandler( button, e, eOpts );
     },
 
-    onDailydetailsformhournumberfieldBlur: function(component, e, eOpts) {
-        this.blurHandler( component, e, this );
-    },
-
     onDailyrefreshtoolClick: function(tool, e, eOpts) {
         var myStore = Ext.getStore('daily.MyJsonStore');
         myStore.reload();
@@ -299,33 +295,6 @@ Ext.define('MySchool.controller.daily.MyController', {
         button.up().hide();
     },
 
-    buttonHandler: function(button, e, eOpts) {
-        debugger;
-        window.console.log(button);
-        var b_		= button;
-        var form	= b_.up('panel');
-        var p_		= form.up();
-        var pItemId_ = p_.getItemId();
-        var field_;
-
-        if (pItemId_ == 'dailyhourstab') {
-            field_ = p_.down('numberfield');
-        } else {
-            field_ = p_.down('textareafield');
-        }
-
-        if (b_.getText().charAt(0) == 'D') {
-            b_ = p_.down('#edit' + pItemId_);
-            b_.setText('Edit');
-            b_.setDisabled(false);
-            field_.setDisabled(true);
-        } else {
-            b_.setText('Done');
-            field_.setDisabled(false);
-            field_.focus();
-        }
-    },
-
     blurHandler: function(o, event, eOpts) {
         //debugger;
         var p_			= o.up('form').up('panel');
@@ -387,6 +356,33 @@ Ext.define('MySchool.controller.daily.MyController', {
         this.buttonHandler( edit_ );
     },
 
+    buttonHandler: function(button, e, eOpts) {
+        debugger;
+        window.console.log(button);
+        var b_		= button;
+        var form	= b_.up('panel');
+        var p_		= form.up();
+        var pItemId_ = p_.getItemId();
+        var field_;
+
+        if (pItemId_ == 'dailyhourstab') {
+            field_ = p_.down('numberfield');
+        } else {
+            field_ = p_.down('textareafield');
+        }
+
+        if (b_.getText().charAt(0) == 'D') {
+            b_ = p_.down('#edit' + pItemId_);
+            b_.setText('Edit');
+            b_.setDisabled(false);
+            field_.setDisabled(true);
+        } else {
+            b_.setText('Done');
+            field_.setDisabled(false);
+            field_.focus();
+        }
+    },
+
     init: function(application) {
                 this.control({
                     "#editdailytesttabpanel": {
@@ -437,9 +433,6 @@ Ext.define('MySchool.controller.daily.MyController', {
         this.control({
             "#editdailyhourstab": {
                 click: this.onEditdailyhourstabClick
-            },
-            "#dailydetailsformhournumberfield": {
-                blur: this.onDailydetailsformhournumberfieldBlur
             },
             "#dailyrefreshtool": {
                 click: this.onDailyrefreshtoolClick

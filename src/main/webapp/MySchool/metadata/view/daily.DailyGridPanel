@@ -10,13 +10,13 @@
         "designer|userAlias": "dailygridpanel",
         "designer|userClassName": "daily.DailyGridPanel",
         "forceFit": true,
-        "height": 373,
+        "height": null,
         "id": null,
         "itemId": "dailygridpanel",
         "minHeight": null,
         "store": "daily.MyJsonStore",
         "title": "[student name] Daily Details",
-        "width": 967
+        "width": null
     },
     "designerId": "0dbf8df5-9454-4045-bed5-06bead3b8e81",
     "cn": [

@@ -85,6 +85,7 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
+                            height: 700,
                             itemId: 'dailytab',
                             title: 'Daily',
                             layout: {
@@ -108,11 +109,12 @@ Ext.define('MySchool.view.MainPanel', {
                                 type: 'vbox',
                                 align: 'stretch'
                             },
-                            items: [
+                            dockedItems: [
                                 {
                                     xtype: 'weeklydetailspanel',
                                     itemId: 'weeklyskillstabpanel',
-                                    flex: 1
+                                    flex: 1,
+                                    dock: 'top'
                                 }
                             ]
                         },

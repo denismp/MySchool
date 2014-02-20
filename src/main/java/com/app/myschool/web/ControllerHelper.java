@@ -31,7 +31,6 @@ import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.QuarterNames;
 import com.app.myschool.model.Roles;
-import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
@@ -423,9 +422,6 @@ public class ControllerHelper {
 			else if (myClass.equals(Roles.class)) {
 				records  = Roles.findAllRoleses();
 			}
-			else if (myClass.equals(SkillRatings.class)) {
-				records  = SkillRatings.findAllSkillRatingses();
-			}
 			else if (myClass.equals(Artifact.class)) {
 				records  = Artifact.findAllArtifacts();
 			}
@@ -550,9 +546,6 @@ public class ControllerHelper {
 			}
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.findRoles(id);
-			}
-			else if (myClass.equals(SkillRatings.class)) {
-				record = SkillRatings.findSkillRatings(id);
 			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.findArtifact(id);
@@ -705,10 +698,6 @@ public class ControllerHelper {
 				record = Roles.fromJsonToRoles(myJson);
 		        ((Roles)record).persist();
 			}
-			else if (myClass.equals(SkillRatings.class)) {
-				record = SkillRatings.fromJsonToSkillRatings(myJson);
-		        ((SkillRatings)record).persist();
-			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.fromJsonToArtifact(myJson);
 		        ((Artifact)record).persist();
@@ -806,10 +795,6 @@ public class ControllerHelper {
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.findRoles(id);
 		        ((Roles)record).remove();
-			}
-			else if (myClass.equals(SkillRatings.class)) {
-				record = SkillRatings.findSkillRatings(id);
-		        ((SkillRatings)record).remove();
 			}
 			else if (myClass.equals(Artifact.class)) {
 				record = Artifact.findArtifact(id);
@@ -972,12 +957,6 @@ public class ControllerHelper {
 			else if (myClass.equals(Roles.class)) {
 				record = Roles.fromJsonToRoles(myJson);
 		        if (((Roles)record).merge() != null ) {
-		        	updateGood = true;
-		        }				
-			}
-			else if (myClass.equals(SkillRatings.class)) {
-				record = SkillRatings.fromJsonToSkillRatings(myJson);
-		        if (((SkillRatings)record).merge() != null ) {
 		        	updateGood = true;
 		        }				
 			}
@@ -1204,24 +1183,6 @@ public class ControllerHelper {
 				List<Roles> records = new ArrayList( mycollection );
 		
 		        for (Roles record: Roles.fromJsonArrayToRoleses(myJson)) {
-		
-	    	        if (record.merge() == null) {
-	    	            returnStatus = HttpStatus.NOT_FOUND;
-	    	            response.setMessage(className + " update failed for id=" + record.getId() );
-	    				response.setSuccess(false);
-	    				response.setTotal(0L);
-	    		        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-	    	        }
-	    		}
-		        results = records;
-		        statusGood = true;
-			}
-			else if (myClass.equals(SkillRatings.class)) {
-				Collection <SkillRatings>mycollection = SkillRatings.fromJsonArrayToSkillRatingses(myJson);
-				@SuppressWarnings("unchecked")
-				List<SkillRatings> records = new ArrayList( mycollection );
-		
-		        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
 		
 	    	        if (record.merge() == null) {
 	    	            returnStatus = HttpStatus.NOT_FOUND;
@@ -1484,17 +1445,6 @@ public class ControllerHelper {
 				List<Roles> records = new ArrayList( mycollection );
 		
 		        for (Roles record: Roles.fromJsonArrayToRoleses(myJson)) {
-	    	        record.persist();
-	    		}
-		        results = records;
-		        statusGood = true;
-			}
-			else if (myClass.equals(SkillRatings.class)) {
-				Collection <SkillRatings>mycollection = SkillRatings.fromJsonArrayToSkillRatingses(myJson);
-				@SuppressWarnings("unchecked")
-				List<SkillRatings> records = new ArrayList( mycollection );
-		
-		        for (SkillRatings record: SkillRatings.fromJsonArrayToSkillRatingses(myJson)) {
 	    	        record.persist();
 	    		}
 		        results = records;

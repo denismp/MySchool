@@ -1,0 +1,338 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "weeklyskillsnewform",
+        "designer|userClassName": "weekly.skills.NewForm",
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": null,
+        "itemId": "weeklyskillsnewformpanel",
+        "title": "New Weekly Skills Form",
+        "width": 500
+    },
+    "designerId": "11a07226-a1b8-43b6-b447-4c87765fece6",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dailyfieldset",
+                "title": "Skills Fields"
+            },
+            "designerId": "c4d71b27-0cee-452f-9491-2d5270b5fbb4",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "35a4aea4-e34d-4828-97da-87780f3727e0",
+                    "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "bb3b8579-458d-4346-8b6d-16688b83b77e",
+                    "masterInstanceId": "013dec09-40b4-43be-9cd0-ecf74b1836c2"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Week Number",
+                        "itemId": "skills-week_number",
+                        "layout|anchor": "100%",
+                        "maxValue": 5,
+                        "minValue": 1,
+                        "name": "week_number"
+                    },
+                    "designerId": "828f8ce5-c48d-4d82-8074-411d056267c0"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "remembering",
+                        "itemId": "skills-remembering",
+                        "layout|anchor": "100%",
+                        "name": "remembering",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "15fea535-dc73-48bc-a715-ac29ce91470e"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "understanding",
+                        "itemId": "skills-understanding",
+                        "layout|anchor": "100%",
+                        "name": "understanding",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "46659169-2e20-40d7-bcdc-c69827490cd1"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "applying",
+                        "itemId": "skills-applying",
+                        "layout|anchor": "100%",
+                        "name": "applying",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "4986ec2a-afd1-4fc2-b3ef-19ccc298e6ee"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "analyzing",
+                        "itemId": "skills-analyzing",
+                        "layout|anchor": "100%",
+                        "name": "analyzing",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "9e9ed79d-0b58-4d70-b8c6-aa048005c2a9"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "evaluating",
+                        "itemId": "skills-evaluating",
+                        "layout|anchor": "100%",
+                        "name": "evaluating",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "c5811d80-39df-463e-a507-f44841065687"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "creating",
+                        "itemId": "skills-creating",
+                        "layout|anchor": "100%",
+                        "name": "creating",
+                        "value": [
+                            "6"
+                        ]
+                    },
+                    "designerId": "b5aedc9d-518b-4769-b8a7-5b9ec8ef05b4"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "comments",
+                        "itemId": "skills-comments",
+                        "layout|anchor": "100%",
+                        "name": "comments",
+                        "value": [
+                            "'comments'"
+                        ]
+                    },
+                    "designerId": "1752dd60-f7ce-4f9f-9bb2-aab1fe3b040c"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentname",
+                        "itemId": "skills-studentname",
+                        "layout|anchor": "100%",
+                        "name": "studentUserName"
+                    },
+                    "designerId": "36b56f5b-c4a2-41eb-b398-27bcce130557"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectname",
+                        "itemId": "skills-subjectname",
+                        "layout|anchor": "100%",
+                        "name": "subjName"
+                    },
+                    "designerId": "5eb7aa48-4065-480a-a92c-fcd421f26f86"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarter",
+                        "itemId": "skills-quarter",
+                        "layout|anchor": "100%",
+                        "name": "qtrName"
+                    },
+                    "designerId": "6c380811-efd5-4495-86c3-94a02bb59877"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "year",
+                        "itemId": "skills-quarteryear",
+                        "layout|anchor": "100%",
+                        "name": "qtrYear"
+                    },
+                    "designerId": "2e7180ab-c779-4199-a7b1-b6f773f9883a"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "studentid",
+                        "itemId": "skills-studentid",
+                        "layout|anchor": "100%",
+                        "name": "studentId"
+                    },
+                    "designerId": "fb254318-951a-4c4a-a77b-081b963c4f8e"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "subjectId",
+                        "itemId": "skills-subjectid",
+                        "layout|anchor": "100%",
+                        "name": "subjId"
+                    },
+                    "designerId": "784ce349-d031-4802-9e52-93cbe9d57a61"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "quarterid",
+                        "itemId": "skills-quarterid",
+                        "layout|anchor": "100%",
+                        "name": "qtrId"
+                    },
+                    "designerId": "8b78075e-6dbb-43e7-b913-dc0b4b4103ec"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "skillscancel",
+                "text": "Canel"
+            },
+            "designerId": "86d3e554-ef98-405c-ba23-2af952fc865e"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "skillssubmit",
+                "text": "Submit"
+            },
+            "designerId": "e8cc6de5-296e-459f-834f-7603f32c3348"
+        }
+    ]
+}

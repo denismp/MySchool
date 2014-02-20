@@ -23,7 +23,8 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
 
     fields: [
         {
-            name: 'id'
+            name: 'id',
+            type: 'int'
         },
         {
             name: 'month_number',
@@ -75,7 +76,8 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
             type: 'string'
         },
         {
-            name: 'qtrId'
+            name: 'qtrId',
+            type: 'int'
         },
         {
             name: 'qtrName',
@@ -93,7 +95,8 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
             type: 'string'
         },
         {
-            name: 'subjId'
+            name: 'subjId',
+            type: 'int'
         },
         {
             name: 'subjName',
@@ -104,7 +107,8 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
             type: 'int'
         },
         {
-            name: 'summaryId'
+            name: 'summaryId',
+            type: 'int'
         }
     ]
 });

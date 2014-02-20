@@ -125,6 +125,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 				weeklySkillRatingsView.setQtrId(quarter.getId());
 				weeklySkillRatingsView.setQtrName(quarter.getQtrName());
 				weeklySkillRatingsView.setQtrYear(quarter.getQtr_year());
+				weeklySkillRatingsView.setVersion(skillRatings.getVersion());
 
 				weeklySkillRatingsViewList.add(weeklySkillRatingsView);
 				
@@ -309,25 +310,27 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 				//Subject u_ = quarter.getSubject();
 				//Student student_ = quarter.getStudent();
 				
-				//record.setActionResults(myView.getActionResults());
-				//record.setComments(myView.getComments());
-				//record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-				//record.setFeelings(myView.getFeelings());
-				record.setLastUpdated(myView.getLastUpdated());
-				//record.setLocked(myView.getLocked());
-				//record.setMonth_number(myView.getMonth_number());
-				//record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-				//record.setPlannedChanges(myView.getPlannedChanges());
+				record.setWeek_month(myView.getWeek_month());
+				record.setWeek_number(myView.getWeek_number());
+				record.setAnalyzing(myView.getAnalyzing());
+				record.setApplying(myView.getApplying());
+				record.setCreating(myView.getCreating());
+				record.setEvaluating(myView.getEvaluating());
+				record.setLocked(myView.getLocked());
+				record.setRemembering(myView.getRemembering());
+				record.setUnderstanding(myView.getUnderstanding());
 				record.setQuarter(quarter);
-				//record.setRealizations(myView.getRealizations());
-				//record.setReflections(myView.getReflections());
+				record.setComments(myView.getComments());
+				record.setLastUpdated(myView.getLastUpdated());
 				record.setWhoUpdated(myView.getWhoUpdated());
 				
 				((SkillRatings)record).persist();
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
+
 				myView.setWeeklyskillId(record.getId());
+
 				//myView.setSummaryId(record.getId());
 				
 				//myView.setId(100000L + record.getId());
@@ -355,7 +358,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			else
 			{
 				statusGood = false;
-				response.setMessage( "Duplicated month number." );
+				response.setMessage( "Duplicated month/week number." );
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -363,6 +366,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			}
 
 		} catch(Exception e) {
+			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -444,15 +448,17 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			SkillRatings record = SkillRatings.findSkillRatings(myView.getWeeklyskillId());
 			
 			record.setLastUpdated(myView.getLastUpdated());
-			//record.setLocked(myView.getLocked());
-			//record.setFeelings(myView.getFeelings());
-			//record.setReflections(myView.getReflections());
-			//record.setRealizations(myView.getRealizations());
-			//record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-			//record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-			//record.setActionResults(myView.getActionResults());
-			//record.setPlannedChanges(myView.getPlannedChanges());
-			//record.setComments(myView.getComments());
+			record.setLocked(myView.getLocked());
+			record.setAnalyzing(myView.getAnalyzing());
+			record.setApplying(myView.getApplying());
+			record.setComments(myView.getComments());
+			record.setCreating(myView.getCreating());
+			record.setEvaluating(myView.getEvaluating());
+			record.setRemembering(myView.getRemembering());
+			record.setUnderstanding(myView.getUnderstanding());
+			record.setWeek_month(myView.getWeek_month());
+			record.setWeek_number(myView.getWeek_number());
+			
 			record.setWhoUpdated(myView.getWhoUpdated());
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();

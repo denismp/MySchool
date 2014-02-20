@@ -40,66 +40,6 @@
             "designerId": "8227d284-457d-4764-a8dd-946ae377934d"
         },
         {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#dailydetailsformhournumberfield",
-                "designer|targetType": "Ext.form.field.Number",
-                "fn": "onDailydetailsformhournumberfieldBlur",
-                "implHandler": [
-                    "this.blurHandler( component, e, this );"
-                ],
-                "name": "blur",
-                "scope": "me"
-            },
-            "designerId": "06e024bd-3c3a-4de1-a668-8bd3dc445c8b"
-        },
-        {
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|params": [
-                    "button, e, eOpts"
-                ],
-                "fn": "buttonHandler",
-                "implHandler": [
-                    "debugger;",
-                    "window.console.log(button);",
-                    "var b_\t\t= button;",
-                    "var form\t= b_.up('panel');",
-                    "var p_\t\t= form.up();",
-                    "var pItemId_ = p_.getItemId();",
-                    "var field_;",
-                    "",
-                    "if (pItemId_ == 'dailyhourstab') {",
-                    "    field_ = p_.down('numberfield');",
-                    "} else {",
-                    "    field_ = p_.down('textareafield');",
-                    "}",
-                    "",
-                    "if (b_.getText().charAt(0) == 'D') {",
-                    "    b_ = p_.down('#edit' + pItemId_);",
-                    "    b_.setText('Edit');",
-                    "    b_.setDisabled(false);",
-                    "    field_.setDisabled(true);",
-                    "} else {",
-                    "    b_.setText('Done');",
-                    "    field_.setDisabled(false);",
-                    "    field_.focus();",
-                    "}"
-                ]
-            },
-            "designerId": "4ee0828b-d7a2-4d43-aef3-4ec1a6a84110"
-        },
-        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",
@@ -139,7 +79,7 @@
                     "    icon: Ext.Msg.QUESTION,",
                     "    fn: function(buttonId) {",
                     "        var mystore\t\t= Ext.getStore(\"daily.MyJsonStore\");",
-                    "        if (buttonId == 'yes') {           ",
+                    "        if (buttonId == 'yes') {",
                     "            Ext.Msg.show({",
                     "                title: 'Save',",
                     "                msg: 'record saved',",
@@ -155,7 +95,7 @@
                     "            record.set( myName, myValue );",
                     "            record.set( 'lastUpdated', new Date() );",
                     "            record.set( 'whoUpdated', 'login' );",
-                    "            ",
+                    "",
                     "            mystore.sync();",
                     "        }",
                     "        else {",
@@ -323,6 +263,47 @@
                 "scope": "me"
             },
             "designerId": "fd2a4fd4-698c-4c72-b17a-27aaafb7bffa"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "button, e, eOpts"
+                ],
+                "fn": "buttonHandler",
+                "implHandler": [
+                    "debugger;",
+                    "window.console.log(button);",
+                    "var b_\t\t= button;",
+                    "var form\t= b_.up('panel');",
+                    "var p_\t\t= form.up();",
+                    "var pItemId_ = p_.getItemId();",
+                    "var field_;",
+                    "",
+                    "if (pItemId_ == 'dailyhourstab') {",
+                    "    field_ = p_.down('numberfield');",
+                    "} else {",
+                    "    field_ = p_.down('textareafield');",
+                    "}",
+                    "",
+                    "if (b_.getText().charAt(0) == 'D') {",
+                    "    b_ = p_.down('#edit' + pItemId_);",
+                    "    b_.setText('Edit');",
+                    "    b_.setDisabled(false);",
+                    "    field_.setDisabled(true);",
+                    "} else {",
+                    "    b_.setText('Done');",
+                    "    field_.setDisabled(false);",
+                    "    field_.focus();",
+                    "}"
+                ]
+            },
+            "designerId": "be386d5e-4d0c-447d-9b02-840ae07841f4"
         },
         {
             "type": "fixedfunction",

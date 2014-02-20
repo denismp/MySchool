@@ -1,0 +1,48 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTab": 0,
+        "designer|userAlias": "weeklyskillsdetailstabpanel",
+        "designer|userClassName": "weekly.skills.DetailsTabPanel",
+        "height": 300,
+        "minHeight": 300
+    },
+    "designerId": "64724261-59c3-465a-9243-4cc42ef0ee80",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "weeklyskillscommentstabpanel",
+                "title": "Comments"
+            },
+            "designerId": "4cf6a80d-abba-4448-b0c8-91f7837af4f7",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
+                    "designerId": "09da84dd-4503-4841-8bd7-f0e7e9a0b654"
+                }
+            ]
+        }
+    ]
+}

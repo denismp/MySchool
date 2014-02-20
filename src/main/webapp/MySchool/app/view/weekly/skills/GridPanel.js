@@ -20,15 +20,19 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
     requires: [
         'Ext.grid.column.Number',
         'Ext.grid.View',
-        'Ext.grid.column.Boolean'
+        'Ext.form.field.Number',
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
+        'Ext.grid.column.Date',
+        'Ext.grid.plugin.CellEditing'
     ],
 
     id: 'weeklyskillsgridpanel',
-    itemId: 'weeklydetailsgridpanel',
     width: 963,
     autoScroll: true,
     title: '[student name]Weekly Skills By Subject And Week',
     forceFit: true,
+    store: 'weekly.SkillRatingsStore',
 
     initComponent: function() {
         var me = this;
@@ -37,77 +41,175 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    dataIndex: 'subject_name',
+                    dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
-                    xtype: 'numbercolumn',
-                    dataIndex: 'year',
-                    text: 'Year'
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrName',
+                    text: 'qtrName'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'month',
-                    text: 'Month'
+                    dataIndex: 'qtrYear',
+                    text: 'Year',
+                    format: '0000'
                 },
                 {
                     xtype: 'numbercolumn',
-                    dataIndex: 'week',
-                    text: 'Week'
+                    dataIndex: 'week_month',
+                    text: 'Month',
+                    format: '00'
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Remembering'
+                    dataIndex: 'week_number',
+                    text: 'Week',
+                    format: '0'
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Understanding'
+                    dataIndex: 'remembering',
+                    text: 'Remembering',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Applying'
+                    dataIndex: 'understanding',
+                    text: 'Understanding',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Analyzing'
+                    dataIndex: 'applying',
+                    text: 'Applying',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Evaluating'
+                    dataIndex: 'analyzing',
+                    text: 'Analyzing',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Creating'
+                    dataIndex: 'evaluating',
+                    text: 'Evaluating',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
-                    xtype: 'booleancolumn',
-                    text: 'Locked?'
+                    xtype: 'numbercolumn',
+                    dataIndex: 'creating',
+                    text: 'Creating',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
+                },
+                {
+                    xtype: 'checkcolumn',
+                    dataIndex: 'locked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
+                    dataIndex: 'id',
+                    text: 'id',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idsubject'
+                    dataIndex: 'subjId',
+                    text: 'subjectId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idweekly'
+                    dataIndex: 'weeklyskillId',
+                    text: 'skillId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idskill'
+                    dataIndex: 'qtrId',
+                    text: 'qtrId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
+                },
+                {
+                    xtype: 'datecolumn',
+                    hidden: true,
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated',
+                    format: 'm/d/Y'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'whoUpdated',
+                    text: 'whoUpdated'
                 }
             ],
             viewConfig: {
                 id: 'weeklyskillsgridview'
-            }
+            },
+            plugins: [
+                Ext.create('Ext.grid.plugin.CellEditing', {
+                    clicksToEdit: 1
+                })
+            ]
         });
 
         me.callParent(arguments);

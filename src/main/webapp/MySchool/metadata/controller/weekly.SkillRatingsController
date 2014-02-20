@@ -1,0 +1,633 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "weeklyskillratinscontroller",
+        "designer|userClassName": "weekly.SkillRatingsController",
+        "models": [
+            "weekly.SkillRatingsModel"
+        ],
+        "stores": [
+            "weekly.SkillRatingsStore"
+        ]
+    },
+    "designerId": "eef93c62-2f27-4d66-878a-cb3f9ca866e4",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "button, e, eOpts"
+                ],
+                "fn": "buttonHandler",
+                "implHandler": [
+                    "debugger;",
+                    "window.console.log(button);",
+                    "var b_\t\t= button;",
+                    "var form\t= b_.up('panel');",
+                    "var p_\t\t= form.up();",
+                    "var pItemId_ = p_.getItemId();",
+                    "var field_;",
+                    "",
+                    "if (pItemId_ == 'dailyhourstab') {",
+                    "    field_ = p_.down('numberfield');",
+                    "} else {",
+                    "    field_ = p_.down('textareafield');",
+                    "}",
+                    "",
+                    "if (b_.getText().charAt(0) == 'D') {",
+                    "    b_ = p_.down('#edit' + pItemId_);",
+                    "    b_.setText('Edit');",
+                    "    b_.setDisabled(false);",
+                    "    field_.setDisabled(true);",
+                    "} else {",
+                    "    b_.setText('Done');",
+                    "    field_.setDisabled(false);",
+                    "    field_.focus();",
+                    "}"
+                ]
+            },
+            "designerId": "443a413d-e976-4ffd-af77-dd9b01f49b03"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "o",
+                    "event",
+                    "eOpts"
+                ],
+                "fn": "blurHandler",
+                "implHandler": [
+                    "//debugger;",
+                    "var p_\t\t\t= o.up('form').up('panel');",
+                    "var myForm\t\t= o.up('form');",
+                    "//var topP_\t\t= p_.up('panel');",
+                    "var pItemId_\t= p_.getItemId();",
+                    "var edit_\t\t= p_.down('#edit' + pItemId_);",
+                    "var myTitle\t\t= p_.title;",
+                    "console.log( edit_ );",
+                    "//console.log( topP_ );",
+                    "console.log( myForm );",
+                    "console.log( \"pItemId_=\" + pItemId_);",
+                    "//var myController = this;",
+                    "",
+                    "console.log( 'title=' + myTitle );",
+                    "",
+                    "//topP_.buttonHandler(edit_);",
+                    "",
+                    "Ext.Msg.show({",
+                    "    title:'Save Changes?',",
+                    "    //msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',",
+                    "    msg: 'Would you like to save your changes to ' + myTitle + ' ?',",
+                    "    buttons: Ext.Msg.YESNO,",
+                    "    icon: Ext.Msg.QUESTION,",
+                    "    fn: function(buttonId) {",
+                    "        var mystore\t\t= Ext.getStore(\"weekly.SkillRatingsStore\");",
+                    "        if (buttonId == 'yes') {",
+                    "            Ext.Msg.show({",
+                    "                title: 'Save',",
+                    "                msg: 'record saved',",
+                    "                buttons: Ext.Msg.OK,",
+                    "                icon: Ext.window.MessageBox.INFO",
+                    "            });",
+                    "            //debugger;",
+                    "",
+                    "            var myTextArea\t= myForm.down('textareafield');",
+                    "            var myName\t\t= myTextArea.getName();",
+                    "            var myValue\t\t= myTextArea.getValue();",
+                    "            var record\t\t= myForm.getRecord();",
+                    "            record.set( myName, myValue );",
+                    "            record.set( 'lastUpdated', new Date() );",
+                    "            record.set( 'whoUpdated', 'login' );",
+                    "",
+                    "            mystore.sync();",
+                    "        }",
+                    "        else {",
+                    "            Ext.Msg.show({",
+                    "                title: 'Cancel',",
+                    "                msg: 'record restored',",
+                    "                buttons: Ext.Msg.OK,",
+                    "                icon: Ext.window.MessageBox.INFO",
+                    "            });",
+                    "            mystore.reload();",
+                    "        }",
+                    "",
+                    "    }",
+                    "});",
+                    "//debugger;",
+                    "this.buttonHandler( edit_ );"
+                ]
+            },
+            "designerId": "a149282a-7aa6-4b74-8a5d-6293d17d38c1"
+        },
+        {
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "application"
+                ],
+                "fn": "init",
+                "implHandler": [
+                    "this.control({",
+                    "    \"#editweeklyskillscommentstabpanel\": {",
+                    "        click: this.buttonHandler",
+                    "    },",
+                    "    \"#weeklyskillscommentstabpaneltextbox\": {",
+                    "        blur: this.blurHandler",
+                    "    }",
+                    "});"
+                ]
+            },
+            "designerId": "245d055a-1c32-42ff-8919-9548c3aff950"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "WeeklySkillsCommentsTabPanel",
+                "selector": "#weeklyskillscommentstabpanel"
+            },
+            "designerId": "11ebd8d0-036e-42a0-afe9-3d0e1a6cf252"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "WeeklySkillsGridPanel",
+                "selector": "#weeklyskillsgridpanel"
+            },
+            "designerId": "e53f4e50-59fc-4022-94a7-63ca8f83f217"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "tabPanel",
+                    "selected",
+                    "fieldname"
+                ],
+                "fn": "loadTabPanelForm",
+                "implHandler": [
+                    "debugger;",
+                    "var dockedItems = tabPanel.getDockedItems();",
+                    "var myForm = dockedItems[0];",
+                    "",
+                    "if( Ext.isDefined( myForm ) )",
+                    "{",
+                    "    console.log( myForm );",
+                    "    //var textBox = myForm.dockedItems.items[0];",
+                    "    var textBox = myForm.down('textareafield');",
+                    "    textBox.name = fieldname;",
+                    "    myForm.loadRecord( selected[0] );",
+                    "}",
+                    "else",
+                    "{",
+                    "    console.log( 'loadTabPanelForm(): No form' );",
+                    "    //console.log( tabPanel );",
+                    "}"
+                ]
+            },
+            "designerId": "291d3866-e13a-46db-a099-43530c71b4c5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onMyJsonStoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "//var g_ = Ext.ComponentQuery.query(\"#monthlysummarygridpanel\")[0];",
+                    "var g_ = this.getWeeklySkillsGridPanel();",
+                    "",
+                    "if (g_.getStore().getCount() > 0) {",
+                    "    g_.getSelectionModel().deselectAll();",
+                    "    g_.getSelectionModel().select( 0 );",
+                    "}",
+                    "",
+                    "this.gridViewReady = true;"
+                ]
+            },
+            "designerId": "9d981540-f222-49a9-9466-4273b5506096"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillrefreshtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklyskillrefreshtoolClick",
+                "implHandler": [
+                    "var myStore = Ext.getStore('weekly.SkillRatingsStore');",
+                    "myStore.reload();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "da23eba6-5587-45fd-9fa3-dfa9164ac994"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillssearchtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklyskillssearchtoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "cab3878c-f69d-4d20-81bc-fca8a6fa213f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillsnewtool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklyskillsnewtoolClick",
+                "implHandler": [
+                    "debugger;",
+                    "var studentStore\t\t\t\t= Ext.getStore('student.StudentStore');",
+                    "var subjectStore\t\t\t\t= Ext.getStore('subject.SubjectStore');",
+                    "var commonQuarterSubjectStore\t= Ext.getStore( 'common.QuarterSubjectStore');",
+                    "var commonMonthStore\t\t\t= Ext.getStore('common.MonthStore');",
+                    "",
+                    "var studentRecord\t= studentStore.getAt(0);",
+                    "var studentId\t\t= studentRecord.get( 'id' );",
+                    "var studentName\t\t= studentRecord.get( 'userName' );",
+                    "",
+                    "var newDialog = Ext.create( 'MySchool.view.weekly.skills.NewForm' );",
+                    "",
+                    "newDialog.down('#skills-studentid').setValue( studentId );",
+                    "newDialog.down('#skills-studentname').setValue( studentName );",
+                    "",
+                    "//commonQuarterSubjectStore.myLoad();",
+                    "commonMonthStore.myLoad();",
+                    "",
+                    "window.console.log( 'New Skills Dialog' );",
+                    "",
+                    "newDialog.render( Ext.getBody() );",
+                    "newDialog.show();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "a8d93f6b-6678-4b6e-8b76-3b0d38596098"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklytoolssavetool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklytoolssavetoolClick",
+                "implHandler": [
+                    "window.console.log( \"weekly.SkillRatingsStore.Save\" );",
+                    "debugger;",
+                    "",
+                    "var mystore = Ext.getStore(\"weekly.SkillRatingsStore\");",
+                    "",
+                    "var records = mystore.getModifiedRecords();",
+                    "for( var i = 0; i < records.length; i++ )",
+                    "{",
+                    "    records[i].set( 'lastUpdated', new Date() );",
+                    "    records[i].set( 'whoUpdated', 'login');",
+                    "}",
+                    "",
+                    "mystore.sync();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "a20696d6-3db3-4fe9-b159-de9f312b2456"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillsdeletetool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklyskillsdeletetoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "55384a6d-83bb-44a3-992c-94ae490aba99"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillslocktool",
+                "designer|targetType": "Ext.panel.Tool",
+                "fn": "onWeeklyskillslocktoolClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "aff9a0bf-4995-44a0-b7b0-4984aca68995"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillsgridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onWeeklyskillsgridpanelViewReady",
+                "implHandler": [
+                    "debugger;",
+                    "console.log('onWeeklyskillsgridpanelViewReady()');",
+                    "var myStore = Ext.getStore('weekly.SkillRatingsStore');",
+                    "var myStudentStore = Ext.getStore('student.StudentStore');",
+                    "var studentRecord = myStudentStore.getAt(0);",
+                    "//        debugger",
+                    "if ( typeof( studentRecord ) != \"undefined\" ) {",
+                    "    var studentName_ = studentRecord.get('firstName') + \" \" + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');",
+                    "    //MonthlyDetailsGridPanel",
+                    "    //var myGrid = Ext.ComponentQuery.query(\"#bodiesofworkssubjectsgrid\")[0];",
+                    "    var myGrid = this.getWeeklySkillsGridPanel();",
+                    "",
+                    "    myGrid.setTitle('[' + studentName_ + ']');",
+                    "    myStore.load({",
+                    "        callback: this.onMyJsonStoreLoad,",
+                    "        scope: this,",
+                    "        params: {",
+                    "            studentName: studentRecord.get('userName'),",
+                    "            studentId: studentRecord.get('id')",
+                    "        }",
+                    "    });",
+                    "}",
+                    "//grid.getSelectionModel().select( 0 );",
+                    "//tablepanel.getSelectionModel().select( 0 );"
+                ],
+                "name": "viewready",
+                "scope": "me"
+            },
+            "designerId": "cbea8b70-388f-499a-81fc-78c7c5b5f110"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#weeklyskillsgridpanel",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onWeeklyskillsgridpanelSelectionChange",
+                "implHandler": [
+                    "debugger;",
+                    "// in the onMyJsonStoreLoad we do a deselect so we need to test",
+                    "// if selected[0] has a value",
+                    "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
+                    "    var tabPanel = this.getWeeklySkillsCommentsTabPanel();",
+                    "        console.log( tabPanel );",
+                    "    this.loadTabPanelForm( tabPanel, selected, 'comments' );",
+                    "    //tabPanel = this.getDailyStudyDetailsTabPanel();",
+                    "    //    console.log( tabPanel );",
+                    "    //this.loadTabPanelForm( tabPanel, selected, 'studyDetails' );",
+                    "    //tabPanel = this.getDailyDetailsEvaluationTabPanel();",
+                    "    //    console.log( tabPanel );",
+                    "    //this.loadTabPanelForm( tabPanel, selected, 'evaluation' );",
+                    "    //tabPanel = this.getDailyDetailsCorrectionTabPanel();",
+                    "    //    console.log( tabPanel );",
+                    "    //this.loadTabPanelForm( tabPanel, selected, 'correction' );",
+                    "    //tabPanel = this.getDailyDetailsActionsTabPanel();",
+                    "    //    console.log( tabPanel );",
+                    "    //this.loadTabPanelForm( tabPanel, selected, 'dailyAction' );",
+                    "    //tabPanel = this.getDailyCommentsTabPanel();",
+                    "    //    console.log( tabPanel );",
+                    "    //this.loadTabPanelForm( tabPanel, selected, 'comments' );",
+                    "",
+                    "    console.log('onWeeklyskillsgridpanelSelectionChange()');",
+                    "}"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "designerId": "f6f5da3a-dd1c-4efc-a43f-63d2ad2091f0"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#skillssubmit",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onSkillssubmitClick",
+                "implHandler": [
+                    "debugger;",
+                    "window.console.log( \"Submit New Skills\" );",
+                    "var myForm\t\t\t\t\t= button.up().getForm();",
+                    "//var newDialog = button.up('monthlynewsummaryformpanel');",
+                    "",
+                    "//Get the values from the form and insert a new record into the MonthlySummaryView.",
+                    "",
+                    "var formValues\t\t\t\t= myForm.getValues();",
+                    "",
+                    "//\tCreate an empty record",
+                    "var myRecord\t= Ext.create('MySchool.model.weekly.SkillRatingsModel');",
+                    "",
+                    "//\tGet the stores that we will need",
+                    "var myStore\t\t= this.getStore( 'weekly.SkillRatingsStore' );",
+                    "",
+                    "var studentStore = Ext.getStore('student.StudentStore');",
+                    "var subjectStore = Ext.getStore( 'subject.SubjectStore' );",
+                    "",
+                    "//\tGet the student info",
+                    "var studentRecord\t= studentStore.getAt(0);",
+                    "var studentId\t\t= studentRecord.get( 'id' );",
+                    "var studentName\t\t= studentRecord.get( 'userName' );",
+                    "",
+                    "//\tGet the quarterSubject record from the form.",
+                    "var quarterSubjectId\t\t= formValues.comboquartersubject;",
+                    "var quarterSubjectRecord;",
+                    "for( var i = 0; i < subjectStore.count(); i++ )",
+                    "{",
+                    "    if( subjectStore.getAt(i).get('id') === quarterSubjectId )",
+                    "    {",
+                    "        quarterSubjectRecord = subjectStore.getAt(i);",
+                    "        break;",
+                    "    }",
+                    "}",
+                    "",
+                    "if( typeof quarterSubjectRecord !== 'undefined')",
+                    "{",
+                    "    //\tGet the other information that we need for the new record.",
+                    "    var subjName\t= quarterSubjectRecord.get('subjName');",
+                    "    var subjId\t\t= quarterSubjectRecord.get('subjId');",
+                    "    var qtrName\t\t= quarterSubjectRecord.get('qtrName');",
+                    "    var qtrId\t\t= quarterSubjectRecord.get('qtrId');",
+                    "    var qtrYear\t\t= quarterSubjectRecord.get('qtrYear');",
+                    "    //var month_number = formValues.combomonth;",
+                    "",
+                    "    //var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );",
+                    "    //var subjId_ = allSubjRec_.get( 'subjId' );",
+                    "",
+                    "",
+                    "    //Add the data to the new record.",
+                    "    if( formValues.combomonth > 0 )",
+                    "    {",
+                    "        myRecord.set('week_month', formValues.combomonth);",
+                    "        myRecord.set('week_number', formValues.week_number);",
+                    "",
+                    "        myRecord.set('subjName', subjName );",
+                    "        myRecord.set('subjId', subjId );",
+                    "        myRecord.set('qtrName', qtrName );",
+                    "        myRecord.set('qtrId', qtrId);",
+                    "        myRecord.set('studentId', studentId);",
+                    "        myRecord.set('studentUserName', studentName);",
+                    "        myRecord.set('qtrYear', qtrYear);",
+                    "",
+                    "        myRecord.set('locked', 0 );",
+                    "        myRecord.set('remembering', formValues.remembering);",
+                    "        myRecord.set('understanding', formValues.understanding);",
+                    "        myRecord.set('applying', formValues.applying);",
+                    "        myRecord.set('evaluating', formValues.evaluating);",
+                    "        myRecord.set('analyzing', formValues.analyzing);",
+                    "        myRecord.set('creating', formValues.creating);",
+                    "        myRecord.set('comments', formValues.comments);",
+                    "",
+                    "        myRecord.set('whoUpdated', 'login');",
+                    "        myRecord.set('lastUpdated', new Date());",
+                    "        myRecord.set('version', null);",
+                    "        myRecord.set('weeklyskillId', 0 );",
+                    "",
+                    "        //add to the store",
+                    "",
+                    "        myStore.add( myRecord );",
+                    "",
+                    "        //sync the store.",
+                    "        myStore.sync();",
+                    "",
+                    "        myForm.reset();",
+                    "        button.up().hide();",
+                    "    }",
+                    "    else",
+                    "    {",
+                    "        var smsg = \"You must enter a value for month\";",
+                    "        Ext.MessageBox.show({",
+                    "            title: 'REMOTE EXCEPTION',",
+                    "            msg: smsg,",
+                    "            icon: Ext.MessageBox.ERROR,",
+                    "            buttons: Ext.Msg.OK",
+                    "        });",
+                    "    }",
+                    "}",
+                    "else",
+                    "{",
+                    "    var msg = \"You must have student/faculty/subject/quarter records.\";",
+                    "            Ext.MessageBox.show({",
+                    "            title: 'NO DATA',",
+                    "            msg: smsg,",
+                    "            icon: Ext.MessageBox.ERROR,",
+                    "            buttons: Ext.Msg.OK",
+                    "        });",
+                    "}",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "f65c1f0c-477b-45c1-b13c-e0e59cf6dd15"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#skillscancel",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onSkillscancelClick",
+                "implHandler": [
+                    "//debugger;",
+                    "window.console.log( \"Cancel New Skills\" );",
+                    "var myForm = button.up().getForm();",
+                    "myForm.reset();",
+                    "button.up().hide();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "cf0d7e32-ba6f-4c07-9c80-881f07386e5d"
+        }
+    ]
+}

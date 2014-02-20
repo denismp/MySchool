@@ -27,9 +27,7 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
         'Ext.grid.column.Date'
     ],
 
-    height: 373,
     itemId: 'dailygridpanel',
-    width: 967,
     autoScroll: true,
     title: '[student name] Daily Details',
     forceFit: true,

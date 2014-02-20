@@ -43,6 +43,7 @@ Ext.define('MySchool.view.daily.DailyPanel', {
             dockedItems: [
                 {
                     xtype: 'dailygridpanel',
+                    minHeight: 150,
                     dock: 'top'
                 },
                 {

@@ -24,14 +24,6 @@ privileged aspect WeeklySkillRatingsView_Roo_JavaBean {
         this.weeklyskillId = weeklyskillId;
     }
     
-    public Long WeeklySkillRatingsView.getWeeklyId() {
-        return this.weeklyId;
-    }
-    
-    public void WeeklySkillRatingsView.setWeeklyId(Long weeklyId) {
-        this.weeklyId = weeklyId;
-    }
-    
     public Integer WeeklySkillRatingsView.getWeek_month() {
         return this.week_month;
     }

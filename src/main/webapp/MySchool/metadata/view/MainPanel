@@ -138,7 +138,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
-                        "height": null,
+                        "height": 700,
                         "id": null,
                         "itemId": "dailytab",
                         "layout": "vbox",
@@ -204,12 +204,12 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "dock": null,
+                                "dock": "top",
                                 "itemId": "weeklyskillstabpanel",
                                 "layout|flex": 1
                             },

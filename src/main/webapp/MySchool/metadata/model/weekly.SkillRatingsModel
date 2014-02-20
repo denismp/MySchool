@@ -20,7 +20,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "id",
-                "type": "int"
+                "type": null
             },
             "designerId": "dcdf18a7-addc-4e48-b95e-a412f5f2fbce"
         },
@@ -45,20 +45,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "weeklyId",
-                "type": "int"
-            },
-            "designerId": "b22d5b00-9bdc-4147-9322-70d672bca2ce"
-        },
-        {
-            "type": "Ext.data.Field",
-            "reference": {
-                "name": "fields",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "name": "month_number",
+                "name": "week_month",
                 "type": "int"
             },
             "designerId": "645511d4-30e0-4b22-964b-6a05075fa1d3"
@@ -306,7 +293,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "version"
+                "name": "version",
+                "type": "int"
             },
             "designerId": "abf25978-2da1-4518-92ac-6a5447bd16db"
         }

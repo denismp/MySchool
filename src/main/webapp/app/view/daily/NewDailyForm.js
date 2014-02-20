@@ -30,10 +30,10 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
     draggable: true,
     floating: true,
     frame: true,
-    itemId: 'monthlynewsummaryformpanel',
+    itemId: 'dailynewformpanel',
     width: 500,
     bodyPadding: 10,
-    title: 'New Monthly Summary Form',
+    title: 'New Daily Form',
 
     initComponent: function() {
         var me = this;
@@ -43,7 +43,7 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
                 {
                     xtype: 'fieldset',
                     itemId: 'dailyfieldset',
-                    title: 'Monthly Summary Fields',
+                    title: 'Daily Fields',
                     items: [
                         {
                             xtype: 'commonquartersubjectcombobox',

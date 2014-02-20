@@ -13,8 +13,8 @@
         "floating": true,
         "frame": true,
         "height": null,
-        "itemId": "monthlynewsummaryformpanel",
-        "title": "New Monthly Summary Form",
+        "itemId": "dailynewformpanel",
+        "title": "New Daily Form",
         "width": 500
     },
     "designerId": "fa6ef1fb-9e87-48eb-8e70-9f9324f1f822",
@@ -28,7 +28,7 @@
             "codeClass": null,
             "userConfig": {
                 "itemId": "dailyfieldset",
-                "title": "Monthly Summary Fields"
+                "title": "Daily Fields"
             },
             "designerId": "942703ff-2aaa-42ce-b984-de890ffd403f",
             "cn": [
