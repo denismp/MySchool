@@ -6,6 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
+        "designer|userAlias": "weeklyskillratingsstore",
         "designer|userClassName": "weekly.SkillRatingsStore",
         "model": "weekly.SkillRatingsModel",
         "storeId": "weekly.SkillRatingsStore"

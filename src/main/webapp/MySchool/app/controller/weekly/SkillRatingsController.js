@@ -124,6 +124,7 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
         debugger;
         // in the onMyJsonStoreLoad we do a deselect so we need to test
         // if selected[0] has a value
+        //weeklyevaluationdetailstabpanel
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
             var tabPanel = this.getWeeklySkillsCommentsTabPanel();
                 console.log( tabPanel );

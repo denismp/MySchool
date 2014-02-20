@@ -10,6 +10,7 @@
         "designer|userAlias": "weeklyskillsdetailstabpanel",
         "designer|userClassName": "weekly.skills.DetailsTabPanel",
         "height": 300,
+        "itemId": null,
         "minHeight": 300
     },
     "designerId": "64724261-59c3-465a-9243-4cc42ef0ee80",

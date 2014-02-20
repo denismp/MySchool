@@ -15,6 +15,7 @@
 
 Ext.define('MySchool.store.weekly.SkillRatingsStore', {
     extend: 'Ext.data.Store',
+    alias: 'store.weeklyskillratingsstore',
 
     requires: [
         'MySchool.model.weekly.SkillRatingsModel',

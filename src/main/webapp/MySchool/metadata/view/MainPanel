@@ -247,11 +247,12 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dock": "top",
                                 "layout|flex": 1
                             },
                             "designerId": "b8be4833-e4ca-4552-9b6f-69c65380d684",

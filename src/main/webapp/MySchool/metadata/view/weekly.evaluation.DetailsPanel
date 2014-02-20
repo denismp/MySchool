@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userAlias": "weeklyevaluationdetailspanel",
         "designer|userClassName": "weekly.evaluation.DetailsPanel",
-        "height": 700,
+        "height": 673,
         "itemId": "weeklyevaluationpanel",
         "title": "Weekly Evaluation Details"
     },
@@ -17,237 +17,90 @@
         {
             "type": "linkedinstance",
             "reference": {
-                "name": "items",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "dock": null
+                "dock": "top",
+                "minHeight": 150
             },
             "designerId": "f2a91120-967a-4f2b-a6b0-330e0c26cdc9",
             "masterInstanceId": "c00921ce-f39c-4a16-8f7a-108ee06748f5"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
-                "name": "tools",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "id": "toolrefreshstudentsbysubject4",
-                "tooltip": "Refresh",
-                "type": "refresh"
+                "dock": "bottom",
+                "title": null
             },
-            "designerId": "bcabecdd-9dd5-439a-a57f-0f81282bc76d",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add refresh handler code here.  Use example from chapter 2 of book."
-                        ]
-                    },
-                    "designerId": "7ebf91f7-469f-4ed7-9797-2a79b257879a"
-                }
-            ]
+            "designerId": "d134f4aa-3e61-400f-8aa7-bc0c8faf4798",
+            "masterInstanceId": "cd66f02c-8260-4748-a75e-d8caed2e81a6"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "toolsearchstudentsbysubject4",
-                "tooltip": "Search",
-                "type": "search"
-            },
-            "designerId": "0f43841f-e7fe-44bd-966f-83fdbaee9e03",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add search handler code here."
-                        ]
-                    },
-                    "designerId": "66a33332-3c42-4a83-9415-cc8e4bd7ba9e"
-                }
-            ]
+            "designerId": "0774570e-e413-40fb-96c3-4b59eb6ac65c",
+            "masterInstanceId": "cad069e2-2042-46c9-8ed1-24a3a9ec8514"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "toolnewstudentsbysubject4",
-                "tooltip": "New",
-                "type": "plus"
-            },
-            "designerId": "8f765a95-11cb-40b8-bc9a-0ec84f50a54f",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add new/insert handler code here."
-                        ]
-                    },
-                    "designerId": "dbfb7b3e-1718-48c2-b979-72509bd6720c"
-                }
-            ]
+            "designerId": "a8c73735-23f6-49c2-86e3-4be6dc2e3fc1",
+            "masterInstanceId": "9fd45be8-a0f9-46d3-9fa8-536c17662d5e"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "toolsavestudentsbysubject4",
-                "tooltip": "Save",
-                "type": "save"
-            },
-            "designerId": "f89a9552-f8a0-4a1c-95af-36ffc714d593",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add save/udate handler code here."
-                        ]
-                    },
-                    "designerId": "e42b3c26-0da2-40b0-9d94-f27e4ea7a6a5"
-                }
-            ]
+            "designerId": "1dbcbe52-6203-4dab-8610-a34737b3dcbd",
+            "masterInstanceId": "76192643-86ca-429b-8aba-36826f1688ca"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "tooldeletestudentsbysubject4",
-                "tooltip": "Delete",
-                "type": "minus"
-            },
-            "designerId": "462c6073-9942-4ab8-a45c-1aa09a87dd8f",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// Add delete handler code here."
-                        ]
-                    },
-                    "designerId": "1a6ea183-2b72-4d02-a524-36e77c59609d"
-                }
-            ]
+            "designerId": "b5c436a3-0acf-40ca-93ca-b94488eae073",
+            "masterInstanceId": "f750934f-93d1-4bec-98ca-846b9f51f90a"
         },
         {
-            "type": "Ext.panel.Tool",
+            "type": "linkedinstance",
             "reference": {
                 "name": "tools",
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "id": "toollockstudentsbysubject4",
-                "tooltip": "Lock?",
-                "type": "pin"
+            "designerId": "fc950560-f950-4b6a-85d0-2dc9b7d08d97",
+            "masterInstanceId": "0b7da60c-ca11-44e0-8c7f-63580de59b4f"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "tools",
+                "type": "array"
             },
-            "designerId": "42176da6-780a-4108-b93b-9f15305ca5db",
-            "cn": [
-                {
-                    "type": "fixedfunction",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "designer|params": [
-                            "event",
-                            "toolEl",
-                            "owner",
-                            "tool"
-                        ],
-                        "fn": "handler",
-                        "implHandler": [
-                            "// add lock handler code here."
-                        ]
-                    },
-                    "designerId": "b40ccb5c-f5f5-4f88-b2d0-bf5a4b51670b"
-                }
-            ]
+            "codeClass": null,
+            "designerId": "7bb763f7-cbdd-4c2e-859e-fa7ba2fb72de",
+            "masterInstanceId": "150fe4e6-adda-4c8d-87f0-835937c2bc5d"
         }
     ]
 }

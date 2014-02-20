@@ -19,14 +19,19 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
-        'Ext.grid.column.Boolean',
-        'Ext.grid.View'
+        'Ext.form.field.Number',
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
+        'Ext.grid.View',
+        'Ext.grid.plugin.CellEditing',
+        'Ext.grid.column.Date'
     ],
 
     itemId: 'weeklyevaluationgridpanel',
     autoScroll: true,
     title: '[student name]Weekly Evaluation By Subject And Week',
     forceFit: true,
+    store: 'weekly.EvaluationsRatingsStore',
 
     initComponent: function() {
         var me = this;
@@ -35,95 +40,185 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
             columns: [
                 {
                     xtype: 'gridcolumn',
-                    width: 131,
-                    dataIndex: 'subject_name',
+                    dataIndex: 'subjName',
                     text: 'Subject Name'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 65,
-                    dataIndex: 'year',
-                    text: 'Year'
+                    dataIndex: 'qtrYear',
+                    text: 'Year',
+                    format: '0000'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 71,
-                    dataIndex: 'month',
-                    text: 'Month'
+                    dataIndex: 'week_month',
+                    text: 'Month',
+                    format: '00'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 71,
-                    dataIndex: 'week',
-                    text: 'Week'
+                    dataIndex: 'week_number',
+                    text: 'Week',
+                    format: '0'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 78,
-                    text: 'Motivation'
+                    dataIndex: 'motivation',
+                    text: 'Motivation',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 79,
-                    text: 'Organization'
+                    dataIndex: 'organization',
+                    text: 'Organization',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        minValue: 0
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 127,
-                    text: 'Effective Use Of Time'
+                    dataIndex: 'effectiveUseOfStudyTime',
+                    text: 'Effective Use Of Time',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Quality Of Work'
+                    dataIndex: 'qualityOfWork',
+                    text: 'Quality Of Work',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Accuracy Of Work'
+                    dataIndex: 'accuracyOfWork',
+                    text: 'Accuracy Of Work',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 115,
-                    text: 'Complexity Of Work'
+                    dataIndex: 'complexityOfWork',
+                    text: 'Complexity Of Work',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Growth'
+                    dataIndex: 'growth',
+                    text: 'Growth',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    text: 'Consistency'
+                    dataIndex: 'consistency',
+                    text: 'Consistency',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
-                    xtype: 'booleancolumn',
+                    xtype: 'checkcolumn',
+                    dataIndex: 'locked',
                     menuText: 'false',
-                    text: 'Locked?'
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
+                    dataIndex: 'studentId',
+                    text: 'studentid',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
+                    dataIndex: 'subjId',
                     text: 'idsubject'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idweekly'
+                    dataIndex: 'weeklyevaluationId',
+                    text: 'id',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    text: 'idevaluation'
+                    dataIndex: 'weeklyevaluationId',
+                    text: 'evaluationid',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
+                },
+                {
+                    xtype: 'datecolumn',
+                    hidden: true,
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated',
+                    format: 'm/d/Y'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'whoUpdated',
+                    text: 'whoUpdated'
                 }
             ],
             viewConfig: {
                 height: 700,
                 id: 'weeklyevaluationsubjectsgridview'
-            }
+            },
+            plugins: [
+                Ext.create('Ext.grid.plugin.CellEditing', {
+                    clicksToEdit: 1
+                })
+            ]
         });
 
         me.callParent(arguments);

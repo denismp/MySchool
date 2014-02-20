@@ -42,7 +42,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
             items: [
                 {
                     xtype: 'fieldset',
-                    itemId: 'dailyfieldset',
+                    itemId: 'skillsfieldset',
                     title: 'Skills Fields',
                     items: [
                         {

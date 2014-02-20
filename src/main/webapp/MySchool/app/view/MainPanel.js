@@ -127,10 +127,11 @@ Ext.define('MySchool.view.MainPanel', {
                                 type: 'hbox',
                                 align: 'stretch'
                             },
-                            items: [
+                            dockedItems: [
                                 {
                                     xtype: 'weeklyevaluationdetailspanel',
-                                    flex: 1
+                                    flex: 1,
+                                    dock: 'top'
                                 }
                             ]
                         },
