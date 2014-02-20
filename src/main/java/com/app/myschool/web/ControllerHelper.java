@@ -88,6 +88,7 @@ public class ControllerHelper {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Class myClass,
 			@SuppressWarnings("rawtypes") Map params) {
@@ -1564,7 +1565,7 @@ public class ControllerHelper {
 		// Return the updated record(s)
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
     }
-	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(Class myClass, String student) {
+	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(@SuppressWarnings("rawtypes") Class myClass, String student) {
 	    //return new ResponseEntity<String>(Student.toJsonArray(Student.findStudentsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
