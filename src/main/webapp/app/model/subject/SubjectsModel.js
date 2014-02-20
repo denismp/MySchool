@@ -22,6 +22,11 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 
     fields: [
         {
+            name: 'subjName',
+            sortType: 'asText',
+            type: 'string'
+        },
+        {
             name: 'id'
         },
         {
@@ -48,10 +53,6 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
             dateFormat: 'm/d/Y',
             name: 'subjLastUpdated',
             type: 'date'
-        },
-        {
-            name: 'subjName',
-            type: 'string'
         },
         {
             name: 'subjObjectives',

@@ -7,6 +7,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,6 +77,16 @@ public class ControllerHelper {
 
 		return rList;
 	}
+
+	class MyComparator implements Comparator<SubjectView>
+	{
+		@Override
+		public int compare(SubjectView o1, SubjectView o2) {
+			// TODO Auto-generated method stub
+			return o1.getSubjName().compareTo(o2.getSubjName());
+			//return 0;
+		}
+	}
 	
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Class myClass,
@@ -111,6 +123,7 @@ public class ControllerHelper {
 					sv_.setSubjWhoUpdated(u_.getWhoUpdated());
 					svl_.add(sv_);
 				}
+				Collections.sort(svl_, new MyComparator());
 				records = svl_;
 			}
 			else if (myClass.equals(SubjectView.class) && studentId_ != null) {
@@ -150,6 +163,7 @@ public class ControllerHelper {
 
 						svl_.add(sv_);
 					}
+					Collections.sort(svl_, new MyComparator());
 					records = svl_;
 				}
 			}
