@@ -65,6 +65,9 @@ public class MonthlyEvaluationRatings {
     @Min(6L)
     @Max(10L)
     private int workingEffectivelyWithAdvisor;
+    
+    @Size(max = 4096)
+    private String comments;
 
     @NotNull
     @Value("false")

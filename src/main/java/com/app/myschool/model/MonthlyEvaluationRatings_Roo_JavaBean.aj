@@ -81,6 +81,14 @@ privileged aspect MonthlyEvaluationRatings_Roo_JavaBean {
         this.workingEffectivelyWithAdvisor = workingEffectivelyWithAdvisor;
     }
     
+    public String MonthlyEvaluationRatings.getComments() {
+        return this.comments;
+    }
+    
+    public void MonthlyEvaluationRatings.setComments(String comments) {
+        this.comments = comments;
+    }
+    
     public Boolean MonthlyEvaluationRatings.getLocked() {
         return this.locked;
     }
