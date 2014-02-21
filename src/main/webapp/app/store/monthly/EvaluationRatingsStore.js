@@ -32,11 +32,61 @@ Ext.define('MySchool.store.monthly.EvaluationRatingsStore', {
             proxy: {
                 type: 'rest',
                 url: 'monthlyevaluationratingses',
+                headers: {
+                    Accept: 'application/json'
+                },
                 reader: {
                     type: 'json',
                     root: 'data'
+                },
+                listeners: {
+                    exception: {
+                        fn: me.onRestException,
+                        scope: me
+                    }
+                }
+            },
+            listeners: {
+                load: {
+                    fn: me.onJsonpstoreLoad,
+                    scope: me
+                },
+                write: {
+                    fn: me.onJsonpstoreWrite,
+                    scope: me
                 }
             }
         }, cfg)]);
+    },
+
+    onRestException: function(proxy, response, operation, eOpts) {
+        debugger;
+        var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
+        Ext.MessageBox.show({
+            title: 'REMOTE EXCEPTION',
+            msg: smsg,
+            icon: Ext.MessageBox.ERROR,
+            buttons: Ext.Msg.OK,
+            resizeable: true
+        });
+        window.console.log( smsg );
+        if( this.getCount() > 0 )
+        {
+            this.reload();
+        }
+        //this.reload();
+
+    },
+
+    onJsonpstoreLoad: function(store, records, successful, eOpts) {
+        //debugger;
+        console.log("monthly.EvaluationRatingsStore.onJsonstoreLoad() called...");
+    },
+
+    onJsonpstoreWrite: function(store, operation, eOpts) {
+        //debugger;
+        console.log("monthly.EvaluationRatingsStore.onJsonstoreWrite(): called...");
+        store.reload();
     }
+
 });

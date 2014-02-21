@@ -25,6 +25,7 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
+                "height": 334,
                 "itemId": "weeklyskillsgridpanel",
                 "minHeight": 150
             },

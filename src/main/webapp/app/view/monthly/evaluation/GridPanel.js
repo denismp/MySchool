@@ -20,15 +20,19 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
     requires: [
         'Ext.grid.column.Number',
         'Ext.grid.View',
-        'Ext.grid.column.Boolean',
-        'Ext.grid.column.Date'
+        'Ext.form.field.Number',
+        'Ext.grid.column.CheckColumn',
+        'Ext.form.field.Checkbox',
+        'Ext.grid.column.Date',
+        'Ext.grid.plugin.CellEditing'
     ],
 
-    id: 'montlyevaluationgridpanel',
     itemId: 'monthlyevaluationgridpanel',
     width: 150,
+    autoScroll: true,
     title: '[student name]',
     forceFit: true,
+    store: 'monthly.EvaluationRatingsStore',
 
     initComponent: function() {
         var me = this;
@@ -36,85 +40,178 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
         Ext.applyIf(me, {
             columns: [
                 {
-                    xtype: 'numbercolumn',
-                    width: 30,
-                    dataIndex: 'year',
-                    text: 'Year'
+                    xtype: 'gridcolumn',
+                    dataIndex: 'subjName',
+                    text: 'subjName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrName',
+                    text: 'qtrName'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 35,
-                    dataIndex: 'month',
-                    text: 'Month'
+                    dataIndex: 'qtrYear',
+                    text: 'qtrYear',
+                    format: '0000'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 75,
-                    defaultWidth: 70,
-                    text: 'LevelOfDifficulty'
+                    dataIndex: 'month_number',
+                    text: 'Month',
+                    format: '00'
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 70,
-                    text: 'CriticalThinking'
+                    dataIndex: 'levelOfDifficulty',
+                    text: 'LevelOfDifficulty',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 90,
-                    defaultWidth: 70,
-                    text: 'EffCorrectionActions'
+                    dataIndex: 'criticalThinkingSkills',
+                    text: 'CriticalThinking',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 110,
-                    text: 'AccuratelyIDsCorrections'
+                    dataIndex: 'effectiveCorrectionActions',
+                    text: 'CorrectiveActions',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 115,
-                    text: 'CompletesCourseObjectives'
+                    dataIndex: 'accuratelyIdCorrections',
+                    text: 'AccuratelyIDsCorrections',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 115,
-                    text: 'ThoughtfulnessOfReflections'
+                    dataIndex: 'completingCourseObjectives',
+                    text: 'CompletesCourseObjectives',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 110,
-                    text: 'ResponsibilityOfProgress'
+                    dataIndex: 'thoughtfulnessOfReflections',
+                    text: 'ThoughtfulnessOfReflections',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
-                    width: 95,
-                    text: 'WorksEffWithAdvisor'
-                },
-                {
-                    xtype: 'booleancolumn',
-                    width: 50,
-                    text: 'Locked?'
+                    dataIndex: 'responsibilityOfProgress',
+                    text: 'ResponsibilityOfProgress',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
                 },
                 {
                     xtype: 'numbercolumn',
+                    dataIndex: 'workingEffectivelyWithAdvisor',
+                    text: 'WorksEffWithAdvisor',
+                    format: '00',
+                    editor: {
+                        xtype: 'numberfield',
+                        maxValue: 10,
+                        minValue: 6
+                    }
+                },
+                {
+                    xtype: 'checkcolumn',
+                    dataIndex: 'locked',
+                    text: 'Locked?',
+                    editor: {
+                        xtype: 'checkboxfield'
+                    }
+                },
+                {
+                    xtype: 'gridcolumn',
                     hidden: true,
-                    dataIndex: 'student_id',
-                    text: 'idstudent'
-                },
-                {
-                    xtype: 'numbercolumn',
-                    hidden: true,
-                    text: 'idmonthly_evaluation_ratings'
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
                 },
                 {
                     xtype: 'datecolumn',
                     hidden: true,
-                    dataIndex: 'date',
-                    text: 'Date'
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated',
+                    format: 'm/d/Y'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'qtrId',
+                    text: 'qtrId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'subjId',
+                    text: 'subjId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'id',
+                    text: 'id'
                 }
             ],
             viewConfig: {
-                id: 'monthlyevaluationsubjectsgridview'
-            }
+                itemId: 'monthlevaluationsgridview'
+            },
+            plugins: [
+                Ext.create('Ext.grid.plugin.CellEditing', {
+                    clicksToEdit: 1
+                })
+            ]
         });
 
         me.callParent(arguments);

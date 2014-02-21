@@ -161,10 +161,11 @@ Ext.define('MySchool.view.MainPanel', {
                                 type: 'hbox',
                                 align: 'stretch'
                             },
-                            items: [
+                            dockedItems: [
                                 {
                                     xtype: 'monthlyevaluationdetailspanel',
-                                    flex: 1
+                                    flex: 1,
+                                    dock: 'top'
                                 }
                             ]
                         },
@@ -173,10 +174,11 @@ Ext.define('MySchool.view.MainPanel', {
                             itemId: 'studentprofilestab',
                             minHeight: 600,
                             title: 'Student Profiles',
-                            items: [
+                            dockedItems: [
                                 {
                                     xtype: 'studentprofilepanel',
-                                    itemId: 'studentprofilepanel'
+                                    itemId: 'studentprofilepanel',
+                                    dock: 'top'
                                 }
                             ]
                         },

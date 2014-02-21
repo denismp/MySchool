@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyevaluationnewtool",
+        "designer|userClassName": "monthly.evaluation.NewTool",
+        "id": null,
+        "itemId": "monthlyevaluationnewtool",
+        "tooltip": "New",
+        "type": "plus"
+    },
+    "designerId": "829ac512-a17e-41b5-88e6-4cefa1cfad17"
+}

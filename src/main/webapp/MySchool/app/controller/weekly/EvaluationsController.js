@@ -105,7 +105,7 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
         //commonQuarterSubjectStore.myLoad();
         commonMonthStore.myLoad();
 
-        window.console.log( 'New Evaluations Dialog' );
+        window.console.log( 'New Weekly Evaluations Dialog' );
 
         newDialog.render( Ext.getBody() );
         newDialog.show();
@@ -136,12 +136,16 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
     },
 
     onEvaluationcancelClick: function(button, e, eOpts) {
-
+        //debugger;
+        window.console.log( "Cancel New Weekly Evaluation" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
     },
 
     onEvaluationsubmitClick: function(button, e, eOpts) {
         debugger;
-        window.console.log( "Submit New Evaluations" );
+        window.console.log( "Submit New Weekly Evaluations" );
         var myForm					= button.up().getForm();
         //var newDialog = button.up('monthlynewsummaryformpanel');
 
@@ -376,10 +380,10 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 
     init: function(application) {
                 this.control({
-                    "#editweeklyevaluationdetailstabpanel": {
+                    "#editmonthlycommentstabpanel": {
                         click: this.buttonHandler
                     },
-                    "#weeklyevaluationdetailstabpaneltextbox": {
+                    "#monthlycommentstabpaneltextbox": {
                         blur: this.blurHandler
                     }
                 });

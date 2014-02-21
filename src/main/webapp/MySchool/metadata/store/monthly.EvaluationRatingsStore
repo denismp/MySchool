@@ -21,6 +21,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
                 "url": "monthlyevaluationratingses"
             },
             "designerId": "f09b64f6-b905-438b-836a-b2fd2687555d",
@@ -36,8 +39,77 @@
                         "root": "data"
                     },
                     "designerId": "48214823-b2d5-41a2-b603-f34b7efcd1ad"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRestException",
+                        "implHandler": [
+                            "debugger;",
+                            "var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;",
+                            "Ext.MessageBox.show({",
+                            "    title: 'REMOTE EXCEPTION',",
+                            "    msg: smsg,",
+                            "    icon: Ext.MessageBox.ERROR,",
+                            "    buttons: Ext.Msg.OK,",
+                            "    resizeable: true",
+                            "});",
+                            "window.console.log( smsg );",
+                            "if( this.getCount() > 0 )",
+                            "{",
+                            "    this.reload();",
+                            "}",
+                            "//this.reload();",
+                            ""
+                        ],
+                        "name": "exception",
+                        "scope": "me"
+                    },
+                    "designerId": "2be34656-7461-4830-b2de-bc5671ab74fd"
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"monthly.EvaluationRatingsStore.onJsonstoreLoad() called...\");"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "bd77f112-7591-4154-9a90-7598d2e79b18"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonpstoreWrite",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"monthly.EvaluationRatingsStore.onJsonstoreWrite(): called...\");",
+                    "store.reload();"
+                ],
+                "name": "write",
+                "scope": "me"
+            },
+            "designerId": "2b0b9b46-0048-442a-a34d-cd866ea25f14"
         }
     ]
 }

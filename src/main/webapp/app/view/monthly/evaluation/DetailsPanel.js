@@ -19,77 +19,55 @@ Ext.define('MySchool.view.monthly.evaluation.DetailsPanel', {
 
     requires: [
         'MySchool.view.monthly.evaluation.GridPanel',
+        'MySchool.view.monthly.evaluation.TabPanel',
+        'MySchool.view.monthly.evaluation.RefreshTool',
+        'MySchool.view.monthly.evaluation.SearchTool',
+        'MySchool.view.monthly.evaluation.NewTool',
+        'MySchool.view.monthly.evaluation.SaveTool',
+        'MySchool.view.monthly.evaluation.DeleteTool',
+        'MySchool.view.monthly.evaluation.LockTool',
         'Ext.grid.Panel',
+        'Ext.tab.Panel',
         'Ext.panel.Tool'
     ],
 
+    height: 673,
     itemId: 'monthlyevaluatondetailspanel',
-    layout: 'fit',
     title: 'Monthly Evaluation Details',
 
     initComponent: function() {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [
+            dockedItems: [
                 {
-                    xtype: 'monthlyevaluationgridpanel'
+                    xtype: 'monthlyevaluationgridpanel',
+                    height: 334,
+                    dock: 'top'
+                },
+                {
+                    xtype: 'monthlyevaluationtabpanel',
+                    dock: 'bottom'
                 }
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                    },
-                    id: 'toolrefreshstudentsbysubject7',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'monthlyevaluationrefreshtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    id: 'toolsearchstudentsbysubject7',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'monthlyevaluationsearchtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    id: 'toolnewstudentsbysubject7',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'monthlyevaluationnewtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                    },
-                    id: 'toolsavestudentsbysubject7',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'monthlyevaluationsavetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    id: 'tooldeletestudentsbysubject7',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'monthlyevaluationdeletetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add lock handler code here.
-                    },
-                    id: 'toollockstudentsbysubject7',
-                    tooltip: 'Lock?',
-                    type: 'pin'
+                    xtype: 'monthlyevaluationlocktool'
                 }
             ]
         });

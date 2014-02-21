@@ -338,7 +338,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 			else
 			{
 				statusGood = false;
-				response.setMessage( "Duplicated month number." );
+				response.setMessage( "Duplicated subject/year/month/day attempted." );
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;

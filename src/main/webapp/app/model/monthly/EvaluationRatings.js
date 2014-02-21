@@ -38,7 +38,7 @@ Ext.define('MySchool.model.monthly.EvaluationRatings', {
             type: 'int'
         },
         {
-            name: 'effectiveCorrectionAction',
+            name: 'effectiveCorrectionActions',
             type: 'int'
         },
         {
@@ -60,6 +60,10 @@ Ext.define('MySchool.model.monthly.EvaluationRatings', {
         {
             name: 'workingEffectivelyWithAdvisor',
             type: 'int'
+        },
+        {
+            name: 'comments',
+            type: 'string'
         },
         {
             name: 'locked',
@@ -101,6 +105,10 @@ Ext.define('MySchool.model.monthly.EvaluationRatings', {
         },
         {
             name: 'version',
+            type: 'int'
+        },
+        {
+            name: 'monthlyevaluationId',
             type: 'int'
         }
     ]

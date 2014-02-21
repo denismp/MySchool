@@ -126,7 +126,15 @@ Ext.application({
         'weekly.evaluation.SaveTool',
         'weekly.evaluation.DeleteTool',
         'weekly.evaluation.LockTool',
-        'weekly.evaluations.NewForm'
+        'weekly.evaluations.NewForm',
+        'monthly.evaluation.NewFormPanel',
+        'monthly.evaluation.TabPanel',
+        'monthly.evaluation.RefreshTool',
+        'monthly.evaluation.SearchTool',
+        'monthly.evaluation.NewTool',
+        'monthly.evaluation.SaveTool',
+        'monthly.evaluation.DeleteTool',
+        'monthly.evaluation.LockTool'
     ],
     controllers: [
         'subject.SubjectsController',
@@ -134,7 +142,8 @@ Ext.application({
         'daily.MyController',
         'monthly.SummaryRatingsController',
         'weekly.SkillRatingsController',
-        'weekly.EvaluationsController'
+        'weekly.EvaluationsController',
+        'monthly.EvaluationRatingsController'
     ],
     name: 'MySchool',
 

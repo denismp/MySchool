@@ -70,7 +70,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "effectiveCorrectionAction",
+                "name": "effectiveCorrectionActions",
                 "type": "int"
             },
             "designerId": "b2f98cde-5a65-4cfb-981b-fa4b08bf2633"
@@ -139,6 +139,19 @@
                 "type": "int"
             },
             "designerId": "2af7ba00-a508-4394-832a-08a7daa1bea6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "comments",
+                "type": "string"
+            },
+            "designerId": "a87223bc-2b72-4890-8f6d-8e6db2339313"
         },
         {
             "type": "Ext.data.Field",
@@ -281,6 +294,19 @@
                 "type": "int"
             },
             "designerId": "90b01281-b8b1-4e99-bc59-3f68becff1a1"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "monthlyevaluationId",
+                "type": "int"
+            },
+            "designerId": "d44f3130-ebac-41e6-ac9a-d2bf9542b5d1"
         }
     ]
 }

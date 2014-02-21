@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "monthlyevaluationsearchtool",
+        "designer|userClassName": "monthly.evaluation.SearchTool",
+        "id": null,
+        "itemId": "monthlyevaluationsearchtool",
+        "tooltip": "Search",
+        "type": "search"
+    },
+    "designerId": "c1854add-917d-4a91-bfa3-13f66feccbd6"
+}

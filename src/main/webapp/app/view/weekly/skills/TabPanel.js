@@ -43,6 +43,7 @@ Ext.define('MySchool.view.weekly.skills.TabPanel', {
             dockedItems: [
                 {
                     xtype: 'weeklyskillsgridpanel',
+                    height: 334,
                     itemId: 'weeklyskillsgridpanel',
                     minHeight: 150,
                     dock: 'top'

@@ -54,7 +54,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		EntityManager em = MonthlyEvaluationRatings.entityManager();
 		StringBuilder queryString = new StringBuilder("select me.*");
 		queryString.append(" from monthly_evaluation_ratings me, quarter q, subject s, student t");
-		queryString.append(" where rs.quarter = q.id");
+		queryString.append(" where me.quarter = q.id");
 		queryString.append(" and q.subject = s.id");
 		queryString.append(" and q.student = t.id");
 		if( studentId != null )
@@ -110,6 +110,8 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 				monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
 				monthlyEvaluationRatingsView.setMonth_number(monthlyEvaluationRatings.getMonth_number());
 				monthlyEvaluationRatingsView.setResponsibilityOfProgress(monthlyEvaluationRatings.getResponsibilityOfProgress());
+				monthlyEvaluationRatingsView.setThoughtfulnessOfReflections(monthlyEvaluationRatings.getThoughtfulnessOfReflections());
+				monthlyEvaluationRatingsView.setWorkingEffectivelyWithAdvisor(monthlyEvaluationRatings.getWorkingEffectivelyWithAdvisor());
 				
 				monthlyEvaluationRatingsView.setWhoUpdated(monthlyEvaluationRatings.getWhoUpdated());
 				monthlyEvaluationRatingsView.setLastUpdated(monthlyEvaluationRatings.getLastUpdated());

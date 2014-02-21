@@ -332,11 +332,12 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dock": "top",
                                 "layout|flex": 1
                             },
                             "designerId": "fe91d673-1dee-4241-817d-a3f4f1175f99",
@@ -371,11 +372,12 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dock": "top",
                                 "itemId": "studentprofilepanel"
                             },
                             "designerId": "56ea2b00-8a0c-4b30-9d86-8aacbe0e5b79",

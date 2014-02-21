@@ -1,0 +1,49 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "activeTab": 0,
+        "designer|userAlias": "monthlyevaluationtabpanel",
+        "designer|userClassName": "monthly.evaluation.TabPanel",
+        "height": 300,
+        "itemId": "monthlyevaluationdetailstabpanel",
+        "minHeight": 300
+    },
+    "designerId": "98cf553d-4436-4ada-88dd-5e6722d0d6f3",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "monthlyevaluationcommentstabpanel",
+                "title": "Comments"
+            },
+            "designerId": "da87268a-6cd8-4ff0-aa0f-54006427e914",
+            "masterInstanceId": "5aed8c98-5a34-426f-8afc-d830a4b11355",
+            "cn": [
+                {
+                    "type": "Ext.tab.Tab",
+                    "reference": {
+                        "name": "tabConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "tooltip": [
+                            "'Click edit to modify'"
+                        ]
+                    },
+                    "designerId": "3d5585ce-3b37-42bd-9e58-9cb4d0c80cd4"
+                }
+            ]
+        }
+    ]
+}
