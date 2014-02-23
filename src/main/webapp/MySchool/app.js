@@ -69,7 +69,7 @@ Ext.application({
         'subject.EditForm',
         'subject.SubjectNameComboBox',
         'subject.QuarterYearComboBox',
-        'bodiesofwork.BodyOfWorkForm',
+        null,
         'daily.DailyPanel',
         'daily.DailyGridPanel',
         'daily.DetailsTabPanel',
@@ -134,7 +134,8 @@ Ext.application({
         'monthly.evaluation.NewTool',
         'monthly.evaluation.SaveTool',
         'monthly.evaluation.DeleteTool',
-        'monthly.evaluation.LockTool'
+        'monthly.evaluation.LockTool',
+        'bodiesofwork.DetailsTabPanel'
     ],
     controllers: [
         'subject.SubjectsController',

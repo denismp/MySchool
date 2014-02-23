@@ -130,7 +130,8 @@
             "monthly.evaluation.NewTool",
             "monthly.evaluation.SaveTool",
             "monthly.evaluation.DeleteTool",
-            "monthly.evaluation.LockTool"
+            "monthly.evaluation.LockTool",
+            "bodiesofwork.DetailsTabPanel"
         ]
     },
     "designerId": "application"

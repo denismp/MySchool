@@ -21,6 +21,7 @@ Ext.define('MySchool.view.bodiesofwork.BodyOfWorkForm', {
         'Ext.form.field.TextArea'
     ],
 
+    hidden: true,
     itemId: 'bodyofworkform',
     width: 508,
     bodyPadding: 10,

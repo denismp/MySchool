@@ -19,7 +19,7 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
 
     requires: [
         'MySchool.view.bodiesofwork.GridPanel',
-        'MySchool.view.bodiesofwork.BodyOfWorkForm',
+        'MySchool.view.bodiesofwork.DetailsTabPanel',
         'MySchool.view.bodiesofwork.RefreshTool',
         'MySchool.view.bodiesofwork.SearchTool',
         'MySchool.view.bodiesofwork.NewTool',
@@ -27,10 +27,11 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
         'MySchool.view.bodiesofwork.DeleteTool',
         'MySchool.view.bodiesofwork.LockTool',
         'Ext.grid.Panel',
-        'Ext.form.Panel',
+        'Ext.tab.Panel',
         'Ext.panel.Tool'
     ],
 
+    height: 673,
     id: 'bodiesofworkpanel',
     title: 'Bodies Of Work By Student And Subject',
 
@@ -43,14 +44,15 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
         var me = this;
 
         Ext.applyIf(me, {
-            items: [
+            dockedItems: [
                 {
                     xtype: 'mybodiesofworkgridpanel',
-                    flex: 1
+                    height: 334,
+                    dock: 'top'
                 },
                 {
-                    xtype: 'bodyofworkform',
-                    itemId: 'bodiesofworkform'
+                    xtype: 'bodiesofworkdetailstabpanel',
+                    dock: 'bottom'
                 }
             ],
             tools: [

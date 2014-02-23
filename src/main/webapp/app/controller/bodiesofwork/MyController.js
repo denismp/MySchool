@@ -25,14 +25,21 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
         'subject.SubjectStore'
     ],
     views: [
-        'bodiesofwork.BodyOfWorkForm',
         'bodiesofwork.GridPanel'
     ],
 
     refs: [
         {
-            ref: 'BodyOfWorksForm',
-            selector: 'bodyofworkform'
+            ref: 'BodiesOfWorkWhatTabPanel',
+            selector: '#bodiesofworkwhattabpanel'
+        },
+        {
+            ref: 'BodiesOfWorkDescriptionTabPanel',
+            selector: '#bodiesofworkdescriptiontabpanel'
+        },
+        {
+            ref: 'BodiesOfWorkObjectiveTabPanel',
+            selector: '#bodiesofworkobjectivetabpanel'
         }
     ],
 
@@ -66,8 +73,10 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
         // in the onMyJsonStoreLoad we do a deselect so we need to test
         // if selected[0] has a value
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
-            //var myFormView = this.getBodyOfWorksForm();
-            this.getBodyOfWorksForm().getForm().loadRecord( selected[0] );
+            this.loadTabPanelForm( this.getBodiesOfWorkWhatTabPanel(), selected, 'what' );
+            this.loadTabPanelForm( this.getBodiesOfWorkDescriptionTabPanel(), selected, 'description' );
+            this.loadTabPanelForm( this.getBodiesOfWorkObjectiveTabPanel(), selected, 'objective' );
+
             console.log('onBodiesofworssubjectsgridSelectionChange()');
         }
 
@@ -315,6 +324,26 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
         this.gridViewReady = true;
 
+    },
+
+    loadTabPanelForm: function(tabPanel, selected, fieldname) {
+        debugger;
+        var dockedItems = tabPanel.getDockedItems();
+        var myForm = dockedItems[0];
+
+        if( Ext.isDefined( myForm ) )
+        {
+            console.log( myForm );
+            //var textBox = myForm.dockedItems.items[0];
+            var textBox = myForm.down('textareafield');
+            textBox.name = fieldname;
+            myForm.loadRecord( selected[0] );
+        }
+        else
+        {
+            console.log( 'loadTabPanelForm(): No form' );
+            //console.log( tabPanel );
+        }
     }
 
 });

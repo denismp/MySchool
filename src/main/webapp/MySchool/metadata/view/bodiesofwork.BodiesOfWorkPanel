@@ -9,6 +9,7 @@
         "container|align": "stretch",
         "designer|userAlias": "mybodiesofworkpanel",
         "designer|userClassName": "bodiesofwork.BodiesOfWorkPanel",
+        "height": 673,
         "id": "bodiesofworkpanel",
         "layout": "hbox",
         "title": "Bodies Of Work By Student And Subject"
@@ -18,12 +19,14 @@
         {
             "type": "linkedinstance",
             "reference": {
-                "name": "items",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "layout|flex": 1
+                "dock": "top",
+                "height": 334,
+                "layout|flex": null
             },
             "designerId": "9a614e32-a30a-43ef-ab07-b2acb6a42663",
             "masterInstanceId": "49b7bdca-cc8d-4696-a931-47cb75438709"
@@ -31,16 +34,16 @@
         {
             "type": "linkedinstance",
             "reference": {
-                "name": "items",
+                "name": "dockedItems",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "bodiesofworkform",
+                "dock": "bottom",
                 "layout|flex": null
             },
-            "designerId": "00f38f6b-36c6-41ea-9e2d-708fe926c258",
-            "masterInstanceId": "0e336dad-b722-4ffe-bf29-63246198e8ea"
+            "designerId": "e6ef0b9f-6979-45ba-963a-ac7b7cf47f5f",
+            "masterInstanceId": "a5047276-a1c8-41e8-9562-5bb769d36b7d"
         },
         {
             "type": "linkedinstance",

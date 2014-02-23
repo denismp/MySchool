@@ -9,7 +9,7 @@
         "autoScroll": true,
         "designer|userAlias": "commonmytabpanel",
         "designer|userClassName": "common.MyTabPanel",
-        "itemId": null,
+        "itemId": "mypanel9",
         "layout": "fit",
         "minHeight": null,
         "minWidth": 273,
