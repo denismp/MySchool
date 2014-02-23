@@ -23,11 +23,6 @@ import org.springframework.roo.addon.tostring.RooToString;
 public abstract class Person {
 
     @NotNull
-    @Column(unique = true)
-    @Size(max = 45)
-    private String personID;
-
-    @NotNull
     @Size(max = 45)
     private String firstName;
 

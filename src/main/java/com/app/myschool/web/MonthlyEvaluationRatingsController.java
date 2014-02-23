@@ -1,8 +1,7 @@
 package com.app.myschool.web;
 
-import java.util.Map;
-
 import com.app.myschool.model.MonthlyEvaluationRatings;
+import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -27,29 +26,17 @@ public class MonthlyEvaluationRatingsController {
         return controllerHelper.showJson(id);
     }
 
-    /*
-    @RequestMapping(headers = "Accept=application/json")
-    @ResponseBody
-    public ResponseEntity<java.lang.String> listJson() {
-        MonthlyEvaluationRatingsControllerHelper controllerHelper = new MonthlyEvaluationRatingsControllerHelper();
-        return controllerHelper.listJson(MonthlyEvaluationRatings.class);
-    }
-    */
-
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
-    	//MonthlySummaryRatingsControllerHelper controllerHelper = new MonthlySummaryRatingsControllerHelper();
-        //return controllerHelper.listJson(params);
         ResponseEntity<java.lang.String> ret_ = null;
         MonthlyEvaluationRatingsControllerHelper controllerHelper = new MonthlyEvaluationRatingsControllerHelper();
         if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson( params);
+            ret_ = controllerHelper.listJson(params);
         } else {
             ret_ = controllerHelper.listJson();
         }
         return ret_;
-
     }
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")

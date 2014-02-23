@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_Admin" items="${admins}" z="D2etBicwQSYIWJuv542JSeZ4gX0=">
+        <table:table data="${admins}" id="l_com_app_myschool_model_Admin" path="/admins" z="M+6nt1S3QtXSLNcznFDm5JDt4/A=">
+            <table:column id="c_com_app_myschool_model_Admin_firstName" property="firstName" z="yFVsr7QraO9Boo1edb3hRBsU0qg="/>
+            <table:column id="c_com_app_myschool_model_Admin_lastName" property="lastName" z="qDSbUfN9Ztrk7b/N6+rE5HL8+6Q="/>
+            <table:column id="c_com_app_myschool_model_Admin_middleName" property="middleName" z="dUM9ZVXRA/Za5xX9YK5hU8EEZoo="/>
+            <table:column id="c_com_app_myschool_model_Admin_phone1" property="phone1" z="tltSI0qn3pRDLdrKtiTWzPrpzhg="/>
+            <table:column id="c_com_app_myschool_model_Admin_phone2" property="phone2" z="TchmOAybncEtXyCRiA89hvv1jhI="/>
+            <table:column id="c_com_app_myschool_model_Admin_address1" property="address1" z="qDVvRMyN+MQwwSeiYC/VxrWCaeI="/>
+        </table:table>
+    </page:list>
+</div>

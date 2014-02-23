@@ -3,7 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_Student" modelAttribute="student" path="/students" render="${empty dependencies}" z="ivO+29qavTFLqIGSrdQAa5M5sjY=">
-        <field:textarea field="personID" id="c_com_app_myschool_model_Student_personID" required="true" z="4vAzRcpvgsQIECjjQ9cGCrpHOtw="/>
         <field:textarea field="firstName" id="c_com_app_myschool_model_Student_firstName" required="true" z="+3p010We920HU9Bu6W+vkf5Lv6A="/>
         <field:textarea field="lastName" id="c_com_app_myschool_model_Student_lastName" required="true" z="+2kEwU/tYsFTqKe4mLUHSOmxUY8="/>
         <field:textarea field="middleName" id="c_com_app_myschool_model_Student_middleName" z="56JT9CHUOYMmTciXEFxg0GZvHHM="/>

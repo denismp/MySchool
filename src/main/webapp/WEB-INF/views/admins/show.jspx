@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Admin" object="${admin}" path="/admins" z="iUoMSBcqNRDLOerx3mqrHDciKMY=">
+        <field:display field="firstName" id="s_com_app_myschool_model_Admin_firstName" object="${admin}" z="hQrOXO5pt+2tV2XcQiiFIdRCUOo="/>
+        <field:display field="lastName" id="s_com_app_myschool_model_Admin_lastName" object="${admin}" z="RZpzXuX/IoZQOUJlEkuIp1ecfqQ="/>
+        <field:display field="middleName" id="s_com_app_myschool_model_Admin_middleName" object="${admin}" z="97BAFrGX2ti2SDWWIQ+MKTdFf3Y="/>
+        <field:display field="phone1" id="s_com_app_myschool_model_Admin_phone1" object="${admin}" z="3CmRbjVSzxicj0iVHKwSvEX04k8="/>
+        <field:display field="phone2" id="s_com_app_myschool_model_Admin_phone2" object="${admin}" z="Z1bjEJWkBjfHUSdyRYeI0oXRxko="/>
+        <field:display field="address1" id="s_com_app_myschool_model_Admin_address1" object="${admin}" z="UyZyPA8jWqzDn9gaVn0P06fWwF8="/>
+        <field:display field="address2" id="s_com_app_myschool_model_Admin_address2" object="${admin}" z="7ZPPPMmL1JTUgcRzQ9CGhBgKBOY="/>
+        <field:display field="city" id="s_com_app_myschool_model_Admin_city" object="${admin}" z="Mgh/OSPWHAzqhOmOZrq4HCWfYO0="/>
+        <field:display field="province" id="s_com_app_myschool_model_Admin_province" object="${admin}" z="vFl9aMykMRX2vtorFDMRqdtgVrc="/>
+        <field:display field="postalCode" id="s_com_app_myschool_model_Admin_postalCode" object="${admin}" z="8jU60tjUK3KvhNaDI2AuuIZUJeY="/>
+        <field:display field="country" id="s_com_app_myschool_model_Admin_country" object="${admin}" z="V2H8QqGx39nLltBxtFJDqN6b36s="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Admin_whoUpdated" object="${admin}" z="SlTKjR+LGDDJLxkJEMMM/jgJs8A="/>
+        <field:display date="true" dateTimePattern="${admin_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Admin_lastUpdated" object="${admin}" z="X72GspSJvU1ruuj9zLJ3pZx7lG0="/>
+        <field:display field="userName" id="s_com_app_myschool_model_Admin_userName" object="${admin}" z="rdiObNLbMZoq3YrrA4WUvVBw/Fc="/>
+        <field:display field="userPassword" id="s_com_app_myschool_model_Admin_userPassword" object="${admin}" z="0P0qwX1cPj+K+OoDb48XKEaes1g="/>
+        <field:display field="enabled" id="s_com_app_myschool_model_Admin_enabled" object="${admin}" z="4FDBxS1BRq8UfP47SnJ+Nb71CQk="/>
+    </page:show>
+</div>

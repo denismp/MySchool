@@ -4,12 +4,12 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_com_app_myschool_model_Faculty" items="${facultys}" z="7MxQ13ql0LRzIpUtQsYJa2LwHps=">
         <table:table data="${facultys}" id="l_com_app_myschool_model_Faculty" path="/facultys" z="X1J2DDpFun3qDG2dYxo0rTu8PZo=">
-            <table:column id="c_com_app_myschool_model_Faculty_personID" property="personID" z="LHyFXS/zw3dv4ILyXbzKRqPk8vs="/>
             <table:column id="c_com_app_myschool_model_Faculty_firstName" property="firstName" z="5l4ZqX2Q0xExLotMkBNlxSQFYWI="/>
             <table:column id="c_com_app_myschool_model_Faculty_lastName" property="lastName" z="I97LF+D9Lijn4G6+ue2u2cczhh4="/>
             <table:column id="c_com_app_myschool_model_Faculty_middleName" property="middleName" z="/CDpK1Dysa5q5+UcKB4NOhYIaII="/>
             <table:column id="c_com_app_myschool_model_Faculty_phone1" property="phone1" z="FdmUSnsIjcBXHOzuKG4bBUTwFVc="/>
             <table:column id="c_com_app_myschool_model_Faculty_phone2" property="phone2" z="l+3nT/arv7k0tMA50mpAKu50ncU="/>
+            <table:column id="c_com_app_myschool_model_Faculty_address1" property="address1" z="RLy7vyUuiGWICt3qoXiRa9rvLwI="/>
         </table:table>
     </page:list>
 </div>

@@ -1,8 +1,7 @@
 package com.app.myschool.web;
 
-import java.util.Map;
-
 import com.app.myschool.model.Daily;
+import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -27,22 +26,13 @@ public class DailyController {
         return controllerHelper.showJson(id);
     }
 
-    //@RequestMapping(headers = "Accept=application/json")
-    //@ResponseBody
-   // public ResponseEntity<java.lang.String> listJson() {
-   //     ControllerHelper controllerHelper = new ControllerHelper();
-   //     return controllerHelper.listJson(Daily.class);
-   // }
-    
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
-    	//MonthlySummaryRatingsControllerHelper controllerHelper = new MonthlySummaryRatingsControllerHelper();
-        //return controllerHelper.listJson(params);
         ResponseEntity<java.lang.String> ret_ = null;
         DailyControllerHelper controllerHelper = new DailyControllerHelper();
         if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson( params);
+            ret_ = controllerHelper.listJson(params);
         } else {
             ret_ = controllerHelper.listJson();
         }

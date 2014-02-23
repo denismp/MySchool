@@ -4,9 +4,7 @@ import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
-import java.*;
 import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import org.apache.commons.lang3.StringUtils;

@@ -482,3 +482,6 @@ logging setup --level INFO
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-02-17 19:29:06
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-02-20 19:39:36
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-02-20 19:42:00
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-02-22 21:02:21
+// Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-02-22 21:04:09
+web mvc all --package ~.web

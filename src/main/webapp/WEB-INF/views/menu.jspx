@@ -78,5 +78,9 @@
             <menu:item id="i_graduatetracking_new" messageCode="global_menu_new" url="/graduatetrackings?form" z="gK2pFHjgkv+2jl6s/DDp+kVQ5vI="/>
             <menu:item id="i_graduatetracking_list" messageCode="global_menu_list" url="/graduatetrackings?page=1&amp;size=${empty param.size ? 10 : param.size}" z="iEDjNxMg/7MzEWljJlyPWtFaQuc="/>
         </menu:category>
+        <menu:category id="c_admin" z="yJekxb7XuSQP9KBD9S6wbwLaHZY=">
+            <menu:item id="i_admin_new" messageCode="global_menu_new" url="/admins?form" z="TPmBX+1lfAP8gYU/pX/jcYwsTfM="/>
+            <menu:item id="i_admin_list" messageCode="global_menu_list" url="/admins?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JRwUq6a+WGX2NnSSZCd4lcreuMk="/>
+        </menu:category>
     </menu:menu>
 </div>

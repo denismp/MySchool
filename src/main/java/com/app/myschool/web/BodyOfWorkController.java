@@ -1,10 +1,8 @@
 package com.app.myschool.web;
 
-import java.util.Map;
-
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.BodyOfWorkView;
-
+import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;

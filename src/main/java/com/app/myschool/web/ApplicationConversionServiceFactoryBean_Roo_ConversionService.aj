@@ -3,6 +3,7 @@
 
 package com.app.myschool.web;
 
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
@@ -26,6 +27,30 @@ import org.springframework.format.FormatterRegistry;
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
     declare @type: ApplicationConversionServiceFactoryBean: @Configurable;
+    
+    public Converter<Admin, String> ApplicationConversionServiceFactoryBean.getAdminToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Admin, java.lang.String>() {
+            public String convert(Admin admin) {
+                return new StringBuilder().append(admin.getFirstName()).append(' ').append(admin.getLastName()).append(' ').append(admin.getMiddleName()).append(' ').append(admin.getPhone1()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Admin> ApplicationConversionServiceFactoryBean.getIdToAdminConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Admin>() {
+            public com.app.myschool.model.Admin convert(java.lang.Long id) {
+                return Admin.findAdmin(id);
+            }
+        };
+    }
+    
+    public Converter<String, Admin> ApplicationConversionServiceFactoryBean.getStringToAdminConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Admin>() {
+            public com.app.myschool.model.Admin convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Admin.class);
+            }
+        };
+    }
     
     public Converter<Artifact, String> ApplicationConversionServiceFactoryBean.getArtifactToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Artifact, java.lang.String>() {
@@ -126,7 +151,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Faculty, String> ApplicationConversionServiceFactoryBean.getFacultyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Faculty, java.lang.String>() {
             public String convert(Faculty faculty) {
-                return new StringBuilder().append(faculty.getPersonID()).append(' ').append(faculty.getFirstName()).append(' ').append(faculty.getLastName()).append(' ').append(faculty.getMiddleName()).toString();
+                return new StringBuilder().append(faculty.getFirstName()).append(' ').append(faculty.getLastName()).append(' ').append(faculty.getMiddleName()).append(' ').append(faculty.getPhone1()).toString();
             }
         };
     }
@@ -342,7 +367,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Student, String> ApplicationConversionServiceFactoryBean.getStudentToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Student, java.lang.String>() {
             public String convert(Student student) {
-                return new StringBuilder().append(student.getPersonID()).append(' ').append(student.getFirstName()).append(' ').append(student.getLastName()).append(' ').append(student.getMiddleName()).toString();
+                return new StringBuilder().append(student.getFirstName()).append(' ').append(student.getLastName()).append(' ').append(student.getMiddleName()).append(' ').append(student.getPhone1()).toString();
             }
         };
     }
@@ -388,6 +413,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
+        registry.addConverter(getAdminToStringConverter());
+        registry.addConverter(getIdToAdminConverter());
+        registry.addConverter(getStringToAdminConverter());
         registry.addConverter(getArtifactToStringConverter());
         registry.addConverter(getIdToArtifactConverter());
         registry.addConverter(getStringToArtifactConverter());
