@@ -124,7 +124,7 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
                 }
             ],
             viewConfig: {
-                id: 'bodiesofworksubjectsview'
+                itemId: 'bodiesofworksubjectsview'
             }
         });
 

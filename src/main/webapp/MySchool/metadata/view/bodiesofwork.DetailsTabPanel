@@ -9,9 +9,9 @@
         "activeTab": 0,
         "designer|userAlias": "bodiesofworkdetailstabpanel",
         "designer|userClassName": "bodiesofwork.DetailsTabPanel",
-        "height": null,
+        "height": 300,
         "itemId": "bottombodiesofworktabpanel",
-        "minHeight": null,
+        "minHeight": 300,
         "title": null
     },
     "designerId": "a5047276-a1c8-41e8-9562-5bb769d36b7d",

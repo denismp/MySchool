@@ -35,6 +35,11 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsPanel', {
     itemId: 'weeklyevaluationpanel',
     title: 'Weekly Evaluation Details',
 
+    layout: {
+        type: 'hbox',
+        align: 'stretch'
+    },
+
     initComponent: function() {
         var me = this;
 
@@ -42,7 +47,7 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsPanel', {
             dockedItems: [
                 {
                     xtype: 'weeklyevaluationgridpanel',
-                    minHeight: 150,
+                    height: 334,
                     dock: 'top'
                 },
                 {

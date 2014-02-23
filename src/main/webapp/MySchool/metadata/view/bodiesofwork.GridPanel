@@ -174,7 +174,8 @@
             "codeClass": null,
             "userConfig": {
                 "height": null,
-                "id": "bodiesofworksubjectsview",
+                "id": null,
+                "itemId": "bodiesofworksubjectsview",
                 "minHeight": null
             },
             "designerId": "6daa62c9-27d4-4bfd-afe8-f7d8734f12b1"

@@ -6,12 +6,11 @@
     },
     "codeClass": null,
     "userConfig": {
-        "container|align": "stretch",
         "designer|userAlias": "mybodiesofworkpanel",
         "designer|userClassName": "bodiesofwork.BodiesOfWorkPanel",
         "height": 673,
         "id": "bodiesofworkpanel",
-        "layout": "hbox",
+        "layout": null,
         "title": "Bodies Of Work By Student And Subject"
     },
     "designerId": "78d64d6c-4176-4ac6-bb01-6d72ccf195b3",
@@ -25,8 +24,7 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
-                "height": 334,
-                "layout|flex": null
+                "height": 334
             },
             "designerId": "9a614e32-a30a-43ef-ab07-b2acb6a42663",
             "masterInstanceId": "49b7bdca-cc8d-4696-a931-47cb75438709"
@@ -39,8 +37,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "bottom",
-                "layout|flex": null
+                "dock": "bottom"
             },
             "designerId": "e6ef0b9f-6979-45ba-963a-ac7b7cf47f5f",
             "masterInstanceId": "a5047276-a1c8-41e8-9562-5bb769d36b7d"
@@ -52,9 +49,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "bfe25d1d-8d7d-4c3d-bcf3-cbcd31fe2d04",
             "masterInstanceId": "c1c1938d-1838-4b7e-8032-af43f2bf008c"
         },
@@ -65,9 +59,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "eb97b706-4202-495e-be3f-cf08cf33246e",
             "masterInstanceId": "2db3271c-d89b-445f-a612-8b164a47b14b"
         },
@@ -78,9 +69,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "28a22fa1-18aa-4c00-8a68-7146193caf4e",
             "masterInstanceId": "8f278347-452c-45e8-a8bf-770b6542025d"
         },
@@ -91,9 +79,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "4c2215d5-8c2e-4bf9-8b80-72dddfdb9618",
             "masterInstanceId": "7353affb-c701-4818-91ab-55590bb3f156"
         },
@@ -104,9 +89,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "958f29be-7ebf-45fc-a3b9-06d118e75a0b",
             "masterInstanceId": "413f8b4e-5e22-482d-87aa-3b770602a60b"
         },
@@ -117,9 +99,6 @@
                 "type": "array"
             },
             "codeClass": null,
-            "userConfig": {
-                "layout|flex": null
-            },
             "designerId": "59f33e4c-0a79-4b75-9c4a-666e67cbc230",
             "masterInstanceId": "1a664e44-a597-4e5b-a233-f4b79064e330"
         }

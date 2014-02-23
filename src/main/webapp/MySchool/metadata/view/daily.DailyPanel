@@ -12,7 +12,7 @@
         "itemId": "dailydetailspanel",
         "minHeight": null,
         "title": "Daily Details",
-        "width": 1398
+        "width": null
     },
     "designerId": "516746d0-38a9-472f-a745-1b17006155e3",
     "cn": [
@@ -25,7 +25,8 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
-                "minHeight": 150
+                "height": 334,
+                "minHeight": null
             },
             "designerId": "839555b8-2c04-47d6-99a4-539eb5234757",
             "masterInstanceId": "0dbf8df5-9454-4045-bed5-06bead3b8e81"

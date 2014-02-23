@@ -107,11 +107,12 @@
                         {
                             "type": "linkedinstance",
                             "reference": {
-                                "name": "items",
+                                "name": "dockedItems",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dock": "top",
                                 "itemId": "bodiesofworkpaneel",
                                 "layout|flex": 1
                             },
@@ -138,10 +139,11 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
+                        "dock": null,
                         "height": 700,
                         "id": null,
                         "itemId": "dailytab",
-                        "layout": "vbox",
+                        "layout": "hbox",
                         "minHeight": null,
                         "title": "Daily"
                     },
