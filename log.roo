@@ -485,3 +485,4 @@ logging setup --level INFO
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-02-22 21:02:21
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-02-22 21:04:09
 web mvc all --package ~.web
+json all
