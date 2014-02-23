@@ -96,7 +96,8 @@
             "codeClass": null,
             "userConfig": {
                 "height": null,
-                "id": "weeklyskillsgridview"
+                "id": null,
+                "itemId": "bodiesofworksubjectsview"
             },
             "designerId": "0e6ea0b7-57b5-4934-af58-cd725b07b29e"
         },
