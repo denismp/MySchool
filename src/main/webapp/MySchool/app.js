@@ -69,7 +69,7 @@ Ext.application({
         'subject.EditForm',
         'subject.SubjectNameComboBox',
         'subject.QuarterYearComboBox',
-        null,
+        'bodiesofwork.BodyOfWorkForm',
         'daily.DailyPanel',
         'daily.DailyGridPanel',
         'daily.DetailsTabPanel',

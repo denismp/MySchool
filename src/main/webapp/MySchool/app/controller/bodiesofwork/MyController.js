@@ -271,6 +271,28 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     init: function(application) {
                 this.selectedIndex = 0;
 
+                this.control({
+                    "#editbodiesofworkwhattabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#editbodiesofworkdescriptiontabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#editbodiesofworkobjectivetabpanel": {
+                        click: this.buttonHandler
+                    },
+                    "#bodiesofworkwhattabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#bodiesofworkdescriptiontabpaneltextbox": {
+                        blur: this.blurHandler
+                    },
+                    "#bodiesofworkobjectivetabpaneltextbox": {
+                        blur: this.blurHandler
+                    }
+
+                });
+
         this.control({
             "#bodiesofworkssubjectsgrid": {
                 viewready: this.onBodiesofworkssubjectsgridViewReady,
@@ -344,6 +366,95 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             console.log( 'loadTabPanelForm(): No form' );
             //console.log( tabPanel );
         }
+    },
+
+    blurHandler: function(o, event, eOpts) {
+        debugger;
+        var p_			= o.up('form').up('panel');
+        var myForm		= o.up('form');
+        //var topP_		= p_.up('panel');
+        var pItemId_	= p_.getItemId();
+        var edit_		= p_.down('#edit' + pItemId_);
+        var myTitle		= p_.title;
+        console.log( edit_ );
+        //console.log( topP_ );
+        console.log( myForm );
+        console.log( "pItemId_=" + pItemId_);
+        //var myController = this;
+
+        console.log( 'title=' + myTitle );
+
+        //topP_.buttonHandler(edit_);
+
+        Ext.Msg.show({
+            title:'Save Changes?',
+            //msg: 'Would you like to save your changes to ' + pItemId_ + ' ?',
+            msg: 'Would you like to save your changes to ' + myTitle + ' ?',
+            buttons: Ext.Msg.YESNO,
+            icon: Ext.Msg.QUESTION,
+            fn: function(buttonId) {
+                var mystore		= Ext.getStore("monthly.EvaluationRatingsStore");
+                if (buttonId == 'yes') {
+                    Ext.Msg.show({
+                        title: 'Save',
+                        msg: 'record saved',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.window.MessageBox.INFO
+                    });
+                    //debugger;
+
+                    var myTextArea	= myForm.down('textareafield');
+                    var myName		= myTextArea.getName();
+                    var myValue		= myTextArea.getValue();
+                    var record		= myForm.getRecord();
+                    record.set( myName, myValue );
+                    record.set( 'lastUpdated', new Date() );
+                    record.set( 'whoUpdated', 'login' );
+
+                    mystore.sync();
+                }
+                else {
+                    Ext.Msg.show({
+                        title: 'Cancel',
+                        msg: 'record restored',
+                        buttons: Ext.Msg.OK,
+                        icon: Ext.window.MessageBox.INFO
+                    });
+                    mystore.reload();
+                }
+
+            }
+        });
+        //debugger;
+        this.buttonHandler( edit_ );
+    },
+
+    buttonHandler: function(button, e, eOpts) {
+        debugger;
+        window.console.log(button);
+        var b_		= button;
+        var form	= b_.up('panel');
+        var p_		= form.up();
+        var pItemId_ = p_.getItemId();
+        var field_;
+
+        if (pItemId_ == 'dailyhourstab') {
+            field_ = p_.down('numberfield');
+        } else {
+            field_ = p_.down('textareafield');
+        }
+
+        if (b_.getText().charAt(0) == 'D') {
+            b_ = p_.down('#edit' + pItemId_);
+            b_.setText('Edit');
+            b_.setDisabled(false);
+            field_.setDisabled(true);
+        } else {
+            b_.setText('Done');
+            field_.setDisabled(false);
+            field_.focus();
+        }
+
     }
 
 });
