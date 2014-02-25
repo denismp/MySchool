@@ -214,6 +214,10 @@
                 "designer|targetType": "Ext.panel.Tool",
                 "fn": "onToolrefreshbodiesofworkClick",
                 "implHandler": [
+                    "//debugger;",
+                    "window.console.log( 'Refresh' );",
+                    "var mystore = Ext.getStore(\"bodiesofwork.MyJsonStore\");",
+                    "mystore.reload();",
                     ""
                 ],
                 "name": "click",
@@ -634,7 +638,7 @@
                     "    buttons: Ext.Msg.YESNO,",
                     "    icon: Ext.Msg.QUESTION,",
                     "    fn: function(buttonId) {",
-                    "        var mystore\t\t= Ext.getStore(\"monthly.EvaluationRatingsStore\");",
+                    "        var mystore\t\t= Ext.getStore(\"bodiesofwork.MyJsonStore\");",
                     "        if (buttonId == 'yes') {",
                     "            Ext.Msg.show({",
                     "                title: 'Save',",
@@ -642,7 +646,7 @@
                     "                buttons: Ext.Msg.OK,",
                     "                icon: Ext.window.MessageBox.INFO",
                     "            });",
-                    "            //debugger;",
+                    "            debugger;",
                     "",
                     "            var myTextArea\t= myForm.down('textareafield');",
                     "            var myName\t\t= myTextArea.getName();",

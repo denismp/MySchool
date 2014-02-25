@@ -101,6 +101,10 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
     },
 
     onToolrefreshbodiesofworkClick: function(tool, e, eOpts) {
+        //debugger;
+        window.console.log( 'Refresh' );
+        var mystore = Ext.getStore("bodiesofwork.MyJsonStore");
+        mystore.reload();
 
     },
 
@@ -393,7 +397,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             buttons: Ext.Msg.YESNO,
             icon: Ext.Msg.QUESTION,
             fn: function(buttonId) {
-                var mystore		= Ext.getStore("monthly.EvaluationRatingsStore");
+                var mystore		= Ext.getStore("bodiesofwork.MyJsonStore");
                 if (buttonId == 'yes') {
                     Ext.Msg.show({
                         title: 'Save',
@@ -401,7 +405,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
                         buttons: Ext.Msg.OK,
                         icon: Ext.window.MessageBox.INFO
                     });
-                    //debugger;
+                    debugger;
 
                     var myTextArea	= myForm.down('textareafield');
                     var myName		= myTextArea.getName();

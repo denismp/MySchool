@@ -905,6 +905,33 @@ public class ControllerHelper {
 		        	updateGood = true;
 		        }				
 			}
+			else if (myClass.equals(BodyOfWorkView.class)) {
+				BodyOfWorkView bowV_ = BodyOfWorkView.fromJsonToBodyOfWorkView(myJson);
+				Long bId_ = bowV_.getId();
+				
+				if (bId_.longValue() > 0L) {
+					BodyOfWork bow_ = BodyOfWork.findBodyOfWork(bId_);
+
+					inSync = bowV_.getVersion() == bow_.getVersion();
+					if (inSync) {
+						bow_.setWorkName(bowV_.getWorkName());
+						bow_.setWhat(bowV_.getWhat());
+						bow_.setDescription(bowV_.getDescription());
+						bow_.setObjective(bowV_.getObjective());
+						bow_.setLocked(bowV_.getLocked());
+						bow_.setLastUpdated(bowV_.getLastUpdated());
+						bow_.setWhoUpdated(bowV_.getWhoUpdated());
+						
+						if (bow_.merge() != null) {
+							bowV_.setVersion(bow_.getVersion());
+
+							updateGood = true;
+						}
+					}
+				}
+
+				record = bowV_;
+			}
 			else if (myClass.equals(SubjectView.class)) {
 				SubjectView s_ = SubjectView.fromJsonToSubjectView(myJson);
 				Long qtrId_ = s_.getQtrId();
@@ -913,39 +940,43 @@ public class ControllerHelper {
 					// we are updating qtr
 					Quarter q_ = Quarter.findQuarter(qtrId_);
 
-					q_.setGrade(s_.getQtrGrade());
-					q_.setLastUpdated(s_.getQtrLastUpdated());
-					q_.setWhoUpdated(s_.getQtrWhoUpdated());
-					q_.setCompleted(s_.getQtrCompleted());
-					q_.setLocked(s_.getQtrLocked());
-					q_.setGrade_type(s_.getQtrGradeType());
-					
 					inSync = q_.getVersion() == s_.getQtrVersion();
 
-					if (inSync && q_.merge() != null) {
-						s_.setQtrVersion(q_.getVersion());
+					if (inSync) {
+						q_.setGrade(s_.getQtrGrade());
+						q_.setLastUpdated(s_.getQtrLastUpdated());
+						q_.setWhoUpdated(s_.getQtrWhoUpdated());
+						q_.setCompleted(s_.getQtrCompleted());
+						q_.setLocked(s_.getQtrLocked());
+						q_.setGrade_type(s_.getQtrGradeType());
 
-						updateGood = true;
+						if (q_.merge() != null) {
+							s_.setQtrVersion(q_.getVersion());
+
+							updateGood = true;
+						}
 					}
 				} else {
 					// Qtr id is zero so we are just updating the subject record
 					Long subjId_ = s_.getSubjId();
 					Subject subj_ = Subject.findSubject(subjId_);
 
-					subj_.setCreditHours(s_.getSubjCreditHours());
-					subj_.setDescription(s_.getSubjDescription());
-					subj_.setGradeLevel(s_.getSubjGradeLevel());
-					subj_.setObjectives(s_.getSubjObjectives());
-					subj_.setLastUpdated(s_.getSubjLastUpdated());
-					subj_.setName(s_.getSubjName());
-					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
-
 					inSync = subj_.getVersion() == s_.getSubjVersion();
 
-					if (inSync && subj_.merge() != null) {
-						s_.setSubjVersion(subj_.getVersion());
-
-						updateGood = true;
+					if (inSync) {
+						subj_.setCreditHours(s_.getSubjCreditHours());
+						subj_.setDescription(s_.getSubjDescription());
+						subj_.setGradeLevel(s_.getSubjGradeLevel());
+						subj_.setObjectives(s_.getSubjObjectives());
+						subj_.setLastUpdated(s_.getSubjLastUpdated());
+						subj_.setName(s_.getSubjName());
+						subj_.setWhoUpdated(s_.getSubjWhoUpdated());
+	
+						if (subj_.merge() != null) {
+							s_.setSubjVersion(subj_.getVersion());
+	
+							updateGood = true;
+						}
 					}
 				}
 

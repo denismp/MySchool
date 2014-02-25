@@ -24,7 +24,7 @@ public class BodyOfWorkController {
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.showJson(BodyOfWork.class, id);
+        return controllerHelper.showJson(BodyOfWorkView.class, id);
     }
 
     @RequestMapping(headers = "Accept=application/json")
@@ -37,7 +37,7 @@ public class BodyOfWorkController {
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJson(BodyOfWork.class, json);
+        return controllerHelper.createFromJson(BodyOfWorkView.class, json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
@@ -52,7 +52,7 @@ public class BodyOfWorkController {
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJson(BodyOfWork.class, json);
+        return controllerHelper.updateFromJson(BodyOfWorkView.class, json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
