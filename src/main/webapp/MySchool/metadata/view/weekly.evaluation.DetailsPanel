@@ -6,10 +6,12 @@
     },
     "codeClass": null,
     "userConfig": {
+        "container|align": "stretch",
         "designer|userAlias": "weeklyevaluationdetailspanel",
         "designer|userClassName": "weekly.evaluation.DetailsPanel",
         "height": 673,
         "itemId": "weeklyevaluationpanel",
+        "layout": "hbox",
         "title": "Weekly Evaluation Details"
     },
     "designerId": "a110d1b6-6c61-45cc-a6e7-f038c820a467",
@@ -23,7 +25,8 @@
             "codeClass": null,
             "userConfig": {
                 "dock": "top",
-                "minHeight": 150
+                "height": 334,
+                "minHeight": null
             },
             "designerId": "f2a91120-967a-4f2b-a6b0-330e0c26cdc9",
             "masterInstanceId": "c00921ce-f39c-4a16-8f7a-108ee06748f5"

@@ -35,11 +35,6 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
     id: 'bodiesofworkpanel',
     title: 'Bodies Of Work By Student And Subject',
 
-    layout: {
-        type: 'hbox',
-        align: 'stretch'
-    },
-
     initComponent: function() {
         var me = this;
 

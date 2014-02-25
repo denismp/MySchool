@@ -28,7 +28,6 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
     ],
 
     id: 'weeklyskillsgridpanel',
-    width: 963,
     autoScroll: true,
     title: '[student name]Weekly Skills By Subject And Week',
     forceFit: true,

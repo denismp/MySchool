@@ -23,7 +23,9 @@ Ext.define('MySchool.view.bodiesofwork.DetailsTabPanel', {
         'Ext.tab.Tab'
     ],
 
+    height: 300,
     itemId: 'bottombodiesofworktabpanel',
+    minHeight: 300,
     activeTab: 0,
 
     initComponent: function() {
