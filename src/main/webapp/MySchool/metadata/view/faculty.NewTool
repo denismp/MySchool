@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "facultynewtool",
+        "designer|userClassName": "faculty.NewTool",
+        "id": null,
+        "itemId": "facultyprofilenewtool",
+        "tooltip": "New",
+        "type": "plus"
+    },
+    "designerId": "7a6772dd-4127-477c-8248-9d52c6544f7a"
+}

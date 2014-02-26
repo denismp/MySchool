@@ -20,12 +20,18 @@ Ext.define('MySchool.view.faculty.ProfilePanel', {
     requires: [
         'MySchool.view.faculty.ProfileGridPanel',
         'MySchool.view.faculty.ProfileForm',
+        'MySchool.view.faculty.RefreshTool',
+        'MySchool.view.faculty.SearchTool',
+        'MySchool.view.faculty.NewTool',
+        'MySchool.view.faculty.SaveTool',
+        'MySchool.view.faculty.DeleteTool',
+        'MySchool.view.faculty.LockTool',
         'Ext.grid.Panel',
         'Ext.form.Panel',
         'Ext.panel.Tool'
     ],
 
-    itemId: 'facultyprofiledetailspanel',
+    itemId: 'facultyprofilesbystudentdetailspanel',
     layout: 'fit',
     title: 'Faculty Profiles Details',
 
@@ -45,58 +51,22 @@ Ext.define('MySchool.view.faculty.ProfilePanel', {
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                    },
-                    id: 'toolrefreshstudentsbysubject9',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'facultyrefreshtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    id: 'toolsearchstudentsbysubject9',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'facultysearchtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    id: 'toolnewstudentsbysubject9',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'facultynewtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                    },
-                    id: 'toolsavestudentsbysubject9',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'facultysavetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    id: 'tooldeletestudentsbysubject9',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'facultydeletetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add lock handler code here.
-                    },
-                    id: 'toollockstudentsbysubject9',
-                    tooltip: 'Lock?',
-                    type: 'pin'
+                    xtype: 'facultylocktool'
                 }
             ]
         });

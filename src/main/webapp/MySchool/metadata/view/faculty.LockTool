@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "facultylocktool",
+        "designer|userClassName": "faculty.LockTool",
+        "id": null,
+        "itemId": "facultyprofilelocktool",
+        "tooltip": "Lock?",
+        "type": "pin"
+    },
+    "designerId": "4b4e2615-eed4-4448-a1e3-1b0280b92a16"
+}

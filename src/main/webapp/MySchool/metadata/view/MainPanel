@@ -355,48 +355,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": null,
-                        "itemId": "studentprofilestab",
-                        "minHeight": 600,
-                        "title": "Student Profiles"
-                    },
-                    "designerId": "ae838009-6430-47b7-a8e2-ca3b53b7ad9b",
-                    "cn": [
-                        {
-                            "type": "Ext.tab.Tab",
-                            "reference": {
-                                "name": "tabConfig",
-                                "type": "object"
-                            },
-                            "codeClass": null,
-                            "designerId": "8b417a23-b973-44f8-b6a5-ec24a4c16cc1"
-                        },
-                        {
-                            "type": "linkedinstance",
-                            "reference": {
-                                "name": "dockedItems",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "dock": "top",
-                                "itemId": "studentprofilepanel"
-                            },
-                            "designerId": "56ea2b00-8a0c-4b30-9d86-8aacbe0e5b79",
-                            "masterInstanceId": "b1bee331-b4f1-4a12-8913-82ec18d3b753"
-                        }
-                    ]
-                },
-                {
-                    "type": "Ext.panel.Panel",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "itemId": "facultyprofilestab",
-                        "title": "Faculty Profiles"
+                        "itemId": "facultyprofilesbystudenttab",
+                        "title": "Faculty Profiles by Student"
                     },
                     "designerId": "dd58e145-d5ac-4a8c-8f21-73a10eb677e4",
                     "cn": [
@@ -424,6 +384,46 @@
                             },
                             "designerId": "06252ef2-6bb5-4e4f-a039-658db92add06",
                             "masterInstanceId": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": null,
+                        "itemId": "studentprofilestab",
+                        "minHeight": 600,
+                        "title": "Student Profiles By Faculty"
+                    },
+                    "designerId": "ae838009-6430-47b7-a8e2-ca3b53b7ad9b",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "designerId": "8b417a23-b973-44f8-b6a5-ec24a4c16cc1"
+                        },
+                        {
+                            "type": "linkedinstance",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "studentprofilebyfacultypanel"
+                            },
+                            "designerId": "56ea2b00-8a0c-4b30-9d86-8aacbe0e5b79",
+                            "masterInstanceId": "b1bee331-b4f1-4a12-8913-82ec18d3b753"
                         }
                     ]
                 }

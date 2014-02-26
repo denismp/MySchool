@@ -3,13 +3,13 @@
 
 package com.app.myschool.model;
 
-import com.app.myschool.model.Roles;
+import com.app.myschool.model.FacultyByStudentView;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-privileged aspect Roles_Roo_ToString {
+privileged aspect FacultyByStudentView_Roo_ToString {
     
-    public String Roles.toString() {
+    public String FacultyByStudentView.toString() {
         return ReflectionToStringBuilder.toString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
     

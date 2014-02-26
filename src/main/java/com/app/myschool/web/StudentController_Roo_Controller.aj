@@ -7,7 +7,6 @@ import com.app.myschool.model.Faculty;
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
-import com.app.myschool.model.Roles;
 import com.app.myschool.model.Student;
 import com.app.myschool.web.StudentController;
 import java.io.UnsupportedEncodingException;
@@ -104,7 +103,6 @@ privileged aspect StudentController_Roo_Controller {
         uiModel.addAttribute("graduatetrackings", GraduateTracking.findAllGraduateTrackings());
         uiModel.addAttribute("previoustranscriptses", PreviousTranscripts.findAllPreviousTranscriptses());
         uiModel.addAttribute("quarters", Quarter.findAllQuarters());
-        uiModel.addAttribute("roleses", Roles.findAllRoleses());
     }
     
     String StudentController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

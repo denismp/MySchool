@@ -18,13 +18,14 @@ Ext.define('MySchool.view.faculty.ProfileForm', {
     alias: 'widget.facultyprofileform',
 
     requires: [
-        'Ext.form.field.ComboBox'
+        'Ext.form.field.Text',
+        'Ext.button.Button'
     ],
 
     itemId: 'facultyprofileform',
     minHeight: 500,
     autoScroll: true,
-    layout: 'vbox',
+    layout: 'auto',
     bodyPadding: 10,
     collapseFirst: false,
     frameHeader: false,
@@ -37,83 +38,102 @@ Ext.define('MySchool.view.faculty.ProfileForm', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'idfirstname1',
+                    itemId: 'faculty-firstname',
                     width: 300,
-                    fieldLabel: 'First Name'
+                    fieldLabel: 'First Name',
+                    name: 'firstName'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idmiddlename1',
+                    itemId: 'faculty-middlename',
                     width: 300,
-                    fieldLabel: 'Middle Name'
+                    fieldLabel: 'Middle Name',
+                    name: 'middleName'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idlastname1',
+                    itemId: 'faculty-lastname',
                     width: 300,
-                    fieldLabel: 'Last Name'
+                    fieldLabel: 'Last Name',
+                    name: 'lastName'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idmobile1',
-                    fieldLabel: 'Mobile Phone'
+                    itemId: 'faculty-phone1',
+                    fieldLabel: 'Phone1',
+                    name: 'phone1'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idphone1',
-                    fieldLabel: 'Phone'
+                    itemId: 'faculty-phone2',
+                    fieldLabel: 'Phone2',
+                    name: 'phone2'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idaddress3',
+                    itemId: 'faculty-address1',
                     width: 300,
-                    fieldLabel: 'Address1'
+                    fieldLabel: 'Address1',
+                    name: 'address1'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idaddress4',
+                    itemId: 'faculty-address2',
                     width: 300,
-                    fieldLabel: 'Address2'
+                    fieldLabel: 'Address2',
+                    name: 'address2'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idstreet1',
+                    itemId: 'faculty-street',
                     width: 300,
-                    fieldLabel: 'Street'
+                    fieldLabel: 'Street',
+                    name: 'street'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idcity1',
+                    itemId: 'faculty-city',
                     width: 300,
-                    fieldLabel: 'City'
+                    fieldLabel: 'City',
+                    name: 'city'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idprovince1',
+                    itemId: 'faculty-province',
                     width: 300,
-                    fieldLabel: 'Province/State'
+                    fieldLabel: 'Province/State',
+                    name: 'province'
                 },
                 {
                     xtype: 'textfield',
-                    fieldLabel: 'Postal Code'
+                    itemId: 'faculty-postalcode',
+                    fieldLabel: 'Postal Code',
+                    name: 'postalCode'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idcountry1',
-                    fieldLabel: 'Country'
+                    itemId: 'faculty-country',
+                    fieldLabel: 'Country',
+                    name: 'country'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idemail1',
+                    itemId: 'faculty-email',
                     width: 300,
-                    fieldLabel: 'Email'
+                    fieldLabel: 'Email',
+                    name: 'email'
                 },
                 {
-                    xtype: 'combobox',
-                    formBind: false,
-                    id: 'idrole',
-                    fieldLabel: 'Role',
-                    editable: false
+                    xtype: 'button',
+                    text: 'Edit'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Cancel'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Save'
                 }
             ]
         });

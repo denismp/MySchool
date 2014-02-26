@@ -8,7 +8,7 @@
     "userConfig": {
         "designer|userAlias": "studentprofilepanel",
         "designer|userClassName": "student.ProfilePanel",
-        "itemId": "studentprofiledetailspanel",
+        "itemId": "studentprofilebyfacultydetailspanel",
         "layout": "fit",
         "title": "Student Profile Details"
     },
@@ -22,7 +22,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "dock": "top"
+                "dock": "top",
+                "itemId": "studentprofilebyfacultygridpanel"
             },
             "designerId": "bce725c4-0bce-48cf-bb27-6b2bd6db3158",
             "masterInstanceId": "257555bd-a287-4e40-97de-f7a680e055aa"

@@ -30,7 +30,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "First Name",
-                "id": "idfirstname",
+                "id": null,
+                "itemId": "student-firstname",
                 "width": 300
             },
             "designerId": "50a87de6-d373-41dc-843f-9d631900b77a"
@@ -44,7 +45,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Middle Name",
-                "id": "idmiddlename",
+                "id": null,
+                "itemId": "student-middlename",
                 "width": 300
             },
             "designerId": "16dc1f4d-4471-4328-aa51-3ffa9a54dd14"
@@ -58,7 +60,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Last Name",
-                "id": "idlastname",
+                "id": null,
+                "itemId": "student-lastname",
                 "layout|flex": null,
                 "width": 300
             },
@@ -73,7 +76,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Mobile Phone",
-                "id": "idmobile",
+                "id": null,
+                "itemId": "student-mobile",
                 "layout|flex": null
             },
             "designerId": "af996aea-d4bc-4d06-91e5-137e49a66866"
@@ -87,7 +91,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Phone",
-                "id": "idphone",
+                "id": null,
+                "itemId": "student-phone",
                 "layout|flex": null
             },
             "designerId": "db28b09c-d29e-4502-a397-e3d68f0f6acb"
@@ -101,7 +106,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Address1",
-                "id": "idaddress1",
+                "id": null,
+                "itemId": "student-address1",
                 "layout|flex": null,
                 "width": 300
             },
@@ -116,7 +122,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Address2",
-                "id": "idaddress2",
+                "id": null,
+                "itemId": "student-address2",
                 "layout|flex": null,
                 "width": 300
             },
@@ -131,7 +138,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Street",
-                "id": "idstreet",
+                "id": null,
+                "itemId": "student-street",
                 "layout|flex": null,
                 "width": 300
             },
@@ -146,7 +154,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "City",
-                "id": "idcity",
+                "id": null,
+                "itemId": "student-city",
                 "layout|flex": null,
                 "width": 300
             },
@@ -161,7 +170,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Province/State",
-                "id": "idprovince",
+                "id": null,
+                "itemId": "student-province",
                 "layout|flex": null,
                 "width": 300
             },
@@ -176,6 +186,7 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Postal Code",
+                "itemId": "student-postalcode",
                 "layout|flex": null
             },
             "designerId": "397a635e-166d-407e-808a-6d9da1ee2050"
@@ -189,7 +200,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Country",
-                "id": "idcountry",
+                "id": null,
+                "itemId": "student-country",
                 "layout|flex": null
             },
             "designerId": "6760b060-44cf-4690-a611-8c8e71860906"
@@ -203,7 +215,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Email",
-                "id": "idemail",
+                "id": null,
+                "itemId": "student-email",
                 "layout|flex": null,
                 "width": 300
             },
@@ -218,7 +231,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Faculty ID",
-                "id": "idfacultyid",
+                "id": null,
+                "itemId": "student-facultyId",
                 "width": null
             },
             "designerId": "f7f657bb-2210-498e-b84f-0c56f5a106c1"

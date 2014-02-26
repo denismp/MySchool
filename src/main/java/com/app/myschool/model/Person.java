@@ -72,9 +72,6 @@ public abstract class Person {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
-    private Set<Roles> roles = new HashSet<Roles>();
-
     @NotNull
     @Column(unique = true)
     @Size(max = 50)

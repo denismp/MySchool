@@ -31,16 +31,12 @@
         <intercept-url pattern="/previoustranscriptses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarters" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarters/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/roleses" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/roleses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/skillratingses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/skillratingses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/students" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/students/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjects" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjects/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/weeklys" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/weeklys/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="quarternameses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarternameses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="permitAll"/>

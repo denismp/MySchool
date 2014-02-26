@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "facultydeletetool",
+        "designer|userClassName": "faculty.DeleteTool",
+        "id": null,
+        "itemId": "facultyprofiledeletetool",
+        "tooltip": "Delete",
+        "type": "minus"
+    },
+    "designerId": "bb3d5d97-791e-45dc-a7a0-d68a406c715a"
+}

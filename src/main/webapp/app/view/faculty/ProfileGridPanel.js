@@ -19,16 +19,17 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
+        'Ext.grid.column.Date',
         'Ext.grid.column.Boolean',
         'Ext.grid.View'
     ],
 
-    itemId: 'facultyprofilegridpanel',
-    maxHeight: 150,
+    itemId: 'facultyprofilesbystudentgridpanel',
     minHeight: 150,
     autoScroll: true,
     title: 'Faculty',
     forceFit: true,
+    store: 'faculty.ByStudentStore',
 
     initComponent: function() {
         var me = this;
@@ -38,39 +39,89 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'idstudent',
-                    text: 'idfaculty'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'firstname',
-                    text: 'First Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'middlename',
-                    text: 'Middle Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'lastname',
-                    text: 'Last Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'email',
-                    text: 'Email'
-                },
-                {
-                    xtype: 'booleancolumn',
-                    dataIndex: 'locked',
-                    text: 'Locked?'
+                    dataIndex: 'id',
+                    text: 'id'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'idfaculty',
-                    text: 'idfaculty'
+                    dataIndex: 'facultybystudentId',
+                    text: 'faultybystudentId'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'studentId',
+                    text: 'studentId'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'subjId',
+                    text: 'subjId'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'qtrId',
+                    text: 'qtrId'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'facultyId',
+                    text: 'facultyId'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'facultyUserName',
+                    text: 'facultyUserName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'subjName',
+                    text: 'subjName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'studentUserName',
+                    text: 'studentUserName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrName',
+                    text: 'qtrName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'qtrYear',
+                    text: 'qtrYear'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'whoUpdated',
+                    text: 'whoUpdated'
+                },
+                {
+                    xtype: 'datecolumn',
+                    hidden: true,
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated'
+                },
+                {
+                    xtype: 'booleancolumn',
+                    dataIndex: 'enabled',
+                    text: 'Enabled?'
                 }
             ],
             viewConfig: {

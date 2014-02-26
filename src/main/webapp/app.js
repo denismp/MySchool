@@ -32,7 +32,8 @@ Ext.application({
         'common.QuarterSubjectModel',
         'common.MonthModel',
         'weekly.SkillRatingsModel',
-        'weekly.EvaluationsModel'
+        'weekly.EvaluationsModel',
+        'faculty.ByStudentModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -49,7 +50,8 @@ Ext.application({
         'common.QuarterSubjectStore',
         'common.MonthStore',
         'weekly.SkillRatingsStore',
-        'weekly.EvaluationsRatingsStore'
+        'weekly.EvaluationsRatingsStore',
+        'faculty.ByStudentStore'
     ],
     views: [
         'MainPanel',
@@ -135,7 +137,13 @@ Ext.application({
         'monthly.evaluation.SaveTool',
         'monthly.evaluation.DeleteTool',
         'monthly.evaluation.LockTool',
-        'bodiesofwork.DetailsTabPanel'
+        'bodiesofwork.DetailsTabPanel',
+        'faculty.RefreshTool',
+        'faculty.SearchTool',
+        'faculty.NewTool',
+        'faculty.SaveTool',
+        'faculty.DeleteTool',
+        'faculty.LockTool'
     ],
     controllers: [
         'subject.SubjectsController',
@@ -144,7 +152,8 @@ Ext.application({
         'monthly.SummaryRatingsController',
         'weekly.SkillRatingsController',
         'weekly.EvaluationsController',
-        'monthly.EvaluationRatingsController'
+        'monthly.EvaluationRatingsController',
+        'faculty.ByStudentController'
     ],
     name: 'MySchool',
 

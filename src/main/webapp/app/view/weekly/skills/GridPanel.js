@@ -202,7 +202,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
                 }
             ],
             viewConfig: {
-                id: 'weeklyskillsgridview'
+                itemId: 'bodiesofworksubjectsview'
             },
             plugins: [
                 Ext.create('Ext.grid.plugin.CellEditing', {

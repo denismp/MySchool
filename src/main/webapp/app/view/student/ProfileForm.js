@@ -37,80 +37,81 @@ Ext.define('MySchool.view.student.ProfileForm', {
             items: [
                 {
                     xtype: 'textfield',
-                    id: 'idfirstname',
+                    itemId: 'student-firstname',
                     width: 300,
                     fieldLabel: 'First Name'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idmiddlename',
+                    itemId: 'student-middlename',
                     width: 300,
                     fieldLabel: 'Middle Name'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idlastname',
+                    itemId: 'student-lastname',
                     width: 300,
                     fieldLabel: 'Last Name'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idmobile',
+                    itemId: 'student-mobile',
                     fieldLabel: 'Mobile Phone'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idphone',
+                    itemId: 'student-phone',
                     fieldLabel: 'Phone'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idaddress1',
+                    itemId: 'student-address1',
                     width: 300,
                     fieldLabel: 'Address1'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idaddress2',
+                    itemId: 'student-address2',
                     width: 300,
                     fieldLabel: 'Address2'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idstreet',
+                    itemId: 'student-street',
                     width: 300,
                     fieldLabel: 'Street'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idcity',
+                    itemId: 'student-city',
                     width: 300,
                     fieldLabel: 'City'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idprovince',
+                    itemId: 'student-province',
                     width: 300,
                     fieldLabel: 'Province/State'
                 },
                 {
                     xtype: 'textfield',
+                    itemId: 'student-postalcode',
                     fieldLabel: 'Postal Code'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idcountry',
+                    itemId: 'student-country',
                     fieldLabel: 'Country'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idemail',
+                    itemId: 'student-email',
                     width: 300,
                     fieldLabel: 'Email'
                 },
                 {
                     xtype: 'textfield',
-                    id: 'idfacultyid',
+                    itemId: 'student-facultyId',
                     fieldLabel: 'Faculty ID'
                 }
             ]

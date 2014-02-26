@@ -13,7 +13,8 @@
             "monthly.SummaryRatingsController",
             "weekly.SkillRatingsController",
             "weekly.EvaluationsController",
-            "monthly.EvaluationRatingsController"
+            "monthly.EvaluationRatingsController",
+            "faculty.ByStudentController"
         ],
         "models": [
             "subject.SubjectsModel",
@@ -27,7 +28,8 @@
             "common.QuarterSubjectModel",
             "common.MonthModel",
             "weekly.SkillRatingsModel",
-            "weekly.EvaluationsModel"
+            "weekly.EvaluationsModel",
+            "faculty.ByStudentModel"
         ],
         "name": "MySchool",
         "stores": [
@@ -45,7 +47,8 @@
             "common.QuarterSubjectStore",
             "common.MonthStore",
             "weekly.SkillRatingsStore",
-            "weekly.EvaluationsRatingsStore"
+            "weekly.EvaluationsRatingsStore",
+            "faculty.ByStudentStore"
         ],
         "views": [
             "MainPanel",
@@ -131,7 +134,13 @@
             "monthly.evaluation.SaveTool",
             "monthly.evaluation.DeleteTool",
             "monthly.evaluation.LockTool",
-            "bodiesofwork.DetailsTabPanel"
+            "bodiesofwork.DetailsTabPanel",
+            "faculty.RefreshTool",
+            "faculty.SearchTool",
+            "faculty.NewTool",
+            "faculty.SaveTool",
+            "faculty.DeleteTool",
+            "faculty.LockTool"
         ]
     },
     "designerId": "application"

@@ -4,9 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.Person;
-import com.app.myschool.model.Roles;
 import java.util.Date;
-import java.util.Set;
 
 privileged aspect Person_Roo_JavaBean {
     
@@ -112,14 +110,6 @@ privileged aspect Person_Roo_JavaBean {
     
     public void Person.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
-    }
-    
-    public Set<Roles> Person.getRoles() {
-        return this.roles;
-    }
-    
-    public void Person.setRoles(Set<Roles> roles) {
-        this.roles = roles;
     }
     
     public String Person.getUserName() {

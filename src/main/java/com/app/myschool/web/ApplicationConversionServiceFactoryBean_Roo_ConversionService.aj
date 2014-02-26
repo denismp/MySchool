@@ -15,7 +15,6 @@ import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.QuarterNames;
-import com.app.myschool.model.Roles;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -316,30 +315,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<Roles, String> ApplicationConversionServiceFactoryBean.getRolesToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Roles, java.lang.String>() {
-            public String convert(Roles roles) {
-                return new StringBuilder().append(roles.getRoleName()).append(' ').append(roles.getRoleType()).toString();
-            }
-        };
-    }
-    
-    public Converter<Long, Roles> ApplicationConversionServiceFactoryBean.getIdToRolesConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Roles>() {
-            public com.app.myschool.model.Roles convert(java.lang.Long id) {
-                return Roles.findRoles(id);
-            }
-        };
-    }
-    
-    public Converter<String, Roles> ApplicationConversionServiceFactoryBean.getStringToRolesConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Roles>() {
-            public com.app.myschool.model.Roles convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), Roles.class);
-            }
-        };
-    }
-    
     public Converter<SkillRatings, String> ApplicationConversionServiceFactoryBean.getSkillRatingsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.SkillRatings, java.lang.String>() {
             public String convert(SkillRatings skillRatings) {
@@ -449,9 +424,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getQuarterNamesToStringConverter());
         registry.addConverter(getIdToQuarterNamesConverter());
         registry.addConverter(getStringToQuarterNamesConverter());
-        registry.addConverter(getRolesToStringConverter());
-        registry.addConverter(getIdToRolesConverter());
-        registry.addConverter(getStringToRolesConverter());
         registry.addConverter(getSkillRatingsToStringConverter());
         registry.addConverter(getIdToSkillRatingsConverter());
         registry.addConverter(getStringToSkillRatingsConverter());

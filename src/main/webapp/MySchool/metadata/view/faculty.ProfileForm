@@ -15,7 +15,7 @@
         "height": null,
         "id": null,
         "itemId": "facultyprofileform",
-        "layout": "vbox",
+        "layout": "auto",
         "minHeight": 500,
         "title": "Faculty Profile Form"
     },
@@ -30,7 +30,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "First Name",
-                "id": "idfirstname1",
+                "id": null,
+                "itemId": "faculty-firstname",
+                "name": "firstName",
                 "width": 300
             },
             "designerId": "61f0fb7c-6c0d-46de-851a-bf18b5e21626"
@@ -44,7 +46,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Middle Name",
-                "id": "idmiddlename1",
+                "id": null,
+                "itemId": "faculty-middlename",
+                "name": "middleName",
                 "width": 300
             },
             "designerId": "6c657786-b932-4897-8b56-ec47440d25f7"
@@ -58,8 +62,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Last Name",
-                "id": "idlastname1",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-lastname",
+                "name": "lastName",
                 "width": 300
             },
             "designerId": "b037a268-f900-4934-ae43-558c49164097"
@@ -72,9 +77,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Mobile Phone",
-                "id": "idmobile1",
-                "layout|flex": null
+                "fieldLabel": "Phone1",
+                "id": null,
+                "itemId": "faculty-phone1",
+                "name": "phone1"
             },
             "designerId": "6248f552-4529-42c9-a113-320a1a743e9d"
         },
@@ -86,9 +92,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Phone",
-                "id": "idphone1",
-                "layout|flex": null
+                "fieldLabel": "Phone2",
+                "id": null,
+                "itemId": "faculty-phone2",
+                "name": "phone2"
             },
             "designerId": "9f902437-bd94-4f4d-afd7-32db8ba8351f"
         },
@@ -101,8 +108,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Address1",
-                "id": "idaddress3",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-address1",
+                "name": "address1",
                 "width": 300
             },
             "designerId": "5dcb65e6-d03f-44b7-b833-d8d62e6e1b69"
@@ -116,8 +124,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Address2",
-                "id": "idaddress4",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-address2",
+                "name": "address2",
                 "width": 300
             },
             "designerId": "fcff7874-0d1d-47ee-ad40-93d5b98e23c9"
@@ -131,8 +140,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Street",
-                "id": "idstreet1",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-street",
+                "name": "street",
                 "width": 300
             },
             "designerId": "1067f47e-c179-4070-9dad-4f66699611c8"
@@ -146,8 +156,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "City",
-                "id": "idcity1",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-city",
+                "name": "city",
                 "width": 300
             },
             "designerId": "a7e6de7a-061d-4037-bf82-a43e7ed1c4c3"
@@ -161,8 +172,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Province/State",
-                "id": "idprovince1",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-province",
+                "name": "province",
                 "width": 300
             },
             "designerId": "f4a2b25c-ff20-4738-b804-221ffbdcf49c"
@@ -176,7 +188,8 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Postal Code",
-                "layout|flex": null
+                "itemId": "faculty-postalcode",
+                "name": "postalCode"
             },
             "designerId": "926b1c50-6f72-450e-977f-f8a77c91f0d8"
         },
@@ -189,8 +202,9 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Country",
-                "id": "idcountry1",
-                "layout|flex": null
+                "id": null,
+                "itemId": "faculty-country",
+                "name": "country"
             },
             "designerId": "e237dad0-edee-42b6-987a-7e942eb08e49"
         },
@@ -203,27 +217,48 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "Email",
-                "id": "idemail1",
-                "layout|flex": null,
+                "id": null,
+                "itemId": "faculty-email",
+                "name": "email",
                 "width": 300
             },
             "designerId": "99850d56-6bb0-4bea-a2ea-0e432dbef162"
         },
         {
-            "type": "Ext.form.field.ComboBox",
+            "type": "Ext.button.Button",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "editable": false,
-                "fieldLabel": "Role",
-                "formBind": false,
-                "id": "idrole",
-                "layout|flex": null
+                "text": "Edit"
             },
-            "designerId": "4ef96f91-7f05-4b8c-adff-d010b21cc0b5"
+            "designerId": "cb2c9cbf-2ddc-489f-abf3-f3b1bc5d729c"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Cancel"
+            },
+            "designerId": "3909a36b-6b12-46a7-b380-ef310df22635"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "Save"
+            },
+            "designerId": "818ea44e-0692-40aa-9bde-4186b5fcba9a"
         }
     ]
 }

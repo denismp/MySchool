@@ -24,8 +24,8 @@ Ext.define('MySchool.view.MainPanel', {
         'MySchool.view.weekly.evaluation.DetailsPanel',
         'MySchool.view.monthly.summary.DetailsPanel',
         'MySchool.view.monthly.evaluation.DetailsPanel',
-        'MySchool.view.student.ProfilePanel',
         'MySchool.view.faculty.ProfilePanel',
+        'MySchool.view.student.ProfilePanel',
         'Ext.tab.Panel',
         'Ext.tab.Tab'
     ],
@@ -172,24 +172,24 @@ Ext.define('MySchool.view.MainPanel', {
                         },
                         {
                             xtype: 'panel',
-                            itemId: 'studentprofilestab',
-                            minHeight: 600,
-                            title: 'Student Profiles',
+                            itemId: 'facultyprofilesbystudenttab',
+                            title: 'Faculty Profiles by Student',
                             dockedItems: [
                                 {
-                                    xtype: 'studentprofilepanel',
-                                    itemId: 'studentprofilepanel',
+                                    xtype: 'facultyprofilepanel',
                                     dock: 'top'
                                 }
                             ]
                         },
                         {
                             xtype: 'panel',
-                            itemId: 'facultyprofilestab',
-                            title: 'Faculty Profiles',
+                            itemId: 'studentprofilestab',
+                            minHeight: 600,
+                            title: 'Student Profiles By Faculty',
                             dockedItems: [
                                 {
-                                    xtype: 'facultyprofilepanel',
+                                    xtype: 'studentprofilepanel',
+                                    itemId: 'studentprofilebyfacultypanel',
                                     dock: 'top'
                                 }
                             ]

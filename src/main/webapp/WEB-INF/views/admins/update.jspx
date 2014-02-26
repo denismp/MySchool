@@ -16,7 +16,6 @@
         <field:textarea field="country" id="c_com_app_myschool_model_Admin_country" required="true" z="Weqq0/U85FBz7UjpazBqEZbRD0M="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Admin_whoUpdated" required="true" z="kXO7z4XFddL4e+rghDVW+NPvGIc="/>
         <field:datetime dateTimePattern="${admin_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Admin_lastUpdated" required="true" z="cbGh8vgqCsUTNtPk2nuBeBRpSC8="/>
-        <field:simple field="roles" id="c_com_app_myschool_model_Admin_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="Roles" z="klWAtcAHeDYmrOxSv65x2azku44="/>
         <field:textarea field="userName" id="c_com_app_myschool_model_Admin_userName" required="true" z="NmJQ8EBKW2f87JRCeuVhmbWU/Y4="/>
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Admin_userPassword" required="true" z="tK+NaYQqaanVJStInTdm/mYmqUk="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Admin_enabled" z="Gp6p/xsb+/l4W/CrLcTyYRgALCA="/>

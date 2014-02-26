@@ -16,7 +16,6 @@
         <field:textarea field="country" id="c_com_app_myschool_model_Student_country" required="true" z="MeHyHQMR/FCOPn+NbPL89eQGmjw="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Student_whoUpdated" required="true" z="rwuA4Pe8APTjDFjFTA2UPqstOwQ="/>
         <field:datetime dateTimePattern="${student_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Student_lastUpdated" required="true" z="iwaNE4Sprz9HNwD5j8PNSXXFQR4="/>
-        <field:simple field="roles" id="c_com_app_myschool_model_Student_roles" messageCode="entity_reference_not_managed" messageCodeAttribute="Roles" z="VpDNIJjvUFvaqtNk7pPpK78ujag="/>
         <field:simple field="quarters" id="c_com_app_myschool_model_Student_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="wwOQJukA+rXtBumf+o6tJjn8k2Q="/>
         <field:simple field="previousTranscripts" id="c_com_app_myschool_model_Student_previousTranscripts" messageCode="entity_reference_not_managed" messageCodeAttribute="Previous Transcripts" z="fB1MF2cN7/aPi4STUPRoAGYj+JE="/>
         <field:simple field="graduateTracking" id="c_com_app_myschool_model_Student_graduateTracking" messageCode="entity_reference_not_managed" messageCodeAttribute="Graduate Tracking" z="sHPYGVSwP1yoG5XFhkIZWgsP+cg="/>

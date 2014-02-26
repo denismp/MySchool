@@ -423,7 +423,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 			boolean updateGood = false;
 			boolean inSync = false;
 
-			logger.info("updateFromJson(): Debug just before call to MonthlyEvaluationRatingsView.fromJsonToMonthlySummaryRatingsView(myJson)");
+			logger.info("updateFromJson(): Debug just before call to MonthlyEvaluationRatingsView.fromJsonToMonthlyEvaluationRatingsView(myJson)");
 			myView = MonthlyEvaluationRatingsView.fromJsonToMonthlyEvaluationRatingsView(myJson);
 			logger.info("Debug1");
 			logger.info("updateFromJson(): MonthlyEvaluationRatings id=" + myView.getMonthlyevaluationId());

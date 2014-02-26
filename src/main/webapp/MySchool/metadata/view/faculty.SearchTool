@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "facultysearchtool",
+        "designer|userClassName": "faculty.SearchTool",
+        "id": null,
+        "itemId": "facultyprofilesearchtool",
+        "tooltip": "Search",
+        "type": "search"
+    },
+    "designerId": "559fcca2-c016-4c76-a792-d3f8b2ff6023"
+}
