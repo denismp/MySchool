@@ -3163,7 +3163,6 @@
         },
         "48a06a06-a1a5-4faa-8c59-edc7ba324ea9": {
             "id": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
-            "expanded": false,
             "cn": [
                 {
                     "id": "a677eea6-6182-4b3d-abe9-2c77b8349cf8"
@@ -3755,11 +3754,20 @@
         "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
     },
     "inspectorState": {
+<<<<<<< HEAD
         "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643",
         "selectedInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
+=======
+        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
+        "selectedInstance": "b3d92599-5297-4d2a-b7f4-7439220ea329"
+>>>>>>> branch 'master' of ssh://github.com/denismp/MySchool
     },
     "codeState": {
+<<<<<<< HEAD
         "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
+=======
+        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9"
+>>>>>>> branch 'master' of ssh://github.com/denismp/MySchool
     },
     "editMode": "design",
     "userSettings": {
