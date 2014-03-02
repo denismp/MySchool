@@ -737,12 +737,65 @@
                     "var editButton\t\t= button.up().down('#facultyprofileformeditbutton');",
                     "editButton.enable();",
                     "cancelButton.disable();",
-                    "button.disable();"
+                    "button.disable();",
+                    "this.saveFacultyByStudentForm( myForm );"
                 ],
                 "name": "click",
                 "scope": "me"
             },
             "designerId": "f47d3ec9-e866-42ab-a208-1a8d223d75a0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "form"
+                ],
+                "fn": "saveFacultyByStudentForm",
+                "implHandler": [
+                    "debugger;",
+                    "window.console.log( \"Save Faculty By Student Form\" );",
+                    "//var myForm\t\t\t\t\t= button.up().getForm();",
+                    "var myForm\t\t= form.getForm();",
+                    "",
+                    "",
+                    "//\tGet the stores that we will need",
+                    "var myStore\t\t= this.getStore( 'faculty.ByStudentStore' );",
+                    "",
+                    "",
+                    "var formValues\t= myForm.getValues();",
+                    "",
+                    "//\tCreate the form record.",
+                    "var myRecord\t= myForm.getRecord();",
+                    "",
+                    "//myRecord.set('firstName', formValues.firstName );",
+                    "//myRecord.set('middleName', formValues.middleName);",
+                    "//myRecord.set('lastName', formValues.middleName);",
+                    "//myRecord.set('phone1', formValues.phone1);",
+                    "//myRecord.set('phone2', formValues.phone2);",
+                    "//myRecord.set('address1', formValues.address1);",
+                    "//myRecord.set('address2', formValues.address2);",
+                    "//myRecord.set('city', formValues.city);",
+                    "//myRecord.set('province', formValues.province);",
+                    "//myRecord.set('postalCode', formValues.postalCode);",
+                    "//myRecord.set('country', formValues.country);",
+                    "//myRecord.set('email', formValues.email);",
+                    "",
+                    "myRecord.set('whoUpdated', 'login');",
+                    "myRecord.set('lastUpdated', new Date());",
+                    "",
+                    "debugger;",
+                    "",
+                    "//sync the store.",
+                    "myStore.sync();"
+                ]
+            },
+            "designerId": "1d957178-2b12-44f1-890b-373812886c12"
         }
     ]
 }

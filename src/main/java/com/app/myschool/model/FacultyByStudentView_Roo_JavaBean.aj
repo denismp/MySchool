@@ -24,6 +24,14 @@ privileged aspect FacultyByStudentView_Roo_JavaBean {
         this.facultybystudentId = facultybystudentId;
     }
     
+    public String FacultyByStudentView.getEmail() {
+        return this.email;
+    }
+    
+    public void FacultyByStudentView.setEmail(String email) {
+        this.email = email;
+    }
+    
     public String FacultyByStudentView.getFirstName() {
         return this.firstName;
     }

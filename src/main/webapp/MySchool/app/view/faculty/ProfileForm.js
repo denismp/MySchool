@@ -85,13 +85,6 @@ Ext.define('MySchool.view.faculty.ProfileForm', {
                 },
                 {
                     xtype: 'textfield',
-                    itemId: 'faculty-street',
-                    width: 300,
-                    fieldLabel: 'Street',
-                    name: 'street'
-                },
-                {
-                    xtype: 'textfield',
                     itemId: 'faculty-city',
                     width: 300,
                     fieldLabel: 'City',

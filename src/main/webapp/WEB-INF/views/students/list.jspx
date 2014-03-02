@@ -9,7 +9,7 @@
             <table:column id="c_com_app_myschool_model_Student_middleName" property="middleName" z="N+xQq4SyXpbpCpBD4gI5l4ufLVg="/>
             <table:column id="c_com_app_myschool_model_Student_phone1" property="phone1" z="b6psEaCA7rhKRuHCZsKGdfSrjyM="/>
             <table:column id="c_com_app_myschool_model_Student_phone2" property="phone2" z="GWeEQSVmj0zhJqKpLkdkh88Blc4="/>
-            <table:column id="c_com_app_myschool_model_Student_address1" property="address1" z="+Tb8/eviCWMB+f4ZIMa+VI+9J3g="/>
+            <table:column id="c_com_app_myschool_model_Student_email" property="email" z="SAyauvdEf3CQRJmsl/Pln1klifU="/>
         </table:table>
     </page:list>
 </div>

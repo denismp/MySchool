@@ -30,7 +30,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Admin, String> ApplicationConversionServiceFactoryBean.getAdminToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Admin, java.lang.String>() {
             public String convert(Admin admin) {
-                return new StringBuilder().append(admin.getFirstName()).append(' ').append(admin.getLastName()).append(' ').append(admin.getMiddleName()).append(' ').append(admin.getPhone1()).toString();
+                return new StringBuilder().append(admin.getEmail()).append(' ').append(admin.getFirstName()).append(' ').append(admin.getLastName()).append(' ').append(admin.getMiddleName()).toString();
             }
         };
     }
@@ -150,7 +150,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Faculty, String> ApplicationConversionServiceFactoryBean.getFacultyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Faculty, java.lang.String>() {
             public String convert(Faculty faculty) {
-                return new StringBuilder().append(faculty.getFirstName()).append(' ').append(faculty.getLastName()).append(' ').append(faculty.getMiddleName()).append(' ').append(faculty.getPhone1()).toString();
+                return new StringBuilder().append(faculty.getEmail()).append(' ').append(faculty.getFirstName()).append(' ').append(faculty.getLastName()).append(' ').append(faculty.getMiddleName()).toString();
             }
         };
     }
@@ -342,7 +342,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Student, String> ApplicationConversionServiceFactoryBean.getStudentToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Student, java.lang.String>() {
             public String convert(Student student) {
-                return new StringBuilder().append(student.getFirstName()).append(' ').append(student.getLastName()).append(' ').append(student.getMiddleName()).append(' ').append(student.getPhone1()).toString();
+                return new StringBuilder().append(student.getEmail()).append(' ').append(student.getFirstName()).append(' ').append(student.getLastName()).append(' ').append(student.getMiddleName()).toString();
             }
         };
     }

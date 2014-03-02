@@ -20,5 +20,6 @@
         <field:display field="userName" id="s_com_app_myschool_model_Faculty_userName" object="${faculty}" z="itPwqrgsZkUJ+NNqSZUVOmqYP2A="/>
         <field:display field="userPassword" id="s_com_app_myschool_model_Faculty_userPassword" object="${faculty}" z="zBmtv6K3htmpBN6gJR3MejPDB4U="/>
         <field:display field="enabled" id="s_com_app_myschool_model_Faculty_enabled" object="${faculty}" z="6ljYu3UZ5wxNhmgjW2Rxic/hP6g="/>
+        <field:display field="email" id="s_com_app_myschool_model_Faculty_email" object="${faculty}" z="Se83lR8tjsD9yfIWTHiADZbwVLE="/>
     </page:show>
 </div>

@@ -75,6 +75,10 @@ Ext.define('MySchool.model.faculty.ByStudentModel', {
             type: 'string'
         },
         {
+            name: 'email',
+            type: 'string'
+        },
+        {
             name: 'enabled',
             type: 'boolean'
         },

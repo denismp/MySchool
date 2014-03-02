@@ -188,6 +188,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "email",
+                "type": "string"
+            },
+            "designerId": "38ac9019-9d4f-4f77-bceb-164f7530891e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "enabled",
                 "type": "boolean"
             },

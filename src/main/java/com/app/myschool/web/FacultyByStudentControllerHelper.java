@@ -383,6 +383,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				record.setCity(myView.getCity());
 				record.setCountry(myView.getCountry());
 				record.setEnabled(myView.getEnabled());
+				record.setEmail(myView.getEmail());
 				record.setFirstName(myView.getFirstName());
 				record.setMiddleName(myView.getMiddleName());
 				record.setLastName(myView.getLastName());
@@ -515,6 +516,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			record.setCity(myView.getCity());
 			record.setCountry(myView.getCountry());
 			record.setEnabled(myView.getEnabled());
+			record.setEmail(myView.getEmail());
 			record.setFirstName(myView.getFirstName());
 			record.setMiddleName(myView.getMiddleName());
 			record.setLastName(myView.getLastName());

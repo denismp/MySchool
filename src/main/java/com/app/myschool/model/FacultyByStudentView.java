@@ -14,6 +14,8 @@ public class FacultyByStudentView {
 
 	private Long facultybystudentId;
 	
+    private String email;
+	
     private String firstName;
 
     private String middleName;

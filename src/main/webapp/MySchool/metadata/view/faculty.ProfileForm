@@ -139,22 +139,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Street",
-                "id": null,
-                "itemId": "faculty-street",
-                "name": "street",
-                "width": 300
-            },
-            "designerId": "1067f47e-c179-4070-9dad-4f66699611c8"
-        },
-        {
-            "type": "Ext.form.field.Text",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "fieldLabel": "City",
                 "id": null,
                 "itemId": "faculty-city",

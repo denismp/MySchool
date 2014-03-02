@@ -21,7 +21,10 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJpaActiveRecord(inheritanceType = "TABLE_PER_CLASS")
 @RooJson
 public abstract class Person {
-
+    @NotNull
+    @Size(max = 50)
+    private String email;
+	
     @NotNull
     @Size(max = 45)
     private String firstName;

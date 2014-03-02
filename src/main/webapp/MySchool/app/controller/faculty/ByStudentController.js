@@ -320,6 +320,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         editButton.enable();
         cancelButton.disable();
         button.disable();
+        this.saveFacultyByStudentForm( myForm );
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -438,6 +439,44 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         }
 
         this.gridViewReady = true;
+    },
+
+    saveFacultyByStudentForm: function(form) {
+        debugger;
+        window.console.log( "Save Faculty By Student Form" );
+        //var myForm					= button.up().getForm();
+        var myForm		= form.getForm();
+
+
+        //	Get the stores that we will need
+        var myStore		= this.getStore( 'faculty.ByStudentStore' );
+
+
+        var formValues	= myForm.getValues();
+
+        //	Create the form record.
+        var myRecord	= myForm.getRecord();
+
+        //myRecord.set('firstName', formValues.firstName );
+        //myRecord.set('middleName', formValues.middleName);
+        //myRecord.set('lastName', formValues.middleName);
+        //myRecord.set('phone1', formValues.phone1);
+        //myRecord.set('phone2', formValues.phone2);
+        //myRecord.set('address1', formValues.address1);
+        //myRecord.set('address2', formValues.address2);
+        //myRecord.set('city', formValues.city);
+        //myRecord.set('province', formValues.province);
+        //myRecord.set('postalCode', formValues.postalCode);
+        //myRecord.set('country', formValues.country);
+        //myRecord.set('email', formValues.email);
+
+        myRecord.set('whoUpdated', 'login');
+        myRecord.set('lastUpdated', new Date());
+
+        debugger;
+
+        //sync the store.
+        myStore.sync();
     },
 
     init: function(application) {

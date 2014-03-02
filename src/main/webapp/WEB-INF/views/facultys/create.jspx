@@ -20,6 +20,7 @@
         <field:textarea field="userName" id="c_com_app_myschool_model_Faculty_userName" required="true" z="5zTV2rRBJ7kqpJx0AExtT6PFQ8Q="/>
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Faculty_userPassword" required="true" z="EtZ15iI3fmJOgpqsuJN2Ryyf+2E="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Faculty_enabled" z="JbRqOWL4isY0S3Cxy9/ffqUYxKA="/>
+        <field:textarea field="email" id="c_com_app_myschool_model_Faculty_email" required="true" validationMessageCode="field_invalid_email" z="ur6diB4VfciTMdq7GZPOmdNvMTU="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Faculty" render="${not empty dependencies}" z="b+d4IZfazzMYmClMjmKctUatxdg="/>
 </div>

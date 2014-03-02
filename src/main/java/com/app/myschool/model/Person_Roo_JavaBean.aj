@@ -8,6 +8,14 @@ import java.util.Date;
 
 privileged aspect Person_Roo_JavaBean {
     
+    public String Person.getEmail() {
+        return this.email;
+    }
+    
+    public void Person.setEmail(String email) {
+        this.email = email;
+    }
+    
     public String Person.getFirstName() {
         return this.firstName;
     }
