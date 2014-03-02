@@ -277,15 +277,49 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         debugger;
 
         var myForm = this.getFacultyByStudentForm();
-        myForm.focus();
+        var myFields = myForm.getForm().getFields();
+        for( var i = 0; i < myFields.length; i++ )
+        {
+            myFields.items[i].enable();
+        }
+        //myForm.getForm().focus();
+        var cancelButton	= button.up().down('#facultyprofileformcanelbutton');
+        var saveButton		= button.up().down('#facultyprofileformsavebutton');
+        cancelButton.enable();
+        saveButton.enable();
+        button.disable();
     },
 
     onFacultyprofileformcanelbuttonClick: function(button, e, eOpts) {
-
+        var myForm = this.getFacultyByStudentForm();
+        var myFields = myForm.getForm().getFields();
+        for( var i = 0; i < myFields.length; i++ )
+        {
+            myFields.items[i].disable();
+        }
+        //myForm.getForm().focus();
+        //var cancelButton	= button.up().down('#facultyprofileformcanelbutton');
+        var saveButton		= button.up().down('#facultyprofileformsavebutton');
+        var editButton		= button.up().down('#facultyprofileformeditbutton');
+        editButton.enable();
+        saveButton.disable();
+        button.disable();
     },
 
     onFacultyprofileformsavebuttonClick: function(button, e, eOpts) {
-
+        var myForm = this.getFacultyByStudentForm();
+        var myFields = myForm.getForm().getFields();
+        for( var i = 0; i < myFields.length; i++ )
+        {
+            myFields.items[i].disable();
+        }
+        //myForm.getForm().focus();
+        var cancelButton	= button.up().down('#facultyprofileformcanelbutton');
+        //var saveButton		= button.up().down('#facultyprofileformsavebutton');
+        var editButton		= button.up().down('#facultyprofileformeditbutton');
+        editButton.enable();
+        cancelButton.disable();
+        button.disable();
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -391,7 +425,6 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
             myFields.items[i].disable();
         }
         console.log('faculty.ByStudentController.loadForm(): completed');
-
     },
 
     onMyJsonStoreLoad: function() {

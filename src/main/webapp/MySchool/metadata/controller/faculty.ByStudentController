@@ -188,8 +188,7 @@
                     "{",
                     "    myFields.items[i].disable();",
                     "}",
-                    "console.log('faculty.ByStudentController.loadForm(): completed');",
-                    ""
+                    "console.log('faculty.ByStudentController.loadForm(): completed');"
                 ]
             },
             "designerId": "d11a1acd-bbcb-4140-ae6a-dbe69113191a"
@@ -666,7 +665,17 @@
                     "debugger;",
                     "",
                     "var myForm = this.getFacultyByStudentForm();",
-                    "myForm.focus();"
+                    "var myFields = myForm.getForm().getFields();",
+                    "for( var i = 0; i < myFields.length; i++ )",
+                    "{",
+                    "    myFields.items[i].enable();",
+                    "}",
+                    "//myForm.getForm().focus();",
+                    "var cancelButton\t= button.up().down('#facultyprofileformcanelbutton');",
+                    "var saveButton\t\t= button.up().down('#facultyprofileformsavebutton');",
+                    "cancelButton.enable();",
+                    "saveButton.enable();",
+                    "button.disable();"
                 ],
                 "name": "click",
                 "scope": "me"
@@ -685,7 +694,19 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onFacultyprofileformcanelbuttonClick",
                 "implHandler": [
-                    ""
+                    "var myForm = this.getFacultyByStudentForm();",
+                    "var myFields = myForm.getForm().getFields();",
+                    "for( var i = 0; i < myFields.length; i++ )",
+                    "{",
+                    "    myFields.items[i].disable();",
+                    "}",
+                    "//myForm.getForm().focus();",
+                    "//var cancelButton\t= button.up().down('#facultyprofileformcanelbutton');",
+                    "var saveButton\t\t= button.up().down('#facultyprofileformsavebutton');",
+                    "var editButton\t\t= button.up().down('#facultyprofileformeditbutton');",
+                    "editButton.enable();",
+                    "saveButton.disable();",
+                    "button.disable();"
                 ],
                 "name": "click",
                 "scope": "me"
@@ -704,7 +725,19 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onFacultyprofileformsavebuttonClick",
                 "implHandler": [
-                    ""
+                    "var myForm = this.getFacultyByStudentForm();",
+                    "var myFields = myForm.getForm().getFields();",
+                    "for( var i = 0; i < myFields.length; i++ )",
+                    "{",
+                    "    myFields.items[i].disable();",
+                    "}",
+                    "//myForm.getForm().focus();",
+                    "var cancelButton\t= button.up().down('#facultyprofileformcanelbutton');",
+                    "//var saveButton\t\t= button.up().down('#facultyprofileformsavebutton');",
+                    "var editButton\t\t= button.up().down('#facultyprofileformeditbutton');",
+                    "editButton.enable();",
+                    "cancelButton.disable();",
+                    "button.disable();"
                 ],
                 "name": "click",
                 "scope": "me"
