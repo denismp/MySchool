@@ -320,7 +320,8 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         editButton.enable();
         cancelButton.disable();
         button.disable();
-        this.saveFacultyByStudentForm( myForm );
+
+        this.saveFacultyByStudentForm();
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -420,6 +421,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         //var textBox = myForm.down('textareafield');
         //textBox.name = fieldname;
         form.loadRecord( selected[0] );
+        var rform = form.getForm();
         var myFields = form.getForm().getFields();
         for( var i = 0; i < myFields.length; i++ )
         {
@@ -441,34 +443,41 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         this.gridViewReady = true;
     },
 
-    saveFacultyByStudentForm: function(form) {
+    saveFacultyByStudentForm: function() {
         debugger;
         window.console.log( "Save Faculty By Student Form" );
         //var myForm					= button.up().getForm();
-        var myForm		= form.getForm();
+        var myForm = this.getFacultyByStudentForm();
 
 
         //	Get the stores that we will need
         var myStore		= this.getStore( 'faculty.ByStudentStore' );
 
+        //var rForm = myForm.getForm();
 
-        var formValues	= myForm.getValues();
+        //var formValues1	= myForm.getValues();
+        //var formValues	= myForm.getForm().getValues();
+        var formFields	= myForm.getForm().getFields();
+        //var name	= formFields.items[0].name;
+        //var value	= formFields.items[0].lastValue;
+        //var test	= this.getFormValue( formFields, 'middleName');
+        //debugger;
 
         //	Create the form record.
         var myRecord	= myForm.getRecord();
 
-        //myRecord.set('firstName', formValues.firstName );
-        //myRecord.set('middleName', formValues.middleName);
-        //myRecord.set('lastName', formValues.middleName);
-        //myRecord.set('phone1', formValues.phone1);
-        //myRecord.set('phone2', formValues.phone2);
-        //myRecord.set('address1', formValues.address1);
-        //myRecord.set('address2', formValues.address2);
-        //myRecord.set('city', formValues.city);
-        //myRecord.set('province', formValues.province);
-        //myRecord.set('postalCode', formValues.postalCode);
-        //myRecord.set('country', formValues.country);
-        //myRecord.set('email', formValues.email);
+        myRecord.set('firstName', this.getFormValue( formFields, 'firstName' ) );
+        myRecord.set('middleName', this.getFormValue( formFields, 'middleName' ));
+        myRecord.set('lastName', this.getFormValue( formFields, 'lastName' ));
+        myRecord.set('phone1', this.getFormValue( formFields, 'phone1' ));
+        myRecord.set('phone2', this.getFormValue( formFields, 'phone2' ));
+        myRecord.set('address1', this.getFormValue( formFields, 'address1' ));
+        myRecord.set('address2', this.getFormValue( formFields, 'address2' ));
+        myRecord.set('city', this.getFormValue( formFields, 'city' ));
+        myRecord.set('province', this.getFormValue( formFields, 'province' ));
+        myRecord.set('postalCode', this.getFormValue( formFields, 'postalCode' ));
+        myRecord.set('country', this.getFormValue( formFields, 'country' ));
+        myRecord.set('email', this.getFormValue( formFields, 'email' ));
 
         myRecord.set('whoUpdated', 'login');
         myRecord.set('lastUpdated', new Date());
@@ -477,6 +486,19 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 
         //sync the store.
         myStore.sync();
+    },
+
+    getFormValue: function(formFields, name) {
+        //var name	= formFields.items[0].name;
+        //var value	= formFields.items[0].lastValue;
+        for( var i = 0; i < formFields.length; i++ )
+        {
+            if( formFields.items[i].name === name )
+            {
+                return formFields.items[i].lastValue;
+            }
+        }
+        return "";
     },
 
     init: function(application) {

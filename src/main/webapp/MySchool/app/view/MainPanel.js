@@ -185,7 +185,7 @@ Ext.define('MySchool.view.MainPanel', {
                             xtype: 'panel',
                             itemId: 'studentprofilestab',
                             minHeight: 600,
-                            title: 'Student Profiles By Faculty',
+                            title: 'Student Profiles',
                             dockedItems: [
                                 {
                                     xtype: 'studentprofilepanel',

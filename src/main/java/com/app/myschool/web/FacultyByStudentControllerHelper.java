@@ -168,6 +168,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 						myView.setQtrYear(quarter.getQtr_year());
 						myView.setVersion(faculty.getVersion());
 						myView.setFacultyId(faculty.getId());
+						myView.setEmail(faculty.getEmail());
 						myView.setAddress1(faculty.getAddress1());
 						myView.setAddress2(faculty.getAddress2());
 						myView.setCity(faculty.getCity());

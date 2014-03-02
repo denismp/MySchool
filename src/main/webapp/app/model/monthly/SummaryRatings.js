@@ -23,8 +23,7 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
 
     fields: [
         {
-            name: 'id',
-            type: 'int'
+            name: 'id'
         },
         {
             name: 'month_number',

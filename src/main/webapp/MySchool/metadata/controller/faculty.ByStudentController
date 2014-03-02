@@ -183,6 +183,7 @@
                     "//var textBox = myForm.down('textareafield');",
                     "//textBox.name = fieldname;",
                     "form.loadRecord( selected[0] );",
+                    "var rform = form.getForm();",
                     "var myFields = form.getForm().getFields();",
                     "for( var i = 0; i < myFields.length; i++ )",
                     "{",
@@ -738,7 +739,8 @@
                     "editButton.enable();",
                     "cancelButton.disable();",
                     "button.disable();",
-                    "this.saveFacultyByStudentForm( myForm );"
+                    "",
+                    "this.saveFacultyByStudentForm();"
                 ],
                 "name": "click",
                 "scope": "me"
@@ -753,38 +755,42 @@
             },
             "codeClass": null,
             "userConfig": {
-                "designer|params": [
-                    "form"
-                ],
                 "fn": "saveFacultyByStudentForm",
                 "implHandler": [
                     "debugger;",
                     "window.console.log( \"Save Faculty By Student Form\" );",
                     "//var myForm\t\t\t\t\t= button.up().getForm();",
-                    "var myForm\t\t= form.getForm();",
+                    "var myForm = this.getFacultyByStudentForm();",
                     "",
                     "",
                     "//\tGet the stores that we will need",
                     "var myStore\t\t= this.getStore( 'faculty.ByStudentStore' );",
                     "",
+                    "//var rForm = myForm.getForm();",
                     "",
-                    "var formValues\t= myForm.getValues();",
+                    "//var formValues1\t= myForm.getValues();",
+                    "//var formValues\t= myForm.getForm().getValues();",
+                    "var formFields\t= myForm.getForm().getFields();",
+                    "//var name\t= formFields.items[0].name;",
+                    "//var value\t= formFields.items[0].lastValue;",
+                    "//var test\t= this.getFormValue( formFields, 'middleName');",
+                    "//debugger;",
                     "",
                     "//\tCreate the form record.",
                     "var myRecord\t= myForm.getRecord();",
                     "",
-                    "//myRecord.set('firstName', formValues.firstName );",
-                    "//myRecord.set('middleName', formValues.middleName);",
-                    "//myRecord.set('lastName', formValues.middleName);",
-                    "//myRecord.set('phone1', formValues.phone1);",
-                    "//myRecord.set('phone2', formValues.phone2);",
-                    "//myRecord.set('address1', formValues.address1);",
-                    "//myRecord.set('address2', formValues.address2);",
-                    "//myRecord.set('city', formValues.city);",
-                    "//myRecord.set('province', formValues.province);",
-                    "//myRecord.set('postalCode', formValues.postalCode);",
-                    "//myRecord.set('country', formValues.country);",
-                    "//myRecord.set('email', formValues.email);",
+                    "myRecord.set('firstName', this.getFormValue( formFields, 'firstName' ) );",
+                    "myRecord.set('middleName', this.getFormValue( formFields, 'middleName' ));",
+                    "myRecord.set('lastName', this.getFormValue( formFields, 'lastName' ));",
+                    "myRecord.set('phone1', this.getFormValue( formFields, 'phone1' ));",
+                    "myRecord.set('phone2', this.getFormValue( formFields, 'phone2' ));",
+                    "myRecord.set('address1', this.getFormValue( formFields, 'address1' ));",
+                    "myRecord.set('address2', this.getFormValue( formFields, 'address2' ));",
+                    "myRecord.set('city', this.getFormValue( formFields, 'city' ));",
+                    "myRecord.set('province', this.getFormValue( formFields, 'province' ));",
+                    "myRecord.set('postalCode', this.getFormValue( formFields, 'postalCode' ));",
+                    "myRecord.set('country', this.getFormValue( formFields, 'country' ));",
+                    "myRecord.set('email', this.getFormValue( formFields, 'email' ));",
                     "",
                     "myRecord.set('whoUpdated', 'login');",
                     "myRecord.set('lastUpdated', new Date());",
@@ -796,6 +802,34 @@
                 ]
             },
             "designerId": "1d957178-2b12-44f1-890b-373812886c12"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "formFields",
+                    "name"
+                ],
+                "fn": "getFormValue",
+                "implHandler": [
+                    "//var name\t= formFields.items[0].name;",
+                    "//var value\t= formFields.items[0].lastValue;",
+                    "for( var i = 0; i < formFields.length; i++ )",
+                    "{",
+                    "    if( formFields.items[i].name === name )",
+                    "    {",
+                    "        return formFields.items[i].lastValue;",
+                    "    }",
+                    "}",
+                    "return \"\";"
+                ]
+            },
+            "designerId": "efab196f-456e-4f94-9f05-019be4236590"
         }
     ]
 }

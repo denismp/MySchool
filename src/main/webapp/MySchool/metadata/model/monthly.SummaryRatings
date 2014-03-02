@@ -20,7 +20,7 @@
             "codeClass": null,
             "userConfig": {
                 "name": "id",
-                "type": "int"
+                "type": null
             },
             "designerId": "ce7e32d8-2938-4a92-ba5a-6ec28cb8f0b8"
         },
