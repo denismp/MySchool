@@ -171,29 +171,25 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "tabPanel",
-                    "selected",
-                    "fieldname"
+                    "form",
+                    "selected"
                 ],
-                "fn": "loadTabPanelForm",
+                "fn": "loadForm",
                 "implHandler": [
                     "debugger;",
-                    "var dockedItems = tabPanel.getDockedItems();",
-                    "var myForm = dockedItems[0];",
                     "",
-                    "if( Ext.isDefined( myForm ) )",
+                    "console.log( form );",
+                    "//var textBox = myForm.dockedItems.items[0];",
+                    "//var textBox = myForm.down('textareafield');",
+                    "//textBox.name = fieldname;",
+                    "form.loadRecord( selected[0] );",
+                    "var myFields = form.getForm().getFields();",
+                    "for( var i = 0; i < myFields.length; i++ )",
                     "{",
-                    "    console.log( myForm );",
-                    "    //var textBox = myForm.dockedItems.items[0];",
-                    "    var textBox = myForm.down('textareafield');",
-                    "    textBox.name = fieldname;",
-                    "    myForm.loadRecord( selected[0] );",
+                    "    myFields.items[i].disable();",
                     "}",
-                    "else",
-                    "{",
-                    "    console.log( 'loadTabPanelForm(): No form' );",
-                    "    //console.log( tabPanel );",
-                    "}"
+                    "console.log('faculty.ByStudentController.loadForm(): completed');",
+                    ""
                 ]
             },
             "designerId": "d11a1acd-bbcb-4140-ae6a-dbe69113191a"
@@ -579,11 +575,10 @@
                     "// in the onMyJsonStoreLoad we do a deselect so we need to test",
                     "// if selected[0] has a value",
                     "if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {",
-                    "    //var tabPanel = this.getMonthlyCommentsTabPanel();",
-                    "    //    console.log( tabPanel );",
-                    "    //this.loadTabPanelForm( tabPanel, selected, 'comments' );",
-                    "    //tabPanel = this.getDailyStudyDetailsTabPanel();",
-                    "    //    console.log( tabPanel );",
+                    "    var myForm = this.getFacultyByStudentForm();",
+                    "    var myPanel = myForm.up();",
+                    "    this.loadForm( myForm, selected );",
+                    "    //myForm.focus();",
                     "",
                     "    console.log('onFacultyprofielsbystudengridpanelSelectionChange()');",
                     "}"
@@ -592,6 +587,129 @@
                 "scope": "me"
             },
             "designerId": "c6e7285d-9bc5-459b-afc2-103fe68e66fc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofilegridpanelenabled",
+                "designer|targetType": "Ext.grid.column.CheckColumn",
+                "fn": "onFacultyprofilegridpanelenabledCheckChange",
+                "implHandler": [
+                    "debugger;",
+                    "var myGrid = this.getFacultyByStudentGridPanel();",
+                    "var myStore = this.getStore( 'faculty.ByStudentStore');",
+                    "var record = myStore.getAt(rowIndex);",
+                    "record.set( 'enabled', !checked );"
+                ],
+                "name": "checkchange",
+                "scope": "me"
+            },
+            "designerId": "c3d0d251-496d-47f6-8d5b-4db544bfc25d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofileform",
+                "designer|targetType": "Ext.form.Panel",
+                "fn": "onFacultyprofileformBlur",
+                "implHandler": [
+                    "debugger;",
+                    "console.log( 'faculty.ByStudentController.onFacultyprofileformBlur()');"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "designerId": "d859ce77-ab88-41b2-b48c-cc6ee5217e69"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofileform",
+                "designer|targetType": "Ext.form.Panel",
+                "fn": "onFacultyprofileformFocus",
+                "implHandler": [
+                    "debugger;",
+                    "console.log('faculty.ByStudentController.onFacultyprofileformFocus()');"
+                ],
+                "name": "focus",
+                "scope": "me"
+            },
+            "designerId": "05928870-2b7e-4aa1-9a0d-941629208e4a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofileformeditbutton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onFacultyprofileformeditbuttonClick",
+                "implHandler": [
+                    "debugger;",
+                    "",
+                    "var myForm = this.getFacultyByStudentForm();",
+                    "myForm.focus();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "c05663e5-de8a-490e-bc21-feff2c2d129d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofileformcanelbutton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onFacultyprofileformcanelbuttonClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "4732424a-ba91-434c-b96e-f6d90ef7ef40"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#facultyprofileformsavebutton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onFacultyprofileformsavebuttonClick",
+                "implHandler": [
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "designerId": "f47d3ec9-e866-42ab-a208-1a8d223d75a0"
         }
     ]
 }

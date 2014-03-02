@@ -19,8 +19,8 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
+        'Ext.grid.column.CheckColumn',
         'Ext.grid.column.Date',
-        'Ext.grid.column.Boolean',
         'Ext.grid.View'
     ],
 
@@ -100,8 +100,13 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
                     text: 'qtrYear'
                 },
                 {
+                    xtype: 'checkcolumn',
+                    itemId: 'facultyprofilegridpanelenabled',
+                    dataIndex: 'enabled',
+                    text: 'Enabled?'
+                },
+                {
                     xtype: 'numbercolumn',
-                    hidden: true,
                     dataIndex: 'version',
                     text: 'version',
                     format: '000000'
@@ -117,11 +122,6 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
                     hidden: true,
                     dataIndex: 'lastUpdated',
                     text: 'lastUpdated'
-                },
-                {
-                    xtype: 'booleancolumn',
-                    dataIndex: 'enabled',
-                    text: 'Enabled?'
                 }
             ],
             viewConfig: {

@@ -1,7 +1,7 @@
 {
     "expandedState": {
         "data": true,
-        "model": false,
+        "model": true,
         "component": true,
         "controller": true,
         "resource": false,
@@ -1439,6 +1439,9 @@
                     "id": "f4e5d00d-a2ea-4351-8387-3e065d24122d"
                 },
                 {
+                    "id": "7df2e5b6-6fbe-4447-a369-34114b75cfbf"
+                },
+                {
                     "id": "e4e6023a-9d14-47cb-9589-dcfc9054bb85"
                 },
                 {
@@ -1446,9 +1449,6 @@
                 },
                 {
                     "id": "42a0aa1f-ca84-4f48-9fb8-be5597a25146"
-                },
-                {
-                    "id": "7df2e5b6-6fbe-4447-a369-34114b75cfbf"
                 },
                 {
                     "id": "38f229f9-cc14-4a4d-bcb3-a85eff0cddee"
@@ -2010,6 +2010,7 @@
         },
         "cd66f02c-8260-4748-a75e-d8caed2e81a6": {
             "id": "cd66f02c-8260-4748-a75e-d8caed2e81a6",
+            "expanded": false,
             "cn": [
                 {
                     "id": "204f72c8-f03d-438a-bff6-175e990c7915",
@@ -2084,22 +2085,28 @@
             "expanded": false
         },
         "74d678ec-a793-4a51-85b0-61e9501ffbc4": {
-            "id": "74d678ec-a793-4a51-85b0-61e9501ffbc4"
+            "id": "74d678ec-a793-4a51-85b0-61e9501ffbc4",
+            "expanded": false
         },
         "559fcca2-c016-4c76-a792-d3f8b2ff6023": {
-            "id": "559fcca2-c016-4c76-a792-d3f8b2ff6023"
+            "id": "559fcca2-c016-4c76-a792-d3f8b2ff6023",
+            "expanded": false
         },
         "7a6772dd-4127-477c-8248-9d52c6544f7a": {
-            "id": "7a6772dd-4127-477c-8248-9d52c6544f7a"
+            "id": "7a6772dd-4127-477c-8248-9d52c6544f7a",
+            "expanded": false
         },
         "3807a6ac-beec-4567-b3ed-7dfd2fd82e00": {
-            "id": "3807a6ac-beec-4567-b3ed-7dfd2fd82e00"
+            "id": "3807a6ac-beec-4567-b3ed-7dfd2fd82e00",
+            "expanded": false
         },
         "bb3d5d97-791e-45dc-a7a0-d68a406c715a": {
-            "id": "bb3d5d97-791e-45dc-a7a0-d68a406c715a"
+            "id": "bb3d5d97-791e-45dc-a7a0-d68a406c715a",
+            "expanded": false
         },
         "4b4e2615-eed4-4448-a1e3-1b0280b92a16": {
-            "id": "4b4e2615-eed4-4448-a1e3-1b0280b92a16"
+            "id": "4b4e2615-eed4-4448-a1e3-1b0280b92a16",
+            "expanded": false
         },
         "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04": {
             "id": "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",
@@ -3163,6 +3170,7 @@
         },
         "48a06a06-a1a5-4faa-8c59-edc7ba324ea9": {
             "id": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
+            "expanded": false,
             "cn": [
                 {
                     "id": "a677eea6-6182-4b3d-abe9-2c77b8349cf8"
@@ -3714,6 +3722,24 @@
                 },
                 {
                     "id": "c6e7285d-9bc5-459b-afc2-103fe68e66fc"
+                },
+                {
+                    "id": "c3d0d251-496d-47f6-8d5b-4db544bfc25d"
+                },
+                {
+                    "id": "d859ce77-ab88-41b2-b48c-cc6ee5217e69"
+                },
+                {
+                    "id": "05928870-2b7e-4aa1-9a0d-941629208e4a"
+                },
+                {
+                    "id": "c05663e5-de8a-490e-bc21-feff2c2d129d"
+                },
+                {
+                    "id": "4732424a-ba91-434c-b96e-f6d90ef7ef40"
+                },
+                {
+                    "id": "f47d3ec9-e866-42ab-a208-1a8d223d75a0"
                 }
             ]
         },
@@ -3751,25 +3777,16 @@
         ]
     },
     "canvasState": {
-        "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
+        "topInstance": null
     },
     "inspectorState": {
-<<<<<<< HEAD
-        "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643",
-        "selectedInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
-=======
-        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9",
-        "selectedInstance": "b3d92599-5297-4d2a-b7f4-7439220ea329"
->>>>>>> branch 'master' of ssh://github.com/denismp/MySchool
+        "topInstance": "f67c8368-e7ee-4d7c-949b-84a33169b9ad",
+        "selectedInstance": "d11a1acd-bbcb-4140-ae6a-dbe69113191a"
     },
     "codeState": {
-<<<<<<< HEAD
-        "topInstance": "0673a6ba-4eea-4f96-b040-8bccf8db4643"
-=======
-        "topInstance": "48a06a06-a1a5-4faa-8c59-edc7ba324ea9"
->>>>>>> branch 'master' of ssh://github.com/denismp/MySchool
+        "topInstance": "f67c8368-e7ee-4d7c-949b-84a33169b9ad"
     },
-    "editMode": "design",
+    "editMode": "code",
     "userSettings": {
         "no-cmd": true
     }

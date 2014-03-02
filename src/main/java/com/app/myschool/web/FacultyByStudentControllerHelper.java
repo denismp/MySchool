@@ -170,7 +170,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 						myView.setFacultyId(faculty.getId());
 						myView.setAddress1(faculty.getAddress1());
 						myView.setAddress2(faculty.getAddress2());
-						myView.setCity(faculty.getAddress1());
+						myView.setCity(faculty.getCity());
 						myView.setCountry(faculty.getCountry());
 						myView.setFacultyUserName(faculty.getUserName());
 						myView.setLastName(faculty.getLastName());

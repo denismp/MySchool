@@ -125,14 +125,19 @@ Ext.define('MySchool.view.faculty.ProfileForm', {
                 },
                 {
                     xtype: 'button',
+                    itemId: 'facultyprofileformeditbutton',
                     text: 'Edit'
                 },
                 {
                     xtype: 'button',
+                    disabled: true,
+                    itemId: 'facultyprofileformcanelbutton',
                     text: 'Cancel'
                 },
                 {
                     xtype: 'button',
+                    disabled: true,
+                    itemId: 'facultyprofileformsavebutton',
                     text: 'Save'
                 }
             ]

@@ -171,6 +171,20 @@
             "designerId": "f4e5d00d-a2ea-4351-8387-3e065d24122d"
         },
         {
+            "type": "Ext.grid.column.CheckColumn",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "enabled",
+                "itemId": "facultyprofilegridpanelenabled",
+                "text": "Enabled?"
+            },
+            "designerId": "7df2e5b6-6fbe-4447-a369-34114b75cfbf"
+        },
+        {
             "type": "Ext.grid.column.Number",
             "reference": {
                 "name": "columns",
@@ -180,7 +194,6 @@
             "userConfig": {
                 "dataIndex": "version",
                 "format": "000000",
-                "hidden": true,
                 "text": "version"
             },
             "designerId": "e4e6023a-9d14-47cb-9589-dcfc9054bb85"
@@ -212,19 +225,6 @@
                 "text": "lastUpdated"
             },
             "designerId": "42a0aa1f-ca84-4f48-9fb8-be5597a25146"
-        },
-        {
-            "type": "Ext.grid.column.Boolean",
-            "reference": {
-                "name": "columns",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "dataIndex": "enabled",
-                "text": "Enabled?"
-            },
-            "designerId": "7df2e5b6-6fbe-4447-a369-34114b75cfbf"
         },
         {
             "type": "Ext.grid.View",

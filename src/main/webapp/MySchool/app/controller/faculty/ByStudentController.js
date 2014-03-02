@@ -246,14 +246,46 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         // in the onMyJsonStoreLoad we do a deselect so we need to test
         // if selected[0] has a value
         if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
-            //var tabPanel = this.getMonthlyCommentsTabPanel();
-            //    console.log( tabPanel );
-            //this.loadTabPanelForm( tabPanel, selected, 'comments' );
-            //tabPanel = this.getDailyStudyDetailsTabPanel();
-            //    console.log( tabPanel );
+            var myForm = this.getFacultyByStudentForm();
+            var myPanel = myForm.up();
+            this.loadForm( myForm, selected );
+            //myForm.focus();
 
             console.log('onFacultyprofielsbystudengridpanelSelectionChange()');
         }
+    },
+
+    onFacultyprofilegridpanelenabledCheckChange: function(checkcolumn, rowIndex, checked, eOpts) {
+        debugger;
+        var myGrid = this.getFacultyByStudentGridPanel();
+        var myStore = this.getStore( 'faculty.ByStudentStore');
+        var record = myStore.getAt(rowIndex);
+        record.set( 'enabled', !checked );
+    },
+
+    onFacultyprofileformBlur: function(component, e, eOpts) {
+        debugger;
+        console.log( 'faculty.ByStudentController.onFacultyprofileformBlur()');
+    },
+
+    onFacultyprofileformFocus: function(component, e, eOpts) {
+        debugger;
+        console.log('faculty.ByStudentController.onFacultyprofileformFocus()');
+    },
+
+    onFacultyprofileformeditbuttonClick: function(button, e, eOpts) {
+        debugger;
+
+        var myForm = this.getFacultyByStudentForm();
+        myForm.focus();
+    },
+
+    onFacultyprofileformcanelbuttonClick: function(button, e, eOpts) {
+
+    },
+
+    onFacultyprofileformsavebuttonClick: function(button, e, eOpts) {
+
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -345,24 +377,21 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
         this.buttonHandler( edit_ );
     },
 
-    loadTabPanelForm: function(tabPanel, selected, fieldname) {
+    loadForm: function(form, selected) {
         debugger;
-        var dockedItems = tabPanel.getDockedItems();
-        var myForm = dockedItems[0];
 
-        if( Ext.isDefined( myForm ) )
+        console.log( form );
+        //var textBox = myForm.dockedItems.items[0];
+        //var textBox = myForm.down('textareafield');
+        //textBox.name = fieldname;
+        form.loadRecord( selected[0] );
+        var myFields = form.getForm().getFields();
+        for( var i = 0; i < myFields.length; i++ )
         {
-            console.log( myForm );
-            //var textBox = myForm.dockedItems.items[0];
-            var textBox = myForm.down('textareafield');
-            textBox.name = fieldname;
-            myForm.loadRecord( selected[0] );
+            myFields.items[i].disable();
         }
-        else
-        {
-            console.log( 'loadTabPanelForm(): No form' );
-            //console.log( tabPanel );
-        }
+        console.log('faculty.ByStudentController.loadForm(): completed');
+
     },
 
     onMyJsonStoreLoad: function() {
@@ -407,6 +436,22 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
             "#facultyprofilesbystudentgridpanel": {
                 viewready: this.onFacultyprofilesbystudentgridpanelViewReady,
                 selectionchange: this.onFacultyprofilesbystudentgridpanelSelectionChange
+            },
+            "#facultyprofilegridpanelenabled": {
+                checkchange: this.onFacultyprofilegridpanelenabledCheckChange
+            },
+            "#facultyprofileform": {
+                blur: this.onFacultyprofileformBlur,
+                focus: this.onFacultyprofileformFocus
+            },
+            "#facultyprofileformeditbutton": {
+                click: this.onFacultyprofileformeditbuttonClick
+            },
+            "#facultyprofileformcanelbutton": {
+                click: this.onFacultyprofileformcanelbuttonClick
+            },
+            "#facultyprofileformsavebutton": {
+                click: this.onFacultyprofileformsavebuttonClick
             }
         });
     }

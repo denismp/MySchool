@@ -58,13 +58,17 @@
             <menu:item id="i_view_myschoolapp_id" messageCode="global_generic" url="/myschoolapp" z="/mhkWMIra2pQnWEiJ9iE47K98sM="/>
         </menu:category>
         <!--  </sec:authorize>-->
-         <menu:category id="c_graduatetracking" z="frz0Ex6RalC/4xKbLXybhiWyS/E=">
+        <menu:category id="c_graduatetracking" z="frz0Ex6RalC/4xKbLXybhiWyS/E=">
             <menu:item id="i_graduatetracking_new" messageCode="global_menu_new" url="/graduatetrackings?form" z="gK2pFHjgkv+2jl6s/DDp+kVQ5vI="/>
             <menu:item id="i_graduatetracking_list" messageCode="global_menu_list" url="/graduatetrackings?page=1&amp;size=${empty param.size ? 10 : param.size}" z="iEDjNxMg/7MzEWljJlyPWtFaQuc="/>
         </menu:category>
         <menu:category id="c_admin" z="yJekxb7XuSQP9KBD9S6wbwLaHZY=">
             <menu:item id="i_admin_new" messageCode="global_menu_new" url="/admins?form" z="TPmBX+1lfAP8gYU/pX/jcYwsTfM="/>
             <menu:item id="i_admin_list" messageCode="global_menu_list" url="/admins?page=1&amp;size=${empty param.size ? 10 : param.size}" z="JRwUq6a+WGX2NnSSZCd4lcreuMk="/>
+        </menu:category>
+        <menu:category id="c_daily" z="NFkxHXrs3RHbcUzbzVxYdBL+0h8=">
+            <menu:item id="i_daily_new" messageCode="global_menu_new" url="/dailys?form" z="an2jfPHNh7ouXAQ6voPS9Mq+QzI="/>
+            <menu:item id="i_daily_list" messageCode="global_menu_list" url="/dailys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="do7jyq5vh0p9Snztwoo2VLEQri0="/>
         </menu:category>
     </menu:menu>
 </div>

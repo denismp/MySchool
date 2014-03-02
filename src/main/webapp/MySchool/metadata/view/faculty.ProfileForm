@@ -232,6 +232,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "itemId": "facultyprofileformeditbutton",
                 "text": "Edit"
             },
             "designerId": "cb2c9cbf-2ddc-489f-abf3-f3b1bc5d729c"
@@ -244,6 +245,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
+                "itemId": "facultyprofileformcanelbutton",
                 "text": "Cancel"
             },
             "designerId": "3909a36b-6b12-46a7-b380-ef310df22635"
@@ -256,6 +259,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
+                "itemId": "facultyprofileformsavebutton",
                 "text": "Save"
             },
             "designerId": "818ea44e-0692-40aa-9bde-4186b5fcba9a"
