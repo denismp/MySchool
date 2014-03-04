@@ -15,8 +15,9 @@
         "height": null,
         "id": null,
         "itemId": "facultyprofileform",
-        "layout": "auto",
-        "minHeight": 500,
+        "layout": null,
+        "maxHeight": 450,
+        "minHeight": 450,
         "title": "Faculty Profile Form"
     },
     "designerId": "1791c304-92d4-4e6e-83eb-045982a2508b",

@@ -23,9 +23,9 @@ Ext.define('MySchool.view.faculty.ProfileForm', {
     ],
 
     itemId: 'facultyprofileform',
-    minHeight: 500,
+    maxHeight: 450,
+    minHeight: 450,
     autoScroll: true,
-    layout: 'auto',
     bodyPadding: 10,
     collapseFirst: false,
     frameHeader: false,

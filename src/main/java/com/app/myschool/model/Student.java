@@ -3,7 +3,6 @@ package com.app.myschool.model;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import org.springframework.roo.addon.javabean.RooJavaBean;

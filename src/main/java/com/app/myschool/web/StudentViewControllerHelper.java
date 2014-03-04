@@ -24,16 +24,19 @@ import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 
-import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyByStudentView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
+import com.app.myschool.model.StudentView;
 import com.app.myschool.model.Subject;
 
-public class FacultyByStudentControllerHelper implements ControllerHelperInterface{
-	private static final Logger logger = Logger.getLogger(FacultyByStudentControllerHelper.class);
-    private Class<Faculty> myClass = Faculty.class;
+import com.app.myschool.model.Faculty;
+
+
+
+public class StudentViewControllerHelper implements ControllerHelperInterface{
+	private static final Logger logger = Logger.getLogger(StudentViewControllerHelper.class);
+    private Class<Student> myClass = Student.class;
 	@Override
 	public String getParam(@SuppressWarnings("rawtypes") Map m, String p) {
 		String ret_ = null;
@@ -96,42 +99,49 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		}
 		return rList;
 	}
-	class MyComparator implements Comparator<FacultyByStudentView>
+	
+	class MyComparator implements Comparator<StudentView>
 	{
 		@Override
-		public int compare(FacultyByStudentView o1, FacultyByStudentView o2) {
+		public int compare(StudentView o1, StudentView o2) {
 			return o1.getSubjName().compareTo(o2.getSubjName());
 		}
 	}
-
+	
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<FacultyByStudentView> myViewClass = FacultyByStudentView.class;
+		Class<StudentView> myViewClass = StudentView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<FacultyByStudentView> records = null;
+		List<StudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
+		String studentUserName = getParam(params,"studentName");
 		List<Student> students = new ArrayList<Student>();
-		if( studentId_ == null )
+		if( studentUserName != null )
 		{
-			students = Student.findAllStudents();
-		//	Student student = students.get(0);
-		//	studentId_ = student.getId().toString();
+			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
 		}
 		else
 		{
-			Student student = Student.findStudent(new Long( studentId_ ));
-			students.add(student);
+			if( studentId_ == null )
+			{
+				students = Student.findAllStudents();
+			}
+			else
+			{
+				Student student = Student.findStudent(new Long( studentId_ ));
+				students.add(student);
+			}
 		}
-		//String studentName_ = getParam(params, "studentName");
 		
 		try
 		{
-			List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
+			//List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
+			List<StudentView> studentViewList	= new ArrayList<StudentView>();
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
@@ -147,46 +157,157 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{
-						Subject subject						= quarter.getSubject();
+						Subject subject				= quarter.getSubject();
 	
-						FacultyByStudentView myView			= new FacultyByStudentView();
+						StudentView myView			= new StudentView();
 						myView.setId(++i);
-						myView.setFacultybystudentId(i);
-						myView.setVersion(faculty.getVersion());
-						myView.setLastUpdated(faculty.getLastUpdated());
-						myView.setWhoUpdated(faculty.getWhoUpdated());
+						myView.setStudentviewId(i);
+						myView.setVersion(student.getVersion());
+						myView.setLastUpdated(student.getLastUpdated());
+						myView.setWhoUpdated(student.getWhoUpdated());
 						myView.setStudentId(student.getId());
-						myView.setSubjId(subject.getId());
-						myView.setSubjName(subject.getName());
+						myView.setVersion(student.getVersion());
+						myView.setFacultyId(faculty.getId());
+						myView.setEmail(student.getEmail());
+						myView.setAddress1(student.getAddress1());
+						myView.setAddress2(student.getAddress2());
+						myView.setCity(student.getCity());
+						myView.setCountry(student.getCountry());
+						myView.setFacultyUserName(faculty.getUserName());
+						myView.setFacultyEmail(faculty.getEmail());
+						myView.setLastName(student.getLastName());
+						myView.setMiddleName(student.getMiddleName());
+						myView.setFirstName(student.getFirstName());
+						myView.setPostalCode(student.getPostalCode());
+						myView.setProvince(student.getProvince());
+						myView.setPhone1(student.getPhone1());
+						myView.setPhone2(student.getPhone2());
+						myView.setEnabled(student.getEnabled());
+						myView.setUserName(student.getUserName());
 						myView.setQtrId(quarter.getId());
 						myView.setQtrName(quarter.getQtrName());
+						myView.setSubjId(subject.getId());
+						myView.setSubjName(subject.getName());
 						myView.setQtrYear(quarter.getQtr_year());
-						myView.setVersion(faculty.getVersion());
-						myView.setFacultyId(faculty.getId());
-						myView.setEmail(faculty.getEmail());
-						myView.setAddress1(faculty.getAddress1());
-						myView.setAddress2(faculty.getAddress2());
-						myView.setCity(faculty.getCity());
-						myView.setCountry(faculty.getCountry());
-						myView.setFacultyUserName(faculty.getUserName());
-						myView.setLastName(faculty.getLastName());
-						myView.setMiddleName(faculty.getMiddleName());
-						myView.setFirstName(faculty.getFirstName());
-						myView.setPostalCode(faculty.getPostalCode());
-						myView.setProvince(faculty.getProvince());
-						myView.setPhone1(faculty.getPhone1());
-						myView.setPhone2(faculty.getPhone2());
-						myView.setEnabled(faculty.getEnabled());
-						myView.setStudentUserName(student.getUserName());
-	
-						facultyViewList.add( myView );
+
+						studentViewList.add( myView );
+
+						Collections.sort(studentViewList, new MyComparator());
 					}
-					Collections.sort(facultyViewList, new MyComparator());
 				}
 			}
 			if (statusGood)
 			{
-				records = facultyViewList;			
+				records = studentViewList;			
+
+				response.setMessage("All " + className + "s retrieved: ");
+				response.setData(records);
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(records.size());
+			}
+			else
+			{
+				response.setMessage("No records for class=" + className);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;				
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			returnStatus = HttpStatus.BAD_REQUEST;
+			response.setMessage(e.getMessage());
+			response.setSuccess(false);
+			response.setTotal(0L);			
+		}
+
+		// Return retrieved object.
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);	
+	}
+	public ResponseEntity<String> listJsonOld2(@SuppressWarnings("rawtypes") Map params) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=utf-8");
+		Class<StudentView> myViewClass = StudentView.class;
+
+		HttpStatus returnStatus = HttpStatus.OK;
+		JsonObjectResponse response = new JsonObjectResponse();
+		List<StudentView> records = null;
+		String className = myViewClass.getSimpleName();
+		boolean statusGood = false;
+		String studentId_ = getParam(params, "studentId");
+		String studentUserName = getParam(params,"studentName");
+		List<Student> students = new ArrayList<Student>();
+		if( studentUserName != null )
+		{
+			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
+		}
+		else
+		{
+			if( studentId_ == null )
+			{
+				students = Student.findAllStudents();
+			}
+			else
+			{
+				Student student = Student.findStudent(new Long( studentId_ ));
+				students.add(student);
+			}
+		}
+		
+		try
+		{
+			List<StudentView> studentViewList	= new ArrayList<StudentView>();
+			for( Student student: students )
+			{
+				studentId_ = student.getId().toString();
+				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				
+				long i = 0;
+				for (StudentFaculty studentFaculty : studentFacultyList) 
+				{
+					statusGood					= true;
+					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
+					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
+					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+	
+					StudentView myView			= new StudentView();
+					myView.setId(++i);
+					myView.setStudentviewId(i);
+					myView.setVersion(student.getVersion());
+					myView.setLastUpdated(student.getLastUpdated());
+					myView.setWhoUpdated(student.getWhoUpdated());
+					myView.setStudentId(student.getId());
+					myView.setVersion(student.getVersion());
+					myView.setFacultyId(faculty.getId());
+					myView.setEmail(student.getEmail());
+					myView.setAddress1(student.getAddress1());
+					myView.setAddress2(student.getAddress2());
+					myView.setCity(student.getCity());
+					myView.setCountry(student.getCountry());
+					myView.setFacultyUserName(faculty.getUserName());
+					myView.setFacultyEmail(faculty.getEmail());
+					myView.setLastName(student.getLastName());
+					myView.setMiddleName(student.getMiddleName());
+					myView.setFirstName(student.getFirstName());
+					myView.setPostalCode(student.getPostalCode());
+					myView.setProvince(student.getProvince());
+					myView.setPhone1(student.getPhone1());
+					myView.setPhone2(student.getPhone2());
+					myView.setEnabled(student.getEnabled());
+					myView.setUserName(student.getUserName());
+
+					studentViewList.add( myView );
+
+					Collections.sort(studentViewList, new MyComparator());
+				}
+			}
+			if (statusGood)
+			{
+				records = studentViewList;			
 
 				response.setMessage("All " + className + "s retrieved: ");
 				response.setData(records);
@@ -228,13 +349,13 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		// Class<MonthlySummaryRatings> myClass = MonthlySummaryRatings.class;
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<Faculty> records = null;
+		List<Student> records = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 
 		try {
 			logger.info("GET");
-			records = Faculty.findAllFacultys();
+			records = Student.findAllStudents();
 			if (records == null)
 			{
 				response.setMessage("No records for class=" + className);
@@ -276,7 +397,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
         
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		Faculty record = null;
+		Student record = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 		try {	
@@ -310,12 +431,12 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( FacultyByStudentView myView ) throws Exception
+	private boolean isDup( StudentView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
-		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-		//Student student = Student.findStudent(myView.getStudentId());
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
 		List<Faculty> facultyList = this.getList(studentId.toString());
 		
@@ -324,11 +445,12 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		{
 			if( 
 					faculty.getId() == myView.getFacultyId() &&
+					student.getId() == myView.getStudentId()
 					//faculty.getDaily_week() == myView.getDaily_week() && 
 					//faculty.getDaily_day() == myView.getDaily_day() &&
 					//faculty.getQuarter() == quarter &&
-					quarter.getStudent().getId() == myView.getStudentId() &&
-					quarter.getSubject().getId() == myView.getSubjId()
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					//quarter.getSubject().getId() == myView.getSubjId()
 					)
 			{
 				return true;
@@ -350,10 +472,10 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			Faculty record = new Faculty();
+			Student record = new Student();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			FacultyByStudentView myView = FacultyByStudentView.fromJsonToFacultyByStudentView(myJson);
+			StudentView myView = StudentView.fromJsonToStudentView(myJson);
 
 			if( !this.isDup(myView) )
 			{
@@ -363,13 +485,15 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				record.setWhoUpdated(myView.getWhoUpdated());
 				*/
 				
-				List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
-				Set<Student> students = new HashSet<Student>();
-				for( StudentFaculty studentFaculty: studentFacultyList)
+				
+				List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
+				Set<Faculty> facultys = new HashSet<Faculty>();
+				for( StudentFaculty studentFaculty: studentList)
 				{
-					Student student = Student.findStudent(studentFaculty.studentId);
-					students.add(student);
+					Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
+					facultys.add(faculty);
 				}
+				
 				
 				record.setLastUpdated(myView.getLastUpdated());
 				record.setWhoUpdated(myView.getWhoUpdated());
@@ -387,10 +511,11 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				record.setPhone2(myView.getPhone2());
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getFacultyUserName());
-				record.setStudents(students);
+				record.setUserName(myView.getUserName());
+				record.setFaculty(facultys);
+				//record.setStudents(students);
 				
-				((Faculty)record).persist();
+				((Student)record).persist();
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
@@ -409,7 +534,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			else
 			{
 				statusGood = false;
-				response.setMessage( "Duplicated faculty/student/subject attempted." );
+				response.setMessage( "Duplicated faculty/student attempted." );
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -435,13 +560,13 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		JsonObjectResponse response = new JsonObjectResponse();
 		
 		try {
-			Faculty record = null;
+			Student record = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 
-			record = Faculty.findFaculty(id);
+			record = Student.findStudent(id);
 			if( record != null )
-		        ((Faculty)record).remove();
+		        ((Student)record).remove();
 
 			else {
 				response.setMessage( "No data for class=" + className );
@@ -484,24 +609,24 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
-			FacultyByStudentView myView = null;
+			StudentView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
 
-			logger.info("updateFromJson(): Debug just before call to FacultyByStudentView.fromJsonToFacultyByStudentView(myJson)");
-			myView = FacultyByStudentView.fromJsonToFacultyByStudentView(myJson);
+			logger.info("updateFromJson(): Debug just before call to StudentView.fromJsonToStudentView(myJson)");
+			myView = StudentView.fromJsonToStudentView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): Faculty id=" + myView.getFacultyId());
-			Faculty record = Faculty.findFaculty(myView.getFacultyId());
+			logger.info("updateFromJson(): Student id=" + myView.getStudentId());
+			Student record = Student.findStudent(myView.getFacultyId());
 			
-			List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
-			Set<Student> students = new HashSet<Student>();
-			for( StudentFaculty studentFaculty: studentFacultyList)
+			List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
+			Set<Faculty> facultys = new HashSet<Faculty>();
+			for( StudentFaculty studentFaculty: studentList)
 			{
-				Student student = Student.findStudent(studentFaculty.studentId);
-				students.add(student);
+				Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
+				facultys.add(faculty);
 			}
 			
 			record.setLastUpdated(myView.getLastUpdated());
@@ -520,8 +645,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			record.setPhone2(myView.getPhone2());
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getFacultyUserName());
-			record.setStudents(students);
+			record.setUserName(myView.getUserName());
+			record.setFaculty(facultys);
+			//record.setStudents(students);
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
@@ -583,7 +709,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
         headers.add("Content-Type", "application/json");
         
 		HttpStatus returnStatus = HttpStatus.OK;
-		List<Faculty> results = null;
+		List<Student> results = null;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try {
@@ -599,10 +725,10 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = false;
 		try {
-			Collection <Faculty>mycollection = Faculty.fromJsonArrayToFacultys(myJson);
-			List<Faculty> records = new ArrayList<Faculty>( mycollection );
+			Collection <Student>mycollection = Student.fromJsonArrayToStudents(myJson);
+			List<Student> records = new ArrayList<Student>( mycollection );
 	
-	        for (Faculty record: Faculty.fromJsonArrayToFacultys(myJson)) {
+	        for (Student record: Student.fromJsonArrayToStudents(myJson)) {
 	
     	        if (record.merge() == null) {
     	            returnStatus = HttpStatus.NOT_FOUND;
@@ -666,10 +792,10 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 
 		try {
 
-			Collection <Faculty>mycollection = Faculty.fromJsonArrayToFacultys(myJson);
-			List<Faculty> records = new ArrayList<Faculty>( mycollection );
+			Collection <Student>mycollection = Student.fromJsonArrayToStudents(myJson);
+			List<Student> records = new ArrayList<Student>( mycollection );
 	
-	        for (Faculty record: Faculty.fromJsonArrayToFacultys(myJson)) {
+	        for (Student record: Student.fromJsonArrayToStudents(myJson)) {
     	        record.persist();
     		}
 	        results = records;
@@ -742,52 +868,5 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-	}
-	
-	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(@SuppressWarnings("rawtypes") Class myClass, String student) {
-	    //return new ResponseEntity<String>(Student.toJsonArray(Student.findStudentsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
-        
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-		List<?> records = null;
-		String className = myClass.getSimpleName();
-		boolean statusGood = true;
-		try {	
-			logger.info("GET");
-			if (myClass.equals(Student.class)) 
-			{
-				records = Student.findStudentsByUserNameEquals(student).getResultList();
-			}
-			else 
-			{
-				response.setMessage( "Unsupported class=" + className );
-				response.setSuccess(false);
-				response.setTotal(0L);		
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-			
-			if( statusGood )
-			{
-				response.setMessage( "All " + className + "s retrieved: ");
-				response.setData( records );
-	
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
-
-		// Return retrieved object.
-        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-
 	}
 }

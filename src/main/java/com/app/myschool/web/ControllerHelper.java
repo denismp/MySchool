@@ -324,6 +324,7 @@ public class ControllerHelper {
 				records = svl_;				
 			} 
 			*/
+			/*
 			else if (myClass.equals(Student.class) && studentName_ != null) {
 				List<HashMap<String, Object>> hl_ = new ArrayList<HashMap<String, Object>>();
 				HashMap<String, Object> hm_ = null;
@@ -353,7 +354,8 @@ public class ControllerHelper {
 				}
 
 				records = hl_;
-			} else {
+			} */
+			else {
 				response.setMessage("Unsupported class=" + className);
 				response.setSuccess(false);
 				response.setTotal(0L);
@@ -379,7 +381,9 @@ public class ControllerHelper {
 		// Return retrieved object.
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+				
 	}
+
 
 	public ResponseEntity<String> listJson( @SuppressWarnings("rawtypes") Class myClass ) {
         HttpHeaders headers = new HttpHeaders();

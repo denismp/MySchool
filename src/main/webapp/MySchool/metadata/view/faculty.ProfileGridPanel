@@ -12,8 +12,8 @@
         "forceFit": true,
         "height": null,
         "itemId": "facultyprofilesbystudentgridpanel",
-        "maxHeight": null,
-        "minHeight": 150,
+        "maxHeight": 200,
+        "minHeight": 200,
         "store": "faculty.ByStudentStore",
         "title": "Faculty"
     },

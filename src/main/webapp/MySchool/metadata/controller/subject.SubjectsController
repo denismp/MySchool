@@ -94,7 +94,6 @@
                 ],
                 "fn": "onViewReady",
                 "implHandler": [
-                    "",
                     "grid.getSelectionModel().select( 0 );"
                 ]
             },
@@ -713,6 +712,7 @@
                 ],
                 "fn": "getQuarterRecord",
                 "implHandler": [
+                    "debugger;",
                     "var qtrStore = Ext.getStore( 'quarter.QuarterStore' );",
                     "var qtrCount = qtrStore.getTotalCount();",
                     "var records = qtrStore.getRange( 0, qtrCount );",
@@ -743,6 +743,7 @@
                 ],
                 "fn": "getSubjectRecord",
                 "implHandler": [
+                    "debugger;",
                     "var myStore = Ext.getStore( 'subject.SubjectStore' );",
                     "var recCount = myStore.getTotalCount();",
                     "var records = myStore.getRange( 0, recCount );",
@@ -772,6 +773,7 @@
                 ],
                 "fn": "getStudentRecord",
                 "implHandler": [
+                    "debugger;",
                     "var myStore = Ext.getStore( 'student.StudentStore' );",
                     "var recCount = myStore.getTotalCount();",
                     "var records = myStore.getRange( 0, recCount );",
@@ -798,6 +800,7 @@
             "userConfig": {
                 "fn": "onLaunch",
                 "implHandler": [
+                    "//debugger;",
                     "// Use the automatically generated getter to get the store",
                     "//        debugger;",
                     "var studentStore_ = Ext.getStore('student.StudentStore');",
@@ -847,6 +850,7 @@
             "userConfig": {
                 "fn": "onStudentStoreLoad",
                 "implHandler": [
+                    "debugger;",
                     "var studentStore_ = Ext.getStore('student.StudentStore');",
                     "var r_ = studentStore_.getAt(0);",
                     "//        debugger",
@@ -861,7 +865,7 @@
                     "        scope: this,",
                     "        params: {",
                     "            studentName: r_.get('userName'),",
-                    "            studentId: r_.get('id')",
+                    "            studentId: r_.get('studentId')",
                     "        }",
                     "    });",
                     "}"
@@ -879,7 +883,7 @@
             "userConfig": {
                 "fn": "onSubjectStoreLoad",
                 "implHandler": [
-                    "//    \tdebugger;",
+                    "debugger;",
                     "var g_ = Ext.ComponentQuery.query(\"#subjectsgrid\")[0];",
                     "",
                     "if (g_.getStore().getCount() > 0) {",

@@ -25,7 +25,8 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
     ],
 
     itemId: 'facultyprofilesbystudentgridpanel',
-    minHeight: 150,
+    maxHeight: 200,
+    minHeight: 200,
     autoScroll: true,
     title: 'Faculty',
     forceFit: true,

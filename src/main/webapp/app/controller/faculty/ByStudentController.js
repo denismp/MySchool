@@ -233,7 +233,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
                 scope: this,
                 params: {
                     studentName: studentRecord.get('userName'),
-                    studentId: studentRecord.get('id')
+                    studentId: studentRecord.get('studentId')
                 }
             });
         }

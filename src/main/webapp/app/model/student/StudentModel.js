@@ -25,6 +25,22 @@ Ext.define('MySchool.model.student.StudentModel', {
             name: 'id'
         },
         {
+            name: 'studentId',
+            type: 'int'
+        },
+        {
+            name: 'facultyId',
+            type: 'int'
+        },
+        {
+            name: 'studentviewId',
+            type: 'int'
+        },
+        {
+            name: 'email',
+            type: 'string'
+        },
+        {
             name: 'firstName',
             type: 'string'
         },
@@ -82,12 +98,44 @@ Ext.define('MySchool.model.student.StudentModel', {
             type: 'string'
         },
         {
+            name: 'facultyUserName',
+            type: 'string'
+        },
+        {
             name: 'userPassword',
+            type: 'string'
+        },
+        {
+            name: 'facultyEmail',
             type: 'string'
         },
         {
             name: 'enabled',
             type: 'boolean'
+        },
+        {
+            name: 'qtrId',
+            type: 'int'
+        },
+        {
+            name: 'qtrYear',
+            type: 'int'
+        },
+        {
+            name: 'qtrName',
+            type: 'string'
+        },
+        {
+            name: 'subjId',
+            type: 'int'
+        },
+        {
+            name: 'subjName',
+            type: 'string'
+        },
+        {
+            name: 'version',
+            type: 'int'
         }
     ]
 });

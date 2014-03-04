@@ -135,7 +135,7 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
                 scope: this,
                 params: {
                     studentName: studentRecord.get('userName'),
-                    studentId: studentRecord.get('id')
+                    studentId: studentRecord.get('studentId')
                 }
             });
         }

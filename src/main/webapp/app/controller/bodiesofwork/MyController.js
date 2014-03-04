@@ -59,7 +59,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
                 scope: this,
                 params: {
                     studentName: r_.get('userName'),
-                    studentId: r_.get('id')
+                    studentId: r_.get('studentId')
                 }
             });
         }

@@ -1,11 +1,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Student;
-import com.app.myschool.model.Subject;
-import com.app.myschool.model.SubjectView;
 import java.util.Map;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.roo.addon.web.mvc.controller.scaffold.RooWebScaffold;
@@ -26,57 +22,57 @@ public class StudentController {
     @RequestMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.showJson(Student.class, id);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.showJson(id);
     }
 
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<java.lang.String> listJson(@RequestParam Map params) {
+    public ResponseEntity<java.lang.String> listJson(@SuppressWarnings("rawtypes") @RequestParam Map params) {
         ResponseEntity<java.lang.String> ret_ = null;
-        ControllerHelper controllerHelper = new ControllerHelper();
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
         if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson(Student.class, params);
+            ret_ = controllerHelper.listJson(params);
         } else {
-            ret_ = controllerHelper.listJson(Student.class);
+            ret_ = controllerHelper.listJson();
         }
         return ret_;
     }
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJson(Student.class, json);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.createFromJson(json);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.deleteFromJson(Student.class, id);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.deleteFromJson(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJson(Student.class, json);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.updateFromJson(json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJsonArray(Student.class, json);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.updateFromJsonArray(json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJsonArray(Student.class, json);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.createFromJsonArray(json);
     }
 
     @RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.jsonFindStudentsByUserNameEquals(Student.class, userName);
+        StudentViewControllerHelper controllerHelper = new StudentViewControllerHelper();
+        return controllerHelper.jsonFindStudentsByUserNameEquals(userName);
     }
 }

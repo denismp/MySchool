@@ -36,7 +36,6 @@ Ext.define('MySchool.view.student.ProfilePanel', {
             dockedItems: [
                 {
                     xtype: 'studentprofilegridpanel',
-                    itemId: 'studentprofilebyfacultygridpanel',
                     dock: 'top'
                 },
                 {

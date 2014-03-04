@@ -54,7 +54,7 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
                 scope: this,
                 params: {
                     studentName: studentRecord.get('userName'),
-                    studentId: studentRecord.get('id')
+                    studentId: studentRecord.get('studentId')
                 }
             });
         }

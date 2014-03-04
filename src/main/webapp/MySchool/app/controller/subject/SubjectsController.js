@@ -590,7 +590,6 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onViewReady: function(grid) {
-
         grid.getSelectionModel().select( 0 );
     },
 
@@ -652,6 +651,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     getQuarterRecord: function(name, year) {
+        debugger;
         var qtrStore = Ext.getStore( 'quarter.QuarterStore' );
         var qtrCount = qtrStore.getTotalCount();
         var records = qtrStore.getRange( 0, qtrCount );
@@ -668,6 +668,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     getSubjectRecord: function(name) {
+        debugger;
         var myStore = Ext.getStore( 'subject.SubjectStore' );
         var recCount = myStore.getTotalCount();
         var records = myStore.getRange( 0, recCount );
@@ -683,6 +684,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     getStudentRecord: function(userName) {
+        debugger;
         var myStore = Ext.getStore( 'student.StudentStore' );
         var recCount = myStore.getTotalCount();
         var records = myStore.getRange( 0, recCount );
@@ -698,6 +700,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onLaunch: function() {
+        //debugger;
         // Use the automatically generated getter to get the store
         //        debugger;
         var studentStore_ = Ext.getStore('student.StudentStore');
@@ -736,6 +739,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onStudentStoreLoad: function() {
+        debugger;
         var studentStore_ = Ext.getStore('student.StudentStore');
         var r_ = studentStore_.getAt(0);
         //        debugger
@@ -750,14 +754,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
                 scope: this,
                 params: {
                     studentName: r_.get('userName'),
-                    studentId: r_.get('id')
+                    studentId: r_.get('studentId')
                 }
             });
         }
     },
 
     onSubjectStoreLoad: function() {
-        //    	debugger;
+        debugger;
         var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
 
         if (g_.getStore().getCount() > 0) {
