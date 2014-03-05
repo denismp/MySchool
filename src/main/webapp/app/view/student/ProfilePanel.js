@@ -20,6 +20,12 @@ Ext.define('MySchool.view.student.ProfilePanel', {
     requires: [
         'MySchool.view.student.ProfileGridPanel',
         'MySchool.view.student.ProfileForm',
+        'MySchool.view.student.ProfileRefreshTool',
+        'MySchool.view.student.ProfileSearchTool',
+        'MySchool.view.student.ProfileNewTool',
+        'MySchool.view.student.ProfileSaveTool',
+        'MySchool.view.student.ProfileDeleteTool',
+        'MySchool.view.student.ProfileLockTool',
         'Ext.grid.Panel',
         'Ext.form.Panel',
         'Ext.panel.Tool'
@@ -45,58 +51,22 @@ Ext.define('MySchool.view.student.ProfilePanel', {
             ],
             tools: [
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add refresh handler code here.  Use example from chapter 2 of book.
-                    },
-                    id: 'toolrefreshstudentsbysubject8',
-                    tooltip: 'Refresh',
-                    type: 'refresh'
+                    xtype: 'studentprofilerefreshtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add search handler code here.
-                    },
-                    id: 'toolsearchstudentsbysubject8',
-                    tooltip: 'Search',
-                    type: 'search'
+                    xtype: 'studentprofilesearchtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add new/insert handler code here.
-                    },
-                    id: 'toolnewstudentsbysubject8',
-                    tooltip: 'New',
-                    type: 'plus'
+                    xtype: 'studentprofilenewtool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add save/udate handler code here.
-                    },
-                    id: 'toolsavestudentsbysubject8',
-                    tooltip: 'Save',
-                    type: 'save'
+                    xtype: 'mytool3'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // Add delete handler code here.
-                    },
-                    id: 'tooldeletestudentsbysubject8',
-                    tooltip: 'Delete',
-                    type: 'minus'
+                    xtype: 'studentprofiledeletetool'
                 },
                 {
-                    xtype: 'tool',
-                    handler: function(event, toolEl, owner, tool) {
-                        // add lock handler code here.
-                    },
-                    id: 'toollockstudentsbysubject8',
-                    tooltip: 'Lock?',
-                    type: 'pin'
+                    xtype: 'studentprofilelocktool'
                 }
             ]
         });

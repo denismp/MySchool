@@ -18,13 +18,14 @@ Ext.define('MySchool.view.student.ProfileForm', {
     alias: 'widget.studentprofileform',
 
     requires: [
-        'Ext.form.field.Text'
+        'Ext.form.field.Text',
+        'Ext.button.Button'
     ],
 
     itemId: 'studentprofileform',
-    minHeight: 500,
+    maxHeight: 450,
+    minHeight: 450,
     autoScroll: true,
-    layout: 'vbox',
     bodyPadding: 10,
     collapseFirst: false,
     frameHeader: false,
@@ -39,80 +40,96 @@ Ext.define('MySchool.view.student.ProfileForm', {
                     xtype: 'textfield',
                     itemId: 'student-firstname',
                     width: 300,
-                    fieldLabel: 'First Name'
+                    fieldLabel: 'First Name',
+                    name: 'firstName'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-middlename',
                     width: 300,
-                    fieldLabel: 'Middle Name'
+                    fieldLabel: 'Middle Name',
+                    name: 'middleName'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-lastname',
                     width: 300,
-                    fieldLabel: 'Last Name'
+                    fieldLabel: 'Last Name',
+                    name: 'lastName'
                 },
                 {
                     xtype: 'textfield',
-                    itemId: 'student-mobile',
-                    fieldLabel: 'Mobile Phone'
+                    itemId: 'student-phone1',
+                    fieldLabel: 'Phone1',
+                    name: 'phone1'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-phone',
-                    fieldLabel: 'Phone'
+                    fieldLabel: 'Phone2',
+                    name: 'phone2'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-address1',
                     width: 300,
-                    fieldLabel: 'Address1'
+                    fieldLabel: 'Address1',
+                    name: 'address1'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-address2',
                     width: 300,
-                    fieldLabel: 'Address2'
-                },
-                {
-                    xtype: 'textfield',
-                    itemId: 'student-street',
-                    width: 300,
-                    fieldLabel: 'Street'
+                    fieldLabel: 'Address2',
+                    name: 'address2'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-city',
                     width: 300,
-                    fieldLabel: 'City'
+                    fieldLabel: 'City',
+                    name: 'city'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-province',
                     width: 300,
-                    fieldLabel: 'Province/State'
+                    fieldLabel: 'Province/State',
+                    name: 'province'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-postalcode',
-                    fieldLabel: 'Postal Code'
+                    fieldLabel: 'Postal Code',
+                    name: 'postalCode'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-country',
-                    fieldLabel: 'Country'
+                    fieldLabel: 'Country',
+                    name: 'country'
                 },
                 {
                     xtype: 'textfield',
                     itemId: 'student-email',
                     width: 300,
-                    fieldLabel: 'Email'
+                    fieldLabel: 'Email',
+                    name: 'email'
                 },
                 {
-                    xtype: 'textfield',
-                    itemId: 'student-facultyId',
-                    fieldLabel: 'Faculty ID'
+                    xtype: 'button',
+                    itemId: 'studentprofileformeditbutton',
+                    text: 'Edit'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'studentprofileformcancelbutton',
+                    text: 'Cancel'
+                },
+                {
+                    xtype: 'button',
+                    itemId: 'studentprofileformsavebutton',
+                    text: 'Save'
                 }
             ]
         });

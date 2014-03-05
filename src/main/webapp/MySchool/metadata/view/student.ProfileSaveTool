@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "mytool3",
+        "designer|userClassName": "student.ProfileSaveTool",
+        "id": null,
+        "itemId": "studentprofilesavetool",
+        "tooltip": "Save",
+        "type": "save"
+    },
+    "designerId": "e8a0462f-9c2c-405a-9253-cefaecb34ce4"
+}

@@ -221,7 +221,6 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "lastUpdated",
-                "hidden": true,
                 "text": "lastUpdated"
             },
             "designerId": "42a0aa1f-ca84-4f48-9fb8-be5597a25146"
@@ -234,7 +233,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "minHeight": 100
+                "minHeight": null
             },
             "designerId": "38f229f9-cc14-4a4d-bcb3-a85eff0cddee"
         }

@@ -15,8 +15,9 @@
         "height": null,
         "id": null,
         "itemId": "studentprofileform",
-        "layout": "vbox",
-        "minHeight": 500,
+        "layout": null,
+        "maxHeight": 450,
+        "minHeight": 450,
         "title": "Student Profile Form"
     },
     "designerId": "d0d053c2-4011-42ff-a834-85cfa995076d",
@@ -32,6 +33,7 @@
                 "fieldLabel": "First Name",
                 "id": null,
                 "itemId": "student-firstname",
+                "name": "firstName",
                 "width": 300
             },
             "designerId": "50a87de6-d373-41dc-843f-9d631900b77a"
@@ -47,6 +49,7 @@
                 "fieldLabel": "Middle Name",
                 "id": null,
                 "itemId": "student-middlename",
+                "name": "middleName",
                 "width": 300
             },
             "designerId": "16dc1f4d-4471-4328-aa51-3ffa9a54dd14"
@@ -62,7 +65,7 @@
                 "fieldLabel": "Last Name",
                 "id": null,
                 "itemId": "student-lastname",
-                "layout|flex": null,
+                "name": "lastName",
                 "width": 300
             },
             "designerId": "d655c360-fcf1-4401-a50b-aea8aa55cfcb"
@@ -75,10 +78,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Mobile Phone",
+                "fieldLabel": "Phone1",
                 "id": null,
-                "itemId": "student-mobile",
-                "layout|flex": null
+                "itemId": "student-phone1",
+                "name": "phone1"
             },
             "designerId": "af996aea-d4bc-4d06-91e5-137e49a66866"
         },
@@ -90,10 +93,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Phone",
+                "fieldLabel": "Phone2",
                 "id": null,
                 "itemId": "student-phone",
-                "layout|flex": null
+                "name": "phone2"
             },
             "designerId": "db28b09c-d29e-4502-a397-e3d68f0f6acb"
         },
@@ -108,7 +111,7 @@
                 "fieldLabel": "Address1",
                 "id": null,
                 "itemId": "student-address1",
-                "layout|flex": null,
+                "name": "address1",
                 "width": 300
             },
             "designerId": "bdf2b650-0ff0-4a04-bbf7-74d2a36aa2d5"
@@ -124,7 +127,7 @@
                 "fieldLabel": "Address2",
                 "id": null,
                 "itemId": "student-address2",
-                "layout|flex": null,
+                "name": "address2",
                 "width": 300
             },
             "designerId": "243080d5-d5a1-4aa1-9c07-7fd1fc37cd15"
@@ -137,26 +140,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Street",
-                "id": null,
-                "itemId": "student-street",
-                "layout|flex": null,
-                "width": 300
-            },
-            "designerId": "e8ae83c7-7d61-4521-aafa-7217ce03fae4"
-        },
-        {
-            "type": "Ext.form.field.Text",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "fieldLabel": "City",
                 "id": null,
                 "itemId": "student-city",
-                "layout|flex": null,
+                "name": "city",
                 "width": 300
             },
             "designerId": "a96afa92-bc90-4dd7-978a-acadd30b4351"
@@ -172,7 +159,7 @@
                 "fieldLabel": "Province/State",
                 "id": null,
                 "itemId": "student-province",
-                "layout|flex": null,
+                "name": "province",
                 "width": 300
             },
             "designerId": "b02fff11-40c8-48b1-8f37-3475e6fafa1e"
@@ -187,7 +174,7 @@
             "userConfig": {
                 "fieldLabel": "Postal Code",
                 "itemId": "student-postalcode",
-                "layout|flex": null
+                "name": "postalCode"
             },
             "designerId": "397a635e-166d-407e-808a-6d9da1ee2050"
         },
@@ -202,7 +189,7 @@
                 "fieldLabel": "Country",
                 "id": null,
                 "itemId": "student-country",
-                "layout|flex": null
+                "name": "country"
             },
             "designerId": "6760b060-44cf-4690-a611-8c8e71860906"
         },
@@ -217,25 +204,49 @@
                 "fieldLabel": "Email",
                 "id": null,
                 "itemId": "student-email",
-                "layout|flex": null,
+                "name": "email",
                 "width": 300
             },
             "designerId": "db650021-66f0-4084-aae0-ed6a8ef6ce77"
         },
         {
-            "type": "Ext.form.field.Text",
+            "type": "Ext.button.Button",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "fieldLabel": "Faculty ID",
-                "id": null,
-                "itemId": "student-facultyId",
-                "width": null
+                "itemId": "studentprofileformeditbutton",
+                "text": "Edit"
             },
-            "designerId": "f7f657bb-2210-498e-b84f-0c56f5a106c1"
+            "designerId": "380f293b-71d5-466d-8420-8cd014324e3e"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "studentprofileformcancelbutton",
+                "text": "Cancel"
+            },
+            "designerId": "0ed0e07c-760d-4bdb-9e34-0f9e227b70b8"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "studentprofileformsavebutton",
+                "text": "Save"
+            },
+            "designerId": "b0d86221-82b0-4929-bf19-e9ddf76cfe4d"
         }
     ]
 }

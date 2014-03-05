@@ -1,0 +1,116 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": false,
+        "designer|userAlias": "studentprofilestore",
+        "designer|userClassName": "student.StudentProfileStore",
+        "model": "student.StudentProfileModel",
+        "storeId": "student.StudentProfileStore"
+    },
+    "designerId": "6557151d-a184-49d1-8149-90968a87ab93",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Rest",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "headers": [
+                    "{ 'Accept' : 'application/json' }"
+                ],
+                "url": "studentprofileviews"
+            },
+            "designerId": "e557c32a-acd8-48d4-8486-bba9a41a178e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "data"
+                    },
+                    "designerId": "ae3f6fc8-146e-4b59-9904-4d825d54d2b7"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRestException",
+                        "implHandler": [
+                            "debugger;",
+                            "var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;",
+                            "Ext.MessageBox.show({",
+                            "    title: 'REMOTE EXCEPTION',",
+                            "    msg: smsg,",
+                            "    icon: Ext.MessageBox.ERROR,",
+                            "    buttons: Ext.Msg.OK,",
+                            "    resizeable: true",
+                            "});",
+                            "window.console.log( smsg );",
+                            "if( this.getCount() > 0 )",
+                            "{",
+                            "    this.reload();",
+                            "}",
+                            "//this.reload();",
+                            ""
+                        ],
+                        "name": "exception",
+                        "scope": "me"
+                    },
+                    "designerId": "042aea92-012d-44e1-ab02-039156b43cc0"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonstoreLoad",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"student.StudentProfileStore.onJsonstoreLoad() called...\");"
+                ],
+                "name": "load",
+                "scope": "me"
+            },
+            "designerId": "158a7ab6-f408-4dc2-b017-99f571c85203"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onJsonstoreWrite",
+                "implHandler": [
+                    "//debugger;",
+                    "console.log(\"student.StudentProfileStore.onJsonstoreWrite(): called...\");",
+                    "store.reload();"
+                ],
+                "name": "write",
+                "scope": "me"
+            },
+            "designerId": "921e2b55-ece2-46ac-b975-8c9285a1815e"
+        }
+    ]
+}

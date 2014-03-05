@@ -26,15 +26,13 @@ import com.app.myschool.extjs.JsonObjectResponse;
 
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
-import com.app.myschool.model.StudentView;
-import com.app.myschool.model.Subject;
-
+import com.app.myschool.model.StudentProfileView;
 import com.app.myschool.model.Faculty;
 
 
 
-public class StudentViewControllerHelper implements ControllerHelperInterface{
-	private static final Logger logger = Logger.getLogger(StudentViewControllerHelper.class);
+public class StudentProfileViewControllerHelper implements ControllerHelperInterface{
+	private static final Logger logger = Logger.getLogger(StudentProfileViewControllerHelper.class);
     private Class<Student> myClass = Student.class;
 	@Override
 	public String getParam(@SuppressWarnings("rawtypes") Map m, String p) {
@@ -63,8 +61,8 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		queryString.append(" from faculty f, faculty_students fs, subject s, quarter q, student t");
 		queryString.append(" where fs.students = t.id");
 		queryString.append(" and fs.faculty = f.id");
-		queryString.append(" and q.student = t.id");
-		queryString.append(" and q.subject = s.id");
+		//queryString.append(" and q.student = t.id");
+		//queryString.append(" and q.subject = s.id");
 
 		if( studentId != null )
 		{
@@ -99,22 +97,22 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		return rList;
 	}
 	
-	class MyComparator implements Comparator<StudentView>
+	class MyComparator implements Comparator<StudentProfileView>
 	{
 		@Override
-		public int compare(StudentView o1, StudentView o2) {
-			return o1.getSubjName().compareTo(o2.getSubjName());
+		public int compare(StudentProfileView o1, StudentProfileView o2) {
+			return o1.getLastName().compareTo(o2.getLastName());
 		}
 	}
 	
-	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
+	public ResponseEntity<String> listJsonOld2(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<StudentView> myViewClass = StudentView.class;
+		Class<StudentProfileView> myViewClass = StudentProfileView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<StudentView> records = null;
+		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
@@ -140,7 +138,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		try
 		{
 			//List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
-			List<StudentView> studentViewList	= new ArrayList<StudentView>();
+			List<StudentProfileView> studentViewList	= new ArrayList<StudentProfileView>();
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
@@ -156,11 +154,11 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{
-						Subject subject				= quarter.getSubject();
+						//Subject subject				= quarter.getSubject();
 	
-						StudentView myView			= new StudentView();
+						StudentProfileView myView			= new StudentProfileView();
 						myView.setId(++i);
-						myView.setStudentviewId(i);
+						myView.setStudentprofileviewId(i);
 						myView.setVersion(student.getVersion());
 						myView.setLastUpdated(student.getLastUpdated());
 						myView.setWhoUpdated(student.getWhoUpdated());
@@ -183,11 +181,6 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 						myView.setPhone2(student.getPhone2());
 						myView.setEnabled(student.getEnabled());
 						myView.setUserName(student.getUserName());
-						myView.setQtrId(quarter.getId());
-						myView.setQtrName(quarter.getQtrName());
-						myView.setSubjId(subject.getId());
-						myView.setSubjName(subject.getName());
-						myView.setQtrYear(quarter.getQtr_year());
 
 						studentViewList.add( myView );
 
@@ -199,7 +192,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			{
 				records = studentViewList;			
 
-				response.setMessage("All " + className + "s retrieved");
+				response.setMessage("All " + className + "s retrieved: ");
 				response.setData(records);
 				returnStatus = HttpStatus.OK;
 				response.setSuccess(true);
@@ -227,14 +220,14 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
-	public ResponseEntity<String> listJsonOld2(@SuppressWarnings("rawtypes") Map params) {
+	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<StudentView> myViewClass = StudentView.class;
+		Class<StudentProfileView> myViewClass = StudentProfileView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<StudentView> records = null;
+		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
@@ -259,7 +252,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		
 		try
 		{
-			List<StudentView> studentViewList	= new ArrayList<StudentView>();
+			List<StudentProfileView> studentViewList	= new ArrayList<StudentProfileView>();
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
@@ -273,9 +266,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
 					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 	
-					StudentView myView			= new StudentView();
+					StudentProfileView myView			= new StudentProfileView();
 					myView.setId(++i);
-					myView.setStudentviewId(i);
+					myView.setStudentprofileviewId(i);
 					myView.setVersion(student.getVersion());
 					myView.setLastUpdated(student.getLastUpdated());
 					myView.setWhoUpdated(student.getWhoUpdated());
@@ -308,7 +301,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			{
 				records = studentViewList;			
 
-				response.setMessage("All " + className + "s retrieved: ");
+				response.setMessage("All " + className + "s retrieved");
 				response.setData(records);
 				returnStatus = HttpStatus.OK;
 				response.setSuccess(true);
@@ -430,13 +423,13 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( StudentView myView ) throws Exception
+	private boolean isDup( StudentProfileView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
-		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		Student student = Student.findStudent(myView.getStudentId());
-		Subject subject = Subject.findSubject(myView.getSubjId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
 		List<Faculty> facultyList = this.getList(studentId.toString());
 		
 
@@ -444,9 +437,12 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		{
 			if( 
 					faculty.getId() == myView.getFacultyId() &&
-					student.getId() == myView.getStudentId() &&
-					quarter.getStudent().getId() == myView.getStudentId() &&
-					quarter.getSubject().getId() == myView.getSubjId()
+					student.getId() == myView.getStudentId()
+					//faculty.getDaily_week() == myView.getDaily_week() && 
+					//faculty.getDaily_day() == myView.getDaily_day() &&
+					//faculty.getQuarter() == quarter &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					//quarter.getSubject().getId() == myView.getSubjId()
 					)
 			{
 				return true;
@@ -471,7 +467,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			Student record = new Student();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			StudentView myView = StudentView.fromJsonToStudentView(myJson);
+			StudentProfileView myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
 
 			if( !this.isDup(myView) )
 			{
@@ -605,17 +601,17 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
 			logger.info( "updateFromJson():myjson=" + myJson );
 			logger.info( "updateFromJson():Encoded JSON=" + json );
-			StudentView myView = null;
+			StudentProfileView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
 
-			logger.info("updateFromJson(): Debug just before call to StudentView.fromJsonToStudentView(myJson)");
-			myView = StudentView.fromJsonToStudentView(myJson);
+			logger.info("updateFromJson(): Debug just before call to StudentProfileView.fromJsonToStudentProfileView(myJson)");
+			myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
 			logger.info("Debug1");
 			logger.info("updateFromJson(): Student id=" + myView.getStudentId());
-			Student record = Student.findStudent(myView.getFacultyId());
+			Student record = Student.findStudent(myView.getStudentId());
 			
 			List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
 			Set<Faculty> facultys = new HashSet<Faculty>();
@@ -847,7 +843,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			
 			if( statusGood )
 			{
-				response.setMessage( "All " + className + "s retrieved: ");
+				response.setMessage( "All " + className + "s retrieved");
 				response.setData( records );
 	
 				returnStatus = HttpStatus.OK;

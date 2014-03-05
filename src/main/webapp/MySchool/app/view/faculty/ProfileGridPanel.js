@@ -120,14 +120,10 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
                 },
                 {
                     xtype: 'datecolumn',
-                    hidden: true,
                     dataIndex: 'lastUpdated',
                     text: 'lastUpdated'
                 }
-            ],
-            viewConfig: {
-                minHeight: 100
-            }
+            ]
         });
 
         me.callParent(arguments);

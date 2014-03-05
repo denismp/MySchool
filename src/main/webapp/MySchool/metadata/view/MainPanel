@@ -420,7 +420,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "dock": "top",
-                                "itemId": "studentprofilebyfacultypanel"
+                                "itemId": "studentprofilepanel"
                             },
                             "designerId": "56ea2b00-8a0c-4b30-9d86-8aacbe0e5b79",
                             "masterInstanceId": "b1bee331-b4f1-4a12-8913-82ec18d3b753"

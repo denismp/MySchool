@@ -1,0 +1,17 @@
+{
+    "type": "Ext.panel.Tool",
+    "reference": {
+        "name": "tools",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "studentprofilesearchtool",
+        "designer|userClassName": "student.ProfileSearchTool",
+        "id": null,
+        "itemId": "studentprofilesearchtool",
+        "tooltip": "Search",
+        "type": "search"
+    },
+    "designerId": "e209780c-ecf8-4098-a6b0-e81991df2f6e"
+}

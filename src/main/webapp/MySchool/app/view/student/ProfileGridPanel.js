@@ -19,16 +19,19 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 
     requires: [
         'Ext.grid.column.Number',
-        'Ext.grid.column.Boolean',
+        'Ext.grid.column.CheckColumn',
+        'Ext.grid.column.Date',
         'Ext.grid.View'
     ],
 
     itemId: 'studentprofilegridpanel',
-    minHeight: 150,
+    maxHeight: 200,
+    minHeight: 200,
     autoScroll: true,
     title: '[faculty name]Students',
-    columnLines: true,
-    forceFit: false,
+    columnLines: false,
+    forceFit: true,
+    store: 'student.StudentProfileStore',
 
     initComponent: function() {
         var me = this;
@@ -38,44 +41,73 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'idstudent',
-                    text: 'idstudent'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'firstname',
-                    text: 'First Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'middlename',
-                    text: 'Middle Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'lastname',
-                    text: 'Last Name'
-                },
-                {
-                    xtype: 'gridcolumn',
-                    dataIndex: 'email',
-                    text: 'Email'
-                },
-                {
-                    xtype: 'booleancolumn',
-                    dataIndex: 'locked',
-                    text: 'Locked?'
+                    dataIndex: 'studentId',
+                    text: 'studentId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
-                    dataIndex: 'idfaculty',
-                    text: 'idfaculty'
+                    dataIndex: 'studentprofileviewId',
+                    text: 'studentprofileviewId',
+                    format: '000000'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'userName',
+                    text: 'userName'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'firstName',
+                    text: 'First Name'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'middleName',
+                    text: 'Middle Name'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'lastName',
+                    text: 'Last Name'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    dataIndex: 'facultyEmail',
+                    text: 'FacultyEmail'
+                },
+                {
+                    xtype: 'checkcolumn',
+                    itemId: 'studentprofilegridenabledcolumn',
+                    dataIndex: 'enabled',
+                    text: 'Enabled?'
+                },
+                {
+                    xtype: 'datecolumn',
+                    dataIndex: 'lastUpdated',
+                    text: 'lastUpdated'
+                },
+                {
+                    xtype: 'gridcolumn',
+                    hidden: true,
+                    dataIndex: 'whoUpdated',
+                    text: 'whoUpdated'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    dataIndex: 'version',
+                    text: 'version',
+                    format: '000000'
+                },
+                {
+                    xtype: 'numbercolumn',
+                    hidden: true,
+                    dataIndex: 'facultyId',
+                    text: 'facultyId',
+                    format: '000000'
                 }
-            ],
-            viewConfig: {
-                maxHeight: 100
-            }
+            ]
         });
 
         me.callParent(arguments);
