@@ -152,7 +152,8 @@
             "student.ProfileSaveTool",
             "student.ProfileDeleteTool",
             "student.ProfileLockTool",
-            "subject.FacultyNamesComboBox"
+            "subject.FacultyNamesComboBox",
+            "student.NewForm"
         ]
     },
     "designerId": "application"

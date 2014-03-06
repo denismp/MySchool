@@ -21,7 +21,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
         'monthly.EvaluationRatings'
     ],
     stores: [
-        'monthly.EvaluationRatingsStore'
+        'student.StudentStore',
+        'faculty.FacultyTableStore',
+        'student.StudentProfileStore'
     ],
 
     refs: [
@@ -34,127 +36,6 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
             selector: '#studentprofileform'
         }
     ],
-
-    onNewfacultybystudentcanelClick: function(button, e, eOpts) {
-        //debugger;
-        window.console.log( "Cancel New Monthly Evaluation" );
-        var myForm = button.up().getForm();
-        myForm.reset();
-        button.up().hide();
-    },
-
-    onNewfacultybystudentsubmitClick: function(button, e, eOpts) {
-        debugger;
-        window.console.log( "Submit New Monthly Evaluations" );
-        var myForm					= button.up().getForm();
-        //var newDialog = button.up('monthlynewsummaryformpanel');
-
-        //Get the values from the form and insert a new record into the MonthlySummaryView.
-
-        var formValues				= myForm.getValues();
-
-        //	Create an empty record
-        var myRecord	= Ext.create('MySchool.model.monthly.EvaluationRatings');
-
-        //	Get the stores that we will need
-        var myStore		= this.getStore( 'monthly.EvaluationRatingsStore' );
-
-        var studentStore = Ext.getStore('student.StudentStore');
-        var subjectStore = Ext.getStore( 'subject.SubjectStore' );
-
-        //	Get the student info
-        var studentRecord	= studentStore.getAt(0);
-        var studentId		= studentRecord.get( 'id' );
-        var studentName		= studentRecord.get( 'userName' );
-
-        //	Get the quarterSubject record from the form.
-        var quarterSubjectId		= formValues.comboquartersubject;
-        var quarterSubjectRecord;
-        for( var i = 0; i < subjectStore.count(); i++ )
-        {
-            if( subjectStore.getAt(i).get('id') === quarterSubjectId )
-            {
-                quarterSubjectRecord = subjectStore.getAt(i);
-                break;
-            }
-        }
-
-        if( typeof quarterSubjectRecord !== 'undefined')
-        {
-            //	Get the other information that we need for the new record.
-            var subjName	= quarterSubjectRecord.get('subjName');
-            var subjId		= quarterSubjectRecord.get('subjId');
-            var qtrName		= quarterSubjectRecord.get('qtrName');
-            var qtrId		= quarterSubjectRecord.get('qtrId');
-            var qtrYear		= quarterSubjectRecord.get('qtrYear');
-            //var month_number = formValues.combomonth;
-
-            //var allSubjRec_ = myAllSubjStore.findRecord( 'subjName', subjName );
-            //var subjId_ = allSubjRec_.get( 'subjId' );
-
-
-            //Add the data to the new record.
-            if( formValues.combomonth > 0 )
-            {
-                myRecord.set('month_number', formValues.combomonth);
-                //myRecord.set('week_number', formValues.week_number);
-
-                myRecord.set('subjName', subjName );
-                myRecord.set('subjId', subjId );
-                myRecord.set('qtrName', qtrName );
-                myRecord.set('qtrId', qtrId);
-                myRecord.set('studentId', studentId);
-                myRecord.set('studentUserName', studentName);
-                myRecord.set('qtrYear', qtrYear);
-
-                myRecord.set('locked', 0 );
-                myRecord.set('levelOfDifficulty', formValues.levelOfDifficulty);
-                myRecord.set('criticalThinkingSkills', formValues.criticalThinkingSkills);
-                myRecord.set('effectiveCorrectionActions', formValues.effectiveCorrectionActions);
-                myRecord.set('completingCourseObjectives', formValues.completingCourseObjectives);
-                myRecord.set('accuratelyIdCorrections', formValues.accuratelyIdCorrections);
-                myRecord.set('thoughtfulnessOfReflections', formValues.thoughtfulnessOfReflections);
-                myRecord.set('workingEffectivelyWithAdvisor', formValues.workingEffectivelyWithAdvisor);
-                myRecord.set('responsibilityOfProgress', formValues.responsibilityOfProgress);
-                myRecord.set('comments', formValues.comments);
-
-                myRecord.set('whoUpdated', 'login');
-                myRecord.set('lastUpdated', new Date());
-                myRecord.set('version', null);
-                myRecord.set('monthlyevaluationId', 0 );
-
-                //add to the store
-
-                myStore.add( myRecord );
-
-                //sync the store.
-                myStore.sync();
-
-                myForm.reset();
-                button.up().hide();
-            }
-            else
-            {
-                var smsg = "You must enter a value for month";
-                Ext.MessageBox.show({
-                    title: 'REMOTE EXCEPTION',
-                    msg: smsg,
-                    icon: Ext.MessageBox.ERROR,
-                    buttons: Ext.Msg.OK
-                });
-            }
-        }
-        else
-        {
-            var msg = "You must have student/faculty records.";
-                    Ext.MessageBox.show({
-                    title: 'NO DATA',
-                    msg: smsg,
-                    icon: Ext.MessageBox.ERROR,
-                    buttons: Ext.Msg.OK
-                });
-        }
-    },
 
     onStudentprofilegridpanelViewReady: function(tablepanel, eOpts) {
         debugger;
@@ -268,21 +149,22 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
     onStudentprofilenewtoolClick: function(tool, e, eOpts) {
         debugger;
         var studentStore				= Ext.getStore('student.StudentStore');
-        var subjectStore				= Ext.getStore('subject.SubjectStore');
-        var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
-        var commonMonthStore			= Ext.getStore('common.MonthStore');
+        var facultyStore				= Ext.getStore('faculty.FacultyTableStore');
+        //var subjectStore				= Ext.getStore('subject.SubjectStore');
+        //var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+        //var commonMonthStore			= Ext.getStore('common.MonthStore');
 
-        var studentRecord	= studentStore.getAt(0);
-        var studentId		= studentRecord.get( 'id' );
-        var studentName		= studentRecord.get( 'userName' );
+        //var studentRecord	= studentStore.getAt(0);
+        //var studentId		= studentRecord.get( 'id' );
+        //var studentName		= studentRecord.get( 'userName' );
 
-        var newDialog = Ext.create( 'MySchool.view.student.NewFormPanel' );
+        var newDialog = Ext.create( 'MySchool.view.student.NewForm' );
 
-        newDialog.down('#studentid').setValue( studentId );
-        newDialog.down('#studentname').setValue( studentName );
+        //newDialog.down('#studentid').setValue( studentId );
+        //newDialog.down('#studentname').setValue( studentName );
 
         //commonQuarterSubjectStore.myLoad();
-        commonMonthStore.myLoad();
+        //commonMonthStore.myLoad();
 
         window.console.log( 'New Student Dialog' );
 
@@ -312,6 +194,71 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
     onStudentprofilelocktoolClick: function(tool, e, eOpts) {
 
+    },
+
+    onStudentcancelClick: function(button, e, eOpts) {
+        //debugger;
+        window.console.log( "Cancel New Student" );
+        var myForm = button.up().getForm();
+        myForm.reset();
+        button.up().hide();
+    },
+
+    onStudentsubmitClick: function(button, e, eOpts) {
+        debugger;
+        window.console.log( "Submit New Student" );
+        var myForm					= button.up().getForm();
+        var myPanel					= button.up();
+
+        //Get the values from the form and insert a new record into the StudentStore.
+
+        var formValues				= myForm.getValues();
+
+        //	Create an empty record
+        //var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
+
+        //	Get the stores that we will need
+
+
+        var myStore		= this.getStore( 'student.StudentProfileStore' );
+        var facultyStore= this.getStore('faculty.FacultyTableStore');
+        var facultyComboBox = myPanel.down('#facultynamescombobox');
+
+        var myRecord = myStore.getAt(0);
+
+
+        if( facultyStore.count() > 0 )
+        {
+            var facultyId = facultyComboBox.getValue();
+
+            myRecord.set( 'id', null );
+            //myRecord.set( 'version', null );
+
+            myRecord.set( 'facultyId', facultyId );
+
+            myRecord.set('whoUpdated', 'login');
+            myRecord.set('lastUpdated', new Date());
+
+            //add to the store
+
+            myStore.add( myRecord );
+
+            //sync the store.
+            myStore.sync();
+
+            myForm.reset();
+            button.up().hide();
+        }
+        else
+        {
+            var msg = "You must have faculty records.";
+                    Ext.MessageBox.show({
+                    title: 'NO DATA',
+                    msg: smsg,
+                    icon: Ext.MessageBox.ERROR,
+                    buttons: Ext.Msg.OK
+                });
+        }
     },
 
     buttonHandler: function(button, e, eOpts) {
@@ -493,12 +440,6 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
     init: function(application) {
         this.control({
-            "#newfacultybystudentcanel": {
-                click: this.onNewfacultybystudentcanelClick
-            },
-            "#newfacultybystudentsubmit": {
-                click: this.onNewfacultybystudentsubmitClick
-            },
             "#studentprofilegridpanel": {
                 viewready: this.onStudentprofilegridpanelViewReady,
                 selectionchange: this.onStudentprofilegridpanelSelectionChange
@@ -532,6 +473,12 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
             },
             "#studentprofilelocktool": {
                 click: this.onStudentprofilelocktoolClick
+            },
+            "#studentcancel": {
+                click: this.onStudentcancelClick
+            },
+            "#studentsubmit": {
+                click: this.onStudentsubmitClick
             }
         });
     }

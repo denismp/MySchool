@@ -468,6 +468,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			StudentProfileView myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
+			Student student = Student.findStudent(myView.getStudentId());
 
 			if( !this.isDup(myView) )
 			{
@@ -478,6 +479,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				*/
 				
 				
+				/*
 				List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
 				Set<Faculty> facultys = new HashSet<Faculty>();
 				for( StudentFaculty studentFaculty: studentList)
@@ -487,8 +489,28 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				}
 				
 				
+				//	Check to see if the given facultyId in the view is part of the student record.
+				//	If not, then add it.
+				if( this.isNewFaculty(myView.getFacultyId(), studentList) == false )
+				{
+					Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+					facultys.add(faculty);
+				}
+				*/
+				
+				
+				Set<Faculty> facultys = new HashSet<Faculty>();
+				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+				faculty.setId( null );
+				faculty.setVersion(null);
+				facultys.add(faculty);
+				
+							
+				
 				record.setLastUpdated(myView.getLastUpdated());
 				record.setWhoUpdated(myView.getWhoUpdated());
+				
+				record.setId(myView.getStudentId());
 				
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
@@ -504,10 +526,12 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
 				record.setUserName(myView.getUserName());
+				record.setUserPassword(student.getUserPassword());
 				record.setFaculty(facultys);
 				//record.setStudents(students);
 				
-				((Student)record).persist();
+				//((Student)record).persist();
+				record.merge();
 				
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
@@ -534,6 +558,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			}
 
 		} catch(Exception e) {
+			e.printStackTrace();
+			this.logger.error(e.getMessage());
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -588,6 +614,16 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	private boolean isNewFaculty( Long facultyId, List<StudentFaculty> list )
+	{
+		boolean rVal = false;
+		for( StudentFaculty sf: list )
+		{
+			if( sf.facultyId == facultyId )
+				return true;
+		}
+		return rVal;
+	}
 	@Override
 	public ResponseEntity<String> updateFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -621,6 +657,16 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				facultys.add(faculty);
 			}
 			
+			/*
+			//	Check to see if the given facultyId in the view is part of the student record.
+			//	If not, then add it.
+			if( this.isNewFaculty(myView.getFacultyId(), studentList) == false )
+			{
+				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+				facultys.add(faculty);
+			}
+			*/
+			
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setWhoUpdated(myView.getWhoUpdated());
 			
@@ -639,7 +685,6 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getUserName());
 			record.setFaculty(facultys);
-			//record.setStudents(students);
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
