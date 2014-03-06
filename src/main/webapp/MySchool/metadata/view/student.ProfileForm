@@ -230,6 +230,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
                 "itemId": "studentprofileformcancelbutton",
                 "text": "Cancel"
             },
@@ -243,6 +244,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
                 "itemId": "studentprofileformsavebutton",
                 "text": "Save"
             },

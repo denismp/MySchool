@@ -21,5 +21,6 @@
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Faculty_userPassword" required="true" z="EtZ15iI3fmJOgpqsuJN2Ryyf+2E="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Faculty_enabled" z="JbRqOWL4isY0S3Cxy9/ffqUYxKA="/>
         <field:textarea field="email" id="c_com_app_myschool_model_Faculty_email" required="true" validationMessageCode="field_invalid_email" z="ur6diB4VfciTMdq7GZPOmdNvMTU="/>
+        <field:simple field="quarters" id="c_com_app_myschool_model_Faculty_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="7qQ5xM11/wSBVzE6nGmfoVBgDFQ="/>
     </form:update>
 </div>

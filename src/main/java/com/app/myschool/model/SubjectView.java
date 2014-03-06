@@ -12,8 +12,11 @@ public class SubjectView {
 
 	private Long id;
 	
+	private Long subjectviewId;
+	
 	private Long subjId;
 	private String studentName;
+	private Long studentId;
 	
 	private Integer subjVersion;
 
@@ -50,4 +53,10 @@ public class SubjectView {
 	private Date qtrLastUpdated;
 
 	private Integer qtrYear;
+	
+	private Long facultyId;
+	
+	private String facultyUserName;
+	
+	private String facultyEmail;
 }

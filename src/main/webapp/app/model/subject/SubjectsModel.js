@@ -22,15 +22,39 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 
     fields: [
         {
+            name: 'id'
+        },
+        {
+            name: 'studentId',
+            type: 'int'
+        },
+        {
+            name: 'subjId',
+            type: 'int'
+        },
+        {
+            name: 'qtrId',
+            type: 'int'
+        },
+        {
+            name: 'facultyId',
+            type: 'int'
+        },
+        {
             name: 'subjName',
             sortType: 'asText',
             type: 'string'
         },
         {
-            name: 'id'
+            name: 'studentName',
+            type: 'string'
         },
         {
-            name: 'studentName',
+            name: 'facultyUserName',
+            type: 'string'
+        },
+        {
+            name: 'facultyEmail',
             type: 'string'
         },
         {
@@ -43,10 +67,6 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'subjGradeLevel',
-            type: 'int'
-        },
-        {
-            name: 'subjId',
             type: 'int'
         },
         {
@@ -72,10 +92,6 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
         },
         {
             name: 'qtrGradeType',
-            type: 'int'
-        },
-        {
-            name: 'qtrId',
             type: 'int'
         },
         {

@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Faculty;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.web.FacultyController;
 import java.io.UnsupportedEncodingException;
@@ -96,6 +97,7 @@ privileged aspect FacultyController_Roo_Controller {
     void FacultyController.populateEditForm(Model uiModel, Faculty faculty) {
         uiModel.addAttribute("faculty", faculty);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("quarters", Quarter.findAllQuarters());
         uiModel.addAttribute("students", Student.findAllStudents());
     }
     

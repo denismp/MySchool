@@ -194,6 +194,20 @@
                     },
                     "designerId": "283bdce7-4815-496a-923e-6a815b561214",
                     "masterInstanceId": "eb72207f-55b2-4786-8c2a-4c79c2b2d1b4"
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "editable": false,
+                        "layout|anchor": "100%"
+                    },
+                    "designerId": "8655334e-bb23-45e3-abed-ac081af4d5ad",
+                    "masterInstanceId": "5dd35732-eed7-42fa-a4ef-42b8e310916a"
                 }
             ]
         },

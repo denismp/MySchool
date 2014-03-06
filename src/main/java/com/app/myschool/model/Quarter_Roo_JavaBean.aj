@@ -6,6 +6,7 @@ package com.app.myschool.model;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
@@ -79,6 +80,14 @@ privileged aspect Quarter_Roo_JavaBean {
     
     public void Quarter.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public Faculty Quarter.getFaculty() {
+        return this.faculty;
+    }
+    
+    public void Quarter.setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
     
     public Subject Quarter.getSubject() {

@@ -22,6 +22,7 @@ Ext.define('MySchool.view.subject.NewForm', {
         'MySchool.view.subject.QuarterNamesComboBox',
         'MySchool.view.subject.QuarterYearComboBox',
         'MySchool.view.subject.GradeTypeComboBox',
+        'MySchool.view.subject.FacultyNamesComboBox',
         'Ext.form.FieldSet',
         'Ext.form.field.ComboBox',
         'Ext.form.field.Number',
@@ -126,6 +127,11 @@ Ext.define('MySchool.view.subject.NewForm', {
                             xtype: 'gradetypecombobox',
                             editable: false,
                             anchor: '100%'
+                        },
+                        {
+                            xtype: 'subjectfacultynamescombobox',
+                            anchor: '100%',
+                            editable: false
                         }
                     ]
                 },

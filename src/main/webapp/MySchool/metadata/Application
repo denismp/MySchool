@@ -31,7 +31,8 @@
             "weekly.SkillRatingsModel",
             "weekly.EvaluationsModel",
             "faculty.ByStudentModel",
-            "student.StudentProfileModel"
+            "student.StudentProfileModel",
+            "faculty.FacultyTableModel"
         ],
         "name": "MySchool",
         "stores": [
@@ -51,7 +52,8 @@
             "weekly.SkillRatingsStore",
             "weekly.EvaluationsRatingsStore",
             "faculty.ByStudentStore",
-            "student.StudentProfileStore"
+            "student.StudentProfileStore",
+            "faculty.FacultyTableStore"
         ],
         "views": [
             "MainPanel",
@@ -149,7 +151,8 @@
             "student.ProfileNewTool",
             "student.ProfileSaveTool",
             "student.ProfileDeleteTool",
-            "student.ProfileLockTool"
+            "student.ProfileLockTool",
+            "subject.FacultyNamesComboBox"
         ]
     },
     "designerId": "application"

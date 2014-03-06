@@ -32,7 +32,7 @@ Ext.define('MySchool.store.faculty.ByStudentStore', {
             storeId: 'faculty.ByStudentStore',
             proxy: {
                 type: 'rest',
-                url: 'facultys',
+                url: 'facultybystudentviews',
                 headers: {
                     Accept: 'application/json'
                 },

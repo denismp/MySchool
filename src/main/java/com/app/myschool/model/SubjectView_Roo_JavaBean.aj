@@ -16,6 +16,14 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.id = id;
     }
     
+    public Long SubjectView.getSubjectviewId() {
+        return this.subjectviewId;
+    }
+    
+    public void SubjectView.setSubjectviewId(Long subjectviewId) {
+        this.subjectviewId = subjectviewId;
+    }
+    
     public Long SubjectView.getSubjId() {
         return this.subjId;
     }
@@ -30,6 +38,14 @@ privileged aspect SubjectView_Roo_JavaBean {
     
     public void SubjectView.setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+    
+    public Long SubjectView.getStudentId() {
+        return this.studentId;
+    }
+    
+    public void SubjectView.setStudentId(Long studentId) {
+        this.studentId = studentId;
     }
     
     public Integer SubjectView.getSubjVersion() {
@@ -174,6 +190,30 @@ privileged aspect SubjectView_Roo_JavaBean {
     
     public void SubjectView.setQtrYear(Integer qtrYear) {
         this.qtrYear = qtrYear;
+    }
+    
+    public Long SubjectView.getFacultyId() {
+        return this.facultyId;
+    }
+    
+    public void SubjectView.setFacultyId(Long facultyId) {
+        this.facultyId = facultyId;
+    }
+    
+    public String SubjectView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void SubjectView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
+    public String SubjectView.getFacultyEmail() {
+        return this.facultyEmail;
+    }
+    
+    public void SubjectView.setFacultyEmail(String facultyEmail) {
+        this.facultyEmail = facultyEmail;
     }
     
 }

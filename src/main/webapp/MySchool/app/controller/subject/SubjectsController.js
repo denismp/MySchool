@@ -198,7 +198,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onNewsubjectsubmitClick: function(button, e, eOpts) {
-        //        debugger;
+        debugger;
         //var mystore = this.getSubjectStoreStore();
         window.console.log( "Submit New Subject" );
         var p_ = button.up('newsubjectform');
@@ -230,6 +230,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         }
 
         if (okToSync_ && p_.subjEditMode.charAt(0) == 'r') {
+            var qfCB_ = p_.down('#facultynamescombobox');
             var qnCB_ = p_.down('quarternamescombobox');
             var qyCB_ = p_.down('quarteryearcombobox');
             var gtCB_ = p_.down('gradetypecombobox');
@@ -241,14 +242,20 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
             var r_;
             var qtrName_;
             var qtrYear_;
+            var facultyId;
 
             r_ = qnCB_.getStore().getAt(idx_);
             qtrName_ = r_.data.qtrName;
             qtrYear_ = qyCB_.getValue();
+            facultyId = qfCB_.getValue();
 
             for( var i_ = 0; i_ < recCnt_; i_++ ) {
                 r_ = gStore_.getAt(i_);
-                if (r_ !== null && subjName_ == r_.get('subjName') && qtrName_ == r_.get('qtrName') && qtrYear_ == r_.get('qtrYear')) {
+                if (r_ !== null						&&
+                    subjName_ == r_.get('subjName')	&&
+                    qtrName_ == r_.get('qtrName')	&&
+                    qtrYear_ == r_.get('qtrYear'))
+                {
                     okToSync_ = false;
                     break;
                 }
@@ -258,6 +265,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
                 r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
 
                 r_.set('subjId', subjAllRec_.get('subjId'));
+
+                r_.set('facultyId', facultyId );
 
                 r_.set('studentName', this.studentName);
 
@@ -379,7 +388,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onNewsubjectcancelClick: function(button, e, eOpts) {
-        //debugger;
+        debugger;
         window.console.log( "Cancel New Subject" );
         var myForm = button.up().getForm();
         myForm.reset();
@@ -451,13 +460,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
     },
 
     onNewsubjecteditClick: function(button, e, eOpts) {
-        //    	debugger;
+        debugger;
         var myPanel_ = button.up('newsubjectform');
         var myForm_ = button.up().getForm();
         var subjectnamecombobox_ = myPanel_.down('subjectnamecombobox');
         var quarternamescombobox = myPanel_.down('quarternamescombobox');
         var quarteryearcombobox = myPanel_.down('quarteryearcombobox');
         var gradetypecombobox = myPanel_.down('gradetypecombobox');
+        var facultynamescombobox = myPanel_.down('#facultynamescombobox');
         var newsubjectformname_ = myPanel_.down('#newsubjectform-subjName');
         var studentName_ = myPanel_.down('#newsubjectform-studentName');
         var subjGradeLevel_ = myPanel_.down('#newsubjectform-subjGradeLevel');
@@ -483,6 +493,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
         quarternamescombobox.setDisabled(true);
         quarteryearcombobox.setDisabled(true);
         gradetypecombobox.setDisabled(true);
+        facultynamescombobox.setDisabled(true);
 
         if (button.getItemId().indexOf("create") > 0) {
             newsubjectformname_.setValue("replace_me_with_name");

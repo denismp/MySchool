@@ -32,7 +32,7 @@ Ext.define('MySchool.store.subject.SubjectStore', {
             storeId: 'subject.SubjectStore',
             proxy: {
                 type: 'rest',
-                url: 'subjects/json',
+                url: 'subjectviews/json',
                 headers: {
                     Accept: 'application/json'
                 },
@@ -62,14 +62,19 @@ Ext.define('MySchool.store.subject.SubjectStore', {
 
     onRestException: function(proxy, response, operation, eOpts) {
         //debugger;
-        var smsg = response.request.options.method + ':' + response.request.options.action + ':' + response.responseText + ':' + response.status + ':' + response.statusText + ':' + operation.params.data;
+        var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
         Ext.MessageBox.show({
             title: 'REMOTE EXCEPTION',
             msg: smsg,
             icon: Ext.MessageBox.ERROR,
-            buttons: Ext.Msg.OK
+            buttons: Ext.Msg.OK,
+            resizeable: true
         });
         window.console.log( smsg );
+        if( this.getCount() > 0 )
+        {
+            this.reload();
+        }
     },
 
     onJsonstoreBeforeSync: function(options, eOpts) {

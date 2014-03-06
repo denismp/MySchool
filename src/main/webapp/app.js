@@ -34,7 +34,8 @@ Ext.application({
         'weekly.SkillRatingsModel',
         'weekly.EvaluationsModel',
         'faculty.ByStudentModel',
-        'student.StudentProfileModel'
+        'student.StudentProfileModel',
+        'faculty.FacultyTableModel'
     ],
     stores: [
         'subject.SubjectStore',
@@ -53,7 +54,8 @@ Ext.application({
         'weekly.SkillRatingsStore',
         'weekly.EvaluationsRatingsStore',
         'faculty.ByStudentStore',
-        'student.StudentProfileStore'
+        'student.StudentProfileStore',
+        'faculty.FacultyTableStore'
     ],
     views: [
         'MainPanel',
@@ -151,7 +153,8 @@ Ext.application({
         'student.ProfileNewTool',
         'student.ProfileSaveTool',
         'student.ProfileDeleteTool',
-        'student.ProfileLockTool'
+        'student.ProfileLockTool',
+        'subject.FacultyNamesComboBox'
     ],
     controllers: [
         'subject.SubjectsController',

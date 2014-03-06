@@ -23,15 +23,15 @@ public class FacultyController {
     @RequestMapping(value = "/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
-    	FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.showJson(id);
+    	ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.showJson(Faculty.class, id);
     }
 
     /*
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson() {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
+        ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.listJson(Faculty.class);
     }
     */
@@ -39,42 +39,42 @@ public class FacultyController {
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
         ResponseEntity<java.lang.String> ret_ = null;
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
+        ControllerHelper controllerHelper = new ControllerHelper();
         if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson(params);
+            ret_ = controllerHelper.listJson(Faculty.class, params);
         } else {
-            ret_ = controllerHelper.listJson();
+            ret_ = controllerHelper.listJson(Faculty.class);
         }
         return ret_;
     }
 
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.createFromJson(json);
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.createFromJson(Faculty.class, json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.createFromJsonArray(json);
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.createFromJsonArray(Faculty.class, json);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.updateFromJson(json);
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.updateFromJson(Faculty.class, json);
     }
 
     @RequestMapping(value = "/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.updateFromJsonArray(json);
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.updateFromJsonArray(Faculty.class, json);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
-        FacultyByStudentControllerHelper controllerHelper = new FacultyByStudentControllerHelper();
-        return controllerHelper.deleteFromJson(id);
+        ControllerHelper controllerHelper = new ControllerHelper();
+        return controllerHelper.deleteFromJson(Faculty.class, id);
     }
 }

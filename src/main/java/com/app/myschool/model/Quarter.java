@@ -61,6 +61,9 @@ public class Quarter {
 
     @ManyToOne
     private Student student;
+    
+    @ManyToOne
+   private Faculty faculty;
 
     @ManyToOne
     private Subject subject;
