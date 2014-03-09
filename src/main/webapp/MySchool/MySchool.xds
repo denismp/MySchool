@@ -13,7 +13,7 @@
         "lineEnding": "LF",
         "genTimestamps": false,
         "cacheBust": false,
-        "buildShouldOverwriteIndex": true,
+        "buildShouldOverwriteIndex": false,
         "canvasControls": {
             "viewportSize": {
                 "name": "Auto Expand",
