@@ -19,7 +19,6 @@
         <field:simple field="monthlyevaluationratings" id="c_com_app_myschool_model_Quarter_monthlyevaluationratings" messageCode="entity_reference_not_managed" messageCodeAttribute="Monthly Evaluation Ratings" z="sBkVAwJo9CPkV2DIPQGPn0ifsK0="/>
         <field:simple field="skillRatings" id="c_com_app_myschool_model_Quarter_skillRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Skill Ratings" z="4/F55W3xRdXFfxko9EoTdSNnCkA="/>
         <field:simple field="evaluationRatings" id="c_com_app_myschool_model_Quarter_evaluationRatings" messageCode="entity_reference_not_managed" messageCodeAttribute="Evaluation Ratings" z="7UtXkFeRT+lgemneERvp86COMRA="/>
-        <field:select field="faculty" id="c_com_app_myschool_model_Quarter_faculty" itemValue="id" items="${facultys}" path="/facultys" z="FW35T7bc01c8dmkVyqfX6MAV1o8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Quarter" render="${not empty dependencies}" z="aOIF+yv09x4QnmBYXTf8lveBsYM="/>
 </div>

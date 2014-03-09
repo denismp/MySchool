@@ -117,6 +117,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		List<StudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean found = false;
 		String studentId_ = getParam(params, "studentId");
 		String studentUserName = getParam(params,"studentName");
 		List<Student> students = new ArrayList<Student>();
@@ -149,6 +150,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				long i = 0;
 				for (StudentFaculty studentFaculty : studentFacultyList) 
 				{
+					found 						= true;
 					statusGood					= true;
 					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
 					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
@@ -193,6 +195,52 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 
 						Collections.sort(studentViewList, new MyComparator());
 					}
+				}
+			}
+			if( !found )
+			{
+				for( Student student: students )
+				{
+					studentId_ = student.getId().toString();
+					
+					long i = 0;
+					found 						= true;
+					statusGood					= true;
+	
+					StudentView myView			= new StudentView();
+					myView.setId(++i);
+					myView.setStudentviewId(i);
+					myView.setVersion(student.getVersion());
+					myView.setLastUpdated(student.getLastUpdated());
+					myView.setWhoUpdated(student.getWhoUpdated());
+					myView.setStudentId(student.getId());
+					myView.setVersion(student.getVersion());
+					//myView.setFacultyId(faculty.getId());
+					myView.setEmail(student.getEmail());
+					myView.setAddress1(student.getAddress1());
+					myView.setAddress2(student.getAddress2());
+					myView.setCity(student.getCity());
+					myView.setCountry(student.getCountry());
+					//myView.setFacultyUserName(faculty.getUserName());
+					//myView.setFacultyEmail(faculty.getEmail());
+					myView.setLastName(student.getLastName());
+					myView.setMiddleName(student.getMiddleName());
+					myView.setFirstName(student.getFirstName());
+					myView.setPostalCode(student.getPostalCode());
+					myView.setProvince(student.getProvince());
+					myView.setPhone1(student.getPhone1());
+					myView.setPhone2(student.getPhone2());
+					myView.setEnabled(student.getEnabled());
+					myView.setUserName(student.getUserName());
+					//myView.setQtrId(quarter.getId());
+					//myView.setQtrName(quarter.getQtrName());
+					//myView.setSubjId(subject.getId());
+					//myView.setSubjName(subject.getName());
+					//myView.setQtrYear(quarter.getQtr_year());
+
+					studentViewList.add( myView );
+
+					Collections.sort(studentViewList, new MyComparator());	
 				}
 			}
 			if (statusGood)

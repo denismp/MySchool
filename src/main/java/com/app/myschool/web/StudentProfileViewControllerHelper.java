@@ -12,8 +12,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
+
+//import javax.persistence.EntityManager;
+//import javax.persistence.Query;
 
 
 import org.apache.commons.lang3.StringUtils;
@@ -21,6 +25,7 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 
@@ -230,6 +235,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean found = false;
 		String studentId_ = getParam(params, "studentId");
 		String studentUserName = getParam(params,"studentName");
 		List<Student> students = new ArrayList<Student>();
@@ -262,6 +268,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				for (StudentFaculty studentFaculty : studentFacultyList) 
 				{
 					statusGood					= true;
+					found						= true;
 					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
 					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
 					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
@@ -296,6 +303,51 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 					Collections.sort(studentViewList, new MyComparator());
 				}
+			}
+			if( !found )
+			{
+				for( Student student: students )
+				{
+					studentId_ = student.getId().toString();
+					
+					long i = 0;
+					statusGood					= true;
+					found						= true;
+					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
+					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
+					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+	
+					StudentProfileView myView			= new StudentProfileView();
+					myView.setId(++i);
+					myView.setStudentprofileviewId(i);
+					myView.setVersion(student.getVersion());
+					myView.setLastUpdated(student.getLastUpdated());
+					myView.setWhoUpdated(student.getWhoUpdated());
+					myView.setStudentId(student.getId());
+					myView.setVersion(student.getVersion());
+					//myView.setFacultyId(faculty.getId());
+					myView.setEmail(student.getEmail());
+					myView.setAddress1(student.getAddress1());
+					myView.setAddress2(student.getAddress2());
+					myView.setCity(student.getCity());
+					myView.setCountry(student.getCountry());
+					//myView.setFacultyUserName(faculty.getUserName());
+					//myView.setFacultyEmail(faculty.getEmail());
+					myView.setLastName(student.getLastName());
+					myView.setMiddleName(student.getMiddleName());
+					myView.setFirstName(student.getFirstName());
+					myView.setPostalCode(student.getPostalCode());
+					myView.setProvince(student.getProvince());
+					myView.setPhone1(student.getPhone1());
+					myView.setPhone2(student.getPhone2());
+					myView.setEnabled(student.getEnabled());
+					myView.setUserName(student.getUserName());
+
+					studentViewList.add( myView );
+
+					Collections.sort(studentViewList, new MyComparator());					
+				}
+				
 			}
 			if (statusGood)
 			{
@@ -452,6 +504,22 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		return false;
 	}
 	
+	@Transactional
+	private int relateStudentAndFaculty( Long studentId, Long facultyId ) throws Exception
+	{
+		int rVal = 0;
+		
+		StringBuilder queryString = new StringBuilder("insert into faculty_students ( faculty, students ) values ( " );
+		queryString.append( "?,?)");
+		
+		Query query = Faculty.entityManager().createNativeQuery(queryString.toString());
+		query.setParameter(1, facultyId);
+		query.setParameter(2, studentId);
+		rVal = query.executeUpdate();
+	
+		return rVal;
+	}
+	
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -464,88 +532,35 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			Student record = new Student();
+			//Student record = new Student();
+			//Faculty record = new Faculty();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			StudentProfileView myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
-			Student student = Student.findStudent(myView.getStudentId());
+			//Student student = Student.findStudent(myView.getStudentId());
+			//Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+			
+			this.relateStudentAndFaculty(myView.getStudentId(), myView.getFacultyId());
 
-			if( !this.isDup(myView) )
+			/*
+			record = faculty;
+			record.setLastUpdated(myView.getLastUpdated());
+			record.setWhoUpdated(myView.getWhoUpdated());
+			
+			record.getStudents().add(student);
+			//record.getFaculty().add(faculty);
+			record.merge();
+			//myView.setVersion(student.getVersion());	
+			//record.persist();
+			*/			
+			
+			if( statusGood )
 			{
-				/*
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				*/
-				
-				
-				/*
-				List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
-				Set<Faculty> facultys = new HashSet<Faculty>();
-				for( StudentFaculty studentFaculty: studentList)
-				{
-					Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
-					facultys.add(faculty);
-				}
-				
-				
-				//	Check to see if the given facultyId in the view is part of the student record.
-				//	If not, then add it.
-				if( this.isNewFaculty(myView.getFacultyId(), studentList) == false )
-				{
-					Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-					facultys.add(faculty);
-				}
-				*/
-				
-				
-				Set<Faculty> facultys = new HashSet<Faculty>();
-				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				faculty.setId( null );
-				faculty.setVersion(null);
-				facultys.add(faculty);
-				
-							
-				
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				record.setId(myView.getStudentId());
-				
-				record.setAddress1(myView.getAddress1());
-				record.setAddress2(myView.getAddress2());
-				record.setCity(myView.getCity());
-				record.setCountry(myView.getCountry());
-				record.setEnabled(myView.getEnabled());
-				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
-				record.setPhone1(myView.getPhone1());
-				record.setPhone2(myView.getPhone2());
-				record.setPostalCode(myView.getPostalCode());
-				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(student.getUserPassword());
-				record.setFaculty(facultys);
-				//record.setStudents(students);
-				
-				//((Student)record).persist();
-				record.merge();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-				//myView.setDailyId(record.getId());
-				myView.setId(100000L + record.getId());
-	
-				if( statusGood )
-				{
-		            returnStatus = HttpStatus.CREATED;
-					response.setMessage( className + " created." );
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
-				}
+	            returnStatus = HttpStatus.CREATED;
+				response.setMessage( className + " created." );
+				response.setSuccess(true);
+				response.setTotal(1L);
+				response.setData(myView);
 			}
 			else
 			{
@@ -556,10 +571,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				returnStatus = HttpStatus.CONFLICT;
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
-
 		} catch(Exception e) {
 			e.printStackTrace();
-			this.logger.error(e.getMessage());
+			logger.error(e.getMessage());
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);

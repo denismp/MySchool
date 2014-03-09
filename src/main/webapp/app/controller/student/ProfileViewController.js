@@ -212,7 +212,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
         //Get the values from the form and insert a new record into the StudentStore.
 
-        var formValues				= myForm.getValues();
+        //var formValues				= myForm.getValues();
 
         //	Create an empty record
         //var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
@@ -231,6 +231,12 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
         {
             var facultyId = facultyComboBox.getValue();
 
+            //	We need to fool the backend into doing a create so the we can create a link record
+            //	in the faculty_students table.  We do this by setting the 'id' to a null because it
+            //	is only an view id not a real student id.  This causes the sync() to call the POST create()
+            //	method rather than than an PUT update().  If we were to create new empty record and set the
+            //	studentId and the facultyId, we could do the myStore.add( myRecord ) as an alternative, but
+            //	I chose the sync() only methodolgy.
             myRecord.set( 'id', null );
             //myRecord.set( 'version', null );
 
@@ -241,7 +247,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
             //add to the store
 
-            myStore.add( myRecord );
+            //myStore.add( myRecord );
 
             //sync the store.
             myStore.sync();

@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 
 import javax.persistence.EntityManager;
@@ -105,6 +106,15 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		}
 	}
 
+	private boolean isDupSubject( Long subjectId, Stack <Long>subjectStack )
+	{
+		for( Long myId: subjectStack )
+		{
+			if( subjectId == myId )
+				return true;
+		}
+		return false;
+	}
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
@@ -115,7 +125,9 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		List<SubjectView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean found = false;
 		String studentId_ = getParam(params, "studentId");
+		Stack <Long>subjectStack = new Stack<Long>();
 		List<Student> students = new ArrayList<Student>();
 		if( studentId_ == null )
 		{
@@ -141,6 +153,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				long i = 0;
 				for (StudentFaculty studentFaculty : studentFacultyList) 
 				{
+					//found						= true;
 					statusGood					= true;
 					//Student rstudent				= Student.findStudent(new Long(studentFaculty.studentId));
 					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
@@ -148,42 +161,48 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{
-						if( quarter.getFaculty().getId() == faculty.getId() )
+						if( 
+								quarter.getFaculty().getId() == faculty.getId() &&
+								quarter.getStudent().getId() == student.getId()
+						)
 						{
-							Subject subject				= quarter.getSubject();
-		
-							SubjectView myView			= new SubjectView();
-							myView.setId(++i);
-							myView.setSubjectviewId(i);
-							myView.setStudentName(student.getUserName());
-							myView.setStudentId(student.getId());
-							
-							myView.setSubjVersion(subject.getVersion());
-							myView.setQtrVersion(quarter.getVersion());
-							myView.setSubjLastUpdated(subject.getLastUpdated());
-							myView.setSubjWhoUpdated(subject.getWhoUpdated());
-							myView.setSubjId(subject.getId());
-							myView.setSubjCreditHours(subject.getCreditHours());
-							myView.setSubjDescription(subject.getDescription());
-							myView.setSubjGradeLevel(subject.getGradeLevel());
-							myView.setSubjName(subject.getName());
-							myView.setSubjObjectives(subject.getObjectives());
-							
-							myView.setQtrId(quarter.getId());
-							myView.setQtrName(quarter.getQtrName());
-							myView.setQtrYear(quarter.getQtr_year());
-							myView.setQtrGradeType(quarter.getGrade_type());
-							myView.setQtrGrade(quarter.getGrade());
-							myView.setQtrCompleted(quarter.getCompleted());
-							myView.setQtrLocked(quarter.getLocked());
-							myView.setQtrWhoUpdated(quarter.getWhoUpdated());
-							myView.setQtrLastUpdated(quarter.getLastUpdated());
-							
-							myView.setFacultyId(faculty.getId());
-							myView.setFacultyEmail(faculty.getEmail());
-							myView.setFacultyUserName(faculty.getUserName());
-		
-							subjectViewList.add( myView );
+							Subject subject					= quarter.getSubject();
+							if( isDupSubject( subject.getId(), subjectStack ) == false )
+							{
+								SubjectView myView			= new SubjectView();
+								myView.setId(++i);
+								myView.setSubjectviewId(i);
+								myView.setStudentName(student.getUserName());
+								myView.setStudentId(student.getId());
+								
+								myView.setSubjVersion(subject.getVersion());
+								myView.setQtrVersion(quarter.getVersion());
+								myView.setSubjLastUpdated(subject.getLastUpdated());
+								myView.setSubjWhoUpdated(subject.getWhoUpdated());
+								myView.setSubjId(subject.getId());
+								myView.setSubjCreditHours(subject.getCreditHours());
+								myView.setSubjDescription(subject.getDescription());
+								myView.setSubjGradeLevel(subject.getGradeLevel());
+								myView.setSubjName(subject.getName());
+								myView.setSubjObjectives(subject.getObjectives());
+								
+								myView.setQtrId(quarter.getId());
+								myView.setQtrName(quarter.getQtrName());
+								myView.setQtrYear(quarter.getQtr_year());
+								myView.setQtrGradeType(quarter.getGrade_type());
+								myView.setQtrGrade(quarter.getGrade());
+								myView.setQtrCompleted(quarter.getCompleted());
+								myView.setQtrLocked(quarter.getLocked());
+								myView.setQtrWhoUpdated(quarter.getWhoUpdated());
+								myView.setQtrLastUpdated(quarter.getLastUpdated());
+								
+								myView.setFacultyId(faculty.getId());
+								myView.setFacultyEmail(faculty.getEmail());
+								myView.setFacultyUserName(faculty.getUserName());
+			
+								subjectViewList.add( myView );
+							}
+							subjectStack.push(subject.getId());
 						}
 					}
 					Collections.sort(subjectViewList, new MyComparator());

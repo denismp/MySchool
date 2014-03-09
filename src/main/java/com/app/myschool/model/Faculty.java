@@ -20,6 +20,8 @@ public class Faculty extends Person {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="faculty")
     private Set<Student> students = new HashSet<Student>();
     
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy="faculty")
     private Set<Quarter> quarters = new HashSet<Quarter>();
+    
 }

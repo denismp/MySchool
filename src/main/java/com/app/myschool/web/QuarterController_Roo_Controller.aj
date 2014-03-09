@@ -6,7 +6,6 @@ package com.app.myschool.web;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
-import com.app.myschool.model.Faculty;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.Quarter;
@@ -107,7 +106,6 @@ privileged aspect QuarterController_Roo_Controller {
         uiModel.addAttribute("bodyofworks", BodyOfWork.findAllBodyOfWorks());
         uiModel.addAttribute("dailys", Daily.findAllDailys());
         uiModel.addAttribute("evaluationratingses", EvaluationRatings.findAllEvaluationRatingses());
-        uiModel.addAttribute("facultys", Faculty.findAllFacultys());
         uiModel.addAttribute("monthlyevaluationratingses", MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses());
         uiModel.addAttribute("monthlysummaryratingses", MonthlySummaryRatings.findAllMonthlySummaryRatingses());
         uiModel.addAttribute("skillratingses", SkillRatings.findAllSkillRatingses());

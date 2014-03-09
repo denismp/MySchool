@@ -1,0 +1,74 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "designer|userAlias": "studentnewform",
+        "designer|userClassName": "student.NewForm",
+        "draggable": true,
+        "floating": true,
+        "frame": true,
+        "height": null,
+        "itemId": "studentnewform",
+        "title": "New Student Form",
+        "width": 500
+    },
+    "designerId": "c81bf827-c3ab-4ab8-9118-78006144ec3f",
+    "cn": [
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "studentnewformfieldset",
+                "title": "Evaluations Fields"
+            },
+            "designerId": "482c3471-e3fb-4922-9882-ce0744da4ce4",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "designerId": "22cd5a5e-1051-4da3-ba7c-957356f32161",
+                    "masterInstanceId": "5dd35732-eed7-42fa-a4ef-42b8e310916a"
+                }
+            ]
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "studentcancel",
+                "text": "Canel"
+            },
+            "designerId": "ec2aa1cf-4971-423e-9a14-e4fda5ac046f"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "studentsubmit",
+                "text": "Submit"
+            },
+            "designerId": "36ba52a1-60be-481e-8093-8318315f3974"
+        }
+    ]
+}

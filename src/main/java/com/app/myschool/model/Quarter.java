@@ -55,18 +55,21 @@ public class Quarter {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
-
-    //@ManyToMany(cascade = CascadeType.ALL, mappedBy = "quarters")
-    //private Set<Subject> subject = new HashSet<Subject>();
+/*
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "quarters")
+    private Set<Subject> subject = new HashSet<Subject>();
+    */
 
     @ManyToOne
-    private Student student;
+    private Student student; 
     
     @ManyToOne
-   private Faculty faculty;
+    private Faculty faculty;
 
+    
     @ManyToOne
     private Subject subject;
+    
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="quarter")
     private Set<BodyOfWork> bodyofworks = new HashSet<BodyOfWork>();
