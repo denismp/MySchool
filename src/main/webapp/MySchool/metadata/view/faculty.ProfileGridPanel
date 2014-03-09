@@ -28,6 +28,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "id",
+                "format": "000000",
                 "hidden": true,
                 "text": "id"
             },
@@ -42,6 +43,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "facultybystudentId",
+                "format": "000000",
                 "hidden": true,
                 "text": "faultybystudentId"
             },
@@ -56,6 +58,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "studentId",
+                "format": "000000",
                 "hidden": true,
                 "text": "studentId"
             },
@@ -70,6 +73,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "subjId",
+                "format": "000000",
                 "hidden": true,
                 "text": "subjId"
             },
@@ -84,6 +88,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "qtrId",
+                "format": "000000",
                 "hidden": true,
                 "text": "qtrId"
             },
@@ -98,6 +103,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "facultyId",
+                "format": "000000",
                 "hidden": true,
                 "text": "facultyId"
             },

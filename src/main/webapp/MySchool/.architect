@@ -1369,7 +1369,6 @@
         },
         "0673a6ba-4eea-4f96-b040-8bccf8db4643": {
             "id": "0673a6ba-4eea-4f96-b040-8bccf8db4643",
-            "expanded": false,
             "cn": [
                 {
                     "id": "72f7ace7-e65e-4b74-b284-075066b036ed"
@@ -1399,7 +1398,6 @@
         },
         "0945f32c-a846-4f01-ba21-c337d6b0d8f1": {
             "id": "0945f32c-a846-4f01-ba21-c337d6b0d8f1",
-            "expanded": false,
             "cn": [
                 {
                     "id": "c978bdc4-445d-4765-96e3-d4e373e8a101"
@@ -2147,6 +2145,7 @@
         },
         "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04": {
             "id": "dd4c2f23-5978-4a8e-a8ad-ceca3b4a5b04",
+            "expanded": false,
             "cn": [
                 {
                     "id": "2a230106-f489-496a-bf00-5dbff0504f99",
@@ -2169,6 +2168,7 @@
         },
         "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f": {
             "id": "a8837eb5-e9c7-4c0b-b7c8-049eaf37e83f",
+            "expanded": false,
             "cn": [
                 {
                     "id": "afc3d57b-1e49-4fa0-9f36-327a189a5f7e",
@@ -2185,6 +2185,7 @@
         },
         "b097ba2a-55f3-4e80-9414-eda24737bd05": {
             "id": "b097ba2a-55f3-4e80-9414-eda24737bd05",
+            "expanded": false,
             "cn": [
                 {
                     "id": "e020e8f8-e308-4d8d-9a99-bd2882a0bc0c",
@@ -2201,6 +2202,7 @@
         },
         "c5c04912-9e2d-49c5-a499-402635d10f1c": {
             "id": "c5c04912-9e2d-49c5-a499-402635d10f1c",
+            "expanded": false,
             "cn": [
                 {
                     "id": "6e5fa777-2c73-497e-953f-2eae00114fec",
@@ -4023,6 +4025,7 @@
         },
         "b3a562d1-cfa6-410d-8886-ed080063e2c4": {
             "id": "b3a562d1-cfa6-410d-8886-ed080063e2c4",
+            "expanded": false,
             "cn": [
                 {
                     "id": "c6e6436c-98cf-40ec-83cc-c2d0600cd9f3"
@@ -4154,11 +4157,11 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "efe94507-5653-4091-86d5-ca563a69ffb5",
-        "selectedInstance": "efe94507-5653-4091-86d5-ca563a69ffb5"
+        "topInstance": "0945f32c-a846-4f01-ba21-c337d6b0d8f1",
+        "selectedInstance": "95e79a1f-e656-48aa-ab7a-c94f6f5b61aa"
     },
     "codeState": {
-        "topInstance": "efe94507-5653-4091-86d5-ca563a69ffb5"
+        "topInstance": "0945f32c-a846-4f01-ba21-c337d6b0d8f1"
     },
     "editMode": "code",
     "userSettings": {

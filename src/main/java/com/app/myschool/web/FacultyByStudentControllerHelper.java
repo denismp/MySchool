@@ -150,23 +150,27 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
 				
 				long i = 0;
-				for (StudentFaculty studentFaculty : studentFacultyList) 
-				{
-					statusGood					= true;
-					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
-					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-					//Quarter quarter			= faculty.getQuarter();
-					Set<Quarter> quarterList	= student.getQuarters();
-					for ( Quarter quarter: quarterList )
+				Set<Quarter> studentQtrList	= student.getQuarters();
+				for ( Quarter studentQtr: studentQtrList )
+				{				
+					for (StudentFaculty studentFaculty : studentFacultyList) 
 					{
-						{
-							//if( quarter.getFaculty().getId() == faculty.getId() )
+						statusGood							= true;
+						//Student student					= Student.findStudent(new Long(studentFaculty.studentId));
+						//Faculty faculty					= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+						//Quarter quarter					= faculty.getQuarter();
+						Faculty faculty						= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+						
+						Set<Quarter> facultyQtrList = faculty.getQuarters();
+						for( Quarter facultyQtr: facultyQtrList )
+						{	
+							Subject subject						= studentQtr.getSubject();
+							Subject facultySubject				= facultyQtr.getSubject();
+							if( subject.getId() == facultySubject.getId() )
 							{
-
-								Subject subject						= quarter.getSubject();
 								if( isDupSubject( subject.getId(), subjectStack ) == false )
 								{				
-									FacultyByStudentView myView			= new FacultyByStudentView();
+									FacultyByStudentView myView		= new FacultyByStudentView();
 									myView.setId(++i);
 									myView.setFacultybystudentId(i);
 									myView.setVersion(faculty.getVersion());
@@ -175,9 +179,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 									myView.setStudentId(student.getId());
 									myView.setSubjId(subject.getId());
 									myView.setSubjName(subject.getName());
-									myView.setQtrId(quarter.getId());
-									myView.setQtrName(quarter.getQtrName());
-									myView.setQtrYear(quarter.getQtr_year());
+									myView.setQtrId(studentQtr.getId());
+									myView.setQtrName(studentQtr.getQtrName());
+									myView.setQtrYear(studentQtr.getQtr_year());
 									myView.setVersion(faculty.getVersion());
 									myView.setFacultyId(faculty.getId());
 									myView.setEmail(faculty.getEmail());
@@ -201,8 +205,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 								subjectStack.push(subject.getId());
 							}
 						}
+	
 					}
-					Collections.sort(facultyViewList, new MyComparator());
+					Collections.sort(facultyViewList, new MyComparator());				
 				}
 			}
 			if (statusGood)

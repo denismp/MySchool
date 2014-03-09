@@ -41,37 +41,43 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'id',
-                    text: 'id'
+                    text: 'id',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'facultybystudentId',
-                    text: 'faultybystudentId'
+                    text: 'faultybystudentId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'studentId',
-                    text: 'studentId'
+                    text: 'studentId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'subjId',
-                    text: 'subjId'
+                    text: 'subjId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'qtrId',
-                    text: 'qtrId'
+                    text: 'qtrId',
+                    format: '000000'
                 },
                 {
                     xtype: 'numbercolumn',
                     hidden: true,
                     dataIndex: 'facultyId',
-                    text: 'facultyId'
+                    text: 'facultyId',
+                    format: '000000'
                 },
                 {
                     xtype: 'gridcolumn',
