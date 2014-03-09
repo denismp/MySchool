@@ -56,6 +56,28 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		}
 		return ret_;
 	}
+	@SuppressWarnings("unchecked")
+	private List<Faculty>getJustStudentFacultyList( String studentId ) throws Exception
+	{
+		List<Faculty> rList = null;
+		EntityManager em = Faculty.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct f.*");
+		queryString.append(" from faculty f, student_faculty fs, student t");
+		queryString.append(" where fs.students = t.id");
+		queryString.append(" and fs.faculty = f.id");
+		//queryString.append(" and q.student = t.id");
+		//queryString.append(" and q.subject = s.id");
+
+		if( studentId != null )
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);	
+		}
+		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
+		rList = (List<Faculty>)em.createNativeQuery(queryString.toString(), Faculty.class).getResultList(); 
+
+		return rList;
+	}
 	
 	@SuppressWarnings("unchecked")
 	private List<Faculty>getList( String studentId ) throws Exception
@@ -63,7 +85,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<Faculty> rList = null;
 		EntityManager em = Faculty.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct f.*");
-		queryString.append(" from faculty f, faculty_students fs, subject s, quarter q, student t");
+		queryString.append(" from faculty f, student_faculty fs, subject s, quarter q, student t");
 		queryString.append(" where fs.students = t.id");
 		queryString.append(" and fs.faculty = f.id");
 		//queryString.append(" and q.student = t.id");
@@ -91,6 +113,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<Faculty> facultyList	= this.getList(studentId);
 		Student student				= Student.findStudent(new Long( studentId ) );
 		//Student student				= (Student) Student.findStudentsByUserNameEquals(userName);
+		if( facultyList.size() == 0 )
+			facultyList = this.getJustStudentFacultyList(studentId);
 		for (Faculty faculty : facultyList) 
 		{
 			StudentFaculty studentFaculty = new StudentFaculty();
@@ -509,7 +533,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 	{
 		int rVal = 0;
 		
-		StringBuilder queryString = new StringBuilder("insert into faculty_students ( faculty, students ) values ( " );
+		StringBuilder queryString = new StringBuilder("insert into student_faculty ( faculty, students ) values ( " );
 		queryString.append( "?,?)");
 		
 		Query query = Faculty.entityManager().createNativeQuery(queryString.toString());

@@ -60,7 +60,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		List<Faculty> rList = null;
 		EntityManager em = Faculty.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct f.*");
-		queryString.append(" from faculty f, faculty_students fs, subject s, quarter q, student t");
+		queryString.append(" from faculty f, student_faculty fs, subject s, quarter q, student t");
 		queryString.append(" where fs.students = t.id");
 		queryString.append(" and fs.faculty = f.id");
 		queryString.append(" and q.student = t.id");
