@@ -85,7 +85,7 @@
                 ],
                 "fn": "processCommonMyTabPanel",
                 "implHandler": [
-                    "debugger;",
+                    "//debugger;",
                     "var itemId = this.getItemId();",
                     "",
                     "var dockedItems = config.dockedItems;",
