@@ -352,7 +352,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					quarter.getFaculty().getId()	== myView.getFacultyId() 	&&
 					quarter.getStudent().getId()	== myView.getStudentId()	&&
 					quarter.getQtr_year()			== myView.getQtrYear()		&&
-					quarter.getQtrName()			== myView.getQtrName()
+					quarter.getQtrName().equals(myView.getQtrName())
 					)
 			{
 				return true;

@@ -31,6 +31,7 @@ import com.app.myschool.model.FacultyByStudentView;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
+import com.app.myschool.model.SubjectView;
 
 public class FacultyByStudentControllerHelper implements ControllerHelperInterface{
 	private static final Logger logger = Logger.getLogger(FacultyByStudentControllerHelper.class);
@@ -168,7 +169,14 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 							Subject facultySubject				= facultyQtr.getSubject();
 							if( subject.getId() == facultySubject.getId() )
 							{
-								if( isDupSubject( subject.getId(), subjectStack ) == false )
+								//if( isDupSubject( subject.getId(), subjectStack ) == false )
+								if( 
+										studentQtr.getStudent().getId() == facultyQtr.getStudent().getId()	&&
+										studentQtr.getFaculty().getId() == facultyQtr.getFaculty().getId()	&&
+										studentQtr.getSubject().getId() == facultyQtr.getSubject().getId()	&&
+										studentQtr.getQtr_year()		== facultyQtr.getQtr_year()			&&
+										studentQtr.getQtrName().equals(facultyQtr.getQtrName())
+								)
 								{				
 									FacultyByStudentView myView		= new FacultyByStudentView();
 									myView.setId(++i);
@@ -336,7 +344,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( FacultyByStudentView myView ) throws Exception
+	private boolean isDupOld( FacultyByStudentView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -363,7 +371,33 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		}
 		return false;
 	}
-	
+	private boolean isDup( FacultyByStudentView myView ) throws Exception
+	{
+		//Integer monthNumber = myView.getMonth_number();
+		//Long studentId = myView.getStudentId();
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Student student = Student.findStudent(myView.getStudentId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
+		//List<Faculty> facultyList = this.getList(studentId.toString());
+		List<Quarter> quarterList = Quarter.findAllQuarters();
+
+		for (Quarter quarter : quarterList) 
+		{
+			if( 
+					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getSubject().getId()	== myView.getSubjId()		&&
+					quarter.getFaculty().getId()	== myView.getFacultyId() 	&&
+					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getQtr_year()			== myView.getQtrYear()		&&
+					quarter.getQtrName().equals(myView.getQtrName())
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
