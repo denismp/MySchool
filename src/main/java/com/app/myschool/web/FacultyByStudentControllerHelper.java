@@ -103,7 +103,13 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 	{
 		@Override
 		public int compare(FacultyByStudentView o1, FacultyByStudentView o2) {
-			return o1.getSubjName().compareTo(o2.getSubjName());
+			int c;
+			c =  o1.getSubjName().compareTo(o2.getSubjName());
+			if( c == 0 )
+				c = o1.getQtrName().compareTo(o2.getQtrName());
+			if( c == 0 )
+				c = o1.getQtrYear().compareTo(o2.getQtrYear());
+			return c;
 		}
 	}
 	

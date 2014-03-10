@@ -28,6 +28,7 @@ import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
 
+import com.app.myschool.model.FacultyByStudentView;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Faculty;
@@ -100,10 +101,24 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 	}
 	class MyComparator implements Comparator<SubjectView>
 	{
+		/*
 		@Override
 		public int compare(SubjectView o1, SubjectView o2) {
 			return o1.getSubjName().compareTo(o2.getSubjName());
+			
 		}
+		*/
+		@Override
+		public int compare(SubjectView o1, SubjectView o2) {
+			int c;
+			c =  o1.getSubjName().compareTo(o2.getSubjName());
+			if( c == 0 )
+				c = o1.getQtrName().compareTo(o2.getQtrName());
+			if( c == 0 )
+				c = o1.getQtrYear().compareTo(o2.getQtrYear());
+			return c;
+		}
+
 	}
 
 	private boolean isDupSubject( Long subjectId, Stack <Long>subjectStack )
