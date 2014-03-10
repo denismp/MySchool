@@ -71,10 +71,10 @@ Ext.define('MySchool.store.subject.SubjectStore', {
             resizeable: true
         });
         window.console.log( smsg );
-        if( this.getCount() > 0 )
-        {
-            this.reload();
-        }
+        //if( this.getCount() > 0 )
+        //{
+        //    this.reload();
+        //}
     },
 
     onJsonstoreBeforeSync: function(options, eOpts) {

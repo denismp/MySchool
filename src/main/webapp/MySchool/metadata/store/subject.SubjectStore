@@ -62,10 +62,10 @@
                             "    resizeable: true",
                             "});",
                             "window.console.log( smsg );",
-                            "if( this.getCount() > 0 )",
-                            "{",
-                            "    this.reload();",
-                            "}"
+                            "//if( this.getCount() > 0 )",
+                            "//{",
+                            "//    this.reload();",
+                            "//}"
                         ],
                         "name": "exception",
                         "scope": "me"

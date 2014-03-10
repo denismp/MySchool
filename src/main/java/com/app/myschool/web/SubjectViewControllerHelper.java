@@ -167,7 +167,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 						)
 						{
 							Subject subject					= quarter.getSubject();
-							if( isDupSubject( subject.getId(), subjectStack ) == false )
+							//if( isDupSubject( subject.getId(), subjectStack ) == false )
 							{
 								SubjectView myView			= new SubjectView();
 								myView.setId(++i);
@@ -337,22 +337,22 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 	private boolean isDup( SubjectView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
-		Long studentId = myView.getStudentId();
-		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Long studentId = myView.getStudentId();
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<Faculty> facultyList = this.getList(studentId.toString());
-		
+		//List<Faculty> facultyList = this.getList(studentId.toString());
+		List<Quarter> quarterList = Quarter.findAllQuarters();
 
-		for (Faculty faculty : facultyList) 
+		for (Quarter quarter : quarterList) 
 		{
 			if( 
-					faculty.getId() == myView.getFacultyId() &&
-					//faculty.getDaily_week() == myView.getDaily_week() && 
-					//faculty.getDaily_day() == myView.getDaily_day() &&
-					//faculty.getQuarter() == quarter &&
-					quarter.getStudent().getId() == myView.getStudentId() &&
-					quarter.getSubject().getId() == myView.getSubjId()
+					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getSubject().getId()	== myView.getSubjId()		&&
+					quarter.getFaculty().getId()	== myView.getFacultyId() 	&&
+					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getQtr_year()			== myView.getQtrYear()		&&
+					quarter.getQtrName()			== myView.getQtrName()
 					)
 			{
 				return true;
