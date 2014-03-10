@@ -416,6 +416,18 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					myView.setId(record.getId());
 					//myView.setDailyId(record.getId());
 					myView.setId(100000L + record.getId());
+					
+					if( myView.getFacultyId() != null && myView.getFacultyId() != 0 )
+					{
+						Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+						Student student = Student.findStudentsByUserNameEquals(myView.getStudentName()).getSingleResult();
+						student.getFaculty().add(faculty);
+						student.merge();
+						myView.setStudentId(student.getId());
+						myView.setFacultyId(faculty.getId());
+						myView.setFacultyEmail(faculty.getEmail());
+						myView.setFacultyUserName(faculty.getUserName());
+					}
 				}
 				else
 				{
