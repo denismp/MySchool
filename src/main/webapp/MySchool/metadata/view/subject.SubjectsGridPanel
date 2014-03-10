@@ -236,6 +236,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "studentName",
+                "hidden": true,
                 "text": "UserName"
             },
             "designerId": "11c3ec9f-bef6-4bc1-abf5-7ab926d6cece"
@@ -278,6 +279,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "qtrGradeType",
+                "hidden": true,
                 "text": "GradeType"
             },
             "designerId": "96f959d1-f5c2-4e1b-9d6a-30580f362d95",
@@ -308,6 +310,7 @@
             "codeClass": null,
             "userConfig": {
                 "dataIndex": "qtrLocked",
+                "hidden": true,
                 "text": "Locked?"
             },
             "designerId": "94105066-09e2-4bd0-bcf8-f79595877a96",
