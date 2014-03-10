@@ -556,27 +556,25 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
-			//Student record = new Student();
+			Student record = new Student();
 			//Faculty record = new Faculty();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			StudentProfileView myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
-			//Student student = Student.findStudent(myView.getStudentId());
-			//Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+			Student student = Student.findStudent(myView.getStudentId());
+			Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
 			
-			this.relateStudentAndFaculty(myView.getStudentId(), myView.getFacultyId());
+			//this.relateStudentAndFaculty(myView.getStudentId(), myView.getFacultyId());
 
-			/*
-			record = faculty;
+			
+			record = student;
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setWhoUpdated(myView.getWhoUpdated());
 			
-			record.getStudents().add(student);
-			//record.getFaculty().add(faculty);
+			record.getFaculty().add(faculty);
 			record.merge();
-			//myView.setVersion(student.getVersion());	
-			//record.persist();
-			*/			
+			myView.setVersion(student.getVersion());	
+						
 			
 			if( statusGood )
 			{
