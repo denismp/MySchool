@@ -611,6 +611,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			logger.info("Debug1");
 			logger.info("updateFromJson(): Subject id=" + myView.getSubjId());
 			Subject record = Subject.findSubject(myView.getSubjId());
+			Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 			
 			/*
 			List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
@@ -642,6 +643,19 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			else {
 				statusGood = false;
 			}
+			
+			if( statusGood )
+			{
+				quarter.setGrade(myView.getQtrGrade());
+				quarter.setGrade_type(myView.getQtrGradeType());
+				quarter.setCompleted(myView.getQtrCompleted());
+				quarter.setLocked(myView.getQtrLocked());
+				quarter.setLastUpdated(myView.getSubjLastUpdated());
+				quarter.setWhoUpdated(myView.getSubjWhoUpdated());
+				quarter.merge();
+				myView.setQtrVersion(quarter.getVersion());
+			}
+			
 			if( statusGood && updateGood )
 			{
 	            returnStatus = HttpStatus.OK;
