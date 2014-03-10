@@ -67,7 +67,7 @@ Ext.define('MySchool.view.common.MyTabPanel', {
     },
 
     processCommonMyTabPanel: function(config) {
-        debugger;
+        //debugger;
         var itemId = this.getItemId();
 
         var dockedItems = config.dockedItems;
