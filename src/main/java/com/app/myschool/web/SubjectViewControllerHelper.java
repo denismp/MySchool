@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -480,6 +481,10 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				// Persist the new quarter.
 				quarter.persist();
 				myView.setId(100000L + quarter.getId()); // fake out the id temporarily.  The reload will recreate it.
+				
+				student.getFaculty().add(faculty);
+				student.setLastUpdated(new Date() );
+				student.merge();
 				
 				myView.setSubjectviewId(myView.getId());
 				myView.setStudentName(student.getUserName());
