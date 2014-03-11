@@ -391,9 +391,8 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		{
 			if( 
 					quarter.getStudent().getId()	== myView.getStudentId()	&&
-					quarter.getSubject().getId()	== myView.getSubjId()		&&
 					quarter.getFaculty().getId()	== myView.getFacultyId() 	&&
-					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getSubject().getId()	== myView.getSubjId()		&&
 					quarter.getQtr_year()			== myView.getQtrYear()		&&
 					quarter.getQtrName().equals(myView.getQtrName())
 					)
