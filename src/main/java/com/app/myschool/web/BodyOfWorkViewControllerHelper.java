@@ -53,7 +53,7 @@ public class BodyOfWorkViewControllerHelper implements ControllerHelperInterface
 	}
 	
 	@SuppressWarnings("unchecked")
-	private List<BodyOfWork>getList( String studentId ) throws Exception
+	private List<BodyOfWork>getListOld( String studentId ) throws Exception
 	{
 		List<BodyOfWork> rList = null;
 		EntityManager em = BodyOfWork.entityManager();
@@ -87,6 +87,7 @@ public class BodyOfWorkViewControllerHelper implements ControllerHelperInterface
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
+		queryString.append( " order by b.work_name");
 		rList = (List<BodyOfWork>)em.createNativeQuery(queryString.toString(), BodyOfWork.class).getResultList(); 
 
 		return rList;
@@ -415,7 +416,7 @@ public class BodyOfWorkViewControllerHelper implements ControllerHelperInterface
 		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<BodyOfWork> bodyOfWorkList = this.getList(studentId.toString());
+		List<BodyOfWork> bodyOfWorkList = this.getBodyOfWorkList(studentId.toString());
 		
 
 		for (BodyOfWork bodyofwork : bodyOfWorkList) 
