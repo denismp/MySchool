@@ -25,7 +25,7 @@
                 "headers": [
                     "{ 'Accept' : 'application/json' }"
                 ],
-                "url": "bodyofworks"
+                "url": "bodyofworkviews"
             },
             "designerId": "a0a067a5-5145-49c5-82a2-3507f39494f3",
             "cn": [
