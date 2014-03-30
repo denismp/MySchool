@@ -59,8 +59,8 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
+                        "disabled": true,
                         "fieldLabel": "Work Name",
-                        "hidden": true,
                         "itemId": "newbodiesofworkform-workName",
                         "layout|anchor": "100%",
                         "name": "workName"
@@ -75,7 +75,8 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "newbodiesofworkform-quarter"
+                        "itemId": "newbodiesofworkform-quarter",
+                        "layout|anchor": "100%"
                     },
                     "designerId": "3c793355-3ebc-4ed2-8fc9-af21fd7f81cf",
                     "masterInstanceId": "41872b83-972c-4338-a84b-63ceea0340bc"
@@ -130,6 +131,207 @@
                         "name": "objective"
                     },
                     "designerId": "5b6b2b3e-d86e-47da-8250-6e8d264b7b80"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "qtrName",
+                        "itemId": "newbodiesofwork-qtrname",
+                        "layout|anchor": "100%",
+                        "name": "qtrName"
+                    },
+                    "designerId": "4f843f77-5b51-4d3a-b9ce-48008dda0439"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-qtryear",
+                        "layout|anchor": "100%",
+                        "name": "qtrYear"
+                    },
+                    "designerId": "360de0a9-e40e-4b00-8564-42c22aa9af89"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-locked",
+                        "layout|anchor": "100%",
+                        "name": "locked"
+                    },
+                    "designerId": "c6127704-1aa1-4c04-ad6c-f87b6afd4a8f"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-whoupdated",
+                        "layout|anchor": "100%",
+                        "name": "whoUpdated"
+                    },
+                    "designerId": "932f07a4-cdb1-4767-bece-a07174fe9202"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-lastupdated",
+                        "layout|anchor": "100%",
+                        "name": "lastUpdated"
+                    },
+                    "designerId": "771cccd8-3ef9-4e40-85b9-2f150f8d6105"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-subjectgradelevel",
+                        "layout|anchor": "100%",
+                        "name": "subjGradeLevel"
+                    },
+                    "designerId": "16cc2b00-0ea3-430d-bfc5-7b85b6bef521"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-subjectcredithours",
+                        "layout|anchor": "100%",
+                        "name": "subjCreditHours"
+                    },
+                    "designerId": "742bdad2-0958-4225-85dd-56f4a996c858"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-subjectid",
+                        "layout|anchor": "100%",
+                        "name": "subjId"
+                    },
+                    "designerId": "0aca362f-452e-41ff-b025-9191ba576a1e"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-qtrid",
+                        "layout|anchor": "100%",
+                        "name": "qtrId"
+                    },
+                    "designerId": "6ac9e0fe-194e-4496-bae4-6355907e1e9e"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-studentid",
+                        "layout|anchor": "100%",
+                        "name": "studentId"
+                    },
+                    "designerId": "1714eef1-9ad5-4e99-ac84-ae4479f550c3"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-id",
+                        "layout|anchor": "100%",
+                        "name": "id"
+                    },
+                    "designerId": "a38bfbe2-e513-4099-ad90-686ea34e8c48"
+                },
+                {
+                    "type": "Ext.form.field.Number",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "hidden": true,
+                        "itemId": "newbodiesofwork-version",
+                        "layout|anchor": "100%",
+                        "name": "version"
+                    },
+                    "designerId": "c492b3f3-649f-4a09-b95a-f5318994b4e1"
+                },
+                {
+                    "type": "Ext.form.field.Hidden",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Label",
+                        "itemId": "newbodiesofwork-subjectname",
+                        "layout|anchor": "100%",
+                        "name": "subjName"
+                    },
+                    "designerId": "97e7aa95-ab92-4044-982a-146259f81de6"
                 }
             ]
         },
@@ -154,6 +356,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
                 "itemId": "newbodiesofworksubmit",
                 "text": "Submit"
             },

@@ -31,7 +31,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "subjId"
+                "name": "subjId",
+                "type": "int"
             },
             "designerId": "68663bb9-ca33-42fa-ad31-19e6b811348e"
         },
@@ -43,7 +44,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "qtrId"
+                "name": "qtrId",
+                "type": "int"
             },
             "designerId": "dca5df31-e0fb-4525-b391-93743e826e99"
         },
@@ -55,7 +57,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "version"
+                "name": "version",
+                "type": "int"
             },
             "designerId": "46ed1086-3930-4662-8561-66433e68beaa"
         },
@@ -67,7 +70,8 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "studentId"
+                "name": "studentId",
+                "type": "int"
             },
             "designerId": "e8d28a11-7fff-4b42-a157-1b36fc0e343e"
         },
