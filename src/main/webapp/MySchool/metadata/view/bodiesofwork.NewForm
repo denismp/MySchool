@@ -59,7 +59,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
-                        "disabled": true,
                         "fieldLabel": "Work Name",
                         "itemId": "newbodiesofworkform-workName",
                         "layout|anchor": "100%",
@@ -90,7 +89,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
-                        "disabled": true,
                         "fieldLabel": "What",
                         "itemId": "newbodiesofworkform-what",
                         "layout|anchor": "100%",
@@ -107,7 +105,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
-                        "disabled": true,
                         "fieldLabel": "Description",
                         "itemId": "newbodiesofworkform-description",
                         "layout|anchor": "100%",
@@ -124,7 +121,6 @@
                     "codeClass": null,
                     "userConfig": {
                         "allowOnlyWhitespace": false,
-                        "disabled": true,
                         "fieldLabel": "Objective",
                         "itemId": "newbodiesofworkform-objective",
                         "layout|anchor": "100%",
@@ -356,7 +352,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "disabled": true,
                 "itemId": "newbodiesofworksubmit",
                 "text": "Submit"
             },
@@ -370,6 +365,8 @@
             },
             "codeClass": null,
             "userConfig": {
+                "disabled": true,
+                "hidden": true,
                 "itemId": "newbodiesofworkcreate",
                 "text": "Create"
             },

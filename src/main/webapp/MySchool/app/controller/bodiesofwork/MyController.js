@@ -136,18 +136,19 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
         var qsCB_ = newDialog.down('#newbodiesofworkform-quarter');
 
         studentName_.setValue(ss_.getAt(0).get('userName'));
+        var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+        commonQuarterSubjectStore.myLoad();  // Added by Denis Putnam
 
         if (r_ === null) {
             r_ = bws_.getAt(0);
         }
-
-        if (r_) {
+        if( false )
+        {
+        //if (r_) {
             var qtrId_ = r_.get('qtrId');
             var subjId_ = r_.get('subjId');
 
             newDialog.loadRecord(r_);
-            var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
-            commonQuarterSubjectStore.myLoad();  // Added by Denis Putnam
 
             //for( var i_ = 0; i_ < recCnt_; i_++ ) {
             //    r_ = qs_.getAt(i_);
@@ -160,13 +161,13 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
         }
         else {
         // no body of works records in database
-            var b_ = newDialog.down('#newbodiesofworkcreate');
+            //var b_ = newDialog.down('#newbodiesofworkcreate');
             var workName_ = newDialog.down('#newbodiesofworkform-workName');
             var what_ = newDialog.down('#newbodiesofworkform-what');
             var desc_ = newDialog.down('#newbodiesofworkform-description');
             var obj_ = newDialog.down('#newbodiesofworkform-objective');
 
-            b_.setDisabled(true);
+            //b_.setDisabled(true);
             qsCB_.setValue(qs_.getAt(0).get('id'));
             workName_.setValue("replace_me_with_name");
             what_.setValue("replace_me_with_what");
@@ -207,7 +208,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
             if (bId_.indexOf("submit") > 0)
             {
-                if (newDialog.down('#newbodiesofworkcreate').isDisabled())
+                //if (newDialog.down('#newbodiesofworkcreate').isDisabled())
+                if( true )
                 {
                     var r_;
                     var qsId_ = qsCB_.getValue();
@@ -317,15 +319,15 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
             }
             else
             {
-                var b_ = newDialog.down('#newbodiesofworkcreate');
+                //var b_ = newDialog.down('#newbodiesofworkcreate');
                 var submitButton = newDialog.down('#newbodiesofworksubmit');
                 var workName_ = newDialog.down('#newbodiesofworkform-workName');
                 var what_ = newDialog.down('#newbodiesofworkform-what');
                 var desc_ = newDialog.down('#newbodiesofworkform-description');
                 var obj_ = newDialog.down('#newbodiesofworkform-objective');
 
-                b_.setDisabled(true);
-                submitButton.setDisabled(false);
+                //b_.setDisabled(true);
+                //submitButton.setDisabled(false);
                 qsCB_.setDisabled(false);
                 hide_ = false;
 

@@ -59,7 +59,6 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
                         {
                             xtype: 'textfield',
                             anchor: '100%',
-                            disabled: true,
                             itemId: 'newbodiesofworkform-workName',
                             fieldLabel: 'Work Name',
                             name: 'workName',
@@ -73,7 +72,6 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
-                            disabled: true,
                             itemId: 'newbodiesofworkform-what',
                             fieldLabel: 'What',
                             name: 'what',
@@ -82,7 +80,6 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
-                            disabled: true,
                             itemId: 'newbodiesofworkform-description',
                             fieldLabel: 'Description',
                             name: 'description',
@@ -91,7 +88,6 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
                         {
                             xtype: 'textareafield',
                             anchor: '100%',
-                            disabled: true,
                             itemId: 'newbodiesofworkform-objective',
                             fieldLabel: 'Objective',
                             name: 'objective',
@@ -203,12 +199,13 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
                 },
                 {
                     xtype: 'button',
-                    disabled: true,
                     itemId: 'newbodiesofworksubmit',
                     text: 'Submit'
                 },
                 {
                     xtype: 'button',
+                    disabled: true,
+                    hidden: true,
                     itemId: 'newbodiesofworkcreate',
                     text: 'Create'
                 }
