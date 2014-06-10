@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect MonthlyEvaluationRatingsView_Roo_Json {
     
     public String MonthlyEvaluationRatingsView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String MonthlyEvaluationRatingsView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static MonthlyEvaluationRatingsView MonthlyEvaluationRatingsView.fromJsonToMonthlyEvaluationRatingsView(String json) {
-        return new JSONDeserializer<MonthlyEvaluationRatingsView>()
-        .use(null, MonthlyEvaluationRatingsView.class).deserialize(json);
+        return new JSONDeserializer<MonthlyEvaluationRatingsView>().use(null, MonthlyEvaluationRatingsView.class).deserialize(json);
     }
     
     public static String MonthlyEvaluationRatingsView.toJsonArray(Collection<MonthlyEvaluationRatingsView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String MonthlyEvaluationRatingsView.toJsonArray(Collection<MonthlyEvaluationRatingsView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<MonthlyEvaluationRatingsView> MonthlyEvaluationRatingsView.fromJsonArrayToMonthlyEvaluationRatingsViews(String json) {
-        return new JSONDeserializer<List<MonthlyEvaluationRatingsView>>()
-        .use("values", MonthlyEvaluationRatingsView.class).deserialize(json);
+        return new JSONDeserializer<List<MonthlyEvaluationRatingsView>>().use(null, ArrayList.class).use("values", MonthlyEvaluationRatingsView.class).deserialize(json);
     }
     
 }

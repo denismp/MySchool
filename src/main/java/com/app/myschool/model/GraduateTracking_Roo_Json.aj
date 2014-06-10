@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect GraduateTracking_Roo_Json {
     
     public String GraduateTracking.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String GraduateTracking.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static GraduateTracking GraduateTracking.fromJsonToGraduateTracking(String json) {
-        return new JSONDeserializer<GraduateTracking>()
-        .use(null, GraduateTracking.class).deserialize(json);
+        return new JSONDeserializer<GraduateTracking>().use(null, GraduateTracking.class).deserialize(json);
     }
     
     public static String GraduateTracking.toJsonArray(Collection<GraduateTracking> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String GraduateTracking.toJsonArray(Collection<GraduateTracking> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<GraduateTracking> GraduateTracking.fromJsonArrayToGraduateTrackings(String json) {
-        return new JSONDeserializer<List<GraduateTracking>>()
-        .use("values", GraduateTracking.class).deserialize(json);
+        return new JSONDeserializer<List<GraduateTracking>>().use(null, ArrayList.class).use("values", GraduateTracking.class).deserialize(json);
     }
     
 }

@@ -48,15 +48,15 @@ privileged aspect ArtifactController_Roo_Controller {
     }
     
     @RequestMapping(produces = "text/html")
-    public String ArtifactController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+    public String ArtifactController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("artifacts", Artifact.findArtifactEntries(firstResult, sizeNo, sortFieldName, sortOrder));
+            uiModel.addAttribute("artifacts", Artifact.findArtifactEntries(firstResult, sizeNo));
             float nrOfPages = (float) Artifact.countArtifacts() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("artifacts", Artifact.findAllArtifacts(sortFieldName, sortOrder));
+            uiModel.addAttribute("artifacts", Artifact.findAllArtifacts());
         }
         addDateTimeFormatPatterns(uiModel);
         return "artifacts/list";

@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect SubjectView_Roo_Json {
     
     public String SubjectView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String SubjectView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static SubjectView SubjectView.fromJsonToSubjectView(String json) {
-        return new JSONDeserializer<SubjectView>()
-        .use(null, SubjectView.class).deserialize(json);
+        return new JSONDeserializer<SubjectView>().use(null, SubjectView.class).deserialize(json);
     }
     
     public static String SubjectView.toJsonArray(Collection<SubjectView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String SubjectView.toJsonArray(Collection<SubjectView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<SubjectView> SubjectView.fromJsonArrayToSubjectViews(String json) {
-        return new JSONDeserializer<List<SubjectView>>()
-        .use("values", SubjectView.class).deserialize(json);
+        return new JSONDeserializer<List<SubjectView>>().use(null, ArrayList.class).use("values", SubjectView.class).deserialize(json);
     }
     
 }

@@ -11,22 +11,6 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Quarter_Roo_Finder {
     
-    public static Long Quarter.countFindQuartersByStudent(Student student) {
-        if (student == null) throw new IllegalArgumentException("The student argument is required");
-        EntityManager em = Quarter.entityManager();
-        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Quarter AS o WHERE o.student = :student", Long.class);
-        q.setParameter("student", student);
-        return ((Long) q.getSingleResult());
-    }
-    
-    public static Long Quarter.countFindQuartersBySubject(Subject subject) {
-        if (subject == null) throw new IllegalArgumentException("The subject argument is required");
-        EntityManager em = Quarter.entityManager();
-        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Quarter AS o WHERE o.subject = :subject", Long.class);
-        q.setParameter("subject", subject);
-        return ((Long) q.getSingleResult());
-    }
-    
     public static TypedQuery<Quarter> Quarter.findQuartersByStudent(Student student) {
         if (student == null) throw new IllegalArgumentException("The student argument is required");
         EntityManager em = Quarter.entityManager();
@@ -35,40 +19,10 @@ privileged aspect Quarter_Roo_Finder {
         return q;
     }
     
-    public static TypedQuery<Quarter> Quarter.findQuartersByStudent(Student student, String sortFieldName, String sortOrder) {
-        if (student == null) throw new IllegalArgumentException("The student argument is required");
-        EntityManager em = Quarter.entityManager();
-        String jpaQuery = "SELECT o FROM Quarter AS o WHERE o.student = :student";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        TypedQuery<Quarter> q = em.createQuery(jpaQuery, Quarter.class);
-        q.setParameter("student", student);
-        return q;
-    }
-    
     public static TypedQuery<Quarter> Quarter.findQuartersBySubject(Subject subject) {
         if (subject == null) throw new IllegalArgumentException("The subject argument is required");
         EntityManager em = Quarter.entityManager();
         TypedQuery<Quarter> q = em.createQuery("SELECT o FROM Quarter AS o WHERE o.subject = :subject", Quarter.class);
-        q.setParameter("subject", subject);
-        return q;
-    }
-    
-    public static TypedQuery<Quarter> Quarter.findQuartersBySubject(Subject subject, String sortFieldName, String sortOrder) {
-        if (subject == null) throw new IllegalArgumentException("The subject argument is required");
-        EntityManager em = Quarter.entityManager();
-        String jpaQuery = "SELECT o FROM Quarter AS o WHERE o.subject = :subject";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        TypedQuery<Quarter> q = em.createQuery(jpaQuery, Quarter.class);
         q.setParameter("subject", subject);
         return q;
     }

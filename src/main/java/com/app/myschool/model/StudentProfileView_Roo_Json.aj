@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect StudentProfileView_Roo_Json {
     
     public String StudentProfileView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String StudentProfileView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static StudentProfileView StudentProfileView.fromJsonToStudentProfileView(String json) {
-        return new JSONDeserializer<StudentProfileView>()
-        .use(null, StudentProfileView.class).deserialize(json);
+        return new JSONDeserializer<StudentProfileView>().use(null, StudentProfileView.class).deserialize(json);
     }
     
     public static String StudentProfileView.toJsonArray(Collection<StudentProfileView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String StudentProfileView.toJsonArray(Collection<StudentProfileView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<StudentProfileView> StudentProfileView.fromJsonArrayToStudentProfileViews(String json) {
-        return new JSONDeserializer<List<StudentProfileView>>()
-        .use("values", StudentProfileView.class).deserialize(json);
+        return new JSONDeserializer<List<StudentProfileView>>().use(null, ArrayList.class).use("values", StudentProfileView.class).deserialize(json);
     }
     
 }

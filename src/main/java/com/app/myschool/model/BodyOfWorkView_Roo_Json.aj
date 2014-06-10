@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect BodyOfWorkView_Roo_Json {
     
     public String BodyOfWorkView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String BodyOfWorkView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static BodyOfWorkView BodyOfWorkView.fromJsonToBodyOfWorkView(String json) {
-        return new JSONDeserializer<BodyOfWorkView>()
-        .use(null, BodyOfWorkView.class).deserialize(json);
+        return new JSONDeserializer<BodyOfWorkView>().use(null, BodyOfWorkView.class).deserialize(json);
     }
     
     public static String BodyOfWorkView.toJsonArray(Collection<BodyOfWorkView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String BodyOfWorkView.toJsonArray(Collection<BodyOfWorkView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<BodyOfWorkView> BodyOfWorkView.fromJsonArrayToBodyOfWorkViews(String json) {
-        return new JSONDeserializer<List<BodyOfWorkView>>()
-        .use("values", BodyOfWorkView.class).deserialize(json);
+        return new JSONDeserializer<List<BodyOfWorkView>>().use(null, ArrayList.class).use("values", BodyOfWorkView.class).deserialize(json);
     }
     
 }

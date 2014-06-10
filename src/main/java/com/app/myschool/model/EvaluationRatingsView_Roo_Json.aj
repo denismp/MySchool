@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect EvaluationRatingsView_Roo_Json {
     
     public String EvaluationRatingsView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String EvaluationRatingsView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static EvaluationRatingsView EvaluationRatingsView.fromJsonToEvaluationRatingsView(String json) {
-        return new JSONDeserializer<EvaluationRatingsView>()
-        .use(null, EvaluationRatingsView.class).deserialize(json);
+        return new JSONDeserializer<EvaluationRatingsView>().use(null, EvaluationRatingsView.class).deserialize(json);
     }
     
     public static String EvaluationRatingsView.toJsonArray(Collection<EvaluationRatingsView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String EvaluationRatingsView.toJsonArray(Collection<EvaluationRatingsView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<EvaluationRatingsView> EvaluationRatingsView.fromJsonArrayToEvaluationRatingsViews(String json) {
-        return new JSONDeserializer<List<EvaluationRatingsView>>()
-        .use("values", EvaluationRatingsView.class).deserialize(json);
+        return new JSONDeserializer<List<EvaluationRatingsView>>().use(null, ArrayList.class).use("values", EvaluationRatingsView.class).deserialize(json);
     }
     
 }

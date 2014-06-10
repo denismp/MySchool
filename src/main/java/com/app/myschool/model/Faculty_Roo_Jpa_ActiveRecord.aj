@@ -9,25 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Faculty_Roo_Jpa_ActiveRecord {
     
-    public static final List<String> Faculty.fieldNames4OrderClauseFilter = java.util.Arrays.asList("students", "quarters");
-    
     public static long Faculty.countFacultys() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Faculty o", Long.class).getSingleResult();
     }
     
     public static List<Faculty> Faculty.findAllFacultys() {
         return entityManager().createQuery("SELECT o FROM Faculty o", Faculty.class).getResultList();
-    }
-    
-    public static List<Faculty> Faculty.findAllFacultys(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Faculty o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, Faculty.class).getResultList();
     }
     
     public static Faculty Faculty.findFaculty(Long id) {
@@ -37,17 +24,6 @@ privileged aspect Faculty_Roo_Jpa_ActiveRecord {
     
     public static List<Faculty> Faculty.findFacultyEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Faculty o", Faculty.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-    }
-    
-    public static List<Faculty> Faculty.findFacultyEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Faculty o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, Faculty.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

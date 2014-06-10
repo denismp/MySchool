@@ -14,8 +14,6 @@ privileged aspect Artifact_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Artifact.entityManager;
     
-    public static final List<String> Artifact.fieldNames4OrderClauseFilter = java.util.Arrays.asList("artifactName", "fileName", "comments", "bodyOfWork", "whoUpdated", "lastUpdated");
-    
     public static final EntityManager Artifact.entityManager() {
         EntityManager em = new Artifact().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -30,17 +28,6 @@ privileged aspect Artifact_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM Artifact o", Artifact.class).getResultList();
     }
     
-    public static List<Artifact> Artifact.findAllArtifacts(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Artifact o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, Artifact.class).getResultList();
-    }
-    
     public static Artifact Artifact.findArtifact(Long id) {
         if (id == null) return null;
         return entityManager().find(Artifact.class, id);
@@ -48,17 +35,6 @@ privileged aspect Artifact_Roo_Jpa_ActiveRecord {
     
     public static List<Artifact> Artifact.findArtifactEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Artifact o", Artifact.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-    }
-    
-    public static List<Artifact> Artifact.findArtifactEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Artifact o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, Artifact.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect Daily_Roo_Json {
     
     public String Daily.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String Daily.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static Daily Daily.fromJsonToDaily(String json) {
-        return new JSONDeserializer<Daily>()
-        .use(null, Daily.class).deserialize(json);
+        return new JSONDeserializer<Daily>().use(null, Daily.class).deserialize(json);
     }
     
     public static String Daily.toJsonArray(Collection<Daily> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String Daily.toJsonArray(Collection<Daily> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<Daily> Daily.fromJsonArrayToDailys(String json) {
-        return new JSONDeserializer<List<Daily>>()
-        .use("values", Daily.class).deserialize(json);
+        return new JSONDeserializer<List<Daily>>().use(null, ArrayList.class).use("values", Daily.class).deserialize(json);
     }
     
 }

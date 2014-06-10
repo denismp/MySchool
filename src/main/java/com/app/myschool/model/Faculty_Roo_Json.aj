@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect Faculty_Roo_Json {
     
     public String Faculty.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String Faculty.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static Faculty Faculty.fromJsonToFaculty(String json) {
-        return new JSONDeserializer<Faculty>()
-        .use(null, Faculty.class).deserialize(json);
+        return new JSONDeserializer<Faculty>().use(null, Faculty.class).deserialize(json);
     }
     
     public static String Faculty.toJsonArray(Collection<Faculty> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String Faculty.toJsonArray(Collection<Faculty> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<Faculty> Faculty.fromJsonArrayToFacultys(String json) {
-        return new JSONDeserializer<List<Faculty>>()
-        .use("values", Faculty.class).deserialize(json);
+        return new JSONDeserializer<List<Faculty>>().use(null, ArrayList.class).use("values", Faculty.class).deserialize(json);
     }
     
 }

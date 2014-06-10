@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect StudentView_Roo_Json {
     
     public String StudentView.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String StudentView.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static StudentView StudentView.fromJsonToStudentView(String json) {
-        return new JSONDeserializer<StudentView>()
-        .use(null, StudentView.class).deserialize(json);
+        return new JSONDeserializer<StudentView>().use(null, StudentView.class).deserialize(json);
     }
     
     public static String StudentView.toJsonArray(Collection<StudentView> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String StudentView.toJsonArray(Collection<StudentView> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<StudentView> StudentView.fromJsonArrayToStudentViews(String json) {
-        return new JSONDeserializer<List<StudentView>>()
-        .use("values", StudentView.class).deserialize(json);
+        return new JSONDeserializer<List<StudentView>>().use(null, ArrayList.class).use("values", StudentView.class).deserialize(json);
     }
     
 }

@@ -9,33 +9,10 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Student_Roo_Finder {
     
-    public static Long Student.countFindStudentsByUserNameEquals(String userName) {
-        if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
-        EntityManager em = Student.entityManager();
-        TypedQuery q = em.createQuery("SELECT COUNT(o) FROM Student AS o WHERE o.userName = :userName", Long.class);
-        q.setParameter("userName", userName);
-        return ((Long) q.getSingleResult());
-    }
-    
     public static TypedQuery<Student> Student.findStudentsByUserNameEquals(String userName) {
         if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
         EntityManager em = Student.entityManager();
         TypedQuery<Student> q = em.createQuery("SELECT o FROM Student AS o WHERE o.userName = :userName", Student.class);
-        q.setParameter("userName", userName);
-        return q;
-    }
-    
-    public static TypedQuery<Student> Student.findStudentsByUserNameEquals(String userName, String sortFieldName, String sortOrder) {
-        if (userName == null || userName.length() == 0) throw new IllegalArgumentException("The userName argument is required");
-        EntityManager em = Student.entityManager();
-        String jpaQuery = "SELECT o FROM Student AS o WHERE o.userName = :userName";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        TypedQuery<Student> q = em.createQuery(jpaQuery, Student.class);
         q.setParameter("userName", userName);
         return q;
     }

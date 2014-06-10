@@ -14,8 +14,6 @@ privileged aspect MonthlyEvaluationRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager MonthlyEvaluationRatings.entityManager;
     
-    public static final List<String> MonthlyEvaluationRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "levelOfDifficulty", "criticalThinkingSkills", "effectiveCorrectionActions", "accuratelyIdCorrections", "completingCourseObjectives", "thoughtfulnessOfReflections", "responsibilityOfProgress", "workingEffectivelyWithAdvisor", "comments", "locked", "lastUpdated", "whoUpdated", "quarter");
-    
     public static final EntityManager MonthlyEvaluationRatings.entityManager() {
         EntityManager em = new MonthlyEvaluationRatings().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -30,17 +28,6 @@ privileged aspect MonthlyEvaluationRatings_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM MonthlyEvaluationRatings o", MonthlyEvaluationRatings.class).getResultList();
     }
     
-    public static List<MonthlyEvaluationRatings> MonthlyEvaluationRatings.findAllMonthlyEvaluationRatingses(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM MonthlyEvaluationRatings o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, MonthlyEvaluationRatings.class).getResultList();
-    }
-    
     public static MonthlyEvaluationRatings MonthlyEvaluationRatings.findMonthlyEvaluationRatings(Long id) {
         if (id == null) return null;
         return entityManager().find(MonthlyEvaluationRatings.class, id);
@@ -48,17 +35,6 @@ privileged aspect MonthlyEvaluationRatings_Roo_Jpa_ActiveRecord {
     
     public static List<MonthlyEvaluationRatings> MonthlyEvaluationRatings.findMonthlyEvaluationRatingsEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM MonthlyEvaluationRatings o", MonthlyEvaluationRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-    }
-    
-    public static List<MonthlyEvaluationRatings> MonthlyEvaluationRatings.findMonthlyEvaluationRatingsEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM MonthlyEvaluationRatings o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, MonthlyEvaluationRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

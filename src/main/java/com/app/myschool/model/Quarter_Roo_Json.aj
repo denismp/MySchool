@@ -13,33 +13,19 @@ import java.util.List;
 privileged aspect Quarter_Roo_Json {
     
     public String Quarter.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
-    }
-    
-    public String Quarter.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public static Quarter Quarter.fromJsonToQuarter(String json) {
-        return new JSONDeserializer<Quarter>()
-        .use(null, Quarter.class).deserialize(json);
+        return new JSONDeserializer<Quarter>().use(null, Quarter.class).deserialize(json);
     }
     
     public static String Quarter.toJsonArray(Collection<Quarter> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
-    }
-    
-    public static String Quarter.toJsonArray(Collection<Quarter> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static Collection<Quarter> Quarter.fromJsonArrayToQuarters(String json) {
-        return new JSONDeserializer<List<Quarter>>()
-        .use("values", Quarter.class).deserialize(json);
+        return new JSONDeserializer<List<Quarter>>().use(null, ArrayList.class).use("values", Quarter.class).deserialize(json);
     }
     
 }
