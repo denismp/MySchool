@@ -13,9 +13,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=8" />
 
-<script type="text/javascript" src="http://extjs.cachefly.net/ext-4.2.0-gpl/ext-all-debug.js"><!-- required for FF3 and Opera --></script>
-<script type="text/javascript" src="http://extjs.cachefly.net/ext-4.2.0-gpl/ext-theme-neptune.js"><!-- required for FF3 and Opera --></script>
-<link rel="stylesheet" type="text/css" href="http://extjs.cachefly.net/ext-4.2.0-gpl/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+<script type="text/javascript" src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all-dev.js"><!-- required for FF3 and Opera --></script>
+<link rel="stylesheet" type="text/css" href="http://cdn.sencha.com/ext/gpl/4.2.1/packages/ext-theme-classic/build/resources/ext-theme-classic-all.css" />
+
 <script type="text/javascript" src="app.js"><!-- required for FF3 and Opera --></script>
 
 <spring:message code="application_name" var="app_name" />
