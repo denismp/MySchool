@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect MonthlyEvaluationRatings_Roo_Json {
     
     public String MonthlyEvaluationRatings.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String MonthlyEvaluationRatings.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static MonthlyEvaluationRatings MonthlyEvaluationRatings.fromJsonToMonthlyEvaluationRatings(String json) {
-        return new JSONDeserializer<MonthlyEvaluationRatings>().use(null, MonthlyEvaluationRatings.class).deserialize(json);
+        return new JSONDeserializer<MonthlyEvaluationRatings>()
+        .use(null, MonthlyEvaluationRatings.class).deserialize(json);
     }
     
     public static String MonthlyEvaluationRatings.toJsonArray(Collection<MonthlyEvaluationRatings> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String MonthlyEvaluationRatings.toJsonArray(Collection<MonthlyEvaluationRatings> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<MonthlyEvaluationRatings> MonthlyEvaluationRatings.fromJsonArrayToMonthlyEvaluationRatingses(String json) {
-        return new JSONDeserializer<List<MonthlyEvaluationRatings>>().use(null, ArrayList.class).use("values", MonthlyEvaluationRatings.class).deserialize(json);
+        return new JSONDeserializer<List<MonthlyEvaluationRatings>>()
+        .use("values", MonthlyEvaluationRatings.class).deserialize(json);
     }
     
 }

@@ -11,6 +11,22 @@ import javax.persistence.TypedQuery;
 
 privileged aspect Subject_Roo_Finder {
     
+    public static Long Subject.countFindSubjectsByQuarters(Set<Quarter> quarters) {
+        if (quarters == null) throw new IllegalArgumentException("The quarters argument is required");
+        EntityManager em = Subject.entityManager();
+        StringBuilder queryBuilder = new StringBuilder("SELECT COUNT(o) FROM Subject AS o WHERE");
+        for (int i = 0; i < quarters.size(); i++) {
+            if (i > 0) queryBuilder.append(" AND");
+            queryBuilder.append(" :quarters_item").append(i).append(" MEMBER OF o.quarters");
+        }
+        TypedQuery q = em.createQuery(queryBuilder.toString(), Long.class);
+        int quartersIndex = 0;
+        for (Quarter _quarter: quarters) {
+            q.setParameter("quarters_item" + quartersIndex++, _quarter);
+        }
+        return ((Long) q.getSingleResult());
+    }
+    
     public static TypedQuery<Subject> Subject.findSubjectsByQuarters(Set<Quarter> quarters) {
         if (quarters == null) throw new IllegalArgumentException("The quarters argument is required");
         EntityManager em = Subject.entityManager();
@@ -18,6 +34,28 @@ privileged aspect Subject_Roo_Finder {
         for (int i = 0; i < quarters.size(); i++) {
             if (i > 0) queryBuilder.append(" AND");
             queryBuilder.append(" :quarters_item").append(i).append(" MEMBER OF o.quarters");
+        }
+        TypedQuery<Subject> q = em.createQuery(queryBuilder.toString(), Subject.class);
+        int quartersIndex = 0;
+        for (Quarter _quarter: quarters) {
+            q.setParameter("quarters_item" + quartersIndex++, _quarter);
+        }
+        return q;
+    }
+    
+    public static TypedQuery<Subject> Subject.findSubjectsByQuarters(Set<Quarter> quarters, String sortFieldName, String sortOrder) {
+        if (quarters == null) throw new IllegalArgumentException("The quarters argument is required");
+        EntityManager em = Subject.entityManager();
+        StringBuilder queryBuilder = new StringBuilder("SELECT o FROM Subject AS o WHERE");
+        for (int i = 0; i < quarters.size(); i++) {
+            if (i > 0) queryBuilder.append(" AND");
+            queryBuilder.append(" :quarters_item").append(i).append(" MEMBER OF o.quarters");
+        }
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                queryBuilder.append(" " + sortOrder);
+            }
         }
         TypedQuery<Subject> q = em.createQuery(queryBuilder.toString(), Subject.class);
         int quartersIndex = 0;

@@ -14,6 +14,8 @@ privileged aspect Subject_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Subject.entityManager;
     
+    public static final List<String> Subject.fieldNames4OrderClauseFilter = java.util.Arrays.asList("name", "gradeLevel", "creditHours", "description", "objectives", "whoUpdated", "lastUpdated", "quarters");
+    
     public static final EntityManager Subject.entityManager() {
         EntityManager em = new Subject().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect Subject_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM Subject o", Subject.class).getResultList();
     }
     
+    public static List<Subject> Subject.findAllSubjects(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Subject o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Subject.class).getResultList();
+    }
+    
     public static Subject Subject.findSubject(Long id) {
         if (id == null) return null;
         return entityManager().find(Subject.class, id);
@@ -35,6 +48,17 @@ privileged aspect Subject_Roo_Jpa_ActiveRecord {
     
     public static List<Subject> Subject.findSubjectEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Subject o", Subject.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<Subject> Subject.findSubjectEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Subject o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Subject.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

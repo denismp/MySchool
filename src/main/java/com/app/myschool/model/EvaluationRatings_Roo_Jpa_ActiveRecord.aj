@@ -14,6 +14,8 @@ privileged aspect EvaluationRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager EvaluationRatings.entityManager;
     
+    public static final List<String> EvaluationRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("week_month", "week_number", "motivation", "organization", "effectiveUseOfStudyTime", "qualityOfWork", "accuracyOfWork", "complexityOfWork", "growth", "consistency", "locked", "comments", "whoUpdated", "lastUpdated", "quarter");
+    
     public static final EntityManager EvaluationRatings.entityManager() {
         EntityManager em = new EvaluationRatings().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect EvaluationRatings_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM EvaluationRatings o", EvaluationRatings.class).getResultList();
     }
     
+    public static List<EvaluationRatings> EvaluationRatings.findAllEvaluationRatingses(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM EvaluationRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, EvaluationRatings.class).getResultList();
+    }
+    
     public static EvaluationRatings EvaluationRatings.findEvaluationRatings(Long id) {
         if (id == null) return null;
         return entityManager().find(EvaluationRatings.class, id);
@@ -35,6 +48,17 @@ privileged aspect EvaluationRatings_Roo_Jpa_ActiveRecord {
     
     public static List<EvaluationRatings> EvaluationRatings.findEvaluationRatingsEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM EvaluationRatings o", EvaluationRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<EvaluationRatings> EvaluationRatings.findEvaluationRatingsEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM EvaluationRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, EvaluationRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

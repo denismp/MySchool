@@ -9,12 +9,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Student_Roo_Jpa_ActiveRecord {
     
+    public static final List<String> Student.fieldNames4OrderClauseFilter = java.util.Arrays.asList("quarters", "previousTranscripts", "graduateTracking", "faculty");
+    
     public static long Student.countStudents() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Student o", Long.class).getSingleResult();
     }
     
     public static List<Student> Student.findAllStudents() {
         return entityManager().createQuery("SELECT o FROM Student o", Student.class).getResultList();
+    }
+    
+    public static List<Student> Student.findAllStudents(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Student o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Student.class).getResultList();
     }
     
     public static Student Student.findStudent(Long id) {
@@ -24,6 +37,17 @@ privileged aspect Student_Roo_Jpa_ActiveRecord {
     
     public static List<Student> Student.findStudentEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Student o", Student.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<Student> Student.findStudentEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM Student o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, Student.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

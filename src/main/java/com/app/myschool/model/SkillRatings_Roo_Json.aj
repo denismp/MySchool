@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect SkillRatings_Roo_Json {
     
     public String SkillRatings.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String SkillRatings.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static SkillRatings SkillRatings.fromJsonToSkillRatings(String json) {
-        return new JSONDeserializer<SkillRatings>().use(null, SkillRatings.class).deserialize(json);
+        return new JSONDeserializer<SkillRatings>()
+        .use(null, SkillRatings.class).deserialize(json);
     }
     
     public static String SkillRatings.toJsonArray(Collection<SkillRatings> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String SkillRatings.toJsonArray(Collection<SkillRatings> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<SkillRatings> SkillRatings.fromJsonArrayToSkillRatingses(String json) {
-        return new JSONDeserializer<List<SkillRatings>>().use(null, ArrayList.class).use("values", SkillRatings.class).deserialize(json);
+        return new JSONDeserializer<List<SkillRatings>>()
+        .use("values", SkillRatings.class).deserialize(json);
     }
     
 }

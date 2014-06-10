@@ -14,6 +14,8 @@ privileged aspect MonthlySummaryRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager MonthlySummaryRatings.entityManager;
     
+    public static final List<String> MonthlySummaryRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "feelings", "reflections", "patternsOfCorrections", "effectivenessOfActions", "actionResults", "realizations", "plannedChanges", "comments", "locked", "lastUpdated", "whoUpdated", "quarter");
+    
     public static final EntityManager MonthlySummaryRatings.entityManager() {
         EntityManager em = new MonthlySummaryRatings().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect MonthlySummaryRatings_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM MonthlySummaryRatings o", MonthlySummaryRatings.class).getResultList();
     }
     
+    public static List<MonthlySummaryRatings> MonthlySummaryRatings.findAllMonthlySummaryRatingses(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM MonthlySummaryRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, MonthlySummaryRatings.class).getResultList();
+    }
+    
     public static MonthlySummaryRatings MonthlySummaryRatings.findMonthlySummaryRatings(Long id) {
         if (id == null) return null;
         return entityManager().find(MonthlySummaryRatings.class, id);
@@ -35,6 +48,17 @@ privileged aspect MonthlySummaryRatings_Roo_Jpa_ActiveRecord {
     
     public static List<MonthlySummaryRatings> MonthlySummaryRatings.findMonthlySummaryRatingsEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM MonthlySummaryRatings o", MonthlySummaryRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<MonthlySummaryRatings> MonthlySummaryRatings.findMonthlySummaryRatingsEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM MonthlySummaryRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, MonthlySummaryRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional
