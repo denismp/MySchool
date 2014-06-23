@@ -30,7 +30,7 @@ Ext.define('MySchool.store.daily.MyJsonStore', {
 			storeId: 'daily.MyJsonStore',
 			proxy: {
 				type: 'rest',
-				url: 'dailys',
+				url: 'dailys/json',
 				headers: {
 					Accept: 'application/json'
 				},

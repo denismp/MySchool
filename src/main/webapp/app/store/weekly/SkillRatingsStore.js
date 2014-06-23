@@ -31,7 +31,7 @@ Ext.define('MySchool.store.weekly.SkillRatingsStore', {
 			storeId: 'weekly.SkillRatingsStore',
 			proxy: {
 				type: 'rest',
-				url: 'skillratingses',
+				url: 'skillratingses/json',
 				headers: {
 					Accept: 'application/json'
 				},
