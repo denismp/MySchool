@@ -17,45 +17,45 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RooWebJson(jsonObject = PreviousTranscripts.class)
 public class PreviousTranscriptsController {
 
-    @RequestMapping(value = "/{id}", headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.showJson(PreviousTranscripts.class, id);
     }
 
-    @RequestMapping(headers = "Accept=application/json")
+    @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson() {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.listJson(PreviousTranscripts.class);
     }
 
-    @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.createFromJson(PreviousTranscripts.class, json);
     }
 
-    @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.createFromJsonArray(PreviousTranscripts.class, json);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.updateFromJson(PreviousTranscripts.class, json);
     }
 
-    @RequestMapping(value = "/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.updateFromJsonArray(PreviousTranscripts.class, json);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
         ControllerHelper controllerHelper = new ControllerHelper();
         return controllerHelper.deleteFromJson(PreviousTranscripts.class, id);

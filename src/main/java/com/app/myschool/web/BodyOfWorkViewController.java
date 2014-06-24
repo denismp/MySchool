@@ -20,27 +20,27 @@ import com.app.myschool.model.BodyOfWorkView;
 @RequestMapping("/bodyofworkviews")
 public class BodyOfWorkViewController {
 
-    @RequestMapping(value = "/{id}", headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.showJson(id);
     }
 
-    @RequestMapping(headers = "Accept=application/json")
+    @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.listJson(params);
     }
 
-    @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.createFromJson(json);
     }
 
-    @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
         for (BodyOfWork bodyOfWork : BodyOfWork.fromJsonArrayToBodyOfWorks(json)) {
             bodyOfWork.persist();
@@ -49,19 +49,19 @@ public class BodyOfWorkViewController {
         return controllerHelper.createFromJsonArray(json);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.updateFromJson(json);
     }
 
-    @RequestMapping(value = "/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.updateFromJsonArray(json);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
         BodyOfWorkViewControllerHelper controllerHelper = new BodyOfWorkViewControllerHelper();
         return controllerHelper.deleteFromJson(id);

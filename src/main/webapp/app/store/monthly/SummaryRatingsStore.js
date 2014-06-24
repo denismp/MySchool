@@ -32,7 +32,7 @@ Ext.define('MySchool.store.monthly.SummaryRatingsStore', {
 			storeId: 'monthly.SummaryRatingsStore',
 			proxy: {
 				type: 'rest',
-				url: 'monthlysummaryratingses',
+				url: 'monthlysummaryratingses/json',
 				headers: {
 					Accept: 'application/json'
 				},
