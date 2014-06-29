@@ -3,6 +3,7 @@ Note: put intercept urls and authentication managers in this file.
 	The following adds a default admin and user login
 	<authentication-manager alias="authenticationManager">
 	<!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
+	<!-- http://www.xorbin.com/tools/sha256-hash-calculator -->
 	<!-- 'pass123' converts to 9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c -->
 		<authentication-provider>
 			<password-encoder hash="sha-256" />
@@ -10,6 +11,26 @@ Note: put intercept urls and authentication managers in this file.
 				<user name="admin" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_ADMIN" />
 				<user name="user" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_USER" />
 			</user-service>
+		</authentication-provider>
+		<authentication-provider>
+			<password-encoder hash="sha-256" />
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query=
+				"WITH t AS (SELECT user_name, user_password, enabled FROM student
+							UNION
+							SELECT user_name, user_password, enabled FROM faculty
+							UNION
+							SELECT user_name, user_password, enabled FROM admin)
+				SELECT t.user_name AS username, t.user_password AS password, t.enabled
+				FROM t WHERE t.user_name = ?"
+				authorities-by-username-query=
+				"WITH t AS (SELECT user_name, 'ROLE_USER' AS role FROM student
+							UNION
+							SELECT user_name, 'ROLE_FACULTY' AS role FROM faculty
+							UNION
+							SELECT user_name, 'ROLE_ADMIN' AS role FROM admin)
+				SELECT t.user_name AS username, t.role FROM t WHERE t.user_name = ?"
+			/>
 		</authentication-provider>
 	</authentication-manager>
 

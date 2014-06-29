@@ -21,6 +21,11 @@ import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 
@@ -106,7 +111,30 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			return o1.getSubjName().compareTo(o2.getSubjName());
 		}
 	}
-	
+
+	/**
+	 * Return the login and roles
+	 * @return login/role0,..,roleN
+	 */
+	public String login() {
+		String ret_ = "";
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			UserDetails ud_ = (UserDetails) auth.getPrincipal();	
+
+			for (GrantedAuthority ga : ud_.getAuthorities()) {
+				if (ret_.length() > 0)
+					ret_ = ret_ + ",";
+				ret_ = ret_ + ga.getAuthority();
+			}
+			if (ret_.length() > 0)
+				ret_ = "/" + ret_;
+			ret_ = ud_.getUsername() + ret_;
+		}
+		return ret_;
+	}
+
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
@@ -247,7 +275,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			{
 				records = studentViewList;			
 
-				response.setMessage("All " + className + "s retrieved");
+				response.setMessage("All " + login() + " " + className + "s retrieved");
 				response.setData(records);
 				returnStatus = HttpStatus.OK;
 				response.setSuccess(true);
