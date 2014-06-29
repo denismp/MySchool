@@ -78,5 +78,8 @@ File: src/main/webapp/WEB-INF/i18n/messages.properties
 Note: Add a message to the login page using the security_login_message property. For example the following displays user/pass
 	security_login_message=You have tried to access a protected area of this application. Please login with admin/pass123 or user/pass123.
 
+Method: String com.app.myschool.web.StudentViewControllerHelper.login()
+Note: returns the login and roles from spring security
+
 main page url: http://localhost:8080/MySchool
 app  page url: http://localhost:8080/MySchool/myschoolapp
