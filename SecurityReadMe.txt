@@ -45,6 +45,10 @@ Note: put intercept urls and authentication managers in this file.
 	<intercept-url pattern="/artifacts" access="hasRole('ROLE_ADMIN')" />
 	<intercept-url pattern="/artifacts/**" access="hasRole('ROLE_ADMIN')" />
 
+File: findUrls.pl
+Note: Will generate the intercept-url entries for the /json/ and ROLE_ADMIN for
+      src/main/resources/META-INF/spring/applicationContext-security.xml
+
 
 File: src/main/webapp/WEB-INF/web.xml
 Note: Add/Del following filters to Enable/Disable security
