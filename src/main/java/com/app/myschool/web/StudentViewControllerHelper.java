@@ -484,7 +484,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		Long studentId = myView.getStudentId();
 		Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		Student student = Student.findStudent(myView.getStudentId());
-		Subject subject = Subject.findSubject(myView.getSubjId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
 		List<Faculty> facultyList = this.getList(studentId.toString());
 		
 

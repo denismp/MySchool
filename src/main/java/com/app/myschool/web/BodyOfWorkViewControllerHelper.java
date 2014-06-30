@@ -4,13 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-
 import javax.persistence.EntityManager;
 
 
@@ -28,8 +24,6 @@ import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.SubjectView;
-import com.app.myschool.web.ControllerHelper.MyComparator;
 
 public class BodyOfWorkViewControllerHelper implements ControllerHelperInterface{
 	private static final Logger logger = Logger.getLogger(BodyOfWorkViewControllerHelper.class);

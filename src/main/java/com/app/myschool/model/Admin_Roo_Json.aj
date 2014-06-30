@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect Admin_Roo_Json {
     
     public String Admin.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String Admin.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static Admin Admin.fromJsonToAdmin(String json) {
-        return new JSONDeserializer<Admin>().use(null, Admin.class).deserialize(json);
+        return new JSONDeserializer<Admin>()
+        .use(null, Admin.class).deserialize(json);
     }
     
     public static String Admin.toJsonArray(Collection<Admin> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String Admin.toJsonArray(Collection<Admin> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<Admin> Admin.fromJsonArrayToAdmins(String json) {
-        return new JSONDeserializer<List<Admin>>().use(null, ArrayList.class).use("values", Admin.class).deserialize(json);
+        return new JSONDeserializer<List<Admin>>()
+        .use("values", Admin.class).deserialize(json);
     }
     
 }

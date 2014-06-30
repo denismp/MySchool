@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect MonthlySummaryRatingsView_Roo_Json {
     
     public String MonthlySummaryRatingsView.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String MonthlySummaryRatingsView.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static MonthlySummaryRatingsView MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(String json) {
-        return new JSONDeserializer<MonthlySummaryRatingsView>().use(null, MonthlySummaryRatingsView.class).deserialize(json);
+        return new JSONDeserializer<MonthlySummaryRatingsView>()
+        .use(null, MonthlySummaryRatingsView.class).deserialize(json);
     }
     
     public static String MonthlySummaryRatingsView.toJsonArray(Collection<MonthlySummaryRatingsView> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String MonthlySummaryRatingsView.toJsonArray(Collection<MonthlySummaryRatingsView> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<MonthlySummaryRatingsView> MonthlySummaryRatingsView.fromJsonArrayToMonthlySummaryRatingsViews(String json) {
-        return new JSONDeserializer<List<MonthlySummaryRatingsView>>().use(null, ArrayList.class).use("values", MonthlySummaryRatingsView.class).deserialize(json);
+        return new JSONDeserializer<List<MonthlySummaryRatingsView>>()
+        .use("values", MonthlySummaryRatingsView.class).deserialize(json);
     }
     
 }

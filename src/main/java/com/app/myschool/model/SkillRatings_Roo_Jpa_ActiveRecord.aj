@@ -14,6 +14,8 @@ privileged aspect SkillRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager SkillRatings.entityManager;
     
+    public static final List<String> SkillRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("week_month", "week_number", "remembering", "understanding", "applying", "analyzing", "evaluating", "creating", "locked", "comments", "whoUpdated", "lastUpdated", "quarter");
+    
     public static final EntityManager SkillRatings.entityManager() {
         EntityManager em = new SkillRatings().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect SkillRatings_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM SkillRatings o", SkillRatings.class).getResultList();
     }
     
+    public static List<SkillRatings> SkillRatings.findAllSkillRatingses(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM SkillRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, SkillRatings.class).getResultList();
+    }
+    
     public static SkillRatings SkillRatings.findSkillRatings(Long id) {
         if (id == null) return null;
         return entityManager().find(SkillRatings.class, id);
@@ -35,6 +48,17 @@ privileged aspect SkillRatings_Roo_Jpa_ActiveRecord {
     
     public static List<SkillRatings> SkillRatings.findSkillRatingsEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM SkillRatings o", SkillRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<SkillRatings> SkillRatings.findSkillRatingsEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM SkillRatings o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, SkillRatings.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

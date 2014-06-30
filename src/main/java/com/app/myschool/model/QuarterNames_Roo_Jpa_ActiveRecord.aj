@@ -14,6 +14,8 @@ privileged aspect QuarterNames_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager QuarterNames.entityManager;
     
+    public static final List<String> QuarterNames.fieldNames4OrderClauseFilter = java.util.Arrays.asList("qtrName");
+    
     public static final EntityManager QuarterNames.entityManager() {
         EntityManager em = new QuarterNames().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -28,6 +30,17 @@ privileged aspect QuarterNames_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM QuarterNames o", QuarterNames.class).getResultList();
     }
     
+    public static List<QuarterNames> QuarterNames.findAllQuarterNameses(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM QuarterNames o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, QuarterNames.class).getResultList();
+    }
+    
     public static QuarterNames QuarterNames.findQuarterNames(Long id) {
         if (id == null) return null;
         return entityManager().find(QuarterNames.class, id);
@@ -35,6 +48,17 @@ privileged aspect QuarterNames_Roo_Jpa_ActiveRecord {
     
     public static List<QuarterNames> QuarterNames.findQuarterNamesEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM QuarterNames o", QuarterNames.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    }
+    
+    public static List<QuarterNames> QuarterNames.findQuarterNamesEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM QuarterNames o";
+        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
+            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
+            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
+                jpaQuery = jpaQuery + " " + sortOrder;
+            }
+        }
+        return entityManager().createQuery(jpaQuery, QuarterNames.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

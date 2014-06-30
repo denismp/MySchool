@@ -542,3 +542,11 @@ web mvc all --package ~.web
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-06-10 19:29:01
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log opened at 2014-06-10 19:30:32
 // Spring Roo 1.2.2.RELEASE [rev 7d75659] log closed at 2014-06-11 10:28:12
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-06-27 15:34:40
+logging setup --level DEBUG
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-06-27 15:52:47
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-06-27 15:55:29
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-06-27 16:22:40
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-06-27 16:24:32
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-06-27 16:33:57
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-06-27 16:35:59

@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect FacultyByStudentView_Roo_Json {
     
     public String FacultyByStudentView.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String FacultyByStudentView.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static FacultyByStudentView FacultyByStudentView.fromJsonToFacultyByStudentView(String json) {
-        return new JSONDeserializer<FacultyByStudentView>().use(null, FacultyByStudentView.class).deserialize(json);
+        return new JSONDeserializer<FacultyByStudentView>()
+        .use(null, FacultyByStudentView.class).deserialize(json);
     }
     
     public static String FacultyByStudentView.toJsonArray(Collection<FacultyByStudentView> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String FacultyByStudentView.toJsonArray(Collection<FacultyByStudentView> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<FacultyByStudentView> FacultyByStudentView.fromJsonArrayToFacultyByStudentViews(String json) {
-        return new JSONDeserializer<List<FacultyByStudentView>>().use(null, ArrayList.class).use("values", FacultyByStudentView.class).deserialize(json);
+        return new JSONDeserializer<List<FacultyByStudentView>>()
+        .use("values", FacultyByStudentView.class).deserialize(json);
     }
     
 }

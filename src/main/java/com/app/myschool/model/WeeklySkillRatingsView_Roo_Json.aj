@@ -13,19 +13,33 @@ import java.util.List;
 privileged aspect WeeklySkillRatingsView_Roo_Json {
     
     public String WeeklySkillRatingsView.toJson() {
-        return new JSONSerializer().exclude("*.class").serialize(this);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(this);
+    }
+    
+    public String WeeklySkillRatingsView.toJson(String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(this);
     }
     
     public static WeeklySkillRatingsView WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(String json) {
-        return new JSONDeserializer<WeeklySkillRatingsView>().use(null, WeeklySkillRatingsView.class).deserialize(json);
+        return new JSONDeserializer<WeeklySkillRatingsView>()
+        .use(null, WeeklySkillRatingsView.class).deserialize(json);
     }
     
     public static String WeeklySkillRatingsView.toJsonArray(Collection<WeeklySkillRatingsView> collection) {
-        return new JSONSerializer().exclude("*.class").serialize(collection);
+        return new JSONSerializer()
+        .exclude("*.class").serialize(collection);
+    }
+    
+    public static String WeeklySkillRatingsView.toJsonArray(Collection<WeeklySkillRatingsView> collection, String[] fields) {
+        return new JSONSerializer()
+        .include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<WeeklySkillRatingsView> WeeklySkillRatingsView.fromJsonArrayToWeeklySkillRatingsViews(String json) {
-        return new JSONDeserializer<List<WeeklySkillRatingsView>>().use(null, ArrayList.class).use("values", WeeklySkillRatingsView.class).deserialize(json);
+        return new JSONDeserializer<List<WeeklySkillRatingsView>>()
+        .use("values", WeeklySkillRatingsView.class).deserialize(json);
     }
     
 }

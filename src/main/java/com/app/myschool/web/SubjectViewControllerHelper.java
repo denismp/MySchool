@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,7 +28,6 @@ import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
 
-import com.app.myschool.model.FacultyByStudentView;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Faculty;
@@ -141,7 +139,6 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		List<SubjectView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		boolean found = false;
 		String studentId_ = getParam(params, "studentId");
 		Stack <Long>subjectStack = new Stack<Long>();
 		List<Student> students = new ArrayList<Student>();
@@ -536,7 +533,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		catch(Exception e) 
 		{
 			e.printStackTrace();
-			this.logger.info(e.getMessage());
+			SubjectViewControllerHelper.logger.info(e.getMessage());
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);

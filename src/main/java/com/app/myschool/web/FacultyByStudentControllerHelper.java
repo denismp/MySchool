@@ -31,7 +31,6 @@ import com.app.myschool.model.FacultyByStudentView;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.SubjectView;
 
 public class FacultyByStudentControllerHelper implements ControllerHelperInterface{
 	private static final Logger logger = Logger.getLogger(FacultyByStudentControllerHelper.class);

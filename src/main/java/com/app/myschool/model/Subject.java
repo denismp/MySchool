@@ -22,7 +22,8 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-@RooJpaActiveRecord(finders = { "findSubjectsByQuarter", "findSubjectsByQuarters" })
+//@RooJpaActiveRecord(finders = { "findSubjectsByQuarter", "findSubjectsByQuarters" })
+@RooJpaActiveRecord(finders = { "findSubjectsByQuarter" })
 public class Subject {
 
     @NotNull

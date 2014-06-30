@@ -44,11 +44,13 @@
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
+        <!-- For MAC SHA-256 values can be produced using 'echo -n your_desired_password | shasum -a 256' (using normal *nix environments) -->
+        <!-- password = 'password' -->
         <authentication-provider>
             <password-encoder hash="sha-256" />
             <user-service>
-                <user name="admin" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_ADMIN" />
-                <user name="user" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_USER" />
+                <user name="admin" password="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8" authorities="ROLE_ADMIN" />
+                <user name="user" password="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
