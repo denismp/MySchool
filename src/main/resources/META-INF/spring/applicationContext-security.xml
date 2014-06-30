@@ -10,48 +10,111 @@
         <logout logout-url="/resources/j_spring_security_logout" />
         <!-- Configure these elements to secure URIs in your application -->
         <intercept-url pattern="/myschoolapp" access="isAuthenticated()"/>
+        <intercept-url pattern="/app.html" access="isAuthenticated()"/>
         <intercept-url pattern="/app.js" access="isAuthenticated()"/>
         <intercept-url pattern="/app/**" access="isAuthenticated()"/>
+
+        <intercept-url pattern="/bodyofworkviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/dailys/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/evaluationratingses/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/facultybystudentviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/facultys/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/monthlyevaluationratingses/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/monthlysummaryratingses/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/quarternameses/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/quarters/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/skillratingses/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/studentprofileviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/students/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/subjects/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/subjectviews/json/**" access="isAuthenticated()" />
+
+        <intercept-url pattern="/admins" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/admins/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/artifacts" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/artifacts/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/bodyofworks" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/bodyofworks/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/bodyofworkviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/bodyofworkviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/dailys" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/dailys/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/dailyviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/dailyviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/evaluationratingses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/evaluationratingses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/evaluationratingsviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/evaluationratingsviews/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/facultybystudentviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/facultybystudentviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/facultys" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/facultys/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/graduatetrackings" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/graduatetrackings/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlyevaluationratingses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlyevaluationratingses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlyevaluationratingviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlyevaluationratingviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlysummaryratingses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlysummaryratingses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlysummaryratingviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/monthlysummaryratingviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/previoustranscriptses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/previoustranscriptses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/quarternameses" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/quarternameses/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarters" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/quarters/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/skillratingses" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/skillratingses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/studentprofileviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/studentprofileviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/students" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/students/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/studentviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/studentviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjects" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjects/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="quarternameses" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/quarternameses/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/subjectviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/subjectviews/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/weeklyskillratingviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/weeklyskillratingviews/**" access="hasRole('ROLE_ADMIN')" />
+
         <intercept-url pattern="/**" access="permitAll"/>
     </http>
     <!-- Configure Authentication mechanism -->
     <authentication-manager alias="authenticationManager">
         <!-- SHA-256 values can be produced using 'echo -n your_desired_password | sha256sum' (using normal *nix environments) -->
         <!-- For MAC SHA-256 values can be produced using 'echo -n your_desired_password | shasum -a 256' (using normal *nix environments) -->
-        <!-- password = 'password' -->
+        <!-- http://www.xorbin.com/tools/sha256-hash-calculator -->
+        <!-- 'pass123' converts to 9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c -->
         <authentication-provider>
             <password-encoder hash="sha-256" />
             <user-service>
-                <user name="admin" password="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8" authorities="ROLE_ADMIN" />
-                <user name="user" password="5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8" authorities="ROLE_USER" />
+                <user name="faculty" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_FACULTY" />
+                <user name="admin" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_ADMIN" />
+                <user name="user" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
+        <authentication-provider>
+            <password-encoder hash="sha-256" />
+		<jdbc-user-service data-source-ref="dataSource"
+		  users-by-username-query=
+		    "WITH t AS (SELECT user_name, user_password, enabled FROM student
+						UNION
+						SELECT user_name, user_password, enabled FROM faculty
+						UNION
+						SELECT user_name, user_password, enabled FROM admin)
+			SELECT t.user_name AS username, t.user_password AS password, t.enabled
+			FROM t WHERE t.user_name = ?"
+		  authorities-by-username-query=
+		    "WITH t AS (SELECT user_name, 'ROLE_USER' AS role FROM student
+						UNION
+						SELECT user_name, 'ROLE_FACULTY' AS role FROM faculty
+						UNION
+						SELECT user_name, 'ROLE_ADMIN' AS role FROM admin)
+			SELECT t.user_name AS username, t.role FROM t WHERE t.user_name = ?"
+		/>
+	</authentication-provider>
     </authentication-manager>
 </beans:beans>
