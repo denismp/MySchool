@@ -16,7 +16,6 @@
         <field:display field="country" id="s_com_app_myschool_model_Faculty_country" object="${faculty}" z="lBt/+fYHURYDK4x0YaFc2fVvE10="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Faculty_whoUpdated" object="${faculty}" z="IJUapFjRYQn8jphtHQ4sbdH/yNk="/>
         <field:display date="true" dateTimePattern="${faculty_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Faculty_lastUpdated" object="${faculty}" z="NbF55fddc6sIdLwbEPcL7kaqpbQ="/>
-        <field:display field="students" id="s_com_app_myschool_model_Faculty_students" object="${faculty}" z="f//F+atHTIaTF/09Mm3pqm9KmDg="/>
         <field:display field="userName" id="s_com_app_myschool_model_Faculty_userName" object="${faculty}" z="itPwqrgsZkUJ+NNqSZUVOmqYP2A="/>
         <field:display field="userPassword" id="s_com_app_myschool_model_Faculty_userPassword" object="${faculty}" z="zBmtv6K3htmpBN6gJR3MejPDB4U="/>
         <field:display field="enabled" id="s_com_app_myschool_model_Faculty_enabled" object="${faculty}" z="6ljYu3UZ5wxNhmgjW2Rxic/hP6g="/>

@@ -452,7 +452,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
 				record.setUserName(myView.getFacultyUserName());
-				record.setStudents(students);
+				//record.setStudents(students);
 				
 				((Faculty)record).persist();
 				
@@ -585,7 +585,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getFacultyUserName());
-			record.setStudents(students);
+			//record.setStudents(students);
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
