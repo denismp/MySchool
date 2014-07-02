@@ -433,7 +433,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					{
 						Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
 						Student student = Student.findStudentsByUserNameEquals(myView.getStudentName()).getSingleResult();
-						//student.getFaculty().add(faculty);
+						student.getFaculty().add(faculty);
 						student.merge();
 						myView.setStudentId(student.getId());
 						myView.setFacultyId(faculty.getId());
@@ -479,7 +479,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				quarter.persist();
 				myView.setId(100000L + quarter.getId()); // fake out the id temporarily.  The reload will recreate it.
 				
-				//student.getFaculty().add(faculty);
+				student.getFaculty().add(faculty);
 				student.setLastUpdated(new Date() );
 				student.merge();
 				

@@ -23,6 +23,7 @@
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Student_userPassword" required="true" z="ldqdQ4f3jAxQt3ssD+K0t4TXPOk="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Student_enabled" z="FabZ3jyXKMa1Uy/QTGGWjuhbfO4="/>
         <field:textarea field="email" id="c_com_app_myschool_model_Student_email" required="true" validationMessageCode="field_invalid_email" z="2bcFKopS+dvEvaShSbfe/en/DG4="/>
+        <field:select field="faculty" id="c_com_app_myschool_model_Student_faculty" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="ck3S9plWVLvOGGlYpOpI0S6urgs="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Student" render="${not empty dependencies}" z="1a2SKbr5fwJQYr41tK71+4cnxRw="/>
 </div>

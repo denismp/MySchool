@@ -20,9 +20,9 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
-@RooToString
 @RooJson
 @RooJpaActiveRecord(finders = { "findQuartersByStudent", "findQuartersBySubject" })
+@RooToString(excludeFields={"bodyofworks","dailys","skillRatings","evaluationRatings","monthlysummaryratings","monthlyevaluationratings"})
 public class Quarter {
 
     @NotNull

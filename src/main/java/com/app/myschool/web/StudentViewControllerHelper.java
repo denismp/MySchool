@@ -584,7 +584,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
 				record.setUserName(myView.getUserName());
-				//record.setFaculty(facultys);
+				record.setFaculty(facultys);
 				//record.setStudents(students);
 				
 				((Student)record).persist();
@@ -718,7 +718,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getUserName());
-			//record.setFaculty(facultys);
+			record.setFaculty(facultys);
 			//record.setStudents(students);
 
 			logger.info("Debug2");

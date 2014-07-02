@@ -12,13 +12,13 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
-@RooToString
+@RooToString(excludeFields={"quarters"})
 @RooJpaActiveRecord
 @RooJson
 public class Faculty extends Person {
 
-    //@ManyToMany(cascade = CascadeType.ALL, mappedBy="faculty")
-    //private Set<Student> students = new HashSet<Student>();
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="faculty")
+    private Set<Student> students = new HashSet<Student>();
     
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="faculty")

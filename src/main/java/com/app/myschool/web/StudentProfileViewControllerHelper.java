@@ -571,7 +571,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setWhoUpdated(myView.getWhoUpdated());
 			
-			//record.getFaculty().add(faculty);
+			record.getFaculty().add(faculty);
 			record.merge();
 			myView.setVersion(student.getVersion());	
 						
@@ -720,7 +720,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getUserName());
-			//record.setFaculty(facultys);
+			record.setFaculty(facultys);
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
