@@ -148,8 +148,17 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		boolean found = false;
 		String studentId_ = getParam(params, "studentId");
 		String studentUserName = getParam(params,"studentName");
+		//********************************************************
+		//	Added logic to call Don's new login() method to get
+		//	studentUserName from the security context from the 
+		//	login on the front end web page.
+		//********************************************************
+		String myLoginInfo = this.login();
+		logger.info("LoginInfo:" + myLoginInfo);
+		String[] loginInfo = myLoginInfo.split("/");
+		studentUserName = loginInfo[0];
 		List<Student> students = new ArrayList<Student>();
-		if( studentUserName != null )
+		if( studentUserName != null && studentUserName.equals("admin") == false )
 		{
 			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
 		}

@@ -175,6 +175,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					for ( Quarter quarter: quarterList )
 					{
 						if( 
+								quarter.getFaculty() != null &&
 								quarter.getFaculty().getId() == faculty.getId() &&
 								quarter.getStudent().getId() == student.getId()
 						)

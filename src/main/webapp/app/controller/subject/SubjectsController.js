@@ -728,10 +728,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		studentStore_.load({
 		    callback: this.onStudentStoreLoad,
-		    scope: this,
-		    params: {
-		        studentName: this.studentName
-		    }
+		    scope: this
+		    //params: {
+		    //    studentName: this.studentName
+		    //}
 		});
 
 		allSubjectStore_.load({
@@ -760,6 +760,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
 
 		    g_.setTitle('[' + studentName_ + '] Subjects');
+			this.studentName = r_.get('userName');
 		    subjectStore_.load({
 		        callback: this.onSubjectStoreLoad,
 		        scope: this,

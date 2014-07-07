@@ -13,9 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -24,10 +22,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyByStudentView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -133,7 +129,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
 		List<Student> students = new ArrayList<Student>();
-		Stack <Long>subjectStack = new Stack<Long>();
+		//Stack <Long>subjectStack = new Stack<Long>();
 		if( studentId_ == null )
 		{
 			students = Student.findAllStudents();
@@ -156,9 +152,12 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
 				
 				long i = 0;
-				Set<Quarter> studentQtrList	= student.getQuarters();
+				//Set<Quarter> studentQtrList	= student.getQuarters();
+
+				List<Quarter> studentQtrList = Quarter.findQuartersByStudent(student).getResultList();
 				for ( Quarter studentQtr: studentQtrList )
-				{				
+				{	
+					Subject subject						= studentQtr.getSubject();
 					for (StudentFaculty studentFaculty : studentFacultyList) 
 					{
 						statusGood							= true;
@@ -166,63 +165,46 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 						//Faculty faculty					= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 						//Quarter quarter					= faculty.getQuarter();
 						Faculty faculty						= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-						
-						Set<Quarter> facultyQtrList = faculty.getQuarters();
-						for( Quarter facultyQtr: facultyQtrList )
-						{	
-							Subject subject						= studentQtr.getSubject();
-							Subject facultySubject				= facultyQtr.getSubject();
-							if( subject.getId() == facultySubject.getId() )
-							{
-								//if( isDupSubject( subject.getId(), subjectStack ) == false )
-								if( 
-										studentQtr.getStudent().getId() == facultyQtr.getStudent().getId()	&&
-										studentQtr.getFaculty().getId() == facultyQtr.getFaculty().getId()	&&
-										studentQtr.getSubject().getId() == facultyQtr.getSubject().getId()	&&
-										studentQtr.getQtr_year()		== facultyQtr.getQtr_year()			&&
-										studentQtr.getQtrName().equals(facultyQtr.getQtrName())
-								)
-								{				
-									FacultyByStudentView myView		= new FacultyByStudentView();
-									myView.setId(++i);
-									myView.setFacultybystudentId(i);
-									myView.setVersion(faculty.getVersion());
-									myView.setLastUpdated(faculty.getLastUpdated());
-									myView.setWhoUpdated(faculty.getWhoUpdated());
-									myView.setStudentId(student.getId());
-									myView.setSubjId(subject.getId());
-									myView.setSubjName(subject.getName());
-									myView.setQtrId(studentQtr.getId());
-									myView.setQtrName(studentQtr.getQtrName());
-									myView.setQtrYear(studentQtr.getQtr_year());
-									myView.setVersion(faculty.getVersion());
-									myView.setFacultyId(faculty.getId());
-									myView.setEmail(faculty.getEmail());
-									myView.setAddress1(faculty.getAddress1());
-									myView.setAddress2(faculty.getAddress2());
-									myView.setCity(faculty.getCity());
-									myView.setCountry(faculty.getCountry());
-									myView.setFacultyUserName(faculty.getUserName());
-									myView.setLastName(faculty.getLastName());
-									myView.setMiddleName(faculty.getMiddleName());
-									myView.setFirstName(faculty.getFirstName());
-									myView.setPostalCode(faculty.getPostalCode());
-									myView.setProvince(faculty.getProvince());
-									myView.setPhone1(faculty.getPhone1());
-									myView.setPhone2(faculty.getPhone2());
-									myView.setEnabled(faculty.getEnabled());
-									myView.setStudentUserName(student.getUserName());
-				
-									facultyViewList.add( myView );
-								}
-								subjectStack.push(subject.getId());
-							}
-						}
+
+
+						FacultyByStudentView myView		= new FacultyByStudentView();
+						myView.setId(++i);
+						myView.setFacultybystudentId(i);
+						myView.setVersion(faculty.getVersion());
+						myView.setLastUpdated(faculty.getLastUpdated());
+						myView.setWhoUpdated(faculty.getWhoUpdated());
+						myView.setStudentId(student.getId());
+						myView.setSubjId(subject.getId());
+						myView.setSubjName(subject.getName());
+						myView.setQtrId(studentQtr.getId());
+						myView.setQtrName(studentQtr.getQtrName());
+						myView.setQtrYear(studentQtr.getQtr_year());
+						myView.setVersion(faculty.getVersion());
+						myView.setFacultyId(faculty.getId());
+						myView.setEmail(faculty.getEmail());
+						myView.setAddress1(faculty.getAddress1());
+						myView.setAddress2(faculty.getAddress2());
+						myView.setCity(faculty.getCity());
+						myView.setCountry(faculty.getCountry());
+						myView.setFacultyUserName(faculty.getUserName());
+						myView.setLastName(faculty.getLastName());
+						myView.setMiddleName(faculty.getMiddleName());
+						myView.setFirstName(faculty.getFirstName());
+						myView.setPostalCode(faculty.getPostalCode());
+						myView.setProvince(faculty.getProvince());
+						myView.setPhone1(faculty.getPhone1());
+						myView.setPhone2(faculty.getPhone2());
+						myView.setEnabled(faculty.getEnabled());
+						myView.setStudentUserName(student.getUserName());
 	
+						facultyViewList.add( myView );
 					}
-					Collections.sort(facultyViewList, new MyComparator());				
+					//subjectStack.push(subject.getId());
 				}
+
 			}
+			Collections.sort(facultyViewList, new MyComparator());				
+			
 			if (statusGood)
 			{
 				records = facultyViewList;			
