@@ -26,6 +26,7 @@ Ext.define('MySchool.view.student.ProfilePanel', {
 		'MySchool.view.student.ProfileSaveTool',
 		'MySchool.view.student.ProfileDeleteTool',
 		'MySchool.view.student.ProfileLockTool',
+		'MySchool.view.student.PasswordTool',
 		'Ext.grid.Panel',
 		'Ext.form.Panel',
 		'Ext.panel.Tool'
@@ -67,6 +68,9 @@ Ext.define('MySchool.view.student.ProfilePanel', {
 				},
 				{
 					xtype: 'studentprofilelocktool'
+				},
+				{
+					xtype: 'studentpasswordtool'
 				}
 			]
 		});

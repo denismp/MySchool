@@ -34,6 +34,10 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		{
 			ref: 'StudentProfileForm',
 			selector: '#studentprofileform'
+		},
+		{
+			ref: 'studentpasswordtool',
+			selector: '#studentpasswordtool'
 		}
 	],
 
@@ -267,6 +271,32 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		}
 	},
 
+	onStudentpasswordtoolClick: function(tool, e, eOpts) {
+		debugger;
+		var studentStore				= Ext.getStore('student.StudentStore');
+		//var facultyStore				= Ext.getStore('faculty.FacultyTableStore');
+		//var subjectStore				= Ext.getStore('subject.SubjectStore');
+		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		//var commonMonthStore			= Ext.getStore('common.MonthStore');
+
+		//var studentRecord	= studentStore.getAt(0);
+		//var studentId		= studentRecord.get( 'id' );
+		//var studentName		= studentRecord.get( 'userName' );
+
+		var newDialog = Ext.create( 'MySchool.view.student.PasswordDialog' );
+
+		//newDialog.down('#studentid').setValue( studentId );
+		//newDialog.down('#studentname').setValue( studentName );
+
+		//commonQuarterSubjectStore.myLoad();
+		//commonMonthStore.myLoad();
+
+		window.console.log( 'Password Dialog' );
+
+		newDialog.render( Ext.getBody() );
+		newDialog.show();
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -485,6 +515,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 			},
 			"#studentsubmit": {
 				click: this.onStudentsubmitClick
+			},
+			"#studentpasswordtool": {
+				click: this.onStudentpasswordtoolClick
 			}
 		});
 	}

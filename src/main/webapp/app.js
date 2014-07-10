@@ -154,7 +154,9 @@ Ext.application({
 		'student.ProfileDeleteTool',
 		'student.ProfileLockTool',
 		'subject.FacultyNamesComboBox',
-		'student.NewForm'
+		'student.NewForm',
+		'student.PasswordTool',
+		'student.PasswordDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',

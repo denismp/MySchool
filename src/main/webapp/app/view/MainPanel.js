@@ -35,7 +35,6 @@ Ext.define('MySchool.view.MainPanel', {
 	maxWidth: 1300,
 	minHeight: 700,
 	minWidth: 1300,
-	autoScroll: true,
 	layout: 'fit',
 
 	initComponent: function() {
