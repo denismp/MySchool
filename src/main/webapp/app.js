@@ -35,7 +35,8 @@ Ext.application({
 		'weekly.EvaluationsModel',
 		'faculty.ByStudentModel',
 		'student.StudentProfileModel',
-		'faculty.FacultyTableModel'
+		'faculty.FacultyTableModel',
+		'student.PasswordModel'
 	],
 	stores: [
 		'subject.SubjectStore',
@@ -55,7 +56,8 @@ Ext.application({
 		'weekly.EvaluationsRatingsStore',
 		'faculty.ByStudentStore',
 		'student.StudentProfileStore',
-		'faculty.FacultyTableStore'
+		'faculty.FacultyTableStore',
+		'student.StudentPasswordStore'
 	],
 	views: [
 		'MainPanel',

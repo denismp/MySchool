@@ -54,13 +54,6 @@ Ext.define('MySchool.view.student.PasswordDialog', {
 								},
 								{
 									xtype: 'textfield',
-									itemId: 'studentoldpassword',
-									padding: 5,
-									fieldLabel: 'Old Password',
-									labelWidth: 150
-								},
-								{
-									xtype: 'textfield',
 									itemId: 'studentnewpassword',
 									padding: 5,
 									fieldLabel: 'New Password',
