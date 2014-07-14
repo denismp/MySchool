@@ -149,55 +149,61 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				
 				
 				long i = 0;
 				//Set<Quarter> studentQtrList	= student.getQuarters();
 
-				List<Quarter> studentQtrList = Quarter.findQuartersByStudent(student).getResultList();
+				//List<Quarter> studentQtrList = Quarter.findQuartersByStudent(student).getResultList();
+				Set<Quarter> studentQtrList = student.getQuarters();
 				for ( Quarter studentQtr: studentQtrList )
 				{	
 					Subject subject						= studentQtr.getSubject();
-					for (StudentFaculty studentFaculty : studentFacultyList) 
+					//for (StudentFaculty studentFaculty : studentFacultyList) 
+					for( Faculty faculty: student.getFaculty() )
 					{
-						statusGood							= true;
-						//Student student					= Student.findStudent(new Long(studentFaculty.studentId));
-						//Faculty faculty					= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-						//Quarter quarter					= faculty.getQuarter();
-						Faculty faculty						= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-
-
-						FacultyByStudentView myView		= new FacultyByStudentView();
-						myView.setId(++i);
-						myView.setFacultybystudentId(i);
-						myView.setVersion(faculty.getVersion());
-						myView.setLastUpdated(faculty.getLastUpdated());
-						myView.setWhoUpdated(faculty.getWhoUpdated());
-						myView.setStudentId(student.getId());
-						myView.setSubjId(subject.getId());
-						myView.setSubjName(subject.getName());
-						myView.setQtrId(studentQtr.getId());
-						myView.setQtrName(studentQtr.getQtrName());
-						myView.setQtrYear(studentQtr.getQtr_year());
-						myView.setVersion(faculty.getVersion());
-						myView.setFacultyId(faculty.getId());
-						myView.setEmail(faculty.getEmail());
-						myView.setAddress1(faculty.getAddress1());
-						myView.setAddress2(faculty.getAddress2());
-						myView.setCity(faculty.getCity());
-						myView.setCountry(faculty.getCountry());
-						myView.setFacultyUserName(faculty.getUserName());
-						myView.setLastName(faculty.getLastName());
-						myView.setMiddleName(faculty.getMiddleName());
-						myView.setFirstName(faculty.getFirstName());
-						myView.setPostalCode(faculty.getPostalCode());
-						myView.setProvince(faculty.getProvince());
-						myView.setPhone1(faculty.getPhone1());
-						myView.setPhone2(faculty.getPhone2());
-						myView.setEnabled(faculty.getEnabled());
-						myView.setStudentUserName(student.getUserName());
+						if(isStudendQtrInFacultyQtr(studentQtr, faculty))
+						{
+							statusGood							= true;
+							//Student student					= Student.findStudent(new Long(studentFaculty.studentId));
+							//Faculty faculty					= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+							//Quarter quarter					= faculty.getQuarter();
+							//Faculty faculty						= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 	
-						facultyViewList.add( myView );
+	
+							FacultyByStudentView myView		= new FacultyByStudentView();
+							myView.setId(++i);
+							myView.setFacultybystudentId(i);
+							myView.setVersion(faculty.getVersion());
+							myView.setLastUpdated(faculty.getLastUpdated());
+							myView.setWhoUpdated(faculty.getWhoUpdated());
+							myView.setStudentId(student.getId());
+							myView.setSubjId(subject.getId());
+							myView.setSubjName(subject.getName());
+							myView.setQtrId(studentQtr.getId());
+							myView.setQtrName(studentQtr.getQtrName());
+							myView.setQtrYear(studentQtr.getQtr_year());
+							myView.setVersion(faculty.getVersion());
+							myView.setFacultyId(faculty.getId());
+							myView.setEmail(faculty.getEmail());
+							myView.setAddress1(faculty.getAddress1());
+							myView.setAddress2(faculty.getAddress2());
+							myView.setCity(faculty.getCity());
+							myView.setCountry(faculty.getCountry());
+							myView.setFacultyUserName(faculty.getUserName());
+							myView.setLastName(faculty.getLastName());
+							myView.setMiddleName(faculty.getMiddleName());
+							myView.setFirstName(faculty.getFirstName());
+							myView.setPostalCode(faculty.getPostalCode());
+							myView.setProvince(faculty.getProvince());
+							myView.setPhone1(faculty.getPhone1());
+							myView.setPhone2(faculty.getPhone2());
+							myView.setEnabled(faculty.getEnabled());
+							myView.setStudentUserName(student.getUserName());
+		
+							facultyViewList.add( myView );
+						}
 					}
 					//subjectStack.push(subject.getId());
 				}
@@ -238,6 +244,17 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				returnStatus);	
 	}
 	
+	private boolean isStudendQtrInFacultyQtr(Quarter studentQtr, Faculty faculty)
+	{
+		Set<Quarter> facultyQuarters = faculty.getQuarters();
+		for( Quarter facultyQuarter: facultyQuarters )
+		{
+			if( facultyQuarter.getId() == studentQtr.getId() )
+				return true;
+		}
+		return false;
+	}
+
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity<String> listJson() {
 		HashMap parms = new HashMap();
