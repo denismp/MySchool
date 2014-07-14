@@ -30,42 +30,42 @@ public class EvaluationRatings {
     @Max(5L)
     private int week_number;
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int motivation;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int organization;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int effectiveUseOfStudyTime;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int qualityOfWork;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int accuracyOfWork;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int complexityOfWork;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int growth;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int consistency;
 

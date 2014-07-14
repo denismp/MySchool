@@ -69,7 +69,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -79,7 +79,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
-						minValue: 0
+						maxValue: 10,
+						minValue: 5
 					}
 				},
 				{
@@ -90,7 +91,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -101,7 +102,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -112,7 +113,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -123,7 +124,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -134,7 +135,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -145,7 +146,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{

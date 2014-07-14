@@ -30,32 +30,32 @@ public class SkillRatings {
     @Max(5L)
     private int week_number;
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int remembering;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int understanding;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int applying;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int analyzing;
     
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int evaluating;
     
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int creating;
 

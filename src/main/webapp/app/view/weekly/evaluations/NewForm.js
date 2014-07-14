@@ -68,7 +68,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-motivation',
 							fieldLabel: 'motivation',
 							name: 'motivation',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -76,7 +76,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-organization',
 							fieldLabel: 'organization',
 							name: 'organization',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -84,7 +84,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-effetiveuseofstudytime',
 							fieldLabel: 'effectiveUseOfStudyTime',
 							name: 'effectiveUseOfStudyTime',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -92,7 +92,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-qualityofwork',
 							fieldLabel: 'qualityOfWork',
 							name: 'qualityOfWork',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -100,7 +100,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-accuracyofwork',
 							fieldLabel: 'accuracyOfWork',
 							name: 'accuracyOfWork',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -108,7 +108,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-complexityofwork',
 							fieldLabel: 'complexityOfWork',
 							name: 'complexityOfWork',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -116,7 +116,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-growth',
 							fieldLabel: 'growth',
 							name: 'growth',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -124,7 +124,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							itemId: 'evaluation-consistency',
 							fieldLabel: 'consistency',
 							name: 'consistency',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',

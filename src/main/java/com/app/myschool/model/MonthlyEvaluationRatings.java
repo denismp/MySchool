@@ -27,42 +27,42 @@ public class MonthlyEvaluationRatings {
     private int month_number;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int levelOfDifficulty;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int criticalThinkingSkills;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int effectiveCorrectionActions;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int accuratelyIdCorrections;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int completingCourseObjectives;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int thoughtfulnessOfReflections;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int responsibilityOfProgress;
 
     @NotNull
-    @Min(6L)
+    @Min(5L)
     @Max(10L)
     private int workingEffectivelyWithAdvisor;
     

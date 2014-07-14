@@ -68,7 +68,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-remembering',
 							fieldLabel: 'remembering',
 							name: 'remembering',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -76,7 +76,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-understanding',
 							fieldLabel: 'understanding',
 							name: 'understanding',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -84,7 +84,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-applying',
 							fieldLabel: 'applying',
 							name: 'applying',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -92,7 +92,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-analyzing',
 							fieldLabel: 'analyzing',
 							name: 'analyzing',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -100,7 +100,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-evaluating',
 							fieldLabel: 'evaluating',
 							name: 'evaluating',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -108,7 +108,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							itemId: 'skills-creating',
 							fieldLabel: 'creating',
 							name: 'creating',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',

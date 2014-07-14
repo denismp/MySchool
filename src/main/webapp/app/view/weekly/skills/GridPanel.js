@@ -74,7 +74,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -85,7 +85,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -96,7 +96,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -107,7 +107,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -118,7 +118,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
@@ -129,7 +129,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					editor: {
 						xtype: 'numberfield',
 						maxValue: 10,
-						minValue: 6
+						minValue: 5
 					}
 				},
 				{
