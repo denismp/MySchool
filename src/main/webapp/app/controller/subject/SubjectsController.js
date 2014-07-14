@@ -262,23 +262,35 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    }
 
 		    if (okToSync_) {
-		        r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
+				if (typeof(facultyId) != "undefined" && facultyId !== null )
+				{
+					r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
 
-		        r_.set('subjId', subjAllRec_.get('subjId'));
+					r_.set('subjId', subjAllRec_.get('subjId'));
 
-		        r_.set('facultyId', facultyId );
+					r_.set('facultyId', facultyId );
 
-		        r_.set('studentName', this.studentName);
+					r_.set('studentName', this.studentName);
 
-		        r_.set('qtrGrade', 0);
-		        r_.set('qtrGradeType', gtCB_.getValue());
-		        r_.set('qtrLastUpdated', new Date());
-		        r_.set('qtrName', qtrName_);
-		        r_.set('qtrWhoUpdated', 'login');
-		        r_.set('qtrYear', qtrYear_);
+					r_.set('qtrGrade', 0);
+					r_.set('qtrGradeType', gtCB_.getValue());
+					r_.set('qtrLastUpdated', new Date());
+					r_.set('qtrName', qtrName_);
+					r_.set('qtrWhoUpdated', 'login');
+					r_.set('qtrYear', qtrYear_);
 
-		        gStore_.add(r_);
-		        gStore_.sync();
+					gStore_.add(r_);
+					gStore_.sync();
+				}
+				else
+				{
+					Ext.MessageBox.show({
+						title: 'Submit Exception',
+						msg: 'You must specify a faculty.',
+						icon: Ext.MessageBox.ERROR,
+						buttons: Ext.Msg.OK
+					});
+				}
 		    }
 		    else {
 		        Ext.MessageBox.show({

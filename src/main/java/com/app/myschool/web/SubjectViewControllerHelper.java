@@ -459,59 +459,68 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				Subject subject = Subject.findSubject(myView.getSubjId());
 				Student student = Student.findStudentsByUserNameEquals(myView.getStudentName()).getResultList().get(0);
 				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				Quarter quarter = new Quarter();
 				
-				// Set the fields.
-				quarter.setCompleted(myView.getQtrCompleted());
-				quarter.setGrade(myView.getQtrGrade());
-				quarter.setGrade_type(myView.getQtrGradeType());
-				quarter.setLocked(myView.getQtrLocked());
-				quarter.setLastUpdated(myView.getQtrLastUpdated());
-				quarter.setWhoUpdated(myView.getQtrWhoUpdated());
-				quarter.setQtrName(myView.getQtrName());
-				quarter.setQtr_year(myView.getQtrYear());
-				
-				// Set the relationships.
-				quarter.setStudent(student);
-				quarter.setSubject(subject);
-				quarter.setFaculty(faculty);
-				
-				// Persist the new quarter.
-				quarter.persist();
-				myView.setId(100000L + quarter.getId()); // fake out the id temporarily.  The reload will recreate it.
-				
-				student.getFaculty().add(faculty);
-				student.setLastUpdated(new Date() );
-				student.merge();
-				
-				myView.setSubjectviewId(myView.getId());
-				myView.setStudentName(student.getUserName());
-				myView.setStudentId(student.getId());
-				
-				myView.setSubjVersion(subject.getVersion());
-				myView.setQtrVersion(quarter.getVersion());
-				myView.setSubjLastUpdated(subject.getLastUpdated());
-				myView.setSubjWhoUpdated(subject.getWhoUpdated());
-				myView.setSubjId(subject.getId());
-				myView.setSubjCreditHours(subject.getCreditHours());
-				myView.setSubjDescription(subject.getDescription());
-				myView.setSubjGradeLevel(subject.getGradeLevel());
-				myView.setSubjName(subject.getName());
-				myView.setSubjObjectives(subject.getObjectives());
-				
-				myView.setQtrId(quarter.getId());
-				myView.setQtrName(quarter.getQtrName());
-				myView.setQtrYear(quarter.getQtr_year());
-				myView.setQtrGradeType(quarter.getGrade_type());
-				myView.setQtrGrade(quarter.getGrade());
-				myView.setQtrCompleted(quarter.getCompleted());
-				myView.setQtrLocked(quarter.getLocked());
-				myView.setQtrWhoUpdated(quarter.getWhoUpdated());
-				myView.setQtrLastUpdated(quarter.getLastUpdated());
-				
-				myView.setFacultyId(faculty.getId());
-				myView.setFacultyEmail(faculty.getEmail());
-				myView.setFacultyUserName(faculty.getUserName());				
+				if( faculty != null )
+				{
+					Quarter quarter = new Quarter();
+					
+					// Set the fields.
+					quarter.setCompleted(myView.getQtrCompleted());
+					quarter.setGrade(myView.getQtrGrade());
+					quarter.setGrade_type(myView.getQtrGradeType());
+					quarter.setLocked(myView.getQtrLocked());
+					quarter.setLastUpdated(myView.getQtrLastUpdated());
+					quarter.setWhoUpdated(myView.getQtrWhoUpdated());
+					quarter.setQtrName(myView.getQtrName());
+					quarter.setQtr_year(myView.getQtrYear());
+					
+					// Set the relationships.
+					quarter.setStudent(student);
+					quarter.setSubject(subject);
+					quarter.setFaculty(faculty);
+					
+					// Persist the new quarter.
+					quarter.persist();
+					myView.setId(100000L + quarter.getId()); // fake out the id temporarily.  The reload will recreate it.
+					
+					student.getFaculty().add(faculty);
+					student.setLastUpdated(new Date() );
+					student.merge();
+					
+					myView.setSubjectviewId(myView.getId());
+					myView.setStudentName(student.getUserName());
+					myView.setStudentId(student.getId());
+					
+					myView.setSubjVersion(subject.getVersion());
+					myView.setQtrVersion(quarter.getVersion());
+					myView.setSubjLastUpdated(subject.getLastUpdated());
+					myView.setSubjWhoUpdated(subject.getWhoUpdated());
+					myView.setSubjId(subject.getId());
+					myView.setSubjCreditHours(subject.getCreditHours());
+					myView.setSubjDescription(subject.getDescription());
+					myView.setSubjGradeLevel(subject.getGradeLevel());
+					myView.setSubjName(subject.getName());
+					myView.setSubjObjectives(subject.getObjectives());
+					
+					myView.setQtrId(quarter.getId());
+					myView.setQtrName(quarter.getQtrName());
+					myView.setQtrYear(quarter.getQtr_year());
+					myView.setQtrGradeType(quarter.getGrade_type());
+					myView.setQtrGrade(quarter.getGrade());
+					myView.setQtrCompleted(quarter.getCompleted());
+					myView.setQtrLocked(quarter.getLocked());
+					myView.setQtrWhoUpdated(quarter.getWhoUpdated());
+					myView.setQtrLastUpdated(quarter.getLastUpdated());
+					
+					myView.setFacultyId(faculty.getId());
+					myView.setFacultyEmail(faculty.getEmail());
+					myView.setFacultyUserName(faculty.getUserName());	
+				}
+				else
+				{
+					statusGood = false;
+					statusMsg = "A faculty must be specified.";
+				}
 			}
 			if( statusGood )
 			{
@@ -525,6 +534,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			{
 				statusGood = false;
 				response.setMessage( statusMsg );
+				logger.info(statusMsg);
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
