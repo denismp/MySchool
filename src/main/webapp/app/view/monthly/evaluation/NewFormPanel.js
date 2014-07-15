@@ -58,7 +58,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'accurately_id_corrections',
 							fieldLabel: 'feelings',
 							name: 'accuratelyIdCorrections',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -66,7 +66,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'completing_course_objectives',
 							fieldLabel: 'reflections',
 							name: 'completingCourseObjectives',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -74,7 +74,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'critical_thinking_skills',
 							fieldLabel: 'patterns of correctons',
 							name: 'criticalThinkingSkills',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -82,7 +82,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'effective_correction_actions',
 							fieldLabel: 'effectivenes of actions',
 							name: 'effectiveCorrectionActions',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -90,7 +90,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'level_of_difficulty',
 							fieldLabel: 'action results',
 							name: 'levelOfDifficulty',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -98,7 +98,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'responsiblity_of_progress',
 							fieldLabel: 'realizations',
 							name: 'responsibilityOfProgress',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -106,7 +106,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'thoughtfulness_of_reflections',
 							fieldLabel: 'planned changes',
 							name: 'thoughtfulnessOfReflections',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
@@ -114,7 +114,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'working_effectively_with_advisor',
 							fieldLabel: 'comments',
 							name: 'workingEffectivelyWithAdvisor',
-							value: 6
+							value: 5
 						},
 						{
 							xtype: 'hiddenfield',
