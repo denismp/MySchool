@@ -4,14 +4,14 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_MonthlyEvaluationRatings" modelAttribute="monthlyEvaluationRatings" path="/monthlyevaluationratingses" render="${empty dependencies}" z="mBOaz62MXlgEHtCwhP8eBLer2P4=">
         <field:input field="month_number" id="c_com_app_myschool_model_MonthlyEvaluationRatings_month_number" max="12" min="1" required="true" z="6v6SXCrFppUdxFrAw/TYMOc39gw="/>
-        <field:input field="levelOfDifficulty" id="c_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" max="10" min="6" required="true" z="U1abgGO7pz0tStB5cqFUDiI7Q+Q="/>
-        <field:input field="criticalThinkingSkills" id="c_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" max="10" min="6" required="true" z="koXCU8n0C+hyMTZq/LZnuCUvpsM="/>
-        <field:input field="effectiveCorrectionActions" id="c_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" max="10" min="6" required="true" z="MAOInWxixtsEeIzHCXZlGa5BBhA="/>
-        <field:input field="accuratelyIdCorrections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_accuratelyIdCorrections" max="10" min="6" required="true" z="mlh3JT3AjV07NJKo9b+jyKDNB0A="/>
-        <field:input field="completingCourseObjectives" id="c_com_app_myschool_model_MonthlyEvaluationRatings_completingCourseObjectives" max="10" min="6" required="true" z="E8SwXdwXS6AImSAgAraOktkalDg="/>
-        <field:input field="thoughtfulnessOfReflections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_thoughtfulnessOfReflections" max="10" min="6" required="true" z="2+v9Q/wQUhs200ZjnwFBY1szQH8="/>
-        <field:input field="responsibilityOfProgress" id="c_com_app_myschool_model_MonthlyEvaluationRatings_responsibilityOfProgress" max="10" min="6" required="true" z="l8jkZsAYLq4UxW28CZThrCMJR0Y="/>
-        <field:input field="workingEffectivelyWithAdvisor" id="c_com_app_myschool_model_MonthlyEvaluationRatings_workingEffectivelyWithAdvisor" max="10" min="6" required="true" z="BmJtvS0P1WCN2NmZkplI9Yx/qjQ="/>
+        <field:input field="levelOfDifficulty" id="c_com_app_myschool_model_MonthlyEvaluationRatings_levelOfDifficulty" max="10" min="5" required="true" z="ndJBP3IEV2WyJJyPJlnchKRM4bo="/>
+        <field:input field="criticalThinkingSkills" id="c_com_app_myschool_model_MonthlyEvaluationRatings_criticalThinkingSkills" max="10" min="5" required="true" z="a1g2oiTyqh2MWeQwgGeyOI4//Qk="/>
+        <field:input field="effectiveCorrectionActions" id="c_com_app_myschool_model_MonthlyEvaluationRatings_effectiveCorrectionActions" max="10" min="5" required="true" z="gzr2S9icvHkO0I2av7jkF++Kq3I="/>
+        <field:input field="accuratelyIdCorrections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_accuratelyIdCorrections" max="10" min="5" required="true" z="WWBGHW19igwFC4hBncE398W0EC4="/>
+        <field:input field="completingCourseObjectives" id="c_com_app_myschool_model_MonthlyEvaluationRatings_completingCourseObjectives" max="10" min="5" required="true" z="3uHhBmwgyfMgpRXSXLTBL4m875I="/>
+        <field:input field="thoughtfulnessOfReflections" id="c_com_app_myschool_model_MonthlyEvaluationRatings_thoughtfulnessOfReflections" max="10" min="5" required="true" z="iYwB12U//XOOFM/GlOrUrrpu75o="/>
+        <field:input field="responsibilityOfProgress" id="c_com_app_myschool_model_MonthlyEvaluationRatings_responsibilityOfProgress" max="10" min="5" required="true" z="Dl4TPsTExsOngFZ1bfS8YWNdpwE="/>
+        <field:input field="workingEffectivelyWithAdvisor" id="c_com_app_myschool_model_MonthlyEvaluationRatings_workingEffectivelyWithAdvisor" max="10" min="5" required="true" z="VIvqErlJoIjqePEkRTNKqiSSrZw="/>
         <field:checkbox field="locked" id="c_com_app_myschool_model_MonthlyEvaluationRatings_locked" z="9LBH/RSkX6boh57jWQPUsFEf9sk="/>
         <field:datetime dateTimePattern="${monthlyEvaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_MonthlyEvaluationRatings_lastUpdated" required="true" z="6z3pDPqamPbmBSq8g5EZUDvqWog="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_MonthlyEvaluationRatings_whoUpdated" required="true" z="eRIchvs5Ba1uX5N2L7vzETwcG/o="/>

@@ -3,14 +3,14 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_EvaluationRatings" modelAttribute="evaluationRatings" path="/evaluationratingses" render="${empty dependencies}" z="B1AL2/poTdXv0/HAzkdcCHn3mvc=">
-        <field:input field="motivation" id="c_com_app_myschool_model_EvaluationRatings_motivation" max="10" min="6" required="true" z="k9VvyneOtJ2/LvVXPsZcruYzAp4="/>
-        <field:input field="organization" id="c_com_app_myschool_model_EvaluationRatings_organization" max="10" min="6" required="true" z="0/IN41ju6McZBs6FvcEUKvqgyCw="/>
-        <field:input field="effectiveUseOfStudyTime" id="c_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" max="10" min="6" required="true" z="Sw/GKMjah7APqaCRmUAUhiP76Do="/>
-        <field:input field="qualityOfWork" id="c_com_app_myschool_model_EvaluationRatings_qualityOfWork" max="10" min="6" required="true" z="TZVcR1oU/5uGLNnJw7d1mBlMMUI="/>
-        <field:input field="accuracyOfWork" id="c_com_app_myschool_model_EvaluationRatings_accuracyOfWork" max="10" min="6" required="true" z="mDEFo7oXONHo66CnsydPjegLIgQ="/>
-        <field:input field="complexityOfWork" id="c_com_app_myschool_model_EvaluationRatings_complexityOfWork" max="10" min="6" required="true" z="BuK9UwquBle4hScQR8/yMzdS9iM="/>
-        <field:input field="growth" id="c_com_app_myschool_model_EvaluationRatings_growth" max="10" min="6" required="true" z="a8IF2C+A7ARN69I4fsuB/eUJUjM="/>
-        <field:input field="consistency" id="c_com_app_myschool_model_EvaluationRatings_consistency" max="10" min="6" required="true" z="a+CBtRna+i9mHzq7MA+HmLfXAGw="/>
+        <field:input field="motivation" id="c_com_app_myschool_model_EvaluationRatings_motivation" max="10" min="5" required="true" z="hnH2IRrwLm1jscmxMdLkFRX6Mu4="/>
+        <field:input field="organization" id="c_com_app_myschool_model_EvaluationRatings_organization" max="10" min="5" required="true" z="YyHrbbP/nR/xL5t/qjrgj+Kaijo="/>
+        <field:input field="effectiveUseOfStudyTime" id="c_com_app_myschool_model_EvaluationRatings_effectiveUseOfStudyTime" max="10" min="5" required="true" z="ZaP8AKSC1LStDLplKhhCtdmpySk="/>
+        <field:input field="qualityOfWork" id="c_com_app_myschool_model_EvaluationRatings_qualityOfWork" max="10" min="5" required="true" z="lwtmDgiYBZRMBg25ZNHj0ZQyb68="/>
+        <field:input field="accuracyOfWork" id="c_com_app_myschool_model_EvaluationRatings_accuracyOfWork" max="10" min="5" required="true" z="taNqgkm3Hpw2TrS4ZttOcSRFSyg="/>
+        <field:input field="complexityOfWork" id="c_com_app_myschool_model_EvaluationRatings_complexityOfWork" max="10" min="5" required="true" z="rc4EnU1BWdBUayKz0oXVWgzSmTs="/>
+        <field:input field="growth" id="c_com_app_myschool_model_EvaluationRatings_growth" max="10" min="5" required="true" z="d9c3YsG2QaFAY94BClpDwTNo6+8="/>
+        <field:input field="consistency" id="c_com_app_myschool_model_EvaluationRatings_consistency" max="10" min="5" required="true" z="Qbi3AXe7oYWjk5J7vBn16yMROYM="/>
         <field:checkbox field="locked" id="c_com_app_myschool_model_EvaluationRatings_locked" z="2i8ohEZR4Kk0hGQb+P5jSNwEcCU="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_EvaluationRatings_whoUpdated" required="true" z="2k0+3LKDjpm3gxg2BA79pkWtitE="/>
         <field:datetime dateTimePattern="${evaluationRatings_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_EvaluationRatings_lastUpdated" required="true" z="1x/uL2bH87t6CfKbYnq0vHX/BA4="/>
