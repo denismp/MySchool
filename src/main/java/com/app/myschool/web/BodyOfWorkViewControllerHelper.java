@@ -575,7 +575,7 @@ public class BodyOfWorkViewControllerHelper implements
 		catch (Exception e)
 		{
 			logger.error(e.getMessage());
-			response.setMessage(e.getMessage());
+			response.setMessage("No student was found." + e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
 			returnStatus = HttpStatus.BAD_REQUEST;
