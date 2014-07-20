@@ -68,10 +68,13 @@ public class StudentPasswordViewController {
         return controllerHelper.createFromJsonArray(json);
     }
 
+/*    
     @RequestMapping(value = "/json", params = "find=ByUserNameEquals", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
         StudentPasswordViewControllerHelper controllerHelper = new StudentPasswordViewControllerHelper();
         return controllerHelper.jsonFindStudentsByUserNameEquals(userName);
     }
+    */
+
 }

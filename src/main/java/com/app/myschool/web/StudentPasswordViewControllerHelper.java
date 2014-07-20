@@ -193,7 +193,7 @@ public class StudentPasswordViewControllerHelper implements
 		@Override
 		public int compare(StudentPasswordView o1, StudentPasswordView o2)
 		{
-			return o1.getLastName().compareTo(o2.getLastName());
+			return o1.getUserName().compareTo(o2.getUserName());
 		}
 	}
 
@@ -282,7 +282,8 @@ public class StudentPasswordViewControllerHelper implements
 				myView.setPhone2(student.getPhone2());
 				myView.setEnabled(student.getEnabled());
 				myView.setUserName(student.getUserName());
-				myView.setUserPassword(student.getUserPassword());
+				//myView.setUserPassword(student.getUserPassword());
+				myView.setUserPassword("NOT DISPLAYED");
 
 				studentViewList.add(myView);
 
@@ -798,7 +799,7 @@ public class StudentPasswordViewControllerHelper implements
 				returnStatus);
 	}
 
-	@Override
+	/*
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(
 			String student)
 	{
@@ -849,4 +850,5 @@ public class StudentPasswordViewControllerHelper implements
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}
+	*/
 }

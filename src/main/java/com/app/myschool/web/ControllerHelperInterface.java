@@ -30,5 +30,5 @@ public interface ControllerHelperInterface {
 
     public ResponseEntity<String> createFromJsonArray(String json);
     
-	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student);
+	//public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student);
 }

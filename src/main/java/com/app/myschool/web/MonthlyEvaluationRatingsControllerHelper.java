@@ -620,6 +620,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	/*
 	@Override
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student) {
         HttpHeaders headers = new HttpHeaders();
@@ -664,4 +665,5 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
+	*/
 }

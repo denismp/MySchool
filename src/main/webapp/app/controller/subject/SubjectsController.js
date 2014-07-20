@@ -131,7 +131,16 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    window.console.log( myrecord.data );
 		}
 
-		studentName_.setValue(this.studentName);
+		if( this.userRole !== 'USER_ROLE')
+		{
+			studentName_.setValue('Enter_user_name');
+			studentName_.setReadOnly( false );
+		}
+		else
+		{
+			studentName_.setValue(this.studentName);
+			studentName_.setReadOnly( true );
+		}
 
 		qtrYearCombo_.setValue(myrecord ? parseInt(myrecord.data.qtrYear) : new Date().getFullYear());
 
@@ -190,17 +199,18 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 	onToolrefreshsubjectsClick: function(tool, e, eOpts) {
 		// Add refresh handler code here.  Use example from chapter 2 of book.
-		//debugger;
+		debugger;
 		window.console.log( 'Refresh' );
-		var mystore = Ext.getStore("subject.SubjectStore");
-		mystore.reload();
+		//var mystore = Ext.getStore("subject.SubjectStore");
+		//mystore.reload();
+		this.onLaunch();
 		//pnl.setTitle( 'Denis' );
 	},
 
 	onNewsubjectsubmitClick: function(button, e, eOpts) {
 		debugger;
 		//var mystore = this.getSubjectStoreStore();
-		window.console.log( "Submit New Subject" );
+		window.console.log( "Create Quarter" );
 		var p_ = button.up('newsubjectform');
 		var f_ = button.up().getForm();
 		var cb_ = p_.down('subjectnamecombobox');
@@ -210,6 +220,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var subjAllRec_ = cb_.getStore().getAt(subjAllIdx_);
 		var subjName_ = null;
 		var subjAllEmpty_ = cb_.getStore().getCount() < 1 ? true : false;
+		var userName = p_.down('#newsubjectform-studentName').getValue();
 
 		if (p_.subjEditMode.charAt(0) == 'r') {
 		    subjName_ = subjAllRec_.data.subjName;
@@ -252,9 +263,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    for( var i_ = 0; i_ < recCnt_; i_++ ) {
 		        r_ = gStore_.getAt(i_);
 		        if (r_ !== null						&&
-		            subjName_ == r_.get('subjName')	&&
-		            qtrName_ == r_.get('qtrName')	&&
-		            qtrYear_ == r_.get('qtrYear'))
+					userName === r_.get('userName') &&
+		            subjName_ === r_.get('subjName')	&&
+		            qtrName_ === r_.get('qtrName')	&&
+		            qtrYear_ === r_.get('qtrYear'))
 		        {
 		            okToSync_ = false;
 		            break;
@@ -264,13 +276,15 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    if (okToSync_) {
 				if (typeof(facultyId) != "undefined" && facultyId !== null )
 				{
+
 					r_ = Ext.create( 'MySchool.model.subject.SubjectsModel' );
 
 					r_.set('subjId', subjAllRec_.get('subjId'));
 
 					r_.set('facultyId', facultyId );
 
-					r_.set('studentName', this.studentName);
+					//r_.set('studentName', this.studentName);
+					r_.set('studentName', userName );
 
 					r_.set('qtrGrade', 0);
 					r_.set('qtrGradeType', gtCB_.getValue());
@@ -295,7 +309,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    else {
 		        Ext.MessageBox.show({
 		            title: 'Submit Exception',
-		            msg: 'Subject and Quarter already related.',
+		            msg: 'Student, Subject, and Quarter already related.',
 		            icon: Ext.MessageBox.ERROR,
 		            buttons: Ext.Msg.OK
 		        });
@@ -726,24 +740,38 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		//debugger;
 		// Use the automatically generated getter to get the store
 		//        debugger;
-		var studentStore_ = Ext.getStore('student.StudentStore');
-		var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
-		var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
-		var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+		//var studentStore_ = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore( 'security.SecurityStore' );
+		//var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
+		//var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
+		//var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+		debugger;
+		securityStore.load({
+			callback: this.onSecurityStoreLoad,
+			scope: this
+			}
+		);
+		//securityStore.load();
+		//var securityRecord = securityStore.getAt(0);
+		//this.userName = securityRecord.get('userName');
+		//this.userRole = securityRecord.get('userRole');
+		//this.studentName = this.userName;
+
+		/*
 		var yr_ = new Date().getFullYear();
 
 		for (var i_ = yr_ - 5; i_ < yr_ + 5; i_++) {
 		    qtrYrStore_.add({name: i_, value: i_});
 		}
 
-		this.studentName = 'denis';
+		//this.studentName = 'denis';
 
 		studentStore_.load({
 		    callback: this.onStudentStoreLoad,
-		    scope: this
-		    //params: {
-		    //    studentName: this.studentName
-		    //}
+		    scope: this,
+		    params: {
+		        studentName: this.studentName
+		    }
 		});
 
 		allSubjectStore_.load({
@@ -758,29 +786,52 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		        filterOn: 'QuarterNames'
 		    }
 		});
+		*/
 
 	},
 
 	onStudentStoreLoad: function() {
 		debugger;
 		var studentStore_ = Ext.getStore('student.StudentStore');
+
 		var r_ = studentStore_.getAt(0);
 		//        debugger
 		if ( typeof( r_ ) != "undefined" ) {
 		    var subjectStore_ = Ext.getStore( 'subject.SubjectStore' );
 		    var studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+
 		    var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
 
-		    g_.setTitle('[' + studentName_ + '] Subjects');
-			this.studentName = r_.get('userName');
-		    subjectStore_.load({
-		        callback: this.onSubjectStoreLoad,
-		        scope: this,
-		        params: {
-		            studentName: r_.get('userName'),
-		            studentId: r_.get('studentId')
-		        }
-		    });
+			if( this.userRole !== "ROLE_USER")
+			{
+				studentName_ = this.userName + '/' + this.userRole;
+				g_.setTitle('[' + studentName_ + '] Subjects');
+				subjectStore_.load({
+					callback: this.onSubjectStoreLoad,
+					scope: this
+				});
+
+			}
+			else
+			{
+				g_.setTitle('[' + studentName_ + '] Subjects');
+
+				//this.studentName = r_.get('userName');
+				subjectStore_.load({
+					callback: this.onSubjectStoreLoad,
+					scope: this,
+					params: {
+						studentName: r_.get('userName'),
+						studentId: r_.get('studentId')
+					}
+				});
+			}
+		}
+		else
+		{
+			//debugger;
+			var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+			g_.setTitle( '[' + this.userName + ']' );
 		}
 	},
 
@@ -795,10 +846,57 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 	},
 
 	onAllSubjectStoreLoad: function() {
-
+		debugger;
 	},
 
 	onCodeStoreLoad: function() {
+
+	},
+
+	onSecurityStoreLoad: function() {
+		var studentStore_ = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore( 'security.SecurityStore' );
+		var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
+		var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
+		var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+
+		var securityRecord = securityStore.getAt(0);
+		var yr_ = new Date().getFullYear();
+
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+		this.studentName = this.userName;
+
+		for (var i_ = yr_ - 5; i_ < yr_ + 5; i_++) {
+		    qtrYrStore_.add({name: i_, value: i_});
+		}
+
+		//this.studentName = 'denis';
+		debugger;
+		//this.onStudentStoreLoad();
+
+		studentStore_.load({
+		    callback: this.onStudentStoreLoad,
+		    scope: this,
+		    params: {
+		        studentName: this.studentName
+		    }
+		});
+
+
+		allSubjectStore_.load({
+		    callback: this.onAllSubjectStoreLoad,
+		    scope: this
+		});
+
+		codeStore_.load({
+		    callback: this.onCodeStoreLoad,
+		    scope: this,
+		    params: {
+		        filterOn: 'QuarterNames'
+		    }
+		});
+
 
 	}
 

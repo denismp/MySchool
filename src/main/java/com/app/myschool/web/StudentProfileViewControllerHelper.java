@@ -898,6 +898,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	/*
 	@Override
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student) {
         HttpHeaders headers = new HttpHeaders();
@@ -942,4 +943,5 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
+	*/
 }

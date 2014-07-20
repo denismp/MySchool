@@ -83,7 +83,7 @@ Ext.define('MySchool.store.daily.MyJsonStore', {
 	},
 
 	onJsonstoreWrite: function(store, operation, eOpts) {
-		//debugger;
+		debugger;
 		console.log("daily.MyJsonStore.onJsonstoreWrite(): called...");
 		store.reload();
 	}

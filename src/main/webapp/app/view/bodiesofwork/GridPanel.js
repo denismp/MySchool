@@ -75,6 +75,7 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 				},
 				{
 					xtype: 'checkcolumn',
+					hidden: true,
 					dataIndex: 'locked',
 					text: 'Locked?',
 					editor: {
@@ -90,7 +91,6 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					hidden: true,
 					dataIndex: 'studentUserName',
 					text: 'Student Name'
 				},

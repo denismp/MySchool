@@ -627,6 +627,7 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	/*
 	@Override
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student) {
         HttpHeaders headers = new HttpHeaders();
@@ -671,4 +672,5 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
+	*/
 }

@@ -48,20 +48,40 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		console.log('onBodiesofworkssubjectsgridViewReady()');
 		var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
 		var ss_ = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore( 'security.SecurityStore');
+		var securityRecord = securityStore.getAt(0);
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+		var studentName_;
+		var g_ = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+
 		var r_ = ss_.getAt(0);
 		//        debugger
-		if ( typeof( r_ ) != "undefined" ) {
-		    var studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
-		    var g_ = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
-		    g_.setTitle('[' + studentName_ + '] Bodies Of Work');
-		    bws_.load({
-		        callback: this.onMyJsonStoreLoad,
-		        scope: this,
-		        params: {
-		            studentName: r_.get('userName'),
-		            studentId: r_.get('studentId')
-		        }
-		    });
+		if ( typeof( r_ ) != "undefined" )
+		{
+			if( this.userRole !== "ROLE_USER")
+			{
+				studentName_ = this.userName + '/' + this.userRole;
+				g_.setTitle( '[' + studentName_  + ']');
+				bws_.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this
+				});
+			}
+			else
+			{
+				studentName_ = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+
+				g_.setTitle('[' + studentName_ + '] Bodies Of Work');
+				bws_.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this,
+					params: {
+						studentName: r_.get('userName'),
+						studentId: r_.get('studentId')
+					}
+				});
+			}
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );
@@ -136,6 +156,14 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		var qsCB_ = newDialog.down('#newbodiesofworkform-quarter');
 
 		studentName_.setValue(ss_.getAt(0).get('userName'));
+		if( this.userRole !== 'ROLE_USER')
+		{
+			studentName_.setReadOnly( false );
+		}
+		else
+		{
+			studentName_.setReadOnly( true );
+		}
 		var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
 		commonQuarterSubjectStore.myLoad();  // Added by Denis Putnam
 
@@ -251,6 +279,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		                    }
 		                }
 
+						debugger;
 
 		                // collect the data from the form.
 		                var studentName = myForm.findField('studentUserName').getSubmitValue();

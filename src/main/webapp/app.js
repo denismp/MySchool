@@ -36,7 +36,8 @@ Ext.application({
 		'faculty.ByStudentModel',
 		'student.StudentProfileModel',
 		'faculty.FacultyTableModel',
-		'student.PasswordModel'
+		'student.PasswordModel',
+		'security.SecurityModel'
 	],
 	stores: [
 		'subject.SubjectStore',
@@ -57,7 +58,8 @@ Ext.application({
 		'faculty.ByStudentStore',
 		'student.StudentProfileStore',
 		'faculty.FacultyTableStore',
-		'student.StudentPasswordStore'
+		'student.StudentPasswordStore',
+		'security.SecurityStore'
 	],
 	views: [
 		'MainPanel',

@@ -133,6 +133,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		Class<SubjectView> myViewClass = SubjectView.class;
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
@@ -142,9 +143,13 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		String studentId_ = getParam(params, "studentId");
 		Stack <Long>subjectStack = new Stack<Long>();
 		List<Student> students = new ArrayList<Student>();
-		if( studentId_ == null )
+		
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		if( studentId_ == null || userRole.equals("ROLE_ADMIN") )
 		{
 			students = Student.findAllStudents();
+			//studentId_ = userName;
 		//	Student student = students.get(0);
 		//	studentId_ = student.getId().toString();
 		}
@@ -158,12 +163,12 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		try
 		{
 			List<SubjectView> subjectViewList	= new ArrayList<SubjectView>();
+			long i = 0;
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
-				
-				long i = 0;
+				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);				
+
 				for (StudentFaculty studentFaculty : studentFacultyList) 
 				{
 					//found						= true;
@@ -216,7 +221,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			
 								subjectViewList.add( myView );
 							}
-							subjectStack.push(subject.getId());
+							//subjectStack.push(subject.getId());
 						}
 					}
 					Collections.sort(subjectViewList, new MyComparator());
@@ -251,6 +256,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return retrieved object.
+		logger.info("RESPONSE: " + response.toString() );
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -833,6 +839,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	/*
 	@Override
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student) {
         HttpHeaders headers = new HttpHeaders();
@@ -877,6 +884,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
+	*/
 	
 	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(@SuppressWarnings("rawtypes") Class myClass, String student) {
 	    //return new ResponseEntity<String>(Student.toJsonArray(Student.findStudentsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);

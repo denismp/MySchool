@@ -152,23 +152,45 @@ Ext.define('MySchool.controller.daily.MyController', {
 		console.log('onDailygridpanelViewReady()');
 		var myStore = Ext.getStore('daily.MyJsonStore');
 		var myStudentStore = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore('security.SecurityStore');
+		var securityRecord = securityStore.getAt(0);
 		var studentRecord = myStudentStore.getAt(0);
-		//        debugger
-		if ( typeof( studentRecord ) != "undefined" ) {
-		    var studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
-		    //MonthlyDetailsGridPanel
-		    //var myGrid = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
-		    var myGrid = this.getDailyGridPanel();
 
-		    myGrid.setTitle('[' + studentName_ + ']');
-		    myStore.load({
-		        callback: this.onMyJsonStoreLoad,
-		        scope: this,
-		        params: {
-		            studentName: studentRecord.get('userName'),
-		            studentId: studentRecord.get('studentId')
-		        }
-		    });
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+		var myGrid = this.getDailyGridPanel();
+		var studentName_;
+
+		//        debugger
+		if ( typeof( studentRecord ) != "undefined" )
+		{
+			if( this.userRole !== 'ROLE_USER')
+			{
+				studentName_ = this.userName + '/' + this.userRole;
+				myGrid.setTitle('[' + studentName_ + ']');
+				myStore.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this
+				});
+			}
+			else
+			{
+				studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
+				//MonthlyDetailsGridPanel
+				//var myGrid = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
+				//var myGrid = this.getDailyGridPanel();
+
+				myGrid.setTitle('[' + studentName_ + ']');
+				myStore.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this,
+					params: {
+						studentName: studentRecord.get('userName'),
+						studentId: studentRecord.get('studentId')
+					}
+				});
+			}
+
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );

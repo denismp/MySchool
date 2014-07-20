@@ -39,6 +39,12 @@ Ext.define('MySchool.store.bodiesofwork.MyJsonStore', {
 				reader: {
 					type: 'json',
 					root: 'data'
+				},
+				listeners: {
+					exception: {
+						fn: me.onRestException,
+						scope: me
+					}
 				}
 			},
 			listeners: {
@@ -49,12 +55,34 @@ Ext.define('MySchool.store.bodiesofwork.MyJsonStore', {
 				load: {
 					fn: me.onJsonstoreLoad,
 					scope: me
+				},
+				add: {
+					fn: me.onJsonstoreAdd,
+					scope: me
 				}
 			}
 		}, cfg)]);
 	},
 
+	onRestException: function(proxy, response, operation, eOpts) {
+		//debugger;
+		var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
+		Ext.MessageBox.show({
+		    title: 'REMOTE EXCEPTION',
+		    msg: smsg,
+		    icon: Ext.MessageBox.ERROR,
+		    buttons: Ext.Msg.OK,
+		    resizeable: true
+		});
+		window.console.log( smsg );
+		if( this.getCount() > 0 )
+		{
+		    this.reload();
+		}
+	},
+
 	onJsonstoreWrite: function(store, operation, eOpts) {
+		debugger;
 		window.console.log( "BodiesOfWorkStore reload...");
 		store.reload();
 	},
@@ -62,6 +90,11 @@ Ext.define('MySchool.store.bodiesofwork.MyJsonStore', {
 	onJsonstoreLoad: function(store, records, successful, eOpts) {
 		//debugger;
 		console.log( "bodiesofwork.MyJsonStore(): load event called...");
+	},
+
+	onJsonstoreAdd: function(store, records, index, eOpts) {
+		debugger;
+		window.console.log( "BodiesOfWorkStore add...");
 	}
 
 });

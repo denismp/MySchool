@@ -46,23 +46,41 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		console.log('onStudentprofilegridpanelViewReady()');
 		var myStore = Ext.getStore('student.StudentProfileStore');
 		var myStudentStore = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore('security.SecurityStore');
+		var securityRecord = securityStore.getAt(0);
 		var studentRecord = myStudentStore.getAt(0);
-		//        debugger
-		if ( typeof( studentRecord ) != "undefined" ) {
-		    var studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
-		    //MonthlyDetailsGridPanel
-		    //var myGrid = Ext.ComponentQuery.query("#bodiesofworkssubjectsgrid")[0];
-		    var myGrid = this.getStudentProfileGridPanel();
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+		var studentName_;
+		var myGrid = this.getStudentProfileGridPanel();
 
-		    myGrid.setTitle('[' + studentName_ + ']');
-		    myStore.load({
-		        callback: this.onMyJsonStoreLoad,
-		        scope: this,
-		        params: {
-		            studentName: studentRecord.get('userName'),
-		            studentId: studentRecord.get('studentId')
-		        }
-		    });
+		//        debugger
+		if ( typeof( studentRecord ) != "undefined" )
+		{
+			if( this.userRole !== "ROLE_USER")
+			{
+				studentName_ = this.userName + '/' + this.userRole;
+
+				myGrid.setTitle('[' + studentName_ + ']');
+				myStore.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this
+				});
+			}
+			else
+			{
+				studentName_ = studentRecord.get('firstName') + " " + studentRecord.get('middleName') + ' ' + studentRecord.get('lastName');
+
+				myGrid.setTitle('[' + studentName_ + ']');
+				myStore.load({
+					callback: this.onMyJsonStoreLoad,
+					scope: this,
+					params: {
+						studentName: studentRecord.get('userName'),
+						studentId: studentRecord.get('studentId')
+					}
+				});
+			}
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );
@@ -213,6 +231,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		window.console.log( "Submit New Student" );
 		var myForm					= button.up().getForm();
 		var myPanel					= button.up();
+		var myGrid					= this.getStudentProfileGridPanel();
 
 		//Get the values from the form and insert a new record into the StudentStore.
 
@@ -228,7 +247,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		var facultyStore= this.getStore('faculty.FacultyTableStore');
 		var facultyComboBox = myPanel.down('#facultynamescombobox');
 
-		var myRecord = myStore.getAt(0);
+		var selectedIndex = myGrid.getSelectionModel().getSelection()[0].index;
+
+		var myRecord = myStore.getAt(selectedIndex);
 
 
 		if( facultyStore.count() > 0 )

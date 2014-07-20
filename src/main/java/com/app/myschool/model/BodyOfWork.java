@@ -20,7 +20,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-@RooJpaActiveRecord(finders = { "findBodyOfWorksBySubject" })
+@RooJpaActiveRecord(finders = { "findBodyOfWorksByQuarter", "findBodyOfWorksByWorkName" })
 public class BodyOfWork {
 
     @NotNull
