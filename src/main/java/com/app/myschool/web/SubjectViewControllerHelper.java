@@ -141,11 +141,13 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
+		/*
 		Stack <Long>subjectStack = new Stack<Long>();
 		List<Student> students = new ArrayList<Student>();
 		
 		String userName = securityHelper.getUserName();
 		String userRole = securityHelper.getUserRole();
+		//securityHelper.findQuarterByStudentAndYearAndQuarterName(student, year, qtrName)
 		if( studentId_ == null || userRole.equals("ROLE_ADMIN") )
 		{
 			students = Student.findAllStudents();
@@ -159,6 +161,8 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			students.add(student);
 		}
 		//String studentName_ = getParam(params, "studentName");
+		 */
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
 		
 		try
 		{

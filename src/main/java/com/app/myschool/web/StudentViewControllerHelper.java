@@ -155,9 +155,13 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		//********************************************************
 		String myLoginInfo = this.login();
 		logger.info("LoginInfo:" + myLoginInfo);
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		/*
 		String[] loginInfo = myLoginInfo.split("/");
 		studentUserName = loginInfo[0];
 		List<Student> students = new ArrayList<Student>();
+		
 		if( studentUserName != null && studentUserName.equals("admin") == false )
 		{
 			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
@@ -174,6 +178,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				students.add(student);
 			}
 		}
+		*/
 		
 		try
 		{
@@ -309,6 +314,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}

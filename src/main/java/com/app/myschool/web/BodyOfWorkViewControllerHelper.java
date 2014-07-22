@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.BodyOfWorkView;
 import com.app.myschool.model.BodyOfWork;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -111,90 +112,36 @@ public class BodyOfWorkViewControllerHelper implements
 		List<BodyOfWorkView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		// String studentName_ = getParam(params, "studentName");
+		logger.info("BodyOfWorkView - GET");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
 
 		try
 		{
-
-			if (studentId_ != null)
+			for( Student student: students )
 			{
-				Student student_ = Student
-						.findStudent(Long.valueOf(studentId_));
-				if (student_ != null)
-				{
-					List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
-					EntityManager em = BodyOfWork.entityManager();
-					StringBuilder qs_ = new StringBuilder("select b.*");
-					List<BodyOfWork> bowl_;
+				String studentId_ = student.getId().toString();
 
-					qs_.append(" from body_of_work b, quarter q, student t");
-					qs_.append(" where b.quarter = q.id");
-					qs_.append(" and q.student = t.id");
-					qs_.append(" and t.id = ");
-					qs_.append(studentId_);
+				EntityManager em = BodyOfWork.entityManager();
+				StringBuilder qs_ = new StringBuilder("select b.*");
+				List<BodyOfWork> bowl_;
 
-					bowl_ = (List<BodyOfWork>) em.createNativeQuery(
-							qs_.toString(), BodyOfWork.class).getResultList();
+				qs_.append(" from body_of_work b, quarter q, student t");
+				qs_.append(" where b.quarter = q.id");
+				qs_.append(" and q.student = t.id");
+				qs_.append(" and t.id = ");
+				qs_.append(studentId_);
 
-					for (BodyOfWork bw_ : bowl_)
-					{
-						Quarter q_ = bw_.getQuarter();
-						Subject u_ = q_.getSubject();
-						BodyOfWorkView bwv_ = new BodyOfWorkView();
+				bowl_ = (List<BodyOfWork>) em.createNativeQuery(
+						qs_.toString(), BodyOfWork.class).getResultList();
 
-						bwv_.setId(bw_.getId());
-						bwv_.setVersion(bw_.getVersion());
-						bwv_.setWorkName(bw_.getWorkName());
-						bwv_.setObjective(bw_.getObjective());
-						bwv_.setWhat(bw_.getWhat());
-						bwv_.setDescription(bw_.getDescription());
-						bwv_.setWhoUpdated(bw_.getWhoUpdated());
-						bwv_.setLastUpdated(bw_.getLastUpdated());
-						bwv_.setLocked(bw_.getLocked());
-						bwv_.setStudentUserName(student_.getUserName());
-						bwv_.setStudentId(student_.getId());
-						bwv_.setSubjId(u_.getId());
-						bwv_.setSubjName(u_.getName());
-						bwv_.setSubjCreditHours(u_.getCreditHours());
-						bwv_.setSubjGradeLevel(u_.getGradeLevel());
-						bwv_.setQtrId(q_.getId());
-						bwv_.setQtrName(q_.getQtrName());
-						bwv_.setQtrYear(q_.getQtr_year());
-
-						bvl_.add(bwv_);
-					}
-					records = bvl_;
-					statusGood = true;
-				}
-			}
-			else if (studentId_ == null)
-			{
-				// Student student_ =
-				// Student.findStudent(Long.valueOf(studentId_));
-				// if (student_ == null) {
-
-				List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
-				/*
-				 * EntityManager em = BodyOfWork.entityManager(); StringBuilder
-				 * qs_ = new StringBuilder("select b.*"); List<BodyOfWork>
-				 * bowl_;
-				 * 
-				 * qs_.append(" from body_of_work b, quarter q, student t");
-				 * qs_.append(" where b.quarter = q.id");
-				 * qs_.append(" and q.student = t.id");
-				 * //qs_.append(" and t.id = "); //qs_.append(studentId_);
-				 * 
-				 * bowl_ =
-				 * (List<BodyOfWork>)em.createNativeQuery(qs_.toString(),
-				 * BodyOfWork.class).getResultList();
-				 */
-				List<BodyOfWork> bowl_ = this.getBodyOfWorkList(null);
 				for (BodyOfWork bw_ : bowl_)
 				{
 					Quarter q_ = bw_.getQuarter();
 					Subject u_ = q_.getSubject();
-					Student student_ = q_.getStudent();
 					BodyOfWorkView bwv_ = new BodyOfWorkView();
 
 					bwv_.setId(bw_.getId());
@@ -206,8 +153,8 @@ public class BodyOfWorkViewControllerHelper implements
 					bwv_.setWhoUpdated(bw_.getWhoUpdated());
 					bwv_.setLastUpdated(bw_.getLastUpdated());
 					bwv_.setLocked(bw_.getLocked());
-					bwv_.setStudentUserName(student_.getUserName());
-					bwv_.setStudentId(student_.getId());
+					bwv_.setStudentUserName(student.getUserName());
+					bwv_.setStudentId(student.getId());
 					bwv_.setSubjId(u_.getId());
 					bwv_.setSubjName(u_.getName());
 					bwv_.setSubjCreditHours(u_.getCreditHours());
@@ -215,17 +162,17 @@ public class BodyOfWorkViewControllerHelper implements
 					bwv_.setQtrId(q_.getId());
 					bwv_.setQtrName(q_.getQtrName());
 					bwv_.setQtrYear(q_.getQtr_year());
+					
+					logger.info("Adding Student=" + bwv_.getStudentUserName() + " workName=" + bwv_.getWorkName() );
 
 					bvl_.add(bwv_);
 				}
-				records = bvl_;
+				em.close();
 				statusGood = true;
-				// }
 			}
+			records = bvl_;
 			if (statusGood)
 			{
-				// records = bodyOfWorkViewList;
-
 				response.setMessage("All " + className + "s retrieved: ");
 				response.setData(records);
 				returnStatus = HttpStatus.OK;
@@ -256,112 +203,11 @@ public class BodyOfWorkViewControllerHelper implements
 				returnStatus);
 	}
 
-	/*
-	 * try { List<BodyOfWork> bodyOfWorkList = this.getList(studentId_);
-	 * List<BodyOfWorkView> bodyOfWorkViewList = new
-	 * ArrayList<BodyOfWorkView>();
-	 * 
-	 * long i = 0; for (BodyOfWork bodyofwork : bodyOfWorkList) { statusGood =
-	 * true; Quarter quarter = bodyofwork.getQuarter(); Subject u_ =
-	 * quarter.getSubject(); Student student_ = quarter.getStudent();
-	 * //Set<BodyOfWork> bodyOfWorkList = quarter.getBodyofworks();
-	 * 
-	 * //for( BodyOfWork bodyOfWork: bodyOfWorkList ) //{ BodyOfWorkView myView
-	 * = new BodyOfWorkView(); myView.setId(++i);
-	 * //myView.setId(bodyofwork.getId());
-	 * //myView.setBodyOfWorkId(bodyOfWork.getId());
-	 * //myView.setBodyOfWorkName(bodyOfWork.getWorkName());
-	 * //myView.setComments(bodyofwork.getComments());
-	 * //myView.setCorrection(bodyofwork.getCorrection());
-	 * //myView.setDaily_day(bodyofwork.getDaily_day());
-	 * //myView.setDaily_hours(bodyofwork.getDaily_hours());
-	 * //myView.setDaily_month(bodyofwork.getDaily_month());
-	 * //myView.setDaily_week(bodyofwork.getDaily_week());
-	 * //myView.setDaily_year(quarter.getQtr_year());
-	 * //myView.setDailyAction(bodyofwork.getDailyAction());
-	 * //myView.setDailyId(bodyofwork.getId());
-	 * //myView.setEvaluation(bodyofwork.getEvaluation());
-	 * myView.setLastUpdated(bodyofwork.getLastUpdated());
-	 * myView.setWhoUpdated(bodyofwork.getWhoUpdated());
-	 * myView.setLocked(bodyofwork.getLocked());
-	 * myView.setStudentUserName(student_.getUserName());
-	 * myView.setStudentId(student_.getId()); myView.setSubjId(u_.getId());
-	 * myView.setSubjName(u_.getName()); myView.setQtrId(quarter.getId());
-	 * myView.setQtrName(quarter.getQtrName());
-	 * myView.setQtrYear(quarter.getQtr_year());
-	 * //myView.setResourcesUsed(bodyofwork.getResourcesUsed());
-	 * //myView.setStudyDetails(bodyofwork.getStudyDetails());
-	 * myView.setVersion(bodyofwork.getVersion()); bodyOfWorkViewList.add(
-	 * myView ); //} } if (statusGood) { records = bodyOfWorkViewList;
-	 * 
-	 * response.setMessage("All " + className + "s retrieved: ");
-	 * response.setData(records); returnStatus = HttpStatus.OK;
-	 * response.setSuccess(true); response.setTotal(records.size()); } else {
-	 * response.setMessage("No records for class=" + className);
-	 * response.setSuccess(false); response.setTotal(0L); statusGood = false;
-	 * returnStatus = HttpStatus.BAD_REQUEST; } } catch(Exception e) {
-	 * e.printStackTrace(); returnStatus = HttpStatus.BAD_REQUEST;
-	 * response.setMessage(e.getMessage()); response.setSuccess(false);
-	 * response.setTotal(0L); }
-	 * 
-	 * // Return retrieved object. return new
-	 * ResponseEntity<String>(response.toString(), headers, returnStatus); }
-	 */
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity<String> listJson()
 	{
 		HashMap parms = new HashMap();
 		return listJson(parms);
-	}
-
-	private ResponseEntity<String> listJsonOld()
-	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=utf-8");
-		// Class<MonthlySummaryRatings> myClass = MonthlySummaryRatings.class;
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-		List<BodyOfWork> records = null;
-		String className = this.myClass.getSimpleName();
-		boolean statusGood = true;
-
-		try
-		{
-			logger.info("GET");
-			records = BodyOfWork.findAllBodyOfWorks();
-			if (records == null)
-			{
-				response.setMessage("No records for class=" + className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-
-			if (statusGood)
-			{
-				response.setMessage("All " + className + "s retrieved: ");
-				response.setData(records);
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
-
-		// Return retrieved object.
-
-		return new ResponseEntity<String>(response.toString(), headers,
-				returnStatus);
-
 	}
 
 	@Override
@@ -438,11 +284,48 @@ public class BodyOfWorkViewControllerHelper implements
 	private Quarter findQuarterByStudentAndYearAndQuarterName(Student student, int year, String qtrName )
 	{
 		Set<Quarter> quarters = student.getQuarters();
-		for( Quarter quarter: quarters)
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		if( userRole.equals( "ROLE_ADMIN") || userRole.equals("ROLE_USER"))
 		{
-			if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+			for( Quarter quarter: quarters)
 			{
-				return quarter;
+				if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+				{
+					return quarter;
+				}
+			}
+		}
+		else
+		{
+			//	Check to see if the student belongs to the faculty.
+			boolean found = false;
+			Set<Faculty> facultyList = student.getFaculty();
+			for( Faculty faculty: facultyList)
+			{
+				if( userName.equals(faculty.getUserName()))
+				{
+					Set<Student> studentList = faculty.getStudents();
+					for( Student myStudent: studentList )
+					{
+						if( myStudent.getId() == student.getId() )
+						{
+							found = true;
+							break;
+						}
+					}
+				}
+			}
+			if( found )
+			{
+				for( Quarter quarter: quarters)
+				{
+					if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+					{
+						return quarter;
+					}
+				}				
 			}
 		}
 		return null;
@@ -688,43 +571,7 @@ public class BodyOfWorkViewControllerHelper implements
 			}
 
 			myView = bowV_;
-			/*
-			 * logger.info(
-			 * "updateFromJson(): Debug just before call to MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson)"
-			 * ); myView = BodyOfWorkView.fromJsonToBodyOfWorkView(myJson);
-			 * logger.info("Debug1");
-			 * logger.info("updateFromJson(): BodyOfWork id=" + myView.getId());
-			 * BodyOfWork record = BodyOfWork.findBodyOfWork(myView.getId());
-			 * //BodyOfWork record =
-			 * MonthlySummaryRatings.findMonthlySummaryRatings
-			 * (myView.getSummaryId());
-			 * 
-			 * record.setLastUpdated(myView.getLastUpdated());
-			 * record.setLocked(myView.getLocked());
-			 * 
-			 * //record.setDaily_day(myView.getDaily_day());
-			 * //record.setDaily(myView.getDaily_week());
-			 * //record.setDaily_month(myView.getDaily_month());
-			 * //record.setComments(myView.getComments());
-			 * //record.setCorrection(myView.getCorrection());
-			 * //record.setDaily_hours(myView.getDaily_hours());
-			 * //record.setDailyAction(myView.getDailyAction());
-			 * //record.setEvaluation(myView.getEvaluation());
-			 * //record.setResourcesUsed(myView.getResourcesUsed());
-			 * //record.setStudyDetails(myView.getStudyDetails());
-			 * record.setLastUpdated(myView.getLastUpdated());
-			 * record.setLocked(myView.getLocked());
-			 * //record.setQuarter(quarter);
-			 * record.setWhoUpdated(myView.getWhoUpdated());
-			 * 
-			 * 
-			 * logger.info("Debug2"); inSync = record.getVersion() ==
-			 * myView.getVersion();
-			 * 
-			 * if( inSync && record.merge() != null ) { logger.info("Debug3");
-			 * myView.setVersion(record.getVersion()); updateGood = true; } else
-			 * { statusGood = false; }
-			 */
+
 			if (statusGood && updateGood)
 			{
 				returnStatus = HttpStatus.OK;

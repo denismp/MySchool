@@ -72,27 +72,36 @@ Ext.define('MySchool.controller.daily.MyController', {
 
 	onDailynewtoolClick: function(tool, e, eOpts) {
 		debugger;
+
 		var studentStore				= Ext.getStore('student.StudentStore');
 		var subjectStore				= Ext.getStore('subject.SubjectStore');
 		var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
+		var securityStore				= Ext.getStore('security.SecurityStore');
 
-		var studentRecord	= studentStore.getAt(0);
-		var studentId		= studentRecord.get( 'id' );
-		var studentName		= studentRecord.get( 'userName' );
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+		//this.studentName = this.userName;
 
-		var newDialog = Ext.create( 'MySchool.view.daily.NewDailyForm' );
+		if( this.userRole === 'ROLE_USER')
+		{
+			var studentRecord	= studentStore.getAt(0);
+			var studentId		= studentRecord.get( 'id' );
+			var studentName		= studentRecord.get( 'userName' );
 
-		newDialog.down('#daily-studentid').setValue( studentId );
-		newDialog.down('#daily-studentname').setValue( studentName );
+			var newDialog = Ext.create( 'MySchool.view.daily.NewDailyForm' );
 
-		//commonQuarterSubjectStore.myLoad();
-		commonMonthStore.myLoad();
+			newDialog.down('#daily-studentid').setValue( studentId );
+			newDialog.down('#daily-studentname').setValue( studentName );
 
-		window.console.log( 'New Daily Dialog' );
+			//commonQuarterSubjectStore.myLoad();
+			commonMonthStore.myLoad();
 
-		newDialog.render( Ext.getBody() );
-		newDialog.show();
+			window.console.log( 'New Daily Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
 	},
 
 	onDailysavetoolClick: function(tool, e, eOpts) {

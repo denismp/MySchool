@@ -5,13 +5,11 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
-
+import java.util.Set;
 
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -20,9 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.WeeklySkillRatingsView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
@@ -81,54 +78,55 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		List<WeeklySkillRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<WeeklySkillRatingsView> weeklySkillRatingsViewList = new ArrayList<WeeklySkillRatingsView>();
 		
 		try
 		{
-			//List<Weekly> weeklySkillRatingsList = this.getList(studentId_);
-			List<SkillRatings> weeklySkillRatingsList = this.getSkillRatingsList(studentId_);
-			List<WeeklySkillRatingsView> weeklySkillRatingsViewList = new ArrayList<WeeklySkillRatingsView>();
-
-			//long i = 0;
-			for (SkillRatings skillRatings : weeklySkillRatingsList) 
+			for( Student student: students )
 			{
-				statusGood = true;
-				//Weekly weekly = skillRatings.getWeekly();
-				Quarter quarter = skillRatings.getQuarter();
-				Subject u_ = quarter.getSubject();
-				Student student_ = quarter.getStudent();
-				WeeklySkillRatingsView weeklySkillRatingsView = new WeeklySkillRatingsView();
+				List<SkillRatings> weeklySkillRatingsList = this.getSkillRatingsList(student.getId().toString());
 
-				//weeklySkillRatingsView.setId(++i);
-				weeklySkillRatingsView.setWeek_month(skillRatings.getWeek_month());
-				weeklySkillRatingsView.setWeek_number(skillRatings.getWeek_number());
-				weeklySkillRatingsView.setId(skillRatings.getId());
-				weeklySkillRatingsView.setWeeklyskillId(skillRatings.getId());
-				//weeklySkillRatingsView.setWeeklyId(weekly.getId());
-				weeklySkillRatingsView.setRemembering(skillRatings.getRemembering());
-				weeklySkillRatingsView.setUnderstanding(skillRatings.getUnderstanding());
-				weeklySkillRatingsView.setApplying(skillRatings.getApplying());
-				weeklySkillRatingsView.setAnalyzing(skillRatings.getAnalyzing());
-				weeklySkillRatingsView.setEvaluating(skillRatings.getEvaluating());
-				weeklySkillRatingsView.setCreating(skillRatings.getCreating());
-				weeklySkillRatingsView.setComments(skillRatings.getComments());
-				weeklySkillRatingsView.setLocked(skillRatings.getLocked());
+				for (SkillRatings skillRatings : weeklySkillRatingsList) 
+				{
+					statusGood = true;
+					Quarter quarter = skillRatings.getQuarter();
+					Subject u_ = quarter.getSubject();
+					Student student_ = quarter.getStudent();
+					WeeklySkillRatingsView weeklySkillRatingsView = new WeeklySkillRatingsView();
+	
+					weeklySkillRatingsView.setWeek_month(skillRatings.getWeek_month());
+					weeklySkillRatingsView.setWeek_number(skillRatings.getWeek_number());
+					weeklySkillRatingsView.setId(skillRatings.getId());
+					weeklySkillRatingsView.setWeeklyskillId(skillRatings.getId());
 
-				weeklySkillRatingsView.setWhoUpdated(skillRatings.getWhoUpdated());
-				weeklySkillRatingsView.setLastUpdated(skillRatings.getLastUpdated());
-
-				weeklySkillRatingsView.setStudentUserName(student_.getUserName());
-				weeklySkillRatingsView.setStudentId(student_.getId());
-				weeklySkillRatingsView.setSubjId(u_.getId());
-				weeklySkillRatingsView.setSubjName(u_.getName());
-				weeklySkillRatingsView.setQtrId(quarter.getId());
-				weeklySkillRatingsView.setQtrName(quarter.getQtrName());
-				weeklySkillRatingsView.setQtrYear(quarter.getQtr_year());
-				weeklySkillRatingsView.setVersion(skillRatings.getVersion());
-
-				weeklySkillRatingsViewList.add(weeklySkillRatingsView);
-				
+					weeklySkillRatingsView.setRemembering(skillRatings.getRemembering());
+					weeklySkillRatingsView.setUnderstanding(skillRatings.getUnderstanding());
+					weeklySkillRatingsView.setApplying(skillRatings.getApplying());
+					weeklySkillRatingsView.setAnalyzing(skillRatings.getAnalyzing());
+					weeklySkillRatingsView.setEvaluating(skillRatings.getEvaluating());
+					weeklySkillRatingsView.setCreating(skillRatings.getCreating());
+					weeklySkillRatingsView.setComments(skillRatings.getComments());
+					weeklySkillRatingsView.setLocked(skillRatings.getLocked());
+	
+					weeklySkillRatingsView.setWhoUpdated(skillRatings.getWhoUpdated());
+					weeklySkillRatingsView.setLastUpdated(skillRatings.getLastUpdated());
+	
+					weeklySkillRatingsView.setStudentUserName(student_.getUserName());
+					weeklySkillRatingsView.setStudentId(student_.getId());
+					weeklySkillRatingsView.setSubjId(u_.getId());
+					weeklySkillRatingsView.setSubjName(u_.getName());
+					weeklySkillRatingsView.setQtrId(quarter.getId());
+					weeklySkillRatingsView.setQtrName(quarter.getQtrName());
+					weeklySkillRatingsView.setQtrYear(quarter.getQtr_year());
+					weeklySkillRatingsView.setVersion(skillRatings.getVersion());
+	
+					weeklySkillRatingsViewList.add(weeklySkillRatingsView);
+					
+				}
 			}
 			if (statusGood)
 			{
@@ -159,6 +157,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -258,7 +257,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( WeeklySkillRatingsView myView ) throws Exception
+	private boolean isDupOLD( WeeklySkillRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -286,16 +285,90 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		}
 		return false;
 	}
-	
+	private boolean isDup( WeeklySkillRatingsView myView ) throws Exception
+	{		
+		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+		Quarter quarter = this.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
+
+		List<SkillRatings> weeklySkillRatingsList = this.getSkillRatingsList(student.getId().toString());
+		
+		for (SkillRatings skillRatings : weeklySkillRatingsList) 
+		{
+			if( 
+					skillRatings.getWeek_month() == myView.getWeek_month() &&
+					skillRatings.getWeek_number() == myView.getWeek_number() &&
+					skillRatings.getQuarter() == quarter &&
+					quarter.getStudent().getUserName().equals( myView.getStudentUserName() ) &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	private Quarter findQuarterByStudentAndYearAndQuarterName(Student student, int year, String qtrName )
+	{
+		Set<Quarter> quarters = student.getQuarters();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		if( userRole.equals( "ROLE_ADMIN") || userRole.equals("ROLE_USER"))
+		{
+			for( Quarter quarter: quarters)
+			{
+				if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+				{
+					return quarter;
+				}
+			}
+		}
+		else
+		{
+			//	Check to see if the student belongs to the faculty.
+			boolean found = false;
+			Set<Faculty> facultyList = student.getFaculty();
+			for( Faculty faculty: facultyList)
+			{
+				if( userName.equals(faculty.getUserName()))
+				{
+					Set<Student> studentList = faculty.getStudents();
+					for( Student myStudent: studentList )
+					{
+						if( myStudent.getId() == student.getId() )
+						{
+							found = true;
+							break;
+						}
+					}
+				}
+			}
+			if( found )
+			{
+				for( Quarter quarter: quarters)
+				{
+					if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+					{
+						return quarter;
+					}
+				}				
+			}
+		}
+		return null;
+	}	
 	@Override
-	public ResponseEntity<String> createFromJson(String json) {
+	public ResponseEntity<String> createFromJson(String json) 
+	{
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
 		HttpStatus returnStatus = HttpStatus.OK;
 		
 		JsonObjectResponse response = new JsonObjectResponse();
 
-		try {
+		try 
+		{
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
 			logger.info( "createFromJson():myjson=" + myJson );
 			logger.info( "createFromJson():Encoded JSON=" + json );
@@ -303,49 +376,52 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			WeeklySkillRatingsView myView = WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
-			//WeeklySkillRatingsView myView = WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
+			
+			//	Find the correct student.
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+			
 			if( !this.isDup(myView) )
 			{
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				//Subject u_ = quarter.getSubject();
-				//Student student_ = quarter.getStudent();
-				
-				record.setWeek_month(myView.getWeek_month());
-				record.setWeek_number(myView.getWeek_number());
-				record.setAnalyzing(myView.getAnalyzing());
-				record.setApplying(myView.getApplying());
-				record.setCreating(myView.getCreating());
-				record.setEvaluating(myView.getEvaluating());
-				record.setLocked(myView.getLocked());
-				record.setRemembering(myView.getRemembering());
-				record.setUnderstanding(myView.getUnderstanding());
-				record.setQuarter(quarter);
-				record.setComments(myView.getComments());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				((SkillRatings)record).persist();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-
-				myView.setWeeklyskillId(record.getId());
-
-				//myView.setSummaryId(record.getId());
-				
-				//myView.setId(100000L + record.getId());
+				//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//****************************************************
+				//	Find the quarter for the student/qtrName/qtrYear.
+				//****************************************************
+				Quarter quarter = this
+						.findQuarterByStudentAndYearAndQuarterName(student,
+								myView.getQtrYear().intValue(),
+								myView.getQtrName());
+				if (quarter != null)
+				{
+					record.setWeek_month(myView.getWeek_month());
+					record.setWeek_number(myView.getWeek_number());
+					record.setAnalyzing(myView.getAnalyzing());
+					record.setApplying(myView.getApplying());
+					record.setCreating(myView.getCreating());
+					record.setEvaluating(myView.getEvaluating());
+					record.setLocked(myView.getLocked());
+					record.setRemembering(myView.getRemembering());
+					record.setUnderstanding(myView.getUnderstanding());
+					record.setQuarter(quarter);
+					record.setComments(myView.getComments());
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setWhoUpdated(myView.getWhoUpdated());
+					
+					((SkillRatings)record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
 	
-				//record = Weekly.fromJsonToWeekly(myJson);
-				//if( record != null )
-				//	((Weekly)record).persist();
-				//else
-				//{
-				//	response.setMessage( "No data for class=" + className );
-				//	response.setSuccess(false);
-				//	response.setTotal(0L);	
-				//	statusGood = false;
-				//	returnStatus = HttpStatus.BAD_REQUEST;
-				//}
+					myView.setWeeklyskillId(record.getId());
+				}
+				else
+				{
+					statusGood = false;
+					response.setMessage( "Unable to locate the Student/qtrName/qtrYear" );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;
+				}
 				if( statusGood )
 				{
 		            returnStatus = HttpStatus.CREATED;
@@ -358,14 +434,16 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			else
 			{
 				statusGood = false;
-				response.setMessage( "Duplicated month/week number." );
+				response.setMessage( "Duplicated student/month/week number." );
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
@@ -374,7 +452,8 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		}
 
 		// Return the created record with the new system generated id
-         return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
+		logger.info(response.toString());
+        return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
 
 	@Override
 	public ResponseEntity<String> deleteFromJson( Long id) {

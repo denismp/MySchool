@@ -13,7 +13,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString(excludeFields={"quarters"})
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findFacultysByUserNameEquals" })
 @RooJson
 public class Faculty extends Person {
 

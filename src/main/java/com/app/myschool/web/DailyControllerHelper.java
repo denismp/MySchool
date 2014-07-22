@@ -80,36 +80,33 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		List<DailyView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<DailyView> dailyViewList	= new ArrayList<DailyView>();
+		long i = 0;
 		
 		try
 		{
-			List<Daily> dailyList			= this.getList(studentId_);
-			List<DailyView> dailyViewList	= new ArrayList<DailyView>();
-			
-			long i = 0;
-			for (Daily daily : dailyList) 
+			for( Student student: students )
 			{
-				statusGood						= true;
-				Quarter quarter					= daily.getQuarter();
-				Subject u_						= quarter.getSubject();
-				Student student_				= quarter.getStudent();
-				//Set<BodyOfWork> bodyOfWorkList	= quarter.getBodyofworks();
-				
-				//for( BodyOfWork bodyOfWork: bodyOfWorkList )
-				//{
+				List<Daily> dailyList			= this.getList(student.getId().toString());
+	
+				for (Daily daily : dailyList) 
+				{
+					statusGood						= true;
+					Quarter quarter					= daily.getQuarter();
+					Subject u_						= quarter.getSubject();
 					DailyView myView			= new DailyView();
 					myView.setId(++i);
-					//myView.setId(daily.getId());
-					//myView.setBodyOfWorkId(bodyOfWork.getId());
-					//myView.setBodyOfWorkName(bodyOfWork.getWorkName());
+
 					myView.setComments(daily.getComments());
 					myView.setCorrection(daily.getCorrection());
 					myView.setDaily_day(daily.getDaily_day());
 					myView.setDaily_hours(daily.getDaily_hours());
 					myView.setDaily_month(daily.getDaily_month());
-					//myView.setDaily_week(daily.getDaily_week());
+
 					myView.setDaily_year(quarter.getQtr_year());
 					myView.setDailyAction(daily.getDailyAction());
 					myView.setDailyId(daily.getId());
@@ -117,8 +114,8 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 					myView.setLastUpdated(daily.getLastUpdated());
 					myView.setWhoUpdated(daily.getWhoUpdated());
 					myView.setLocked(daily.getLocked());
-					myView.setStudentUserName(student_.getUserName());
-					myView.setStudentId(student_.getId());
+					myView.setStudentUserName(student.getUserName());
+					myView.setStudentId(student.getId());
 					myView.setSubjId(u_.getId());
 					myView.setSubjName(u_.getName());
 					myView.setQtrId(quarter.getId());
@@ -128,7 +125,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 					myView.setStudyDetails(daily.getStudyDetails());
 					myView.setVersion(daily.getVersion());
 					dailyViewList.add( myView );
-				//}
+				}
 			}
 			if (statusGood)
 			{
@@ -159,6 +156,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}

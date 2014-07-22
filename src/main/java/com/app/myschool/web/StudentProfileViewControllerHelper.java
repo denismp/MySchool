@@ -260,6 +260,10 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		boolean found = false;
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		String studentId_ = null;
+		/*
 		String studentId_ = getParam(params, "studentId");
 		String studentUserName = getParam(params,"studentName");
 		List<Student> students = new ArrayList<Student>();
@@ -279,6 +283,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				students.add(student);
 			}
 		}
+		*/
 		
 		try
 		{
@@ -402,6 +407,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}

@@ -74,6 +74,7 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				},
 				{
 					xtype: 'checkcolumn',
+					hidden: true,
 					dataIndex: 'locked',
 					text: 'Locked?',
 					editor: {
@@ -102,7 +103,6 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					hidden: true,
 					dataIndex: 'studentUserName',
 					text: 'studentUserName'
 				},
@@ -119,6 +119,7 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				},
 				{
 					xtype: 'numbercolumn',
+					hidden: true,
 					dataIndex: 'version',
 					text: 'version',
 					format: '000000'

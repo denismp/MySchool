@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -23,7 +24,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Faculty;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.SecurityView;
+import com.app.myschool.model.Student;
 
 public class SecurityViewControllerHelper implements
 		ControllerHelperInterface
@@ -132,7 +136,30 @@ public class SecurityViewControllerHelper implements
 		
 		return userRole;		
 	}
-
+	
+	public List<Student> findStudentsByLoginUserRole()
+	{
+		String userName = this.getUserName();
+		String userRole = this.getUserRole();
+		List<Student> students = null;
+		
+		if( userRole.equals("ROLE_ADMIN"))
+		{
+			students = Student.findAllStudents();
+		}
+		else if( userRole.equals("ROLE_FACULTY"))
+		{
+			Faculty faculty = Faculty.findFacultysByUserNameEquals(userName).getSingleResult();
+			Set<Student> studentSet = faculty.getStudents();
+			students = new ArrayList<Student>(studentSet);
+		}
+		else
+		{
+			students = Student.findStudentsByUserNameEquals(userName).getResultList();
+		}
+		return students;
+	}
+	
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Map params)
 	{

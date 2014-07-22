@@ -46,6 +46,15 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 					title: 'Skills Fields',
 					items: [
 						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'skills-studentname',
+							fieldLabel: 'Student User Name',
+							name: 'studentUserName',
+							readOnly: true,
+							allowBlank: false
+						},
+						{
 							xtype: 'commonquartersubjectcombobox',
 							anchor: '100%'
 						},
@@ -117,13 +126,6 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 							fieldLabel: 'comments',
 							name: 'comments',
 							value: 'comments'
-						},
-						{
-							xtype: 'hiddenfield',
-							anchor: '100%',
-							itemId: 'skills-studentname',
-							fieldLabel: 'studentname',
-							name: 'studentUserName'
 						},
 						{
 							xtype: 'hiddenfield',
