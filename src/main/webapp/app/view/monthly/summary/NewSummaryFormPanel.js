@@ -45,6 +45,14 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 					title: 'Monthly Summary Fields',
 					items: [
 						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'newmonthlysummary-studentname',
+							fieldLabel: 'studentname',
+							name: 'studentname',
+							readOnly: true
+						},
+						{
 							xtype: 'commonquartersubjectcombobox',
 							anchor: '100%'
 						},
@@ -129,13 +137,6 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 							itemId: 'newmonthlysummary-quarterid',
 							fieldLabel: 'quarterid',
 							name: 'quarterId'
-						},
-						{
-							xtype: 'hiddenfield',
-							anchor: '100%',
-							itemId: 'newmonthlysummary-studentname',
-							fieldLabel: 'studentname',
-							name: 'studentname'
 						},
 						{
 							xtype: 'hiddenfield',

@@ -105,20 +105,35 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 
 	onWeeklyevaluationnewtoolClick: function(tool, e, eOpts) {
 		debugger;
-		var studentStore				= Ext.getStore('student.StudentStore');
-		var subjectStore				= Ext.getStore('subject.SubjectStore');
-		var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		//var studentStore				= Ext.getStore('student.StudentStore');
+		//var subjectStore				= Ext.getStore('subject.SubjectStore');
+		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		var securityStore				= Ext.getStore( 'security.SecurityStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
+		var myGrid = this.getWeeklyEvaluationsGridPanel();
+		var gridModel = myGrid.getSelectionModel();
+		var selectedRecord = gridModel.getSelection()[0];
+		//var row = myGrid.getStore().indexOf(selectedRecord);
+		var securityRecord				= securityStore.getAt(0);
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
 
-		var studentRecord	= studentStore.getAt(0);
-		var studentId		= studentRecord.get( 'id' );
-		var studentName		= studentRecord.get( 'userName' );
+		//var studentRecord	= studentStore.getAt(0);
+		var studentId		= selectedRecord.get( 'studentId' );
+		var studentName		= selectedRecord.get( 'studentUserName' );
 
 		var newDialog = Ext.create( 'MySchool.view.weekly.evaluations.NewForm' );
 
 		newDialog.down('#evaluation-studentid').setValue( studentId );
 		newDialog.down('#evaluation-studentname').setValue( studentName );
-
+		if( this.userRole !== 'ROLE_USER')
+		{
+			newDialog.down('#evaluation-studentname').setReadOnly( false );
+		}
+		else
+		{
+			newDialog.down('#evaluation-studentname').setReadOnly( true );
+		}
 		//commonQuarterSubjectStore.myLoad();
 		commonMonthStore.myLoad();
 
@@ -176,13 +191,13 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 		//	Get the stores that we will need
 		var myStore		= this.getStore( 'weekly.EvaluationsRatingsStore' );
 
-		var studentStore = Ext.getStore('student.StudentStore');
+		//var studentStore = Ext.getStore('student.StudentStore');
 		var subjectStore = Ext.getStore( 'subject.SubjectStore' );
 
 		//	Get the student info
-		var studentRecord	= studentStore.getAt(0);
-		var studentId		= studentRecord.get( 'id' );
-		var studentName		= studentRecord.get( 'userName' );
+		//var studentRecord	= studentStore.getAt(0);
+		//var studentId		= studentRecord.get( 'id' );
+		//var studentName		= studentRecord.get( 'userName' );
 
 		//	Get the quarterSubject record from the form.
 		var quarterSubjectId		= formValues.comboquartersubject;
@@ -220,8 +235,8 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 		        myRecord.set('subjId', subjId );
 		        myRecord.set('qtrName', qtrName );
 		        myRecord.set('qtrId', qtrId);
-		        myRecord.set('studentId', studentId);
-		        myRecord.set('studentUserName', studentName);
+		        myRecord.set('studentId', formValues.studentId);
+		        myRecord.set('studentUserName', formValues.studentUserName);
 		        myRecord.set('qtrYear', qtrYear);
 
 		        myRecord.set('locked', 0 );

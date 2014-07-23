@@ -72,6 +72,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
 				},
 				{
 					xtype: 'checkcolumn',
+					hidden: true,
 					dataIndex: 'locked',
 					text: 'Locked?',
 					editor: {
@@ -91,6 +92,7 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
 				},
 				{
 					xtype: 'numbercolumn',
+					hidden: true,
 					dataIndex: 'version',
 					text: 'version',
 					format: '000000'

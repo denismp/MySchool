@@ -151,6 +151,7 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 				},
 				{
 					xtype: 'checkcolumn',
+					hidden: true,
 					dataIndex: 'locked',
 					menuText: 'false',
 					text: 'Locked?',
@@ -187,13 +188,13 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 				},
 				{
 					xtype: 'numbercolumn',
+					hidden: true,
 					dataIndex: 'version',
 					text: 'version',
 					format: '000000'
 				},
 				{
 					xtype: 'gridcolumn',
-					hidden: true,
 					dataIndex: 'studentUserName',
 					text: 'studentUserName'
 				},

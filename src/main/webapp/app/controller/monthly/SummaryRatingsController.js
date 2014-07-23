@@ -185,19 +185,40 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
 	onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
 		debugger;
-		var studentStore = Ext.getStore('student.StudentStore');
-		var subjectStore = Ext.getStore( 'subject.SubjectStore');
-		var commonQuarterSubjectStore = Ext.getStore( 'common.QuarterSubjectStore');
-		var commonMonthStore = Ext.getStore('common.MonthStore');
+		//var studentStore = Ext.getStore('student.StudentStore');
+		//var subjectStore = Ext.getStore( 'subject.SubjectStore');
+		//var commonQuarterSubjectStore = Ext.getStore( 'common.QuarterSubjectStore');
+		//var commonMonthStore = Ext.getStore('common.MonthStore');
+		var securityStore				= Ext.getStore( 'security.SecurityStore');
+		var commonMonthStore			= Ext.getStore('common.MonthStore');
+		var myGrid = this.getMonthlyDetailsGridPanel();
+		var gridModel = myGrid.getSelectionModel();
+		var selectedRecord = gridModel.getSelection()[0];
+		//var row = myGrid.getStore().indexOf(selectedRecord);
+		var securityRecord				= securityStore.getAt(0);
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
 
-		var studentRecord = studentStore.getAt(0);
-		var studentId = studentRecord.get( 'id' );
-		var studentName = studentRecord.get( 'userName' );
+		//var studentRecord	= studentStore.getAt(0);
+		var studentId		= selectedRecord.get( 'studentId' );
+		var studentName		= selectedRecord.get( 'studentUserName' );
+
+		//var studentRecord = studentStore.getAt(0);
+		//var studentId = studentRecord.get( 'id' );
+		//var studentName = studentRecord.get( 'userName' );
 
 		var newDialog = Ext.create( 'MySchool.view.monthly.summary.NewSummaryFormPanel' );
 
 		newDialog.down('#newmonthlysummary-studentid').setValue( studentId );
 		newDialog.down('#newmonthlysummary-studentname').setValue( studentName );
+		if( this.userRole !== 'ROLE_USER')
+		{
+			newDialog.down('#newmonthlysummary-studentname').setReadOnly( false );
+		}
+		else
+		{
+			newDialog.down('#newmonthlysummary-studentname').setReadOnly( true );
+		}
 
 		//commonQuarterSubjectStore.myLoad();
 		commonMonthStore.myLoad();
@@ -235,13 +256,13 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 		//	Get the stores that we will need
 		var summaryRatingsStore		= this.getStore( 'monthly.SummaryRatingsStore' );
 
-		var studentStore = Ext.getStore('student.StudentStore');
+		//var studentStore = Ext.getStore('student.StudentStore');
 		var subjectStore = Ext.getStore( 'subject.SubjectStore' );
 
 		//	Get the student info
-		var studentRecord	= studentStore.getAt(0);
-		var studentId		= studentRecord.get( 'id' );
-		var studentName		= studentRecord.get( 'userName' );
+		//var studentRecord	= studentStore.getAt(0);
+		//var studentId		= studentRecord.get( 'id' );
+		//var studentName		= studentRecord.get( 'userName' );
 
 		//	Get the quarterSubject record from the form.
 		var quarterSubjectId		= formValues.comboquartersubject;
@@ -278,8 +299,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 		        summaryRatingsRecord.set('subjId', subjId );
 		        summaryRatingsRecord.set('qtrName', qtrName );
 		        summaryRatingsRecord.set('qtrId', qtrId);
-		        summaryRatingsRecord.set('studentId', studentId);
-		        summaryRatingsRecord.set('studentUserName', studentName);
+		        summaryRatingsRecord.set('studentId', formValues.studentd);
+		        summaryRatingsRecord.set('studentUserName', formValues.studentname);
 		        summaryRatingsRecord.set('qtrYear', qtrYear);
 		        summaryRatingsRecord.set('locked', 0 );
 		        summaryRatingsRecord.set('feelings', formValues.feelings);

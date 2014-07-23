@@ -5,13 +5,10 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -20,10 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.MonthlySummaryRatingsView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -80,71 +75,74 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		List<MonthlySummaryRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<MonthlySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthlySummaryRatingsView>();
 		
 		try
 		{
-			List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(studentId_);
-			List<MonthlySummaryRatingsView> monthlySummaryRatingsViewList = new ArrayList<MonthlySummaryRatingsView>();
-
-			//long i = 0;
-			for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+			for( Student student: students )
 			{
-				statusGood = true;
-				Quarter quarter = monthlySummaryRatings.getQuarter();
-				Subject u_ = quarter.getSubject();
-				Student student_ = quarter.getStudent();
-				MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
-
-				//monthlySummaryRatingsView.setId(++i);
-				monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
-				monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
-				monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
-				
-				monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
-				monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
-				monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
-				monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
-				monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
-				monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());
-				monthlySummaryRatingsView.setRealizations(monthlySummaryRatings.getRealizations());
-				monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-				monthlySummaryRatingsView.setComments(monthlySummaryRatings.getComments());
-				monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-
-				monthlySummaryRatingsView.setWhoUpdated(monthlySummaryRatings.getWhoUpdated());
-				monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
-				monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
-				monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
-				monthlySummaryRatingsView.setStudentId(student_.getId());
-				monthlySummaryRatingsView.setSubjId(u_.getId());
-				monthlySummaryRatingsView.setSubjName(u_.getName());
-				monthlySummaryRatingsView.setQtrId(quarter.getId());
-				monthlySummaryRatingsView.setQtrName(quarter.getQtrName());
-				monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
-
-
-				monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);
-				
-			}
-			if (statusGood)
-			{
-				records = monthlySummaryRatingsViewList;			
-
-				response.setMessage("All " + className + "s retrieved: ");
-				response.setData(records);
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-			else
-			{
-				response.setMessage("No records for class=" + className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;				
+				List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString());
+	
+				//long i = 0;
+				for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+				{
+					statusGood = true;
+					Quarter quarter = monthlySummaryRatings.getQuarter();
+					Subject u_ = quarter.getSubject();
+					Student student_ = quarter.getStudent();
+					MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
+	
+					//monthlySummaryRatingsView.setId(++i);
+					monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
+					monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
+					monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
+					
+					monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
+					monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
+					monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
+					monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
+					monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
+					monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());
+					monthlySummaryRatingsView.setRealizations(monthlySummaryRatings.getRealizations());
+					monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
+					monthlySummaryRatingsView.setComments(monthlySummaryRatings.getComments());
+					monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
+	
+					monthlySummaryRatingsView.setWhoUpdated(monthlySummaryRatings.getWhoUpdated());
+					monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
+					monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
+					monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
+					monthlySummaryRatingsView.setStudentId(student_.getId());
+					monthlySummaryRatingsView.setSubjId(u_.getId());
+					monthlySummaryRatingsView.setSubjName(u_.getName());
+					monthlySummaryRatingsView.setQtrId(quarter.getId());
+					monthlySummaryRatingsView.setQtrName(quarter.getQtrName());
+					monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
+		
+					monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);					
+				}
+				if (statusGood)
+				{
+					records = monthlySummaryRatingsViewList;			
+	
+					response.setMessage("All " + className + "s retrieved: ");
+					response.setData(records);
+					returnStatus = HttpStatus.OK;
+					response.setSuccess(true);
+					response.setTotal(records.size());
+				}
+				else
+				{
+					response.setMessage("No records for class=" + className);
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;				
+				}
 			}
 		}
 		catch(Exception e)
@@ -157,6 +155,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -254,7 +253,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( MonthlySummaryRatingsView myView ) throws Exception
+	private boolean isDupOLD( MonthlySummaryRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -279,7 +278,36 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		}
 		return false;
 	}
-	
+	private boolean isDup( MonthlySummaryRatingsView myView ) throws Exception
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
+
+		//Integer monthNumber = myView.getMonth_number();
+		//Long studentId = myView.getStudentId();
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Student student = Student.findStudent(myView.getStudentId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
+		List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString());
+		
+
+		for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+		{
+			if( 
+					monthlySummaryRatings.getMonth_number() == myView.getMonth_number() && 
+					monthlySummaryRatings.getQuarter() == quarter &&
+					quarter.getStudent().getUserName().equals(myView.getStudentUserName()) &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}	
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -296,46 +324,54 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
-			//MonthlySummaryRatingsView myView = MonthlySummaryRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
+
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			//	Find the correct student.
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+			
+
 			if( !this.isDup(myView) )
 			{
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				//Subject u_ = quarter.getSubject();
-				//Student student_ = quarter.getStudent();
-				
-				record.setActionResults(myView.getActionResults());
-				record.setComments(myView.getComments());
-				record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
-				record.setFeelings(myView.getFeelings());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setLocked(myView.getLocked());
-				record.setMonth_number(myView.getMonth_number());
-				record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
-				record.setPlannedChanges(myView.getPlannedChanges());
-				record.setQuarter(quarter);
-				record.setRealizations(myView.getRealizations());
-				record.setReflections(myView.getReflections());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				((MonthlySummaryRatings)record).persist();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-				myView.setSummaryId(record.getId());
-				
-				//myView.setId(100000L + record.getId());
-	
-				//record = MonthlySummaryRatings.fromJsonToMonthlySummaryRatings(myJson);
-				//if( record != null )
-				//	((MonthlySummaryRatings)record).persist();
-				//else
-				//{
-				//	response.setMessage( "No data for class=" + className );
-				//	response.setSuccess(false);
-				//	response.setTotal(0L);	
-				//	statusGood = false;
-				//	returnStatus = HttpStatus.BAD_REQUEST;
-				//}
+				//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//****************************************************
+				//	Find the quarter for the student/qtrName/qtrYear.
+				//****************************************************
+				Quarter quarter = securityHelper
+						.findQuarterByStudentAndYearAndQuarterName(student,
+								myView.getQtrYear().intValue(),
+								myView.getQtrName());
+				if (quarter != null)
+				{
+					record.setActionResults(myView.getActionResults());
+					record.setComments(myView.getComments());
+					record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
+					record.setFeelings(myView.getFeelings());
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setLocked(myView.getLocked());
+					record.setMonth_number(myView.getMonth_number());
+					record.setPatternsOfCorrections(myView.getPatternsOfCorrections());
+					record.setPlannedChanges(myView.getPlannedChanges());
+					record.setQuarter(quarter);
+					record.setRealizations(myView.getRealizations());
+					record.setReflections(myView.getReflections());
+					record.setWhoUpdated(myView.getWhoUpdated());
+					
+					((MonthlySummaryRatings)record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+					myView.setSummaryId(record.getId());				
+				}
+				else
+				{
+					statusGood = false;
+					response.setMessage( "Unable to locate the Student/qtrName/qtrYear" );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;					
+				}
 				if( statusGood )
 				{
 		            returnStatus = HttpStatus.CREATED;
@@ -354,8 +390,9 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 				returnStatus = HttpStatus.CONFLICT;
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
-
-		} catch(Exception e) {
+		}
+		catch(Exception e) 
+		{
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -363,6 +400,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		}
 
 		// Return the created record with the new system generated id
+		logger.info(response.toString());
          return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
 
 	@Override

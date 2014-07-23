@@ -203,7 +203,7 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 		//	Get the stores that we will need
 		var myStore		= this.getStore( 'weekly.SkillRatingsStore' );
 
-		var studentStore = Ext.getStore('student.StudentStore');
+		//var studentStore = Ext.getStore('student.StudentStore');
 		var subjectStore = Ext.getStore( 'subject.SubjectStore' );
 
 		//	Get the student info

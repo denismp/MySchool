@@ -286,9 +286,10 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		return false;
 	}
 	private boolean isDup( WeeklySkillRatingsView myView ) throws Exception
-	{		
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
-		Quarter quarter = this.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
 
 		List<SkillRatings> weeklySkillRatingsList = this.getSkillRatingsList(student.getId().toString());
 		
@@ -309,7 +310,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 		}
 		return false;
 	}
-	private Quarter findQuarterByStudentAndYearAndQuarterName(Student student, int year, String qtrName )
+	private Quarter findQuarterByStudentAndYearAndQuarterNameOLD(Student student, int year, String qtrName )
 	{
 		Set<Quarter> quarters = student.getQuarters();
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
@@ -376,6 +377,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			WeeklySkillRatingsView myView = WeeklySkillRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			
 			//	Find the correct student.
 			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
@@ -386,7 +388,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 				//****************************************************
 				//	Find the quarter for the student/qtrName/qtrYear.
 				//****************************************************
-				Quarter quarter = this
+				Quarter quarter = securityHelper
 						.findQuarterByStudentAndYearAndQuarterName(student,
 								myView.getQtrYear().intValue(),
 								myView.getQtrName());

@@ -5,13 +5,10 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -20,9 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.EvaluationRatingsView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Student;
@@ -80,54 +75,59 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 		List<EvaluationRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<EvaluationRatingsView> evaluationRatingsViewList = new ArrayList<EvaluationRatingsView>();
 		
 		try
 		{
-			List<EvaluationRatings> evaluationRatingsList = this.getEvaluationRatingsList(studentId_);
-			List<EvaluationRatingsView> evaluationRatingsViewList = new ArrayList<EvaluationRatingsView>();
-
-			//long i = 0;
-			for (EvaluationRatings evaluationRatings : evaluationRatingsList) 
+			for( Student student: students )
 			{
-				statusGood = true;
-				Quarter quarter = evaluationRatings.getQuarter();
-				Subject u_ = quarter.getSubject();
-				Student student_ = quarter.getStudent();
-				EvaluationRatingsView evaluationRatingsView = new EvaluationRatingsView();
-
-				//evaluationRatingsView.setId(++i);
-				evaluationRatingsView.setWeek_month(evaluationRatings.getWeek_month());
-				evaluationRatingsView.setWeek_number(evaluationRatings.getWeek_number());
-				evaluationRatingsView.setId(evaluationRatings.getId());
-				evaluationRatingsView.setWeeklyevaluationId(evaluationRatings.getId());
-				evaluationRatingsView.setAccuracyOfWork(evaluationRatings.getAccuracyOfWork());
-				evaluationRatingsView.setComplexityOfWork(evaluationRatings.getComplexityOfWork());
-				evaluationRatingsView.setConsistency(evaluationRatings.getConsistency());
-				evaluationRatingsView.setEffectiveUseOfStudyTime(evaluationRatings.getEffectiveUseOfStudyTime());
-				evaluationRatingsView.setGrowth(evaluationRatings.getGrowth());
-				evaluationRatingsView.setMotivation(evaluationRatings.getMotivation());
-				evaluationRatingsView.setOrganization(evaluationRatings.getOrganization());
-				evaluationRatingsView.setQualityOfWork(evaluationRatings.getQualityOfWork());
-
-				evaluationRatingsView.setComments(evaluationRatings.getComments());
-				evaluationRatingsView.setLocked(evaluationRatings.getLocked());
-
-				evaluationRatingsView.setWhoUpdated(evaluationRatings.getWhoUpdated());
-				evaluationRatingsView.setLastUpdated(evaluationRatings.getLastUpdated());
-
-				evaluationRatingsView.setStudentUserName(student_.getUserName());
-				evaluationRatingsView.setStudentId(student_.getId());
-				evaluationRatingsView.setSubjId(u_.getId());
-				evaluationRatingsView.setSubjName(u_.getName());
-				evaluationRatingsView.setQtrId(quarter.getId());
-				evaluationRatingsView.setQtrName(quarter.getQtrName());
-				evaluationRatingsView.setQtrYear(quarter.getQtr_year());
-				evaluationRatingsView.setVersion(evaluationRatings.getVersion());
-
-				evaluationRatingsViewList.add(evaluationRatingsView);
-				
+				List<EvaluationRatings> evaluationRatingsList = this.getEvaluationRatingsList(student.getId().toString());
+	
+				//long i = 0;
+				for (EvaluationRatings evaluationRatings : evaluationRatingsList) 
+				{
+					statusGood = true;
+					Quarter quarter = evaluationRatings.getQuarter();
+					Subject u_ = quarter.getSubject();
+					Student student_ = quarter.getStudent();
+					EvaluationRatingsView evaluationRatingsView = new EvaluationRatingsView();
+	
+					//evaluationRatingsView.setId(++i);
+					evaluationRatingsView.setWeek_month(evaluationRatings.getWeek_month());
+					evaluationRatingsView.setWeek_number(evaluationRatings.getWeek_number());
+					evaluationRatingsView.setId(evaluationRatings.getId());
+					evaluationRatingsView.setWeeklyevaluationId(evaluationRatings.getId());
+					evaluationRatingsView.setAccuracyOfWork(evaluationRatings.getAccuracyOfWork());
+					evaluationRatingsView.setComplexityOfWork(evaluationRatings.getComplexityOfWork());
+					evaluationRatingsView.setConsistency(evaluationRatings.getConsistency());
+					evaluationRatingsView.setEffectiveUseOfStudyTime(evaluationRatings.getEffectiveUseOfStudyTime());
+					evaluationRatingsView.setGrowth(evaluationRatings.getGrowth());
+					evaluationRatingsView.setMotivation(evaluationRatings.getMotivation());
+					evaluationRatingsView.setOrganization(evaluationRatings.getOrganization());
+					evaluationRatingsView.setQualityOfWork(evaluationRatings.getQualityOfWork());
+	
+					evaluationRatingsView.setComments(evaluationRatings.getComments());
+					evaluationRatingsView.setLocked(evaluationRatings.getLocked());
+	
+					evaluationRatingsView.setWhoUpdated(evaluationRatings.getWhoUpdated());
+					evaluationRatingsView.setLastUpdated(evaluationRatings.getLastUpdated());
+	
+					evaluationRatingsView.setStudentUserName(student_.getUserName());
+					evaluationRatingsView.setStudentId(student_.getId());
+					evaluationRatingsView.setSubjId(u_.getId());
+					evaluationRatingsView.setSubjName(u_.getName());
+					evaluationRatingsView.setQtrId(quarter.getId());
+					evaluationRatingsView.setQtrName(quarter.getQtrName());
+					evaluationRatingsView.setQtrYear(quarter.getQtr_year());
+					evaluationRatingsView.setVersion(evaluationRatings.getVersion());
+	
+					evaluationRatingsViewList.add(evaluationRatingsView);
+					
+				}
 			}
 			if (statusGood)
 			{
@@ -257,7 +257,7 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( EvaluationRatingsView myView ) throws Exception
+	private boolean isDupOLD( EvaluationRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -285,7 +285,33 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 		}
 		return false;
 	}
-	
+	private boolean isDup( EvaluationRatingsView myView ) throws Exception
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
+
+		List<EvaluationRatings> evaluationRatingsList = this.getEvaluationRatingsList(student.getId().toString());
+		
+		for (EvaluationRatings evaluationRatings : evaluationRatingsList) 
+		{
+			//Weekly week = evaluationRatings.getWeekly();
+			if( 
+					evaluationRatings.getWeek_month() == myView.getWeek_month() &&
+					evaluationRatings.getWeek_number() == myView.getWeek_number() &&
+					evaluationRatings.getQuarter() == quarter &&
+					quarter.getStudent().getUserName().equals(myView.getStudentUserName() ) &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
+		
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -302,37 +328,58 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			EvaluationRatingsView myView = EvaluationRatingsView.fromJsonToEvaluationRatingsView(myJson);
-			//EvaluationRatingsView myView = EvaluationRatingsView.fromJsonToWeeklySkillRatingsView(myJson);
+
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			//	Find the correct student.
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+			
 			if( !this.isDup(myView) )
 			{
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				//Subject u_ = quarter.getSubject();
-				//Student student_ = quarter.getStudent();
-				
-				record.setWeek_month(myView.getWeek_month());
-				record.setWeek_number(myView.getWeek_number());
-				record.setAccuracyOfWork(myView.getAccuracyOfWork());
-				record.setComplexityOfWork(myView.getComplexityOfWork());
-				record.setConsistency(myView.getConsistency());
-				record.setEffectiveUseOfStudyTime(myView.getEffectiveUseOfStudyTime());
-				record.setGrowth(myView.getGrowth());
-				record.setMotivation(myView.getMotivation());
-				record.setOrganization(myView.getOrganization());
-				record.setQualityOfWork(myView.getQualityOfWork());
-				
-				record.setQuarter(quarter);
-				record.setComments(myView.getComments());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				((EvaluationRatings)record).persist();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-
-				myView.setWeeklyevaluationId(record.getId());
-				
-				//myView.setId(100000L + record.getId());
+				//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//****************************************************
+				//	Find the quarter for the student/qtrName/qtrYear.
+				//****************************************************
+				Quarter quarter = securityHelper
+						.findQuarterByStudentAndYearAndQuarterName(student,
+								myView.getQtrYear().intValue(),
+								myView.getQtrName());
+				if (quarter != null)
+				{					
+					record.setWeek_month(myView.getWeek_month());
+					record.setWeek_number(myView.getWeek_number());
+					record.setAccuracyOfWork(myView.getAccuracyOfWork());
+					record.setComplexityOfWork(myView.getComplexityOfWork());
+					record.setConsistency(myView.getConsistency());
+					record.setEffectiveUseOfStudyTime(myView.getEffectiveUseOfStudyTime());
+					record.setGrowth(myView.getGrowth());
+					record.setMotivation(myView.getMotivation());
+					record.setOrganization(myView.getOrganization());
+					record.setQualityOfWork(myView.getQualityOfWork());
+					
+					record.setQuarter(quarter);
+					record.setComments(myView.getComments());
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setWhoUpdated(myView.getWhoUpdated());
+					
+					((EvaluationRatings)record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+	
+					myView.setWeeklyevaluationId(record.getId());
+					
+					//myView.setId(100000L + record.getId());
+				}
+				else
+				{
+					statusGood = false;
+					response.setMessage( "Unable to locate the Student/qtrName/qtrYear" );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;
+				}
 	
 				if( statusGood )
 				{
@@ -352,7 +399,9 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 				returnStatus = HttpStatus.CONFLICT;
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
@@ -361,6 +410,7 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 		}
 
 		// Return the created record with the new system generated id
+		logger.info(response.toString());
          return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
 
 	@Override

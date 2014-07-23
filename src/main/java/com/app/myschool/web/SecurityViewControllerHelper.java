@@ -159,7 +159,55 @@ public class SecurityViewControllerHelper implements
 		}
 		return students;
 	}
-	
+	public Quarter findQuarterByStudentAndYearAndQuarterName(Student student, int year, String qtrName )
+	{
+		Set<Quarter> quarters = student.getQuarters();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		if( userRole.equals( "ROLE_ADMIN") || userRole.equals("ROLE_USER"))
+		{
+			for( Quarter quarter: quarters)
+			{
+				if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+				{
+					return quarter;
+				}
+			}
+		}
+		else
+		{
+			//	Check to see if the student belongs to the faculty.
+			boolean found = false;
+			Set<Faculty> facultyList = student.getFaculty();
+			for( Faculty faculty: facultyList)
+			{
+				if( userName.equals(faculty.getUserName()))
+				{
+					Set<Student> studentList = faculty.getStudents();
+					for( Student myStudent: studentList )
+					{
+						if( myStudent.getId() == student.getId() )
+						{
+							found = true;
+							break;
+						}
+					}
+				}
+			}
+			if( found )
+			{
+				for( Quarter quarter: quarters)
+				{
+					if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+					{
+						return quarter;
+					}
+				}				
+			}
+		}
+		return null;
+	}		
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Map params)
 	{

@@ -46,6 +46,14 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 					title: 'Evaluations Fields',
 					items: [
 						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'evaluation-studentname',
+							fieldLabel: 'studentname',
+							name: 'studentUserName',
+							readOnly: true
+						},
+						{
 							xtype: 'commonquartersubjectcombobox',
 							anchor: '100%'
 						},
@@ -133,13 +141,6 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							fieldLabel: 'comments',
 							name: 'comments',
 							value: 'comments'
-						},
-						{
-							xtype: 'hiddenfield',
-							anchor: '100%',
-							itemId: 'evaluation-studentname',
-							fieldLabel: 'studentname',
-							name: 'studentUserName'
 						},
 						{
 							xtype: 'hiddenfield',

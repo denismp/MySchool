@@ -5,7 +5,6 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 
@@ -18,10 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlyEvaluationRatingsView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -78,73 +75,77 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		List<MonthlyEvaluationRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		List<MonthlyEvaluationRatingsView> monthlyEvaluationRatingsViewList = new ArrayList<MonthlyEvaluationRatingsView>();
 		
 		try
 		{
-			List<MonthlyEvaluationRatings> monthlyEvaluationRatingsList = this.getList(studentId_);
-			List<MonthlyEvaluationRatingsView> monthlyEvaluationRatingsViewList = new ArrayList<MonthlyEvaluationRatingsView>();
-
-			//long i = 0;
-			for (MonthlyEvaluationRatings monthlyEvaluationRatings : monthlyEvaluationRatingsList) 
+			for( Student student: students )
 			{
-				statusGood = true;
-				Quarter quarter = monthlyEvaluationRatings.getQuarter();
-				Subject u_ = quarter.getSubject();
-				Student student_ = quarter.getStudent();
-				MonthlyEvaluationRatingsView monthlyEvaluationRatingsView = new MonthlyEvaluationRatingsView();
-
-				//monthlyEvaluationRatingsView.setId(++i);
-				monthlyEvaluationRatingsView.setId(monthlyEvaluationRatings.getId());
-				monthlyEvaluationRatingsView.setMonthlyevaluationId(monthlyEvaluationRatings.getId());
-				monthlyEvaluationRatingsView.setVersion(monthlyEvaluationRatings.getVersion());
-				
-				monthlyEvaluationRatingsView.setMonth_number(monthlyEvaluationRatings.getMonth_number());
-				monthlyEvaluationRatingsView.setAccuratelyIdCorrections(monthlyEvaluationRatings.getAccuratelyIdCorrections());
-				monthlyEvaluationRatingsView.setComments(monthlyEvaluationRatings.getComments());
-				monthlyEvaluationRatingsView.setCompletingCourseObjectives(monthlyEvaluationRatings.getCompletingCourseObjectives());
-				monthlyEvaluationRatingsView.setCriticalThinkingSkills(monthlyEvaluationRatings.getCriticalThinkingSkills());
-				monthlyEvaluationRatingsView.setEffectiveCorrectionActions(monthlyEvaluationRatings.getEffectiveCorrectionActions());
-				monthlyEvaluationRatingsView.setLevelOfDifficulty(monthlyEvaluationRatings.getLevelOfDifficulty());
-				monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
-				monthlyEvaluationRatingsView.setMonth_number(monthlyEvaluationRatings.getMonth_number());
-				monthlyEvaluationRatingsView.setResponsibilityOfProgress(monthlyEvaluationRatings.getResponsibilityOfProgress());
-				monthlyEvaluationRatingsView.setThoughtfulnessOfReflections(monthlyEvaluationRatings.getThoughtfulnessOfReflections());
-				monthlyEvaluationRatingsView.setWorkingEffectivelyWithAdvisor(monthlyEvaluationRatings.getWorkingEffectivelyWithAdvisor());
-				
-				monthlyEvaluationRatingsView.setWhoUpdated(monthlyEvaluationRatings.getWhoUpdated());
-				monthlyEvaluationRatingsView.setLastUpdated(monthlyEvaluationRatings.getLastUpdated());
-				monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
-				monthlyEvaluationRatingsView.setStudentUserName(student_.getUserName());
-				monthlyEvaluationRatingsView.setStudentId(student_.getId());
-				monthlyEvaluationRatingsView.setSubjId(u_.getId());
-				monthlyEvaluationRatingsView.setSubjName(u_.getName());
-				monthlyEvaluationRatingsView.setQtrId(quarter.getId());
-				monthlyEvaluationRatingsView.setQtrName(quarter.getQtrName());
-				monthlyEvaluationRatingsView.setQtrYear(quarter.getQtr_year());
-
-
-				monthlyEvaluationRatingsViewList.add(monthlyEvaluationRatingsView);
-				
-			}
-			if (statusGood)
-			{
-				records = monthlyEvaluationRatingsViewList;			
-
-				response.setMessage("All " + className + "s retrieved: ");
-				response.setData(records);
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-			else
-			{
-				response.setMessage("No records for class=" + className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;				
+				List<MonthlyEvaluationRatings> monthlyEvaluationRatingsList = this.getList(student.getId().toString());
+	
+				//long i = 0;
+				for (MonthlyEvaluationRatings monthlyEvaluationRatings : monthlyEvaluationRatingsList) 
+				{
+					statusGood = true;
+					Quarter quarter = monthlyEvaluationRatings.getQuarter();
+					Subject u_ = quarter.getSubject();
+					Student student_ = quarter.getStudent();
+					MonthlyEvaluationRatingsView monthlyEvaluationRatingsView = new MonthlyEvaluationRatingsView();
+	
+					//monthlyEvaluationRatingsView.setId(++i);
+					monthlyEvaluationRatingsView.setId(monthlyEvaluationRatings.getId());
+					monthlyEvaluationRatingsView.setMonthlyevaluationId(monthlyEvaluationRatings.getId());
+					monthlyEvaluationRatingsView.setVersion(monthlyEvaluationRatings.getVersion());
+					
+					monthlyEvaluationRatingsView.setMonth_number(monthlyEvaluationRatings.getMonth_number());
+					monthlyEvaluationRatingsView.setAccuratelyIdCorrections(monthlyEvaluationRatings.getAccuratelyIdCorrections());
+					monthlyEvaluationRatingsView.setComments(monthlyEvaluationRatings.getComments());
+					monthlyEvaluationRatingsView.setCompletingCourseObjectives(monthlyEvaluationRatings.getCompletingCourseObjectives());
+					monthlyEvaluationRatingsView.setCriticalThinkingSkills(monthlyEvaluationRatings.getCriticalThinkingSkills());
+					monthlyEvaluationRatingsView.setEffectiveCorrectionActions(monthlyEvaluationRatings.getEffectiveCorrectionActions());
+					monthlyEvaluationRatingsView.setLevelOfDifficulty(monthlyEvaluationRatings.getLevelOfDifficulty());
+					monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
+					monthlyEvaluationRatingsView.setMonth_number(monthlyEvaluationRatings.getMonth_number());
+					monthlyEvaluationRatingsView.setResponsibilityOfProgress(monthlyEvaluationRatings.getResponsibilityOfProgress());
+					monthlyEvaluationRatingsView.setThoughtfulnessOfReflections(monthlyEvaluationRatings.getThoughtfulnessOfReflections());
+					monthlyEvaluationRatingsView.setWorkingEffectivelyWithAdvisor(monthlyEvaluationRatings.getWorkingEffectivelyWithAdvisor());
+					
+					monthlyEvaluationRatingsView.setWhoUpdated(monthlyEvaluationRatings.getWhoUpdated());
+					monthlyEvaluationRatingsView.setLastUpdated(monthlyEvaluationRatings.getLastUpdated());
+					monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
+					monthlyEvaluationRatingsView.setStudentUserName(student_.getUserName());
+					monthlyEvaluationRatingsView.setStudentId(student_.getId());
+					monthlyEvaluationRatingsView.setSubjId(u_.getId());
+					monthlyEvaluationRatingsView.setSubjName(u_.getName());
+					monthlyEvaluationRatingsView.setQtrId(quarter.getId());
+					monthlyEvaluationRatingsView.setQtrName(quarter.getQtrName());
+					monthlyEvaluationRatingsView.setQtrYear(quarter.getQtr_year());
+		
+					monthlyEvaluationRatingsViewList.add(monthlyEvaluationRatingsView);
+					
+				}
+				if (statusGood)
+				{
+					records = monthlyEvaluationRatingsViewList;			
+	
+					response.setMessage("All " + className + "s retrieved: ");
+					response.setData(records);
+					returnStatus = HttpStatus.OK;
+					response.setSuccess(true);
+					response.setTotal(records.size());
+				}
+				else
+				{
+					response.setMessage("No records for class=" + className);
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;				
+				}
 			}
 		}
 		catch(Exception e)
@@ -157,6 +158,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -254,7 +256,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( MonthlyEvaluationRatingsView myView ) throws Exception
+	private boolean isDupOLD( MonthlyEvaluationRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -279,7 +281,30 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		}
 		return false;
 	}
-	
+	private boolean isDup( MonthlyEvaluationRatingsView myView ) throws Exception
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
+
+		List<MonthlyEvaluationRatings> monthlyEvaluationRatingsList = this.getList(student.getId().toString());
+		
+		for (MonthlyEvaluationRatings monthlyEvaluationRatings : monthlyEvaluationRatingsList) 
+		{
+			if( 
+					monthlyEvaluationRatings.getMonth_number() == myView.getMonth_number() && 
+					monthlyEvaluationRatings.getQuarter() == quarter &&
+					quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -296,40 +321,61 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			MonthlyEvaluationRatingsView myView = MonthlyEvaluationRatingsView.fromJsonToMonthlyEvaluationRatingsView(myJson);
-			//MonthlyEvaluationRatingsView myView = MonthlyEvaluationRatingsView.fromJsonToMonthlySummaryRatingsView(myJson);
+
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			//	Find the correct student.
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+
 			if( !this.isDup(myView) )
 			{
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				//Subject u_ = quarter.getSubject();
-				//Student student_ = quarter.getStudent();
-				
-				record.setAccuratelyIdCorrections(myView.getAccuratelyIdCorrections());
-				record.setComments(myView.getComments());
-				record.setCompletingCourseObjectives(myView.getCompletingCourseObjectives());
-				record.setCriticalThinkingSkills(myView.getCriticalThinkingSkills());
-				record.setEffectiveCorrectionActions(myView.getEffectiveCorrectionActions());
-				record.setLevelOfDifficulty(myView.getLevelOfDifficulty());
-				record.setLocked(myView.getLocked());
-				record.setMonth_number(myView.getMonth_number());
-				record.setResponsibilityOfProgress(myView.getResponsibilityOfProgress());
-				record.setThoughtfulnessOfReflections(myView.getThoughtfulnessOfReflections());
-				record.setWorkingEffectivelyWithAdvisor(myView.getWorkingEffectivelyWithAdvisor());
-				
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setLocked(myView.getLocked());
-				record.setMonth_number(myView.getMonth_number());
-
-				record.setQuarter(quarter);
-
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				((MonthlyEvaluationRatings)record).persist();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-				myView.setMonthlyevaluationId(record.getId());
-				
-				//myView.setId(100000L + record.getId());
+				//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//****************************************************
+				//	Find the quarter for the student/qtrName/qtrYear.
+				//****************************************************
+				Quarter quarter = securityHelper
+						.findQuarterByStudentAndYearAndQuarterName(student,
+								myView.getQtrYear().intValue(),
+								myView.getQtrName());
+				if (quarter != null)
+				{
+					record.setAccuratelyIdCorrections(myView.getAccuratelyIdCorrections());
+					record.setComments(myView.getComments());
+					record.setCompletingCourseObjectives(myView.getCompletingCourseObjectives());
+					record.setCriticalThinkingSkills(myView.getCriticalThinkingSkills());
+					record.setEffectiveCorrectionActions(myView.getEffectiveCorrectionActions());
+					record.setLevelOfDifficulty(myView.getLevelOfDifficulty());
+					record.setLocked(myView.getLocked());
+					record.setMonth_number(myView.getMonth_number());
+					record.setResponsibilityOfProgress(myView.getResponsibilityOfProgress());
+					record.setThoughtfulnessOfReflections(myView.getThoughtfulnessOfReflections());
+					record.setWorkingEffectivelyWithAdvisor(myView.getWorkingEffectivelyWithAdvisor());
+					
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setLocked(myView.getLocked());
+					record.setMonth_number(myView.getMonth_number());
+	
+					record.setQuarter(quarter);
+	
+					record.setWhoUpdated(myView.getWhoUpdated());
+					
+					((MonthlyEvaluationRatings)record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+					myView.setMonthlyevaluationId(record.getId());
+					
+					//myView.setId(100000L + record.getId());
+				}
+				else
+				{
+					statusGood = false;
+					response.setMessage( "Unable to locate the Student/qtrName/qtrYear" );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;										
+				}
 	
 				if( statusGood )
 				{
@@ -349,7 +395,9 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 				returnStatus = HttpStatus.CONFLICT;
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -357,7 +405,9 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		}
 
 		// Return the created record with the new system generated id
-         return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
+		logger.info(response.toString());
+        return new ResponseEntity<String>(response.toString(), headers, returnStatus);	
+	}
 
 	@Override
 	public ResponseEntity<String> deleteFromJson( Long id) {

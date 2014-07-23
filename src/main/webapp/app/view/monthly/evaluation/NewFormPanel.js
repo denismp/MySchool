@@ -45,6 +45,14 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 					title: 'Monthly Evaluation Fields',
 					items: [
 						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'studentname',
+							fieldLabel: 'studentname',
+							name: 'studentname',
+							readOnly: true
+						},
+						{
 							xtype: 'commonquartersubjectcombobox',
 							anchor: '100%'
 						},
@@ -137,13 +145,6 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							itemId: 'quarterid',
 							fieldLabel: 'quarterid',
 							name: 'quarterId'
-						},
-						{
-							xtype: 'hiddenfield',
-							anchor: '100%',
-							itemId: 'studentname',
-							fieldLabel: 'studentname',
-							name: 'studentname'
 						},
 						{
 							xtype: 'hiddenfield',
