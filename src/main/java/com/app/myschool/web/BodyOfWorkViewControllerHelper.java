@@ -402,7 +402,10 @@ public class BodyOfWorkViewControllerHelper implements
 						record.setLastUpdated(myView.getLastUpdated());
 						record.setLocked(myView.getLocked());
 						record.setQuarter(quarter);
-						record.setWhoUpdated(myView.getWhoUpdated());
+						//record.setWhoUpdated(myView.getWhoUpdated());
+						SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+						record.setWhoUpdated(securityHelper.getUserName());
+
 
 						record.setDescription(myView.getDescription());
 						record.setObjective(myView.getObjective());
@@ -560,6 +563,9 @@ public class BodyOfWorkViewControllerHelper implements
 					bow_.setLocked(bowV_.getLocked());
 					bow_.setLastUpdated(bowV_.getLastUpdated());
 					bow_.setWhoUpdated(bowV_.getWhoUpdated());
+					SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					bow_.setWhoUpdated(securityHelper.getUserName());
+
 
 					if (bow_.merge() != null)
 					{
@@ -660,6 +666,8 @@ public class BodyOfWorkViewControllerHelper implements
 			for (BodyOfWork record : BodyOfWork
 					.fromJsonArrayToBodyOfWorks(myJson))
 			{
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				record.setWhoUpdated(securityHelper.getUserName());
 
 				if (record.merge() == null)
 				{

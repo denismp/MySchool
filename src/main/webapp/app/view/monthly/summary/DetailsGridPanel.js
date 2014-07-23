@@ -85,6 +85,11 @@ Ext.define('MySchool.view.monthly.summary.DetailsGridPanel', {
 					text: 'studentUserName'
 				},
 				{
+					xtype: 'gridcolumn',
+					dataIndex: 'whoUpdated',
+					text: 'whoUpdated'
+				},
+				{
 					xtype: 'datecolumn',
 					dataIndex: 'lastUpdated',
 					text: 'lastUpdated',

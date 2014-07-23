@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -28,12 +26,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.StudentView;
 import com.app.myschool.model.Subject;
-
 import com.app.myschool.model.Faculty;
 
 
@@ -583,7 +579,10 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				
 				
 				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
+				//record.setWhoUpdated(myView.getWhoUpdated());
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				record.setWhoUpdated(securityHelper.getUserName());
+
 				
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
@@ -717,7 +716,10 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			}
 			
 			record.setLastUpdated(myView.getLastUpdated());
-			record.setWhoUpdated(myView.getWhoUpdated());
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
 			
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());

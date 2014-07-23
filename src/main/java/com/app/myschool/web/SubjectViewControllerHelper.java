@@ -673,7 +673,9 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				quarter.setCompleted(myView.getQtrCompleted());
 				quarter.setLocked(myView.getQtrLocked());
 				quarter.setLastUpdated(myView.getSubjLastUpdated());
-				quarter.setWhoUpdated(myView.getSubjWhoUpdated());
+				//quarter.setWhoUpdated(myView.getSubjWhoUpdated());
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				quarter.setWhoUpdated(securityHelper.getUserName());
 				quarter.merge();
 				myView.setQtrVersion(quarter.getVersion());
 			}
@@ -722,104 +724,132 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 	}
 
 	@Override
-	public ResponseEntity<String> updateFromJsonArray(String json) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        
+	public ResponseEntity<String> updateFromJsonArray(String json)
+	{
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
+
 		HttpStatus returnStatus = HttpStatus.OK;
 		List<Subject> results = null;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
-		try {
-			myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
-		} catch (UnsupportedEncodingException e1) {
-            response.setMessage( e1.getMessage() );
+		try
+		{
+			myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
+		}
+		catch (UnsupportedEncodingException e1)
+		{
+			response.setMessage(e1.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
-	        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+			return new ResponseEntity<String>(response.toString(), headers,
+					returnStatus);
 		}
-		logger.debug( "myjson=" + myJson );
-		logger.debug( "Encoded JSON=" + json );
+		logger.debug("myjson=" + myJson);
+		logger.debug("Encoded JSON=" + json);
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = false;
-		try {
-			Collection <Subject>mycollection = Subject.fromJsonArrayToSubjects(myJson);
-			List<Subject> records = new ArrayList<Subject>( mycollection );
-	
-	        for (Subject record: Subject.fromJsonArrayToSubjects(myJson)) {
-	
-    	        if (record.merge() == null) {
-    	            returnStatus = HttpStatus.NOT_FOUND;
-    	            response.setMessage(className + " update failed for id=" + record.getId() );
-    				response.setSuccess(false);
-    				response.setTotal(0L);
-    		        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-    	        }
-    		}
-	        results = records;
-	        statusGood = true;
+		try
+		{
+			Collection<Subject> mycollection = Subject
+					.fromJsonArrayToSubjects(myJson);
+			List<Subject> records = new ArrayList<Subject>(mycollection);
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
-			if( statusGood ) {
-	            returnStatus = HttpStatus.OK;
+			for (Subject record : Subject.fromJsonArrayToSubjects(myJson))
+			{
+				record.setWhoUpdated(securityHelper.getUserName());
+				if (record.merge() == null)
+				{
+					returnStatus = HttpStatus.NOT_FOUND;
+					response.setMessage(className + " update failed for id="
+							+ record.getId());
+					response.setSuccess(false);
+					response.setTotal(0L);
+					return new ResponseEntity<String>(response.toString(),
+							headers, returnStatus);
+				}
+			}
+			results = records;
+			statusGood = true;
+
+			if (statusGood)
+			{
+				returnStatus = HttpStatus.OK;
 				response.setMessage("All " + className + "s updated.");
 				response.setSuccess(true);
 				response.setTotal(results.size());
 				response.setData(results);
 			}
-			else {
+			else
+			{
 				returnStatus = HttpStatus.BAD_REQUEST;
 				response.setMessage(className + " is not valid.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 			}
 
-		} catch( Exception e ) {
+		}
+		catch (Exception e)
+		{
 			returnStatus = HttpStatus.BAD_REQUEST;
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
-			
+
 		}
 
 		// Return the updated record(s)
-        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+		logger.info(response.toString());
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
 	}
 
 	@Override
-	public ResponseEntity<String> createFromJsonArray(String json) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
+	public ResponseEntity<String> createFromJsonArray(String json)
+	{
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
-		try {
-			myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
-		} catch (UnsupportedEncodingException e1) {
-			//e1.printStackTrace();
-            response.setMessage( e1.getMessage() );
+		try
+		{
+			myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
+		}
+		catch (UnsupportedEncodingException e1)
+		{
+			// e1.printStackTrace();
+			response.setMessage(e1.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
-	        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+			return new ResponseEntity<String>(response.toString(), headers,
+					returnStatus);
 		}
-		logger.debug( "myjson=" + myJson );
-		logger.debug( "Encoded JSON=" + json );
+		logger.debug("myjson=" + myJson);
+		logger.debug("Encoded JSON=" + json);
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = false;
 		List<?> results = null;
 
-		try {
+		try
+		{
 
-			Collection <Subject>mycollection = Subject.fromJsonArrayToSubjects(myJson);
-			List<Subject> records = new ArrayList<Subject>( mycollection );
-	
-	        for (Subject record: Subject.fromJsonArrayToSubjects(myJson)) {
-    	        record.persist();
-    		}
-	        results = records;
-	        statusGood = true;
+			Collection<Subject> mycollection = Subject
+					.fromJsonArrayToSubjects(myJson);
+			List<Subject> records = new ArrayList<Subject>(mycollection);
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
-			if( statusGood )
+			for (Subject record : Subject.fromJsonArrayToSubjects(myJson))
+			{
+				record.setWhoUpdated(securityHelper.getUserName());
+				record.persist();
+			}
+			results = records;
+			statusGood = true;
+
+			if (statusGood)
 			{
 				returnStatus = HttpStatus.CREATED;
 				response.setMessage("All " + className + "s updated.");
@@ -827,20 +857,24 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				response.setTotal(results.size());
 				response.setData(results);
 			}
-			else {
+			else
+			{
 				returnStatus = HttpStatus.BAD_REQUEST;
-				response.setMessage( className + " is invalid.");
+				response.setMessage(className + " is invalid.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 			}
-		} catch(Exception e) {
+		}
+		catch (Exception e)
+		{
 			returnStatus = HttpStatus.BAD_REQUEST;
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
 		}
 		// Return the updated record(s)
-        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
 	}
 
 	/*

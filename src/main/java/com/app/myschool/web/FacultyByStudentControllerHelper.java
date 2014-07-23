@@ -468,7 +468,10 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				}
 				
 				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
+				//record.setWhoUpdated(myView.getWhoUpdated());
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				record.setWhoUpdated(securityHelper.getUserName());
+
 				
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
@@ -601,7 +604,10 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			}
 			
 			record.setLastUpdated(myView.getLastUpdated());
-			record.setWhoUpdated(myView.getWhoUpdated());
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
 			
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());

@@ -406,7 +406,10 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 					record.setQuarter(quarter);
 					record.setComments(myView.getComments());
 					record.setLastUpdated(myView.getLastUpdated());
-					record.setWhoUpdated(myView.getWhoUpdated());
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					record.setWhoUpdated(securityHelper.getUserName());
+
 					
 					((SkillRatings)record).persist();
 					
@@ -540,7 +543,10 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 			record.setWeek_month(myView.getWeek_month());
 			record.setWeek_number(myView.getWeek_number());
 			
-			record.setWhoUpdated(myView.getWhoUpdated());
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			

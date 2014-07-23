@@ -423,7 +423,10 @@ public class StudentPasswordViewControllerHelper implements
 
 			record = student;
 			record.setLastUpdated(myView.getLastUpdated());
-			record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
+			//record.setWhoUpdated(myView.getWhoUpdated());
 
 			// record.getFaculty().add(faculty);
 			record.merge();
@@ -552,7 +555,8 @@ public class StudentPasswordViewControllerHelper implements
 			}
 
 			record.setLastUpdated(myView.getLastUpdated());
-			record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
 
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());

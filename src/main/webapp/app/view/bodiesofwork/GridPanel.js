@@ -71,7 +71,7 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 				{
 					xtype: 'datecolumn',
 					dataIndex: 'lastUpdated',
-					text: 'Date'
+					text: 'LastUpdate'
 				},
 				{
 					xtype: 'checkcolumn',
@@ -93,6 +93,11 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
 					text: 'Student Name'
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'whoUpdated',
+					text: 'whoUpdated'
 				},
 				{
 					xtype: 'numbercolumn',

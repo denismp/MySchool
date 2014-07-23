@@ -197,7 +197,6 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					hidden: true,
 					dataIndex: 'whoUpdated',
 					text: 'whoUpdated'
 				}

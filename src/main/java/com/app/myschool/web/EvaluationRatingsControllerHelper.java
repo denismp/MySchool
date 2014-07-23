@@ -360,7 +360,10 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 					record.setQuarter(quarter);
 					record.setComments(myView.getComments());
 					record.setLastUpdated(myView.getLastUpdated());
-					record.setWhoUpdated(myView.getWhoUpdated());
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					record.setWhoUpdated(securityHelper.getUserName());
+
 					
 					((EvaluationRatings)record).persist();
 					
@@ -499,7 +502,10 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 			record.setWeek_month(myView.getWeek_month());
 			record.setWeek_number(myView.getWeek_number());
 			
-			record.setWhoUpdated(myView.getWhoUpdated());
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			

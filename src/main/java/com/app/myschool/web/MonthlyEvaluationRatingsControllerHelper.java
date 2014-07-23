@@ -357,7 +357,10 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 	
 					record.setQuarter(quarter);
 	
-					record.setWhoUpdated(myView.getWhoUpdated());
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					record.setWhoUpdated(securityHelper.getUserName());
+
 					
 					((MonthlyEvaluationRatings)record).persist();
 					
@@ -492,8 +495,11 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 			record.setResponsibilityOfProgress(myView.getResponsibilityOfProgress());
 			record.setThoughtfulnessOfReflections(myView.getThoughtfulnessOfReflections());
 			record.setWorkingEffectivelyWithAdvisor(myView.getWorkingEffectivelyWithAdvisor());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
 
-			record.setWhoUpdated(myView.getWhoUpdated());
+
+			//record.setWhoUpdated(myView.getWhoUpdated());
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			
@@ -572,9 +578,11 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		try {
 			Collection <MonthlyEvaluationRatings>mycollection = MonthlyEvaluationRatings.fromJsonArrayToMonthlyEvaluationRatingses(myJson);
 			List<MonthlyEvaluationRatings> records = new ArrayList<MonthlyEvaluationRatings>( mycollection );
-	
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();	
 	        for (MonthlyEvaluationRatings record: MonthlyEvaluationRatings.fromJsonArrayToMonthlyEvaluationRatingses(myJson)) {
-	
+
+				record.setWhoUpdated(securityHelper.getUserName());
+
     	        if (record.merge() == null) {
     	            returnStatus = HttpStatus.NOT_FOUND;
     	            response.setMessage(className + " update failed for id=" + record.getId() );

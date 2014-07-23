@@ -355,7 +355,10 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 					record.setQuarter(quarter);
 					record.setRealizations(myView.getRealizations());
 					record.setReflections(myView.getReflections());
-					record.setWhoUpdated(myView.getWhoUpdated());
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					record.setWhoUpdated(securityHelper.getUserName());
+
 					
 					((MonthlySummaryRatings)record).persist();
 					
@@ -483,7 +486,10 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 			record.setActionResults(myView.getActionResults());
 			record.setPlannedChanges(myView.getPlannedChanges());
 			record.setComments(myView.getComments());
-			record.setWhoUpdated(myView.getWhoUpdated());
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			
