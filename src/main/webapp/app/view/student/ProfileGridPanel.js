@@ -79,12 +79,14 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				},
 				{
 					xtype: 'checkcolumn',
+					hidden: true,
 					itemId: 'studentprofilegridenabledcolumn',
 					dataIndex: 'enabled',
 					text: 'Enabled?'
 				},
 				{
 					xtype: 'datecolumn',
+					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'lastUpdated'
 				},
@@ -96,6 +98,7 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				},
 				{
 					xtype: 'numbercolumn',
+					hidden: true,
 					dataIndex: 'version',
 					text: 'version',
 					format: '000000'
