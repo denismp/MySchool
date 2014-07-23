@@ -171,14 +171,15 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);				
+				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				List<Faculty> studentFacultyList = securityHelper.getFacultyList(student);
 
-				for (StudentFaculty studentFaculty : studentFacultyList) 
+				for (Faculty faculty : studentFacultyList) 
 				{
 					//found						= true;
 					statusGood					= true;
 					//Student rstudent				= Student.findStudent(new Long(studentFaculty.studentId));
-					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 					//Quarter quarter			= faculty.getQuarter();
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )

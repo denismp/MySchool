@@ -168,7 +168,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				{	
 					Subject subject						= studentQtr.getSubject();
 					//for (StudentFaculty studentFaculty : studentFacultyList) 
-					for( Faculty faculty: student.getFaculty() )
+					List<Faculty> facultyList = securityHelper.getFacultyList(student);
+					//for( Faculty faculty: student.getFaculty() )
+					for( Faculty faculty: facultyList )
 					{
 						if(isStudendQtrInFacultyQtr(studentQtr, faculty))
 						{
@@ -459,17 +461,19 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				record.setWhoUpdated(myView.getWhoUpdated());
 				*/
 				
-				List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
+				//List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				List<Faculty> studentFacultyList = securityHelper.getFacultyList(Student.findStudent(myView.getStudentId()));
 				Set<Student> students = new HashSet<Student>();
-				for( StudentFaculty studentFaculty: studentFacultyList)
+				for( Faculty studentFaculty: studentFacultyList)
 				{
-					Student student = Student.findStudent(studentFaculty.studentId);
+					Student student = Student.findStudent(myView.getStudentId());
 					students.add(student);
 				}
 				
 				record.setLastUpdated(myView.getLastUpdated());
 				//record.setWhoUpdated(myView.getWhoUpdated());
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
 
 				

@@ -82,8 +82,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		long studentId;
 		long facultyId;
 	}
-		
-	private List<StudentFaculty>getStudentFacultyList( String studentId ) throws Exception
+	
+	/*
+	private List<StudentFaculty>getStudentFacultyListOLD( String studentId ) throws Exception
 	{
 		List<StudentFaculty> rList	= new ArrayList<StudentFaculty>();
 		List<Faculty> facultyList	= this.getList(studentId);
@@ -99,7 +100,43 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		}
 		return rList;
 	}
+	*/
+	private List<StudentFaculty>getStudentFacultyList( String studentId ) throws Exception
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<StudentFaculty> rList	= new ArrayList<StudentFaculty>();
+
+		if( securityHelper.getUserRole().equals("ROLE_FACULTY") == false )
+		{
+			Student student				= Student.findStudent(new Long( studentId ) );
+			List<Faculty> facultyList	= new ArrayList<Faculty>(student.getFaculty());
+			for (Faculty faculty : facultyList) 
+			{
+					StudentFaculty studentFaculty = new StudentFaculty();
+					studentFaculty.facultyId = faculty.getId();
+		
+					studentFaculty.studentId = student.getId();
+					rList.add(studentFaculty);	
+			}
+		}
+		else
+		{
+			//  Find all the students for the faculty userName.
+			String facultyUserName = securityHelper.getUserName();
+			Faculty faculty = Faculty.findFacultysByUserNameEquals(facultyUserName).getSingleResult();
+			List<Student> students = new ArrayList<Student>(faculty.getStudents());
+			for( Student student: students )
+			{
+				StudentFaculty studentFaculty = new StudentFaculty();
+				studentFaculty.facultyId = faculty.getId();
 	
+				studentFaculty.studentId = student.getId();
+				rList.add(studentFaculty);	
+			}
+		}
+		return rList;
+	}
+
 	class MyComparator implements Comparator<StudentView>
 	{
 		@Override
@@ -141,9 +178,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		List<StudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		boolean found = false;
-		String studentId_ = getParam(params, "studentId");
-		String studentUserName = getParam(params,"studentName");
+		//boolean found = false;
+		//String studentId_ = getParam(params, "studentId");
+		//String studentUserName = getParam(params,"studentName");
 		//********************************************************
 		//	Added logic to call Don's new login() method to get
 		//	studentUserName from the security context from the 
@@ -180,19 +217,21 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		{
 			//List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
 			List<StudentView> studentViewList	= new ArrayList<StudentView>();
+			long i = 0;
 			for( Student student: students )
 			{
-				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				//studentId_ = student.getId().toString();
+				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
 				
-				long i = 0;
-				for (StudentFaculty studentFaculty : studentFacultyList) 
+				List<Faculty> facultyList = securityHelper.getFacultyList(student);
+				for (Faculty faculty : facultyList) 
 				{
-					found 						= true;
+					//found 						= true;
 					statusGood					= true;
 					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
-					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 					//Quarter quarter			= faculty.getQuarter();
+					//Faculty.findFaculty(id)
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{
@@ -230,11 +269,11 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 						myView.setQtrYear(quarter.getQtr_year());
 
 						studentViewList.add( myView );
-
-						Collections.sort(studentViewList, new MyComparator());
 					}
 				}
+				Collections.sort(studentViewList, new MyComparator());
 			}
+			/*
 			if( !found )
 			{
 				for( Student student: students )
@@ -281,6 +320,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 					Collections.sort(studentViewList, new MyComparator());	
 				}
 			}
+			*/
 			if (statusGood)
 			{
 				records = studentViewList;			

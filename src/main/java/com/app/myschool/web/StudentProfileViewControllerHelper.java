@@ -292,15 +292,16 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);				
+				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
+				List<Faculty> studentFacultyList = securityHelper.getFacultyList(student);
 
-				for (StudentFaculty studentFaculty : studentFacultyList) 
+				for (Faculty faculty : studentFacultyList) 
 				{
 					statusGood					= true;
 					//found						= true;
 					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
 					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
-					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
+					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 	
 					StudentProfileView myView			= new StudentProfileView();
 					myView.setId(++i);

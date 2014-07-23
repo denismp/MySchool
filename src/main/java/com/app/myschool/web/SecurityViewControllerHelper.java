@@ -136,7 +136,33 @@ public class SecurityViewControllerHelper implements
 		
 		return userRole;		
 	}
-	
+	public List<Faculty> getFacultyList(Student student)
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Faculty> facultys = null;
+
+		if( securityHelper.getUserRole().equals("ROLE_USER") )
+		{
+			facultys = new ArrayList<Faculty>(student.getFaculty());
+		}
+		else if( securityHelper.getUserRole().equals("ROLE_FACULTY"))
+		{
+			List<Faculty> allFacultys = Faculty.findAllFacultys();
+			facultys = new ArrayList<Faculty>();
+			for( Faculty faculty: allFacultys )
+			{
+				if( faculty.getUserName().equals(securityHelper.getUserName()) )
+				{
+					facultys.add(faculty);
+				}
+			}
+		}
+		else if( securityHelper.getUserRole().equals("ROLE_ADMIN"))
+		{
+			facultys = Faculty.findAllFacultys();
+		}
+		return facultys;
+	}
 	public List<Student> findStudentsByLoginUserRole()
 	{
 		String userName = this.getUserName();
