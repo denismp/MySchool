@@ -127,6 +127,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		List<FacultyByStudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		/*
 		String studentId_ = getParam(params, "studentId");
 		List<Student> students = new ArrayList<Student>();
 		//Stack <Long>subjectStack = new Stack<Long>();
@@ -142,17 +143,23 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			students.add(student);
 		}
 		//String studentName_ = getParam(params, "studentName");
+		 * 
+		 */
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+
 		
 		try
 		{
+			
+			long i = 0;
 			List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
 			for( Student student: students )
 			{
-				studentId_ = student.getId().toString();
+				String studentId_ = student.getId().toString();
 				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
 				
-				
-				long i = 0;
+
 				//Set<Quarter> studentQtrList	= student.getQuarters();
 
 				//List<Quarter> studentQtrList = Quarter.findQuartersByStudent(student).getResultList();
@@ -367,6 +374,32 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 					//faculty.getQuarter() == quarter &&
 					quarter.getStudent().getId() == myView.getStudentId() &&
 					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	private boolean isDupOLD( FacultyByStudentView myView ) throws Exception
+	{
+		//Integer monthNumber = myView.getMonth_number();
+		//Long studentId = myView.getStudentId();
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Student student = Student.findStudent(myView.getStudentId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
+		//List<Faculty> facultyList = this.getList(studentId.toString());
+		List<Quarter> quarterList = Quarter.findAllQuarters();
+
+		for (Quarter quarter : quarterList) 
+		{
+			if( 
+					quarter.getStudent().getId()	== myView.getStudentId()	&&
+					quarter.getFaculty().getId()	== myView.getFacultyId() 	&&
+					quarter.getSubject().getId()	== myView.getSubjId()		&&
+					quarter.getQtr_year()			== myView.getQtrYear()		&&
+					quarter.getQtrName().equals(myView.getQtrName())
 					)
 			{
 				return true;

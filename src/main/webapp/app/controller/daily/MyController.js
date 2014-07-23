@@ -73,16 +73,48 @@ Ext.define('MySchool.controller.daily.MyController', {
 	onDailynewtoolClick: function(tool, e, eOpts) {
 		debugger;
 
-		var studentStore				= Ext.getStore('student.StudentStore');
-		var subjectStore				= Ext.getStore('subject.SubjectStore');
-		var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
-		var commonMonthStore			= Ext.getStore('common.MonthStore');
-		var securityStore				= Ext.getStore('security.SecurityStore');
+		//var studentStore				= Ext.getStore('student.StudentStore');
+		//var subjectStore				= Ext.getStore('subject.SubjectStore');
+		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		//var commonMonthStore			= Ext.getStore('common.MonthStore');
+		//var securityStore				= Ext.getStore('security.SecurityStore');
 
+		debugger;
+		var securityStore				= Ext.getStore( 'security.SecurityStore');
+		var commonMonthStore			= Ext.getStore('common.MonthStore');
+		var myGrid = this.getDailyGridPanel();
+		var gridModel = myGrid.getSelectionModel();
+		var selectedRecord = gridModel.getSelection()[0];
+		//var row = myGrid.getStore().indexOf(selectedRecord);
+		var securityRecord				= securityStore.getAt(0);
 		this.userName = securityRecord.get('userName');
 		this.userRole = securityRecord.get('userRole');
-		//this.studentName = this.userName;
 
+		//var studentRecord	= studentStore.getAt(0);
+		var studentId		= selectedRecord.get( 'studentId' );
+		var studentName		= selectedRecord.get( 'studentUserName' );
+
+		var newDialog = Ext.create( 'MySchool.view.daily.NewDailyForm' );
+
+
+		newDialog.down('#daily-studentid').setValue( studentId );
+		newDialog.down('#daily-studentname').setValue( studentName );
+		if( this.userRole !== 'ROLE_USER')
+		{
+			newDialog.down('#daily-studentname').setReadOnly( false );
+		}
+		else
+		{
+			newDialog.down('#daily-studentname').setReadOnly( true );
+		}
+		commonMonthStore.myLoad();
+
+		window.console.log( 'New Daily Dialog' );
+
+		newDialog.render( Ext.getBody() );
+		newDialog.show();
+
+		/*
 		if( this.userRole === 'ROLE_USER')
 		{
 			var studentRecord	= studentStore.getAt(0);
@@ -102,6 +134,7 @@ Ext.define('MySchool.controller.daily.MyController', {
 			newDialog.render( Ext.getBody() );
 			newDialog.show();
 		}
+		*/
 	},
 
 	onDailysavetoolClick: function(tool, e, eOpts) {
@@ -222,13 +255,13 @@ Ext.define('MySchool.controller.daily.MyController', {
 		//	Get the stores that we will need
 		var dailyStore		= this.getStore( 'daily.MyJsonStore' );
 
-		var studentStore = Ext.getStore('student.StudentStore');
+		//var studentStore = Ext.getStore('student.StudentStore');
 		var subjectStore = Ext.getStore( 'subject.SubjectStore' );
 
 		//	Get the student info
-		var studentRecord	= studentStore.getAt(0);
-		var studentId		= studentRecord.get( 'id' );
-		var studentName		= studentRecord.get( 'userName' );
+		//var studentRecord	= studentStore.getAt(0);
+		//var studentId		= studentRecord.get( 'id' );
+		//var studentName		= studentRecord.get( 'userName' );
 
 		//	Get the quarterSubject record from the form.
 		var quarterSubjectId		= formValues.comboquartersubject;
@@ -267,8 +300,8 @@ Ext.define('MySchool.controller.daily.MyController', {
 		        dailyRecord.set('subjId', subjId );
 		        dailyRecord.set('qtrName', qtrName );
 		        dailyRecord.set('qtrId', qtrId);
-		        dailyRecord.set('studentId', studentId);
-		        dailyRecord.set('studentUserName', studentName);
+		        dailyRecord.set('studentId', formValues.studentId);
+		        dailyRecord.set('studentUserName', formValues.studentUserName);
 		        //dailyRecord.set('qtrYear', qtrYear);
 		        dailyRecord.set('daily_year', qtrYear );
 		        dailyRecord.set('locked', 0 );

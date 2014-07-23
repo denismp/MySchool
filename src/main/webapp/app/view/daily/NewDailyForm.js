@@ -46,6 +46,14 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
 					title: 'Daily Fields',
 					items: [
 						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'daily-studentname',
+							fieldLabel: 'studentname',
+							name: 'studentUserName',
+							readOnly: true
+						},
+						{
 							xtype: 'commonquartersubjectcombobox',
 							anchor: '100%'
 						},
@@ -109,13 +117,6 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
 							fieldLabel: 'comments',
 							name: 'comments',
 							value: 'comments'
-						},
-						{
-							xtype: 'hiddenfield',
-							anchor: '100%',
-							itemId: 'daily-studentname',
-							fieldLabel: 'studentname',
-							name: 'studentUserName'
 						},
 						{
 							xtype: 'hiddenfield',

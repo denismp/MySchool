@@ -8,9 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -19,10 +17,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.DailyView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -254,7 +250,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
-	private boolean isDup( DailyView myView ) throws Exception
+	private boolean isDupOLD( DailyView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
 		Long studentId = myView.getStudentId();
@@ -281,7 +277,38 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		}
 		return false;
 	}
-	
+	private boolean isDup( DailyView myView ) throws Exception
+	{
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getDaily_day().intValue(), myView.getQtrName());
+
+		//Integer monthNumber = myView.getMonth_number();
+		//Long studentId = myView.getStudentId();
+		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+		//Student student = Student.findStudent(myView.getStudentId());
+		//Subject subject = Subject.findSubject(myView.getSubjId());
+		List<Daily> dailyList = this.getList(student.getId().toString());
+		
+
+		for (Daily daily : dailyList) 
+		{
+			if( 
+					daily.getDaily_month() == myView.getDaily_month() &&
+					//daily.getDaily_week() == myView.getDaily_week() && 
+					daily.getDaily_day() == myView.getDaily_day() &&
+					daily.getQuarter() == quarter &&
+					quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
+					//quarter.getStudent().getId() == myView.getStudentId() &&
+					quarter.getSubject().getId() == myView.getSubjId()
+					)
+			{
+				return true;
+			}
+			
+		}
+		return false;
+	}
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -298,31 +325,54 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			DailyView myView = DailyView.fromJsonToDailyView(myJson);
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			//	Find the correct student.
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
 
 			if( !this.isDup(myView) )
 			{
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				record.setDaily_day(myView.getDaily_day());
-				//record.setDaily_week(myView.getDaily_week());
-				record.setDaily_month(myView.getDaily_month());
-				record.setComments(myView.getComments());
-				record.setCorrection(myView.getCorrection());
-				record.setDaily_hours(myView.getDaily_hours());
-				record.setDailyAction(myView.getDailyAction());
-				record.setEvaluation(myView.getEvaluation());
-				record.setResourcesUsed(myView.getResourcesUsed());
-				record.setStudyDetails(myView.getStudyDetails());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setLocked(myView.getLocked());
-				record.setQuarter(quarter);
-				record.setWhoUpdated(myView.getWhoUpdated());
-				
-				((Daily)record).persist();
-				
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-				myView.setDailyId(record.getId());
-				//myView.setId(100000L + record.getId());
+				//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
+				//****************************************************
+				//	Find the quarter for the student/qtrName/qtrYear.
+				//****************************************************
+				Quarter quarter = securityHelper
+						.findQuarterByStudentAndYearAndQuarterName(student,
+								myView.getDaily_year().intValue(),
+								myView.getQtrName());
+				if (quarter != null)
+				{
+					record.setDaily_day(myView.getDaily_day());
+					//record.setDaily_week(myView.getDaily_week());
+					record.setDaily_month(myView.getDaily_month());
+					record.setComments(myView.getComments());
+					record.setCorrection(myView.getCorrection());
+					record.setDaily_hours(myView.getDaily_hours());
+					record.setDailyAction(myView.getDailyAction());
+					record.setEvaluation(myView.getEvaluation());
+					record.setResourcesUsed(myView.getResourcesUsed());
+					record.setStudyDetails(myView.getStudyDetails());
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setLocked(myView.getLocked());
+					record.setQuarter(quarter);
+					record.setWhoUpdated(myView.getWhoUpdated());
+					
+					((Daily)record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+					myView.setDailyId(record.getId());
+					//myView.setId(100000L + record.getId());
+				}
+				else
+				{
+					statusGood = false;
+					response.setMessage( "Unable to locate the Student/qtrName/qtrYear" );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;					
+				}
 	
 				if( statusGood )
 				{
@@ -343,7 +393,9 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -351,6 +403,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return the created record with the new system generated id
+		logger.info(response.toString());
          return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
 
 	@Override

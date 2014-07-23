@@ -259,7 +259,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		boolean found = false;
+		//boolean found = false;
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		List<Student> students = securityHelper.findStudentsByLoginUserRole();
 		String studentId_ = null;
@@ -287,17 +287,17 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		
 		try
 		{
+			long i = 0;
 			List<StudentProfileView> studentViewList	= new ArrayList<StudentProfileView>();
 			for( Student student: students )
 			{
 				studentId_ = student.getId().toString();
-				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
-				
-				long i = 0;
+				List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);				
+
 				for (StudentFaculty studentFaculty : studentFacultyList) 
 				{
 					statusGood					= true;
-					found						= true;
+					//found						= true;
 					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
 					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
 					Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
@@ -329,10 +329,10 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					myView.setUserName(student.getUserName());
 
 					studentViewList.add( myView );
-
-					Collections.sort(studentViewList, new MyComparator());
 				}
 			}
+			Collections.sort(studentViewList, new MyComparator());
+			/*
 			if( !found )
 			{
 				for( Student student: students )
@@ -378,6 +378,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				}
 				
 			}
+			*/
 			if (statusGood)
 			{
 				records = studentViewList;			
