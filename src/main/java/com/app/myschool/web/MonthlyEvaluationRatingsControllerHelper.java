@@ -118,6 +118,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 					monthlyEvaluationRatingsView.setLastUpdated(monthlyEvaluationRatings.getLastUpdated());
 					monthlyEvaluationRatingsView.setLocked(monthlyEvaluationRatings.getLocked());
 					monthlyEvaluationRatingsView.setStudentUserName(student_.getUserName());
+					monthlyEvaluationRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
 					monthlyEvaluationRatingsView.setStudentId(student_.getId());
 					monthlyEvaluationRatingsView.setSubjId(u_.getId());
 					monthlyEvaluationRatingsView.setSubjName(u_.getName());

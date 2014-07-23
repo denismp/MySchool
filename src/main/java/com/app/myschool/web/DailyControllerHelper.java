@@ -111,6 +111,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 					myView.setWhoUpdated(daily.getWhoUpdated());
 					myView.setLocked(daily.getLocked());
 					myView.setStudentUserName(student.getUserName());
+					myView.setFacultyUserName(quarter.getFaculty().getUserName());
 					myView.setStudentId(student.getId());
 					myView.setSubjId(u_.getId());
 					myView.setSubjName(u_.getName());

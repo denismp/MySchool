@@ -199,6 +199,11 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					text: 'studentUserName'
 				},
 				{
+					xtype: 'gridcolumn',
+					dataIndex: 'facultyUserName',
+					text: 'facultyUserName'
+				},
+				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',

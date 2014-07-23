@@ -116,6 +116,7 @@ public class WeeklySkillRatingsControllerHelper implements ControllerHelperInter
 					weeklySkillRatingsView.setLastUpdated(skillRatings.getLastUpdated());
 	
 					weeklySkillRatingsView.setStudentUserName(student_.getUserName());
+					weeklySkillRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
 					weeklySkillRatingsView.setStudentId(student_.getId());
 					weeklySkillRatingsView.setSubjId(u_.getId());
 					weeklySkillRatingsView.setSubjName(u_.getName());

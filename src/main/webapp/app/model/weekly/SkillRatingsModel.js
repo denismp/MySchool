@@ -99,6 +99,10 @@ Ext.define('MySchool.model.weekly.SkillRatingsModel', {
 			type: 'string'
 		},
 		{
+			name: 'facultyUserName',
+			type: 'string'
+		},
+		{
 			name: 'subjId',
 			type: 'int'
 		},

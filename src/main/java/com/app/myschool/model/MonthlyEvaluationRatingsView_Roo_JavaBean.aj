@@ -168,6 +168,14 @@ privileged aspect MonthlyEvaluationRatingsView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public String MonthlyEvaluationRatingsView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void MonthlyEvaluationRatingsView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
     public Long MonthlyEvaluationRatingsView.getSubjId() {
         return this.subjId;
     }

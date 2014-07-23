@@ -116,6 +116,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 					monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
 					monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
 					monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
+					monthlySummaryRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
 					monthlySummaryRatingsView.setStudentId(student_.getId());
 					monthlySummaryRatingsView.setSubjId(u_.getId());
 					monthlySummaryRatingsView.setSubjName(u_.getName());

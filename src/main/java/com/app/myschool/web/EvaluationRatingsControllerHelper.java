@@ -117,6 +117,7 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 					evaluationRatingsView.setLastUpdated(evaluationRatings.getLastUpdated());
 	
 					evaluationRatingsView.setStudentUserName(student_.getUserName());
+					evaluationRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
 					evaluationRatingsView.setStudentId(student_.getId());
 					evaluationRatingsView.setSubjId(u_.getId());
 					evaluationRatingsView.setSubjName(u_.getName());

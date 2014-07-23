@@ -152,6 +152,14 @@ privileged aspect DailyView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public String DailyView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void DailyView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
     public Long DailyView.getStudentId() {
         return this.studentId;
     }

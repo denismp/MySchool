@@ -117,7 +117,12 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentName',
-					text: 'UserName'
+					text: 'StudentUser'
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'facultyUserName',
+					text: 'FacultyUser'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -133,6 +138,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
+					hidden: true,
 					dataIndex: 'qtrGradeType',
 					text: 'GradeType',
 					editor: {

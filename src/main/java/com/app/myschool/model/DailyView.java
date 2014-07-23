@@ -48,6 +48,8 @@ public class DailyView {
     
     private String studentUserName;
     
+    private String facultyUserName;
+    
     private Long studentId;
     
 	private Long qtrId;

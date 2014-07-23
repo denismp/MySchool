@@ -94,6 +94,10 @@ Ext.define('MySchool.model.monthly.SummaryRatings', {
 			type: 'string'
 		},
 		{
+			name: 'facultyUserName',
+			type: 'string'
+		},
+		{
 			name: 'subjId',
 			type: 'int'
 		},

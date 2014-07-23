@@ -107,6 +107,10 @@ Ext.define('MySchool.model.weekly.EvaluationsModel', {
 			type: 'string'
 		},
 		{
+			name: 'facultyUserName',
+			type: 'string'
+		},
+		{
 			name: 'subjId',
 			type: 'int'
 		},

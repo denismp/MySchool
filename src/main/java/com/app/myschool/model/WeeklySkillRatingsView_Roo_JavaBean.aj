@@ -160,6 +160,14 @@ privileged aspect WeeklySkillRatingsView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public String WeeklySkillRatingsView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void WeeklySkillRatingsView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
     public Long WeeklySkillRatingsView.getSubjId() {
         return this.subjId;
     }

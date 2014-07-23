@@ -95,6 +95,10 @@ Ext.define('MySchool.model.daily.DailyModel', {
 			type: 'string'
 		},
 		{
+			name: 'facultyUserName',
+			type: 'string'
+		},
+		{
 			name: 'studentId',
 			type: 'int'
 		},

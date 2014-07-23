@@ -46,6 +46,10 @@ Ext.define('MySchool.model.bodiesofwork.BodiesOfWorkModel', {
 			type: 'string'
 		},
 		{
+			name: 'facultyUserName',
+			type: 'string'
+		},
+		{
 			name: 'subjName',
 			type: 'string'
 		},

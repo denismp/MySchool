@@ -176,6 +176,14 @@ privileged aspect EvaluationRatingsView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public String EvaluationRatingsView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void EvaluationRatingsView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
     public Long EvaluationRatingsView.getSubjId() {
         return this.subjId;
     }

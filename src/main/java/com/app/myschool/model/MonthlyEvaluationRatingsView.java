@@ -33,6 +33,7 @@ public class MonthlyEvaluationRatingsView {
 	private Integer qtrYear;
 	private Long studentId;
 	private String studentUserName;
+	private String facultyUserName;
 	private Long subjId;
 	private String subjName;
 	private Integer version;

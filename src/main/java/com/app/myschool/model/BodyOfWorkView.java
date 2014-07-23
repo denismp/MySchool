@@ -30,6 +30,8 @@ public class BodyOfWorkView {
 	
 	private String studentUserName;
 	
+	private String facultyUserName;
+	
 	private Long studentId;
 
 	private Long subjId;

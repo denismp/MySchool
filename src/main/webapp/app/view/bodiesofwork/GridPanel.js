@@ -96,6 +96,11 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
+					dataIndex: 'facultyUserName',
+					text: 'Faculty Name'
+				},
+				{
+					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
 					text: 'whoUpdated'
 				},

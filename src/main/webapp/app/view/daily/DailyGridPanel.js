@@ -107,6 +107,11 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 					text: 'studentUserName'
 				},
 				{
+					xtype: 'gridcolumn',
+					dataIndex: 'facultyUserName',
+					text: 'facultyUserName'
+				},
+				{
 					xtype: 'datecolumn',
 					dataIndex: 'lastUpdated',
 					text: 'lastUpdated',

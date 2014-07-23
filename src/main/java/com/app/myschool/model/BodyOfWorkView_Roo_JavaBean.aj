@@ -88,6 +88,14 @@ privileged aspect BodyOfWorkView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public String BodyOfWorkView.getFacultyUserName() {
+        return this.facultyUserName;
+    }
+    
+    public void BodyOfWorkView.setFacultyUserName(String facultyUserName) {
+        this.facultyUserName = facultyUserName;
+    }
+    
     public Long BodyOfWorkView.getStudentId() {
         return this.studentId;
     }

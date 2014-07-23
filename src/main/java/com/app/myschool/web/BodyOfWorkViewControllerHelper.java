@@ -154,6 +154,7 @@ public class BodyOfWorkViewControllerHelper implements
 					bwv_.setLastUpdated(bw_.getLastUpdated());
 					bwv_.setLocked(bw_.getLocked());
 					bwv_.setStudentUserName(student.getUserName());
+					bwv_.setFacultyUserName(bw_.getQuarter().getFaculty().getUserName());
 					bwv_.setStudentId(student.getId());
 					bwv_.setSubjId(u_.getId());
 					bwv_.setSubjName(u_.getName());
