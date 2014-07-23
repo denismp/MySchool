@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.MonthlySummaryRatingsView;
 import com.app.myschool.model.Quarter;
@@ -45,20 +46,27 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 	}
 	
 	@SuppressWarnings("unchecked")
-	private List<MonthlySummaryRatings>getList( String studentId ) throws Exception
+	private List<MonthlySummaryRatings>getList( String studentId, String facultyId ) throws Exception
 	{
 		List<MonthlySummaryRatings> rList = null;
 		EntityManager em = MonthlySummaryRatings.entityManager();
 		StringBuilder queryString = new StringBuilder("select rs.*");
-		queryString.append(" from monthly_summary_ratings rs, quarter q, subject s, student t");
+		queryString.append(" from monthly_summary_ratings rs, quarter q, subject s, student t, faculty f");
 		queryString.append(" where rs.quarter = q.id");
 		queryString.append(" and q.subject = s.id");
 		queryString.append(" and q.student = t.id");
+		queryString.append(" and q.faculty = f.id");
 		if( studentId != null )
 		{
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
+		if( studentId != null )
+		{
+			queryString.append(" and f.id = ");
+			queryString.append(facultyId);	
+		}
+
 		queryString.append( " order by s.name, q.qtr_name, q.qtr_year, rs.month_number");
 		rList = (List<MonthlySummaryRatings>)em.createNativeQuery(queryString.toString(), MonthlySummaryRatings.class).getResultList(); 
 
@@ -85,46 +93,50 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		{
 			for( Student student: students )
 			{
-				List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString());
-	
-				//long i = 0;
-				for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+				List<Faculty> facultys = securityHelper.getFacultyList(student);
+				for( Faculty faculty: facultys )
 				{
-					statusGood = true;
-					Quarter quarter = monthlySummaryRatings.getQuarter();
-					Subject u_ = quarter.getSubject();
-					Student student_ = quarter.getStudent();
-					MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
-	
-					//monthlySummaryRatingsView.setId(++i);
-					monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
-					monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
-					monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
-					
-					monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
-					monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
-					monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
-					monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
-					monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
-					monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());
-					monthlySummaryRatingsView.setRealizations(monthlySummaryRatings.getRealizations());
-					monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-					monthlySummaryRatingsView.setComments(monthlySummaryRatings.getComments());
-					monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
-	
-					monthlySummaryRatingsView.setWhoUpdated(monthlySummaryRatings.getWhoUpdated());
-					monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
-					monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
-					monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
-					monthlySummaryRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
-					monthlySummaryRatingsView.setStudentId(student_.getId());
-					monthlySummaryRatingsView.setSubjId(u_.getId());
-					monthlySummaryRatingsView.setSubjName(u_.getName());
-					monthlySummaryRatingsView.setQtrId(quarter.getId());
-					monthlySummaryRatingsView.setQtrName(quarter.getQtrName());
-					monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
+					List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString(), faculty.getId().toString());
 		
-					monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);					
+					//long i = 0;
+					for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+					{
+						statusGood = true;
+						Quarter quarter = monthlySummaryRatings.getQuarter();
+						Subject u_ = quarter.getSubject();
+						Student student_ = quarter.getStudent();
+						MonthlySummaryRatingsView monthlySummaryRatingsView = new MonthlySummaryRatingsView();
+		
+						//monthlySummaryRatingsView.setId(++i);
+						monthlySummaryRatingsView.setId(monthlySummaryRatings.getId());
+						monthlySummaryRatingsView.setSummaryId(monthlySummaryRatings.getId());
+						monthlySummaryRatingsView.setVersion(monthlySummaryRatings.getVersion());
+						
+						monthlySummaryRatingsView.setMonth_number(monthlySummaryRatings.getMonth_number());
+						monthlySummaryRatingsView.setFeelings(monthlySummaryRatings.getFeelings());
+						monthlySummaryRatingsView.setReflections(monthlySummaryRatings.getReflections());
+						monthlySummaryRatingsView.setPatternsOfCorrections(monthlySummaryRatings.getPatternsOfCorrections());
+						monthlySummaryRatingsView.setEffectivenessOfActions(monthlySummaryRatings.getEffectivenessOfActions());
+						monthlySummaryRatingsView.setActionResults(monthlySummaryRatings.getActionResults());
+						monthlySummaryRatingsView.setRealizations(monthlySummaryRatings.getRealizations());
+						monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
+						monthlySummaryRatingsView.setComments(monthlySummaryRatings.getComments());
+						monthlySummaryRatingsView.setPlannedChanges(monthlySummaryRatings.getPlannedChanges());
+		
+						monthlySummaryRatingsView.setWhoUpdated(monthlySummaryRatings.getWhoUpdated());
+						monthlySummaryRatingsView.setLastUpdated(monthlySummaryRatings.getLastUpdated());
+						monthlySummaryRatingsView.setLocked(monthlySummaryRatings.getLocked());
+						monthlySummaryRatingsView.setStudentUserName(student_.getUserName());
+						monthlySummaryRatingsView.setFacultyUserName(quarter.getFaculty().getUserName());
+						monthlySummaryRatingsView.setStudentId(student_.getId());
+						monthlySummaryRatingsView.setSubjId(u_.getId());
+						monthlySummaryRatingsView.setSubjName(u_.getName());
+						monthlySummaryRatingsView.setQtrId(quarter.getId());
+						monthlySummaryRatingsView.setQtrName(quarter.getQtrName());
+						monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
+			
+						monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);					
+				}
 				}
 				if (statusGood)
 				{
@@ -253,7 +265,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		// Return retrieved object.
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
-
+/*
 	private boolean isDupOLD( MonthlySummaryRatingsView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
@@ -279,33 +291,37 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		}
 		return false;
 	}
+	*/
 	private boolean isDup( MonthlySummaryRatingsView myView ) throws Exception
 	{
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
 		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getQtrYear().intValue(), myView.getQtrName());
-
+		List<Faculty> facultys = securityHelper.getFacultyList(student);
 		//Integer monthNumber = myView.getMonth_number();
 		//Long studentId = myView.getStudentId();
 		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString());
-		
-
-		for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+		for( Faculty faculty: facultys )
 		{
-			if( 
-					monthlySummaryRatings.getMonth_number() == myView.getMonth_number() && 
-					monthlySummaryRatings.getQuarter() == quarter &&
-					quarter.getStudent().getUserName().equals(myView.getStudentUserName()) &&
-					//quarter.getStudent().getId() == myView.getStudentId() &&
-					quarter.getSubject().getId() == myView.getSubjId()
-					)
-			{
-				return true;
-			}
+			List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString(), faculty.getId().toString());
 			
+	
+			for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
+			{
+				if( 
+						monthlySummaryRatings.getMonth_number() == myView.getMonth_number() && 
+						monthlySummaryRatings.getQuarter() == quarter &&
+						quarter.getStudent().getUserName().equals(myView.getStudentUserName()) &&
+						//quarter.getStudent().getId() == myView.getStudentId() &&
+						quarter.getSubject().getId() == myView.getSubjId()
+						)
+				{
+					return true;
+				}
+				
+			}
 		}
 		return false;
 	}	

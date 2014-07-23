@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Daily;
 import com.app.myschool.model.DailyView;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -45,20 +46,26 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private List<Daily>getList( String studentId ) throws Exception
+	private List<Daily>getList( String studentId, String facultyId ) throws Exception
 	{
 		List<Daily> rList = null;
 		EntityManager em = Daily.entityManager();
 		StringBuilder queryString = new StringBuilder("select d.*");
-		queryString.append(" from daily d, quarter q, student t");
+		queryString.append(" from daily d, quarter q, student t, faculty f");
 		queryString.append(" where d.quarter = q.id");
 		//queryString.append(" and b.quarter = d.quarter");
 		queryString.append(" and q.student = t.id");
+		queryString.append(" and q.faculty = f.id");
 
 		if( studentId != null )
 		{
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
+		}
+		if( facultyId != null )
+		{
+			queryString.append(" and f.id = ");
+			queryString.append(facultyId);
 		}
 		queryString.append( " order by d.daily_month, d.daily_day");
 		rList = (List<Daily>)em.createNativeQuery(queryString.toString(), Daily.class).getResultList(); 
@@ -87,41 +94,45 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		{
 			for( Student student: students )
 			{
-				List<Daily> dailyList			= this.getList(student.getId().toString());
-	
-				for (Daily daily : dailyList) 
+				List<Faculty> facultys = securityHelper.getFacultyList(student);
+				for( Faculty faculty: facultys )
 				{
-					statusGood						= true;
-					Quarter quarter					= daily.getQuarter();
-					Subject u_						= quarter.getSubject();
-					DailyView myView			= new DailyView();
-					myView.setId(++i);
-
-					myView.setComments(daily.getComments());
-					myView.setCorrection(daily.getCorrection());
-					myView.setDaily_day(daily.getDaily_day());
-					myView.setDaily_hours(daily.getDaily_hours());
-					myView.setDaily_month(daily.getDaily_month());
-
-					myView.setDaily_year(quarter.getQtr_year());
-					myView.setDailyAction(daily.getDailyAction());
-					myView.setDailyId(daily.getId());
-					myView.setEvaluation(daily.getEvaluation());
-					myView.setLastUpdated(daily.getLastUpdated());
-					myView.setWhoUpdated(daily.getWhoUpdated());
-					myView.setLocked(daily.getLocked());
-					myView.setStudentUserName(student.getUserName());
-					myView.setFacultyUserName(quarter.getFaculty().getUserName());
-					myView.setStudentId(student.getId());
-					myView.setSubjId(u_.getId());
-					myView.setSubjName(u_.getName());
-					myView.setQtrId(quarter.getId());
-					myView.setQtrName(quarter.getQtrName());
-					myView.setQtrYear(quarter.getQtr_year());
-					myView.setResourcesUsed(daily.getResourcesUsed());
-					myView.setStudyDetails(daily.getStudyDetails());
-					myView.setVersion(daily.getVersion());
-					dailyViewList.add( myView );
+					List<Daily> dailyList			= this.getList(student.getId().toString(), faculty.getId().toString());
+		
+					for (Daily daily : dailyList) 
+					{
+						statusGood						= true;
+						Quarter quarter					= daily.getQuarter();
+						Subject u_						= quarter.getSubject();
+						DailyView myView			= new DailyView();
+						myView.setId(++i);
+	
+						myView.setComments(daily.getComments());
+						myView.setCorrection(daily.getCorrection());
+						myView.setDaily_day(daily.getDaily_day());
+						myView.setDaily_hours(daily.getDaily_hours());
+						myView.setDaily_month(daily.getDaily_month());
+	
+						myView.setDaily_year(quarter.getQtr_year());
+						myView.setDailyAction(daily.getDailyAction());
+						myView.setDailyId(daily.getId());
+						myView.setEvaluation(daily.getEvaluation());
+						myView.setLastUpdated(daily.getLastUpdated());
+						myView.setWhoUpdated(daily.getWhoUpdated());
+						myView.setLocked(daily.getLocked());
+						myView.setStudentUserName(student.getUserName());
+						myView.setFacultyUserName(quarter.getFaculty().getUserName());
+						myView.setStudentId(student.getId());
+						myView.setSubjId(u_.getId());
+						myView.setSubjName(u_.getName());
+						myView.setQtrId(quarter.getId());
+						myView.setQtrName(quarter.getQtrName());
+						myView.setQtrYear(quarter.getQtr_year());
+						myView.setResourcesUsed(daily.getResourcesUsed());
+						myView.setStudyDetails(daily.getStudyDetails());
+						myView.setVersion(daily.getVersion());
+						dailyViewList.add( myView );
+					}
 				}
 			}
 			if (statusGood)
@@ -251,6 +262,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 
+	/*
 	private boolean isDupOLD( DailyView myView ) throws Exception
 	{
 		//Integer monthNumber = myView.getMonth_number();
@@ -278,6 +290,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		}
 		return false;
 	}
+	*/
 	private boolean isDup( DailyView myView ) throws Exception
 	{
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
@@ -289,24 +302,27 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		//Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<Daily> dailyList = this.getList(student.getId().toString());
+		List<Faculty> facultys = securityHelper.getFacultyList(student);
 		
-
-		for (Daily daily : dailyList) 
+		for( Faculty faculty: facultys )
 		{
-			if( 
-					daily.getDaily_month() == myView.getDaily_month() &&
-					//daily.getDaily_week() == myView.getDaily_week() && 
-					daily.getDaily_day() == myView.getDaily_day() &&
-					daily.getQuarter() == quarter &&
-					quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
-					//quarter.getStudent().getId() == myView.getStudentId() &&
-					quarter.getSubject().getId() == myView.getSubjId()
-					)
+			List<Daily> dailyList = this.getList(student.getId().toString(), faculty.getId().toString());
+				
+			for (Daily daily : dailyList) 
 			{
-				return true;
+				if( 
+						daily.getDaily_month() == myView.getDaily_month() &&
+						//daily.getDaily_week() == myView.getDaily_week() && 
+						daily.getDaily_day() == myView.getDaily_day() &&
+						daily.getQuarter() == quarter &&
+						quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
+						//quarter.getStudent().getId() == myView.getStudentId() &&
+						quarter.getSubject().getId() == myView.getSubjId()
+						)
+				{
+					return true;
+				}				
 			}
-			
 		}
 		return false;
 	}
