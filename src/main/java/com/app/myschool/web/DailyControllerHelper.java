@@ -355,7 +355,11 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 					record.setLastUpdated(myView.getLastUpdated());
 					record.setLocked(myView.getLocked());
 					record.setQuarter(quarter);
-					record.setWhoUpdated(myView.getWhoUpdated());
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					
+					//record.setWhoUpdated(myView.getWhoUpdated());
+					record.setWhoUpdated(securityHelper.getUserName());
 					
 					((Daily)record).persist();
 					
@@ -493,7 +497,10 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setLocked(myView.getLocked());
 			//record.setQuarter(quarter);
-			record.setWhoUpdated(myView.getWhoUpdated());
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			//record.setWhoUpdated(myView.getWhoUpdated());
+			record.setWhoUpdated(securityHelper.getUserName());
 
 
 			logger.info("Debug2");
