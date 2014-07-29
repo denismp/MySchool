@@ -16,10 +16,6 @@
             <menu:item id="i_subject_new" messageCode="global_menu_new" url="/subjects?form" z="K/cpx4U1MG0/LtXu68wamJ7ttg0="/>
             <menu:item id="i_subject_list" messageCode="global_menu_list" url="/subjects?page=1&amp;size=${empty param.size ? 10 : param.size}" z="EQd4RQgsWkj2hqqLFZF+zKoYy0I="/>
         </menu:category>
-        <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
-            <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
-            <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
-        </menu:category>
         <menu:category id="c_artifact" z="0Qe/hlVN3gyyJEnPX3vB0YIh8JY=">
             <menu:item id="i_artifact_new" messageCode="global_menu_new" url="/artifacts?form" z="G4UetoLhlArEkOXiXslETn/hg8M="/>
             <menu:item id="i_artifact_list" messageCode="global_menu_list" url="/artifacts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="qG8D7WxbDs3tyOJsq7p6m3PndEM="/>
@@ -63,6 +59,12 @@
         <menu:category id="c_daily" z="NFkxHXrs3RHbcUzbzVxYdBL+0h8=">
             <menu:item id="i_daily_new" messageCode="global_menu_new" url="/dailys?form" z="an2jfPHNh7ouXAQ6voPS9Mq+QzI="/>
             <menu:item id="i_daily_list" messageCode="global_menu_list" url="/dailys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="do7jyq5vh0p9Snztwoo2VLEQri0="/>
+        </menu:category>
+        </sec:authorize>
+        <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')">
+        <menu:category id="c_student" z="VA/5j81jpINYUQQoxpb8LUYLpWk=">
+            <menu:item id="i_student_new" messageCode="global_menu_new" url="/students?form" z="xCEWOyB2txSvWmV9Fxwd+H7BxCM="/>
+            <menu:item id="i_student_list" messageCode="global_menu_list" url="/students?page=1&amp;size=${empty param.size ? 10 : param.size}" z="PSLnBxZ6Z7hXmOglFNorqDjA2H0="/>
         </menu:category>
         </sec:authorize>
 	<sec:authorize access="isAuthenticated()">

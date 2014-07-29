@@ -72,10 +72,10 @@
         <intercept-url pattern="/studentpasswordviews/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/studentprofileviews" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/studentprofileviews/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/students" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/students/**" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/studentviews" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/studentviews/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/students" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
+        <intercept-url pattern="/students/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
+        <intercept-url pattern="/studentviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
+        <intercept-url pattern="/studentviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
         <intercept-url pattern="/subjects" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjects/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/subjectviews" access="hasRole('ROLE_ADMIN')" />
