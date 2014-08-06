@@ -130,7 +130,6 @@ Ext.define('MySchool.view.subject.NewForm', {
 						},
 						{
 							xtype: 'subjectfacultynamescombobox',
-							editable: false,
 							anchor: '100%'
 						}
 					]

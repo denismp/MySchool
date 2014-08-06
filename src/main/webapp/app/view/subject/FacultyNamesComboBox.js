@@ -22,6 +22,7 @@ Ext.define('MySchool.view.subject.FacultyNamesComboBox', {
 	fieldLabel: 'Faculty',
 	allowOnlyWhitespace: false,
 	emptyText: 'Select one.',
+	editable: false,
 	displayField: 'email',
 	forceSelection: true,
 	store: 'faculty.FacultyTableStore',

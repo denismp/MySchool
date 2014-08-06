@@ -287,24 +287,22 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		//var selectedIndex = myGrid.getSelectionModel().getSelection()[0].index;
 
 		//var myRecord = myStore.getAt(selectedIndex);
-		var facultyRecord;
 
 		var facultyId;
 
-		if( this.userRole !== 'ROLE_USER' )
+		if( this.userRole === 'ROLE_FACULTY' )
 		{
-			facultyRecord = facultyStore.findRecord( 'userName', this.userName );
+			var facultyRecord = facultyStore.findRecord( 'userName', this.userName );
+			if( facultyRecord !== null )
+			{
+				facultyId = facultyRecord.get('id');
+			}
 		}
 		else
 		{
 			facultyId = facultyComboBox.getValue();
 		}
-
-		if( facultyRecord !== null )
-		{
-			facultyId = facultyRecord.get('id');
-		}
-
+		//debugger;
 
 		if( facultyStore.count() > 0 )
 		{
@@ -558,23 +556,21 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	},
 
 	onLaunch: function() {
-		var facultyStore = Ext.getStore( 'faculty.FacultyTableStore' );
-		var studentProfileStore = Ext.getStore('student.StudentProfileStore');
-		var myStudentStore = Ext.getStore('student.StudentStore');
-		var securityStore = Ext.getStore('security.SecurityStore');
-		//var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
-		//var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
-		//var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
-		debugger;
-		facultyStore.load({
-			callback: this.onFacultyStoreLoad,
-			scope: this
-			}
-		);
+		//var facultyStore = Ext.getStore( 'faculty.FacultyTableStore' );
+		//var studentProfileStore = Ext.getStore('student.StudentProfileStore');
+		//var myStudentStore = Ext.getStore('student.StudentStore');
+		//var securityStore = Ext.getStore('security.SecurityStore');
 
-		studentProfileStore.load();
-		myStudentStore.load();
-		securityStore.load();
+		//debugger;
+		//facultyStore.load({
+		//	callback: this.onFacultyStoreLoad,
+		//	scope: this
+		//	}
+		//);
+
+		//studentProfileStore.load();
+		//myStudentStore.load();
+		//securityStore.load();
 
 	},
 
