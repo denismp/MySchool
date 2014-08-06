@@ -20,6 +20,11 @@ import javax.persistence.Query;
 //import javax.persistence.Query;
 
 
+
+
+
+import javax.persistence.TypedQuery;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -28,11 +33,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.StudentProfileView;
 import com.app.myschool.model.Faculty;
+import com.app.myschool.model.StudentView;
 
 
 
@@ -249,7 +254,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
-	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
+	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) 
+	{
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		Class<StudentProfileView> myViewClass = StudentProfileView.class;
@@ -259,31 +265,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		//boolean found = false;
+
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		List<Student> students = securityHelper.findStudentsByLoginUserRole();
-		String studentId_ = null;
-		/*
-		String studentId_ = getParam(params, "studentId");
-		String studentUserName = getParam(params,"studentName");
-		List<Student> students = new ArrayList<Student>();
-		if( studentUserName != null )
-		{
-			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
-		}
-		else
-		{
-			if( studentId_ == null )
-			{
-				students = Student.findAllStudents();
-			}
-			else
-			{
-				Student student = Student.findStudent(new Long( studentId_ ));
-				students.add(student);
-			}
-		}
-		*/
 		
 		try
 		{
@@ -291,17 +275,11 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			List<StudentProfileView> studentViewList	= new ArrayList<StudentProfileView>();
 			for( Student student: students )
 			{
-				studentId_ = student.getId().toString();
-				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
-				List<Faculty> studentFacultyList = securityHelper.getFacultyList(student);
+				List<Faculty> studentFacultyList = new ArrayList<Faculty>(student.getFaculty());
 
 				for (Faculty faculty : studentFacultyList) 
-				{
+				{					
 					statusGood					= true;
-					//found						= true;
-					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
-					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
-					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
 	
 					StudentProfileView myView			= new StudentProfileView();
 					myView.setId(++i);
@@ -333,53 +311,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				}
 			}
 			Collections.sort(studentViewList, new MyComparator());
-			/*
-			if( !found )
-			{
-				for( Student student: students )
-				{
-					studentId_ = student.getId().toString();
-					
-					long i = 0;
-					statusGood					= true;
-					found						= true;
-					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
-					//Student faculty				= Student.findStudent(new Long(studentFaculty.facultyId));
-					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-	
-					StudentProfileView myView			= new StudentProfileView();
-					myView.setId(++i);
-					myView.setStudentprofileviewId(i);
-					myView.setVersion(student.getVersion());
-					myView.setLastUpdated(student.getLastUpdated());
-					myView.setWhoUpdated(student.getWhoUpdated());
-					myView.setStudentId(student.getId());
-					myView.setVersion(student.getVersion());
-					//myView.setFacultyId(faculty.getId());
-					myView.setEmail(student.getEmail());
-					myView.setAddress1(student.getAddress1());
-					myView.setAddress2(student.getAddress2());
-					myView.setCity(student.getCity());
-					myView.setCountry(student.getCountry());
-					//myView.setFacultyUserName(faculty.getUserName());
-					//myView.setFacultyEmail(faculty.getEmail());
-					myView.setLastName(student.getLastName());
-					myView.setMiddleName(student.getMiddleName());
-					myView.setFirstName(student.getFirstName());
-					myView.setPostalCode(student.getPostalCode());
-					myView.setProvince(student.getProvince());
-					myView.setPhone1(student.getPhone1());
-					myView.setPhone2(student.getPhone2());
-					myView.setEnabled(student.getEnabled());
-					myView.setUserName(student.getUserName());
 
-					studentViewList.add( myView );
-
-					Collections.sort(studentViewList, new MyComparator());					
-				}
-				
-			}
-			*/
 			if (statusGood)
 			{
 				records = studentViewList;			
@@ -553,58 +485,115 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 	}
 	
 	@Override
-	public ResponseEntity<String> createFromJson(String json) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
+	public ResponseEntity<String> createFromJson(String json)
+	{
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
 		HttpStatus returnStatus = HttpStatus.OK;
-		
+
 		JsonObjectResponse response = new JsonObjectResponse();
 
-		try {
-			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
-			logger.info( "createFromJson():myjson=" + myJson );
-			logger.info( "createFromJson():Encoded JSON=" + json );
+		try
+		{
+			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""),
+					"UTF8");
+			logger.info("createFromJson():myjson=" + myJson);
+			logger.info("createFromJson():Encoded JSON=" + json);
 			Student record = new Student();
-			//Faculty record = new Faculty();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			StudentProfileView myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
-			Student student = Student.findStudent(myView.getStudentId());
-			Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-			
-			//this.relateStudentAndFaculty(myView.getStudentId(), myView.getFacultyId());
+			StudentProfileView myView = StudentProfileView
+					.fromJsonToStudentProfileView(myJson);
 
-			
-			record = student;
-			record.setLastUpdated(myView.getLastUpdated());
-			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-			record.setWhoUpdated(securityHelper.getUserName());
-			
-			record.getFaculty().add(faculty);
-			record.merge();
-			myView.setVersion(student.getVersion());	
-						
-			
-			if( statusGood )
+			List<Student> studentList = Student.findStudentsByUserNameEquals(
+					myView.getUserName()).getResultList();
+
+			if (studentList.size() == 0)
 			{
-	            returnStatus = HttpStatus.CREATED;
-				response.setMessage( className + " created." );
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);
+
+				Set<Faculty> facultys = new HashSet<Faculty>();
+
+				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+				facultys.add(faculty);
+
+				record.setLastUpdated(myView.getLastUpdated());
+
+				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				record.setWhoUpdated(securityHelper.getUserName());
+
+				String newpwd = securityHelper.convertToSHA256(myView
+						.getUserPassword());
+
+				record.setAddress1(myView.getAddress1());
+				record.setAddress2(myView.getAddress2());
+				record.setCity(myView.getCity());
+				record.setCountry(myView.getCountry());
+				record.setEnabled(myView.getEnabled());
+				record.setEmail(myView.getEmail());
+				record.setFirstName(myView.getFirstName());
+				record.setMiddleName(myView.getMiddleName());
+				record.setLastName(myView.getLastName());
+				record.setPhone1(myView.getPhone1());
+				record.setPhone2(myView.getPhone2());
+				record.setPostalCode(myView.getPostalCode());
+				record.setProvince(myView.getProvince());
+				record.setUserName(myView.getUserName());
+				record.setUserPassword(newpwd);
+				record.setFaculty(facultys);
+
+				((Student) record).persist();
+
+				myView.setVersion(record.getVersion());
+				myView.setId(record.getId());
+
+				myView.setId(100000L + record.getId());				
+				
+				myView.setStudentprofileviewId(100000L + record.getId());
+				myView.setVersion(record.getVersion());
+				myView.setLastUpdated(record.getLastUpdated());
+				myView.setWhoUpdated(record.getWhoUpdated());
+				myView.setStudentId(record.getId());
+				myView.setVersion(record.getVersion());
+				myView.setFacultyId(faculty.getId());
+				myView.setEmail(record.getEmail());
+				myView.setAddress1(record.getAddress1());
+				myView.setAddress2(record.getAddress2());
+				myView.setCity(record.getCity());
+				myView.setCountry(record.getCountry());
+				myView.setFacultyUserName(faculty.getUserName());
+				myView.setFacultyEmail(faculty.getEmail());
+				myView.setLastName(record.getLastName());
+				myView.setMiddleName(record.getMiddleName());
+				myView.setFirstName(record.getFirstName());
+				myView.setPostalCode(record.getPostalCode());
+				myView.setProvince(record.getProvince());
+				myView.setPhone1(record.getPhone1());
+				myView.setPhone2(record.getPhone2());
+				myView.setEnabled(record.getEnabled());
+				myView.setUserName(record.getUserName());
+
+				if (statusGood)
+				{
+					returnStatus = HttpStatus.CREATED;
+					response.setMessage(className + " created.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
 			}
 			else
 			{
 				statusGood = false;
-				response.setMessage( "Duplicated faculty/student attempted." );
+				response.setMessage("Duplicated faculty/student attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
-				//returnStatus = HttpStatus.BAD_REQUEST;
+				// returnStatus = HttpStatus.BAD_REQUEST;
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			logger.error(e.getMessage());
+
+		}
+		catch (Exception e)
+		{
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -612,7 +601,10 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		}
 
 		// Return the created record with the new system generated id
-         return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
+		logger.info(response.toString());
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
+	}
 
 	@Override
 	public ResponseEntity<String> deleteFromJson( Long id) {

@@ -46,6 +46,8 @@ public class StudentView {
         
     private String userName;
     
+    private String userPassword;
+    
     private Long studentId;
     
 	private Long facultyId;

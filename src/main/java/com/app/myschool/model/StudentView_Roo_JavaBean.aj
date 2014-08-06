@@ -152,6 +152,14 @@ privileged aspect StudentView_Roo_JavaBean {
         this.userName = userName;
     }
     
+    public String StudentView.getUserPassword() {
+        return this.userPassword;
+    }
+    
+    public void StudentView.setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+    
     public Long StudentView.getStudentId() {
         return this.studentId;
     }

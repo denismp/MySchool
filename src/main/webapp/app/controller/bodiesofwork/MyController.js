@@ -44,7 +44,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 	],
 
 	onBodiesofworkssubjectsgridViewReady: function(tablepanel, eOpts) {
-		//debugger;
+		debugger;
 		console.log('onBodiesofworkssubjectsgridViewReady()');
 		var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
 		var ss_ = Ext.getStore('student.StudentStore');
@@ -57,7 +57,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
 		var r_ = ss_.getAt(0);
 		//        debugger
-		if ( typeof( r_ ) != "undefined" )
+		if ( typeof( r_ ) !== "undefined" )
 		{
 			if( this.userRole !== "ROLE_USER")
 			{
@@ -82,6 +82,16 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 					}
 				});
 			}
+		}
+		else
+		{
+			studentName_ = this.userName + '/' + this.userRole;
+			g_.setTitle('[' + studentName_ + ']');
+			myStore.load({
+				callback: this.onMyJsonStoreLoad,
+				studentName: this.userName,
+				scope: this
+			});
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );

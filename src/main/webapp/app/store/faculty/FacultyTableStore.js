@@ -80,12 +80,12 @@ Ext.define('MySchool.store.faculty.FacultyTableStore', {
 
 	onJsonpstoreLoad: function(store, records, successful, eOpts) {
 		//debugger;
-		console.log("monthly.EvaluationRatingsStore.onJsonstoreLoad() called...");
+		console.log("monthly.FacultyTableStore.onJsonstoreLoad() called...");
 	},
 
 	onJsonpstoreWrite: function(store, operation, eOpts) {
 		//debugger;
-		console.log("monthly.EvaluationRatingsStore.onJsonstoreWrite(): called...");
+		console.log("monthly.FacultyTableStore.onJsonstoreWrite(): called...");
 		store.reload();
 	}
 

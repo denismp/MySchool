@@ -93,7 +93,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 	},
 
 	onToolnewsubjectsClick: function(tool, e, eOpts) {
-		//        debugger;
+		debugger;
 		window.console.log( 'New' );
 		var newDialog = Ext.create( 'MySchool.view.subject.NewForm' );
 		//window.console.log( "DEBUG" );
@@ -131,7 +131,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    window.console.log( myrecord.data );
 		}
 
-		if( this.userRole !== 'USER_ROLE')
+		if( this.userRole !== 'ROLE_USER')
 		{
 			studentName_.setValue('Enter_user_name');
 			studentName_.setReadOnly( false );
@@ -831,7 +831,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		{
 			//debugger;
 			var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
-			g_.setTitle( '[' + this.userName + ']' );
+			g_.setTitle( '[' + this.userName + '/' + this.userRole + ']' );
 		}
 	},
 

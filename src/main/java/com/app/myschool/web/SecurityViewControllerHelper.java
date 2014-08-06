@@ -159,7 +159,8 @@ public class SecurityViewControllerHelper implements
 		}
 		else if( securityHelper.getUserRole().equals("ROLE_ADMIN"))
 		{
-			facultys = Faculty.findAllFacultys();
+			//facultys = Faculty.findAllFacultys();
+			facultys = new ArrayList<Faculty>(student.getFaculty());
 		}
 		return facultys;
 	}

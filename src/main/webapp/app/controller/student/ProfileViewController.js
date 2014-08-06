@@ -38,6 +38,10 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		{
 			ref: 'studentpasswordtool',
 			selector: '#studentpasswordtool'
+		},
+		{
+			ref: 'FacultyComboBox',
+			selector: '#facultynamescombobox'
 		}
 	],
 
@@ -76,11 +80,26 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 					callback: this.onMyJsonStoreLoad,
 					scope: this,
 					params: {
-						studentName: studentRecord.get('userName'),
+						studentName: studentRecord.get('userName' ),
 						studentId: studentRecord.get('studentId')
 					}
 				});
 			}
+		}
+		else
+		{
+			studentName_ = this.userName + '/' + this.userRole;
+
+			myGrid.setTitle('[' + studentName_ + ']');
+
+
+			myStore.load({
+				callback: this.onMyJsonStoreLoad,
+				scope: this,
+				params: {
+					studentName: this.userName
+				}
+			});
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );
@@ -169,31 +188,31 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	},
 
 	onStudentprofilenewtoolClick: function(tool, e, eOpts) {
-		/*
 		debugger;
 		var studentStore				= Ext.getStore('student.StudentStore');
 		var facultyStore				= Ext.getStore('faculty.FacultyTableStore');
-		//var subjectStore				= Ext.getStore('subject.SubjectStore');
-		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
-		//var commonMonthStore			= Ext.getStore('common.MonthStore');
 
-		//var studentRecord	= studentStore.getAt(0);
-		//var studentId		= studentRecord.get( 'id' );
-		//var studentName		= studentRecord.get( 'userName' );
+		if( this.userRole !== 'ROLE_USER')
+		{
+			var newDialog = Ext.create( 'MySchool.view.student.NewDialog' );
+			var facultyComboBox = this.getFacultyComboBox();
+			if( this.userRole === 'ROLE_FACULTY')
+			{
+				facultyComboBox.setVisible( false );
+				facultyComboBox.forceSelection = false;
+			}
+			else
+			{
+				facultyComboBox.setVisible( true );
+				facultyComboBox.forceSelection = true;
+			}
 
-		var newDialog = Ext.create( 'MySchool.view.student.NewForm' );
+			window.console.log( 'New Student Dialog' );
 
-		//newDialog.down('#studentid').setValue( studentId );
-		//newDialog.down('#studentname').setValue( studentName );
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
 
-		//commonQuarterSubjectStore.myLoad();
-		//commonMonthStore.myLoad();
-
-		window.console.log( 'New Student Dialog' );
-
-		newDialog.render( Ext.getBody() );
-		newDialog.show();
-		*/
 	},
 
 	onStudentprofilesavetoolClick: function(tool, e, eOpts) {
@@ -221,11 +240,12 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	},
 
 	onStudentcancelClick: function(button, e, eOpts) {
-		//debugger;
+		debugger;
 		window.console.log( "Cancel New Student" );
 		var myForm = button.up().getForm();
 		myForm.reset();
 		button.up().hide();
+		button.up().up().close();
 	},
 
 	onStudentsubmitClick: function(button, e, eOpts) {
@@ -237,33 +257,57 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 		//Get the values from the form and insert a new record into the StudentStore.
 
-		//var formValues				= myForm.getValues();
+		var formValues				= myForm.getValues();
 
 		//	Create an empty record
-		//var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
+		var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
 
 		//	Get the stores that we will need
+
+		var firstname	= formValues.firstname;
+		var middlename	= formValues.middlename;
+		var lastname	= formValues.lastname;
+		var phone1		= formValues.phone1;
+		var phone2		= formValues.phone2;
+		var address1	= formValues.address1;
+		var address2	= formValues.address2;
+		var city		= formValues.city;
+		var state		= formValues.state;
+		var postalcode	= formValues.postalcode;
+		var country		= formValues.country;
+		var email		= formValues.email;
+		var username	= formValues.username;
+		var password	= formValues.password;
 
 
 		var myStore		= this.getStore( 'student.StudentProfileStore' );
 		var facultyStore= this.getStore('faculty.FacultyTableStore');
 		var facultyComboBox = myPanel.down('#facultynamescombobox');
 
-		var selectedIndex = myGrid.getSelectionModel().getSelection()[0].index;
+		//var selectedIndex = myGrid.getSelectionModel().getSelection()[0].index;
 
-		var myRecord = myStore.getAt(selectedIndex);
+		//var myRecord = myStore.getAt(selectedIndex);
+		var facultyRecord;
+
+		var facultyId;
+
+		if( this.userRole !== 'ROLE_USER' )
+		{
+			facultyRecord = facultyStore.findRecord( 'userName', this.userName );
+		}
+		else
+		{
+			facultyId = facultyComboBox.getValue();
+		}
+
+		if( facultyRecord !== null )
+		{
+			facultyId = facultyRecord.get('id');
+		}
 
 
 		if( facultyStore.count() > 0 )
 		{
-		    var facultyId = facultyComboBox.getValue();
-
-		    //	We need to fool the backend into doing a create so the we can create a link record
-		    //	in the faculty_students table.  We do this by setting the 'id' to a null because it
-		    //	is only an view id not a real student id.  This causes the sync() to call the POST create()
-		    //	method rather than than an PUT update().  If we were to create new empty record and set the
-		    //	studentId and the facultyId, we could do the myStore.add( myRecord ) as an alternative, but
-		    //	I chose the sync() only methodolgy.
 		    myRecord.set( 'id', null );
 		    //myRecord.set( 'version', null );
 
@@ -271,16 +315,32 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 		    myRecord.set('whoUpdated', 'login');
 		    myRecord.set('lastUpdated', new Date());
+			myRecord.set('email', email );
+			myRecord.set('firstName', firstname );
+			myRecord.set('middleName', middlename );
+			myRecord.set('lastName', lastname);
+			myRecord.set('phone1', phone1 );
+			myRecord.set('phone2', phone2 );
+			myRecord.set('address1', address1);
+			myRecord.set('address2', address2);
+			myRecord.set('city', city);
+			myRecord.set('province', state);
+			myRecord.set('postalCode',postalcode);
+			myRecord.set('country',country);
+			myRecord.set('userName',username);
+			myRecord.set('userPassword',password);
+			myRecord.set('enabled', true);
 
 		    //add to the store
 
-		    //myStore.add( myRecord );
+		    myStore.add( myRecord );
 
 		    //sync the store.
 		    myStore.sync();
 
 		    myForm.reset();
 		    button.up().hide();
+			button.up().up().close();
 		}
 		else
 		{
@@ -427,7 +487,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	},
 
 	onMyJsonStoreLoad: function() {
-		//debugger;
+		debugger;
 		//var g_ = Ext.ComponentQuery.query("#monthlysummarygridpanel")[0];
 		var g_ = this.getStudentProfileGridPanel();
 
@@ -495,6 +555,31 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		    }
 		}
 		return "";
+	},
+
+	onLaunch: function() {
+		var facultyStore = Ext.getStore( 'faculty.FacultyTableStore' );
+		var studentProfileStore = Ext.getStore('student.StudentProfileStore');
+		var myStudentStore = Ext.getStore('student.StudentStore');
+		var securityStore = Ext.getStore('security.SecurityStore');
+		//var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
+		//var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
+		//var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
+		debugger;
+		facultyStore.load({
+			callback: this.onFacultyStoreLoad,
+			scope: this
+			}
+		);
+
+		studentProfileStore.load();
+		myStudentStore.load();
+		securityStore.load();
+
+	},
+
+	onFacultyStoreLoad: function() {
+
 	},
 
 	init: function(application) {

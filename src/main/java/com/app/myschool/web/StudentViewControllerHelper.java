@@ -262,6 +262,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 						myView.setPhone2(student.getPhone2());
 						myView.setEnabled(student.getEnabled());
 						myView.setUserName(student.getUserName());
+						myView.setUserPassword("NOT DISPLAYED");
 						myView.setQtrId(quarter.getId());
 						myView.setQtrName(quarter.getQtrName());
 						myView.setSubjId(subject.getId());
@@ -582,7 +583,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		}
 		return false;
 	}
-	
+
 	@Override
 	public ResponseEntity<String> createFromJson(String json) {
         HttpHeaders headers = new HttpHeaders();
@@ -599,30 +600,25 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			StudentView myView = StudentView.fromJsonToStudentView(myJson);
+			
+			Student student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();
 
-			if( !this.isDup(myView) )
+			if( student == null )
 			{
-				/*
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				*/
-				
-				
-				List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
+				//List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
 				Set<Faculty> facultys = new HashSet<Faculty>();
-				for( StudentFaculty studentFaculty: studentList)
-				{
-					Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
+				//for( StudentFaculty studentFaculty: studentList)
+				//{
+					Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
 					facultys.add(faculty);
-				}
-				
+				//}
 				
 				record.setLastUpdated(myView.getLastUpdated());
-				//record.setWhoUpdated(myView.getWhoUpdated());
+
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
-
+				
+				String newpwd = securityHelper.convertToSHA256(myView.getUserPassword());
 				
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
@@ -638,6 +634,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
 				record.setUserName(myView.getUserName());
+				record.setUserPassword(newpwd);
 				record.setFaculty(facultys);
 				//record.setStudents(students);
 				
@@ -675,7 +672,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return the created record with the new system generated id
-         return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
+		logger.info(response.toString());
+         return new ResponseEntity<String>(response.toString(), headers, returnStatus);	
+	}
 
 	@Override
 	public ResponseEntity<String> deleteFromJson( Long id) {

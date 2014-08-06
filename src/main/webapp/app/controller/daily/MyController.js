@@ -234,6 +234,16 @@ Ext.define('MySchool.controller.daily.MyController', {
 			}
 
 		}
+		else
+		{
+			studentName_ = this.userName + '/' + this.userRole;
+			myGrid.setTitle('[' + studentName_ + ']');
+			myStore.load({
+				callback: this.onMyJsonStoreLoad,
+				studentName: this.userName,
+				scope: this
+			});
+		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );
 
