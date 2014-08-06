@@ -604,3 +604,9 @@ logging setup --level INFO
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-05 21:16:11
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-08-05 21:52:50
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-05 22:04:37
+logging setup --level DEBUG
+logging setup --level INFO
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-08-06 10:22:11
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-06 10:26:32
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-08-06 10:43:50
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-08-06 10:45:20

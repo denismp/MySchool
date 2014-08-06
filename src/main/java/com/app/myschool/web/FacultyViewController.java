@@ -4,9 +4,9 @@ import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.app.myschool.model.Faculty;
+import com.app.myschool.model.FacultyView;
 
-@RooWebJson(jsonObject = Faculty.class )
+@RooWebJson(jsonObject = FacultyView.class )
 @Controller
 @RequestMapping("/facultyviews")
 public class FacultyViewController {

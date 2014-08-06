@@ -35,7 +35,7 @@ public class FacultyController {
         return controllerHelper.listJson(Faculty.class);
     }
     */
-    @RequestMapping(value = "/", headers = "Accept=application/json")
+    @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
         ResponseEntity<java.lang.String> ret_ = null;

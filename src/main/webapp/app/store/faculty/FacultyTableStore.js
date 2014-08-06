@@ -27,12 +27,12 @@ Ext.define('MySchool.store.faculty.FacultyTableStore', {
 		var me = this;
 		cfg = cfg || {};
 		me.callParent([Ext.apply({
-			autoLoad: true,
+			autoLoad: false,
 			model: 'MySchool.model.faculty.FacultyTableModel',
 			storeId: 'faculty.FacultyTableStore',
 			proxy: {
 				type: 'rest',
-				url: 'facultyviews',
+				url: 'facultys/json',
 				headers: {
 					Accept: 'application/json'
 				},
