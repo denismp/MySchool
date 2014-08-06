@@ -23,58 +23,58 @@ public class FacultyController {
     @RequestMapping(value = "/json/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
-    	ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.showJson(Faculty.class, id);
+    	FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.showJson(id);
     }
 
     /*
     @RequestMapping(headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson() {
-        ControllerHelper controllerHelper = new ControllerHelper();
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
         return controllerHelper.listJson(Faculty.class);
     }
     */
-    @RequestMapping(value = "/json", headers = "Accept=application/json")
+    @RequestMapping(value = "/", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
         ResponseEntity<java.lang.String> ret_ = null;
-        ControllerHelper controllerHelper = new ControllerHelper();
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
         if (params.containsKey("studentName")) {
-            ret_ = controllerHelper.listJson(Faculty.class, params);
+            ret_ = controllerHelper.listJson( params);
         } else {
-            ret_ = controllerHelper.listJson(Faculty.class);
+            ret_ = controllerHelper.listJson();
         }
         return ret_;
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJson(Faculty.class, json);
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.createFromJson(json);
     }
 
     @RequestMapping(value = "/json/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJsonArray(Faculty.class, json);
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.createFromJsonArray(json);
     }
 
     @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJson(Faculty.class, json);
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.updateFromJson(json);
     }
 
     @RequestMapping(value = "/json/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJsonArray(Faculty.class, json);
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.updateFromJsonArray(json);
     }
 
     @RequestMapping(value = "/json/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.deleteFromJson(Faculty.class, id);
+        FacultyViewControllerHelper controllerHelper = new FacultyViewControllerHelper();
+        return controllerHelper.deleteFromJson(id);
     }
 }
