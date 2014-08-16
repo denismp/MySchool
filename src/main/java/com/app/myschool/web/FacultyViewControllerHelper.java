@@ -132,12 +132,23 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 
 		String myLoginInfo = this.login();
 		logger.info("LoginInfo:" + myLoginInfo);
-		// SecurityViewControllerHelper securityHelper = new
-		// SecurityViewControllerHelper();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+
+		String userName = securityHelper.getUserName();
+		String role = securityHelper.getUserRole();
 
 		try
 		{
-			List<Faculty> facultys = Faculty.findAllFacultys();
+			List<Faculty> facultys = null;
+			if( role.equals("ROLE_ADMIN") )
+			{
+				facultys = Faculty.findAllFacultys();
+			}
+			else if( role.equals("ROLE_FACULTY"))
+			{
+				facultys = Faculty.findFacultysByUserNameEquals(userName).getResultList();
+			}
+			
 			List<FacultyView> facultyViewList = new ArrayList<FacultyView>();
 			//long i = 0;
 			for (Faculty faculty : facultys)
@@ -147,6 +158,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				FacultyView myView = new FacultyView();
 				myView.setId(faculty.getId());
 				myView.setFacultyId(faculty.getId());
+				myView.setFacultyviewid(faculty.getId());
 				myView.setVersion(faculty.getVersion());
 				myView.setLastUpdated(faculty.getLastUpdated());
 				myView.setWhoUpdated(faculty.getWhoUpdated());
@@ -283,8 +295,16 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			boolean statusGood = true;
 			FacultyView myView = FacultyView.fromJsonToFacultyView(myJson);
 
-			Faculty faculty = Faculty.findFacultysByUserNameEquals(
+			Faculty faculty = null;
+			try
+			{
+				faculty = Faculty.findFacultysByUserNameEquals(
 					myView.getUserName()).getSingleResult();
+			}
+			catch( Exception nre )
+			{
+				logger.info("No duplicate for faculy userName=" + myView.getUserName() );
+			}
 
 			if (faculty == null)
 			{
@@ -317,7 +337,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				myView.setVersion(record.getVersion());
 				myView.setId(record.getId());
 				// myView.setDailyId(record.getId());
-				myView.setId(100000L + record.getId());
+				//myView.setId(100000L + record.getId());
 
 				if (statusGood)
 				{
@@ -331,7 +351,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			else
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty/faculty attempted.");
+				response.setMessage("Duplicated faculty attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -429,8 +449,8 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToStudentView(myJson)");
 			myView = FacultyView.fromJsonToFacultyView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): Faculty id=" + myView.getFacultyId());
-			Faculty record = Faculty.findFaculty(myView.getFacultyId());
+			logger.info("updateFromJson(): Faculty id=" + myView.getId());
+			Faculty record = Faculty.findFaculty(myView.getId());
 
 			record.setLastUpdated(myView.getLastUpdated());
 			// record.setWhoUpdated(myView.getWhoUpdated());

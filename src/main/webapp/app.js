@@ -160,7 +160,11 @@ Ext.application({
 		'subject.FacultyNamesComboBox',
 		'student.PasswordTool',
 		'student.PasswordDialog',
-		'student.NewDialog'
+		'student.NewDialog',
+		'faculty.OnlyFacultyProfilePanel',
+		'faculty.ProfileGridFacultyOnlyPanel',
+		'faculty.FacultyOnlyProfileForm',
+		'faculty.NewDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',
@@ -171,7 +175,8 @@ Ext.application({
 		'weekly.EvaluationsController',
 		'monthly.EvaluationRatingsController',
 		'faculty.ByStudentController',
-		'student.ProfileViewController'
+		'student.ProfileViewController',
+		'faculty.OnlyFacultyProfileViewController'
 	],
 	name: 'MySchool',
 

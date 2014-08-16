@@ -166,6 +166,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 	},
 
 	onFacultyprofilenewtoolClick: function(tool, e, eOpts) {
+		/*
 		debugger;
 		var studentStore				= Ext.getStore('student.StudentStore');
 		var subjectStore				= Ext.getStore('subject.SubjectStore');
@@ -188,6 +189,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 
 		newDialog.render( Ext.getBody() );
 		newDialog.show();
+		*/
 	},
 
 	onFacultyprofilesavetoolClick: function(tool, e, eOpts) {
