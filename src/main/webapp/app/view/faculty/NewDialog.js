@@ -23,7 +23,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 		'Ext.button.Button'
 	],
 
-	height: 532,
+	height: 548,
 	itemId: 'facultynewdialog',
 	width: 390,
 	title: 'New Faculty',
@@ -37,7 +37,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 					xtype: 'form',
 					draggable: true,
 					frame: true,
-					height: 499,
+					height: 508,
 					itemId: 'facultynewform',
 					width: 378,
 					bodyPadding: 10,
