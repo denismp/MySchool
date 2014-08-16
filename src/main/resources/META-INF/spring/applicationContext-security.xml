@@ -49,11 +49,11 @@
         <intercept-url pattern="/facultybystudentviews" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/facultybystudentviews/**" access="hasRole('ROLE_ADMIN')" />
                
-        <intercept-url pattern="/facultys" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
-        <intercept-url pattern="/facultys/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />        
+        <intercept-url pattern="/facultys" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/facultys/**" access="hasRole('ROLE_ADMIN')" />        
         
-        <intercept-url pattern="/facultyviews" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/facultyviews/**" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/facultyviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
+        <intercept-url pattern="/facultyviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
                
         
         <intercept-url pattern="/graduatetrackings" access="hasRole('ROLE_ADMIN')" />

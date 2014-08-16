@@ -68,7 +68,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				}
 			});
 		}
-		else
+		else if( this.userRole === 'ROLE_ADMIN')
 		{
 			title = this.userName + '/' + this.userRole;
 
@@ -109,7 +109,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				}
 			});
 		}
-		else
+		else if( this.userRole === 'ROLE_ADMIN')
 		{
 			title = this.userName + '/' + this.userRole;
 
