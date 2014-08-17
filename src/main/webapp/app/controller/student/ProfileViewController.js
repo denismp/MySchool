@@ -378,6 +378,45 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		newDialog.show();
 	},
 
+	onStudentpasswordcancelbuttonClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel Student Password" );
+		var myForm = button.up().up().getForm();
+		myForm.reset();
+		button.up().up().up().hide();
+	},
+
+	onStudentpasswordsubmitbuttonClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel Student Password" );
+		var myForm = button.up().up().getForm();
+
+		var myStore = Ext.getStore("student.StudentPasswordStore");
+		var userName = myForm.findField('userName').getSubmitValue();
+		var userPassword = myForm.findField('userPassword').getSubmitValue();
+		var userRepeatPassword = myForm.findField('userRepeatPassword').getSubmitValue();
+		var myRecord = myStore.findRecord('userName', userName );
+
+		if( myRecord === null )
+		{
+			Ext.MessageBox.show({
+				title: 'INVALID USER EXCEPTION',
+				msg: 'You have entered an invalid user.',
+				icon: Ext.MessageBox.ERROR,
+				buttons: Ext.Msg.OK
+			});
+		}
+		if( userPassword == userRepeatPassword && myRecord !== null )
+		{
+			myRecord.set( 'userPassword', userPassword );
+			myStore.sync();
+			myStore.reload();
+		}
+		myForm.reset();
+		button.up().up().up().hide();
+
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -622,6 +661,12 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 			},
 			"#studentpasswordtool": {
 				click: this.onStudentpasswordtoolClick
+			},
+			"#studentpasswordcancelbutton": {
+				click: this.onStudentpasswordcancelbuttonClick
+			},
+			"#studentpasswordsubmitbutton": {
+				click: this.onStudentpasswordsubmitbuttonClick
 			}
 		});
 	}

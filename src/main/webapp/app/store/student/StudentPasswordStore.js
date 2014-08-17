@@ -27,7 +27,7 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 		var me = this;
 		cfg = cfg || {};
 		me.callParent([Ext.apply({
-			autoLoad: false,
+			autoLoad: true,
 			model: 'MySchool.model.student.PasswordModel',
 			storeId: 'student.StudentPasswordStore',
 			proxy: {

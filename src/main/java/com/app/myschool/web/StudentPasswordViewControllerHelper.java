@@ -223,6 +223,7 @@ public class StudentPasswordViewControllerHelper implements
 		studentUserName = loginInfo[0];
 		//studentUserName = "denis";
 		List<Student> students = new ArrayList<Student>();
+		/*
 		if (studentUserName != null)
 		{
 			students = Student.findStudentsByUserNameEquals(studentUserName)
@@ -240,7 +241,8 @@ public class StudentPasswordViewControllerHelper implements
 				students.add(student);
 			}
 		}
-
+		*/
+		students = Student.findAllStudents();
 		try
 		{
 			List<StudentPasswordView> studentViewList = new ArrayList<StudentPasswordView>();
@@ -538,9 +540,22 @@ public class StudentPasswordViewControllerHelper implements
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
+			boolean okToDo = false;
+			SecurityViewControllerHelper helper = new SecurityViewControllerHelper();
+			String userName = helper.getUserName();
+			String userRole = helper.getUserRole();
 
-			logger.info("updateFromJson(): Debug just before call to StudentPasswordView.fromJsonToStudentProfileView(myJson)");
+			logger.info("updateFromJson(): Debug just before call to StudentPasswordView.fromJsonToStudentPasswordView(myJson)");
 			myView = StudentPasswordView.fromJsonToStudentPasswordView(myJson);
+			if( userRole.equals( "ROLE_ADMIN" ) )
+				okToDo = true;
+			else if( userRole.equals("ROLE_FACULTY") && checkFaculty( myView.getStudentId(), userName ))
+				okToDo = true;
+			else if( userName.equals(myView.getUserName()))
+			{
+				okToDo = true;
+			}
+
 			logger.info("Debug1");
 			logger.info("updateFromJson(): Student id=" + myView.getStudentId());
 			Student record = Student.findStudent(myView.getStudentId());
@@ -577,7 +592,7 @@ public class StudentPasswordViewControllerHelper implements
 			// Convert the given userPassword to sha 256.
 			// **********************************************
 			String plainText = myView.getUserPassword();
-			if (plainText != null && plainText.equals("") == false)
+			if (plainText != null && plainText.equals("") == false  && okToDo )
 			{
 				String pwd = convertToSHA256(myView.getUserPassword());
 				record.setUserPassword(pwd);
@@ -599,8 +614,16 @@ public class StudentPasswordViewControllerHelper implements
 			else
 			{
 				updateGood = false;
-				msg.append("Password was not specified.");
-				logger.error("Password was not specified.");
+				if( okToDo )
+				{
+					msg.append("Password was not specified.");
+					logger.error("Password was not specified.");
+				}
+				else
+				{
+					msg.append("You don't have the authentication to change the password.");
+					logger.error("You don't have the authentication to change the password.");					
+				}
 			}
 			if (statusGood && updateGood)
 			{
@@ -649,8 +672,22 @@ public class StudentPasswordViewControllerHelper implements
 		}
 
 		// Return the updated myView
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+	}
+
+	private boolean checkFaculty(Long studentId, String facultyUserName) throws Exception
+	{
+		List<StudentFaculty> studentList = this.getStudentFacultyList(studentId.toString());
+		for (StudentFaculty studentFaculty : studentList)
+		{
+			Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
+			if( faculty.getUserName().equals( facultyUserName ))
+				return true;
+		}
+
+		return false;
 	}
 
 	@Override

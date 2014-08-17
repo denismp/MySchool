@@ -300,6 +300,14 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		newDialog.show();
 	},
 
+	onFacultypasswordcanelbuttonClick: function(button, e, eOpts) {
+
+	},
+
+	onFacultypasswordsubmitbuttonClick: function(button, e, eOpts) {
+
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -415,6 +423,12 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 			},
 			"#onlyfacultylpasswordtool": {
 				click: this.onOnlyfacultylpasswordtoolClick
+			},
+			"#facultypasswordcanelbutton": {
+				click: this.onFacultypasswordcanelbuttonClick
+			},
+			"#facultypasswordsubmitbutton": {
+				click: this.onFacultypasswordsubmitbuttonClick
 			}
 		});
 	}
