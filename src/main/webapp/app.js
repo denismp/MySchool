@@ -164,7 +164,8 @@ Ext.application({
 		'faculty.OnlyFacultyProfilePanel',
 		'faculty.ProfileGridFacultyOnlyPanel',
 		'faculty.FacultyOnlyProfileForm',
-		'faculty.NewDialog'
+		'faculty.NewDialog',
+		'faculty.PasswordDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',

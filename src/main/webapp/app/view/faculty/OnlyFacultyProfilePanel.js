@@ -101,13 +101,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyfacultylpasswordtool',
-					type: 'gear',
-					listeners: {
-						click: {
-							fn: me.onOnlyfacultylpasswordtoolClick,
-							scope: me
-						}
-					}
+					type: 'gear'
 				}
 			]
 		});
@@ -128,10 +122,6 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 	},
 
 	onOnlyfacultylocktoolClick: function(tool, e, eOpts) {
-
-	},
-
-	onOnlyfacultylpasswordtoolClick: function(tool, e, eOpts) {
 
 	}
 

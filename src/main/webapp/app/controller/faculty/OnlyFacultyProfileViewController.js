@@ -274,6 +274,32 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 	},
 
+	onOnlyfacultylpasswordtoolClick: function(tool, e, eOpts) {
+		debugger;
+		var studentStore				= Ext.getStore('faculty.FacultyTableStore');
+		//var facultyStore				= Ext.getStore('faculty.FacultyTableStore');
+		//var subjectStore				= Ext.getStore('subject.SubjectStore');
+		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		//var commonMonthStore			= Ext.getStore('common.MonthStore');
+
+		//var studentRecord	= studentStore.getAt(0);
+		//var studentId		= studentRecord.get( 'id' );
+		//var studentName		= studentRecord.get( 'userName' );
+
+		var newDialog = Ext.create( 'MySchool.view.faculty.PasswordDialog' );
+
+		//newDialog.down('#studentid').setValue( studentId );
+		//newDialog.down('#studentname').setValue( studentName );
+
+		//commonQuarterSubjectStore.myLoad();
+		//commonMonthStore.myLoad();
+
+		window.console.log( 'Password Dialog' );
+
+		newDialog.render( Ext.getBody() );
+		newDialog.show();
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -386,6 +412,9 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 			},
 			"#onlyfacultyprofileformsavebutton": {
 				click: this.onOnlyfacultyprofileformsavebuttonClick
+			},
+			"#onlyfacultylpasswordtool": {
+				click: this.onOnlyfacultylpasswordtoolClick
 			}
 		});
 	}
