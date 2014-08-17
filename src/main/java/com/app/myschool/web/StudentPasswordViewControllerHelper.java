@@ -321,6 +321,7 @@ public class StudentPasswordViewControllerHelper implements
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}

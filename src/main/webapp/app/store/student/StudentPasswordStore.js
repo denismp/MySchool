@@ -46,7 +46,18 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 					encode: true,
 					root: 'data'
 				}
+			},
+			listeners: {
+				write: {
+					fn: me.onJsonstoreWrite,
+					scope: me
+				}
 			}
 		}, cfg)]);
+	},
+
+	onJsonstoreWrite: function(store, operation, eOpts) {
+		store.reload();
 	}
+
 });

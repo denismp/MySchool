@@ -410,7 +410,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		{
 			myRecord.set( 'userPassword', userPassword );
 			myStore.sync();
-			myStore.reload();
+			//myStore.reload();
 		}
 		myForm.reset();
 		button.up().up().up().hide();
