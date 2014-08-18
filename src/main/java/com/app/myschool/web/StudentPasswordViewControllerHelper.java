@@ -563,32 +563,34 @@ public class StudentPasswordViewControllerHelper implements
 
 			List<StudentFaculty> studentList = this
 					.getStudentFacultyList(myView.getStudentId().toString());
+			/*
 			Set<Faculty> facultys = new HashSet<Faculty>();
 			for (StudentFaculty studentFaculty : studentList)
 			{
 				Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
 				facultys.add(faculty);
 			}
+			*/
 
 			record.setLastUpdated(myView.getLastUpdated());
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			record.setWhoUpdated(securityHelper.getUserName());
 
-			record.setAddress1(myView.getAddress1());
-			record.setAddress2(myView.getAddress2());
-			record.setCity(myView.getCity());
-			record.setCountry(myView.getCountry());
-			record.setEnabled(myView.getEnabled());
-			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
-			record.setPhone1(myView.getPhone1());
-			record.setPhone2(myView.getPhone2());
-			record.setPostalCode(myView.getPostalCode());
-			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			record.setFaculty(facultys);
+			//record.setAddress1(myView.getAddress1());
+			//record.setAddress2(myView.getAddress2());
+			//record.setCity(myView.getCity());
+			//record.setCountry(myView.getCountry());
+			//record.setEnabled(myView.getEnabled());
+			//record.setEmail(myView.getEmail());
+			//record.setFirstName(myView.getFirstName());
+			//record.setMiddleName(myView.getMiddleName());
+			//record.setLastName(myView.getLastName());
+			//record.setPhone1(myView.getPhone1());
+			//record.setPhone2(myView.getPhone2());
+			//record.setPostalCode(myView.getPostalCode());
+			//record.setProvince(myView.getProvince());
+			//record.setUserName(myView.getUserName());
+			//record.setFaculty(facultys);
 			// **********************************************
 			// Convert the given userPassword to sha 256.
 			// **********************************************
