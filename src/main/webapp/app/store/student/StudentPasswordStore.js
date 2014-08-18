@@ -19,8 +19,7 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 	requires: [
 		'MySchool.model.student.PasswordModel',
 		'Ext.data.proxy.Rest',
-		'Ext.data.reader.Json',
-		'Ext.data.writer.Json'
+		'Ext.data.reader.Json'
 	],
 
 	constructor: function(cfg) {
@@ -38,12 +37,6 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 				},
 				reader: {
 					type: 'json',
-					root: 'data'
-				},
-				writer: {
-					type: 'json',
-					dateFormat: 'm/d/Y',
-					encode: true,
 					root: 'data'
 				}
 			},
