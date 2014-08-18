@@ -51,6 +51,7 @@ Ext.define('MySchool.view.faculty.PasswordDialog', {
 									padding: 5,
 									fieldLabel: 'User ID',
 									labelWidth: 150,
+									name: 'userName',
 									size: 45
 								},
 								{
@@ -59,6 +60,7 @@ Ext.define('MySchool.view.faculty.PasswordDialog', {
 									padding: 5,
 									fieldLabel: 'New Password',
 									labelWidth: 150,
+									name: 'userPassword',
 									size: 45
 								},
 								{
@@ -67,6 +69,7 @@ Ext.define('MySchool.view.faculty.PasswordDialog', {
 									padding: 5,
 									fieldLabel: 'Repeat New Password',
 									labelWidth: 150,
+									name: 'userRepeatPassword',
 									size: 45
 								}
 							]

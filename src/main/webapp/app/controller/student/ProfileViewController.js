@@ -388,7 +388,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 	onStudentpasswordsubmitbuttonClick: function(button, e, eOpts) {
 		debugger;
-		window.console.log( "Cancel Student Password" );
+		window.console.log( "Submit Student Password" );
 		var myForm = button.up().up().getForm();
 
 		var myStore = Ext.getStore("student.StudentPasswordStore");

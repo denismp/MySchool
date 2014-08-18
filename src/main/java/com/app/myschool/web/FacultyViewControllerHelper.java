@@ -2,6 +2,8 @@ package com.app.myschool.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -423,7 +425,26 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}
+	
+	private String convertToSHA256(String plainText)
+			throws NoSuchAlgorithmException
+	{
+		// http://www.mkyong.com/java/java-sha-hashing-example/
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		md.update(plainText.getBytes());
+		byte[] mdbytes = md.digest();
 
+		// convert the byte to hex format method 1
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < mdbytes.length; i++)
+		{
+			sb.append(Integer.toString((mdbytes[i] & 0xff) + 0x100, 16)
+					.substring(1));
+		}
+
+		// System.out.println("Hex format : " + sb.toString());
+		return sb.toString();
+	}
 	@Override
 	public ResponseEntity<String> updateFromJson(String json)
 	{
@@ -445,17 +466,37 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
+			boolean okToDo = false;
 
-			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToStudentView(myJson)");
+			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToFacultyView(myJson)");
 			myView = FacultyView.fromJsonToFacultyView(myJson);
 			logger.info("Debug1");
 			logger.info("updateFromJson(): Faculty id=" + myView.getId());
 			Faculty record = Faculty.findFaculty(myView.getId());
 
-			record.setLastUpdated(myView.getLastUpdated());
-			// record.setWhoUpdated(myView.getWhoUpdated());
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			String userName = securityHelper.getUserName();
+			String userRole = securityHelper.getUserRole();
+			if( userRole.equals( "ROLE_ADMIN" ) )
+				okToDo = true;
+			else if( userRole.equals("ROLE_FACULTY") && userName.equals(myView.getUserName()))
+				okToDo = true;
+			//else if( userName.equals(myView.getUserName()))
+			//{
+			//	okToDo = true;
+			//}
+			String plainText = myView.getUserPassword();
+			if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
+			{
+				// **********************************************
+				// Convert the given userPassword to sha 256.
+				// **********************************************
+				String pwd = convertToSHA256(myView.getUserPassword());
+				record.setUserPassword(pwd);
+			}
+
 			record.setWhoUpdated(securityHelper.getUserName());
+			record.setLastUpdated(myView.getLastUpdated());
 
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());
@@ -474,18 +515,21 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			// record.setFaculty(facultys);
 			// record.setStudents(students);
 
-			logger.info("Debug2");
-			inSync = record.getVersion() == myView.getVersion();
-
-			if (inSync && record.merge() != null)
+			if( okToDo )
 			{
-				logger.info("Debug3");
-				myView.setVersion(record.getVersion());
-				updateGood = true;
-			}
-			else
-			{
-				statusGood = false;
+				logger.info("Debug2");
+				inSync = record.getVersion() == myView.getVersion();
+	
+				if (inSync && record.merge() != null)
+				{
+					logger.info("Debug3");
+					myView.setVersion(record.getVersion());
+					updateGood = true;
+				}
+				else
+				{
+					statusGood = false;
+				}
 			}
 			if (statusGood && updateGood)
 			{
@@ -534,6 +578,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 		}
 
 		// Return the updated myView
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}

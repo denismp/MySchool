@@ -276,36 +276,60 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 	onOnlyfacultylpasswordtoolClick: function(tool, e, eOpts) {
 		debugger;
-		var studentStore				= Ext.getStore('faculty.FacultyTableStore');
-		//var facultyStore				= Ext.getStore('faculty.FacultyTableStore');
-		//var subjectStore				= Ext.getStore('subject.SubjectStore');
-		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
-		//var commonMonthStore			= Ext.getStore('common.MonthStore');
+		var securityStore				= Ext.getStore('security.SecurityStore');
 
-		//var studentRecord	= studentStore.getAt(0);
-		//var studentId		= studentRecord.get( 'id' );
-		//var studentName		= studentRecord.get( 'userName' );
 
-		var newDialog = Ext.create( 'MySchool.view.faculty.PasswordDialog' );
+		var securityRecord	= securityStore.getAt(0);
+		this.userName		= securityRecord.get( 'userName' );
+		this.userRole		= securityRecord.get( 'userRole' );
 
-		//newDialog.down('#studentid').setValue( studentId );
-		//newDialog.down('#studentname').setValue( studentName );
+		if( this.userRole === "ROLE_ADMIN" || this.userRole === "ROLE_FACULTY" )
+		{
+			var newDialog = Ext.create( 'MySchool.view.faculty.PasswordDialog' );
 
-		//commonQuarterSubjectStore.myLoad();
-		//commonMonthStore.myLoad();
+			window.console.log( 'Password Dialog' );
 
-		window.console.log( 'Password Dialog' );
-
-		newDialog.render( Ext.getBody() );
-		newDialog.show();
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
 	},
 
 	onFacultypasswordcanelbuttonClick: function(button, e, eOpts) {
-
+		debugger;
+		window.console.log( "Cancel Faculty Password" );
+		var myForm = button.up().up().getForm();
+		myForm.reset();
+		button.up().up().up().hide();
 	},
 
 	onFacultypasswordsubmitbuttonClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit Faculty Password" );
+		var myForm = button.up().up().getForm();
 
+		var myStore = Ext.getStore("faculty.FacultyTableStore");
+		var userName = myForm.findField('userName').getSubmitValue();
+		var userPassword = myForm.findField('userPassword').getSubmitValue();
+		var userRepeatPassword = myForm.findField('userRepeatPassword').getSubmitValue();
+		var myRecord = myStore.findRecord('userName', userName );
+
+		if( myRecord === null )
+		{
+			Ext.MessageBox.show({
+				title: 'INVALID USER EXCEPTION',
+				msg: 'You have entered an invalid user.',
+				icon: Ext.MessageBox.ERROR,
+				buttons: Ext.Msg.OK
+			});
+		}
+		if( userPassword == userRepeatPassword && myRecord !== null )
+		{
+			myRecord.set( 'userPassword', userPassword );
+			myStore.sync();
+			//myStore.reload();
+		}
+		myForm.reset();
+		button.up().up().up().hide();
 	},
 
 	loadForm: function(form, selected) {
