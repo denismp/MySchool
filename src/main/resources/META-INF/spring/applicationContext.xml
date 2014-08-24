@@ -48,7 +48,7 @@
         <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
     <bean class="java.net.URI" id="dbUrl">
-    	<constructor-arg value="${DATABASE_URL}"/>
+    	<constructor-arg value="${JDBC_CONNECTION_STRING}"/>
     </bean>
     <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
         <property name="driverClassName" value="${database.driverClassName}"/>
