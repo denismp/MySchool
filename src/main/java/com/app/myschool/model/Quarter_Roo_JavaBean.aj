@@ -74,6 +74,14 @@ privileged aspect Quarter_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date Quarter.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void Quarter.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Student Quarter.getStudent() {
         return this.student;
     }

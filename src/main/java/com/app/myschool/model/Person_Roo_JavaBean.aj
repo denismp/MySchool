@@ -120,6 +120,14 @@ privileged aspect Person_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date Person.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void Person.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public String Person.getUserName() {
         return this.userName;
     }

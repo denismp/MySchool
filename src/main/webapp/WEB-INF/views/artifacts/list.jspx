@@ -9,7 +9,7 @@
             <table:column id="c_com_app_myschool_model_Artifact_comments" property="comments" z="EZC761nUjF0hQomQL8y4sj1yQ/Y="/>
             <table:column id="c_com_app_myschool_model_Artifact_bodyOfWork" property="bodyOfWork" z="vh80M1bbqzQqSVE0hN3iy1lfyvU="/>
             <table:column id="c_com_app_myschool_model_Artifact_whoUpdated" property="whoUpdated" z="Yjj/Gmj/Xlfuvgr6w8F0u1JWynM="/>
-            <table:column date="true" dateTimePattern="${artifact_lastupdated_date_format}" id="c_com_app_myschool_model_Artifact_lastUpdated" property="lastUpdated" z="283jHf9z47U50jdIOd+lAKaakp0="/>
+            <table:column date="true" dateTimePattern="${artifact_createddate_date_format}" id="c_com_app_myschool_model_Artifact_createdDate" property="createdDate" z="TBHD4I3WWY5ePCIkAyC8hhIsTrs="/>
         </table:table>
     </page:list>
 </div>

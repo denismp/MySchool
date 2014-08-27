@@ -14,5 +14,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Quarter_whoUpdated" object="${quarter}" z="psjXxX6zz+4VV+C2hpVLaV+MKtg="/>
         <field:display field="completed" id="s_com_app_myschool_model_Quarter_completed" object="${quarter}" z="wnl/OMpQNa8LuNRqgyKmSs+W35g="/>
         <field:display field="faculty" id="s_com_app_myschool_model_Quarter_faculty" object="${quarter}" z="ZpY5NOleNw4HqtfHKM/4as7a2eU="/>
+        <field:display date="true" dateTimePattern="${quarter_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Quarter_createdDate" object="${quarter}" z="jcVtK9PKXceW9A0yCOWbOGqnkH8="/>
     </page:show>
 </div>

@@ -14,7 +14,7 @@ privileged aspect MonthlyEvaluationRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager MonthlyEvaluationRatings.entityManager;
     
-    public static final List<String> MonthlyEvaluationRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "levelOfDifficulty", "criticalThinkingSkills", "effectiveCorrectionActions", "accuratelyIdCorrections", "completingCourseObjectives", "thoughtfulnessOfReflections", "responsibilityOfProgress", "workingEffectivelyWithAdvisor", "comments", "locked", "lastUpdated", "whoUpdated", "quarter");
+    public static final List<String> MonthlyEvaluationRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "levelOfDifficulty", "criticalThinkingSkills", "effectiveCorrectionActions", "accuratelyIdCorrections", "completingCourseObjectives", "thoughtfulnessOfReflections", "responsibilityOfProgress", "workingEffectivelyWithAdvisor", "comments", "locked", "lastUpdated", "createdDate", "whoUpdated", "quarter");
     
     public static final EntityManager MonthlyEvaluationRatings.entityManager() {
         EntityManager em = new MonthlyEvaluationRatings().entityManager;

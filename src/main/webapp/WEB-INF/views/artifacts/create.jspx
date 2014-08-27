@@ -9,6 +9,7 @@
         <field:select field="bodyOfWork" id="c_com_app_myschool_model_Artifact_bodyOfWork" itemValue="id" items="${bodyofworks}" path="/bodyofworks" z="xORi9XexIZEdmy4YxcZ0Zrv9OSM="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Artifact_whoUpdated" required="true" z="4P3MNbdCNVOfaAyf62x5VN47rxg="/>
         <field:datetime dateTimePattern="${artifact_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Artifact_lastUpdated" required="true" z="QqRPLbVw+ReMqmrGqkxHHadzlJE="/>
+        <field:datetime dateTimePattern="${artifact_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Artifact_createdDate" z="YA5rJOJs2cY8QpW4Br6XFzZ60uQ="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Artifact" render="${not empty dependencies}" z="CbBzSmVLoG0EwgGxSy5kOYPyqlE="/>
 </div>

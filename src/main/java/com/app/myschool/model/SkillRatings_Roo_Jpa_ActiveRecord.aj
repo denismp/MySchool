@@ -14,7 +14,7 @@ privileged aspect SkillRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager SkillRatings.entityManager;
     
-    public static final List<String> SkillRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("week_month", "week_number", "remembering", "understanding", "applying", "analyzing", "evaluating", "creating", "locked", "comments", "whoUpdated", "lastUpdated", "quarter");
+    public static final List<String> SkillRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("week_month", "week_number", "remembering", "understanding", "applying", "analyzing", "evaluating", "creating", "locked", "comments", "whoUpdated", "lastUpdated", "createdDate", "quarter");
     
     public static final EntityManager SkillRatings.entityManager() {
         EntityManager em = new SkillRatings().entityManager;

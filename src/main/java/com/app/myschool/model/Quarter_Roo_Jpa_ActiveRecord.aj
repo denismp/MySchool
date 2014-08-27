@@ -14,7 +14,7 @@ privileged aspect Quarter_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Quarter.entityManager;
     
-    public static final List<String> Quarter.fieldNames4OrderClauseFilter = java.util.Arrays.asList("qtrName", "grade_type", "grade", "locked", "completed", "whoUpdated", "lastUpdated", "student", "faculty", "subject", "bodyofworks", "dailys", "skillRatings", "evaluationRatings", "monthlysummaryratings", "monthlyevaluationratings", "qtr_year");
+    public static final List<String> Quarter.fieldNames4OrderClauseFilter = java.util.Arrays.asList("qtrName", "grade_type", "grade", "locked", "completed", "whoUpdated", "lastUpdated", "createdDate", "student", "faculty", "subject", "bodyofworks", "dailys", "skillRatings", "evaluationRatings", "monthlysummaryratings", "monthlyevaluationratings", "qtr_year");
     
     public static final EntityManager Quarter.entityManager() {
         EntityManager em = new Quarter().entityManager;

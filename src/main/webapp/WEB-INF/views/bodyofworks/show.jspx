@@ -11,5 +11,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_BodyOfWork_whoUpdated" object="${bodyofwork}" z="Yvy44EXGIaUejFc9pfNogqjaBzI="/>
         <field:display date="true" dateTimePattern="${bodyOfWork_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_BodyOfWork_lastUpdated" object="${bodyofwork}" z="ALlSOK4JwiMt1+Jr3agVKlR+mP0="/>
         <field:display field="quarter" id="s_com_app_myschool_model_BodyOfWork_quarter" object="${bodyofwork}" z="AQ3m3mfWiVyyYPYw9+i9tPIdB1U="/>
+        <field:display date="true" dateTimePattern="${bodyOfWork_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_BodyOfWork_createdDate" object="${bodyofwork}" z="xBz0eFRiN8XEkPQnAVAdZaayPmM="/>
     </page:show>
 </div>

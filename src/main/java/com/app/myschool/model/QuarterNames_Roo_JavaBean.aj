@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.QuarterNames;
+import java.util.Date;
 
 privileged aspect QuarterNames_Roo_JavaBean {
     
@@ -13,6 +14,14 @@ privileged aspect QuarterNames_Roo_JavaBean {
     
     public void QuarterNames.setQtrName(String qtrName) {
         this.qtrName = qtrName;
+    }
+    
+    public Date QuarterNames.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void QuarterNames.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     
 }

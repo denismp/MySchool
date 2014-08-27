@@ -5,6 +5,7 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.Student;
+import java.util.Date;
 
 privileged aspect GraduateTracking_Roo_JavaBean {
     
@@ -14,6 +15,14 @@ privileged aspect GraduateTracking_Roo_JavaBean {
     
     public void GraduateTracking.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public Date GraduateTracking.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void GraduateTracking.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     
 }

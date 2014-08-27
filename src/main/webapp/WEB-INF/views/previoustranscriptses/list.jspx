@@ -6,6 +6,7 @@
         <table:table data="${previoustranscriptses}" id="l_com_app_myschool_model_PreviousTranscripts" path="/previoustranscriptses" z="tli4PERiAmmab3mdYQnWmgJKFWM=">
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_type" property="type" z="cLDSKVpUWfQh2Pm7OFS4iJElmek="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_student" property="student" z="qYYFkJ/txlsgmNfWSQJNT63bJZ4="/>
+            <table:column date="true" dateTimePattern="${previousTranscripts_createddate_date_format}" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" property="createdDate" z="zeDc/V0AGxb9kZf73bGrMp1EUY4="/>
         </table:table>
     </page:list>
 </div>

@@ -90,6 +90,7 @@ privileged aspect ArtifactController_Roo_Controller {
     }
     
     void ArtifactController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("artifact_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("artifact_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     

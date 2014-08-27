@@ -18,5 +18,6 @@
         <field:display field="week_month" id="s_com_app_myschool_model_EvaluationRatings_week_month" object="${evaluationratings}" z="3l8MknheyBOqMQaZoBa/O631OFc="/>
         <field:display field="week_number" id="s_com_app_myschool_model_EvaluationRatings_week_number" object="${evaluationratings}" z="kv3DJakUm2C4U3VviCAhNGhQVwg="/>
         <field:display field="quarter" id="s_com_app_myschool_model_EvaluationRatings_quarter" object="${evaluationratings}" z="JssMHjrBJ0RcrR7NxzoqSCI6tHo="/>
+        <field:display date="true" dateTimePattern="${evaluationRatings_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_EvaluationRatings_createdDate" object="${evaluationratings}" z="a5ENo5VuOC2foU4N02G8EEGPcE0="/>
     </page:show>
 </div>

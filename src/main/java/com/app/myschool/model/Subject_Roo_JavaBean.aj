@@ -66,6 +66,14 @@ privileged aspect Subject_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date Subject.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void Subject.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Set<Quarter> Subject.getQuarters() {
         return this.quarters;
     }

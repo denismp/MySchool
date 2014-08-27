@@ -91,6 +91,7 @@ privileged aspect SubjectController_Roo_Controller {
     
     void SubjectController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("subject_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("subject_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void SubjectController.populateEditForm(Model uiModel, Subject subject) {

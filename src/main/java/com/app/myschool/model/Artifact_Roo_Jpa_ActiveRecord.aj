@@ -14,7 +14,7 @@ privileged aspect Artifact_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Artifact.entityManager;
     
-    public static final List<String> Artifact.fieldNames4OrderClauseFilter = java.util.Arrays.asList("artifactName", "fileName", "comments", "bodyOfWork", "whoUpdated", "lastUpdated");
+    public static final List<String> Artifact.fieldNames4OrderClauseFilter = java.util.Arrays.asList("artifactName", "fileName", "comments", "bodyOfWork", "whoUpdated", "createdDate", "lastUpdated");
     
     public static final EntityManager Artifact.entityManager() {
         EntityManager em = new Artifact().entityManager;

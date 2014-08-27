@@ -92,6 +92,7 @@ privileged aspect BodyOfWorkController_Roo_Controller {
     
     void BodyOfWorkController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("bodyOfWork_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("bodyOfWork_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void BodyOfWorkController.populateEditForm(Model uiModel, BodyOfWork bodyOfWork) {

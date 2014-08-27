@@ -18,6 +18,7 @@
         <field:input field="week_month" id="c_com_app_myschool_model_EvaluationRatings_week_month" max="12" min="1" required="true" z="WjZ95n/LsMrRJ4wePzqFWU2kHxo="/>
         <field:input field="week_number" id="c_com_app_myschool_model_EvaluationRatings_week_number" max="5" min="1" required="true" z="2VEDh5/0asDstMcfzkbrYfaAfJY="/>
         <field:select field="quarter" id="c_com_app_myschool_model_EvaluationRatings_quarter" itemValue="id" items="${quarters}" path="/quarters" z="tgTvdkTcuRMq65d5YnKaYzsRgL0="/>
+        <field:datetime dateTimePattern="${evaluationRatings_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_EvaluationRatings_createdDate" z="6v/g1fkBQzaKhZNFVOLbFZGj/9E="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_EvaluationRatings" render="${not empty dependencies}" z="UuIzAW9gihepUQNpZ6CJjwEUbZs="/>
 </div>

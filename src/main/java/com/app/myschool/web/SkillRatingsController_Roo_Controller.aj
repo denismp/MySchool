@@ -91,6 +91,7 @@ privileged aspect SkillRatingsController_Roo_Controller {
     
     void SkillRatingsController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("skillRatings_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("skillRatings_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void SkillRatingsController.populateEditForm(Model uiModel, SkillRatings skillRatings) {

@@ -17,5 +17,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_MonthlyEvaluationRatings_whoUpdated" object="${monthlyevaluationratings}" z="ViVJ+Cwb31l21sGq9IQWWta8H/4="/>
         <field:display field="quarter" id="s_com_app_myschool_model_MonthlyEvaluationRatings_quarter" object="${monthlyevaluationratings}" z="ZG6v0JTiN3xMqMLQjPDQG+3GzLQ="/>
         <field:display field="comments" id="s_com_app_myschool_model_MonthlyEvaluationRatings_comments" object="${monthlyevaluationratings}" z="bpuhNhnXGrjgRgIM2EA+PLyABhQ="/>
+        <field:display date="true" dateTimePattern="${monthlyEvaluationRatings_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_MonthlyEvaluationRatings_createdDate" object="${monthlyevaluationratings}" z="F6f1/nlIWhtShxkE8iLoGPjor7I="/>
     </page:show>
 </div>

@@ -121,6 +121,14 @@ privileged aspect EvaluationRatings_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date EvaluationRatings.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void EvaluationRatings.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Quarter EvaluationRatings.getQuarter() {
         return this.quarter;
     }

@@ -8,6 +8,8 @@ import com.app.myschool.web.QuarterNamesController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +40,7 @@ privileged aspect QuarterNamesController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String QuarterNamesController.show(@PathVariable("id") Long id, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("quarternames", QuarterNames.findQuarterNames(id));
         uiModel.addAttribute("itemId", id);
         return "quarternameses/show";
@@ -54,6 +57,7 @@ privileged aspect QuarterNamesController_Roo_Controller {
         } else {
             uiModel.addAttribute("quarternameses", QuarterNames.findAllQuarterNameses(sortFieldName, sortOrder));
         }
+        addDateTimeFormatPatterns(uiModel);
         return "quarternameses/list";
     }
     
@@ -84,8 +88,13 @@ privileged aspect QuarterNamesController_Roo_Controller {
         return "redirect:/quarternameses";
     }
     
+    void QuarterNamesController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("quarterNames_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+    }
+    
     void QuarterNamesController.populateEditForm(Model uiModel, QuarterNames quarterNames) {
         uiModel.addAttribute("quarterNames", quarterNames);
+        addDateTimeFormatPatterns(uiModel);
     }
     
     String QuarterNamesController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

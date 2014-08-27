@@ -4,6 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_QuarterNames" modelAttribute="quarterNames" path="/quarternameses" render="${empty dependencies}" z="AJoT57CSl/Tu3r3/Mn3dlCuoWqA=">
         <field:input field="qtrName" id="c_com_app_myschool_model_QuarterNames_qtrName" max="25" required="true" z="YF6fNKB/Se2xANFQcC1bUD0fbws="/>
+        <field:datetime dateTimePattern="${quarterNames_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_QuarterNames_createdDate" z="9jDxChadvomkOeFoca3rjBw+u0U="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_QuarterNames" render="${not empty dependencies}" z="Fpi+P/jDsgM+0boejpifve+Gbrc="/>
 </div>

@@ -105,6 +105,14 @@ privileged aspect SkillRatings_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date SkillRatings.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void SkillRatings.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Quarter SkillRatings.getQuarter() {
         return this.quarter;
     }

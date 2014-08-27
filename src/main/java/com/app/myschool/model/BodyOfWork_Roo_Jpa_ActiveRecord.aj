@@ -14,7 +14,7 @@ privileged aspect BodyOfWork_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager BodyOfWork.entityManager;
     
-    public static final List<String> BodyOfWork.fieldNames4OrderClauseFilter = java.util.Arrays.asList("workName", "description", "what", "objective", "locked", "whoUpdated", "lastUpdated", "quarter", "artifacts");
+    public static final List<String> BodyOfWork.fieldNames4OrderClauseFilter = java.util.Arrays.asList("workName", "description", "what", "objective", "locked", "whoUpdated", "lastUpdated", "createdDate", "quarter", "artifacts");
     
     public static final EntityManager BodyOfWork.entityManager() {
         EntityManager em = new BodyOfWork().entityManager;

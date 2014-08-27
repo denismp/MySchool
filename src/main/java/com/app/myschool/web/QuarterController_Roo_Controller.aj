@@ -99,6 +99,7 @@ privileged aspect QuarterController_Roo_Controller {
     
     void QuarterController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("quarter_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("quarter_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void QuarterController.populateEditForm(Model uiModel, Quarter quarter) {

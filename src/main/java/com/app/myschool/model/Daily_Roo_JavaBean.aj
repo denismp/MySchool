@@ -105,6 +105,14 @@ privileged aspect Daily_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date Daily.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void Daily.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Quarter Daily.getQuarter() {
         return this.quarter;
     }

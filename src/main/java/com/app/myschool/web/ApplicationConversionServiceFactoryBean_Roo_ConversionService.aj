@@ -174,7 +174,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<GraduateTracking, String> ApplicationConversionServiceFactoryBean.getGraduateTrackingToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.GraduateTracking, java.lang.String>() {
             public String convert(GraduateTracking graduateTracking) {
-                return "(no displayable fields)";
+                return new StringBuilder().append(graduateTracking.getCreatedDate()).toString();
             }
         };
     }
@@ -246,7 +246,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<PreviousTranscripts, String> ApplicationConversionServiceFactoryBean.getPreviousTranscriptsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.PreviousTranscripts, java.lang.String>() {
             public String convert(PreviousTranscripts previousTranscripts) {
-                return new StringBuilder().append(previousTranscripts.getType()).toString();
+                return new StringBuilder().append(previousTranscripts.getType()).append(' ').append(previousTranscripts.getCreatedDate()).toString();
             }
         };
     }
@@ -294,7 +294,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<QuarterNames, String> ApplicationConversionServiceFactoryBean.getQuarterNamesToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.QuarterNames, java.lang.String>() {
             public String convert(QuarterNames quarterNames) {
-                return new StringBuilder().append(quarterNames.getQtrName()).toString();
+                return new StringBuilder().append(quarterNames.getQtrName()).append(' ').append(quarterNames.getCreatedDate()).toString();
             }
         };
     }

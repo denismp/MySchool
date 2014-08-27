@@ -4,5 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_app_myschool_model_QuarterNames" modelAttribute="quarterNames" path="/quarternameses" versionField="Version" z="owF2ocrYJFv/GTMuOY9O1EqOJRk=">
         <field:input field="qtrName" id="c_com_app_myschool_model_QuarterNames_qtrName" max="25" required="true" z="YF6fNKB/Se2xANFQcC1bUD0fbws="/>
+        <field:datetime dateTimePattern="${quarterNames_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_QuarterNames_createdDate" z="9jDxChadvomkOeFoca3rjBw+u0U="/>
     </form:update>
 </div>

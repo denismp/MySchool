@@ -49,6 +49,14 @@ privileged aspect Artifact_Roo_JavaBean {
         this.whoUpdated = whoUpdated;
     }
     
+    public Date Artifact.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void Artifact.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Date Artifact.getLastUpdated() {
         return this.lastUpdated;
     }

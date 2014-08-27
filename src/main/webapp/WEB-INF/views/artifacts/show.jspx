@@ -9,5 +9,6 @@
         <field:display field="bodyOfWork" id="s_com_app_myschool_model_Artifact_bodyOfWork" object="${artifact}" z="jJnGEeGhQHXiwQgehFvETKuYB7w="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Artifact_whoUpdated" object="${artifact}" z="8qb0VN7CZwhayThFs3oGPdUgx3M="/>
         <field:display date="true" dateTimePattern="${artifact_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Artifact_lastUpdated" object="${artifact}" z="hp0YkngOTbo4HS9Tb0toU7YdHRM="/>
+        <field:display date="true" dateTimePattern="${artifact_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Artifact_createdDate" object="${artifact}" z="NRdaFOo0u0+aM4NuyHnzvMINRzk="/>
     </page:show>
 </div>

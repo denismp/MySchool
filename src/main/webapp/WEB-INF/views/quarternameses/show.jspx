@@ -4,5 +4,6 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_QuarterNames" object="${quarternames}" path="/quarternameses" z="TV3C+zwP3uzdUvuH4zsD/jknH+A=">
         <field:display field="qtrName" id="s_com_app_myschool_model_QuarterNames_qtrName" object="${quarternames}" z="XSX9/h6+OxmfZBjhLO3lKtWd7j0="/>
+        <field:display date="true" dateTimePattern="${quarterNames_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_QuarterNames_createdDate" object="${quarternames}" z="FTIuKeK4rxJkqh99WoAQDEogqRc="/>
     </page:show>
 </div>

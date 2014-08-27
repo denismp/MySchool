@@ -17,6 +17,7 @@
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_MonthlyEvaluationRatings_whoUpdated" required="true" z="eRIchvs5Ba1uX5N2L7vzETwcG/o="/>
         <field:select field="quarter" id="c_com_app_myschool_model_MonthlyEvaluationRatings_quarter" itemValue="id" items="${quarters}" path="/quarters" z="DvQhFxFoPc0BTdQqeKw1qT9Dd6Q="/>
         <field:textarea field="comments" id="c_com_app_myschool_model_MonthlyEvaluationRatings_comments" z="6zUTUuW2vKZm7DzAzzc3DscxOkU="/>
+        <field:datetime dateTimePattern="${monthlyEvaluationRatings_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_MonthlyEvaluationRatings_createdDate" z="n7RKc5DIOcizeUkUmhMKveJcaWk="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_MonthlyEvaluationRatings" render="${not empty dependencies}" z="CR2e125J8psVbXBsYjR6GoKC7CM="/>
 </div>

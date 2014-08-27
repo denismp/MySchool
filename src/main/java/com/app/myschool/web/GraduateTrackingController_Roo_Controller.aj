@@ -9,6 +9,8 @@ import com.app.myschool.web.GraduateTrackingController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.joda.time.format.DateTimeFormat;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +41,7 @@ privileged aspect GraduateTrackingController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String GraduateTrackingController.show(@PathVariable("id") Long id, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("graduatetracking", GraduateTracking.findGraduateTracking(id));
         uiModel.addAttribute("itemId", id);
         return "graduatetrackings/show";
@@ -55,6 +58,7 @@ privileged aspect GraduateTrackingController_Roo_Controller {
         } else {
             uiModel.addAttribute("graduatetrackings", GraduateTracking.findAllGraduateTrackings(sortFieldName, sortOrder));
         }
+        addDateTimeFormatPatterns(uiModel);
         return "graduatetrackings/list";
     }
     
@@ -85,8 +89,13 @@ privileged aspect GraduateTrackingController_Roo_Controller {
         return "redirect:/graduatetrackings";
     }
     
+    void GraduateTrackingController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("graduateTracking_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+    }
+    
     void GraduateTrackingController.populateEditForm(Model uiModel, GraduateTracking graduateTracking) {
         uiModel.addAttribute("graduateTracking", graduateTracking);
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("students", Student.findAllStudents());
     }
     

@@ -91,6 +91,7 @@ privileged aspect EvaluationRatingsController_Roo_Controller {
     
     void EvaluationRatingsController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("evaluationRatings_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("evaluationRatings_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void EvaluationRatingsController.populateEditForm(Model uiModel, EvaluationRatings evaluationRatings) {

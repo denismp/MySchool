@@ -16,5 +16,6 @@
         <field:display field="week_month" id="s_com_app_myschool_model_SkillRatings_week_month" object="${skillratings}" z="o9wRxvkrKNnkeNqazT0wCk/cFQU="/>
         <field:display field="week_number" id="s_com_app_myschool_model_SkillRatings_week_number" object="${skillratings}" z="uYMzaLUMBHWwvlLa5vUg5KwX+4U="/>
         <field:display field="quarter" id="s_com_app_myschool_model_SkillRatings_quarter" object="${skillratings}" z="o204eejsgGGY9etIlQOi8sKq8VE="/>
+        <field:display date="true" dateTimePattern="${skillRatings_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_SkillRatings_createdDate" object="${skillratings}" z="ubNiqZmHE9KYJoHS1U4qVdUoHNQ="/>
     </page:show>
 </div>

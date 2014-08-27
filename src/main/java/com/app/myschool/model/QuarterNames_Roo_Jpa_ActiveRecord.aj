@@ -14,7 +14,7 @@ privileged aspect QuarterNames_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager QuarterNames.entityManager;
     
-    public static final List<String> QuarterNames.fieldNames4OrderClauseFilter = java.util.Arrays.asList("qtrName");
+    public static final List<String> QuarterNames.fieldNames4OrderClauseFilter = java.util.Arrays.asList("qtrName", "createdDate");
     
     public static final EntityManager QuarterNames.entityManager() {
         EntityManager em = new QuarterNames().entityManager;

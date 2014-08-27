@@ -91,6 +91,7 @@ privileged aspect MonthlySummaryRatingsController_Roo_Controller {
     
     void MonthlySummaryRatingsController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("monthlySummaryRatings_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("monthlySummaryRatings_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void MonthlySummaryRatingsController.populateEditForm(Model uiModel, MonthlySummaryRatings monthlySummaryRatings) {

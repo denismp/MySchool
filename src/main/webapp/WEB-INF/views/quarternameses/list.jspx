@@ -5,6 +5,7 @@
     <page:list id="pl_com_app_myschool_model_QuarterNames" items="${quarternameses}" z="UrzFAl7FsYbJaAIzmhy1t68YRuA=">
         <table:table data="${quarternameses}" id="l_com_app_myschool_model_QuarterNames" path="/quarternameses" z="28+P+x/dB65/CA9JAIAfk97r4zQ=">
             <table:column id="c_com_app_myschool_model_QuarterNames_qtrName" property="qtrName" z="u32X9uOHr7uF78JfbX59dSLd7tM="/>
+            <table:column date="true" dateTimePattern="${quarterNames_createddate_date_format}" id="c_com_app_myschool_model_QuarterNames_createdDate" property="createdDate" z="YObAdFXQLVrvD4rNRTpRKoyQiUs="/>
         </table:table>
     </page:list>
 </div>

@@ -14,7 +14,7 @@ privileged aspect Subject_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Subject.entityManager;
     
-    public static final List<String> Subject.fieldNames4OrderClauseFilter = java.util.Arrays.asList("name", "gradeLevel", "creditHours", "description", "objectives", "whoUpdated", "lastUpdated", "quarters");
+    public static final List<String> Subject.fieldNames4OrderClauseFilter = java.util.Arrays.asList("name", "gradeLevel", "creditHours", "description", "objectives", "whoUpdated", "lastUpdated", "createdDate", "quarters");
     
     public static final EntityManager Subject.entityManager() {
         EntityManager em = new Subject().entityManager;

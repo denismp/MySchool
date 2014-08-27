@@ -5,5 +5,6 @@
     <form:update id="fu_com_app_myschool_model_PreviousTranscripts" modelAttribute="previousTranscripts" path="/previoustranscriptses" versionField="Version" z="Z+lSx+ZrWUVgKXF1V5eUHuG2A8A=">
         <field:input field="type" id="c_com_app_myschool_model_PreviousTranscripts_type" max="1" min="0" required="true" z="meEkyB2U7Zf0WFllFiyeA1YvsM8="/>
         <field:select field="student" id="c_com_app_myschool_model_PreviousTranscripts_student" itemValue="id" items="${students}" path="/students" z="Z24J+aKmhGzCUC/Ft0lb4HwArMc="/>
+        <field:datetime dateTimePattern="${previousTranscripts_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" z="KGH6CXmkIjt7OcrbL+TapM5053I="/>
     </form:update>
 </div>

@@ -11,6 +11,7 @@
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Subject_whoUpdated" required="true" z="n7YFSmg8BmGtvIjpcwl+AK51R+8="/>
         <field:datetime dateTimePattern="${subject_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Subject_lastUpdated" required="true" z="gnw35Q9LMECGuU7FQ3fmH9G0RNM="/>
         <field:simple field="quarters" id="c_com_app_myschool_model_Subject_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="DLtzALGqNB48AP/WbhQ5xmToseU="/>
+        <field:datetime dateTimePattern="${subject_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Subject_createdDate" z="xvx30pNuq7hL536ANKoL6obQ2fo="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Subject" render="${not empty dependencies}" z="F6EW0aB1RCQ0yJdOUXRsMjSAJwM="/>
 </div>

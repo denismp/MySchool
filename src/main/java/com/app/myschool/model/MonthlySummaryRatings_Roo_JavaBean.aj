@@ -97,6 +97,14 @@ privileged aspect MonthlySummaryRatings_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date MonthlySummaryRatings.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void MonthlySummaryRatings.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public String MonthlySummaryRatings.getWhoUpdated() {
         return this.whoUpdated;
     }

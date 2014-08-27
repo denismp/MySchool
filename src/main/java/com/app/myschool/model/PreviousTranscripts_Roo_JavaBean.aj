@@ -5,6 +5,7 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Student;
+import java.util.Date;
 
 privileged aspect PreviousTranscripts_Roo_JavaBean {
     
@@ -22,6 +23,14 @@ privileged aspect PreviousTranscripts_Roo_JavaBean {
     
     public void PreviousTranscripts.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public Date PreviousTranscripts.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void PreviousTranscripts.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
     
 }

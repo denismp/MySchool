@@ -16,6 +16,7 @@
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Daily_whoUpdated" required="true" z="n7cGIZrjqoQTKzetftO+NJqKl2g="/>
         <field:datetime dateTimePattern="${daily_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Daily_lastUpdated" required="true" z="g+vdgWBpsIF3/SfMJx4SiZsssC0="/>
         <field:select field="quarter" id="c_com_app_myschool_model_Daily_quarter" itemValue="id" items="${quarters}" path="/quarters" z="5H6tOeLjvtie/6FJbHEmLLwd81o="/>
+        <field:datetime dateTimePattern="${daily_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Daily_createdDate" z="3B/HzEo5bS0kfdK8IX1fbDIVpVQ="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Daily" render="${not empty dependencies}" z="tqX9ITkEDdnMPXNQ5AZC1LnOhNM="/>
 </div>

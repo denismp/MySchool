@@ -14,7 +14,7 @@ privileged aspect Daily_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager Daily.entityManager;
     
-    public static final List<String> Daily.fieldNames4OrderClauseFilter = java.util.Arrays.asList("daily_month", "daily_day", "daily_hours", "resourcesUsed", "studyDetails", "evaluation", "correction", "dailyAction", "comments", "locked", "whoUpdated", "lastUpdated", "quarter");
+    public static final List<String> Daily.fieldNames4OrderClauseFilter = java.util.Arrays.asList("daily_month", "daily_day", "daily_hours", "resourcesUsed", "studyDetails", "evaluation", "correction", "dailyAction", "comments", "locked", "whoUpdated", "lastUpdated", "createdDate", "quarter");
     
     public static final EntityManager Daily.entityManager() {
         EntityManager em = new Daily().entityManager;

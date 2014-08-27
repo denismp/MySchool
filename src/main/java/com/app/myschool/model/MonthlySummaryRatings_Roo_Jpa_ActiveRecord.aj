@@ -14,7 +14,7 @@ privileged aspect MonthlySummaryRatings_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager MonthlySummaryRatings.entityManager;
     
-    public static final List<String> MonthlySummaryRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "feelings", "reflections", "patternsOfCorrections", "effectivenessOfActions", "actionResults", "realizations", "plannedChanges", "comments", "locked", "lastUpdated", "whoUpdated", "quarter");
+    public static final List<String> MonthlySummaryRatings.fieldNames4OrderClauseFilter = java.util.Arrays.asList("month_number", "feelings", "reflections", "patternsOfCorrections", "effectivenessOfActions", "actionResults", "realizations", "plannedChanges", "comments", "locked", "lastUpdated", "createdDate", "whoUpdated", "quarter");
     
     public static final EntityManager MonthlySummaryRatings.entityManager() {
         EntityManager em = new MonthlySummaryRatings().entityManager;

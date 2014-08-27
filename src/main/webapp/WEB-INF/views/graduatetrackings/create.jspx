@@ -4,6 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_GraduateTracking" modelAttribute="graduateTracking" path="/graduatetrackings" render="${empty dependencies}" z="626FUril73Cbig0LU7FDmnhHeBc=">
         <field:select field="student" id="c_com_app_myschool_model_GraduateTracking_student" itemValue="id" items="${students}" path="/students" z="cRLFsNLK6nCvo2VQ2oJM5wYCQn8="/>
+        <field:datetime dateTimePattern="${graduateTracking_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_GraduateTracking_createdDate" z="qMgRT6o/G8Ja7TrKwdo9Nz2gtLk="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_GraduateTracking" render="${not empty dependencies}" z="dBatR47cgWN5eksAQcQ4GMWrypk="/>
 </div>

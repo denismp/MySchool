@@ -91,6 +91,7 @@ privileged aspect DailyController_Roo_Controller {
     
     void DailyController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("daily_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("daily_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void DailyController.populateEditForm(Model uiModel, Daily daily) {

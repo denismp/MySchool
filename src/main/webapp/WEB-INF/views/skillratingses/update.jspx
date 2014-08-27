@@ -16,5 +16,6 @@
         <field:input field="week_month" id="c_com_app_myschool_model_SkillRatings_week_month" max="12" min="1" required="true" z="E4QGpI2jh8YMpVy3jAMqO28RqhU="/>
         <field:input field="week_number" id="c_com_app_myschool_model_SkillRatings_week_number" max="5" min="1" required="true" z="9hh8mOzqmBiS7zhpNdW51OlrtHg="/>
         <field:select field="quarter" id="c_com_app_myschool_model_SkillRatings_quarter" itemValue="id" items="${quarters}" path="/quarters" z="5w4UO5mUaIVrLTHGR3YRW7Xkr2A="/>
+        <field:datetime dateTimePattern="${skillRatings_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_SkillRatings_createdDate" z="mX9QFiV4YgtFgV1ps0Dvd05JU0w="/>
     </form:update>
 </div>

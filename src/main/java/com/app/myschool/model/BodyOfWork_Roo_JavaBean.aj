@@ -67,6 +67,14 @@ privileged aspect BodyOfWork_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date BodyOfWork.getCreatedDate() {
+        return this.createdDate;
+    }
+    
+    public void BodyOfWork.setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+    
     public Quarter BodyOfWork.getQuarter() {
         return this.quarter;
     }
