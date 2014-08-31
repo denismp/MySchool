@@ -33,7 +33,6 @@ public class Subject {
 
     @NotNull
     @Min(0L)
-    @Max(4L)
     private int gradeLevel;
 
     @NotNull

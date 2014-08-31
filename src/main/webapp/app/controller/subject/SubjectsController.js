@@ -202,9 +202,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		// Add refresh handler code here.  Use example from chapter 2 of book.
 		debugger;
 		window.console.log( 'Refresh' );
-		//var mystore = Ext.getStore("subject.SubjectStore");
-		//mystore.reload();
-		this.onLaunch();
+		var mystore = Ext.getStore("subject.SubjectStore");
+		mystore.reload();
+		//this.onLaunch();
 		//pnl.setTitle( 'Denis' );
 	},
 
@@ -240,6 +240,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    });
 		    okToSync_ = false;
 		}
+
 
 		if (okToSync_ && p_.subjEditMode.charAt(0) == 'r') {
 		    var qfCB_ = p_.down('#facultynamescombobox');

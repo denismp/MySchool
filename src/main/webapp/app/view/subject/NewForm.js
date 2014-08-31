@@ -81,7 +81,6 @@ Ext.define('MySchool.view.subject.NewForm', {
 							fieldLabel: 'Grade Level',
 							name: 'subjGradeLevel',
 							allowBlank: false,
-							maxValue: 4,
 							minValue: 0
 						},
 						{
