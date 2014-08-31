@@ -147,7 +147,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		var qs_ = Ext.getStore('subject.SubjectStore');
 		var recCnt_ = qs_.getTotalCount();
 
-		if (recCnt_ < 1) {
+		if (recCnt_ < 1)
+		{
 		    Ext.MessageBox.show({
 		        title : 'Body of Work Exception',
 		        msg : 'Subjects by Student is empty, please add a record there first.',
@@ -158,14 +159,37 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		    return;
 		}
 
-		var newDialog = Ext.create( 'MySchool.view.bodiesofwork.NewForm' );
-		var bws_ = Ext.getStore('bodiesofwork.MyJsonStore');
-		var ss_ = Ext.getStore('student.StudentStore');
-		var r_ = bws_.getAt( this.selectedIndex );
+		var newDialog	= Ext.create( 'MySchool.view.bodiesofwork.NewForm' );
+		var bws			= Ext.getStore('bodiesofwork.MyJsonStore');
+		var ss			= Ext.getStore('student.StudentStore');
+		var r_;
 		var studentName_ = newDialog.down('#newbodiesofworkform-studentName');
-		var qsCB_ = newDialog.down('#newbodiesofworkform-quarter');
+		var qsCB_		= newDialog.down('#newbodiesofworkform-quarter');
 
-		studentName_.setValue(ss_.getAt(0).get('userName'));
+		if( bws.count() > 0 )
+		{
+			r_ = bws.getAt( this.selectedIndex );
+		}
+
+		if( typeof r_ !== 'undefined' )
+		{
+			var studentRecord = ss.getAt(0);
+			var sName = studentRecord.get('userName');
+			studentName_.setValue(sName);
+		}
+		else
+		{
+			// This is the first time.
+			if( this.userRole === 'ROLE_USER' )
+			{
+				//var record = ss.findRecord( 'userName', this.userName );
+				studentName_.setValue( this.userName );
+			}
+			else
+			{
+				studentName_.setValue( "Enter user name" );
+			}
+		}
 		if( this.userRole !== 'ROLE_USER')
 		{
 			studentName_.setReadOnly( false );
@@ -177,7 +201,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
 		commonQuarterSubjectStore.myLoad();  // Added by Denis Putnam
 
-		if (r_ === null) {
+		if (r_ === null)
+		{
 		    r_ = bws_.getAt(0);
 		}
 		if( false )
@@ -197,8 +222,9 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		    //    }
 		    //}
 		}
-		else {
-		// no body of works records in database
+		else
+		{
+			// no body of works records in database
 		    //var b_ = newDialog.down('#newbodiesofworkcreate');
 		    var workName_ = newDialog.down('#newbodiesofworkform-workName');
 		    var what_ = newDialog.down('#newbodiesofworkform-what');

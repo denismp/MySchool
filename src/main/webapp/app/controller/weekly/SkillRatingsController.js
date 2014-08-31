@@ -46,23 +46,41 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 
 	onWeeklyskillsnewtoolClick: function(tool, e, eOpts) {
 		debugger;
-		//var studentStore				= Ext.getStore('student.StudentStore');
+		var studentStore				= Ext.getStore('student.StudentStore');
 		//var subjectStore				= Ext.getStore('subject.SubjectStore');
 		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
 		var securityStore				= Ext.getStore('security.SecurityStore');
-		var myGrid = this.getWeeklySkillsGridPanel();
-		var gridModel = myGrid.getSelectionModel();
-		var selectedRecord = gridModel.getSelection()[0];
-		var row = myGrid.getStore().indexOf(selectedRecord);
+		var myGrid						= this.getWeeklySkillsGridPanel();
+		var gridModel					= myGrid.getSelectionModel();
+		var selectedRecord				= gridModel.getSelection()[0];
+		var row							= myGrid.getStore().indexOf(selectedRecord);
 		var securityRecord				= securityStore.getAt(0);
-		this.userName = securityRecord.get('userName');
-		this.userRole = securityRecord.get('userRole');
+		this.userName					= securityRecord.get('userName');
+		this.userRole					= securityRecord.get('userRole');
+		var studentId;
+		var studentName;
 
-
-		//var studentRecord	= studentStore.getAt(row);
-		var studentId		= selectedRecord.get( 'studentId' );
-		var studentName		= selectedRecord.get( 'studentUserName' );
+		if( typeof selectedRecord !== 'undefined' )
+		{
+			//var studentRecord	= studentStore.getAt(row);
+			studentId		= selectedRecord.get( 'studentId' );
+			studentName		= selectedRecord.get( 'studentUserName' );
+		}
+		else
+		{
+			if( this.userRole === 'ROLE_USER' )
+			{
+				var studentRecord = studentStore.findRecord( 'userName', this.userName );
+				studentId = studentRecord.get('studentId');
+				studentName = this.userName;
+			}
+			else
+			{
+				studentId = 0;
+				studentName = "Enter student user name";
+			}
+		}
 
 		var newDialog = Ext.create( 'MySchool.view.weekly.skills.NewForm' );
 

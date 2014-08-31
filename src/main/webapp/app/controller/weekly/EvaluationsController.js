@@ -115,22 +115,45 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 
 	onWeeklyevaluationnewtoolClick: function(tool, e, eOpts) {
 		debugger;
-		//var studentStore				= Ext.getStore('student.StudentStore');
+		var studentStore				= Ext.getStore('student.StudentStore');
 		//var subjectStore				= Ext.getStore('subject.SubjectStore');
 		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
 		var securityStore				= Ext.getStore( 'security.SecurityStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
-		var myGrid = this.getWeeklyEvaluationsGridPanel();
-		var gridModel = myGrid.getSelectionModel();
-		var selectedRecord = gridModel.getSelection()[0];
+		var myGrid						= this.getWeeklyEvaluationsGridPanel();
+		var gridModel					= myGrid.getSelectionModel();
+		var selectedRecord				= gridModel.getSelection()[0];
 		//var row = myGrid.getStore().indexOf(selectedRecord);
-		var securityRecord				= securityStore.getAt(0);
-		this.userName = securityRecord.get('userName');
-		this.userRole = securityRecord.get('userRole');
-
 		//var studentRecord	= studentStore.getAt(0);
-		var studentId		= selectedRecord.get( 'studentId' );
-		var studentName		= selectedRecord.get( 'studentUserName' );
+		var studentId;
+		var studentName;
+		var securityRecord				= securityStore.getAt(0);
+
+		this.userName					= securityRecord.get('userName');
+		this.userRole					= securityRecord.get('userRole');
+
+
+		if( typeof selectedRecord !== 'undefined' )
+		{
+			studentId = selectedRecord.get( 'studentId' );
+			studentName = selectedRecord.get( 'studentUserName' );
+		}
+		else
+		{
+			if( this.userRole === 'ROLE_USER' )
+			{
+				var studentRecord = studentStore.findRecord( 'userName', this.userName );
+				studentId = studentRecord.get('studentId');
+				studentName = this.userName;
+			}
+			else
+			{
+				studentId = 0;
+				studentName = "Enter student user name";
+			}
+		}
+
+
 
 		var newDialog = Ext.create( 'MySchool.view.weekly.evaluations.NewForm' );
 

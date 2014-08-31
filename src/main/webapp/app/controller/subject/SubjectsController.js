@@ -127,13 +127,14 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var newsubjectcreate_ = newDialog.down('#newsubjectcreate');
 		var newsubjectsubmit_ = newDialog.down('#newsubjectsubmit');
 
-		if (myrecord) {
+		if (myrecord)
+		{
 		    window.console.log( myrecord.data );
 		}
 
 		if( this.userRole !== 'ROLE_USER')
 		{
-			studentName_.setValue('Enter_user_name');
+			studentName_.setValue('Enter student user name');
 			studentName_.setReadOnly( false );
 		}
 		else

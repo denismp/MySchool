@@ -71,34 +71,53 @@ Ext.define('MySchool.controller.daily.MyController', {
 	},
 
 	onDailynewtoolClick: function(tool, e, eOpts) {
-		debugger;
+		//debugger;
 
-		//var studentStore				= Ext.getStore('student.StudentStore');
+		var studentStore				= Ext.getStore('student.StudentStore');
 		//var subjectStore				= Ext.getStore('subject.SubjectStore');
-		//var commonQuarterSubjectStore	= Ext.getStore( 'common.QuarterSubjectStore');
+		//var commonQuarterSubjectStore	= Ext.getStore('common.QuarterSubjectStore');
 		//var commonMonthStore			= Ext.getStore('common.MonthStore');
 		//var securityStore				= Ext.getStore('security.SecurityStore');
 
 		debugger;
-		var securityStore				= Ext.getStore( 'security.SecurityStore');
+		var securityStore				= Ext.getStore('security.SecurityStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
-		var myGrid = this.getDailyGridPanel();
-		var gridModel = myGrid.getSelectionModel();
-		var selectedRecord = gridModel.getSelection()[0];
-		//var row = myGrid.getStore().indexOf(selectedRecord);
+		var myGrid						= this.getDailyGridPanel();
+		var gridModel					= myGrid.getSelectionModel();
+		var selectedRecord				= gridModel.getSelection()[0];
+
 		var securityRecord				= securityStore.getAt(0);
 		this.userName = securityRecord.get('userName');
 		this.userRole = securityRecord.get('userRole');
 
 		//var studentRecord	= studentStore.getAt(0);
-		var studentId		= selectedRecord.get( 'studentId' );
-		var studentName		= selectedRecord.get( 'studentUserName' );
+		var studentId;
+		var studentName;
+		if( typeof selectedRecord !== 'undefined')
+		{
+			studentId		= selectedRecord.get( 'studentId' );
+			studentName		= selectedRecord.get( 'studentUserName' );
+		}
+		else
+		{
+			// this is the very first record
+			if( this.userRole === 'ROLE_USER')
+			{
+				// Find the login userName from the student store.
+				var studentRecord = studentStore.findRecord('userName', this.userName );
+				studentId = studentRecord.get('studentId');
+				studentName = this.userName;
+			}
+			else
+			{
+				// The faculty or admin is going to have to enter it.
+				studentId = 0;
+				studentName = "Enter student user name";
+			}
+		}
 
 		var newDialog = Ext.create( 'MySchool.view.daily.NewDailyForm' );
 
-
-		newDialog.down('#daily-studentid').setValue( studentId );
-		newDialog.down('#daily-studentname').setValue( studentName );
 		if( this.userRole !== 'ROLE_USER')
 		{
 			newDialog.down('#daily-studentname').setReadOnly( false );
@@ -107,6 +126,8 @@ Ext.define('MySchool.controller.daily.MyController', {
 		{
 			newDialog.down('#daily-studentname').setReadOnly( true );
 		}
+		newDialog.down('#daily-studentid').setValue( studentId );
+		newDialog.down('#daily-studentname').setValue( studentName );
 		commonMonthStore.myLoad();
 
 		window.console.log( 'New Daily Dialog' );

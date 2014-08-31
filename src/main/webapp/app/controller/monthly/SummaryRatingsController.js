@@ -195,23 +195,43 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
 	onNewmonthlysummariestoolClick: function(tool, e, eOpts) {
 		debugger;
-		//var studentStore = Ext.getStore('student.StudentStore');
+		var studentStore = Ext.getStore('student.StudentStore');
 		//var subjectStore = Ext.getStore( 'subject.SubjectStore');
 		//var commonQuarterSubjectStore = Ext.getStore( 'common.QuarterSubjectStore');
 		//var commonMonthStore = Ext.getStore('common.MonthStore');
 		var securityStore				= Ext.getStore( 'security.SecurityStore');
 		var commonMonthStore			= Ext.getStore('common.MonthStore');
-		var myGrid = this.getMonthlyDetailsGridPanel();
-		var gridModel = myGrid.getSelectionModel();
-		var selectedRecord = gridModel.getSelection()[0];
+		var myGrid						= this.getMonthlyDetailsGridPanel();
+		var gridModel					= myGrid.getSelectionModel();
+		var selectedRecord				= gridModel.getSelection()[0];
 		//var row = myGrid.getStore().indexOf(selectedRecord);
 		var securityRecord				= securityStore.getAt(0);
-		this.userName = securityRecord.get('userName');
-		this.userRole = securityRecord.get('userRole');
+		this.userName					= securityRecord.get('userName');
+		this.userRole					= securityRecord.get('userRole');
+		var studentId;
+		var studentName;
 
-		//var studentRecord	= studentStore.getAt(0);
-		var studentId		= selectedRecord.get( 'studentId' );
-		var studentName		= selectedRecord.get( 'studentUserName' );
+		if( typeof selectedRecord !== 'undefined' )
+		{
+			//var studentRecord	= studentStore.getAt(0);
+			studentId		= selectedRecord.get( 'studentId' );
+			studentName		= selectedRecord.get( 'studentUserName' );
+		}
+		else
+		{
+			// This is the first time.
+			if( this.userRole === 'ROLE_USER' )
+			{
+				var studentRecord = studentStore.findRecord( 'userName', this.userName );
+				studentId = studentRecord.get('studentId');
+				studentName = this.userName;
+			}
+			else
+			{
+				studentId = 0;
+				studentName = 'Enter student user name';
+			}
+		}
 
 		//var studentRecord = studentStore.getAt(0);
 		//var studentId = studentRecord.get( 'id' );
