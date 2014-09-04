@@ -21,5 +21,6 @@
         <field:display field="enabled" id="s_com_app_myschool_model_Faculty_enabled" object="${faculty}" z="6ljYu3UZ5wxNhmgjW2Rxic/hP6g="/>
         <field:display field="email" id="s_com_app_myschool_model_Faculty_email" object="${faculty}" z="Se83lR8tjsD9yfIWTHiADZbwVLE="/>
         <field:display field="students" id="s_com_app_myschool_model_Faculty_students" object="${faculty}" z="f//F+atHTIaTF/09Mm3pqm9KmDg="/>
+        <field:display date="true" dateTimePattern="${faculty_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Faculty_createdDate" object="${faculty}" z="Tk8Ywe35uJzR7/A+hU9FX/iCNLE="/>
     </page:show>
 </div>

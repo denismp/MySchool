@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_Subject" modelAttribute="subject" path="/subjects" render="${empty dependencies}" z="W/VdmjptlKJv+EUX68wvhXs/9NE=">
         <field:textarea field="name" id="c_com_app_myschool_model_Subject_name" required="true" z="1EbbQco7YjWJjudetpBS2C3zTHA="/>
-        <field:input field="gradeLevel" id="c_com_app_myschool_model_Subject_gradeLevel" max="4" min="0" required="true" z="hfnLFRQE87T0KUYmng0LQcfrzpQ="/>
+        <field:input field="gradeLevel" id="c_com_app_myschool_model_Subject_gradeLevel" min="0" required="true" z="B6gUlS1qJUnffr60FyaX+IpH9k0="/>
         <field:input field="creditHours" id="c_com_app_myschool_model_Subject_creditHours" max="4" min="0" required="true" z="r3ozLMjDr8lDr02iGa81el7SI48="/>
         <field:textarea field="description" id="c_com_app_myschool_model_Subject_description" z="t+Qio6X/bd+i1KdfJGz+mbW12xs="/>
         <field:textarea field="objectives" id="c_com_app_myschool_model_Subject_objectives" z="kANql3Wf2dXgR6DtNd7tkYi7mbE="/>

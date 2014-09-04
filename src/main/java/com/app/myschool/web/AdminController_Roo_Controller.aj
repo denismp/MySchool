@@ -90,6 +90,7 @@ privileged aspect AdminController_Roo_Controller {
     
     void AdminController.addDateTimeFormatPatterns(Model uiModel) {
         uiModel.addAttribute("admin_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("admin_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void AdminController.populateEditForm(Model uiModel, Admin admin) {

@@ -72,7 +72,7 @@ Ext.define('MySchool.controller.monthly.EvaluationRatingsController', {
 		{
 			if( this.userRole === 'ROLE_USER' )
 			{
-				var studentRecord = studentStore('userName', this.userName );
+				var studentRecord = studentStore.findRecord('userName', this.userName );
 				studentId = studentRecord.get('studentId');
 				studentName = this.userName;
 			}

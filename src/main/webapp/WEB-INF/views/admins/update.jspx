@@ -20,5 +20,6 @@
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Admin_userPassword" required="true" z="tK+NaYQqaanVJStInTdm/mYmqUk="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Admin_enabled" z="Gp6p/xsb+/l4W/CrLcTyYRgALCA="/>
         <field:textarea field="email" id="c_com_app_myschool_model_Admin_email" required="true" validationMessageCode="field_invalid_email" z="0m4+yKg5pCv7uRJgWuLTYDs2iqA="/>
+        <field:datetime dateTimePattern="${admin_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Admin_createdDate" z="R8QxG/+uMA0gG3vmf6aBn2Oq7j0="/>
     </form:update>
 </div>

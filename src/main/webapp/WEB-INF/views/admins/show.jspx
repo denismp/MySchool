@@ -20,5 +20,6 @@
         <field:display field="userPassword" id="s_com_app_myschool_model_Admin_userPassword" object="${admin}" z="0P0qwX1cPj+K+OoDb48XKEaes1g="/>
         <field:display field="enabled" id="s_com_app_myschool_model_Admin_enabled" object="${admin}" z="4FDBxS1BRq8UfP47SnJ+Nb71CQk="/>
         <field:display field="email" id="s_com_app_myschool_model_Admin_email" object="${admin}" z="p+UdHPYTJjlxFPTBHEEhG/MxZAY="/>
+        <field:display date="true" dateTimePattern="${admin_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Admin_createdDate" object="${admin}" z="a1XQtnBkuGSX0StWkrXsyKtx6Wo="/>
     </page:show>
 </div>
