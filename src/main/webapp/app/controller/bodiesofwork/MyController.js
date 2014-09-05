@@ -166,6 +166,9 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		var studentName_ = newDialog.down('#newbodiesofworkform-studentName');
 		var qsCB_		= newDialog.down('#newbodiesofworkform-quarter');
 
+		if( this.userRole === 'ROLE_USER' )
+			return;
+
 		if( bws.count() > 0 )
 		{
 			r_ = bws.getAt( this.selectedIndex );

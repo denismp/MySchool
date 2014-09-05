@@ -61,6 +61,9 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 		var studentId;
 		var studentName;
 
+		if( this.userRole === 'ROLE_USER' )
+			return;
+
 		if( typeof selectedRecord !== 'undefined' )
 		{
 			//var studentRecord	= studentStore.getAt(row);

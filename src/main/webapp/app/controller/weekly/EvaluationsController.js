@@ -132,6 +132,8 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 		this.userName					= securityRecord.get('userName');
 		this.userRole					= securityRecord.get('userRole');
 
+		if( this.userRole === 'ROLE_USER' )
+			return;
 
 		if( typeof selectedRecord !== 'undefined' )
 		{

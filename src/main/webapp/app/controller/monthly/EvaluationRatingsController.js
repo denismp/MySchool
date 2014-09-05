@@ -62,6 +62,9 @@ Ext.define('MySchool.controller.monthly.EvaluationRatingsController', {
 		var studentId;
 		var studentName;
 
+		if( this.userRole === 'ROLE_USER' )
+			return;
+
 		if( typeof selectedRecord !== 'undefined' )
 		{
 			//var studentRecord	= studentStore.getAt(0);

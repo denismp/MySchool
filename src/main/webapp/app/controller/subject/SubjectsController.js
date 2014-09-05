@@ -132,6 +132,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    window.console.log( myrecord.data );
 		}
 
+
 		if( this.userRole !== 'ROLE_USER')
 		{
 			studentName_.setValue('Enter student user name');
@@ -139,8 +140,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		}
 		else
 		{
-			studentName_.setValue(this.studentName);
-			studentName_.setReadOnly( true );
+			//studentName_.setValue(this.studentName);
+			//studentName_.setReadOnly( true );
+			return;
 		}
 
 		qtrYearCombo_.setValue(myrecord ? parseInt(myrecord.data.qtrYear) : new Date().getFullYear());
