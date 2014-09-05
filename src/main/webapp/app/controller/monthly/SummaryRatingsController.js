@@ -183,6 +183,13 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
 		var mystore = Ext.getStore("monthly.SummaryRatingsStore");
 
+		if( this.userRole === 'ROLE_USER' )
+		{
+			mystore.reload();
+			return;
+		}
+
+
 		var records = mystore.getModifiedRecords();
 		for( var i = 0; i < records.length; i++ )
 		{
@@ -446,6 +453,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
+		if( this.userRole === 'ROLE_USER' )
+			return;
 		window.console.log(button);
 		var b_		= button;
 		var form	= b_.up('panel');

@@ -640,6 +640,12 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		var mystore = Ext.getStore("subject.SubjectStore");
 
+		if( this.userRole === 'ROLE_USER' )
+		{
+			mystore.reload();
+			return;
+		}
+
 		var records = mystore.getModifiedRecords();
 		for( var i = 0; i < records.length; i++ )
 		{

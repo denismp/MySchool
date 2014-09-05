@@ -110,8 +110,15 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 	onWeeklytoolssavetoolClick: function(tool, e, eOpts) {
 		window.console.log( "weekly.SkillRatingsStore.Save" );
 		debugger;
-
 		var mystore = Ext.getStore("weekly.SkillRatingsStore");
+
+		if( this.userRole === 'ROLE_USER' )
+		{
+			mystore.reload();
+			return;
+		}
+
+
 
 		var records = mystore.getModifiedRecords();
 		for( var i = 0; i < records.length; i++ )
@@ -340,6 +347,8 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
+		if( this.userRole === 'ROLE_USER' )
+			return;
 		window.console.log(button);
 		var b_		= button;
 		var form	= b_.up('panel');

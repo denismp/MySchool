@@ -591,6 +591,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
+		if( this.userRole === 'ROLE_USER' )
+			return;
 		window.console.log(button);
 		var b_		= button;
 		var form	= b_.up('panel');
