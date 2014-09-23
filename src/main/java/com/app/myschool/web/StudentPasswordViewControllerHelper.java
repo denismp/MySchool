@@ -518,6 +518,43 @@ public class StudentPasswordViewControllerHelper implements
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}
+	private boolean isValidPassword(String userPassword)
+	{
+		boolean rVal = true;
+		if( userPassword == null )
+			rVal = false;
+		else if( userPassword.equals("") )
+			rVal = false;
+		else if( userPassword.length() < 8 )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean isValidUserName(String userName)
+	{
+		boolean rVal = true;
+		if( userName == null )
+			rVal = false;
+		else if( userName.equals("") )
+			rVal = false;
+		else if( hasBlank( userName ) )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean hasBlank(String userName)
+	{
+		boolean rVal = false;
+		for( int i = 0; i < userName.length(); i++ )
+		{
+			if( userName.charAt(i) == ' ' )
+			{
+				rVal = true;
+				break;
+			}
+		}
+		return rVal;
+	}
 
 	@Override
 	public ResponseEntity<String> updateFromJson(String json)
@@ -595,7 +632,8 @@ public class StudentPasswordViewControllerHelper implements
 			// Convert the given userPassword to sha 256.
 			// **********************************************
 			String plainText = myView.getUserPassword();
-			if (plainText != null && plainText.equals("") == false  && okToDo )
+			//if (plainText != null && plainText.equals("") == false  && okToDo )
+			if (this.isValidPassword(plainText)  && okToDo )				
 			{
 				String pwd = convertToSHA256(myView.getUserPassword());
 				record.setUserPassword(pwd);
@@ -619,8 +657,8 @@ public class StudentPasswordViewControllerHelper implements
 				updateGood = false;
 				if( okToDo )
 				{
-					msg.append("Password was not specified.");
-					logger.error("Password was not specified.");
+					msg.append("Password was not valid.");
+					logger.error("Password was not valid.");
 				}
 				else
 				{
@@ -646,7 +684,7 @@ public class StudentPasswordViewControllerHelper implements
 			}
 			else if (!statusGood)
 			{
-				response.setMessage("Unsupported class=" + className);
+				response.setMessage(className + " update failed.  " + msg);
 				response.setSuccess(false);
 				response.setTotal(0L);
 				statusGood = false;

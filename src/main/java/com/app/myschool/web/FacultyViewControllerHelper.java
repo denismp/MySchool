@@ -310,10 +310,13 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 
 			if (faculty == null)
 			{
+				String msg = "";
 				record.setLastUpdated(myView.getLastUpdated());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
+				
+				String plainText = myView.getUserPassword();
 
 				String newpwd = securityHelper.convertToSHA256(myView
 						.getUserPassword());
@@ -333,21 +336,42 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				record.setProvince(myView.getProvince());
 				record.setUserName(myView.getUserName());
 				record.setUserPassword(newpwd);
-
-				((Faculty) record).persist();
-
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-				// myView.setDailyId(record.getId());
-				//myView.setId(100000L + record.getId());
+				if( isValidUserName( record.getUserName() ) == false )
+				{
+					statusGood = false;
+					msg = "Invalid user name.";
+				}
+				else
+				{
+					if( isValidPassword( plainText ) == false )
+					{
+						statusGood = false;
+						msg = "Invalid passord";
+					}
+				}
 
 				if (statusGood)
 				{
+					((Faculty) record).persist();
+					
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+					// myView.setDailyId(record.getId());
+					//myView.setId(100000L + record.getId());
+
 					returnStatus = HttpStatus.CREATED;
 					response.setMessage(className + " created.");
 					response.setSuccess(true);
 					response.setTotal(1L);
 					response.setData(myView);
+				}
+				else
+				{
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;					
 				}
 			}
 			else
@@ -373,6 +397,44 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+	}
+
+	private boolean isValidPassword(String userPassword)
+	{
+		boolean rVal = true;
+		if( userPassword == null )
+			rVal = false;
+		else if( userPassword.equals("") )
+			rVal = false;
+		else if( userPassword.length() < 8 )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean isValidUserName(String userName)
+	{
+		boolean rVal = true;
+		if( userName == null )
+			rVal = false;
+		else if( userName.equals("") )
+			rVal = false;
+		else if( hasBlank( userName ) )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean hasBlank(String userName)
+	{
+		boolean rVal = false;
+		for( int i = 0; i < userName.length(); i++ )
+		{
+			if( userName.charAt(i) == ' ' )
+			{
+				rVal = true;
+				break;
+			}
+		}
+		return rVal;
 	}
 
 	@Override
@@ -467,6 +529,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			boolean updateGood = false;
 			boolean inSync = false;
 			boolean okToDo = false;
+			String msg = "update failed.";
 
 			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToFacultyView(myJson)");
 			myView = FacultyView.fromJsonToFacultyView(myJson);
@@ -486,13 +549,19 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			//	okToDo = true;
 			//}
 			String plainText = myView.getUserPassword();
-			if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
+			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
+			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )
 			{
 				// **********************************************
 				// Convert the given userPassword to sha 256.
 				// **********************************************
 				String pwd = convertToSHA256(myView.getUserPassword());
 				record.setUserPassword(pwd);
+			}
+			else
+			{
+				statusGood = false;
+				msg = "Invalid password.";
 			}
 
 			record.setWhoUpdated(securityHelper.getUserName());
@@ -515,7 +584,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			// record.setFaculty(facultys);
 			// record.setStudents(students);
 
-			if( okToDo )
+			if( okToDo && statusGood )
 			{
 				logger.info("Debug2");
 				inSync = record.getVersion() == myView.getVersion();
@@ -543,13 +612,13 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			{
 				returnStatus = inSync ? HttpStatus.NOT_FOUND
 						: HttpStatus.CONFLICT;
-				response.setMessage(className + " update failed.");
+				response.setMessage(className + " " + msg );
 				response.setSuccess(false);
 				response.setTotal(0L);
 			}
 			else if (!statusGood)
 			{
-				response.setMessage("Unsupported class=" + className);
+				response.setMessage(className + " " + msg );
 				response.setSuccess(false);
 				response.setTotal(0L);
 				statusGood = false;

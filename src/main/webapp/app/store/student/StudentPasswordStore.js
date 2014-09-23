@@ -38,6 +38,12 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 				reader: {
 					type: 'json',
 					root: 'data'
+				},
+				listeners: {
+					exception: {
+						fn: me.onRestException,
+						scope: me
+					}
 				}
 			},
 			listeners: {
@@ -47,6 +53,24 @@ Ext.define('MySchool.store.student.StudentPasswordStore', {
 				}
 			}
 		}, cfg)]);
+	},
+
+	onRestException: function(proxy, response, operation, eOpts) {
+		debugger;
+		var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
+		Ext.MessageBox.show({
+		    title: 'REMOTE EXCEPTION',
+		    msg: smsg,
+		    icon: Ext.MessageBox.ERROR,
+		    buttons: Ext.Msg.OK,
+		    resizeable: true
+		});
+		window.console.log( smsg );
+		if( this.getCount() > 0 )
+		{
+		    this.reload();
+		}
+		//this.reload();
 	},
 
 	onJsonstoreWrite: function(store, operation, eOpts) {

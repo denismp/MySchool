@@ -483,6 +483,43 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 	
 		return rVal;
 	}
+	private boolean isValidPassword(String userPassword)
+	{
+		boolean rVal = true;
+		if( userPassword == null )
+			rVal = false;
+		else if( userPassword.equals("") )
+			rVal = false;
+		else if( userPassword.length() < 8 )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean isValidUserName(String userName)
+	{
+		boolean rVal = true;
+		if( userName == null )
+			rVal = false;
+		else if( userName.equals("") )
+			rVal = false;
+		else if( hasBlank( userName ) )
+			rVal = false;
+		return rVal;
+	}
+
+	private boolean hasBlank(String userName)
+	{
+		boolean rVal = false;
+		for( int i = 0; i < userName.length(); i++ )
+		{
+			if( userName.charAt(i) == ' ' )
+			{
+				rVal = true;
+				break;
+			}
+		}
+		return rVal;
+	}
 	
 	@Override
 	public ResponseEntity<String> createFromJson(String json)
@@ -510,7 +547,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 			if (studentList.size() == 0)
 			{
-
+				String msg = "";
 				Set<Faculty> facultys = new HashSet<Faculty>();
 
 				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
@@ -520,6 +557,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
+				
+				String plainText = myView.getUserPassword();
 
 				String newpwd = securityHelper.convertToSHA256(myView
 						.getUserPassword());
@@ -540,45 +579,64 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				record.setUserName(myView.getUserName());
 				record.setUserPassword(newpwd);
 				record.setFaculty(facultys);
-
-				((Student) record).persist();
-
-				myView.setVersion(record.getVersion());
-				myView.setId(record.getId());
-
-				myView.setId(100000L + record.getId());				
 				
-				myView.setStudentprofileviewId(100000L + record.getId());
-				myView.setVersion(record.getVersion());
-				myView.setLastUpdated(record.getLastUpdated());
-				myView.setWhoUpdated(record.getWhoUpdated());
-				myView.setStudentId(record.getId());
-				myView.setVersion(record.getVersion());
-				myView.setFacultyId(faculty.getId());
-				myView.setEmail(record.getEmail());
-				myView.setAddress1(record.getAddress1());
-				myView.setAddress2(record.getAddress2());
-				myView.setCity(record.getCity());
-				myView.setCountry(record.getCountry());
-				myView.setFacultyUserName(faculty.getUserName());
-				myView.setFacultyEmail(faculty.getEmail());
-				myView.setLastName(record.getLastName());
-				myView.setMiddleName(record.getMiddleName());
-				myView.setFirstName(record.getFirstName());
-				myView.setPostalCode(record.getPostalCode());
-				myView.setProvince(record.getProvince());
-				myView.setPhone1(record.getPhone1());
-				myView.setPhone2(record.getPhone2());
-				myView.setEnabled(record.getEnabled());
-				myView.setUserName(record.getUserName());
+				if( this.isValidUserName(record.getUserName() ) == false )
+				{
+					msg = "Invalid user name.";
+					statusGood = false;
+				}
+				else if( this.isValidPassword( plainText ) == false )
+				{
+					statusGood = false;
+					msg = "Invalid password.";
+				}
 
 				if (statusGood)
 				{
+					((Student) record).persist();
+
+					myView.setVersion(record.getVersion());
+					myView.setId(record.getId());
+
+					myView.setId(100000L + record.getId());				
+					
+					myView.setStudentprofileviewId(100000L + record.getId());
+					myView.setVersion(record.getVersion());
+					myView.setLastUpdated(record.getLastUpdated());
+					myView.setWhoUpdated(record.getWhoUpdated());
+					myView.setStudentId(record.getId());
+					myView.setVersion(record.getVersion());
+					myView.setFacultyId(faculty.getId());
+					myView.setEmail(record.getEmail());
+					myView.setAddress1(record.getAddress1());
+					myView.setAddress2(record.getAddress2());
+					myView.setCity(record.getCity());
+					myView.setCountry(record.getCountry());
+					myView.setFacultyUserName(faculty.getUserName());
+					myView.setFacultyEmail(faculty.getEmail());
+					myView.setLastName(record.getLastName());
+					myView.setMiddleName(record.getMiddleName());
+					myView.setFirstName(record.getFirstName());
+					myView.setPostalCode(record.getPostalCode());
+					myView.setProvince(record.getProvince());
+					myView.setPhone1(record.getPhone1());
+					myView.setPhone2(record.getPhone2());
+					myView.setEnabled(record.getEnabled());
+					myView.setUserName(record.getUserName());
+					
 					returnStatus = HttpStatus.CREATED;
 					response.setMessage(className + " created.");
 					response.setSuccess(true);
 					response.setTotal(1L);
 					response.setData(myView);
+				}
+				else
+				{
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;					
 				}
 			}
 			else
