@@ -82,27 +82,27 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'facultyUserName'
+					text: 'Faculty User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
-					text: 'subjName'
+					text: 'Subj Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'studentUserName'
+					text: 'Student User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'qtrName'
+					text: 'QtrName'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrYear',
-					text: 'qtrYear'
+					text: 'QtrYear'
 				},
 				{
 					xtype: 'checkcolumn',
@@ -122,13 +122,13 @@ Ext.define('MySchool.view.faculty.ProfileGridPanel', {
 					xtype: 'gridcolumn',
 					hidden: true,
 					dataIndex: 'whoUpdated',
-					text: 'whoUpdated'
+					text: 'Who Updated'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
-					text: 'lastUpdated'
+					text: 'Last Updated'
 				}
 			]
 		});

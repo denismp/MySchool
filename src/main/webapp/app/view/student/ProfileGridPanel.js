@@ -55,7 +55,7 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'userName',
-					text: 'userName'
+					text: 'Student User Name'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -75,7 +75,7 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyEmail',
-					text: 'FacultyEmail'
+					text: 'Faculty Email'
 				},
 				{
 					xtype: 'checkcolumn',
@@ -88,13 +88,13 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
-					text: 'lastUpdated'
+					text: 'Last Updated'
 				},
 				{
 					xtype: 'gridcolumn',
 					hidden: true,
 					dataIndex: 'whoUpdated',
-					text: 'whoUpdated'
+					text: 'Who Updated'
 				},
 				{
 					xtype: 'numbercolumn',

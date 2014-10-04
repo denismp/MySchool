@@ -64,7 +64,7 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'daily_hours',
-					text: 'daily_hours',
+					text: 'Daily Hours',
 					editor: {
 						xtype: 'numberfield',
 						allowOnlyWhitespace: false,
@@ -104,23 +104,23 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'studentUserName'
+					text: 'Student User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'facultyUserName'
+					text: 'Faculty User Name'
 				},
 				{
 					xtype: 'datecolumn',
 					dataIndex: 'lastUpdated',
-					text: 'lastUpdated',
+					text: 'Last Updated',
 					format: 'm/d/Y'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'whoUpdated'
+					text: 'Who Updated'
 				},
 				{
 					xtype: 'numbercolumn',

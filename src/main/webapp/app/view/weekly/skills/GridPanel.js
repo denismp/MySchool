@@ -46,7 +46,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'qtrName'
+					text: 'Quarter Name'
 				},
 				{
 					xtype: 'numbercolumn',
@@ -186,24 +186,24 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'studentUserName'
+					text: 'Student User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'facultyUserName'
+					text: 'Faculty User Name'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
-					text: 'lastUpdated',
+					text: 'Last Updated',
 					format: 'm/d/Y'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'whoUpdated'
+					text: 'Who Updated'
 				}
 			],
 			viewConfig: {

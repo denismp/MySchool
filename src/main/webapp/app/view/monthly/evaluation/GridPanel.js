@@ -42,17 +42,17 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
-					text: 'subjName'
+					text: 'Subj Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'qtrName'
+					text: 'Qtr Name'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'qtrYear',
-					text: 'qtrYear',
+					text: 'QtrYear',
 					format: '0000'
 				},
 				{
@@ -161,23 +161,23 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'studentUserName'
+					text: 'Student User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'facultyUserName'
+					text: 'Faculty User Name'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'whoUpdated'
+					text: 'Who Updated'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
-					text: 'lastUpdated',
+					text: 'Last Updated',
 					format: 'm/d/Y'
 				},
 				{
