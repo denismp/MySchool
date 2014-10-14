@@ -660,3 +660,5 @@ web mvc scaffold --class ~.web.SchoolController --backingType ~model.School
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-12 20:30:23
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 20:34:36
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 11:24:39
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-14 11:37:14
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 11:40:36
