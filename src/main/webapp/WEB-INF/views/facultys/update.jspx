@@ -23,5 +23,6 @@
         <field:simple field="quarters" id="c_com_app_myschool_model_Faculty_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="7qQ5xM11/wSBVzE6nGmfoVBgDFQ="/>
         <field:select field="students" id="c_com_app_myschool_model_Faculty_students" itemValue="id" items="${students}" multiple="true" path="/students" z="2vb3sYkkv+bU3wcSOdxDBF1AG3U="/>
         <field:datetime dateTimePattern="${faculty_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Faculty_createdDate" z="dBucVMyKFK7wbDMltlLnwloxUBo="/>
+        <field:datetime dateTimePattern="${faculty_dob_date_format}" field="dob" id="c_com_app_myschool_model_Faculty_dob" z="s7ytwSW7KulCSM1xMqPKmI6ufXI="/>
     </form:update>
 </div>

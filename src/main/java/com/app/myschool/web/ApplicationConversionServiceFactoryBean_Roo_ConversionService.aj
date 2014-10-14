@@ -15,6 +15,7 @@ import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.QuarterNames;
+import com.app.myschool.model.School;
 import com.app.myschool.model.SkillRatings;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -246,7 +247,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<PreviousTranscripts, String> ApplicationConversionServiceFactoryBean.getPreviousTranscriptsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.PreviousTranscripts, java.lang.String>() {
             public String convert(PreviousTranscripts previousTranscripts) {
-                return new StringBuilder().append(previousTranscripts.getType()).append(' ').append(previousTranscripts.getCreatedDate()).toString();
+                return new StringBuilder().append(previousTranscripts.getType()).append(' ').append(previousTranscripts.getPdfURL()).append(' ').append(previousTranscripts.getComments()).append(' ').append(previousTranscripts.getCreatedDate()).toString();
             }
         };
     }
@@ -311,6 +312,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.QuarterNames>() {
             public com.app.myschool.model.QuarterNames convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), QuarterNames.class);
+            }
+        };
+    }
+    
+    public Converter<School, String> ApplicationConversionServiceFactoryBean.getSchoolToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.School, java.lang.String>() {
+            public String convert(School school) {
+                return new StringBuilder().append(school.getEmail()).append(' ').append(school.getName()).append(' ').append(school.getDistrict()).append(' ').append(school.getCustodianOfRecords()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, School> ApplicationConversionServiceFactoryBean.getIdToSchoolConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.School>() {
+            public com.app.myschool.model.School convert(java.lang.Long id) {
+                return School.findSchool(id);
+            }
+        };
+    }
+    
+    public Converter<String, School> ApplicationConversionServiceFactoryBean.getStringToSchoolConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.School>() {
+            public com.app.myschool.model.School convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), School.class);
             }
         };
     }
@@ -424,6 +449,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getQuarterNamesToStringConverter());
         registry.addConverter(getIdToQuarterNamesConverter());
         registry.addConverter(getStringToQuarterNamesConverter());
+        registry.addConverter(getSchoolToStringConverter());
+        registry.addConverter(getIdToSchoolConverter());
+        registry.addConverter(getStringToSchoolConverter());
         registry.addConverter(getSkillRatingsToStringConverter());
         registry.addConverter(getIdToSkillRatingsConverter());
         registry.addConverter(getStringToSkillRatingsConverter());

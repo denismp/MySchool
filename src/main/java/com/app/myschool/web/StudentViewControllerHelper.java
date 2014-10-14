@@ -268,6 +268,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 						myView.setSubjId(subject.getId());
 						myView.setSubjName(subject.getName());
 						myView.setQtrYear(quarter.getQtr_year());
+						myView.setDob(student.getDob());
 
 						studentViewList.add( myView );
 					}
@@ -636,6 +637,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				record.setUserName(myView.getUserName());
 				record.setUserPassword(newpwd);
 				record.setFaculty(facultys);
+				record.setDob(myView.getDob());
 				//record.setStudents(students);
 				
 				((Student)record).persist();
@@ -775,6 +777,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getUserName());
 			record.setFaculty(facultys);
+			record.setDob(myView.getDob());
 			//record.setStudents(students);
 
 			logger.info("Debug2");

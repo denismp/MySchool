@@ -86,6 +86,11 @@ Ext.define('MySchool.model.faculty.FacultyTableModel', {
 			type: 'date'
 		},
 		{
+			dateFormat: 'm/d/Y',
+			name: 'dob',
+			type: 'date'
+		},
+		{
 			name: 'userName',
 			type: 'string'
 		},

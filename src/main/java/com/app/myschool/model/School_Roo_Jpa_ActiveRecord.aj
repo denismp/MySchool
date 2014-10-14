@@ -3,98 +3,97 @@
 
 package com.app.myschool.model;
 
-import com.app.myschool.model.Person;
+import com.app.myschool.model.School;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
-privileged aspect Person_Roo_Jpa_ActiveRecord {
+privileged aspect School_Roo_Jpa_ActiveRecord {
     
     @PersistenceContext
-    transient EntityManager Person.entityManager;
+    transient EntityManager School.entityManager;
     
-    public static final List<String> Person.fieldNames4OrderClauseFilter = java.util.Arrays.asList("email", "firstName", "lastName", "middleName", "phone1", "phone2", "address1", "address2", "city", "province", "postalCode", "country", "dob", "whoUpdated", "lastUpdated", "createdDate", "userName", "userPassword", "enabled");
+    public static final List<String> School.fieldNames4OrderClauseFilter = java.util.Arrays.asList("email", "name", "district", "custodianOfRecords", "custodianTitle", "phone1", "phone2", "address1", "address2", "city", "province", "postalCode", "country", "comments", "whoUpdated", "createdDate", "lastUpdated");
     
-    public static final EntityManager Person.entityManager() {
-        EntityManager em = new Person() {
-        }.entityManager;
+    public static final EntityManager School.entityManager() {
+        EntityManager em = new School().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
-    public static long Person.countPeople() {
-        return entityManager().createQuery("SELECT COUNT(o) FROM Person o", Long.class).getSingleResult();
+    public static long School.countSchools() {
+        return entityManager().createQuery("SELECT COUNT(o) FROM School o", Long.class).getSingleResult();
     }
     
-    public static List<Person> Person.findAllPeople() {
-        return entityManager().createQuery("SELECT o FROM Person o", Person.class).getResultList();
+    public static List<School> School.findAllSchools() {
+        return entityManager().createQuery("SELECT o FROM School o", School.class).getResultList();
     }
     
-    public static List<Person> Person.findAllPeople(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Person o";
+    public static List<School> School.findAllSchools(String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM School o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
             if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
                 jpaQuery = jpaQuery + " " + sortOrder;
             }
         }
-        return entityManager().createQuery(jpaQuery, Person.class).getResultList();
+        return entityManager().createQuery(jpaQuery, School.class).getResultList();
     }
     
-    public static Person Person.findPerson(Long id) {
+    public static School School.findSchool(Long id) {
         if (id == null) return null;
-        return entityManager().find(Person.class, id);
+        return entityManager().find(School.class, id);
     }
     
-    public static List<Person> Person.findPersonEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("SELECT o FROM Person o", Person.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+    public static List<School> School.findSchoolEntries(int firstResult, int maxResults) {
+        return entityManager().createQuery("SELECT o FROM School o", School.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
-    public static List<Person> Person.findPersonEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM Person o";
+    public static List<School> School.findSchoolEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
+        String jpaQuery = "SELECT o FROM School o";
         if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
             jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
             if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
                 jpaQuery = jpaQuery + " " + sortOrder;
             }
         }
-        return entityManager().createQuery(jpaQuery, Person.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery(jpaQuery, School.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional
-    public void Person.persist() {
+    public void School.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
     
     @Transactional
-    public void Person.remove() {
+    public void School.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
         if (this.entityManager.contains(this)) {
             this.entityManager.remove(this);
         } else {
-            Person attached = Person.findPerson(this.id);
+            School attached = School.findSchool(this.id);
             this.entityManager.remove(attached);
         }
     }
     
     @Transactional
-    public void Person.flush() {
+    public void School.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
     
     @Transactional
-    public void Person.clear() {
+    public void School.clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
     
     @Transactional
-    public Person Person.merge() {
+    public School School.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
-        Person merged = this.entityManager.merge(this);
+        School merged = this.entityManager.merge(this);
         this.entityManager.flush();
         return merged;
     }

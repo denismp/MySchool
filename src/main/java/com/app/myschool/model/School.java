@@ -1,11 +1,18 @@
 package com.app.myschool.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
@@ -14,24 +21,30 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord(inheritanceType = "TABLE_PER_CLASS")
+@RooJpaActiveRecord
 @RooJson
-public abstract class Person {
+public class School {
+	
     @NotNull
     @Size(max = 50)
     private String email;
-	
-    @NotNull
-    @Size(max = 45)
-    private String firstName;
 
     @NotNull
     @Size(max = 45)
-    private String lastName;
+    private String name;
 
+    @NotNull
     @Size(max = 45)
-    private String middleName;
-
+    private String district;
+    
+    @NotNull
+    @Size(max = 45)
+    private String custodianOfRecords;
+    
+    @NotNull
+    @Size(max = 45)
+    private String custodianTitle;
+    
     @NotNull
     @Size(max = 25)
     private String phone1;
@@ -62,34 +75,21 @@ public abstract class Person {
     @Size(max = 45)
     private String country;
     
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
-    private Date dob;
+    @Size(max = 1024)
+    private String comments;
 
     @NotNull
     @Size(max = 45)
     private String whoUpdated;
+    
+    @Column(name="createdDate", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  
+    //@NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date createdDate;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
-
-    @Column(name="createdDate", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  
-    //@NotNull
-    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(style = "M-")
-    private Date createdDate;   
-    
-    @NotNull
-    @Column(unique = true)
-    @Size(max = 50)
-    private String userName;
-
-    @NotNull
-    @Size(max = 150)
-    private String userPassword;
-
-    @NotNull
-    private Boolean enabled;
 }

@@ -6,5 +6,8 @@
         <field:display field="type" id="s_com_app_myschool_model_PreviousTranscripts_type" object="${previoustranscripts}" z="7HHl+my1Se6C/EfF33nKliO0Kmw="/>
         <field:display field="student" id="s_com_app_myschool_model_PreviousTranscripts_student" object="${previoustranscripts}" z="KDdCWSSvp7k7zvqoTKnBtJlHVhQ="/>
         <field:display date="true" dateTimePattern="${previousTranscripts_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_PreviousTranscripts_createdDate" object="${previoustranscripts}" z="ct5ekjYUnlwFn7L4sHXiws4SEvE="/>
+        <field:display field="pdfURL" id="s_com_app_myschool_model_PreviousTranscripts_pdfURL" object="${previoustranscripts}" z="/eXVrPbk9L0Zg579+T8XzXfMseM="/>
+        <field:display field="school" id="s_com_app_myschool_model_PreviousTranscripts_school" object="${previoustranscripts}" z="xQEA1rAMg381c5Wg4tu4sOtQULE="/>
+        <field:display field="comments" id="s_com_app_myschool_model_PreviousTranscripts_comments" object="${previoustranscripts}" z="+OnKWpGuHnBv7Tme4DVJWK5/e0Y="/>
     </page:show>
 </div>

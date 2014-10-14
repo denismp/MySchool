@@ -168,6 +168,14 @@ privileged aspect FacultyView_Roo_JavaBean {
         this.facultyId = facultyId;
     }
     
+    public Date FacultyView.getDob() {
+        return this.dob;
+    }
+    
+    public void FacultyView.setDob(Date dob) {
+        this.dob = dob;
+    }
+    
     public Integer FacultyView.getVersion() {
         return this.version;
     }

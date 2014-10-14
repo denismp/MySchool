@@ -43,6 +43,8 @@ public class StudentProfileView {
     private String whoUpdated;
 
     private Date lastUpdated;
+    
+    private Date dob;
         
     private String userName;
     

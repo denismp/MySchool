@@ -112,75 +112,63 @@ public class BodyOfWorkViewControllerHelper implements
 		List<BodyOfWorkView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		// String studentId_ = getParam(params, "studentId");
+		//String studentId_ = getParam(params, "studentId");
 		// String studentName_ = getParam(params, "studentName");
 		logger.info("BodyOfWorkView - GET");
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		List<Student> students = securityHelper.findStudentsByLoginUserRole();
-
 		List<BodyOfWorkView> bvl_ = new ArrayList<BodyOfWorkView>();
 
 		try
 		{
-			for (Student student : students)
+			for( Student student: students )
 			{
-				List<Faculty> facultys = securityHelper.getFacultyList(student);
-				for (Faculty faculty : facultys)
+				String studentId_ = student.getId().toString();
+
+				EntityManager em = BodyOfWork.entityManager();
+				StringBuilder qs_ = new StringBuilder("select b.*");
+				List<BodyOfWork> bowl_;
+
+				qs_.append(" from body_of_work b, quarter q, student t");
+				qs_.append(" where b.quarter = q.id");
+				qs_.append(" and q.student = t.id");
+				qs_.append(" and t.id = ");
+				qs_.append(studentId_);
+
+				bowl_ = (List<BodyOfWork>) em.createNativeQuery(
+						qs_.toString(), BodyOfWork.class).getResultList();
+
+				for (BodyOfWork bw_ : bowl_)
 				{
-					String facultyId  = faculty.getId().toString();
-					String studentId_ = student.getId().toString();
+					Quarter q_ = bw_.getQuarter();
+					Subject u_ = q_.getSubject();
+					BodyOfWorkView bwv_ = new BodyOfWorkView();
 
-					EntityManager em = BodyOfWork.entityManager();
-					StringBuilder qs_ = new StringBuilder("select b.*");
-					List<BodyOfWork> bowl_;
+					bwv_.setId(bw_.getId());
+					bwv_.setVersion(bw_.getVersion());
+					bwv_.setWorkName(bw_.getWorkName());
+					bwv_.setObjective(bw_.getObjective());
+					bwv_.setWhat(bw_.getWhat());
+					bwv_.setDescription(bw_.getDescription());
+					bwv_.setWhoUpdated(bw_.getWhoUpdated());
+					bwv_.setLastUpdated(bw_.getLastUpdated());
+					bwv_.setLocked(bw_.getLocked());
+					bwv_.setStudentUserName(student.getUserName());
+					bwv_.setFacultyUserName(bw_.getQuarter().getFaculty().getUserName());
+					bwv_.setStudentId(student.getId());
+					bwv_.setSubjId(u_.getId());
+					bwv_.setSubjName(u_.getName());
+					bwv_.setSubjCreditHours(u_.getCreditHours());
+					bwv_.setSubjGradeLevel(u_.getGradeLevel());
+					bwv_.setQtrId(q_.getId());
+					bwv_.setQtrName(q_.getQtrName());
+					bwv_.setQtrYear(q_.getQtr_year());
+					
+					logger.info("Adding Student=" + bwv_.getStudentUserName() + " workName=" + bwv_.getWorkName() );
 
-					qs_.append(" from body_of_work b, quarter q, student t, faculty f");
-					qs_.append(" where b.quarter = q.id");
-					qs_.append(" and q.student = t.id");
-					qs_.append(" and t.id = ");
-					qs_.append(studentId_);
-					qs_.append(" and q.faculty = f.id");
-					qs_.append(" and q.faculty = ");
-					qs_.append(facultyId);
-
-					bowl_ = (List<BodyOfWork>) em.createNativeQuery(
-							qs_.toString(), BodyOfWork.class).getResultList();
-
-					for (BodyOfWork bw_ : bowl_)
-					{
-						Quarter q_ = bw_.getQuarter();
-						Subject u_ = q_.getSubject();
-						BodyOfWorkView bwv_ = new BodyOfWorkView();
-
-						bwv_.setId(bw_.getId());
-						bwv_.setVersion(bw_.getVersion());
-						bwv_.setWorkName(bw_.getWorkName());
-						bwv_.setObjective(bw_.getObjective());
-						bwv_.setWhat(bw_.getWhat());
-						bwv_.setDescription(bw_.getDescription());
-						bwv_.setWhoUpdated(bw_.getWhoUpdated());
-						bwv_.setLastUpdated(bw_.getLastUpdated());
-						bwv_.setLocked(bw_.getLocked());
-						bwv_.setStudentUserName(student.getUserName());
-						bwv_.setFacultyUserName(bw_.getQuarter().getFaculty()
-								.getUserName());
-						bwv_.setStudentId(student.getId());
-						bwv_.setSubjId(u_.getId());
-						bwv_.setSubjName(u_.getName());
-						bwv_.setSubjCreditHours(u_.getCreditHours());
-						bwv_.setSubjGradeLevel(u_.getGradeLevel());
-						bwv_.setQtrId(q_.getId());
-						bwv_.setQtrName(q_.getQtrName());
-						bwv_.setQtrYear(q_.getQtr_year());
-
-						logger.info("Adding Student="
-								+ bwv_.getStudentUserName() + " workName="
-								+ bwv_.getWorkName());
-
-						bvl_.add(bwv_);
-					}
-					em.close();
+					bvl_.add(bwv_);
 				}
+				em.close();
 				statusGood = true;
 			}
 			records = bvl_;
@@ -211,7 +199,7 @@ public class BodyOfWorkViewControllerHelper implements
 		}
 
 		// Return retrieved object.
-		logger.info("RESPONSE: " + response.toString());
+		logger.info("RESPONSE: " + response.toString() );
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}

@@ -87,6 +87,12 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				{
 					xtype: 'datecolumn',
 					hidden: true,
+					dataIndex: 'dob',
+					text: 'dob'
+				},
+				{
+					xtype: 'datecolumn',
+					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'Last Updated'
 				},

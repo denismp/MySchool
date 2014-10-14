@@ -101,6 +101,12 @@ Ext.define('MySchool.view.faculty.ProfileGridFacultyOnlyPanel', {
 					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'Last Updated'
+				},
+				{
+					xtype: 'datecolumn',
+					hidden: true,
+					dataIndex: 'dob',
+					text: 'dob'
 				}
 			]
 		});

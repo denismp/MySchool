@@ -104,6 +104,14 @@ privileged aspect Person_Roo_JavaBean {
         this.country = country;
     }
     
+    public Date Person.getDob() {
+        return this.dob;
+    }
+    
+    public void Person.setDob(Date dob) {
+        this.dob = dob;
+    }
+    
     public String Person.getWhoUpdated() {
         return this.whoUpdated;
     }

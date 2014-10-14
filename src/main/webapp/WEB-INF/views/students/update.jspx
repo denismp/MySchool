@@ -25,5 +25,6 @@
         <field:textarea field="email" id="c_com_app_myschool_model_Student_email" required="true" validationMessageCode="field_invalid_email" z="2bcFKopS+dvEvaShSbfe/en/DG4="/>
         <field:select field="faculty" id="c_com_app_myschool_model_Student_faculty" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="ck3S9plWVLvOGGlYpOpI0S6urgs="/>
         <field:datetime dateTimePattern="${student_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Student_createdDate" z="XeO05YvwMtFlnuzwK2q5r2iRp3k="/>
+        <field:datetime dateTimePattern="${student_dob_date_format}" field="dob" id="c_com_app_myschool_model_Student_dob" z="84btigYgUX60LAPBtHPWa44BT8M="/>
     </form:update>
 </div>

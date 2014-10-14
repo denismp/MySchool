@@ -144,6 +144,14 @@ privileged aspect StudentProfileView_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Date StudentProfileView.getDob() {
+        return this.dob;
+    }
+    
+    public void StudentProfileView.setDob(Date dob) {
+        this.dob = dob;
+    }
+    
     public String StudentProfileView.getUserName() {
         return this.userName;
     }

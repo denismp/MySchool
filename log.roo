@@ -634,3 +634,29 @@ logging setup --level INFO
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-09-23 12:47:13
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-04 13:18:29
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-04 15:37:31
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-06 16:05:23
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-08 15:51:35
+hint service
+hint
+help service
+hint
+hint web mvc
+web mvc scaffold --class ~.web.PDFDetailTranscript --backingType ~.model.StudentView
+hint service
+hint controller
+hint
+hint web mvc
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-09 12:51:49
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-09 13:40:43
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 15:23:42
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-12 16:16:34
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 17:14:06
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-12 17:17:33
+web mvc scaffold --class ~.web.School --backingType ~.model.School
+web mvc scaffold --class ~.web.SchoolController --backingType ~model.School
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 18:35:09
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-12 18:37:22
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 20:20:18
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-12 20:30:23
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-12 20:34:36
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 11:24:39

@@ -164,6 +164,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				myView.setVersion(faculty.getVersion());
 				myView.setLastUpdated(faculty.getLastUpdated());
 				myView.setWhoUpdated(faculty.getWhoUpdated());
+				myView.setDob(faculty.getDob());
 
 				myView.setVersion(faculty.getVersion());
 				myView.setFacultyId(faculty.getId());
@@ -312,6 +313,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			{
 				String msg = "";
 				record.setLastUpdated(myView.getLastUpdated());
+				record.setDob(myView.getDob());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
@@ -558,7 +560,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				String pwd = convertToSHA256(myView.getUserPassword());
 				record.setUserPassword(pwd);
 			}
-			else
+			else if( plainText.equals("NOT DISPLAYED") == false )
 			{
 				statusGood = false;
 				msg = "Invalid password.";
@@ -566,6 +568,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 
 			record.setWhoUpdated(securityHelper.getUserName());
 			record.setLastUpdated(myView.getLastUpdated());
+			record.setDob(myView.getDob());
 
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());

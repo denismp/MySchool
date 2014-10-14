@@ -232,6 +232,14 @@ privileged aspect StudentView_Roo_JavaBean {
         this.subjId = subjId;
     }
     
+    public Date StudentView.getDob() {
+        return this.dob;
+    }
+    
+    public void StudentView.setDob(Date dob) {
+        this.dob = dob;
+    }
+    
     public Integer StudentView.getVersion() {
         return this.version;
     }

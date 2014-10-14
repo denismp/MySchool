@@ -94,6 +94,11 @@ Ext.define('MySchool.model.student.StudentProfileModel', {
 			type: 'date'
 		},
 		{
+			dateFormat: 'm/d/Y',
+			name: 'dob',
+			type: 'date'
+		},
+		{
 			name: 'userName',
 			type: 'string'
 		},

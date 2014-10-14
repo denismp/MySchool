@@ -5,7 +5,10 @@
     <page:list id="pl_com_app_myschool_model_PreviousTranscripts" items="${previoustranscriptses}" z="717fbkhed3ZADwcc+/rXwws19Y8=">
         <table:table data="${previoustranscriptses}" id="l_com_app_myschool_model_PreviousTranscripts" path="/previoustranscriptses" z="tli4PERiAmmab3mdYQnWmgJKFWM=">
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_type" property="type" z="cLDSKVpUWfQh2Pm7OFS4iJElmek="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" property="pdfURL" z="83OyNss5eP2+kFU1ri/LcpU9eb0="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_student" property="student" z="qYYFkJ/txlsgmNfWSQJNT63bJZ4="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_school" property="school" z="EeOYJQ539KZLyR8IHChSZ8N7paA="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_comments" property="comments" z="QDX20S3zYi8oO+k/rFOVjkCW0io="/>
             <table:column date="true" dateTimePattern="${previousTranscripts_createddate_date_format}" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" property="createdDate" z="zeDc/V0AGxb9kZf73bGrMp1EUY4="/>
         </table:table>
     </page:list>

@@ -306,6 +306,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					myView.setPhone2(student.getPhone2());
 					myView.setEnabled(student.getEnabled());
 					myView.setUserName(student.getUserName());
+					myView.setDob(student.getDob());
+					
 
 					studentViewList.add( myView );
 				}
@@ -579,6 +581,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				record.setUserName(myView.getUserName());
 				record.setUserPassword(newpwd);
 				record.setFaculty(facultys);
+				record.setDob(myView.getDob());
 				
 				if( this.isValidUserName(record.getUserName() ) == false )
 				{
@@ -623,6 +626,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					myView.setPhone2(record.getPhone2());
 					myView.setEnabled(record.getEnabled());
 					myView.setUserName(record.getUserName());
+					myView.setDob(record.getDob());
 					
 					returnStatus = HttpStatus.CREATED;
 					response.setMessage(className + " created.");
@@ -780,6 +784,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setProvince(myView.getProvince());
 			record.setUserName(myView.getUserName());
 			record.setFaculty(facultys);
+			record.setDob(myView.getDob());
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();

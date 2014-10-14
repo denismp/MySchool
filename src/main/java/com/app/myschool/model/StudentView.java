@@ -2,6 +2,10 @@ package com.app.myschool.model;
 
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -63,6 +67,10 @@ public class StudentView {
     private String subjName;
     
     private Long subjId;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date dob;
 
 	
 	private Integer version;

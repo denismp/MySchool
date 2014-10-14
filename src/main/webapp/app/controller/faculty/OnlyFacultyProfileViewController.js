@@ -179,6 +179,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		var email		= formValues.email;
 		var username	= formValues.username;
 		var password	= formValues.password;
+		var dob			= formValues.dob;
 
 
 		var myStore		= this.getStore( 'faculty.FacultyTableStore' );
@@ -206,6 +207,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		myRecord.set('userName',username);
 		myRecord.set('userPassword',password);
 		myRecord.set('enabled', true);
+		myRecord.set('dob', dob);
 
 		//add to the store
 
@@ -395,6 +397,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		myRecord.set('postalCode', this.getFormValue( formFields, 'postalCode' ));
 		myRecord.set('country', this.getFormValue( formFields, 'country' ));
 		myRecord.set('email', this.getFormValue( formFields, 'email' ));
+		myRecord.set('dob', this.getFormValue( formFields, 'dob' ));
 
 		myRecord.set('whoUpdated', 'login');
 		myRecord.set('lastUpdated', new Date());

@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.PreviousTranscripts;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.web.PreviousTranscriptsController;
 import java.io.UnsupportedEncodingException;
@@ -96,6 +97,7 @@ privileged aspect PreviousTranscriptsController_Roo_Controller {
     void PreviousTranscriptsController.populateEditForm(Model uiModel, PreviousTranscripts previousTranscripts) {
         uiModel.addAttribute("previousTranscripts", previousTranscripts);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("schools", School.findAllSchools());
         uiModel.addAttribute("students", Student.findAllStudents());
     }
     

@@ -93,6 +93,7 @@ privileged aspect StudentController_Roo_Controller {
     }
     
     void StudentController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("student_dob_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("student_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("student_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }

@@ -19,7 +19,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 	requires: [
 		'Ext.form.Panel',
 		'Ext.form.FieldSet',
-		'Ext.form.field.Text',
+		'Ext.form.field.Date',
 		'Ext.button.Button'
 	],
 
@@ -39,7 +39,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 					frame: true,
 					height: 508,
 					itemId: 'facultynewform',
-					width: 378,
+					width: 381,
 					bodyPadding: 10,
 					items: [
 						{
@@ -68,6 +68,13 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 									itemId: 'newform_lastname',
 									fieldLabel: 'Last Name',
 									name: 'lastname'
+								},
+								{
+									xtype: 'datefield',
+									anchor: '100%',
+									itemId: 'newform_dob',
+									fieldLabel: 'DOB',
+									name: 'dob'
 								},
 								{
 									xtype: 'textfield',

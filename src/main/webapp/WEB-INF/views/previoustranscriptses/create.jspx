@@ -6,6 +6,9 @@
         <field:input field="type" id="c_com_app_myschool_model_PreviousTranscripts_type" max="1" min="0" required="true" z="meEkyB2U7Zf0WFllFiyeA1YvsM8="/>
         <field:select field="student" id="c_com_app_myschool_model_PreviousTranscripts_student" itemValue="id" items="${students}" path="/students" z="Z24J+aKmhGzCUC/Ft0lb4HwArMc="/>
         <field:datetime dateTimePattern="${previousTranscripts_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" z="KGH6CXmkIjt7OcrbL+TapM5053I="/>
+        <field:textarea field="pdfURL" id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" required="true" z="c73GMLKdzro13E9VBPy+PjHUfeQ="/>
+        <field:select field="school" id="c_com_app_myschool_model_PreviousTranscripts_school" itemValue="id" items="${schools}" path="/schools" z="Q0Nqrgoyw4lgYQ3ADl1N0RR9xR4="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_PreviousTranscripts_comments" required="true" z="l3WkKT5r8UxkKFvQ+pqqrrF+8+g="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_PreviousTranscripts" render="${not empty dependencies}" z="Ulx4IZVDZa3D7y/F4gjwYjKEFC4="/>
 </div>

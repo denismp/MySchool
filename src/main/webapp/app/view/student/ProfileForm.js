@@ -18,7 +18,7 @@ Ext.define('MySchool.view.student.ProfileForm', {
 	alias: 'widget.studentprofileform',
 
 	requires: [
-		'Ext.form.field.Text',
+		'Ext.form.field.Date',
 		'Ext.button.Button'
 	],
 
@@ -26,6 +26,7 @@ Ext.define('MySchool.view.student.ProfileForm', {
 	maxHeight: 450,
 	minHeight: 450,
 	autoScroll: true,
+	layout: 'absolute',
 	bodyPadding: 10,
 	collapseFirst: false,
 	frameHeader: false,
@@ -45,6 +46,8 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 10,
+					y: 50,
 					itemId: 'student-middlename',
 					width: 300,
 					fieldLabel: 'Middle Name',
@@ -52,6 +55,8 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 10,
+					y: 90,
 					itemId: 'student-lastname',
 					width: 300,
 					fieldLabel: 'Last Name',
@@ -59,18 +64,24 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 10,
+					y: 130,
 					itemId: 'student-phone1',
 					fieldLabel: 'Phone1',
 					name: 'phone1'
 				},
 				{
 					xtype: 'textfield',
+					x: 10,
+					y: 170,
 					itemId: 'student-phone',
 					fieldLabel: 'Phone2',
 					name: 'phone2'
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 90,
 					itemId: 'student-address1',
 					width: 300,
 					fieldLabel: 'Address1',
@@ -78,6 +89,8 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 130,
 					itemId: 'student-address2',
 					width: 300,
 					fieldLabel: 'Address2',
@@ -85,6 +98,8 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 170,
 					itemId: 'student-city',
 					width: 300,
 					fieldLabel: 'City',
@@ -92,6 +107,8 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 210,
 					itemId: 'student-province',
 					width: 300,
 					fieldLabel: 'Province/State',
@@ -99,36 +116,57 @@ Ext.define('MySchool.view.student.ProfileForm', {
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 250,
 					itemId: 'student-postalcode',
 					fieldLabel: 'Postal Code',
 					name: 'postalCode'
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 290,
 					itemId: 'student-country',
 					fieldLabel: 'Country',
 					name: 'country'
 				},
 				{
 					xtype: 'textfield',
+					x: 360,
+					y: 50,
 					itemId: 'student-email',
 					width: 300,
 					fieldLabel: 'Email',
 					name: 'email'
 				},
 				{
+					xtype: 'datefield',
+					x: 360,
+					y: 10,
+					itemId: 'student-dob',
+					width: 300,
+					fieldLabel: 'Date of birth',
+					name: 'dob'
+				},
+				{
 					xtype: 'button',
+					x: 30,
+					y: 350,
 					itemId: 'studentprofileformeditbutton',
 					text: 'Edit'
 				},
 				{
 					xtype: 'button',
+					x: 80,
+					y: 350,
 					disabled: true,
 					itemId: 'studentprofileformcancelbutton',
 					text: 'Cancel'
 				},
 				{
 					xtype: 'button',
+					x: 150,
+					y: 350,
 					disabled: true,
 					itemId: 'studentprofileformsavebutton',
 					text: 'Save'

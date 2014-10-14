@@ -22,10 +22,11 @@ Ext.define('MySchool.view.student.NewDialog', {
 		'Ext.form.Panel',
 		'Ext.form.FieldSet',
 		'Ext.form.field.ComboBox',
+		'Ext.form.field.Date',
 		'Ext.button.Button'
 	],
 
-	height: 548,
+	height: 597,
 	itemId: 'studentnewdialog',
 	width: 390,
 	title: 'New Student',
@@ -39,14 +40,14 @@ Ext.define('MySchool.view.student.NewDialog', {
 					xtype: 'form',
 					draggable: true,
 					frame: true,
-					height: 508,
+					height: 557,
 					itemId: 'studentnewform',
 					width: 378,
 					bodyPadding: 10,
 					items: [
 						{
 							xtype: 'fieldset',
-							height: 445,
+							height: 478,
 							itemId: 'studentnewformfieldset',
 							padding: 5,
 							items: [
@@ -74,6 +75,13 @@ Ext.define('MySchool.view.student.NewDialog', {
 									itemId: 'studentnewform_lastname',
 									fieldLabel: 'Last Name',
 									name: 'lastname'
+								},
+								{
+									xtype: 'datefield',
+									anchor: '100%',
+									itemId: 'studentnewform_dob',
+									fieldLabel: 'DOB',
+									name: 'dob'
 								},
 								{
 									xtype: 'textfield',

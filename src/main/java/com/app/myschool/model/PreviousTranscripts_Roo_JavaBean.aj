@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.PreviousTranscripts;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import java.util.Date;
 
@@ -17,12 +18,36 @@ privileged aspect PreviousTranscripts_Roo_JavaBean {
         this.type = type;
     }
     
+    public String PreviousTranscripts.getPdfURL() {
+        return this.pdfURL;
+    }
+    
+    public void PreviousTranscripts.setPdfURL(String pdfURL) {
+        this.pdfURL = pdfURL;
+    }
+    
+    public String PreviousTranscripts.getComments() {
+        return this.comments;
+    }
+    
+    public void PreviousTranscripts.setComments(String comments) {
+        this.comments = comments;
+    }
+    
     public Student PreviousTranscripts.getStudent() {
         return this.student;
     }
     
     public void PreviousTranscripts.setStudent(Student student) {
         this.student = student;
+    }
+    
+    public School PreviousTranscripts.getSchool() {
+        return this.school;
+    }
+    
+    public void PreviousTranscripts.setSchool(School school) {
+        this.school = school;
     }
     
     public Date PreviousTranscripts.getCreatedDate() {

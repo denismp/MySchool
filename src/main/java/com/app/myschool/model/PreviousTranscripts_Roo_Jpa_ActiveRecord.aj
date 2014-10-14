@@ -14,7 +14,7 @@ privileged aspect PreviousTranscripts_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager PreviousTranscripts.entityManager;
     
-    public static final List<String> PreviousTranscripts.fieldNames4OrderClauseFilter = java.util.Arrays.asList("type", "student", "createdDate");
+    public static final List<String> PreviousTranscripts.fieldNames4OrderClauseFilter = java.util.Arrays.asList("type", "pdfURL", "comments", "student", "school", "createdDate");
     
     public static final EntityManager PreviousTranscripts.entityManager() {
         EntityManager em = new PreviousTranscripts().entityManager;
