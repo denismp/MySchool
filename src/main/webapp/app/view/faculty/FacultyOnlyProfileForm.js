@@ -150,7 +150,7 @@ Ext.define('MySchool.view.faculty.FacultyOnlyProfileForm', {
 				},
 				{
 					xtype: 'button',
-					x: 20,
+					x: 30,
 					y: 350,
 					itemId: 'onlyfacultyprofileformeditbutton',
 					text: 'Edit'
