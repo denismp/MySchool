@@ -378,6 +378,7 @@ public class EvaluationRatingsControllerHelper implements ControllerHelperInterf
 					record.setQuarter(quarter);
 					record.setComments(myView.getComments());
 					record.setLastUpdated(myView.getLastUpdated());
+					record.setCreatedDate(myView.getLastUpdated());
 					//record.setWhoUpdated(myView.getWhoUpdated());
 					//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 					record.setWhoUpdated(securityHelper.getUserName());

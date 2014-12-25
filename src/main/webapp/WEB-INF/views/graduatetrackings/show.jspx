@@ -4,6 +4,15 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:show id="ps_com_app_myschool_model_GraduateTracking" object="${graduatetracking}" path="/graduatetrackings" z="t9+pOilEozsXdf1CiPkYkydcwQo=">
         <field:display field="student" id="s_com_app_myschool_model_GraduateTracking_student" object="${graduatetracking}" z="IGLYW6Oijtsc8XWNhufk76SQdZo="/>
+        <field:display field="comments" id="s_com_app_myschool_model_GraduateTracking_comments" object="${graduatetracking}" z="FaBcGa9m0mNjuwO0KrqQXZHfans="/>
+        <field:display date="true" dateTimePattern="${graduateTracking_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_GraduateTracking_lastUpdated" object="${graduatetracking}" z="6/qE33mtsgbQACsQPknPn5y6mKc="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_GraduateTracking_whoUpdated" object="${graduatetracking}" z="djU16E5L/I5kK3Q3uYWJ3o3Vcmw="/>
+        <field:display field="address1" id="s_com_app_myschool_model_GraduateTracking_address1" object="${graduatetracking}" z="H09crG6AQzhNPbq8sEemIQtcDm0="/>
+        <field:display date="true" dateTimePattern="${graduateTracking_graduationdate_date_format}" field="graduationDate" id="s_com_app_myschool_model_GraduateTracking_graduationDate" object="${graduatetracking}" z="GhN5v0ep23guqj49fYsdAWXVcfc="/>
+        <field:display field="signatureName" id="s_com_app_myschool_model_GraduateTracking_signatureName" object="${graduatetracking}" z="s5sAJHmLeY4fzroz8rLmvk/PUtI="/>
+        <field:display field="signatureTitle" id="s_com_app_myschool_model_GraduateTracking_signatureTitle" object="${graduatetracking}" z="wyZyPWvh/ELqHiL9MS2mEMjPWKU="/>
+        <field:display field="gradingScale" id="s_com_app_myschool_model_GraduateTracking_gradingScale" object="${graduatetracking}" z="PdrO4d7vRAiTBv0JZc6pUUOlCJ8="/>
+        <field:display field="transcriptType" id="s_com_app_myschool_model_GraduateTracking_transcriptType" object="${graduatetracking}" z="7c7FC3cg0wdvz5BIKW19KSRC1Ko="/>
         <field:display date="true" dateTimePattern="${graduateTracking_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_GraduateTracking_createdDate" object="${graduatetracking}" z="PCvrJIbWLYlCSDdhoHkvNI6kbAY="/>
     </page:show>
 </div>

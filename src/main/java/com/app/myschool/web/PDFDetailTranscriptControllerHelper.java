@@ -18,6 +18,7 @@ import javax.persistence.Query;
 //import javax.persistence.EntityManager;
 //import javax.persistence.Query;
 
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +29,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
-
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.StudentView;
 import com.app.myschool.model.Subject;
@@ -514,6 +514,7 @@ public class PDFDetailTranscriptControllerHelper implements
 				facultys.add(faculty);
 
 				record.setLastUpdated(myView.getLastUpdated());
+				record.setCreatedDate(myView.getLastUpdated());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());

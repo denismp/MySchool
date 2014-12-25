@@ -369,6 +369,7 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 					record.setWorkingEffectivelyWithAdvisor(myView.getWorkingEffectivelyWithAdvisor());
 					
 					record.setLastUpdated(myView.getLastUpdated());
+					record.setCreatedDate(myView.getLastUpdated());
 					record.setLocked(myView.getLocked());
 					record.setMonth_number(myView.getMonth_number());
 	

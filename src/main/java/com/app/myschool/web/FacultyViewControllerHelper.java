@@ -313,6 +313,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			{
 				String msg = "";
 				record.setLastUpdated(myView.getLastUpdated());
+				record.setCreatedDate(myView.getLastUpdated());
 				record.setDob(myView.getDob());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();

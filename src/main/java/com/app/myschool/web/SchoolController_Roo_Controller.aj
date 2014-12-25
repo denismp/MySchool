@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.School;
+import com.app.myschool.model.Subject;
 import com.app.myschool.web.SchoolController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -96,6 +97,7 @@ privileged aspect SchoolController_Roo_Controller {
     void SchoolController.populateEditForm(Model uiModel, School school) {
         uiModel.addAttribute("school", school);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
     
     String SchoolController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

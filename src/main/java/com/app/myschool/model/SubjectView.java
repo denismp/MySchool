@@ -59,4 +59,8 @@ public class SubjectView {
 	private String facultyUserName;
 	
 	private String facultyEmail;
+	
+	private Long schoolId;
+	
+	private String schoolName;
 }

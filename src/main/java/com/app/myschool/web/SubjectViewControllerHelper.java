@@ -13,9 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-
 import javax.persistence.EntityManager;
-
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -24,10 +22,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-
+import com.app.myschool.model.School;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
-
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Faculty;
@@ -76,6 +73,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 
 		return rList;
 	}
+
 	private class StudentFaculty
 	{
 		long studentId;
@@ -223,6 +221,18 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 								myView.setFacultyId(faculty.getId());
 								myView.setFacultyEmail(faculty.getEmail());
 								myView.setFacultyUserName(faculty.getUserName());
+
+								School school = subject.getSchool();
+								if( school != null )
+								{
+									myView.setSchoolId(school.getId());
+									myView.setSchoolName(school.getName());
+								}
+								else
+								{
+									myView.setSchoolId(null);
+									myView.setSchoolName(null);
+								}
 			
 								subjectViewList.add( myView );
 							}
@@ -426,6 +436,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					*/
 					
 					record.setLastUpdated(myView.getSubjLastUpdated());
+					record.setCreatedDate(myView.getSubjLastUpdated());
 					record.setWhoUpdated(myView.getSubjWhoUpdated());
 					
 					record.setCreditHours(myView.getSubjCreditHours());
@@ -433,6 +444,10 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					record.setGradeLevel(myView.getSubjGradeLevel());
 					record.setName(myView.getSubjName());
 					record.setObjectives(myView.getSubjObjectives());
+					//DENIS 12/24/2014
+					// Get the school record.
+					School school = School.findSchool(myView.getStudentId());
+					record.setSchool(school);
 					
 					((Subject)record).persist();
 					
@@ -654,6 +669,10 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			record.setGradeLevel(myView.getSubjGradeLevel());
 			record.setName(myView.getSubjName());
 			record.setObjectives(myView.getSubjObjectives());
+			//DENIS 12/24/2014
+			// Get the school record.
+			School school = School.findSchool(myView.getStudentId());
+			record.setSchool(school);
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getSubjVersion();

@@ -11,5 +11,6 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_Subject_whoUpdated" object="${subject}" z="CDD2HSlYpeZSJBoYgfnP/6ZTfP4="/>
         <field:display date="true" dateTimePattern="${subject_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Subject_lastUpdated" object="${subject}" z="ixhN5FWbM8Kd2zuRnXdSViP0+BU="/>
         <field:display date="true" dateTimePattern="${subject_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Subject_createdDate" object="${subject}" z="ldbSSb2WejQflnL8HJyWvmcl61I="/>
+        <field:display field="school" id="s_com_app_myschool_model_Subject_school" object="${subject}" z="3LJsdEPUw/dw2nwv631z8B9My2o="/>
     </page:show>
 </div>

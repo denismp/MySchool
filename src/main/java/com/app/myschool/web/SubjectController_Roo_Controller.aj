@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Subject;
 import com.app.myschool.web.SubjectController;
 import java.io.UnsupportedEncodingException;
@@ -98,6 +99,7 @@ privileged aspect SubjectController_Roo_Controller {
         uiModel.addAttribute("subject", subject);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("quarters", Quarter.findAllQuarters());
+        uiModel.addAttribute("schools", School.findAllSchools());
     }
     
     String SubjectController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

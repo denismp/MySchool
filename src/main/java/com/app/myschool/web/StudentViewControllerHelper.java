@@ -615,6 +615,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 				//}
 				
 				record.setLastUpdated(myView.getLastUpdated());
+				record.setCreatedDate(myView.getLastUpdated());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());

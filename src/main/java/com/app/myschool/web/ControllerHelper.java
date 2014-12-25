@@ -12,12 +12,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import javax.persistence.EntityManager;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
@@ -31,6 +34,7 @@ import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.QuarterNames;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
@@ -644,8 +648,12 @@ public class ControllerHelper {
 					subj_.setGradeLevel(s_.getSubjGradeLevel());
 					subj_.setObjectives(s_.getSubjObjectives());
 					subj_.setLastUpdated(s_.getSubjLastUpdated());
+					subj_.setCreatedDate(s_.getSubjLastUpdated());
 					subj_.setName(s_.getSubjName());
 					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
+					//DENIS 12/24/2014
+					School school = School.findSchool(s_.getSchoolId());
+					subj_.setSchool(school);
 
 					subj_.persist();
 					s_.setId(100000L + subj_.getId());
@@ -665,6 +673,7 @@ public class ControllerHelper {
 					q_.setGrade_type(s_.getQtrGradeType());
 					q_.setLocked(s_.getQtrLocked());
 					q_.setLastUpdated(s_.getQtrLastUpdated());
+					q_.setCreatedDate(s_.getQtrLastUpdated());
 					q_.setQtr_year(s_.getQtrYear());
 					q_.setQtrName(s_.getQtrName());
 					q_.setWhoUpdated(s_.getQtrWhoUpdated());
@@ -685,6 +694,10 @@ public class ControllerHelper {
 					s_.setSubjObjectives(subj_.getObjectives());
 					s_.setSubjVersion(subj_.getVersion());
 					s_.setSubjWhoUpdated(subj_.getWhoUpdated());
+					//DENIS 12/24/2014
+					School school = subj_.getSchool();
+					s_.setSchoolId(school.getId());
+					s_.setSchoolName(school.getName());
 				}
 
 				record = s_;
@@ -959,6 +972,9 @@ public class ControllerHelper {
 						subj_.setLastUpdated(s_.getSubjLastUpdated());
 						subj_.setName(s_.getSubjName());
 						subj_.setWhoUpdated(s_.getSubjWhoUpdated());
+						//DENIS 12/24/2014
+						School school = School.findSchool(s_.getSchoolId());
+						subj_.setSchool(school);
 	
 						if (subj_.merge() != null) {
 							s_.setSubjVersion(subj_.getVersion());

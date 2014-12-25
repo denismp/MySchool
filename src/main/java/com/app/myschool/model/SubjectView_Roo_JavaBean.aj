@@ -216,4 +216,20 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.facultyEmail = facultyEmail;
     }
     
+    public Long SubjectView.getSchoolId() {
+        return this.schoolId;
+    }
+    
+    public void SubjectView.setSchoolId(Long schoolId) {
+        this.schoolId = schoolId;
+    }
+    
+    public String SubjectView.getSchoolName() {
+        return this.schoolName;
+    }
+    
+    public void SubjectView.setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+    
 }

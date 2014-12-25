@@ -426,6 +426,7 @@ public class StudentPasswordViewControllerHelper implements
 
 			record = student;
 			record.setLastUpdated(myView.getLastUpdated());
+			record.setCreatedDate(myView.getLastUpdated());
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			record.setWhoUpdated(securityHelper.getUserName());
 

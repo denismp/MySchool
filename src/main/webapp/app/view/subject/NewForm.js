@@ -19,6 +19,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 
 	requires: [
 		'MySchool.view.subject.SubjectNameComboBox',
+		'MySchool.view.subject.SchoolNameComboBox',
 		'MySchool.view.subject.QuarterNamesComboBox',
 		'MySchool.view.subject.QuarterYearComboBox',
 		'MySchool.view.subject.GradeTypeComboBox',
@@ -33,6 +34,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 	draggable: true,
 	floating: true,
 	frame: true,
+	height: 539,
 	itemId: 'newsubjectform',
 	width: 500,
 	title: 'New Subject Quarter for Student',
@@ -49,6 +51,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 			items: [
 				{
 					xtype: 'fieldset',
+					height: 461,
 					title: 'My Fields',
 					items: [
 						{
@@ -72,6 +75,11 @@ Ext.define('MySchool.view.subject.NewForm', {
 							xtype: 'subjectnamecombobox',
 							editable: false,
 							anchor: '100%'
+						},
+						{
+							xtype: 'subjectschoolnamecombobox',
+							anchor: '100%',
+							editable: false
 						},
 						{
 							xtype: 'numberfield',

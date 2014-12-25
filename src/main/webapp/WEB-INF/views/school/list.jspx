@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_School" items="${schools}" z="1/koA2cU27thadimjcGHlzsHJwc=">
+        <table:table data="${schools}" id="l_com_app_myschool_model_School" path="/school" z="zFdoyUcD6feV/BXXSC28GJn5ohk=">
+            <table:column id="c_com_app_myschool_model_School_email" property="email" z="1sWOMnuaelBO4JllD4Y6PxF6EJg="/>
+            <table:column id="c_com_app_myschool_model_School_name" property="name" z="XEvM3rpNeFN8hLShpEYATT7nYak="/>
+            <table:column id="c_com_app_myschool_model_School_district" property="district" z="0tOKYHCLg+v8j/y05cbvg1gl9Pg="/>
+            <table:column id="c_com_app_myschool_model_School_custodianOfRecords" property="custodianOfRecords" z="Je3wwZNoIwwXPR8N6sB8GQjIBOQ="/>
+            <table:column id="c_com_app_myschool_model_School_custodianTitle" property="custodianTitle" z="jIXEDvEO0KKjMhrxgYzhPW8tkRY="/>
+            <table:column id="c_com_app_myschool_model_School_phone1" property="phone1" z="S48sYOiBraXf9FrEUGJJ9IcJpRc="/>
+        </table:table>
+    </page:list>
+</div>

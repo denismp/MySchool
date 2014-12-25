@@ -90,7 +90,9 @@ privileged aspect GraduateTrackingController_Roo_Controller {
     }
     
     void GraduateTrackingController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("graduateTracking_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("graduateTracking_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
+        uiModel.addAttribute("graduateTracking_graduationdate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     
     void GraduateTrackingController.populateEditForm(Model uiModel, GraduateTracking graduateTracking) {

@@ -472,6 +472,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				}
 				
 				record.setLastUpdated(myView.getLastUpdated());
+				record.setCreatedDate(myView.getLastUpdated());
 				//record.setWhoUpdated(myView.getWhoUpdated());
 				//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());

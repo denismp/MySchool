@@ -4,7 +4,9 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.School;
+import com.app.myschool.model.Subject;
 import java.util.Date;
+import java.util.Set;
 
 privileged aspect School_Roo_JavaBean {
     
@@ -142,6 +144,14 @@ privileged aspect School_Roo_JavaBean {
     
     public void School.setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
+    }
+    
+    public Set<Subject> School.getSubjects() {
+        return this.subjects;
+    }
+    
+    public void School.setSubjects(Set<Subject> subjects) {
+        this.subjects = subjects;
     }
     
 }

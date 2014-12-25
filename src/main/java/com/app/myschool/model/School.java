@@ -20,8 +20,9 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
-@RooToString
 @RooJpaActiveRecord
+@RooToString(excludeFields={"subjects"})
+
 @RooJson
 public class School {
 	
@@ -30,6 +31,7 @@ public class School {
     private String email;
 
     @NotNull
+    @Column(unique = true)
     @Size(max = 45)
     private String name;
 
@@ -92,4 +94,7 @@ public class School {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
+    private Set<Subject> subjects = new HashSet<Subject>();
 }

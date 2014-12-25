@@ -662,3 +662,48 @@ web mvc scaffold --class ~.web.SchoolController --backingType ~model.School
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 11:24:39
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-14 11:37:14
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 11:40:36
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-14 15:22:24
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-14 15:52:27
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-16 14:03:14
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-27 14:23:56
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-29 16:07:35
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-10-29 16:11:19
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-10-31 17:18:18
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-11-30 12:47:36
+entity jpa      --class ~.model.GraduateTracking --testAutomatically
+field reference --class ~.model.GraduateTracking --fieldName student --type ~.model.Student --cardinality MANY_TO_ONE 
+field string    --class ~.model.GraduateTracking --fieldName schoolName --sizeMax 100 --notNull
+field string    --class ~.model.GraduateTracking --fieldName email --sizeMax 100 --notNull
+field string    --class ~.model.GraduateTracking --fieldName comments --sizeMax 4096 --notNull
+field date      --class ~.model.GraduateTracking --fieldName lastUpdated --type java.util.Date --notNull --dateFormat MEDIUM
+field string    --class ~.model.GraduateTracking --fieldName whoUpdated --sizeMax 45 --notNull
+field string    --class ~.model.GraduateTracking --fieldName address1 --sizeMax 80 --notNull 
+field string    --class ~.model.GraduateTracking --fieldName address2 --sizeMax 80
+field string    --class ~.model.GraduateTracking --fieldName city --sizeMax 45 --notNull
+field string    --class ~.model.GraduateTracking --fieldName postalCode --sizeMax 45 --notNull
+field string    --class ~.model.GraduateTracking --fieldName phone --sizeMax 45 --notNull
+field date      --class ~.model.GraduateTracking --fieldName graduationDate --type java.util.Date --notNull --dateFormat MEDIUM 
+// [failed] field string    --class ~.model.GraduateTracking --fieldName comments --sizeMax 80 --notNull
+field string    --class ~.model.GraduateTracking --fieldName signatureName --sizeMax 80 --notNull
+field string    --class ~.model.GraduateTracking --fieldName signatureTitle --sizeMax 80 --notNull
+// [failed] field number    --class ~.model.PreviousTranscripts --fieldName type --type int --notNull --min 0
+// [failed] field number    --class ~.model.GradulateTracking --fieldName gradingScale --type int --notNull --min 0
+field number    --class ~.model.GraduateTracking --fieldName gradingScale --type int --notNull --min 0
+web mvc json all
+json add 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-11-30 14:40:46
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-08 15:28:12
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-12-08 15:30:25
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-08 15:31:52
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-12-11 17:55:51
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-17 13:26:54
+entity jpa --class ~.model.Schools
+web mvc scaffold --class ~.web.SchoolsController --backingType ~.model.Schools
+web mvc scaffold --class ~.web.SchoolController --backingType ~.model.School
+web mvc json add --jsonObject ~.model.School 
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-12-20 10:11:03
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-20 10:12:31
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-12-20 17:31:31
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-20 17:33:26
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2014-12-22 20:11:31
+// Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2014-12-22 20:13:15

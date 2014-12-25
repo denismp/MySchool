@@ -8,8 +8,8 @@
             <table:column id="c_com_app_myschool_model_School_name" property="name" z="XEvM3rpNeFN8hLShpEYATT7nYak="/>
             <table:column id="c_com_app_myschool_model_School_district" property="district" z="0tOKYHCLg+v8j/y05cbvg1gl9Pg="/>
             <table:column id="c_com_app_myschool_model_School_custodianOfRecords" property="custodianOfRecords" z="Je3wwZNoIwwXPR8N6sB8GQjIBOQ="/>
-            <table:column id="c_com_app_myschool_model_School_phone1" property="phone1" z="S48sYOiBraXf9FrEUGJJ9IcJpRc="/>
             <table:column id="c_com_app_myschool_model_School_custodianTitle" property="custodianTitle" z="jIXEDvEO0KKjMhrxgYzhPW8tkRY="/>
+            <table:column id="c_com_app_myschool_model_School_phone1" property="phone1" z="S48sYOiBraXf9FrEUGJJ9IcJpRc="/>
         </table:table>
     </page:list>
 </div>

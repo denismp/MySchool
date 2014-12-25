@@ -29,7 +29,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		'student.StudentStore',
 		'subject.GradeTypeStore',
 		'subject.AllSubjectStore',
-		'subject.QuarterYearStore'
+		'subject.QuarterYearStore',
+		'subject.SchoolsStore'
 	],
 	views: [
 		'MainPanel',
@@ -101,11 +102,13 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		var mystore = Ext.getStore("subject.SubjectStore");
 		var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
+		var mySchoolsStore = Ext.getStore("subject.SchoolsStore");
 		var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
 		var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
 		var mygradetypestore = Ext.getStore( "subject.GradeTypeStore" );
 		var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
 		var myrecord = mystore.getAt( this.selectedIndex );
+		var schoolId = myrecord.get('schoolId');//DENIS 12/24/2014
 
 		//myrecord.set( 'description', newValue );
 		//window.console.log( myrecord.data );
@@ -119,6 +122,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var allSubjRec_;
 
 		var subjNameCombo_ = newDialog.down('subjectnamecombobox');
+		var schoolsComboBox = newDialog.down('subjectschoolnamecombobox');
 		var qtrNameCombo_ = newDialog.down('quarternamescombobox');
 		var gradeTypeCombo_ = newDialog.down('gradetypecombobox');
 		var qtrYearCombo_ = newDialog.down('quarteryearcombobox');
@@ -164,6 +168,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    if (allSubjRec_) {
 		        subjId_ = allSubjRec_.get( 'subjId' );
 		    }
+		}
+
+		if( schoolId ) {
+			schoolsComboBox.setValue( schoolId );
 		}
 
 		if (subjId_) {
@@ -214,6 +222,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		debugger;
 		//var mystore = this.getSubjectStoreStore();
 		window.console.log( "Create Quarter" );
+		//var schoolStore = Ext.getStore('MySchool.store.subject.SchoolsStore');//DENIS 12/24/2104
+		var schoolStore = Ext.getStore("subject.SchoolsStore");//DENIS 12/24/2014
+		var schoolRecord = null;
 		var p_ = button.up('newsubjectform');
 		var f_ = button.up().getForm();
 		var cb_ = p_.down('subjectnamecombobox');
@@ -222,15 +233,23 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var subjAllIdx_ = cb_.getStore().findExact('subjId', subjAllVal_);
 		var subjAllRec_ = cb_.getStore().getAt(subjAllIdx_);
 		var subjName_ = null;
+		var schoolName = null;
+		var schoolId = null;
 		var subjAllEmpty_ = cb_.getStore().getCount() < 1 ? true : false;
 		var userName = p_.down('#newsubjectform-studentName').getValue();
 
-		if (p_.subjEditMode.charAt(0) == 'r') {
+		if (p_.subjEditMode.charAt(0) === 'r') {
 		    subjName_ = subjAllRec_.data.subjName;
+			schoolName = subjAllRec_.data.schoolName; //DENIS 12/24/2014
+			schoolId = subjAllRec_.data.schoolId; //DENIS 12/24/2014
 		}
 		else {
 		    subjName_ = p_.down('#newsubjectform-subjName');
 		    subjName_ = Ext.String.trim(subjName_.getValue());
+			schoolId = p_.down('#subjectschoolname').getValue(); //DENIS 12/24/2014
+			var schoolRecordIdx = schoolStore.find('id', schoolId ); //DENIS 12/24/2014
+			schoolRecord = schoolStore.getAt(schoolRecordIdx);	//DENIS 12/24/2014
+			schoolName = schoolRecord.get('name');//DENIS 12/24/2014
 		}
 
 		if (subjName_.length < 1) {
@@ -402,6 +421,8 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		        r_.set('subjLastUpdated', new Date());
 		        r_.set('subjObjectives', subjObjectives_);
 		        r_.set('subjWhoUpdated', 'login');
+				r_.set('schoolName', schoolName ); //DENIS 12/24/2014
+				r_.set('schoolId', schoolId ); //DENIS 12/24/2014
 
 		        if (edit_) {
 		            cb_.getStore().sync({callback: this.onToolrefreshsubjectsClick});
@@ -494,6 +515,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var myPanel_ = button.up('newsubjectform');
 		var myForm_ = button.up().getForm();
 		var subjectnamecombobox_ = myPanel_.down('subjectnamecombobox');
+		var schoolnamecombobox = myPanel_.down('#subjectschoolname');//DENIS 12/24/2014
 		var quarternamescombobox = myPanel_.down('quarternamescombobox');
 		var quarteryearcombobox = myPanel_.down('quarteryearcombobox');
 		var gradetypecombobox = myPanel_.down('gradetypecombobox');
@@ -545,7 +567,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 	},
 
 	onSubjComboSelect: function(combo, records, eOpts) {
-		//    	debugger;
+		debugger;
 		window.console.log("onSubjComboSelect");
 		var p_ = combo.up('newsubjectform');
 		var subjName_ = p_.down('#newsubjectform-subjName');

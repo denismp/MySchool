@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Subject;
 import java.util.Date;
 import java.util.Set;
@@ -72,6 +73,14 @@ privileged aspect Subject_Roo_JavaBean {
     
     public void Subject.setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+    
+    public School Subject.getSchool() {
+        return this.school;
+    }
+    
+    public void Subject.setSchool(School school) {
+        this.school = school;
     }
     
     public Set<Quarter> Subject.getQuarters() {

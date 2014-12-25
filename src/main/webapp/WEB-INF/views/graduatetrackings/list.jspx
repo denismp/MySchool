@@ -5,6 +5,10 @@
     <page:list id="pl_com_app_myschool_model_GraduateTracking" items="${graduatetrackings}" z="kuI7dczqp/6uO4hVjvjyrjTRRPA=">
         <table:table data="${graduatetrackings}" id="l_com_app_myschool_model_GraduateTracking" path="/graduatetrackings" z="8I4YTgxYv9nMqFOFiT9HXg7dIkA=">
             <table:column id="c_com_app_myschool_model_GraduateTracking_student" property="student" z="Ya+Iub7uTxPp3z4gRrrtf1IG1xc="/>
+            <table:column id="c_com_app_myschool_model_GraduateTracking_comments" property="comments" z="b5fVmN3EWOxAUUurBFFkCUOiBQQ="/>
+            <table:column date="true" dateTimePattern="${graduateTracking_lastupdated_date_format}" id="c_com_app_myschool_model_GraduateTracking_lastUpdated" property="lastUpdated" z="nRbwROZV22I4MzOonaj2+7eQCYo="/>
+            <table:column id="c_com_app_myschool_model_GraduateTracking_whoUpdated" property="whoUpdated" z="Pe3KFa6TfPGOK+R2M5iG/k78+BU="/>
+            <table:column id="c_com_app_myschool_model_GraduateTracking_address1" property="address1" z="O8DthuAWmxoQ4ygdFgj2VK86Sao="/>
             <table:column date="true" dateTimePattern="${graduateTracking_createddate_date_format}" id="c_com_app_myschool_model_GraduateTracking_createdDate" property="createdDate" z="9iv7YsP/9Ca2sI0bPo36EsJj2Lc="/>
         </table:table>
     </page:list>

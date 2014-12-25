@@ -61,6 +61,13 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 					format: '000000'
 				},
 				{
+					xtype: 'numbercolumn',
+					hidden: true,
+					dataIndex: 'schoolId',
+					text: 'schoolId',
+					format: '000000'
+				},
+				{
 					xtype: 'gridcolumn',
 					hidden: true,
 					dataIndex: 'subjVersion',
@@ -76,6 +83,11 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
 					text: 'Subject Name'
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'schoolName',
+					text: 'School Name'
 				},
 				{
 					xtype: 'numbercolumn',

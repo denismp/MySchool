@@ -7,6 +7,7 @@
         <field:display field="name" id="s_com_app_myschool_model_School_name" object="${school}" z="1MUktrdxd2jWhaSLCIplfa72I4I="/>
         <field:display field="district" id="s_com_app_myschool_model_School_district" object="${school}" z="5pAEgTktZPgaf05sbL40Vqs2/3s="/>
         <field:display field="custodianOfRecords" id="s_com_app_myschool_model_School_custodianOfRecords" object="${school}" z="xdFphckSqUTTErHfyCyvQyCinS4="/>
+        <field:display field="custodianTitle" id="s_com_app_myschool_model_School_custodianTitle" object="${school}" z="vOIfismOG/LckFIMdy7c+z+fdc8="/>
         <field:display field="phone1" id="s_com_app_myschool_model_School_phone1" object="${school}" z="27U/ZYswfWhgVd2MiEVj7oCCaF4="/>
         <field:display field="phone2" id="s_com_app_myschool_model_School_phone2" object="${school}" z="1Wgx1LWTF08oPM6lns0mAuYnQ34="/>
         <field:display field="address1" id="s_com_app_myschool_model_School_address1" object="${school}" z="M0ZaCCmoK1pejnTA6jP8jvSt8Sg="/>
@@ -19,6 +20,5 @@
         <field:display field="whoUpdated" id="s_com_app_myschool_model_School_whoUpdated" object="${school}" z="yXxsoyEnutvKTkLkY7PtNUbIDyU="/>
         <field:display date="true" dateTimePattern="${school_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_School_createdDate" object="${school}" z="Mt4AaZgzcAZM5K7UB4ysIdkELDM="/>
         <field:display date="true" dateTimePattern="${school_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_School_lastUpdated" object="${school}" z="2IiMVPDgZ2aQ5CztIccb0dL730s="/>
-        <field:display field="custodianTitle" id="s_com_app_myschool_model_School_custodianTitle" object="${school}" z="vOIfismOG/LckFIMdy7c+z+fdc8="/>
     </page:show>
 </div>

@@ -14,7 +14,7 @@ privileged aspect School_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager School.entityManager;
     
-    public static final List<String> School.fieldNames4OrderClauseFilter = java.util.Arrays.asList("email", "name", "district", "custodianOfRecords", "custodianTitle", "phone1", "phone2", "address1", "address2", "city", "province", "postalCode", "country", "comments", "whoUpdated", "createdDate", "lastUpdated");
+    public static final List<String> School.fieldNames4OrderClauseFilter = java.util.Arrays.asList("email", "name", "district", "custodianOfRecords", "custodianTitle", "phone1", "phone2", "address1", "address2", "city", "province", "postalCode", "country", "comments", "whoUpdated", "createdDate", "lastUpdated", "subjects");
     
     public static final EntityManager School.entityManager() {
         EntityManager em = new School().entityManager;

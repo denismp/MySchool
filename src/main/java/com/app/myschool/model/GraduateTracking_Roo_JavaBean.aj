@@ -17,12 +17,84 @@ privileged aspect GraduateTracking_Roo_JavaBean {
         this.student = student;
     }
     
+    public String GraduateTracking.getComments() {
+        return this.comments;
+    }
+    
+    public void GraduateTracking.setComments(String comments) {
+        this.comments = comments;
+    }
+    
+    public Date GraduateTracking.getLastUpdated() {
+        return this.lastUpdated;
+    }
+    
+    public void GraduateTracking.setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
+    }
+    
+    public String GraduateTracking.getWhoUpdated() {
+        return this.whoUpdated;
+    }
+    
+    public void GraduateTracking.setWhoUpdated(String whoUpdated) {
+        this.whoUpdated = whoUpdated;
+    }
+    
     public Date GraduateTracking.getCreatedDate() {
         return this.createdDate;
     }
     
     public void GraduateTracking.setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+    
+    public String GraduateTracking.getAddress1() {
+        return this.address1;
+    }
+    
+    public void GraduateTracking.setAddress1(String address1) {
+        this.address1 = address1;
+    }
+    
+    public Date GraduateTracking.getGraduationDate() {
+        return this.graduationDate;
+    }
+    
+    public void GraduateTracking.setGraduationDate(Date graduationDate) {
+        this.graduationDate = graduationDate;
+    }
+    
+    public String GraduateTracking.getSignatureName() {
+        return this.signatureName;
+    }
+    
+    public void GraduateTracking.setSignatureName(String signatureName) {
+        this.signatureName = signatureName;
+    }
+    
+    public String GraduateTracking.getSignatureTitle() {
+        return this.signatureTitle;
+    }
+    
+    public void GraduateTracking.setSignatureTitle(String signatureTitle) {
+        this.signatureTitle = signatureTitle;
+    }
+    
+    public int GraduateTracking.getGradingScale() {
+        return this.gradingScale;
+    }
+    
+    public void GraduateTracking.setGradingScale(int gradingScale) {
+        this.gradingScale = gradingScale;
+    }
+    
+    public int GraduateTracking.getTranscriptType() {
+        return this.transcriptType;
+    }
+    
+    public void GraduateTracking.setTranscriptType(int transcriptType) {
+        this.transcriptType = transcriptType;
     }
     
 }

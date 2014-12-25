@@ -20,44 +20,44 @@ public class GraduateTrackingController {
     @RequestMapping(value = "/json/{id}", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.showJson(GraduateTracking.class, id);
+        GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.showJson(id);
     }
 
     @RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
     public ResponseEntity<java.lang.String> listJson() {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.listJson(GraduateTracking.class);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.listJson();
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJson(GraduateTracking.class, json);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.createFromJson(json);
     }
 
     @RequestMapping(value = "/json/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> createFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.createFromJsonArray(GraduateTracking.class, json);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.createFromJsonArray(json);
     }
 
     @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJson(GraduateTracking.class, json);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.updateFromJson(json);
     }
 
     @RequestMapping(value = "/json/jsonArray", method = RequestMethod.PUT, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> updateFromJsonArray(@RequestBody String json) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.updateFromJsonArray(GraduateTracking.class, json);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.updateFromJsonArray(json);
     }
 
     @RequestMapping(value = "/json/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
     public ResponseEntity<java.lang.String> deleteFromJson(@PathVariable("id") Long id) {
-        ControllerHelper controllerHelper = new ControllerHelper();
-        return controllerHelper.deleteFromJson(GraduateTracking.class, id);
+    	GraduateTrackingControllerHelper controllerHelper = new GraduateTrackingControllerHelper();
+        return controllerHelper.deleteFromJson(id);
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_app_myschool_model_School" modelAttribute="school" path="/school" versionField="Version" z="JbNzm6xCkSB9lJABo9eL7DG9wrQ=">
+        <field:textarea field="email" id="c_com_app_myschool_model_School_email" required="true" validationMessageCode="field_invalid_email" z="nv2IbZjWwWXVihqlhzRb/Yf50FM="/>
+        <field:textarea field="name" id="c_com_app_myschool_model_School_name" required="true" z="MqhKbrdU8y1bThPPY43hIzvWpNA="/>
+        <field:textarea field="district" id="c_com_app_myschool_model_School_district" required="true" z="Muzqt4T//BzcqEjpTPeTvfPOMYw="/>
+        <field:textarea field="custodianOfRecords" id="c_com_app_myschool_model_School_custodianOfRecords" required="true" z="N5ucg3ekmFhoeJodSZaqgxj+qnI="/>
+        <field:textarea field="custodianTitle" id="c_com_app_myschool_model_School_custodianTitle" required="true" z="WyAxaUsrYdsts/DHIJ3odsk2D0Q="/>
+        <field:input field="phone1" id="c_com_app_myschool_model_School_phone1" max="25" required="true" z="mV4kQ7HnbhjKvpKZ7DHDzWg1Jg8="/>
+        <field:input field="phone2" id="c_com_app_myschool_model_School_phone2" max="25" z="+iwmb0JzegKscFY9+ZiVXVg4gPg="/>
+        <field:textarea field="address1" id="c_com_app_myschool_model_School_address1" required="true" z="/ywS+6d1Euh7ZEOBbh1CBnkklM4="/>
+        <field:textarea field="address2" id="c_com_app_myschool_model_School_address2" z="AybI2ozFui6wQAAsZlmgZdFNtbE="/>
+        <field:textarea field="city" id="c_com_app_myschool_model_School_city" required="true" z="wYO+c3r2wOXvGYTqu6zA6nX6uJk="/>
+        <field:textarea field="province" id="c_com_app_myschool_model_School_province" required="true" z="GT9OHXx2BBLw3G/3cAVEx26X6+c="/>
+        <field:input field="postalCode" id="c_com_app_myschool_model_School_postalCode" max="25" required="true" z="0DA12Djmh2WL1Cgb3WAQYV6rKqM="/>
+        <field:textarea field="country" id="c_com_app_myschool_model_School_country" required="true" z="yFJatYb4TqwWaoSFsDu1Hm1E6uw="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_School_comments" z="W9TERuOWO/JdDRvLjgPrsLkVjZg="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_School_whoUpdated" required="true" z="L+yprqrU7QvW+KmB3o41TWZVbi8="/>
+        <field:datetime dateTimePattern="${school_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_School_createdDate" z="qj8q96b1lakBim71rfzbhncdSZk="/>
+        <field:datetime dateTimePattern="${school_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_School_lastUpdated" required="true" z="fuMpgivzDVkVD6+ORUgjy+np8YY="/>
+        <field:simple field="subjects" id="c_com_app_myschool_model_School_subjects" messageCode="entity_reference_not_managed" messageCodeAttribute="Subject" z="koO1S/GEsOwBtThSqg005Jpsrvs="/>
+    </form:update>
+</div>

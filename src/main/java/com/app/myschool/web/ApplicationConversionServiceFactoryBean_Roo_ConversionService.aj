@@ -175,7 +175,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<GraduateTracking, String> ApplicationConversionServiceFactoryBean.getGraduateTrackingToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.GraduateTracking, java.lang.String>() {
             public String convert(GraduateTracking graduateTracking) {
-                return new StringBuilder().append(graduateTracking.getCreatedDate()).toString();
+                return new StringBuilder().append(graduateTracking.getComments()).append(' ').append(graduateTracking.getLastUpdated()).append(' ').append(graduateTracking.getWhoUpdated()).append(' ').append(graduateTracking.getCreatedDate()).toString();
             }
         };
     }

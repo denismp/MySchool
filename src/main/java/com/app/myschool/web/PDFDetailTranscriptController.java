@@ -2,6 +2,8 @@ package com.app.myschool.web;
 
 import java.util.Map;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 import org.springframework.stereotype.Controller;
@@ -37,5 +39,11 @@ public class PDFDetailTranscriptController
     public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
     	PDFDetailTranscriptControllerHelper controllerHelper = new PDFDetailTranscriptControllerHelper();
         return controllerHelper.listJson(params);
+    }
+    
+    @RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<java.lang.String> updateFromJson(@RequestBody String json) {
+    	PDFDetailTranscriptControllerHelper controllerHelper = new PDFDetailTranscriptControllerHelper();
+        return controllerHelper.updateFromJson(json);
     }
 }

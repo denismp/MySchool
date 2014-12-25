@@ -4,6 +4,15 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_GraduateTracking" modelAttribute="graduateTracking" path="/graduatetrackings" render="${empty dependencies}" z="626FUril73Cbig0LU7FDmnhHeBc=">
         <field:select field="student" id="c_com_app_myschool_model_GraduateTracking_student" itemValue="id" items="${students}" path="/students" z="cRLFsNLK6nCvo2VQ2oJM5wYCQn8="/>
+        <field:textarea field="comments" id="c_com_app_myschool_model_GraduateTracking_comments" required="true" z="HrGEsJyjFkFM9FZFyuXhmlS/I34="/>
+        <field:datetime dateTimePattern="${graduateTracking_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_GraduateTracking_lastUpdated" required="true" z="0pWTtr+iSG83Gq9+LmprguGd+34="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_GraduateTracking_whoUpdated" required="true" z="XUegG4QG6ram2SLvc5/sH1tYRfs="/>
+        <field:textarea field="address1" id="c_com_app_myschool_model_GraduateTracking_address1" required="true" z="9hrv+jm7/+tDLLWgF3B0kEYuhLA="/>
+        <field:datetime dateTimePattern="${graduateTracking_graduationdate_date_format}" field="graduationDate" id="c_com_app_myschool_model_GraduateTracking_graduationDate" required="true" z="H4/+xiLfBfVVBQQu28kHZ5ENxjc="/>
+        <field:textarea field="signatureName" id="c_com_app_myschool_model_GraduateTracking_signatureName" required="true" z="lKMcnsCRWdqWDnRqmrYdqvkdU6s="/>
+        <field:textarea field="signatureTitle" id="c_com_app_myschool_model_GraduateTracking_signatureTitle" required="true" z="KmveJpDV1xpJmxbzBpd8nsJge5o="/>
+        <field:input field="gradingScale" id="c_com_app_myschool_model_GraduateTracking_gradingScale" min="0" required="true" z="IL9ZoUbekmEXKmtgCP3coEkZMBs="/>
+        <field:input field="transcriptType" id="c_com_app_myschool_model_GraduateTracking_transcriptType" max="1" min="0" required="true" z="S6An6600ObxUycAgebSt1mRET5E="/>
         <field:datetime dateTimePattern="${graduateTracking_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_GraduateTracking_createdDate" z="qMgRT6o/G8Ja7TrKwdo9Nz2gtLk="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_GraduateTracking" render="${not empty dependencies}" z="dBatR47cgWN5eksAQcQ4GMWrypk="/>

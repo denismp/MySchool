@@ -401,6 +401,7 @@ public class BodyOfWorkViewControllerHelper implements
 					if (quarter != null)
 					{
 						record.setLastUpdated(myView.getLastUpdated());
+						record.setCreatedDate(myView.getLastUpdated());
 						record.setLocked(myView.getLocked());
 						record.setQuarter(quarter);
 						//record.setWhoUpdated(myView.getWhoUpdated());

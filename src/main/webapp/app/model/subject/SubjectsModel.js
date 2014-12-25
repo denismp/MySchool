@@ -122,6 +122,15 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 		{
 			name: 'qtrYear',
 			type: 'int'
+		},
+		{
+			name: 'schoolId',
+			type: 'int'
+		},
+		{
+			name: 'schoolName',
+			sortType: 'asText',
+			type: 'string'
 		}
 	]
 });

@@ -365,6 +365,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 					record.setEffectivenessOfActions(myView.getEffectivenessOfActions());
 					record.setFeelings(myView.getFeelings());
 					record.setLastUpdated(myView.getLastUpdated());
+					record.setCreatedDate(myView.getLastUpdated());
 					record.setLocked(myView.getLocked());
 					record.setMonth_number(myView.getMonth_number());
 					record.setPatternsOfCorrections(myView.getPatternsOfCorrections());

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_School" object="${school}" path="/school" z="YRs9R1+51K2Hp5wc6ymO2ALKkf8=">
+        <field:display field="email" id="s_com_app_myschool_model_School_email" object="${school}" z="Vx3Szu2qZHDHDmrJyWpHUvGfe3I="/>
+        <field:display field="name" id="s_com_app_myschool_model_School_name" object="${school}" z="1MUktrdxd2jWhaSLCIplfa72I4I="/>
+        <field:display field="district" id="s_com_app_myschool_model_School_district" object="${school}" z="5pAEgTktZPgaf05sbL40Vqs2/3s="/>
+        <field:display field="custodianOfRecords" id="s_com_app_myschool_model_School_custodianOfRecords" object="${school}" z="xdFphckSqUTTErHfyCyvQyCinS4="/>
+        <field:display field="custodianTitle" id="s_com_app_myschool_model_School_custodianTitle" object="${school}" z="vOIfismOG/LckFIMdy7c+z+fdc8="/>
+        <field:display field="phone1" id="s_com_app_myschool_model_School_phone1" object="${school}" z="27U/ZYswfWhgVd2MiEVj7oCCaF4="/>
+        <field:display field="phone2" id="s_com_app_myschool_model_School_phone2" object="${school}" z="1Wgx1LWTF08oPM6lns0mAuYnQ34="/>
+        <field:display field="address1" id="s_com_app_myschool_model_School_address1" object="${school}" z="M0ZaCCmoK1pejnTA6jP8jvSt8Sg="/>
+        <field:display field="address2" id="s_com_app_myschool_model_School_address2" object="${school}" z="KM7s5DeLKk/TBccFpg2qw8WblD4="/>
+        <field:display field="city" id="s_com_app_myschool_model_School_city" object="${school}" z="zdzUQIXN9jrTOAj8XS5CgMeG3T4="/>
+        <field:display field="province" id="s_com_app_myschool_model_School_province" object="${school}" z="lKfVHoc9dqTPKTCcctSY/AO65iw="/>
+        <field:display field="postalCode" id="s_com_app_myschool_model_School_postalCode" object="${school}" z="7e3svLkZlDz7LASgbxcRgCcbbLQ="/>
+        <field:display field="country" id="s_com_app_myschool_model_School_country" object="${school}" z="tvse6r29gZi6X7TxPjyOEpT4fYg="/>
+        <field:display field="comments" id="s_com_app_myschool_model_School_comments" object="${school}" z="H9qmplhtO9rqdsASsDPiCgk3ljs="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_School_whoUpdated" object="${school}" z="yXxsoyEnutvKTkLkY7PtNUbIDyU="/>
+        <field:display date="true" dateTimePattern="${school_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_School_createdDate" object="${school}" z="Mt4AaZgzcAZM5K7UB4ysIdkELDM="/>
+        <field:display date="true" dateTimePattern="${school_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_School_lastUpdated" object="${school}" z="2IiMVPDgZ2aQ5CztIccb0dL730s="/>
+    </page:show>
+</div>

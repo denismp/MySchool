@@ -14,7 +14,7 @@ privileged aspect GraduateTracking_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager GraduateTracking.entityManager;
     
-    public static final List<String> GraduateTracking.fieldNames4OrderClauseFilter = java.util.Arrays.asList("student", "createdDate");
+    public static final List<String> GraduateTracking.fieldNames4OrderClauseFilter = java.util.Arrays.asList("student", "comments", "lastUpdated", "whoUpdated", "createdDate", "address1", "graduationDate", "signatureName", "signatureTitle", "gradingScale", "transcriptType");
     
     public static final EntityManager GraduateTracking.entityManager() {
         EntityManager em = new GraduateTracking().entityManager;
