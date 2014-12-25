@@ -23,8 +23,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/denisputnam/.m2/repository/org/apache/pdfbox/pdfbox/1.8.7/pdfbox-1.8.7.jar"/>
-	<classpathentry kind="lib" path="/Users/denisputnam/.m2/repository/org/apache/pdfbox/fontbox/1.8.7/fontbox-1.8.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/com.springsource.sts.ide.tomcat.runtimeTarget/VMware vFabric tc Server Developer Edition (Runtime) v2.8">
 		<attributes>
 			<attribute name="owner.project.facets" value="jst.web"/>
