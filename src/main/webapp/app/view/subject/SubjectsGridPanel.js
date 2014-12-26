@@ -19,12 +19,12 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 
 	requires: [
 		'Ext.grid.column.Number',
-		'Ext.grid.column.Date',
 		'Ext.grid.column.CheckColumn',
 		'Ext.form.field.Checkbox',
 		'Ext.grid.View',
 		'Ext.grid.plugin.CellEditing',
-		'Ext.form.field.Number'
+		'Ext.form.field.Number',
+		'Ext.grid.column.Date'
 	],
 
 	itemId: 'subjectsgrid',
@@ -99,13 +99,6 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'subjCreditHours',
 					text: 'Credit Hours'
-				},
-				{
-					xtype: 'datecolumn',
-					hidden: true,
-					dataIndex: 'qtrLastUpdated',
-					text: 'Date',
-					format: 'm/d/Y'
 				},
 				{
 					xtype: 'checkcolumn',
