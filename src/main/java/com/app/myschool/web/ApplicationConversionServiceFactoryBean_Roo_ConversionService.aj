@@ -10,6 +10,7 @@ import com.app.myschool.model.Daily;
 import com.app.myschool.model.EvaluationRatings;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.GraduateTracking;
+import com.app.myschool.model.Guardian;
 import com.app.myschool.model.MonthlyEvaluationRatings;
 import com.app.myschool.model.MonthlySummaryRatings;
 import com.app.myschool.model.PreviousTranscripts;
@@ -192,6 +193,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.GraduateTracking>() {
             public com.app.myschool.model.GraduateTracking convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), GraduateTracking.class);
+            }
+        };
+    }
+    
+    public Converter<Guardian, String> ApplicationConversionServiceFactoryBean.getGuardianToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Guardian, java.lang.String>() {
+            public String convert(Guardian guardian) {
+                return new StringBuilder().append(guardian.getEmail()).append(' ').append(guardian.getFirstName()).append(' ').append(guardian.getLastName()).append(' ').append(guardian.getMiddleName()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, Guardian> ApplicationConversionServiceFactoryBean.getIdToGuardianConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.app.myschool.model.Guardian>() {
+            public com.app.myschool.model.Guardian convert(java.lang.Long id) {
+                return Guardian.findGuardian(id);
+            }
+        };
+    }
+    
+    public Converter<String, Guardian> ApplicationConversionServiceFactoryBean.getStringToGuardianConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.app.myschool.model.Guardian>() {
+            public com.app.myschool.model.Guardian convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), Guardian.class);
             }
         };
     }
@@ -434,6 +459,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getGraduateTrackingToStringConverter());
         registry.addConverter(getIdToGraduateTrackingConverter());
         registry.addConverter(getStringToGraduateTrackingConverter());
+        registry.addConverter(getGuardianToStringConverter());
+        registry.addConverter(getIdToGuardianConverter());
+        registry.addConverter(getStringToGuardianConverter());
         registry.addConverter(getMonthlyEvaluationRatingsToStringConverter());
         registry.addConverter(getIdToMonthlyEvaluationRatingsConverter());
         registry.addConverter(getStringToMonthlyEvaluationRatingsConverter());

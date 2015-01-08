@@ -77,7 +77,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 					xtype: 'gridcolumn',
 					hidden: true,
 					dataIndex: 'qtrVersion',
-					text: 'qtrVersion'
+					text: 'termVersion'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -112,12 +112,12 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Quarter'
+					text: 'Term'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrYear',
-					text: 'QtrYear'
+					text: 'Year'
 				},
 				{
 					xtype: 'gridcolumn',

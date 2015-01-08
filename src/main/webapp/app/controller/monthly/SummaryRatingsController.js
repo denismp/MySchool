@@ -511,6 +511,14 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 		    console.log( 'No form' );
 		    console.log( tabPanel );
 		}
+		var editButton = myForm.items.items[0];
+		if( this.userRole === 'ROLE_USER') {
+			editButton.disable();
+		}
+		else {
+			editButton.enable();
+		}
+
 	},
 
 	init: function(application) {

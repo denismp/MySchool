@@ -22,6 +22,7 @@
         <field:textarea field="email" id="c_com_app_myschool_model_Admin_email" required="true" validationMessageCode="field_invalid_email" z="0m4+yKg5pCv7uRJgWuLTYDs2iqA="/>
         <field:datetime dateTimePattern="${admin_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Admin_createdDate" z="R8QxG/+uMA0gG3vmf6aBn2Oq7j0="/>
         <field:datetime dateTimePattern="${admin_dob_date_format}" field="dob" id="c_com_app_myschool_model_Admin_dob" z="u5qPKvgb/bx/GOz39YjJKDUAX+w="/>
+        <field:simple field="schools" id="c_com_app_myschool_model_Admin_schools" messageCode="entity_reference_not_managed" messageCodeAttribute="School" z="BdecTkXykdp5pmID5kATgq6fPwc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Admin" render="${not empty dependencies}" z="SAdjR1iWE3DxT+kZYhky79GCKOs="/>
 </div>

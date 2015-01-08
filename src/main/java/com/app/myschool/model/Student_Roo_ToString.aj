@@ -10,7 +10,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 privileged aspect Student_Roo_ToString {
     
     public String Student.toString() {
-        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("quarters", "previousTranscripts", "graduateTracking").toString();
+        return new ReflectionToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).setExcludeFieldNames("quarters", "previousTranscripts", "graduateTracking", "guardians").toString();
     }
     
 }

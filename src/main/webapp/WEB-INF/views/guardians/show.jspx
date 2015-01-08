@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_app_myschool_model_Guardian" object="${guardian}" path="/guardians" z="oMBKEwQVnDhanBW9p7Fg0imNMsE=">
+        <field:display field="email" id="s_com_app_myschool_model_Guardian_email" object="${guardian}" z="tixahOXT8VCGmGAU7Dg0kiJq/B4="/>
+        <field:display field="firstName" id="s_com_app_myschool_model_Guardian_firstName" object="${guardian}" z="+JWWp69fEYFo+SiPiKnJx6iYX6Q="/>
+        <field:display field="lastName" id="s_com_app_myschool_model_Guardian_lastName" object="${guardian}" z="mLkyEVuuz9OLWE9b1PN0YTXZRXo="/>
+        <field:display field="middleName" id="s_com_app_myschool_model_Guardian_middleName" object="${guardian}" z="L5/S4Bz86yX95orZLYHTTdYEMGg="/>
+        <field:display field="phone1" id="s_com_app_myschool_model_Guardian_phone1" object="${guardian}" z="CkO2MMmyVb6Oydh7kCzfcf3m+Ek="/>
+        <field:display field="phone2" id="s_com_app_myschool_model_Guardian_phone2" object="${guardian}" z="SI8JWZog4j32SYGzblCu6s6mqag="/>
+        <field:display field="address1" id="s_com_app_myschool_model_Guardian_address1" object="${guardian}" z="inAnO5KaoiRGFspEJJZ/gB1f6rY="/>
+        <field:display field="address2" id="s_com_app_myschool_model_Guardian_address2" object="${guardian}" z="teD/JphvXK60MhnIqnVeO/iJqnw="/>
+        <field:display field="city" id="s_com_app_myschool_model_Guardian_city" object="${guardian}" z="jj3wiE5wvuHnEzdm8dqsdFjYuH4="/>
+        <field:display field="province" id="s_com_app_myschool_model_Guardian_province" object="${guardian}" z="wdXTqvCvUBY0VsKNsCZ2u/oqP6o="/>
+        <field:display field="postalCode" id="s_com_app_myschool_model_Guardian_postalCode" object="${guardian}" z="bAV3cmKc+lhQRKvTgxDdpoFkNeA="/>
+        <field:display field="country" id="s_com_app_myschool_model_Guardian_country" object="${guardian}" z="WHxtdtrRUWJ1jb9L72tF/lpQ3Pc="/>
+        <field:display date="true" dateTimePattern="${guardian_dob_date_format}" field="dob" id="s_com_app_myschool_model_Guardian_dob" object="${guardian}" z="fX4nHcGID9CITr+55b7rMrXwpaQ="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_Guardian_whoUpdated" object="${guardian}" z="F33oY3Cv4a6SYAffkyN4V3xDsOc="/>
+        <field:display date="true" dateTimePattern="${guardian_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_Guardian_lastUpdated" object="${guardian}" z="wGYp3/BUVBrOIzListJpYx/VnO8="/>
+        <field:display date="true" dateTimePattern="${guardian_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Guardian_createdDate" object="${guardian}" z="HxBlntLUN15MtovQL7Xfynov+tQ="/>
+        <field:display field="userName" id="s_com_app_myschool_model_Guardian_userName" object="${guardian}" z="gTHCrc0DdTlFuym3Qz22JuXIPdw="/>
+        <field:display field="userPassword" id="s_com_app_myschool_model_Guardian_userPassword" object="${guardian}" z="4GHYUiKML4yie2heiFYLNw8MYa4="/>
+        <field:display field="enabled" id="s_com_app_myschool_model_Guardian_enabled" object="${guardian}" z="aBWeoYrvPftfdAetd6n1LW3Kiik="/>
+        <field:display field="type" id="s_com_app_myschool_model_Guardian_type" object="${guardian}" z="JPGna3Ch8kNYErhQoUdocy6CYX4="/>
+        <field:display field="description" id="s_com_app_myschool_model_Guardian_description" object="${guardian}" z="WYLsUL/hK/VRXXgImLU1MsFpBAo="/>
+        <field:display field="students" id="s_com_app_myschool_model_Guardian_students" object="${guardian}" z="TMAZLTooLmHm0t2LOm3nBlSW9OU="/>
+    </page:show>
+</div>

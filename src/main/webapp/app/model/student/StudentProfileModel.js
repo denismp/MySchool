@@ -33,6 +33,10 @@ Ext.define('MySchool.model.student.StudentProfileModel', {
 			type: 'int'
 		},
 		{
+			name: 'guardianId',
+			type: 'int'
+		},
+		{
 			name: 'studentprofileviewId',
 			type: 'int'
 		},
@@ -112,6 +116,14 @@ Ext.define('MySchool.model.student.StudentProfileModel', {
 		},
 		{
 			name: 'facultyEmail',
+			type: 'string'
+		},
+		{
+			name: 'guardianUserName',
+			type: 'string'
+		},
+		{
+			name: 'guardianEmail',
 			type: 'string'
 		},
 		{

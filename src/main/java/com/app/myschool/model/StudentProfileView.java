@@ -58,5 +58,12 @@ public class StudentProfileView {
 	
 	private String facultyEmail;
 	
+	private Long guardianId;
+	
+	private String guardianUserName;
+	
+	private String guardianEmail;
+
+	
 	private Integer version;
 }

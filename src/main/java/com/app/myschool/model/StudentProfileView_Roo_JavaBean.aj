@@ -200,6 +200,30 @@ privileged aspect StudentProfileView_Roo_JavaBean {
         this.facultyEmail = facultyEmail;
     }
     
+    public Long StudentProfileView.getGuardianId() {
+        return this.guardianId;
+    }
+    
+    public void StudentProfileView.setGuardianId(Long guardianId) {
+        this.guardianId = guardianId;
+    }
+    
+    public String StudentProfileView.getGuardianUserName() {
+        return this.guardianUserName;
+    }
+    
+    public void StudentProfileView.setGuardianUserName(String guardianUserName) {
+        this.guardianUserName = guardianUserName;
+    }
+    
+    public String StudentProfileView.getGuardianEmail() {
+        return this.guardianEmail;
+    }
+    
+    public void StudentProfileView.setGuardianEmail(String guardianEmail) {
+        this.guardianEmail = guardianEmail;
+    }
+    
     public Integer StudentProfileView.getVersion() {
         return this.version;
     }

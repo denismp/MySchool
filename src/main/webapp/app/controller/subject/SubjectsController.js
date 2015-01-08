@@ -108,7 +108,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		var mygradetypestore = Ext.getStore( "subject.GradeTypeStore" );
 		var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
 		var myrecord = mystore.getAt( this.selectedIndex );
-		var schoolId = myrecord.get('schoolId');//DENIS 12/24/2014
+		var schoolId = 0;
 
 		//myrecord.set( 'description', newValue );
 		//window.console.log( myrecord.data );
@@ -133,6 +133,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		if (myrecord)
 		{
+
 		    window.console.log( myrecord.data );
 		}
 
@@ -162,11 +163,13 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		if (myrecord) {
 		    allSubjRec_ = myAllSubjStore.findRecord( 'subjName', myrecord.data.subjName );
 		    subjId_ = allSubjRec_.get( 'subjId' );
+			schoolId = myrecord.get('schoolId');//DENIS 12/24/2014
 		}
 		else {
 		    allSubjRec_ = myAllSubjStore.getAt(0);
 		    if (allSubjRec_) {
 		        subjId_ = allSubjRec_.get( 'subjId' );
+				schoolId = allSubjRec_.get( 'schoolId' );//DENIS 12/24/2014
 		    }
 		}
 
@@ -584,6 +587,18 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		subjObjectives_.setValue(r_.data.subjObjectives);
 	},
 
+	onSubjectspanelShow: function(component, eOpts) {
+		window.console.log("onSubjectpanelShow()...");
+		//debugger;
+
+		this.userName = securityRecord.get('userName');
+		this.userRole = securityRecord.get('userRole');
+
+		if( this.userRole !== 'USER_ROLE' ){
+			gaurdianTab.show();
+		}
+	},
+
 	init: function(application) {
 
 				this.control({
@@ -648,12 +663,16 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 			},
 			"#subjectnamecombobox": {
 				select: this.onSubjComboSelect
+			},
+			"#subjectspanel": {
+				show: this.onSubjectspanelShow
 			}
 		});
 	},
 
 	onViewReady: function(grid) {
 		grid.getSelectionModel().select( 0 );
+
 	},
 
 	onSubjectsavetoolidClick: function(tool, e, eOpts) {
@@ -777,7 +796,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		//var codeStore_ = Ext.getStore( "subject.QuarterNameStore" );
 		//var allSubjectStore_ = Ext.getStore( "subject.AllSubjectStore" );
 		//var qtrYrStore_ = Ext.getStore( "subject.QuarterYearStore" );
-		debugger;
+		//debugger;
 		securityStore.load({
 			callback: this.onSecurityStoreLoad,
 			scope: this
@@ -819,6 +838,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    }
 		});
 		*/
+
 
 	},
 

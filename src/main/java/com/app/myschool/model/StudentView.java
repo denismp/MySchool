@@ -60,6 +60,13 @@ public class StudentView {
 	
 	private String facultyEmail;
 	
+	private Long guardianId;
+	
+	private String guardianUserName;
+	
+	private String guardianEmail;
+
+	
 	private Long qtrId;
 	private String qtrName;
 	private Integer qtrYear;

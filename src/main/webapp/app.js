@@ -38,7 +38,8 @@ Ext.application({
 		'faculty.FacultyTableModel',
 		'student.PasswordModel',
 		'security.SecurityModel',
-		'subject.SchoolsModel'
+		'subject.SchoolsModel',
+		'guardian.GuardianProfileModel'
 	],
 	stores: [
 		'subject.SubjectStore',
@@ -61,7 +62,8 @@ Ext.application({
 		'faculty.FacultyTableStore',
 		'student.StudentPasswordStore',
 		'security.SecurityStore',
-		'subject.SchoolsStore'
+		'subject.SchoolsStore',
+		'guardian.GuardianProfileStore'
 	],
 	views: [
 		'MainPanel',
@@ -168,7 +170,10 @@ Ext.application({
 		'faculty.FacultyOnlyProfileForm',
 		'faculty.NewDialog',
 		'faculty.PasswordDialog',
-		'subject.SchoolNameComboBox'
+		'subject.SchoolNameComboBox',
+		'guardian.ProfileGridGuardianOnlyPanel',
+		'guardian.GuardianOnlyProfileForm',
+		'guardian.GuardianProfilePanel'
 	],
 	controllers: [
 		'subject.SubjectsController',
@@ -180,7 +185,8 @@ Ext.application({
 		'monthly.EvaluationRatingsController',
 		'faculty.ByStudentController',
 		'student.ProfileViewController',
-		'faculty.OnlyFacultyProfileViewController'
+		'faculty.OnlyFacultyProfileViewController',
+		'guardian.OnlyGuardianProfileViewController'
 	],
 	name: 'MySchool',
 

@@ -47,12 +47,12 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Qtr Name'
+					text: 'Term'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'qtrYear',
-					text: 'QtrYear',
+					text: 'Year',
 					format: '0000'
 				},
 				{
@@ -191,7 +191,7 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					hidden: true,
 					dataIndex: 'qtrId',
-					text: 'qtrId',
+					text: 'termId',
 					format: '000000'
 				},
 				{

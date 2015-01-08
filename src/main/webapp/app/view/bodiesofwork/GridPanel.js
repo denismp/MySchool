@@ -56,12 +56,12 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Quarter'
+					text: 'Term'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrYear',
-					text: 'QtrYear'
+					text: 'Year'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -129,7 +129,7 @@ Ext.define('MySchool.view.bodiesofwork.GridPanel', {
 					xtype: 'numbercolumn',
 					hidden: true,
 					dataIndex: 'qtrId',
-					text: 'qtrId',
+					text: 'termId',
 					format: '000000'
 				}
 			],

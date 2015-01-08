@@ -26,5 +26,6 @@
         <field:select field="faculty" id="c_com_app_myschool_model_Student_faculty" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="ck3S9plWVLvOGGlYpOpI0S6urgs="/>
         <field:datetime dateTimePattern="${student_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Student_createdDate" z="XeO05YvwMtFlnuzwK2q5r2iRp3k="/>
         <field:datetime dateTimePattern="${student_dob_date_format}" field="dob" id="c_com_app_myschool_model_Student_dob" z="84btigYgUX60LAPBtHPWa44BT8M="/>
+        <field:select field="guardians" id="c_com_app_myschool_model_Student_guardians" itemValue="id" items="${guardians}" multiple="true" path="/guardians" z="DYlKw7p78kRonJL3EyJipBGGuFY="/>
     </form:update>
 </div>

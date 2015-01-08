@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.extjs.JsonPrettyPrint;
 import com.app.myschool.model.School;
 import com.app.myschool.model.Subject;
 import com.app.myschool.model.SubjectView;
@@ -139,6 +140,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 		String studentId_ = getParam(params, "studentId");
+		logger.info("listJson(): called...");
 		/*
 		Stack <Long>subjectStack = new Stack<Long>();
 		List<Student> students = new ArrayList<Student>();
@@ -271,7 +273,8 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		}
 
 		// Return retrieved object.
-		logger.info("RESPONSE: " + response.toString() );
+		String responseString = JsonPrettyPrint.getPrettyString(response);
+		logger.info("RESPONSE: " + responseString );
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -281,52 +284,6 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		HashMap parms = new HashMap();
 		return listJson(parms);
 	}	
-	private ResponseEntity<String> listJsonOld() {
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json; charset=utf-8");
-		// Class<MonthlySummaryRatings> myClass = MonthlySummaryRatings.class;
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-		List<Faculty> records = null;
-		String className = this.myClass.getSimpleName();
-		boolean statusGood = true;
-
-		try {
-			logger.info("GET");
-			records = Faculty.findAllFacultys();
-			if (records == null)
-			{
-				response.setMessage("No records for class=" + className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-
-			if (statusGood)
-			{
-				response.setMessage("All " + className + "s retrieved: ");
-				response.setData(records);
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
-
-		// Return retrieved object.
-
-		return new ResponseEntity<String>(response.toString(), headers,
-				returnStatus);
-
-	}
-
 
 	@Override
 	public ResponseEntity<String> showJson(Long id) {

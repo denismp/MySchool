@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_app_myschool_model_Guardian" modelAttribute="guardian" path="/guardians" render="${empty dependencies}" z="Z41TSE9Z1pXBAeI6XgAeBISGXfc=">
+        <field:textarea field="email" id="c_com_app_myschool_model_Guardian_email" required="true" validationMessageCode="field_invalid_email" z="M6tKWvswZ5QRol2jUSjRltSMZxQ="/>
+        <field:textarea field="firstName" id="c_com_app_myschool_model_Guardian_firstName" required="true" z="fbEeIZ2g//DVJcFadNM2yPuGqNE="/>
+        <field:textarea field="lastName" id="c_com_app_myschool_model_Guardian_lastName" required="true" z="Sc6xQAmQAeovTl3pTetfkt2qzcw="/>
+        <field:textarea field="middleName" id="c_com_app_myschool_model_Guardian_middleName" z="6T+t6HLr2z9Nn312ie9eXbrebtw="/>
+        <field:input field="phone1" id="c_com_app_myschool_model_Guardian_phone1" max="25" required="true" z="VQQM5ro/fNlNuMLDQhcRgVt8+sE="/>
+        <field:input field="phone2" id="c_com_app_myschool_model_Guardian_phone2" max="25" z="HkRMUOuK4PAgDdrYHtGe1G2klfQ="/>
+        <field:textarea field="address1" id="c_com_app_myschool_model_Guardian_address1" required="true" z="a5PEWn9Q8J0LSe++B7RVT7fcZnk="/>
+        <field:textarea field="address2" id="c_com_app_myschool_model_Guardian_address2" z="i1wZS2GINVvB4Yk0fw1BWcTjuqw="/>
+        <field:textarea field="city" id="c_com_app_myschool_model_Guardian_city" required="true" z="8UJFQPU3lrzPH+Gvm/PSiJSG9cQ="/>
+        <field:textarea field="province" id="c_com_app_myschool_model_Guardian_province" required="true" z="tYx7lybvCGWW95cgL/Uc52c6eUo="/>
+        <field:input field="postalCode" id="c_com_app_myschool_model_Guardian_postalCode" max="25" required="true" z="av9KGYRG3z6EeMuBePMPQO4Ypas="/>
+        <field:textarea field="country" id="c_com_app_myschool_model_Guardian_country" required="true" z="emWmsM3goMSkND7V/drZa0rCsn0="/>
+        <field:datetime dateTimePattern="${guardian_dob_date_format}" field="dob" id="c_com_app_myschool_model_Guardian_dob" z="JSgAILKvNkNYC4KF7HSkE16bOiU="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_Guardian_whoUpdated" required="true" z="OIYMOrO9fxw6XpWBIQ/5xfx9q18="/>
+        <field:datetime dateTimePattern="${guardian_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_Guardian_lastUpdated" required="true" z="Dl7gkonU0QybiPG7jJ6dsD4oLt0="/>
+        <field:datetime dateTimePattern="${guardian_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Guardian_createdDate" z="4lGuQKl2YX0qFf0qILId5aQbrd0="/>
+        <field:textarea field="userName" id="c_com_app_myschool_model_Guardian_userName" required="true" z="Wa7P7a2XJ2IOEj6X/Vq5iQ7uy5U="/>
+        <field:textarea field="userPassword" id="c_com_app_myschool_model_Guardian_userPassword" required="true" z="dkeYsjzZ7KFc0ti2cK8iuwv3XiE="/>
+        <field:checkbox field="enabled" id="c_com_app_myschool_model_Guardian_enabled" z="3xQjmcQA+TghRY5XuUP4WbZIdes="/>
+        <field:input field="type" id="c_com_app_myschool_model_Guardian_type" max="2" min="0" required="true" z="/7sZDRY+IO8+BO+ocGuM9mVHtK0="/>
+        <field:input field="description" id="c_com_app_myschool_model_Guardian_description" z="xhmYGpA1aUB+ZVOiCMSCfbar+5s="/>
+        <field:select field="students" id="c_com_app_myschool_model_Guardian_students" itemValue="id" items="${students}" multiple="true" path="/students" z="vklzGi/fNmzA6wLJKt5tfoVcHJE="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Guardian" render="${not empty dependencies}" z="UqmM4GBneS094yqXTAFO0JWFfp4="/>
+</div>

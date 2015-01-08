@@ -5,6 +5,7 @@ package com.app.myschool.web;
 
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.GraduateTracking;
+import com.app.myschool.model.Guardian;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
@@ -103,6 +104,7 @@ privileged aspect StudentController_Roo_Controller {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("facultys", Faculty.findAllFacultys());
         uiModel.addAttribute("graduatetrackings", GraduateTracking.findAllGraduateTrackings());
+        uiModel.addAttribute("guardians", Guardian.findAllGuardians());
         uiModel.addAttribute("previoustranscriptses", PreviousTranscripts.findAllPreviousTranscriptses());
         uiModel.addAttribute("quarters", Quarter.findAllQuarters());
     }

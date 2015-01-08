@@ -21,5 +21,6 @@
         <field:datetime dateTimePattern="${school_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_School_createdDate" z="qj8q96b1lakBim71rfzbhncdSZk="/>
         <field:datetime dateTimePattern="${school_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_School_lastUpdated" required="true" z="fuMpgivzDVkVD6+ORUgjy+np8YY="/>
         <field:simple field="subjects" id="c_com_app_myschool_model_School_subjects" messageCode="entity_reference_not_managed" messageCodeAttribute="Subject" z="koO1S/GEsOwBtThSqg005Jpsrvs="/>
+        <field:select field="admin" id="c_com_app_myschool_model_School_admin" itemValue="id" items="${admins}" path="/admins" z="kt8cE4JamwlLTKfbnQii+ESF6W8="/>
     </form:update>
 </div>

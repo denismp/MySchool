@@ -120,8 +120,10 @@ public class SecurityViewControllerHelper implements
 		String myLoginInfo = this.login();
 		logger.info("LoginInfo:" + myLoginInfo);
 		String[] loginInfo = myLoginInfo.split("/");
-		String userName = loginInfo[0];
-		//String userRole = loginInfo[1];
+		//String userName = loginInfo[0];
+		String userName = null;
+		if( loginInfo.length > 0 )
+			userName = loginInfo[0];
 		
 		return userName;
 	}
@@ -132,7 +134,9 @@ public class SecurityViewControllerHelper implements
 		logger.info("LoginInfo:" + myLoginInfo);
 		String[] loginInfo = myLoginInfo.split("/");
 		//String userName = loginInfo[0];
-		String userRole = loginInfo[1];
+		String userRole = null;
+		if( loginInfo.length > 1 )
+			userRole = loginInfo[1];
 		
 		return userRole;		
 	}

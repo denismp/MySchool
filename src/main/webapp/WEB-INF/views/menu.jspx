@@ -73,6 +73,10 @@
                 <menu:item id="i_daily_new" messageCode="global_menu_new" url="/dailys?form" z="an2jfPHNh7ouXAQ6voPS9Mq+QzI="/>
                 <menu:item id="i_daily_list" messageCode="global_menu_list" url="/dailys?page=1&amp;size=${empty param.size ? 10 : param.size}" z="do7jyq5vh0p9Snztwoo2VLEQri0="/>
             </menu:category>
+            <menu:category id="c_guardian" z="RE9f8lupqkuT3XzNVFOlasGJtbw=">
+	            <menu:item id="i_guardian_new" messageCode="global_menu_new" url="/guardians?form" z="zmT+xNOj3O/yA4pJhw9un6WTXDk="/>
+	            <menu:item id="i_guardian_list" messageCode="global_menu_list" url="/guardians?page=1&amp;size=${empty param.size ? 10 : param.size}" z="yAx2BRwznPqBor7mlmsfmBO4v90="/>
+      		</menu:category>          
         </sec:authorize>
         <sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')"/>
     </menu:menu>

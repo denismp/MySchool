@@ -23,5 +23,6 @@
         <field:display field="faculty" id="s_com_app_myschool_model_Student_faculty" object="${student}" z="k4aGeCZRObEF/VYkFV+8f8RJAdw="/>
         <field:display date="true" dateTimePattern="${student_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_Student_createdDate" object="${student}" z="fFRdDTrSC+7Pc7Bj7tp18aodsAc="/>
         <field:display date="true" dateTimePattern="${student_dob_date_format}" field="dob" id="s_com_app_myschool_model_Student_dob" object="${student}" z="WDsmX05STH3RKKr9SG2NP61ia6s="/>
+        <field:display field="guardians" id="s_com_app_myschool_model_Student_guardians" object="${student}" z="HlSbHZUcKjKtUUY/oCcicLcrwAI="/>
     </page:show>
 </div>

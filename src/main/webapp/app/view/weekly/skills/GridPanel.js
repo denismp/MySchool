@@ -46,7 +46,7 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Quarter Name'
+					text: 'Term'
 				},
 				{
 					xtype: 'numbercolumn',

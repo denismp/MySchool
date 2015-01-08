@@ -11,7 +11,7 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
-@RooToString(excludeFields={"quarters","previousTranscripts","graduateTracking"})
+@RooToString(excludeFields={"quarters","previousTranscripts","graduateTracking","guardians"})
 @RooJson
 @RooJpaActiveRecord(finders = { "findStudentsByUserNameEquals" })
 public class Student extends Person {
@@ -24,6 +24,9 @@ public class Student extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<GraduateTracking> graduateTracking = new HashSet<GraduateTracking>();
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Guardian> guardians = new HashSet<Guardian>();
+    
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Faculty> faculty = new HashSet<Faculty>();
 }

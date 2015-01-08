@@ -482,18 +482,24 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 		var dockedItems = tabPanel.getDockedItems();
 		var myForm = dockedItems[0];
 
-		if( Ext.isDefined( myForm ) )
-		{
+		if( Ext.isDefined( myForm ) ){
 		    console.log( myForm );
 		    //var textBox = myForm.dockedItems.items[0];
 		    var textBox = myForm.down('textareafield');
 		    textBox.name = fieldname;
 		    myForm.loadRecord( selected[0] );
 		}
-		else
-		{
+		else{
 		    console.log( 'loadTabPanelForm(): No form' );
 		    //console.log( tabPanel );
+		}
+
+		var editButton = myForm.items.items[0];
+		if( this.userRole === 'ROLE_USER') {
+			editButton.disable();
+		}
+		else {
+			editButton.enable();
 		}
 	},
 

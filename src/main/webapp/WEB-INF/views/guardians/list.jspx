@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_app_myschool_model_Guardian" items="${guardians}" z="9JdpXsuR7wwl8YavRfaWLYnmEVU=">
+        <table:table data="${guardians}" id="l_com_app_myschool_model_Guardian" path="/guardians" z="a++UKbLfDk2vQ19nAbVYIBDZ1eM=">
+            <table:column id="c_com_app_myschool_model_Guardian_email" property="email" z="yBRsNjex5zNYPwCfx4WEeWK8taE="/>
+            <table:column id="c_com_app_myschool_model_Guardian_firstName" property="firstName" z="JiIKfx3D0/vfZnVc7hWqcT6qHI8="/>
+            <table:column id="c_com_app_myschool_model_Guardian_lastName" property="lastName" z="H2NLQe0F5aYxokL1YQ5JnUfEoyA="/>
+            <table:column id="c_com_app_myschool_model_Guardian_middleName" property="middleName" z="HwstBu/HcLP1hW2JgqyN+VATC5Y="/>
+            <table:column id="c_com_app_myschool_model_Guardian_phone1" property="phone1" z="tsIjlYUtrCH+6KOUtkBcvgGN2mM="/>
+            <table:column id="c_com_app_myschool_model_Guardian_phone2" property="phone2" z="pmDYydXtFh+pFjxH7EcUtjaFoqw="/>
+        </table:table>
+    </page:list>
+</div>

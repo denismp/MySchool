@@ -192,6 +192,30 @@ privileged aspect StudentView_Roo_JavaBean {
         this.facultyEmail = facultyEmail;
     }
     
+    public Long StudentView.getGuardianId() {
+        return this.guardianId;
+    }
+    
+    public void StudentView.setGuardianId(Long guardianId) {
+        this.guardianId = guardianId;
+    }
+    
+    public String StudentView.getGuardianUserName() {
+        return this.guardianUserName;
+    }
+    
+    public void StudentView.setGuardianUserName(String guardianUserName) {
+        this.guardianUserName = guardianUserName;
+    }
+    
+    public String StudentView.getGuardianEmail() {
+        return this.guardianEmail;
+    }
+    
+    public void StudentView.setGuardianEmail(String guardianEmail) {
+        this.guardianEmail = guardianEmail;
+    }
+    
     public Long StudentView.getQtrId() {
         return this.qtrId;
     }

@@ -105,6 +105,8 @@ public class ControllerHelper {
 		String studentId_ = getParam(params, "studentId");
 		String studentName_ = getParam(params, "studentName");
 		
+		logger.info( "listJson(): called with studentId=" + studentId_ + " and studentName=" + studentName_ );//DENIS 12/24/2014
+		
 		try {
 			// if studentId is null return all the subjects leaving the
 			// quarter part of SubjectView null
@@ -124,6 +126,10 @@ public class ControllerHelper {
 					sv_.setSubjObjectives(u_.getObjectives());
 					sv_.setSubjVersion(u_.getVersion());
 					sv_.setSubjWhoUpdated(u_.getWhoUpdated());
+					//DENIS 12/24/2014
+					School school = u_.getSchool();
+					sv_.setSchoolId(school.getId());
+					sv_.setSchoolName(school.getName());
 					svl_.add(sv_);
 				}
 				Collections.sort(svl_, new MyComparator());

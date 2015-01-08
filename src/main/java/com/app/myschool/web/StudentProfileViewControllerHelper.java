@@ -33,6 +33,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Guardian;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.StudentProfileView;
@@ -83,9 +84,30 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 		return rList;
 	}
-	
 	@SuppressWarnings("unchecked")
-	private List<Faculty>getList( String studentId ) throws Exception
+	private List<Guardian>getJustStudentGuardianList( String studentId ) throws Exception
+	{
+		List<Guardian> rList = null;
+		EntityManager em = Guardian.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct g.*");
+		queryString.append(" from guardian g, student_guardian gs, student t");
+		queryString.append(" where gs.students = t.id");
+		queryString.append(" and gs.guardians = g.id");
+		//queryString.append(" and q.student = t.id");
+		//queryString.append(" and q.subject = s.id");
+
+		if( studentId != null )
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);	
+		}
+		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
+		rList = (List<Guardian>)em.createNativeQuery(queryString.toString(), Guardian.class).getResultList(); 
+
+		return rList;
+	}	
+	@SuppressWarnings("unchecked")
+	private List<Faculty>getFacultyList( String studentId ) throws Exception
 	{
 		List<Faculty> rList = null;
 		EntityManager em = Faculty.entityManager();
@@ -106,16 +128,43 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 		return rList;
 	}
+	@SuppressWarnings("unchecked")
+	private List<Guardian>getGuardianList( String studentId ) throws Exception
+	{
+		List<Guardian> rList = null;
+		EntityManager em = Guardian.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct g.*");
+		queryString.append(" from guardian g, student_guardians gs, subject s, quarter q, student t");
+		queryString.append(" where gs.students = t.id");
+		queryString.append(" and gs.guardians = g.id");
+		//queryString.append(" and q.student = t.id");
+		//queryString.append(" and q.subject = s.id");
+
+		if( studentId != null )
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);	
+		}
+		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
+		rList = (List<Guardian>)em.createNativeQuery(queryString.toString(), Guardian.class).getResultList(); 
+
+		return rList;
+	}
 	private class StudentFaculty
 	{
 		long studentId;
 		long facultyId;
 	}
+	private class StudentGuardian
+	{
+		long studentId;
+		long guardianId;
+	}
 		
 	private List<StudentFaculty>getStudentFacultyList( String studentId ) throws Exception
 	{
 		List<StudentFaculty> rList	= new ArrayList<StudentFaculty>();
-		List<Faculty> facultyList	= this.getList(studentId);
+		List<Faculty> facultyList	= this.getFacultyList(studentId);
 		Student student				= Student.findStudent(new Long( studentId ) );
 		//Student student				= (Student) Student.findStudentsByUserNameEquals(userName);
 		if( facultyList.size() == 0 )
@@ -127,6 +176,25 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 			studentFaculty.studentId = student.getId();
 			rList.add(studentFaculty);			
+		}
+		return rList;
+	}
+	
+	private List<StudentGuardian>getStudentGuardianList( String studentId ) throws Exception
+	{
+		List<StudentGuardian> rList	= new ArrayList<StudentGuardian>();
+		List<Guardian> guardianList	= this.getGuardianList(studentId);
+		Student student				= Student.findStudent(new Long( studentId ) );
+		//Student student				= (Student) Student.findStudentsByUserNameEquals(userName);
+		if( guardianList.size() == 0 )
+			guardianList = this.getJustStudentGuardianList(studentId);
+		for (Guardian guardian : guardianList) 
+		{
+			StudentGuardian studentGuardian = new StudentGuardian();
+			studentGuardian.guardianId = guardian.getId();
+
+			studentGuardian.studentId = student.getId();
+			rList.add(studentGuardian);			
 		}
 		return rList;
 	}
@@ -265,6 +333,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<StudentProfileView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		
+		logger.info("listJson(): called...");
 
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		List<Student> students = securityHelper.findStudentsByLoginUserRole();
@@ -280,36 +350,79 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				for (Faculty faculty : studentFacultyList) 
 				{					
 					statusGood					= true;
-	
-					StudentProfileView myView			= new StudentProfileView();
-					myView.setId(++i);
-					myView.setStudentprofileviewId(i);
-					myView.setVersion(student.getVersion());
-					myView.setLastUpdated(student.getLastUpdated());
-					myView.setWhoUpdated(student.getWhoUpdated());
-					myView.setStudentId(student.getId());
-					myView.setVersion(student.getVersion());
-					myView.setFacultyId(faculty.getId());
-					myView.setEmail(student.getEmail());
-					myView.setAddress1(student.getAddress1());
-					myView.setAddress2(student.getAddress2());
-					myView.setCity(student.getCity());
-					myView.setCountry(student.getCountry());
-					myView.setFacultyUserName(faculty.getUserName());
-					myView.setFacultyEmail(faculty.getEmail());
-					myView.setLastName(student.getLastName());
-					myView.setMiddleName(student.getMiddleName());
-					myView.setFirstName(student.getFirstName());
-					myView.setPostalCode(student.getPostalCode());
-					myView.setProvince(student.getProvince());
-					myView.setPhone1(student.getPhone1());
-					myView.setPhone2(student.getPhone2());
-					myView.setEnabled(student.getEnabled());
-					myView.setUserName(student.getUserName());
-					myView.setDob(student.getDob());
 					
-
-					studentViewList.add( myView );
+					//DENIS 12/24/2014
+					List<Guardian> guardianList = new ArrayList<Guardian>(student.getGuardians());
+					if( guardianList.size() > 0 )
+					{
+						for( Guardian guardian : guardianList )
+						{
+							StudentProfileView myView			= new StudentProfileView();
+							myView.setId(++i);
+							myView.setStudentprofileviewId(i);
+							myView.setVersion(student.getVersion());
+							myView.setLastUpdated(student.getLastUpdated());
+							myView.setWhoUpdated(student.getWhoUpdated());
+							myView.setStudentId(student.getId());
+							myView.setVersion(student.getVersion());
+							myView.setFacultyId(faculty.getId());
+							myView.setEmail(student.getEmail());
+							myView.setAddress1(student.getAddress1());
+							myView.setAddress2(student.getAddress2());
+							myView.setCity(student.getCity());
+							myView.setCountry(student.getCountry());
+							myView.setFacultyUserName(faculty.getUserName());
+							myView.setFacultyEmail(faculty.getEmail());
+							myView.setLastName(student.getLastName());
+							myView.setMiddleName(student.getMiddleName());
+							myView.setFirstName(student.getFirstName());
+							myView.setPostalCode(student.getPostalCode());
+							myView.setProvince(student.getProvince());
+							myView.setPhone1(student.getPhone1());
+							myView.setPhone2(student.getPhone2());
+							myView.setEnabled(student.getEnabled());
+							myView.setUserName(student.getUserName());
+							myView.setDob(student.getDob());
+							//DENIS 12/24/2014
+							myView.setGuardianEmail(guardian.getEmail());
+							myView.setGuardianUserName(guardian.getUserName());
+							myView.setGuardianId(guardian.getId());
+													
+							studentViewList.add( myView );						
+						}
+					}
+					else
+					{
+						//DENIS 12/24/2014
+						StudentProfileView myView			= new StudentProfileView();
+						myView.setId(++i);
+						myView.setStudentprofileviewId(i);
+						myView.setVersion(student.getVersion());
+						myView.setLastUpdated(student.getLastUpdated());
+						myView.setWhoUpdated(student.getWhoUpdated());
+						myView.setStudentId(student.getId());
+						myView.setVersion(student.getVersion());
+						myView.setFacultyId(faculty.getId());
+						myView.setEmail(student.getEmail());
+						myView.setAddress1(student.getAddress1());
+						myView.setAddress2(student.getAddress2());
+						myView.setCity(student.getCity());
+						myView.setCountry(student.getCountry());
+						myView.setFacultyUserName(faculty.getUserName());
+						myView.setFacultyEmail(faculty.getEmail());
+						myView.setLastName(student.getLastName());
+						myView.setMiddleName(student.getMiddleName());
+						myView.setFirstName(student.getFirstName());
+						myView.setPostalCode(student.getPostalCode());
+						myView.setProvince(student.getProvince());
+						myView.setPhone1(student.getPhone1());
+						myView.setPhone2(student.getPhone2());
+						myView.setEnabled(student.getEnabled());
+						myView.setUserName(student.getUserName());
+						myView.setDob(student.getDob());
+												
+						studentViewList.add( myView );												
+					}
 				}
 			}
 			Collections.sort(studentViewList, new MyComparator());
@@ -448,7 +561,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		//Quarter quarter = Quarter.findQuarter(myView.getQtrId());
 		Student student = Student.findStudent(myView.getStudentId());
 		//Subject subject = Subject.findSubject(myView.getSubjId());
-		List<Faculty> facultyList = this.getList(studentId.toString());
+		List<Faculty> facultyList = this.getFacultyList(studentId.toString());
 		
 
 		for (Faculty faculty : facultyList) 
@@ -551,9 +664,13 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			{
 				String msg = "";
 				Set<Faculty> facultys = new HashSet<Faculty>();
+				Set<Guardian> guardians = new HashSet<Guardian>(); //DENIS 12/24/2014
 
 				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
 				facultys.add(faculty);
+				
+				Guardian guardian = Guardian.findGuardian(myView.getGuardianId());//DENIS 12/24/2014
+				guardians.add(guardian);
 
 				record.setLastUpdated(myView.getLastUpdated());
 				record.setCreatedDate(myView.getLastUpdated());
@@ -583,6 +700,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				record.setUserPassword(newpwd);
 				record.setFaculty(facultys);
 				record.setDob(myView.getDob());
+				record.setGuardians(guardians);//DENIS 12/24/2014
 				
 				if( this.isValidUserName(record.getUserName() ) == false )
 				{
@@ -757,6 +875,15 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				facultys.add(faculty);
 			}
 			
+			//DENIS 12/24/2014
+			List<StudentGuardian> studentGuardianList = this.getStudentGuardianList(myView.getStudentId().toString());
+			Set<Guardian> guardians = new HashSet<Guardian>();
+			for( StudentGuardian studentGuardian: studentGuardianList)
+			{
+				Guardian guardian = Guardian.findGuardian(studentGuardian.guardianId);
+				guardians.add(guardian);
+			}
+			
 			/*
 			//	Check to see if the given facultyId in the view is part of the student record.
 			//	If not, then add it.
@@ -786,6 +913,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setUserName(myView.getUserName());
 			record.setFaculty(facultys);
 			record.setDob(myView.getDob());
+			record.setGuardians(guardians);//DENIS 12/24/2014
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();

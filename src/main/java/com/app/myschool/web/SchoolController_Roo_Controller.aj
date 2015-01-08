@@ -3,6 +3,7 @@
 
 package com.app.myschool.web;
 
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.School;
 import com.app.myschool.model.Subject;
 import com.app.myschool.web.SchoolController;
@@ -97,6 +98,7 @@ privileged aspect SchoolController_Roo_Controller {
     void SchoolController.populateEditForm(Model uiModel, School school) {
         uiModel.addAttribute("school", school);
         addDateTimeFormatPatterns(uiModel);
+        uiModel.addAttribute("admins", Admin.findAllAdmins());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }
     

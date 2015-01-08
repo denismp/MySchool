@@ -309,6 +309,8 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 
 	onFacultyprofileformeditbuttonClick: function(button, e, eOpts) {
 		debugger;
+		if( this.userRole === 'ROLE_USER' )//DENIS 12/24/2014
+			return;
 
 		var myForm = this.getFacultyByStudentForm();
 		var myFields = myForm.getForm().getFields();
@@ -367,13 +369,13 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		var pItemId_ = p_.getItemId();
 		var field_;
 
-		if (pItemId_ == 'dailyhourstab') {
+		if (pItemId_ === 'dailyhourstab') { //DENIS 12/24/2014
 		    field_ = p_.down('numberfield');
 		} else {
 		    field_ = p_.down('textareafield');
 		}
 
-		if (b_.getText().charAt(0) == 'D') {
+		if (b_.getText().charAt(0) === 'D') {//DENIS 12/24/2014
 		    b_ = p_.down('#edit' + pItemId_);
 		    b_.setText('Edit');
 		    b_.setDisabled(false);
@@ -460,6 +462,24 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		for( var i = 0; i < myFields.length; i++ )
 		{
 		    myFields.items[i].disable();
+			var myItemId = myFields.items[i].itemId;
+			if( this.userRole === 'ROLE_USER'){ //DENIS 12/24/2014
+				if( myItemId !== 'faculty-firstname' && myItemId !== 'faculty-middlename' && myItemId !== 'faculty-lastname' && myItemId !== 'faculty-email'){
+					myFields.items[i].hide();
+				}
+
+			}
+
+		}
+
+
+		//DENIS 12/24/2014
+		var editButton = form.down('#facultyprofileformeditbutton');
+		if( this.userRole === 'ROLE_USER') {
+			editButton.disable();
+		}
+		else {
+			editButton.enable();
 		}
 		console.log('faculty.ByStudentController.loadForm(): completed');
 	},

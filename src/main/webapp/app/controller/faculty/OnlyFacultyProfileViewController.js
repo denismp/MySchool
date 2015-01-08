@@ -54,8 +54,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		var myGrid = this.getOnlyFacultyGridPanel();
 
 
-		if( this.userRole === 'ROLE_FACULTY')
-		{
+		if( this.userRole === 'ROLE_FACULTY'){
 			title = this.userName + '/' + this.userRole;
 
 
@@ -68,8 +67,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				}
 			});
 		}
-		else if( this.userRole === 'ROLE_ADMIN')
-		{
+		else if( this.userRole === 'ROLE_ADMIN'){
 			title = this.userName + '/' + this.userRole;
 
 
@@ -78,6 +76,18 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				callback: this.onMyJsonStoreLoad,
 				scope: this
 			});
+		}
+		else{
+			var myForm = this.getOnlyFacultyForm();
+			//DENIS 12/24/2014
+			var editButton = myForm.down('#onlyfacultyprofileformeditbutton');
+			if( this.userRole === 'ROLE_USER') {
+				editButton.disable();
+			}
+			else {
+				editButton.enable();
+			}
+
 		}
 
 	},
@@ -342,9 +352,16 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		form.loadRecord( selected[0] );
 
 		var myFields = form.getForm().getFields();
-		for( var i = 0; i < myFields.length; i++ )
-		{
+		for( var i = 0; i < myFields.length; i++ ){
 		    myFields.items[i].disable();
+		}
+		//DENIS 12/24/2014
+		var editButton = form.down('#onlyfacultyprofileformeditbutton');
+		if( this.userRole === 'ROLE_USER') {
+			editButton.disable();
+		}
+		else {
+			editButton.enable();
 		}
 		console.log('faculty.OnlyFacultyProfileViewController.loadForm(): completed');
 	},

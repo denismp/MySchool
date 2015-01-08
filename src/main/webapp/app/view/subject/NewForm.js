@@ -78,8 +78,8 @@ Ext.define('MySchool.view.subject.NewForm', {
 						},
 						{
 							xtype: 'subjectschoolnamecombobox',
-							anchor: '100%',
-							editable: false
+							editable: false,
+							anchor: '100%'
 						},
 						{
 							xtype: 'numberfield',

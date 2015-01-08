@@ -5,6 +5,7 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.GraduateTracking;
+import com.app.myschool.model.Guardian;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
@@ -34,6 +35,14 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setGraduateTracking(Set<GraduateTracking> graduateTracking) {
         this.graduateTracking = graduateTracking;
+    }
+    
+    public Set<Guardian> Student.getGuardians() {
+        return this.guardians;
+    }
+    
+    public void Student.setGuardians(Set<Guardian> guardians) {
+        this.guardians = guardians;
     }
     
     public Set<Faculty> Student.getFaculty() {

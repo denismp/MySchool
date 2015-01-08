@@ -26,9 +26,15 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.extjs.JsonPrettyPrint;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
+import com.app.myschool.model.Guardian;
 import com.app.myschool.model.School;
+import com.app.myschool.model.SchoolView;
+import com.app.myschool.model.Student;
+
+import flexjson.ObjectBinder;
 
 public class SchoolControllerHelper implements ControllerHelperInterface
 {
@@ -58,10 +64,10 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 		return ret_;
 	}
 
-	class MyComparator implements Comparator<School>
+	class MyComparator implements Comparator<SchoolView>
 	{
 		@Override
-		public int compare(School o1, School o2)
+		public int compare(SchoolView o1, SchoolView o2)
 		{
 			return o1.getName().compareTo(o2.getName());
 		}
@@ -94,6 +100,28 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 		}
 		return ret_;
 	}
+	
+	@SuppressWarnings("unchecked")
+	private List<School>getJustStudentSchoolList( String studentId ) throws Exception
+	{
+		List<School> rList = null;
+		EntityManager em = Guardian.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct s.*");
+		queryString.append(" from school s, quarter q, subject sj, student t");
+		queryString.append(" where s.id = sj.school");
+		queryString.append(" and sj.id = q.subject");
+		queryString.append(" and q.student = t.id ");
+
+		if( studentId != null )
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);	
+		}
+		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
+		rList = (List<School>)em.createNativeQuery(queryString.toString(), School.class).getResultList(); 
+
+		return rList;
+	}	
 
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Map params)
@@ -104,7 +132,7 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<School> records = null;
+		List<SchoolView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 
@@ -114,7 +142,7 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 
 		String userName = securityHelper.getUserName();
 		String role = securityHelper.getUserRole();
-
+		List<SchoolView> schoolViewList = new ArrayList<SchoolView>();
 		try
 		{
 			List<School> schools = null;
@@ -126,52 +154,54 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 			{
 				schools = School.findAllSchools();
 			}
+			else
+			{
+				Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
+				schools = this.getJustStudentSchoolList(student.getId().toString());
+			}
+
 			statusGood = true;
-			/*
-			List<FacultyView> facultyViewList = new ArrayList<FacultyView>();
-			//long i = 0;
+
+			long i = 0;
 			for (School school : schools)
 			{
 				statusGood = true;
 
-				FacultyView myView = new FacultyView();
-				myView.setId(faculty.getId());
-				myView.setFacultyId(faculty.getId());
-				myView.setFacultyviewid(faculty.getId());
-				myView.setVersion(faculty.getVersion());
-				myView.setLastUpdated(faculty.getLastUpdated());
-				myView.setWhoUpdated(faculty.getWhoUpdated());
-				myView.setDob(faculty.getDob());
+				SchoolView myView = new SchoolView();
+				myView.setId(i++);
+				myView.setSchoolviewId(i);
+				myView.setSchoolId(school.getId());
+				myView.setId(school.getId());
+				myView.setVersion(school.getVersion());
+				myView.setLastUpdated(school.getLastUpdated());
+				myView.setWhoUpdated(school.getWhoUpdated());
+				myView.setAddress1(school.getAddress1());
+				myView.setAddress2(school.getAddress2());
+				myView.setCity(school.getCity());
+				myView.setComments(school.getComments());
+				myView.setCountry(school.getCountry());
+				myView.setCreatedDate(school.getCreatedDate());
+				myView.setCustodianOfRecords(school.getCustodianOfRecords());
+				myView.setCustodianTitle(school.getCustodianTitle());
+				myView.setDistrict(school.getDistrict());
+				myView.setEmail(school.getEmail());
+				myView.setName(school.getName());
+				myView.setPhone1(school.getPhone1());
+				myView.setPhone2(school.getPhone2());
+				myView.setPostalCode(school.getPostalCode());
+				myView.setProvince(school.getProvince());
 
-				myView.setVersion(faculty.getVersion());
-				myView.setFacultyId(faculty.getId());
-				myView.setEmail(faculty.getEmail());
-				myView.setAddress1(faculty.getAddress1());
-				myView.setAddress2(faculty.getAddress2());
-				myView.setCity(faculty.getCity());
-				myView.setCountry(faculty.getCountry());
+				myView.setVersion(school.getVersion());
 
-				myView.setLastName(faculty.getLastName());
-				myView.setMiddleName(faculty.getMiddleName());
-				myView.setFirstName(faculty.getFirstName());
-				myView.setPostalCode(faculty.getPostalCode());
-				myView.setProvince(faculty.getProvince());
-				myView.setPhone1(faculty.getPhone1());
-				myView.setPhone2(faculty.getPhone2());
-				myView.setEnabled(faculty.getEnabled());
-				myView.setUserName(faculty.getUserName());
-				myView.setUserPassword("NOT DISPLAYED");
-
-				facultyViewList.add(myView);
+				schoolViewList.add(myView);
 			}
-			*/
 
 			//Collections.sort(facultyViewList, new MyComparator());
-			Collections.sort( schools, new MyComparator());
+			Collections.sort( schoolViewList, new MyComparator());
 
 			if (statusGood)
 			{
-				records = schools;
+				records = schoolViewList;
 
 				response.setMessage("All " + login() + " " + className
 						+ "s retrieved");
@@ -199,7 +229,8 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 		}
 
 		// Return retrieved object.
-		logger.info(response.toString());
+		String responseString = JsonPrettyPrint.getPrettyString(response);
+		logger.info("RESPONSE: " + responseString);
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}

@@ -526,6 +526,17 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		    console.log( 'loadTabPanelForm(): No form' );
 		    //console.log( tabPanel );
 		}
+
+		//editbodiesofworkwhattabpanel
+		//DENIS 12/24/2014
+		//var editButton = myForm.down('#editbodiesofworkwhattabpanel');
+		var editButton = myForm.items.items[0];
+		if( this.userRole === 'ROLE_USER') {
+			editButton.disable();
+		}
+		else {
+			editButton.enable();
+		}
 	},
 
 	blurHandler: function(o, event, eOpts) {
