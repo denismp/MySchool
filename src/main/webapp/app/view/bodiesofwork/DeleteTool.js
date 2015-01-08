@@ -17,6 +17,7 @@ Ext.define('MySchool.view.bodiesofwork.DeleteTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.bodiesofworkdeletetool',
 
+	disabled: true,
 	itemId: 'tooldeletebodiesofwork',
 	tooltip: 'Delete',
 	type: 'minus',

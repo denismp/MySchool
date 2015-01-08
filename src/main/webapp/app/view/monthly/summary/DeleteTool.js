@@ -17,6 +17,7 @@ Ext.define('MySchool.view.monthly.summary.DeleteTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.monthlysummarydeletetool',
 
+	disabled: true,
 	itemId: 'deletemonthlysummariestool',
 	tooltip: 'Delete',
 	type: 'minus',

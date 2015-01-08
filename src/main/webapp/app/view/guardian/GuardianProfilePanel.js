@@ -66,11 +66,13 @@ Ext.define('MySchool.view.guardian.GuardianProfilePanel', {
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyguardiandeletetool',
 					type: 'minus'
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyguardianlocktool',
 					type: 'pin'
 				}

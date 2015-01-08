@@ -17,6 +17,7 @@ Ext.define('MySchool.view.weekly.skills.LockTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.weeklyskillslocktool',
 
+	disabled: true,
 	itemId: 'weeklyskillslocktool',
 	tooltip: 'Lock?',
 	type: 'pin',

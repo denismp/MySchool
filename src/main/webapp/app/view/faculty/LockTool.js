@@ -17,6 +17,7 @@ Ext.define('MySchool.view.faculty.LockTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.facultylocktool',
 
+	disabled: true,
 	itemId: 'facultyprofilelocktool',
 	tooltip: 'Lock?',
 	type: 'pin',

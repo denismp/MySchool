@@ -17,6 +17,7 @@ Ext.define('MySchool.view.monthly.evaluation.LockTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.monthlyevaluationlocktool',
 
+	disabled: true,
 	itemId: 'monthlyevaluationlocktool',
 	tooltip: 'Lock?',
 	type: 'pin',

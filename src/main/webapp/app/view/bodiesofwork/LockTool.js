@@ -17,6 +17,7 @@ Ext.define('MySchool.view.bodiesofwork.LockTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.bodiesofworklocktool',
 
+	disabled: true,
 	itemId: 'toollockbodiesofwork',
 	tooltip: 'Lock?',
 	type: 'pin',

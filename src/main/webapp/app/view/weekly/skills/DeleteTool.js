@@ -17,6 +17,7 @@ Ext.define('MySchool.view.weekly.skills.DeleteTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.weeklyskillsdeletetool',
 
+	disabled: true,
 	itemId: 'weeklyskillsdeletetool',
 	tooltip: 'Delete',
 	type: 'minus',

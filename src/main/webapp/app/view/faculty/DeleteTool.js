@@ -17,6 +17,7 @@ Ext.define('MySchool.view.faculty.DeleteTool', {
 	extend: 'Ext.panel.Tool',
 	alias: 'widget.facultydeletetool',
 
+	disabled: true,
 	itemId: 'facultyprofiledeletetool',
 	tooltip: 'Delete',
 	type: 'minus',

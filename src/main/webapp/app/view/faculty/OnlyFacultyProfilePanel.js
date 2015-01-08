@@ -78,6 +78,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyfacultydeletetool',
 					type: 'minus',
 					listeners: {
@@ -89,6 +90,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyfacultylocktool',
 					type: 'pin',
 					listeners: {

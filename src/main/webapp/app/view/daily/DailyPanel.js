@@ -64,10 +64,12 @@ Ext.define('MySchool.view.daily.DailyPanel', {
 					xtype: 'dailysavetool'
 				},
 				{
-					xtype: 'dailydeletetool'
+					xtype: 'dailydeletetool',
+					disabled: true
 				},
 				{
-					xtype: 'dailylocktool'
+					xtype: 'dailylocktool',
+					disabled: true
 				}
 			]
 		});
