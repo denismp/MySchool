@@ -79,7 +79,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		List<Guardian> rList = null;
 		EntityManager em = Guardian.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct g.*");
-		queryString.append(" from guardian g, student_guardians gs, student t");
+		queryString.append(" from guardian g, guardian_students gs, student t");
 		queryString.append(" where gs.students = t.id");
 		queryString.append(" and gs.guardians = g.id");
 		//queryString.append(" and q.student = t.id");
@@ -123,7 +123,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		List<Guardian> rList = null;
 		EntityManager em = Guardian.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct g.*");
-		queryString.append(" from guardian g, student_guardians gs, subject s, quarter q, student t");
+		queryString.append(" from guardian g, guardian_students gs, subject s, quarter q, student t");
 		queryString.append(" where gs.students = t.id");
 		queryString.append(" and gs.guardians = g.id");
 		//queryString.append(" and q.student = t.id");
@@ -767,24 +767,30 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			//DENIS 12/24/2014
 			List<StudentGuardian> studentGuardianList = this.getStudentGuardianList(myView.getStudentId().toString());
 			Set<Student> students = new HashSet<Student>();
+			boolean found = false;
 			for( StudentGuardian studentGuardian: studentGuardianList)
 			{
 				Student student = Student.findStudent(studentGuardian.studentId);
 				students.add(student);
+				if( myView.getStudentUserName() != null && myView.getStudentUserName().equals("") == false )
+				{
+					if( Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult() != null )
+					{
+						found = true;
+					}
+				}
 			}
 			
-			/*
-			//	Check to see if the given facultyId in the view is part of the student record.
-			//	If not, then add it.
-			if( this.isNewFaculty(myView.getFacultyId(), studentList) == false )
+			if( !found && myView.getStudentUserName() != null && myView.getStudentUserName().equals("") == false )
 			{
-				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				facultys.add(faculty);
+				// The current update request has a student id that is not part of the relationship so we need to add it.
+				Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+				students.add(student);
 			}
-			*/
+			
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			record.setLastUpdated(new Date(System.currentTimeMillis()));
-			//record.setLastUpdated(myView.getLastUpdated());
+
 			record.setWhoUpdated(securityHelper.getUserName());
 			
 			record.setAddress1(myView.getAddress1());

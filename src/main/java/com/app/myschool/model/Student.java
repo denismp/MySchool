@@ -24,7 +24,7 @@ public class Student extends Person {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "student")
     private Set<GraduateTracking> graduateTracking = new HashSet<GraduateTracking>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students" )
     private Set<Guardian> guardians = new HashSet<Guardian>();
     
     @ManyToMany(cascade = CascadeType.ALL)

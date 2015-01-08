@@ -28,6 +28,6 @@ public class Guardian extends Person {
 	
 	private String description;
     
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "guardians")
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<Student>();
 }

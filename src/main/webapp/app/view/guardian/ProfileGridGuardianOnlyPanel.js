@@ -19,9 +19,11 @@ Ext.define('MySchool.view.guardian.ProfileGridGuardianOnlyPanel', {
 
 	requires: [
 		'Ext.grid.column.Number',
+		'Ext.form.field.Text',
 		'Ext.grid.column.CheckColumn',
 		'Ext.grid.column.Date',
-		'Ext.grid.View'
+		'Ext.grid.View',
+		'Ext.grid.plugin.CellEditing'
 	],
 
 	itemId: 'guardianonlygridpanel',
@@ -71,7 +73,11 @@ Ext.define('MySchool.view.guardian.ProfileGridGuardianOnlyPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'Student User Name'
+					text: 'Student User Name',
+					editor: {
+						xtype: 'textfield',
+						allowBlank: false
+					}
 				},
 				{
 					xtype: 'gridcolumn',
@@ -130,6 +136,11 @@ Ext.define('MySchool.view.guardian.ProfileGridGuardianOnlyPanel', {
 					dataIndex: 'dob',
 					text: 'dob'
 				}
+			],
+			plugins: [
+				Ext.create('Ext.grid.plugin.CellEditing', {
+
+				})
 			]
 		});
 

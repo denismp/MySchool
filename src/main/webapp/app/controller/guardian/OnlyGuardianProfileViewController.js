@@ -200,6 +200,22 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		this.saveOnlyGuardianProfileForm();
 	},
 
+	onOnlyfguardiansavetoolClick: function(tool, e, eOpts) {
+		window.console.log( "guardian.GuardianProfileStore.Save" );
+		debugger;
+
+		var mystore = Ext.getStore("guardian.GuardianProfileStore");
+
+		var records = mystore.getModifiedRecords();
+		for( var i = 0; i < records.length; i++ )
+		{
+		    records[i].set( 'lastUpdated', new Date() );
+		    records[i].set( 'whoUpdated', 'login');
+		}
+
+		mystore.sync();
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -304,6 +320,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			},
 			"#onlyguardianprofileformsavebutton": {
 				click: this.onOnlyguardianprofileformsavebuttonClick
+			},
+			"#onlyfguardiansavetool": {
+				click: this.onOnlyfguardiansavetoolClick
 			}
 		});
 	}
