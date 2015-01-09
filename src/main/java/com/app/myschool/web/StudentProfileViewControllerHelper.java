@@ -879,6 +879,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			}
 			
 			//DENIS 12/24/2014
+			// Get the list of guardians for the given student ID so that we can populate the student "record".
 			List<StudentGuardian> studentGuardianList = this.getStudentGuardianList(myView.getStudentId().toString());
 			Set<Guardian> guardians = new HashSet<Guardian>();
 			boolean found = false;
@@ -886,6 +887,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			{
 				Guardian guardian = Guardian.findGuardian(studentGuardian.guardianId);
 				guardians.add(guardian);
+				// Check to see if the currrent guardian user name is part of the student data.
 				if( myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
 				{
 					if( Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult() != null )
@@ -895,6 +897,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				}
 			}
 			
+			// Populate the student "record" with the retrieved data.
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setWhoUpdated(securityHelper.getUserName());
@@ -920,24 +923,30 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
 			
+			// Merge the data to the database record to persist it.
 			if( inSync && record.merge() != null ) {	
 				logger.info("Debug3");
 				myView.setVersion(record.getVersion());
 	        	updateGood = true;
 	        	//DENIS 12/24/2014
+	        	// Now check to see if we need to associate the guardian to the student.
 				if( !found && myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
 				{
 					// The current update request has a guardian id that is not part of the relationship so we need to add it.
 					Guardian guardian = Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult();
 					// Now do the guardian side
+					// We have to do this from the Guardian side of the many-to-many relationship between student and guardian
+					// because of the fact that the Guardian record is mapped by "students" in the model and therefore
+					// in order for the update to take affect, it must be done from the Guardian side.
 					if( guardian != null )
 					{
+						// Get the list of students for the found guardian with the guardian user name.
 						Set<Student> students = guardian.getStudents();
 						if( students != null )
 						{
-							students.add(record);
-							guardian.setStudents(students);
-							if( guardian.merge() != null )
+							students.add(record); // Add the current given student "record" to the list of students.
+							guardian.setStudents(students); // Add this list back into the current guardian.
+							if( guardian.merge() != null ) // persist it to the database.
 							{
 								updateGood = true;
 							}
