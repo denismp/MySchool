@@ -90,7 +90,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<Guardian> rList = null;
 		EntityManager em = Guardian.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct g.*");
-		queryString.append(" from guardian g, student_guardian gs, student t");
+		queryString.append(" from guardian g, guardian_students gs, student t");
 		queryString.append(" where gs.students = t.id");
 		queryString.append(" and gs.guardians = g.id");
 		//queryString.append(" and q.student = t.id");
@@ -101,6 +101,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			queryString.append(" and t.id = ");
 			queryString.append(studentId);	
 		}
+		
 		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
 		rList = (List<Guardian>)em.createNativeQuery(queryString.toString(), Guardian.class).getResultList(); 
 
@@ -134,7 +135,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		List<Guardian> rList = null;
 		EntityManager em = Guardian.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct g.*");
-		queryString.append(" from guardian g, student_guardians gs, subject s, quarter q, student t");
+		queryString.append(" from guardian g, guardian_students gs, subject s, quarter q, student t");
 		queryString.append(" where gs.students = t.id");
 		queryString.append(" and gs.guardians = g.id");
 		//queryString.append(" and q.student = t.id");
