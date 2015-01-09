@@ -861,6 +861,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
+			String msg = null;
 
 			logger.info("updateFromJson(): Debug just before call to StudentProfileView.fromJsonToStudentProfileView(myJson)");
 			myView = StudentProfileView.fromJsonToStudentProfileView(myJson);
@@ -870,6 +871,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			
 			List<StudentFaculty> studentList = this.getStudentFacultyList(myView.getStudentId().toString());
 			Set<Faculty> facultys = new HashSet<Faculty>();
+
 			for( StudentFaculty studentFaculty: studentList)
 			{
 				Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
@@ -879,21 +881,20 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			//DENIS 12/24/2014
 			List<StudentGuardian> studentGuardianList = this.getStudentGuardianList(myView.getStudentId().toString());
 			Set<Guardian> guardians = new HashSet<Guardian>();
+			boolean found = false;
 			for( StudentGuardian studentGuardian: studentGuardianList)
 			{
 				Guardian guardian = Guardian.findGuardian(studentGuardian.guardianId);
 				guardians.add(guardian);
+				if( myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
+				{
+					if( Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult() != null )
+					{
+						found = true;
+					}
+				}
 			}
 			
-			/*
-			//	Check to see if the given facultyId in the view is part of the student record.
-			//	If not, then add it.
-			if( this.isNewFaculty(myView.getFacultyId(), studentList) == false )
-			{
-				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				facultys.add(faculty);
-			}
-			*/
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			record.setLastUpdated(myView.getLastUpdated());
 			record.setWhoUpdated(securityHelper.getUserName());
@@ -923,6 +924,32 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				logger.info("Debug3");
 				myView.setVersion(record.getVersion());
 	        	updateGood = true;
+	        	//DENIS 12/24/2014
+				if( !found && myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
+				{
+					// The current update request has a guardian id that is not part of the relationship so we need to add it.
+					Guardian guardian = Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult();
+					// Now do the guardian side
+					if( guardian != null )
+					{
+						Set<Student> students = guardian.getStudents();
+						if( students != null )
+						{
+							students.add(record);
+							guardian.setStudents(students);
+							if( guardian.merge() != null )
+							{
+								updateGood = true;
+							}
+							else
+							{
+								updateGood = false;
+								msg = " Failed to update Guardian with students";
+							}
+						}
+					}
+				}
+
 		    }				
 			else {
 				statusGood = false;
@@ -937,7 +964,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			}
 			else if ( statusGood && !updateGood ) {
 				returnStatus = inSync ? HttpStatus.NOT_FOUND : HttpStatus.CONFLICT;
-				response.setMessage( className + " update failed." );
+				response.setMessage( className + " update failed." + msg );
 				response.setSuccess(false);
 				response.setTotal(0L);				
 			}
@@ -956,7 +983,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				returnStatus = HttpStatus.BAD_REQUEST;				
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) {
 			logger.info("Debug4");
 			logger.info(e.getMessage());
 			e.printStackTrace();
@@ -967,6 +995,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		}
 
 		// Return the updated myView
+		logger.info(response.toString());
         return new ResponseEntity<String>(response.toString(), headers, returnStatus);
 	}
 

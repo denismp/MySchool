@@ -216,6 +216,22 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		mystore.sync();
 	},
 
+	onOnlyguardiannewtoolClick: function(tool, e, eOpts) {
+		debugger;
+
+		var facultyStore = Ext.getStore('guardian.GuardianProfileStore');
+
+		if( this.userRole === 'ROLE_ADMIN'){
+			var newDialog = Ext.create( 'MySchool.view.guardian.NewDialog' );
+
+			window.console.log( 'New Guardian Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -323,6 +339,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			},
 			"#onlyfguardiansavetool": {
 				click: this.onOnlyfguardiansavetoolClick
+			},
+			"#onlyguardiannewtool": {
+				click: this.onOnlyguardiannewtoolClick
 			}
 		});
 	}

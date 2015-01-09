@@ -173,7 +173,9 @@ Ext.application({
 		'subject.SchoolNameComboBox',
 		'guardian.ProfileGridGuardianOnlyPanel',
 		'guardian.GuardianOnlyProfileForm',
-		'guardian.GuardianProfilePanel'
+		'guardian.GuardianProfilePanel',
+		'guardian.NewDialog',
+		'guardian.StudentNameComboBox'
 	],
 	controllers: [
 		'subject.SubjectsController',

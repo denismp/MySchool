@@ -138,8 +138,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 		var facultyStore = Ext.getStore('faculty.FacultyTableStore');
 
-		if( this.userRole === 'ROLE_ADMIN')
-		{
+		if( this.userRole === 'ROLE_ADMIN'){
 			var newDialog = Ext.create( 'MySchool.view.faculty.NewDialog' );
 
 			window.console.log( 'New Faculty Dialog' );

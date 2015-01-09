@@ -852,7 +852,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 				returnStatus = HttpStatus.BAD_REQUEST;				
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) {
 			logger.info("Debug4");
 			logger.info(e.getMessage());
 			e.printStackTrace();

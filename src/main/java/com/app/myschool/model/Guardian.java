@@ -17,7 +17,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString(excludeFields={"guardians"})
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findGuardiansByUserNameEquals" })
 @RooJson
 public class Guardian extends Person {
 	
