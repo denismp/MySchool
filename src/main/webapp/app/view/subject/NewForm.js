@@ -52,7 +52,6 @@ Ext.define('MySchool.view.subject.NewForm', {
 				{
 					xtype: 'fieldset',
 					height: 461,
-					title: 'My Fields',
 					items: [
 						{
 							xtype: 'textfield',

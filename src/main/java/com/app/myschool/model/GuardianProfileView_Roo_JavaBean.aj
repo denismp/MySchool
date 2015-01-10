@@ -208,6 +208,14 @@ privileged aspect GuardianProfileView_Roo_JavaBean {
         this.description = description;
     }
     
+    public Integer GuardianProfileView.getType() {
+        return this.type;
+    }
+    
+    public void GuardianProfileView.setType(Integer type) {
+        this.type = type;
+    }
+    
     public Integer GuardianProfileView.getVersion() {
         return this.version;
     }

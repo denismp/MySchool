@@ -254,6 +254,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 								myView.setWhoUpdated(guardian.getWhoUpdated());
 								myView.setStudentId(guardian.getId());
 								myView.setVersion(guardian.getVersion());
+								
+								myView.setType(guardian.getType());
 				
 								myView.setEmail(guardian.getEmail());
 								myView.setAddress1(guardian.getAddress1());
@@ -311,6 +313,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		
 							myView.setGuardianId(guardian.getId());
 							myView.setDescription(guardian.getDescription());
+							myView.setType(guardian.getType());
 													
 							guardianProfileViewList.add( myView );						
 						}
@@ -354,6 +357,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 								myView.setStudentId(singleStudent.getId());
 								myView.setGuardianId(guardian.getId());
 								myView.setDescription(guardian.getDescription());
+								myView.setType(guardian.getType());
 														
 								guardianProfileViewList.add( myView );	
 							}
@@ -548,125 +552,143 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			Student record = new Student();
+			Guardian record = new Guardian();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			StudentProfileView myView = StudentProfileView
-					.fromJsonToStudentProfileView(myJson);
+			GuardianProfileView myView = GuardianProfileView
+					.fromJsonToGuardianProfileView(myJson);
+			Guardian guardian = null;
 
-			List<Student> studentList = Student.findStudentsByUserNameEquals(
-					myView.getUserName()).getResultList();
-
-			if (studentList.size() == 0)
+			try
 			{
-				String msg = "";
-				Set<Faculty> facultys = new HashSet<Faculty>();
-				Set<Guardian> guardians = new HashSet<Guardian>(); //DENIS 12/24/2014
-
-				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				facultys.add(faculty);
+				guardian = Guardian.findGuardiansByUserNameEquals(myView.getUserName()).getSingleResult();
+			}
+			catch( Exception ge )
+			{
 				
-				Guardian guardian = Guardian.findGuardian(myView.getGuardianId());//DENIS 12/24/2014
-				guardians.add(guardian);
+			}
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			String userName = securityHelper.getUserName();
+			String userRole = securityHelper.getUserRole();
 
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
-
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				record.setWhoUpdated(securityHelper.getUserName());
-				
-				String plainText = myView.getUserPassword();
-
-				String newpwd = securityHelper.convertToSHA256(myView
-						.getUserPassword());
-
-				record.setAddress1(myView.getAddress1());
-				record.setAddress2(myView.getAddress2());
-				record.setCity(myView.getCity());
-				record.setCountry(myView.getCountry());
-				record.setEnabled(myView.getEnabled());
-				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
-				record.setPhone1(myView.getPhone1());
-				record.setPhone2(myView.getPhone2());
-				record.setPostalCode(myView.getPostalCode());
-				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(newpwd);
-				record.setFaculty(facultys);
-				record.setDob(myView.getDob());
-				record.setGuardians(guardians);//DENIS 12/24/2014
-				
-				if( this.isValidUserName(record.getUserName() ) == false )
+			if( userRole.equals("ROLE_USER") == false )
+			{
+				if (guardian == null)
 				{
-					msg = "Invalid user name.";
-					statusGood = false;
-				}
-				else if( this.isValidPassword( plainText ) == false )
-				{
-					statusGood = false;
-					msg = "Invalid password.";
-				}
-
-				if (statusGood)
-				{
-					((Student) record).persist();
-
-					myView.setVersion(record.getVersion());
-					myView.setId(record.getId());
-
-					myView.setId(100000L + record.getId());				
+					String msg = "";
+	
+					record.setLastUpdated(new Date(System.currentTimeMillis()));
+					record.setCreatedDate(new Date(System.currentTimeMillis()));
+	
+					record.setWhoUpdated(userName);
 					
-					myView.setStudentprofileviewId(100000L + record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setLastUpdated(record.getLastUpdated());
-					myView.setWhoUpdated(record.getWhoUpdated());
-					myView.setStudentId(record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setFacultyId(faculty.getId());
-					myView.setEmail(record.getEmail());
-					myView.setAddress1(record.getAddress1());
-					myView.setAddress2(record.getAddress2());
-					myView.setCity(record.getCity());
-					myView.setCountry(record.getCountry());
-					myView.setFacultyUserName(faculty.getUserName());
-					myView.setFacultyEmail(faculty.getEmail());
-					myView.setLastName(record.getLastName());
-					myView.setMiddleName(record.getMiddleName());
-					myView.setFirstName(record.getFirstName());
-					myView.setPostalCode(record.getPostalCode());
-					myView.setProvince(record.getProvince());
-					myView.setPhone1(record.getPhone1());
-					myView.setPhone2(record.getPhone2());
-					myView.setEnabled(record.getEnabled());
-					myView.setUserName(record.getUserName());
-					myView.setDob(record.getDob());
+					record.setAddress1(myView.getAddress1());
+					record.setAddress2(myView.getAddress2());
+					record.setCity(myView.getCity());
+					record.setCountry(myView.getCountry());
+					record.setEnabled(myView.getEnabled());
+					record.setEmail(myView.getEmail());
+					record.setFirstName(myView.getFirstName());
+					record.setMiddleName(myView.getMiddleName());
+					record.setLastName(myView.getLastName());
+					record.setPhone1(myView.getPhone1());
+					record.setPhone2(myView.getPhone2());
+					record.setPostalCode(myView.getPostalCode());
+					record.setProvince(myView.getProvince());
+					record.setUserName(myView.getUserName());
+					record.setUserPassword("none");
+					record.setEnabled(myView.getEnabled());
+					//record.setDescription(myView.getDescription());
+					record.setDob(myView.getDob());
+					record.setType(myView.getType());
+					int type = 0;
+					if( myView.getType() != null )
+					{
+						type = myView.getType().intValue();
+					}
+					switch (type)
+					{
+						case 0: record.setDescription( "Father");
+							break;
+						case 1: record.setDescription( "Mother" );
+							break;
+						case 2: record.setDescription( "Legal Guardian" );
+							break;
+						default: record.setDescription("Other");
+							break;					
+					}
 					
-					returnStatus = HttpStatus.CREATED;
-					response.setMessage(className + " created.");
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
+					if (statusGood)
+					{
+						((Guardian) record).persist();
+	
+						myView.setVersion(record.getVersion());
+						myView.setId(record.getId());
+	
+						myView.setId(100000L + record.getId());				
+						
+						myView.setGuardianprofileviewid(100000L + record.getId());
+	
+						myView.setVersion(record.getVersion());
+						myView.setLastUpdated(record.getLastUpdated());
+						myView.setWhoUpdated(record.getWhoUpdated());
+	
+						myView.setGuardianId(record.getId());
+						myView.setVersion(record.getVersion());
+	
+						myView.setEmail(record.getEmail());
+						myView.setAddress1(record.getAddress1());
+						myView.setAddress2(record.getAddress2());
+						myView.setCity(record.getCity());
+						myView.setCountry(record.getCountry());
+	
+						myView.setLastName(record.getLastName());
+						myView.setMiddleName(record.getMiddleName());
+						myView.setFirstName(record.getFirstName());
+						myView.setPostalCode(record.getPostalCode());
+						myView.setProvince(record.getProvince());
+						myView.setPhone1(record.getPhone1());
+						myView.setPhone2(record.getPhone2());
+						myView.setEnabled(record.getEnabled());
+						myView.setUserName(record.getUserName());
+						myView.setUserPassword("NOT DISPLAYED");
+						
+						myView.setDob(record.getDob());
+						myView.setType(record.getType());
+						myView.setDescription(record.getDescription());
+						
+						returnStatus = HttpStatus.CREATED;
+						response.setMessage(className + " created.");
+						response.setSuccess(true);
+						response.setTotal(1L);
+						response.setData(myView);
+					}
+					else
+					{
+						response.setMessage(className + " " + msg );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						//returnStatus = HttpStatus.CONFLICT;
+						returnStatus = HttpStatus.BAD_REQUEST;					
+					}
 				}
 				else
 				{
-					response.setMessage(className + " " + msg );
+					statusGood = false;
+					response.setMessage("Duplicated faculty/student attempted.");
 					response.setSuccess(false);
 					response.setTotal(0L);
-					//returnStatus = HttpStatus.CONFLICT;
-					returnStatus = HttpStatus.BAD_REQUEST;					
+					returnStatus = HttpStatus.CONFLICT;
+					// returnStatus = HttpStatus.BAD_REQUEST;
 				}
 			}
 			else
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty/student attempted.");
+				response.setMessage( "Operation not allowed for " + userRole );
 				response.setSuccess(false);
 				response.setTotal(0L);
-				returnStatus = HttpStatus.CONFLICT;
-				// returnStatus = HttpStatus.BAD_REQUEST;
+				returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
 		}
@@ -739,121 +761,157 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		}
 		return rVal;
 	}
+
 	@Override
-	public ResponseEntity<String> updateFromJson(String json) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-		
+	public ResponseEntity<String> updateFromJson(String json)
+	{
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json");
+
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
 
-		try {
-			logger.info( "updateFromJson(): Before decode() is " + json );
-			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
-			logger.info( "updateFromJson():myjson=" + myJson );
-			logger.info( "updateFromJson():Encoded JSON=" + json );
+		try
+		{
+			logger.info("updateFromJson(): Before decode() is " + json);
+			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""),
+					"UTF8");
+			logger.info("updateFromJson():myjson=" + myJson);
+			logger.info("updateFromJson():Encoded JSON=" + json);
 			GuardianProfileView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
 			boolean inSync = false;
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			String userName = securityHelper.getUserName();
+			String userRole = securityHelper.getUserRole();
 
-			logger.info("updateFromJson(): Debug just before call to GuardianProfileView.fromJsonToGuardianProfileView(myJson)");
-			myView = GuardianProfileView.fromJsonToGuardianProfileView(myJson);
-			//logger.info("Debug1");
-			logger.info("updateFromJson(): Student id=" + myView.getStudentId());
-			Guardian record = Guardian.findGuardian(myView.getGuardianId());
-						
-			//DENIS 12/24/2014
-			List<StudentGuardian> studentGuardianList = this.getStudentGuardianList(myView.getStudentId().toString());
-			Set<Student> students = new HashSet<Student>();
-			boolean found = false;
-			for( StudentGuardian studentGuardian: studentGuardianList)
+			if (userRole.equals("ROLE_USER") == false)
 			{
-				Student student = Student.findStudent(studentGuardian.studentId);
-				students.add(student);
-				if( myView.getStudentUserName() != null && myView.getStudentUserName().equals("") == false )
+				logger.info("updateFromJson(): Debug just before call to GuardianProfileView.fromJsonToGuardianProfileView(myJson)");
+				myView = GuardianProfileView
+						.fromJsonToGuardianProfileView(myJson);
+				// logger.info("Debug1");
+				logger.info("updateFromJson(): Student id="
+						+ myView.getStudentId());
+				Guardian record = Guardian.findGuardian(myView.getGuardianId());
+
+				// DENIS 12/24/2014
+				List<StudentGuardian> studentGuardianList = this
+						.getStudentGuardianList(myView.getStudentId()
+								.toString());
+				Set<Student> students = new HashSet<Student>();
+				boolean found = false;
+				for (StudentGuardian studentGuardian : studentGuardianList)
 				{
-					if( Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult() != null )
+					Student student = Student
+							.findStudent(studentGuardian.studentId);
+					students.add(student);
+					if (myView.getStudentUserName() != null
+							&& myView.getStudentUserName().equals("") == false)
 					{
-						found = true;
+						if (Student.findStudentsByUserNameEquals(
+								myView.getStudentUserName()).getSingleResult() != null)
+						{
+							found = true;
+						}
 					}
 				}
+
+				if (!found && myView.getStudentUserName() != null
+						&& myView.getStudentUserName().equals("") == false)
+				{
+					// The current update request has a student id that is not
+					// part of the relationship so we need to add it.
+					Student student = Student.findStudentsByUserNameEquals(
+							myView.getStudentUserName()).getSingleResult();
+					students.add(student);
+				}
+
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
+
+				record.setWhoUpdated(securityHelper.getUserName());
+
+				record.setAddress1(myView.getAddress1());
+				record.setAddress2(myView.getAddress2());
+				record.setCity(myView.getCity());
+				record.setCountry(myView.getCountry());
+				record.setEnabled(myView.getEnabled());
+				record.setEmail(myView.getEmail());
+				record.setFirstName(myView.getFirstName());
+				record.setMiddleName(myView.getMiddleName());
+				record.setLastName(myView.getLastName());
+				record.setPhone1(myView.getPhone1());
+				record.setPhone2(myView.getPhone2());
+				record.setPostalCode(myView.getPostalCode());
+				record.setProvince(myView.getProvince());
+				record.setUserName(myView.getUserName());
+				record.setDescription(myView.getDescription());
+				record.setStudents(students);// DENIS 12/24/2014
+				record.setType(myView.getType());
+
+				record.setDob(myView.getDob());
+
+				logger.info("Debug2");
+				inSync = record.getVersion() == myView.getVersion();
+
+				if (inSync && record.merge() != null)
+				{
+					logger.info("Debug3");
+					myView.setVersion(record.getVersion());
+					updateGood = true;
+				}
+				else
+				{
+					statusGood = false;
+				}
+				if (statusGood && updateGood)
+				{
+					returnStatus = HttpStatus.OK;
+					response.setMessage(className + " updated.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+				else if (statusGood && !updateGood)
+				{
+					returnStatus = inSync ? HttpStatus.NOT_FOUND
+							: HttpStatus.CONFLICT;
+					response.setMessage(className + " update failed.");
+					response.setSuccess(false);
+					response.setTotal(0L);
+				}
+				else if (!statusGood)
+				{
+					response.setMessage("Unsupported class=" + className);
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
+				}
+				else
+				{
+					response.setMessage("Unknown error state for class="
+							+ className);
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
+				}
 			}
-			
-			if( !found && myView.getStudentUserName() != null && myView.getStudentUserName().equals("") == false )
+			else
 			{
-				// The current update request has a student id that is not part of the relationship so we need to add it.
-				Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
-				students.add(student);
-			}
-			
-			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-			record.setLastUpdated(new Date(System.currentTimeMillis()));
-
-			record.setWhoUpdated(securityHelper.getUserName());
-			
-			record.setAddress1(myView.getAddress1());
-			record.setAddress2(myView.getAddress2());
-			record.setCity(myView.getCity());
-			record.setCountry(myView.getCountry());
-			record.setEnabled(myView.getEnabled());
-			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
-			record.setPhone1(myView.getPhone1());
-			record.setPhone2(myView.getPhone2());
-			record.setPostalCode(myView.getPostalCode());
-			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			record.setDescription(myView.getDescription());
-			record.setStudents(students);//DENIS 12/24/2014
-
-			record.setDob(myView.getDob());
-
-			logger.info("Debug2");
-			inSync = record.getVersion() == myView.getVersion();
-			
-			if( inSync && record.merge() != null ) {	
-				logger.info("Debug3");
-				myView.setVersion(record.getVersion());
-	        	updateGood = true;
-		    }				
-			else {
-				statusGood = false;
-			}
-			if( statusGood && updateGood )
-			{
-	            returnStatus = HttpStatus.OK;
-				response.setMessage( className + " updated." );
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);				
-			}
-			else if ( statusGood && !updateGood ) {
-				returnStatus = inSync ? HttpStatus.NOT_FOUND : HttpStatus.CONFLICT;
-				response.setMessage( className + " update failed." );
+				response.setMessage("Operation is not allowed for role " + userRole );
 				response.setSuccess(false);
-				response.setTotal(0L);				
-			}
-			else if ( !statusGood ) {
-				response.setMessage( "Unsupported class=" + className );
-				response.setSuccess(false);
-				response.setTotal(0L);	
+				response.setTotal(0L);
 				statusGood = false;
 				returnStatus = HttpStatus.BAD_REQUEST;
 			}
-			else {
-				response.setMessage( "Unknown error state for class=" + className );
-				response.setSuccess(false);
-				response.setTotal(0L);	
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;				
-			}
 
-		} 
-		catch(Exception e) {
+		}
+		catch (Exception e)
+		{
 			logger.info("Debug4");
 			logger.info(e.getMessage());
 			e.printStackTrace();
@@ -865,7 +923,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 
 		// Return the updated myView
 		logger.info(response.toString());
-        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
 	}
 	@Override
 	public ResponseEntity<String> updateFromJsonArray(String json)
@@ -879,52 +938,4 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-	/*
-	@Override
-	public ResponseEntity<String> jsonFindStudentsByUserNameEquals(String student) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json; charset=utf-8");
-        
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-		List<Student> records = null;
-		String className = this.myClass.getSimpleName();
-		boolean statusGood = true;
-		try {	
-			logger.info("GET");
-
-			records = Student.findStudentsByUserNameEquals(student).getResultList();
-
-			if( records == null )
-			{
-				response.setMessage( "No data for class=" + className );
-				response.setSuccess(false);
-				response.setTotal(0L);		
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-			
-			if( statusGood )
-			{
-				response.setMessage( "All " + className + "s retrieved");
-				response.setData( records );
-	
-				returnStatus = HttpStatus.OK;
-				response.setSuccess(true);
-				response.setTotal(records.size());
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
-
-		// Return retrieved object.
-        return new ResponseEntity<String>(response.toString(), headers, returnStatus);
-	}
-	*/
 }

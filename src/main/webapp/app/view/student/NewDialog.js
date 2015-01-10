@@ -26,7 +26,8 @@ Ext.define('MySchool.view.student.NewDialog', {
 		'Ext.button.Button'
 	],
 
-	height: 597,
+	draggable: false,
+	height: 590,
 	itemId: 'studentnewdialog',
 	width: 390,
 	title: 'New Student',
@@ -35,18 +36,19 @@ Ext.define('MySchool.view.student.NewDialog', {
 		var me = this;
 
 		Ext.applyIf(me, {
-			items: [
+			dockedItems: [
 				{
 					xtype: 'form',
-					draggable: true,
+					dock: 'top',
 					frame: true,
-					height: 557,
+					height: 526,
 					itemId: 'studentnewform',
 					width: 378,
 					bodyPadding: 10,
-					items: [
+					dockedItems: [
 						{
 							xtype: 'fieldset',
+							dock: 'top',
 							height: 478,
 							itemId: 'studentnewformfieldset',
 							padding: 5,
@@ -161,7 +163,9 @@ Ext.define('MySchool.view.student.NewDialog', {
 									name: 'password'
 								}
 							]
-						},
+						}
+					],
+					items: [
 						{
 							xtype: 'button',
 							itemId: 'studentcancel',

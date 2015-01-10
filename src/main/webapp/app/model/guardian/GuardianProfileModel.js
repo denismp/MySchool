@@ -37,6 +37,10 @@ Ext.define('MySchool.model.guardian.GuardianProfileModel', {
 			type: 'int'
 		},
 		{
+			name: 'type',
+			type: 'int'
+		},
+		{
 			name: 'email',
 			type: 'string'
 		},

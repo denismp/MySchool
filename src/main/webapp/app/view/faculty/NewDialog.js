@@ -32,18 +32,19 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 		var me = this;
 
 		Ext.applyIf(me, {
-			items: [
+			dockedItems: [
 				{
 					xtype: 'form',
-					draggable: true,
+					dock: 'top',
 					frame: true,
 					height: 508,
 					itemId: 'facultynewform',
 					width: 381,
 					bodyPadding: 10,
-					items: [
+					dockedItems: [
 						{
 							xtype: 'fieldset',
+							dock: 'top',
 							height: 445,
 							itemId: 'facultynewformfieldset',
 							padding: 5,
@@ -53,7 +54,13 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 									anchor: '100%',
 									itemId: 'newform_firstname',
 									fieldLabel: 'First Name',
-									name: 'firstname'
+									name: 'firstname',
+									listeners: {
+										boxready: {
+											fn: me.onNewform_firstnameBoxReady,
+											scope: me
+										}
+									}
 								},
 								{
 									xtype: 'textfield',
@@ -154,7 +161,9 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 									name: 'password'
 								}
 							]
-						},
+						}
+					],
+					items: [
 						{
 							xtype: 'button',
 							itemId: 'facultycancel',
@@ -171,6 +180,10 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	onNewform_firstnameBoxReady: function(component, width, height, eOpts) {
+		component.focus(false, 200);
 	}
 
 });

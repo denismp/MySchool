@@ -16,6 +16,10 @@
 Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 	extend: 'Ext.app.Controller',
 
+	stores: [
+		'guardian.GuardianTypeStore'
+	],
+
 	refs: [
 		{
 			ref: 'OnlyGuardianForm',
@@ -219,7 +223,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 	onOnlyguardiannewtoolClick: function(tool, e, eOpts) {
 		debugger;
 
-		var facultyStore = Ext.getStore('guardian.GuardianProfileStore');
+		var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
+		var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+		guardianTypesStore.myLoad();
 
 		if( this.userRole === 'ROLE_ADMIN'){
 			var newDialog = Ext.create( 'MySchool.view.guardian.NewDialog' );
@@ -229,6 +235,93 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			newDialog.render( Ext.getBody() );
 			newDialog.show();
 		}
+
+
+	},
+
+	onGuardiancancelClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel New Guardian" );
+		var myForm = button.up().getForm();
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
+	onGuardiansubmitClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit New Guardian" );
+		var myForm					= button.up().getForm();
+		var myPanel					= button.up();
+		var myGrid					= this.getOnlyGuardianGridPanel();
+
+		//Get the values from the form and insert a new record into the GuardianProfileStore.
+
+		var formValues				= myForm.getValues();
+
+		//	Create an empty record
+		var myRecord	= Ext.create('MySchool.model.guardian.GuardianProfileModel');
+
+		//	Get the stores that we will need
+
+		var firstname	= formValues.firstname;
+		var middlename	= formValues.middlename;
+		var lastname	= formValues.lastname;
+		var phone1		= formValues.phone1;
+		var phone2		= formValues.phone2;
+		var address1	= formValues.address1;
+		var address2	= formValues.address2;
+		var city		= formValues.city;
+		var state		= formValues.state;
+		var postalcode	= formValues.postalcode;
+		var country		= formValues.country;
+		var email		= formValues.email;
+		var username	= formValues.username;
+
+		var type		= formValues.combotype;
+
+		var dob			= formValues.dob;
+
+
+		var myStore		= this.getStore( 'guardian.GuardianProfileStore' );
+
+		//debugger;
+
+
+		myRecord.set( 'id', null );
+		//myRecord.set( 'version', null );
+
+		myRecord.set('whoUpdated', 'login');
+		myRecord.set('lastUpdated', new Date());
+		myRecord.set('email', email );
+		myRecord.set('firstName', firstname );
+		myRecord.set('middleName', middlename );
+		myRecord.set('lastName', lastname);
+		myRecord.set('phone1', phone1 );
+		myRecord.set('phone2', phone2 );
+		myRecord.set('address1', address1);
+		myRecord.set('address2', address2);
+		myRecord.set('city', city);
+		myRecord.set('province', state);
+		myRecord.set('postalCode',postalcode);
+		myRecord.set('country',country);
+		myRecord.set('userName',username);
+
+		myRecord.set('enabled', true);
+		myRecord.set('dob', dob);
+
+		myRecord.set('type', type);
+
+		//add to the store
+
+		myStore.add( myRecord );
+
+		//sync the store.
+		myStore.sync();
+
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
 
 	},
 
@@ -342,6 +435,12 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			},
 			"#onlyguardiannewtool": {
 				click: this.onOnlyguardiannewtoolClick
+			},
+			"#guardiancancel": {
+				click: this.onGuardiancancelClick
+			},
+			"#guardiansubmit": {
+				click: this.onGuardiansubmitClick
 			}
 		});
 	}

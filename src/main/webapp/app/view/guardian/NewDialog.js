@@ -17,14 +17,16 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 	extend: 'Ext.window.Window',
 
 	requires: [
+		'MySchool.view.guardian.GuardianTypesComboBox',
 		'Ext.form.Panel',
 		'Ext.form.FieldSet',
+		'Ext.form.field.ComboBox',
 		'Ext.form.field.Date',
 		'Ext.button.Button'
 	],
 
-	height: 523,
-	itemId: 'studentnewdialog',
+	height: 541,
+	itemId: 'guardiannewdialog',
 	width: 390,
 	title: 'New Guardian',
 
@@ -32,20 +34,20 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 		var me = this;
 
 		Ext.applyIf(me, {
-			items: [
+			dockedItems: [
 				{
 					xtype: 'form',
-					draggable: true,
-					frame: true,
-					height: 482,
-					itemId: 'studentnewform',
-					width: 380,
+					dock: 'top',
+					height: 503,
+					itemId: 'gaurdiannewform',
+					width: 390,
 					bodyPadding: 10,
-					items: [
+					dockedItems: [
 						{
 							xtype: 'fieldset',
-							height: 415,
-							itemId: 'studentnewformfieldset',
+							dock: 'top',
+							height: 445,
+							itemId: 'guardiannewformfieldset',
 							padding: 5,
 							items: [
 								{
@@ -53,7 +55,13 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 									anchor: '100%',
 									itemId: 'guardiannewform_username',
 									fieldLabel: 'User Name',
-									name: 'firstname'
+									name: 'username',
+									listeners: {
+										boxready: {
+											fn: me.onGuardiannewform_usernameBoxReady,
+											scope: me
+										}
+									}
 								},
 								{
 									xtype: 'textfield',
@@ -75,6 +83,10 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 									itemId: 'guardiannewform_lastname',
 									fieldLabel: 'Last Name',
 									name: 'lastname'
+								},
+								{
+									xtype: 'guardiantypescombobox',
+									anchor: '100%'
 								},
 								{
 									xtype: 'datefield',
@@ -147,7 +159,9 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 									name: 'email'
 								}
 							]
-						},
+						}
+					],
+					items: [
 						{
 							xtype: 'button',
 							itemId: 'guardiancancel',
@@ -164,6 +178,10 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	onGuardiannewform_usernameBoxReady: function(component, width, height, eOpts) {
+		component.focus(false, 200);
 	}
 
 });

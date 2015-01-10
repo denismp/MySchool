@@ -22,8 +22,8 @@
         <field:textarea field="userName" id="c_com_app_myschool_model_Guardian_userName" required="true" z="Wa7P7a2XJ2IOEj6X/Vq5iQ7uy5U="/>
         <field:textarea field="userPassword" id="c_com_app_myschool_model_Guardian_userPassword" required="true" z="dkeYsjzZ7KFc0ti2cK8iuwv3XiE="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_Guardian_enabled" z="3xQjmcQA+TghRY5XuUP4WbZIdes="/>
-        <field:input field="type" id="c_com_app_myschool_model_Guardian_type" max="2" min="0" required="true" z="/7sZDRY+IO8+BO+ocGuM9mVHtK0="/>
         <field:input field="description" id="c_com_app_myschool_model_Guardian_description" z="xhmYGpA1aUB+ZVOiCMSCfbar+5s="/>
         <field:select field="students" id="c_com_app_myschool_model_Guardian_students" itemValue="id" items="${students}" multiple="true" path="/students" z="vklzGi/fNmzA6wLJKt5tfoVcHJE="/>
+        <field:input field="type" id="c_com_app_myschool_model_Guardian_type" max="2" min="0" required="true" z="/7sZDRY+IO8+BO+ocGuM9mVHtK0="/>
     </form:update>
 </div>

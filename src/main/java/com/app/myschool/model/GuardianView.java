@@ -60,7 +60,8 @@ public class GuardianView {
 	
 	private String studentEmail;
 	
-	
+	private Integer type;
+		
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date dob;

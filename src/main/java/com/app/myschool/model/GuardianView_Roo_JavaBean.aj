@@ -192,6 +192,14 @@ privileged aspect GuardianView_Roo_JavaBean {
         this.studentEmail = studentEmail;
     }
     
+    public Integer GuardianView.getType() {
+        return this.type;
+    }
+    
+    public void GuardianView.setType(Integer type) {
+        this.type = type;
+    }
+    
     public Date GuardianView.getDob() {
         return this.dob;
     }

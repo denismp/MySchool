@@ -59,6 +59,8 @@ public class GuardianProfileView {
 	private String studentEmail;
 	
 	private String description;
+	
+	private Integer type;
 
 	
 	private Integer version;

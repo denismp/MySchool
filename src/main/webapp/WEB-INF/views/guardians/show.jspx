@@ -22,8 +22,8 @@
         <field:display field="userName" id="s_com_app_myschool_model_Guardian_userName" object="${guardian}" z="gTHCrc0DdTlFuym3Qz22JuXIPdw="/>
         <field:display field="userPassword" id="s_com_app_myschool_model_Guardian_userPassword" object="${guardian}" z="4GHYUiKML4yie2heiFYLNw8MYa4="/>
         <field:display field="enabled" id="s_com_app_myschool_model_Guardian_enabled" object="${guardian}" z="aBWeoYrvPftfdAetd6n1LW3Kiik="/>
-        <field:display field="type" id="s_com_app_myschool_model_Guardian_type" object="${guardian}" z="JPGna3Ch8kNYErhQoUdocy6CYX4="/>
         <field:display field="description" id="s_com_app_myschool_model_Guardian_description" object="${guardian}" z="WYLsUL/hK/VRXXgImLU1MsFpBAo="/>
         <field:display field="students" id="s_com_app_myschool_model_Guardian_students" object="${guardian}" z="TMAZLTooLmHm0t2LOm3nBlSW9OU="/>
+        <field:display field="type" id="s_com_app_myschool_model_Guardian_type" object="${guardian}" z="JPGna3Ch8kNYErhQoUdocy6CYX4="/>
     </page:show>
 </div>
