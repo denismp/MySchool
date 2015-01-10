@@ -60,7 +60,8 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsPanel', {
 					xtype: 'weeklyevaluationrefreshtool'
 				},
 				{
-					xtype: 'weeklyevaluationsearchtool'
+					xtype: 'weeklyevaluationsearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'weeklyevaluationnewtool'

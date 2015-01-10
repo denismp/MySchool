@@ -55,7 +55,8 @@ Ext.define('MySchool.view.monthly.evaluation.DetailsPanel', {
 					xtype: 'monthlyevaluationrefreshtool'
 				},
 				{
-					xtype: 'monthlyevaluationsearchtool'
+					xtype: 'monthlyevaluationsearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'monthlyevaluationnewtool'

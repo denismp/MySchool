@@ -55,7 +55,8 @@ Ext.define('MySchool.view.student.ProfilePanel', {
 					xtype: 'studentprofilerefreshtool'
 				},
 				{
-					xtype: 'studentprofilesearchtool'
+					xtype: 'studentprofilesearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'studentprofilenewtool'

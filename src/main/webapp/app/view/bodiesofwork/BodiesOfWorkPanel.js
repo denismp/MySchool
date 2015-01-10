@@ -55,7 +55,8 @@ Ext.define('MySchool.view.bodiesofwork.BodiesOfWorkPanel', {
 					xtype: 'bodiesofworkrefreshtool'
 				},
 				{
-					xtype: 'bodiesofworksearchtool'
+					xtype: 'bodiesofworksearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'bodiesofworknewtool'

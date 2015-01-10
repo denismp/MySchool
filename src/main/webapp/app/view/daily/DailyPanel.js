@@ -55,7 +55,8 @@ Ext.define('MySchool.view.daily.DailyPanel', {
 					xtype: 'dailyrefreshtool'
 				},
 				{
-					xtype: 'dailysearchtool'
+					xtype: 'dailysearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'dailynewtool'

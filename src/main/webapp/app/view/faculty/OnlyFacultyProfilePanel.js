@@ -51,6 +51,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyfacultysearchtool',
 					type: 'search',
 					listeners: {

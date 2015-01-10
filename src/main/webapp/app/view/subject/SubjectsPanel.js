@@ -57,7 +57,8 @@ Ext.define('MySchool.view.subject.SubjectsPanel', {
 					xtype: 'subjectrefreshtool'
 				},
 				{
-					xtype: 'subjectsearchtool'
+					xtype: 'subjectsearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'subjectnewtool'

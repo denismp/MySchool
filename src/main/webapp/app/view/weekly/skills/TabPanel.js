@@ -59,7 +59,8 @@ Ext.define('MySchool.view.weekly.skills.TabPanel', {
 					xtype: 'weeklyskillsrefreshtool'
 				},
 				{
-					xtype: 'weeklyskillssearchtool'
+					xtype: 'weeklyskillssearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'weeklyskillsnewtool'

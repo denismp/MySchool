@@ -55,7 +55,8 @@ Ext.define('MySchool.view.monthly.summary.DetailsPanel', {
 					xtype: 'monthlysummaryrefreshtool'
 				},
 				{
-					xtype: 'monthlysummarysearchtool'
+					xtype: 'monthlysummarysearchtool',
+					disabled: true
 				},
 				{
 					xtype: 'monthlysummarynewtool'

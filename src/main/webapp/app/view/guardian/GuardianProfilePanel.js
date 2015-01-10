@@ -51,6 +51,7 @@ Ext.define('MySchool.view.guardian.GuardianProfilePanel', {
 				},
 				{
 					xtype: 'tool',
+					disabled: true,
 					itemId: 'onlyguardiansearchtool',
 					type: 'search'
 				},
