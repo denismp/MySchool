@@ -80,5 +80,9 @@ public class SchoolView {
     
     private String studentUserName;
     
+    private Long adminId;
+    
+    private String adminUserName;
+    
 	private Integer version;
 }

@@ -128,8 +128,11 @@ public class ControllerHelper {
 					sv_.setSubjWhoUpdated(u_.getWhoUpdated());
 					//DENIS 12/24/2014
 					School school = u_.getSchool();
-					sv_.setSchoolId(school.getId());
-					sv_.setSchoolName(school.getName());
+					if( school != null )
+					{
+						sv_.setSchoolId(school.getId());
+						sv_.setSchoolName(school.getName());
+					}
 					svl_.add(sv_);
 				}
 				Collections.sort(svl_, new MyComparator());

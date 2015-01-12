@@ -20,7 +20,7 @@ import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findSchoolsByNameEquals" })
 @RooToString(excludeFields={"subjects"})
 
 @RooJson

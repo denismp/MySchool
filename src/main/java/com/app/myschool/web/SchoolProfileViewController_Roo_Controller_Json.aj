@@ -4,7 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.School;
-import com.app.myschool.web.SchoolController;
+import com.app.myschool.web.SchoolProfileViewController;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
-privileged aspect SchoolController_Roo_Controller_Json {
+privileged aspect SchoolProfileViewController_Roo_Controller_Json {
     
     @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> SchoolController.createFromJson(@RequestBody String json, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<String> SchoolProfileViewController.createFromJson(@RequestBody String json, UriComponentsBuilder uriBuilder) {
         School school = School.fromJsonToSchool(json);
         school.persist();
         HttpHeaders headers = new HttpHeaders();
@@ -30,7 +30,7 @@ privileged aspect SchoolController_Roo_Controller_Json {
     }
     
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> SchoolController.createFromJsonArray(@RequestBody String json) {
+    public ResponseEntity<String> SchoolProfileViewController.createFromJsonArray(@RequestBody String json) {
         for (School school: School.fromJsonArrayToSchools(json)) {
             school.persist();
         }
@@ -40,7 +40,7 @@ privileged aspect SchoolController_Roo_Controller_Json {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
-    public ResponseEntity<String> SchoolController.updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
+    public ResponseEntity<String> SchoolProfileViewController.updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         School school = School.fromJsonToSchool(json);
@@ -52,7 +52,7 @@ privileged aspect SchoolController_Roo_Controller_Json {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-    public ResponseEntity<String> SchoolController.deleteFromJson(@PathVariable("id") Long id) {
+    public ResponseEntity<String> SchoolProfileViewController.deleteFromJson(@PathVariable("id") Long id) {
         School school = School.findSchool(id);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -65,7 +65,7 @@ privileged aspect SchoolController_Roo_Controller_Json {
     
     @RequestMapping(params = "find=ByNameEquals", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> SchoolController.jsonFindSchoolsByNameEquals(@RequestParam("name") String name) {
+    public ResponseEntity<String> SchoolProfileViewController.jsonFindSchoolsByNameEquals(@RequestParam("name") String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         return new ResponseEntity<String>(School.toJsonArray(School.findSchoolsByNameEquals(name).getResultList()), headers, HttpStatus.OK);

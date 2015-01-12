@@ -40,7 +40,9 @@ Ext.application({
 		'security.SecurityModel',
 		'subject.SchoolsModel',
 		'guardian.GuardianProfileModel',
-		'guardian.GuardianTypeModel'
+		'guardian.GuardianTypeModel',
+		'school.SchoolProfileModel',
+		'admin.AdminProfileModel'
 	],
 	stores: [
 		'subject.SubjectStore',
@@ -65,7 +67,9 @@ Ext.application({
 		'security.SecurityStore',
 		'subject.SchoolsStore',
 		'guardian.GuardianProfileStore',
-		'guardian.GuardianTypeStore'
+		'guardian.GuardianTypeStore',
+		'school.SchoolProfileStore',
+		'admin.AdminProfileStore'
 	],
 	views: [
 		'MainPanel',
@@ -178,7 +182,13 @@ Ext.application({
 		'guardian.GuardianProfilePanel',
 		'guardian.StudentNameComboBox',
 		'guardian.NewDialog',
-		'guardian.GuardianTypesComboBox'
+		'guardian.GuardianTypesComboBox',
+		'school.ProfileForm',
+		'school.ProfileGridPanel',
+		'school.ProfilePanel',
+		'admin.AdminOnlyProfileForm',
+		'admin.ProfileGridAdminOnlyPanel',
+		'admin.AdminProfilePanel'
 	],
 	controllers: [
 		'subject.SubjectsController',

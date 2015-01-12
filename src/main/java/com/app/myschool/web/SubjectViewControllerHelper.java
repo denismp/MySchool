@@ -524,6 +524,13 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
 		} 
+		catch(java.lang.IndexOutOfBoundsException iobe )
+		{
+			response.setMessage("Please specify a valid student user name.");
+			response.setSuccess(false);
+			response.setTotal(0L);
+			returnStatus = HttpStatus.BAD_REQUEST;
+		}
 		catch(Exception e) 
 		{
 			e.printStackTrace();
@@ -628,8 +635,20 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			record.setObjectives(myView.getSubjObjectives());
 			//DENIS 12/24/2014
 			// Get the school record.
-			School school = School.findSchool(myView.getStudentId());
-			record.setSchool(school);
+			//School school = School.findSchool(myView.getStudentId());
+			//School school = School.
+			//record.setSchool(school);
+			School school = null;
+			
+			try
+			{
+				school = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+				record.setSchool(school);
+			}
+			catch( Exception nre )
+			{
+				logger.info("No school found for this record for school=" + myView.getSchoolName());
+			}
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getSubjVersion();

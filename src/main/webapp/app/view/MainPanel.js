@@ -28,6 +28,8 @@ Ext.define('MySchool.view.MainPanel', {
 		'MySchool.view.student.ProfilePanel',
 		'MySchool.view.faculty.OnlyFacultyProfilePanel',
 		'MySchool.view.guardian.GuardianProfilePanel',
+		'MySchool.view.school.ProfilePanel',
+		'MySchool.view.admin.AdminProfilePanel',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab'
 	],
@@ -178,6 +180,7 @@ Ext.define('MySchool.view.MainPanel', {
 							dockedItems: [
 								{
 									xtype: 'facultyprofilepanel',
+									title: 'Faculty By Student Profile Details',
 									dock: 'top'
 								}
 							]
@@ -214,6 +217,28 @@ Ext.define('MySchool.view.MainPanel', {
 								{
 									xtype: 'guardianguardianprofilepanel',
 									dock: 'top'
+								}
+							]
+						},
+						{
+							xtype: 'panel',
+							itemId: 'schoolprofiletab',
+							title: 'School Profiles',
+							items: [
+								{
+									xtype: 'schoolprofilepanel',
+									title: 'School Profile Details'
+								}
+							]
+						},
+						{
+							xtype: 'panel',
+							itemId: 'adminprofiletab',
+							title: 'Admin Profiles',
+							titleCollapse: false,
+							items: [
+								{
+									xtype: 'adminadminprofilepanel'
 								}
 							]
 						}

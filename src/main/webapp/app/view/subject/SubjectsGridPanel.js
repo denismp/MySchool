@@ -48,7 +48,6 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				},
 				{
 					xtype: 'numbercolumn',
-					hidden: true,
 					dataIndex: 'subjId',
 					text: 'subjId',
 					format: '000000'
@@ -87,7 +86,10 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'schoolName',
-					text: 'School Name'
+					text: 'School Name',
+					editor: {
+						xtype: 'textfield'
+					}
 				},
 				{
 					xtype: 'numbercolumn',
@@ -180,7 +182,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 			},
 			plugins: [
 				Ext.create('Ext.grid.plugin.CellEditing', {
-					clicksToEdit: 1
+
 				})
 			]
 		});

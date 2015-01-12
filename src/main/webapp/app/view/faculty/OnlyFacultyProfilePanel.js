@@ -27,7 +27,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 
 	itemId: 'facultyonlyprofilepanel',
 	layout: 'fit',
-	title: 'Faculty Profiles Details',
+	title: 'Faculty Profile Details',
 
 	initComponent: function() {
 		var me = this;

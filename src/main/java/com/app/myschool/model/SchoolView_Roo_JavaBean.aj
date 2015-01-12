@@ -216,6 +216,22 @@ privileged aspect SchoolView_Roo_JavaBean {
         this.studentUserName = studentUserName;
     }
     
+    public Long SchoolView.getAdminId() {
+        return this.adminId;
+    }
+    
+    public void SchoolView.setAdminId(Long adminId) {
+        this.adminId = adminId;
+    }
+    
+    public String SchoolView.getAdminUserName() {
+        return this.adminUserName;
+    }
+    
+    public void SchoolView.setAdminUserName(String adminUserName) {
+        this.adminUserName = adminUserName;
+    }
+    
     public Integer SchoolView.getVersion() {
         return this.version;
     }

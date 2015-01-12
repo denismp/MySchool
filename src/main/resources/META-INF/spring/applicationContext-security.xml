@@ -54,7 +54,9 @@
         
         <intercept-url pattern="/facultyviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
         <intercept-url pattern="/facultyviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
-               
+ 
+         <intercept-url pattern="/adminviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/adminviews/**" access="hasRole('ROLE_ADMIN')" />              
         
         <intercept-url pattern="/graduatetrackings" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/graduatetrackings/**" access="hasRole('ROLE_ADMIN')" />
@@ -70,7 +72,11 @@
         <intercept-url pattern="/previoustranscriptses/**" access="hasRole('ROLE_ADMIN')" />
         
         <intercept-url pattern="/schools" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY', 'ROLE_USER')" />
-        <intercept-url pattern="/schools/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY', 'ROLE_USER')" />        
+        <intercept-url pattern="/schools/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY', 'ROLE_USER')" />   
+        
+        <intercept-url pattern="/schoolprofileviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY', 'ROLE_USER')" />
+        <intercept-url pattern="/schoolprofileviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY', 'ROLE_USER')" />
+             
         
         <intercept-url pattern="/guardians" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/guardians/**" access="hasRole('ROLE_ADMIN')" />  
