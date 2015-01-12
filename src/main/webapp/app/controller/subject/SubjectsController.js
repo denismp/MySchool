@@ -45,6 +45,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		{
 			ref: 'subjectsForm',
 			selector: 'form'
+		},
+		{
+			ref: 'subjectsGrid',
+			selector: '#subjectsgrid'
 		}
 	],
 
@@ -102,6 +106,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		var mystore = Ext.getStore("subject.SubjectStore");
 		var myAllSubjStore = Ext.getStore("subject.AllSubjectStore");
+		myAllSubjStore.reload();
 		var mySchoolsStore = Ext.getStore("subject.SchoolsStore");
 		var subjAllEmpty_ = myAllSubjStore.getCount() < 1 ? true : false;
 		var mynamestore = Ext.getStore( "subject.QuarterNameStore" );
@@ -672,14 +677,16 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 	onViewReady: function(grid) {
 		grid.getSelectionModel().select( 0 );
+		this.schoolNameComboBox = null;
 
 	},
 
 	onSubjectsavetoolidClick: function(tool, e, eOpts) {
 		window.console.log( "Save" );
-		//debugger;
+		debugger;
 
 		var mystore = Ext.getStore("subject.SubjectStore");
+		var myGrid = this.getSubjectsGrid();
 
 		if( this.userRole === 'ROLE_USER' )
 		{
@@ -693,6 +700,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    records[i].set( 'qtrLastUpdated', new Date() );
 		    //records[i].set( 'quarter.lastUpdated', new Date() );
 		    records[i].set( 'qtrWhoUpdated', 'login');
+
 		    if( false )
 		    {
 		        var form = this.getSubjectsForm().getForm();

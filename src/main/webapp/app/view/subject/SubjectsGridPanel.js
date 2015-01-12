@@ -19,6 +19,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 
 	requires: [
 		'Ext.grid.column.Number',
+		'Ext.form.field.ComboBox',
 		'Ext.grid.column.CheckColumn',
 		'Ext.form.field.Checkbox',
 		'Ext.grid.View',
@@ -88,7 +89,12 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 					dataIndex: 'schoolName',
 					text: 'School Name',
 					editor: {
-						xtype: 'textfield'
+						xtype: 'combobox',
+						itemId: 'subjectgridschoolnamecombobox',
+						name: 'schoolname',
+						displayField: 'name',
+						store: 'subject.SchoolsStore',
+						valueField: 'name'
 					}
 				},
 				{

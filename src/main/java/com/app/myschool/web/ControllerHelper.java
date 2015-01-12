@@ -982,8 +982,20 @@ public class ControllerHelper {
 						subj_.setName(s_.getSubjName());
 						subj_.setWhoUpdated(s_.getSubjWhoUpdated());
 						//DENIS 12/24/2014
-						School school = School.findSchool(s_.getSchoolId());
-						subj_.setSchool(school);
+						//School school = School.findSchool(s_.getSchoolId());
+						//subj_.setSchool(school);
+						try
+						{
+							School school = School.findSchoolsByNameEquals(s_.getSchoolName()).getSingleResult();
+							if( school != null )
+							{
+								subj_.setSchool(school);
+							}
+						}
+						catch( Exception se )
+						{
+							
+						}
 	
 						if (subj_.merge() != null) {
 							s_.setSubjVersion(subj_.getVersion());
