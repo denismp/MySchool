@@ -42,7 +42,7 @@ Ext.define('MySchool.view.school.ProfileForm', {
 					itemId: 'school-name',
 					width: 300,
 					fieldLabel: 'School Name',
-					name: 'firstName'
+					name: 'name'
 				},
 				{
 					xtype: 'textfield',
@@ -128,7 +128,7 @@ Ext.define('MySchool.view.school.ProfileForm', {
 					itemId: 'school-district',
 					width: 300,
 					fieldLabel: 'District',
-					name: 'email'
+					name: 'district'
 				},
 				{
 					xtype: 'textfield',
@@ -138,7 +138,7 @@ Ext.define('MySchool.view.school.ProfileForm', {
 					width: 350,
 					fieldLabel: 'Custodian Of Records',
 					labelWidth: 150,
-					name: 'email'
+					name: 'custodianOfRecords'
 				},
 				{
 					xtype: 'textfield',
@@ -147,7 +147,7 @@ Ext.define('MySchool.view.school.ProfileForm', {
 					itemId: 'school-custodiantitle',
 					width: 300,
 					fieldLabel: 'Custodian Title',
-					name: 'email'
+					name: 'custodianTitle'
 				},
 				{
 					xtype: 'textareafield',

@@ -594,7 +594,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 	onSubjectspanelShow: function(component, eOpts) {
 		window.console.log("onSubjectpanelShow()...");
-		//debugger;
+		debugger;
 
 		this.userName = securityRecord.get('userName');
 		this.userRole = securityRecord.get('userRole');
@@ -602,6 +602,21 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		if( this.userRole !== 'USER_ROLE' ){
 			gaurdianTab.show();
 		}
+	},
+
+	onSubjecttabActivate: function(component, eOpts) {
+		debugger;
+		//subjectsgrid
+		// catch the tab activate but only reload if we have processed
+		// the viewready indicated by this.gridViewReady
+		console.log('#subjectsgrid.activate()');
+
+		if ( Ext.isDefined( this.gridViewReady  ) ) {
+		    var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+
+		    g_.getStore().reload();
+		}
+
 	},
 
 	init: function(application) {
@@ -671,6 +686,9 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 			},
 			"#subjectspanel": {
 				show: this.onSubjectspanelShow
+			},
+			"#subjecttab": {
+				activate: this.onSubjecttabActivate
 			}
 		});
 	},
@@ -903,6 +921,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		    g_.getSelectionModel().deselectAll();
 		    g_.getSelectionModel().select( 0 );
 		}
+		this.gridViewReady = true;
 	},
 
 	onAllSubjectStoreLoad: function() {

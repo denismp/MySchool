@@ -118,6 +118,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 	},
 
 	onBodiesofworkstabActivate: function(component, eOpts) {
+		debugger;
 		// catch the tab activate but only reload if we have processed
 		// the viewready indicated by this.gridViewReady
 		console.log('#bodiesofworkstab.activate()');

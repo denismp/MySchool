@@ -29,7 +29,7 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			type: 'int'
 		},
 		{
-			name: 'schooladminId',
+			name: 'adminId',
 			type: 'int'
 		},
 		{
@@ -45,7 +45,7 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			type: 'string'
 		},
 		{
-			name: 'schoolName',
+			name: 'name',
 			type: 'string'
 		},
 		{
@@ -121,6 +121,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 		{
 			name: 'subjectName',
 			type: 'string'
+		},
+		{
+			name: 'enabled',
+			type: 'boolean'
 		},
 		{
 			name: 'version',

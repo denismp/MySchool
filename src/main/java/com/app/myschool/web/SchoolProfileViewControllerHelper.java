@@ -4,13 +4,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -34,6 +37,7 @@ import com.app.myschool.model.Guardian;
 import com.app.myschool.model.School;
 import com.app.myschool.model.SchoolView;
 import com.app.myschool.model.Student;
+import com.app.myschool.model.Subject;
 
 import flexjson.ObjectBinder;
 
@@ -70,7 +74,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		@Override
 		public int compare(SchoolView o1, SchoolView o2)
 		{
-			return o1.getName().compareTo(o2.getName());
+			return o1.getSubjectName().compareTo(o2.getSubjectName());
 		}
 	}
 
@@ -102,6 +106,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		return ret_;
 	}
 	
+
 	@SuppressWarnings("unchecked")
 	private List<School>getJustStudentSchoolList( String studentId ) throws Exception
 	{
@@ -122,7 +127,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		rList = (List<School>)em.createNativeQuery(queryString.toString(), School.class).getResultList(); 
 
 		return rList;
-	}	
+	}
 
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Map params)
@@ -166,53 +171,98 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			long i = 0;
 			for (School school : schools)
 			{
-				statusGood = true;
-
-				SchoolView myView = new SchoolView();
-				myView.setId(i++);
-				myView.setSchoolviewId(i);
-				myView.setSchoolId(school.getId());
-				myView.setId(school.getId());
-				myView.setVersion(school.getVersion());
-				myView.setLastUpdated(school.getLastUpdated());
-				myView.setCreatedDate(school.getCreatedDate());
-				myView.setWhoUpdated(school.getWhoUpdated());
-				myView.setAddress1(school.getAddress1());
-				myView.setAddress2(school.getAddress2());
-				myView.setCity(school.getCity());
-				myView.setComments(school.getComments());
-				myView.setCountry(school.getCountry());
-				myView.setCreatedDate(school.getCreatedDate());
-				myView.setCustodianOfRecords(school.getCustodianOfRecords());
-				myView.setCustodianTitle(school.getCustodianTitle());
-				myView.setDistrict(school.getDistrict());
-				myView.setEmail(school.getEmail());
-				myView.setName(school.getName());
-				myView.setPhone1(school.getPhone1());
-				myView.setPhone2(school.getPhone2());
-				myView.setPostalCode(school.getPostalCode());
-				myView.setProvince(school.getProvince());
-				
-				Admin admin = school.getAdmin();
-				if( admin != null )
+				Set<Subject> subjects = school.getSubjects();
+				if( subjects != null )
 				{
-					myView.setAdminId(school.getAdmin().getId());
-					myView.setAdminUserName(school.getAdmin().getUserName());
+					for( Subject subject: subjects )
+					{
+						statusGood = true;
+
+						SchoolView myView = new SchoolView();
+						myView.setId(i);
+						myView.setSchoolviewId(i++);
+						myView.setSchoolId(school.getId());
+						//myView.setId(school.getId());
+						myView.setVersion(school.getVersion());
+						myView.setLastUpdated(school.getLastUpdated());
+						myView.setCreatedDate(school.getCreatedDate());
+						myView.setWhoUpdated(school.getWhoUpdated());
+						myView.setAddress1(school.getAddress1());
+						myView.setAddress2(school.getAddress2());
+						myView.setCity(school.getCity());
+						myView.setComments(school.getComments());
+						myView.setCountry(school.getCountry());
+						myView.setCreatedDate(school.getCreatedDate());
+						myView.setCustodianOfRecords(school.getCustodianOfRecords());
+						myView.setCustodianTitle(school.getCustodianTitle());
+						myView.setDistrict(school.getDistrict());
+						myView.setEmail(school.getEmail());
+						myView.setName(school.getName());
+						myView.setPhone1(school.getPhone1());
+						myView.setPhone2(school.getPhone2());
+						myView.setPostalCode(school.getPostalCode());
+						myView.setProvince(school.getProvince());
+						myView.setEnabled(school.getEnabled());
+						
+						Admin admin = school.getAdmin();
+						if( admin != null )
+						{
+							myView.setAdminId(admin.getId());
+							myView.setAdminUserName(admin.getUserName());
+							myView.setAdminEmail(admin.getEmail());
+						}
+						myView.setSubjectId(subject.getId());
+						myView.setSubjectName(subject.getName());
+		
+						myView.setVersion(school.getVersion());
+		
+						schoolViewList.add(myView);
+					}
 				}
-				/*
 				else
 				{
-					myView.setAdminId(null);
-					myView.setAdminUserName("");
+					statusGood = true;
+	
+					SchoolView myView = new SchoolView();
+					myView.setId(i);
+					myView.setSchoolviewId(i++);
+					myView.setSchoolId(school.getId());
+					//myView.setId(school.getId());
+					myView.setVersion(school.getVersion());
+					myView.setLastUpdated(school.getLastUpdated());
+					myView.setCreatedDate(school.getCreatedDate());
+					myView.setWhoUpdated(school.getWhoUpdated());
+					myView.setAddress1(school.getAddress1());
+					myView.setAddress2(school.getAddress2());
+					myView.setCity(school.getCity());
+					myView.setComments(school.getComments());
+					myView.setCountry(school.getCountry());
+					myView.setCreatedDate(school.getCreatedDate());
+					myView.setCustodianOfRecords(school.getCustodianOfRecords());
+					myView.setCustodianTitle(school.getCustodianTitle());
+					myView.setDistrict(school.getDistrict());
+					myView.setEmail(school.getEmail());
+					myView.setName(school.getName());
+					myView.setPhone1(school.getPhone1());
+					myView.setPhone2(school.getPhone2());
+					myView.setPostalCode(school.getPostalCode());
+					myView.setProvince(school.getProvince());
+					myView.setEnabled(school.getEnabled());
+					
+					Admin admin = school.getAdmin();
+					if( admin != null )
+					{
+						myView.setAdminId(admin.getId());
+						myView.setAdminUserName(admin.getUserName());
+						myView.setAdminEmail(admin.getEmail());
+					}
+	
+					myView.setVersion(school.getVersion());
+	
+					schoolViewList.add(myView);					
 				}
-				*/
-
-				myView.setVersion(school.getVersion());
-
-				schoolViewList.add(myView);
 			}
 
-			//Collections.sort(facultyViewList, new MyComparator());
 			Collections.sort( schoolViewList, new MyComparator());
 
 			if (statusGood)
@@ -320,69 +370,50 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			Faculty record = new Faculty();
+			School record = new School();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			FacultyView myView = FacultyView.fromJsonToFacultyView(myJson);
+			SchoolView myView = SchoolView.fromJsonToSchoolView(myJson);
 
-			Faculty faculty = null;
+			School school = null;
 			try
 			{
-				faculty = Faculty.findFacultysByUserNameEquals(
-					myView.getUserName()).getSingleResult();
+				school = School.findSchoolsByNameEquals(myView.getName()).getSingleResult();
 			}
 			catch( Exception nre )
 			{
-				logger.info("No duplicate for faculy userName=" + myView.getUserName() );
+				logger.info("No duplicate for school userName=" + myView.getName() );
 			}
 
-			if (faculty == null)
+			if (school == null)
 			{
 				String msg = "";
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
-				record.setDob(myView.getDob());
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
+				record.setCreatedDate(new Date(System.currentTimeMillis()));
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
 				
-				String plainText = myView.getUserPassword();
-
-				String newpwd = securityHelper.convertToSHA256(myView
-						.getUserPassword());
-
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
 				record.setCity(myView.getCity());
 				record.setCountry(myView.getCountry());
 				record.setEnabled(myView.getEnabled());
 				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
+				record.setName(myView.getName());
 				record.setPhone1(myView.getPhone1());
 				record.setPhone2(myView.getPhone2());
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(newpwd);
-				if( isValidUserName( record.getUserName() ) == false )
-				{
-					statusGood = false;
-					msg = "Invalid user name.";
-				}
-				else
-				{
-					if( isValidPassword( plainText ) == false )
-					{
-						statusGood = false;
-						msg = "Invalid passord";
-					}
-				}
+				record.setComments(myView.getComments());
+				record.setCustodianOfRecords(myView.getCustodianOfRecords());
+				record.setCustodianTitle(myView.getCustodianTitle());
+				record.setDistrict(myView.getDistrict());
+				record.setEnabled(true);
 
 				if (statusGood)
 				{
-					((Faculty) record).persist();
+					((School) record).persist();
 					
 					myView.setVersion(record.getVersion());
 					myView.setId(record.getId());
@@ -537,6 +568,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		// System.out.println("Hex format : " + sb.toString());
 		return sb.toString();
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public ResponseEntity<String> updateFromJson(String json)
 	{
@@ -553,7 +585,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 					"UTF8");
 			logger.info("updateFromJson():myjson=" + myJson);
 			logger.info("updateFromJson():Encoded JSON=" + json);
-			FacultyView myView = null;
+			SchoolView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
@@ -561,42 +593,27 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			boolean okToDo = false;
 			String msg = "update failed.";
 
-			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToFacultyView(myJson)");
-			myView = FacultyView.fromJsonToFacultyView(myJson);
+			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToSchoolView(myJson)");
+			myView = SchoolView.fromJsonToSchoolView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): Faculty id=" + myView.getId());
-			Faculty record = Faculty.findFaculty(myView.getId());
-
+			logger.info("updateFromJson(): School name=" + myView.getName());
+			//School record = School.findSchool(myView.getId());
+			// The user can select a school by name from the front end, so we need to search by name.
+			School record = School.findSchoolsByNameEquals(myView.getName()).getSingleResult();
+			logger.info("updateFromJson(): School id=" + record.getId());
+			Long requestedSchoolId = record.getId();
+			Long originalSchoolId = myView.getSchoolId();
+			
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			String userName = securityHelper.getUserName();
 			String userRole = securityHelper.getUserRole();
 			if( userRole.equals( "ROLE_ADMIN" ) )
 				okToDo = true;
-			else if( userRole.equals("ROLE_FACULTY") && userName.equals(myView.getUserName()))
+			else if( userRole.equals("ROLE_FACULTY"))
 				okToDo = true;
-			//else if( userName.equals(myView.getUserName()))
-			//{
-			//	okToDo = true;
-			//}
-			String plainText = myView.getUserPassword();
-			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
-			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )
-			{
-				// **********************************************
-				// Convert the given userPassword to sha 256.
-				// **********************************************
-				String pwd = convertToSHA256(myView.getUserPassword());
-				record.setUserPassword(pwd);
-			}
-			else if( plainText.equals("NOT DISPLAYED") == false )
-			{
-				statusGood = false;
-				msg = "Invalid password.";
-			}
 
 			record.setWhoUpdated(securityHelper.getUserName());
-			record.setLastUpdated(myView.getLastUpdated());
-			record.setDob(myView.getDob());
+			record.setLastUpdated(new Date(System.currentTimeMillis()));
 
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());
@@ -604,25 +621,52 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			record.setCountry(myView.getCountry());
 			record.setEnabled(myView.getEnabled());
 			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
+
 			record.setPhone1(myView.getPhone1());
 			record.setPhone2(myView.getPhone2());
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			// record.setFaculty(facultys);
-			// record.setStudents(students);
+			record.setName(myView.getName());
+			
+			record.setComments(myView.getComments());
+			record.setCustodianOfRecords(myView.getCustodianOfRecords());
+			record.setCustodianTitle(myView.getCustodianTitle());
+			record.setDistrict(myView.getDistrict());
+			record.setEnabled(myView.getEnabled());
+			
+			// The user can select an admin from the front end, so we need to look by name.
+			if( myView.getAdminUserName() != null && myView.getAdminUserName().equals("") == false )
+			{
+				Admin admin = Admin.findAdminsByUserNameEquals(myView.getAdminUserName()).getSingleResult();
+				if( admin != null )
+				{
+					record.setAdmin(admin);
+				}
+			}
+			if( requestedSchoolId != originalSchoolId ) // If the user requested a different school name than the original
+			{
+				// Set the given subject's school to requested 'record' for the update.
+				// So now the subject get's the requested school name.
+				Subject subject = Subject.findSubject(myView.getSubjectId());
+				subject.setSchool(record);
+				subject.setLastUpdated(record.getLastUpdated());
+				subject.setWhoUpdated(record.getWhoUpdated());
+				if( subject.merge() == null )
+				{
+					statusGood = false;
+					msg = "Failed update the subject with the requested school.";
+				}
+			}
 
 			if( okToDo && statusGood )
 			{
-				logger.info("Debug2");
-				inSync = record.getVersion() == myView.getVersion();
+				logger.info("Performing merge()");
+				//inSync = record.getVersion() == myView.getVersion();
 	
-				if (inSync && record.merge() != null)
+				//if (inSync && record.merge() != null)
+				if( record.merge() != null )
 				{
-					logger.info("Debug3");
+					logger.info("Merge succesful.");
 					myView.setVersion(record.getVersion());
 					updateGood = true;
 				}
@@ -708,55 +752,12 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		logger.debug("myjson=" + myJson);
 		logger.debug("Encoded JSON=" + json);
 		String className = this.myClass.getSimpleName();
-		boolean statusGood = false;
-		try
-		{
-			Collection<Faculty> mycollection = Faculty
-					.fromJsonArrayToFacultys(myJson);
-			List<Faculty> records = new ArrayList<Faculty>(mycollection);
 
-			for (Faculty record : Faculty.fromJsonArrayToFacultys(myJson))
-			{
+		returnStatus = HttpStatus.BAD_REQUEST;
+		response.setMessage("Update by array is not implemented for " + className );
+		response.setSuccess(false);
+		response.setTotal(0L);
 
-				if (record.merge() == null)
-				{
-					returnStatus = HttpStatus.NOT_FOUND;
-					response.setMessage(className + " update failed for id="
-							+ record.getId());
-					response.setSuccess(false);
-					response.setTotal(0L);
-					return new ResponseEntity<String>(response.toString(),
-							headers, returnStatus);
-				}
-			}
-			results = records;
-			statusGood = true;
-
-			if (statusGood)
-			{
-				returnStatus = HttpStatus.OK;
-				response.setMessage("All " + className + "s updated.");
-				response.setSuccess(true);
-				response.setTotal(results.size());
-				response.setData(results);
-			}
-			else
-			{
-				returnStatus = HttpStatus.BAD_REQUEST;
-				response.setMessage(className + " is not valid.");
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-
-		}
-		catch (Exception e)
-		{
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-
-		}
 
 		// Return the updated record(s)
 		return new ResponseEntity<String>(response.toString(), headers,
@@ -788,46 +789,13 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		logger.debug("myjson=" + myJson);
 		logger.debug("Encoded JSON=" + json);
 		String className = this.myClass.getSimpleName();
-		boolean statusGood = false;
-		List<?> results = null;
 
-		try
-		{
+		
+		returnStatus = HttpStatus.BAD_REQUEST;
+		response.setMessage("Create from array is implemented for " + className );
+		response.setSuccess(false);
+		response.setTotal(0L);
 
-			Collection<Faculty> mycollection = Faculty
-					.fromJsonArrayToFacultys(myJson);
-			List<Faculty> records = new ArrayList<Faculty>(mycollection);
-
-			for (Faculty record : Faculty.fromJsonArrayToFacultys(myJson))
-			{
-				record.persist();
-			}
-			results = records;
-			statusGood = true;
-
-			if (statusGood)
-			{
-				returnStatus = HttpStatus.CREATED;
-				response.setMessage("All " + className + "s updated.");
-				response.setSuccess(true);
-				response.setTotal(results.size());
-				response.setData(results);
-			}
-			else
-			{
-				returnStatus = HttpStatus.BAD_REQUEST;
-				response.setMessage(className + " is invalid.");
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-		}
-		catch (Exception e)
-		{
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
 		// Return the updated record(s)
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);

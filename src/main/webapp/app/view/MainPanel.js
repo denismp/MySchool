@@ -240,7 +240,13 @@ Ext.define('MySchool.view.MainPanel', {
 								{
 									xtype: 'adminadminprofilepanel'
 								}
-							]
+							],
+							listeners: {
+								activate: {
+									fn: me.onAdminprofiletabActivate,
+									scope: me
+								}
+							}
 						}
 					]
 				}
@@ -248,6 +254,10 @@ Ext.define('MySchool.view.MainPanel', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	onAdminprofiletabActivate: function(component, eOpts) {
+
 	}
 
 });

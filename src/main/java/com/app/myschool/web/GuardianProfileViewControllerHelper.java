@@ -815,6 +815,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 								myView.getStudentUserName()).getSingleResult() != null)
 						{
 							found = true;
+							break;
 						}
 					}
 				}

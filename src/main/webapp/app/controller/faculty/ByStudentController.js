@@ -360,6 +360,22 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		this.saveFacultyByStudentForm();
 	},
 
+	onFacultyprofilesbystudenttabActivate: function(component, eOpts) {
+		debugger;
+		//subjectsgrid
+		// catch the tab activate but only reload if we have processed
+		// the viewready indicated by this.gridViewReady
+		console.log('tab.activate()');
+
+		if ( Ext.isDefined( this.gridViewReady  ) ) {
+		    //var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+			var g_ = this.getFacultyByStudentGridPanel();
+
+		    g_.getStore().reload();
+		}
+
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -600,6 +616,9 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 			},
 			"#facultyprofileformsavebutton": {
 				click: this.onFacultyprofileformsavebuttonClick
+			},
+			"#facultyprofilesbystudenttab": {
+				activate: this.onFacultyprofilesbystudenttabActivate
 			}
 		});
 	}

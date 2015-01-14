@@ -95,6 +95,10 @@ public class School {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
     
+    //@NotNull
+    @Column(name="enabled", columnDefinition="true")
+    private Boolean enabled;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
     private Set<Subject> subjects = new HashSet<Subject>();
     

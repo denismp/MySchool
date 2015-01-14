@@ -1,9 +1,7 @@
 package com.app.myschool.web;
 import com.app.myschool.model.School;
-
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +21,17 @@ import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 @RooWebScaffold(path = "schools", formBackingObject = School.class)
 @RooWebJson(jsonObject = School.class)
 public class SchoolProfileViewController {
-	
-    @RequestMapping( value = "/json", headers = "Accept=application/json")
+
+
+	@RequestMapping(value = "/json", method = RequestMethod.POST, headers = "Accept=application/json")
+    public ResponseEntity<String> createFromJson(@RequestBody String json, UriComponentsBuilder uriBuilder) {
+    	SchoolProfileViewControllerHelper controllerHelper = new SchoolProfileViewControllerHelper();
+        return controllerHelper.createFromJson(json);
+   }
+
+	@RequestMapping(value = "/json", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<java.lang.String> listJson(@RequestParam Map<?, ?> params) {
-    //public ResponseEntity<java.lang.String> listJson() {
+    public ResponseEntity<String> listJson() {
         ResponseEntity<java.lang.String> ret_ = null;
         SchoolProfileViewControllerHelper controllerHelper = new SchoolProfileViewControllerHelper();
         ret_ = controllerHelper.listJson();
@@ -39,12 +43,11 @@ public class SchoolProfileViewController {
         }
         */
         return ret_;
-    }
+     }
 
-    @RequestMapping(value = "/json/{id}", headers = "Accept=application/json")
-    @ResponseBody
-    public ResponseEntity<java.lang.String> showJson(@PathVariable("id") Long id) {
+	@RequestMapping(value = "/json/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<String> updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
     	SchoolProfileViewControllerHelper controllerHelper = new SchoolProfileViewControllerHelper();
-        return controllerHelper.showJson(id);
+        return controllerHelper.updateFromJson(json);
     }
 }

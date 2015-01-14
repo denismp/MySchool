@@ -893,6 +893,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					if( Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult() != null )
 					{
 						found = true;
+						break;
 					}
 				}
 			}

@@ -55,38 +55,78 @@ Ext.define('MySchool.view.school.ProfilePanel', {
 					disabled: true,
 					itemId: 'schoolsearchtool',
 					tooltip: 'Search',
-					type: 'search'
+					type: 'search',
+					listeners: {
+						click: {
+							fn: me.onSchoolsearchtoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
 					itemId: 'schoolnewtool',
-					tooltip: 'Search',
-					type: 'plus'
+					tooltip: 'New',
+					type: 'plus',
+					listeners: {
+						click: {
+							fn: me.onSchoolnewtoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
 					itemId: 'schoolsavetool',
-					tooltip: 'Search',
+					tooltip: 'Save',
 					type: 'save'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'schooldeletetool',
-					tooltip: 'Search',
-					type: 'minus'
+					tooltip: 'Delete',
+					type: 'minus',
+					listeners: {
+						click: {
+							fn: me.onSchooldeletetoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'schoollocktool',
-					tooltip: 'Search',
-					type: 'pin'
+					tooltip: 'Lock',
+					type: 'pin',
+					listeners: {
+						click: {
+							fn: me.onSchoollocktoolClick,
+							scope: me
+						}
+					}
 				}
 			]
 		});
 
 		me.callParent(arguments);
+	},
+
+	onSchoolsearchtoolClick: function(tool, e, eOpts) {
+
+	},
+
+	onSchoolnewtoolClick: function(tool, e, eOpts) {
+
+	},
+
+	onSchooldeletetoolClick: function(tool, e, eOpts) {
+
+	},
+
+	onSchoollocktoolClick: function(tool, e, eOpts) {
+
 	}
 
 });

@@ -419,6 +419,22 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 	},
 
+	onStudentprofilestabActivate: function(component, eOpts) {
+		debugger;
+		//subjectsgrid
+		// catch the tab activate but only reload if we have processed
+		// the viewready indicated by this.gridViewReady
+		console.log('tab.activate()');
+
+		if ( Ext.isDefined( this.gridViewReady  ) ) {
+		    //var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+			var g_ = this.getStudentProfileGridPanel();
+
+		    g_.getStore().reload();
+		}
+
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -670,6 +686,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 			},
 			"#studentpasswordsubmitbutton": {
 				click: this.onStudentpasswordsubmitbuttonClick
+			},
+			"#studentprofilestab": {
+				activate: this.onStudentprofilestabActivate
 			}
 		});
 	}

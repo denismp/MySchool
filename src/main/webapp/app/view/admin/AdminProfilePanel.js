@@ -48,39 +48,46 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyadminrefreshtool',
+					tooltip: 'Refresh',
 					type: 'refresh'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyadminsearchtool',
+					tooltip: 'Search',
 					type: 'search'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyadminnewtool',
+					tooltip: 'New',
 					type: 'plus'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyadminsavetool',
+					tooltip: 'Save',
 					type: 'save'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyadmindeletetool',
+					tooltip: 'Delete',
 					type: 'minus'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyadminlocktool',
+					tooltip: 'Lock',
 					type: 'pin'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyadminpasswordtool',
+					tooltip: 'Password',
 					type: 'gear'
 				}
 			]

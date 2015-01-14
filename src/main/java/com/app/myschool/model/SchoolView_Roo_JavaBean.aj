@@ -232,6 +232,22 @@ privileged aspect SchoolView_Roo_JavaBean {
         this.adminUserName = adminUserName;
     }
     
+    public String SchoolView.getAdminEmail() {
+        return this.adminEmail;
+    }
+    
+    public void SchoolView.setAdminEmail(String adminEmail) {
+        this.adminEmail = adminEmail;
+    }
+    
+    public Boolean SchoolView.getEnabled() {
+        return this.enabled;
+    }
+    
+    public void SchoolView.setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    
     public Integer SchoolView.getVersion() {
         return this.version;
     }

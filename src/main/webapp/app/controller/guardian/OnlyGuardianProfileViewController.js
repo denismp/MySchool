@@ -103,6 +103,11 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	onOnlyguardianrefreshtoolClick: function(tool, e, eOpts) {
 		debugger;
+		var myStore = Ext.getStore('guardian.GuardianProfileStore');
+		myStore.reload();
+
+		if( false ){
+		//debugger;
 		console.log('onGuardianprofilerefreshtoolClick()');
 		var myStore = Ext.getStore('guardian.GuardianProfileStore');
 
@@ -148,6 +153,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 					studentName: this.userName
 				}
 			});
+		}
 		}
 
 	},
@@ -325,6 +331,22 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	},
 
+	onGuardianprofiletabActivate: function(component, eOpts) {
+		debugger;
+		//subjectsgrid
+		// catch the tab activate but only reload if we have processed
+		// the viewready indicated by this.gridViewReady
+		console.log('tab.activate()');
+
+		if ( Ext.isDefined( this.gridViewReady  ) ) {
+		    //var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+			var g_ = this.getOnlyGuardianGridPanel();
+
+		    g_.getStore().reload();
+		}
+
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -441,6 +463,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			},
 			"#guardiansubmit": {
 				click: this.onGuardiansubmitClick
+			},
+			"#guardianprofiletab": {
+				activate: this.onGuardianprofiletabActivate
 			}
 		});
 	}

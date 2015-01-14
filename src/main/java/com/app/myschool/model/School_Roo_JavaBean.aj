@@ -147,6 +147,14 @@ privileged aspect School_Roo_JavaBean {
         this.lastUpdated = lastUpdated;
     }
     
+    public Boolean School.getEnabled() {
+        return this.enabled;
+    }
+    
+    public void School.setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    
     public Set<Subject> School.getSubjects() {
         return this.subjects;
     }

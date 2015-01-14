@@ -84,5 +84,9 @@ public class SchoolView {
     
     private String adminUserName;
     
+    private String adminEmail;
+    
+    private Boolean enabled;
+    
 	private Integer version;
 }

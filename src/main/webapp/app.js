@@ -201,7 +201,8 @@ Ext.application({
 		'faculty.ByStudentController',
 		'student.ProfileViewController',
 		'faculty.OnlyFacultyProfileViewController',
-		'guardian.OnlyGuardianProfileViewController'
+		'guardian.OnlyGuardianProfileViewController',
+		'school.SchoolProfileViewController'
 	],
 	name: 'MySchool',
 

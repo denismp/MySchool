@@ -94,6 +94,11 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 	onOnlyfacultyrefreshtoolClick: function(tool, e, eOpts) {
 		debugger;
+		var myStore = Ext.getStore('faculty.FacultyTableStore');
+		myStore.reload();
+
+		if( false ){
+		debugger;
 		console.log('onFacultyprofilerefreshtoolClick()');
 		var myStore = Ext.getStore('faculty.FacultyTableStore');
 
@@ -129,6 +134,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				callback: this.onMyJsonStoreLoad,
 				scope: this
 			});
+		}
 		}
 
 	},
@@ -343,6 +349,22 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		button.up().up().up().hide();
 	},
 
+	onFacultyonlyprofilestabActivate: function(component, eOpts) {
+		debugger;
+		//subjectsgrid
+		// catch the tab activate but only reload if we have processed
+		// the viewready indicated by this.gridViewReady
+		console.log('tab.activate()');
+
+		if ( Ext.isDefined( this.gridViewReady  ) ) {
+		    //var g_ = Ext.ComponentQuery.query("#subjectsgrid")[0];
+			var g_ = this.getOnlyFacultyGridPanel();
+
+		    g_.getStore().reload();
+		}
+
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -472,6 +494,9 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 			},
 			"#facultypasswordsubmitbutton": {
 				click: this.onFacultypasswordsubmitbuttonClick
+			},
+			"#facultyonlyprofilestab": {
+				activate: this.onFacultyonlyprofilestabActivate
 			}
 		});
 	}

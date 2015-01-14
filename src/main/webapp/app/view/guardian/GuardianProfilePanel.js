@@ -47,28 +47,33 @@ Ext.define('MySchool.view.guardian.GuardianProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyguardianrefreshtool',
+					tooltip: 'Refresh',
 					type: 'refresh'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyguardiansearchtool',
+					tooltip: 'Search',
 					type: 'search'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyguardiannewtool',
+					tooltip: 'New',
 					type: 'plus'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyfguardiansavetool',
+					tooltip: 'Save',
 					type: 'save'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyguardiandeletetool',
+					tooltip: 'Delete',
 					type: 'minus'
 				},
 				{

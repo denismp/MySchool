@@ -19,9 +19,11 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 
 	requires: [
 		'Ext.grid.column.Number',
+		'Ext.form.field.ComboBox',
 		'Ext.grid.column.CheckColumn',
 		'Ext.grid.column.Date',
-		'Ext.grid.View'
+		'Ext.grid.View',
+		'Ext.grid.plugin.CellEditing'
 	],
 
 	itemId: 'schoolprofilesgridpanel',
@@ -68,21 +70,9 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				{
 					xtype: 'numbercolumn',
 					hidden: true,
-					dataIndex: 'qtrId',
-					text: 'termId',
+					dataIndex: 'adminId',
+					text: 'adminId',
 					format: '000000'
-				},
-				{
-					xtype: 'numbercolumn',
-					hidden: true,
-					dataIndex: 'facultyId',
-					text: 'facultyId',
-					format: '000000'
-				},
-				{
-					xtype: 'gridcolumn',
-					dataIndex: 'schoolName',
-					text: 'School Name'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -91,37 +81,20 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					hidden: true,
-					dataIndex: 'email',
-					text: 'School Email'
+					dataIndex: 'name',
+					text: 'School Name',
+					editor: {
+						xtype: 'combobox',
+						name: 'name',
+						displayField: 'name',
+						store: 'subject.SchoolsStore',
+						valueField: 'name'
+					}
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'adminUserName',
 					text: 'Admin User Name'
-				},
-				{
-					xtype: 'gridcolumn',
-					dataIndex: 'adminEmail',
-					text: 'Admin Email'
-				},
-				{
-					xtype: 'gridcolumn',
-					hidden: true,
-					dataIndex: 'comments',
-					text: 'Comments'
-				},
-				{
-					xtype: 'gridcolumn',
-					hidden: true,
-					dataIndex: 'custodianOfRecords',
-					text: 'Custodian Of Records'
-				},
-				{
-					xtype: 'gridcolumn',
-					hidden: true,
-					dataIndex: 'custodianTitle',
-					text: 'Title'
 				},
 				{
 					xtype: 'checkcolumn',
@@ -155,6 +128,11 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 					dataIndex: 'createdDate',
 					text: 'Created Date'
 				}
+			],
+			plugins: [
+				Ext.create('Ext.grid.plugin.CellEditing', {
+
+				})
 			]
 		});
 

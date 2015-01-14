@@ -21,5 +21,6 @@
         <field:display date="true" dateTimePattern="${school_createddate_date_format}" field="createdDate" id="s_com_app_myschool_model_School_createdDate" object="${school}" z="Mt4AaZgzcAZM5K7UB4ysIdkELDM="/>
         <field:display date="true" dateTimePattern="${school_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_School_lastUpdated" object="${school}" z="2IiMVPDgZ2aQ5CztIccb0dL730s="/>
         <field:display field="admin" id="s_com_app_myschool_model_School_admin" object="${school}" z="Gv7wkW3Cht4S9a63JNYuA9RE5aw="/>
+        <field:display field="enabled" id="s_com_app_myschool_model_School_enabled" object="${school}" z="ukk8bR3izDLi44nFtBjsn0kM7CA="/>
     </page:show>
 </div>
