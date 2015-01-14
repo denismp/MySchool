@@ -661,18 +661,36 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			if( okToDo && statusGood )
 			{
 				logger.info("Performing merge()");
-				//inSync = record.getVersion() == myView.getVersion();
-	
-				//if (inSync && record.merge() != null)
-				if( record.merge() != null )
+				if( requestedSchoolId != originalSchoolId )
 				{
-					logger.info("Merge succesful.");
-					myView.setVersion(record.getVersion());
-					updateGood = true;
+					//inSync = record.getVersion() == myView.getVersion();
+		
+					//if (inSync && record.merge() != null)
+					if( record.merge() != null )
+					{
+						logger.info("Merge succesful.");
+						myView.setVersion(record.getVersion());
+						updateGood = true;
+					}
+					else
+					{
+						statusGood = false;
+					}
 				}
 				else
 				{
-					statusGood = false;
+					inSync = record.getVersion() == myView.getVersion();
+					
+					if (inSync && record.merge() != null)
+					{
+						logger.info("Merge succesful.");
+						myView.setVersion(record.getVersion());
+						updateGood = true;
+					}
+					else
+					{
+						statusGood = false;
+					}					
 				}
 			}
 			if (statusGood && updateGood)
