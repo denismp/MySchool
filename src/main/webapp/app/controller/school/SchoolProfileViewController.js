@@ -242,6 +242,66 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 		button.up().up().close();
 	},
 
+	onSchooldeletetoolClick: function(button, e, eOpts) {
+
+	},
+
+	onSchoollocktoolClick: function(button, e, eOpts) {
+
+	},
+
+	onSchoolprofileformeditbuttonClick: function(button, e, eOpts) {
+		debugger;
+
+		var myForm = this.getSchoolProfileForm();
+		var myFields = myForm.getForm().getFields();
+		for( var i = 0; i < myFields.length; i++ )
+		{
+			myFields.items[i].enable();
+		}
+		//myForm.getForm().focus();studentprofileformeditbutton
+		var cancelButton	= button.up().down('#schoolprofileformcanelbutton');
+		var saveButton		= button.up().down('#schoolprofileformsavebutton');
+		cancelButton.enable();
+		saveButton.enable();
+		button.disable();
+
+	},
+
+	onSchoolprofileformcanelbuttonClick: function(button, e, eOpts) {
+		var myForm = this.getSchoolProfileForm();
+		var myFields = myForm.getForm().getFields();
+		for( var i = 0; i < myFields.length; i++ )
+		{
+			myFields.items[i].disable();
+		}
+		//myForm.getForm().focus();
+		//var cancelButton	= button.up().down('#schoolprofileformcanelbutton');
+		var saveButton		= button.up().down('#schoolprofileformsavebutton');
+		var editButton		= button.up().down('#schoolprofileformeditbutton');
+		editButton.enable();
+		saveButton.disable();
+		button.disable();
+	},
+
+	onSchoolprofileformsavebuttonClick: function(button, e, eOpts) {
+		debugger;
+		var myForm = this.getSchoolProfileForm();
+		var myFields = myForm.getForm().getFields();
+		for( var i = 0; i < myFields.length; i++ )
+		{
+			myFields.items[i].disable();
+		}
+		//myForm.getForm().focus();
+		var cancelButton	= button.up().down('#schoolprofileformcanelbutton');
+		//var saveButton		= button.up().down('#schoolprofileformsavebutton');
+		var editButton		= button.up().down('#schoolprofileformeditbutton');
+		editButton.enable();
+		cancelButton.disable();
+		button.disable();
+		this.saveProfileForm();
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -352,6 +412,21 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 			},
 			"#schoolcancel": {
 				click: this.onSchoolcancelClick
+			},
+			"#schooldeletetool": {
+				click: this.onSchooldeletetoolClick
+			},
+			"#schoollocktool": {
+				click: this.onSchoollocktoolClick
+			},
+			"#schoolprofileformeditbutton": {
+				click: this.onSchoolprofileformeditbuttonClick
+			},
+			"#schoolprofileformcanelbutton": {
+				click: this.onSchoolprofileformcanelbuttonClick
+			},
+			"#schoolprofileformsavebutton": {
+				click: this.onSchoolprofileformsavebuttonClick
 			}
 		});
 	}

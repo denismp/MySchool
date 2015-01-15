@@ -80,26 +80,14 @@ Ext.define('MySchool.view.school.ProfilePanel', {
 					disabled: true,
 					itemId: 'schooldeletetool',
 					tooltip: 'Delete',
-					type: 'minus',
-					listeners: {
-						click: {
-							fn: me.onSchooldeletetoolClick,
-							scope: me
-						}
-					}
+					type: 'minus'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'schoollocktool',
 					tooltip: 'Lock',
-					type: 'pin',
-					listeners: {
-						click: {
-							fn: me.onSchoollocktoolClick,
-							scope: me
-						}
-					}
+					type: 'pin'
 				}
 			]
 		});
@@ -108,14 +96,6 @@ Ext.define('MySchool.view.school.ProfilePanel', {
 	},
 
 	onSchoolsearchtoolClick: function(tool, e, eOpts) {
-
-	},
-
-	onSchooldeletetoolClick: function(tool, e, eOpts) {
-
-	},
-
-	onSchoollocktoolClick: function(tool, e, eOpts) {
 
 	}
 
