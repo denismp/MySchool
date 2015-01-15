@@ -188,7 +188,8 @@ Ext.application({
 		'school.ProfilePanel',
 		'admin.AdminOnlyProfileForm',
 		'admin.ProfileGridAdminOnlyPanel',
-		'admin.AdminProfilePanel'
+		'admin.AdminProfilePanel',
+		'school.NewDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',

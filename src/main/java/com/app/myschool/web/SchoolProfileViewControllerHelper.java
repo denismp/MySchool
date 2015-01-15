@@ -74,7 +74,25 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		@Override
 		public int compare(SchoolView o1, SchoolView o2)
 		{
-			return o1.getSubjectName().compareTo(o2.getSubjectName());
+			String name1 = null;
+			String name2 = null;
+			if( o1 != null && o1.getSubjectName() != null )
+				name1 = o1.getSubjectName();
+			if( o2 != null && o2.getSubjectName() != null )
+				name2 = o2.getSubjectName();
+			if( name1 != null && name2 != null )
+			{
+				return name1.compareTo(name2);
+			}
+			else
+			{
+				if( name1 == null && name2 != null)
+					return -1;
+				else if( name1 != null && name2 == null)
+					return 1;
+				else
+					return 0;
+			}
 		}
 	}
 
@@ -172,7 +190,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			for (School school : schools)
 			{
 				Set<Subject> subjects = school.getSubjects();
-				if( subjects != null )
+				if( subjects != null && subjects.isEmpty() == false )
 				{
 					for( Subject subject: subjects )
 					{

@@ -33,10 +33,10 @@ import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
 import com.app.myschool.model.School;
 
-public class AdminControllerHelper implements ControllerHelperInterface
+public class AdminViewControllerHelper implements ControllerHelperInterface
 {
 	private static final Logger logger = Logger
-			.getLogger(AdminControllerHelper.class);
+			.getLogger(AdminViewControllerHelper.class);
 	private Class<Admin> myClass = Admin.class;
 
 	@Override

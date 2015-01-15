@@ -141,6 +141,107 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 
 	},
 
+	onSchoolnewtoolClick: function() {
+		debugger;
+
+		//var schoolStore = Ext.getStore('school.SchoolProfileStore');
+		//var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+		//guardianTypesStore.myLoad();
+
+		if( this.userRole === 'ROLE_ADMIN'){
+			var newDialog = Ext.create( 'MySchool.view.school.NewDialog' );
+
+			window.console.log( 'New School Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+	},
+
+	onSchoolsubmitClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit New School" );
+		var myForm					= button.up().getForm();
+		var myPanel					= button.up();
+		var myGrid					= this.getSchoolGridPanel();
+
+		//Get the values from the form and insert a new record into the SchoolProfileStore.
+
+		var formValues				= myForm.getValues();
+
+		//	Create an empty record
+		var myRecord	= Ext.create('MySchool.model.school.SchoolProfileModel');
+
+		//	Get the stores that we will need
+
+		var schoolname	= formValues.name;
+		var district	= formValues.district;
+		var custodianofrecords	= formValues.custodianOfRecords;
+		var custodiantitle	= formValues.custodianTitle;
+		var phone1		= formValues.phone1;
+		var phone2		= formValues.phone2;
+		var address1	= formValues.address1;
+		var address2	= formValues.address2;
+		var city		= formValues.city;
+		var province	= formValues.province;
+		var postalcode	= formValues.postalcode;
+		var country		= formValues.country;
+		var email		= formValues.email;
+		var comments	= formValues.comments;
+		var adminUser	= formValues.adminUserName;
+
+
+		var myStore		= this.getStore( 'school.SchoolProfileStore' );
+
+		//debugger;
+
+
+		myRecord.set( 'id', null );
+		//myRecord.set( 'version', null );
+
+		myRecord.set('whoUpdated', 'login');
+		myRecord.set('lastUpdated', new Date());
+		myRecord.set('email', email );
+		myRecord.set('name', schoolname );
+		myRecord.set('district', district );
+		myRecord.set('comments', comments);
+		myRecord.set('phone1', phone1 );
+		myRecord.set('phone2', phone2 );
+		myRecord.set('address1', address1);
+		myRecord.set('address2', address2);
+		myRecord.set('city', city);
+		myRecord.set('province', province);
+		myRecord.set('postalCode',postalcode);
+		myRecord.set('country',country);
+		myRecord.set('custodianOfRecords',custodianofrecords);
+		myRecord.set('custodianTitle', custodiantitle);
+		myRecord.set('adminUserName', adminUser);
+
+		myRecord.set('enabled', true);
+
+
+		//add to the store
+
+		myStore.add( myRecord );
+
+		//sync the store.
+		myStore.sync();
+
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+
+	},
+
+	onSchoolcancelClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel New School" );
+		var myForm = button.up().getForm();
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -242,6 +343,15 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 			},
 			"#schoolprofiletab": {
 				activate: this.onSchoolprofiletabActivate
+			},
+			"#schoolnewtool": {
+				click: this.onSchoolnewtoolClick
+			},
+			"#schoolsubmit": {
+				click: this.onSchoolsubmitClick
+			},
+			"#schoolcancel": {
+				click: this.onSchoolcancelClick
 			}
 		});
 	}

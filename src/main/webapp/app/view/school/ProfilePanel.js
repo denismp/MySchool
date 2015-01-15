@@ -67,13 +67,7 @@ Ext.define('MySchool.view.school.ProfilePanel', {
 					xtype: 'tool',
 					itemId: 'schoolnewtool',
 					tooltip: 'New',
-					type: 'plus',
-					listeners: {
-						click: {
-							fn: me.onSchoolnewtoolClick,
-							scope: me
-						}
-					}
+					type: 'plus'
 				},
 				{
 					xtype: 'tool',
@@ -114,10 +108,6 @@ Ext.define('MySchool.view.school.ProfilePanel', {
 	},
 
 	onSchoolsearchtoolClick: function(tool, e, eOpts) {
-
-	},
-
-	onSchoolnewtoolClick: function(tool, e, eOpts) {
 
 	},
 

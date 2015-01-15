@@ -58,7 +58,8 @@ Ext.define('MySchool.view.faculty.ProfilePanel', {
 					disabled: true
 				},
 				{
-					xtype: 'facultynewtool'
+					xtype: 'facultynewtool',
+					disabled: true
 				},
 				{
 					xtype: 'facultysavetool'
