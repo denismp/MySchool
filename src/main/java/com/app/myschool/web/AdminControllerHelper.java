@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,23 +28,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
-import com.app.myschool.extjs.JsonPrettyPrint;
 import com.app.myschool.model.Admin;
+import com.app.myschool.model.AdminView;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
-import com.app.myschool.model.Guardian;
 import com.app.myschool.model.School;
-import com.app.myschool.model.SchoolView;
-import com.app.myschool.model.Student;
-import com.app.myschool.model.Subject;
 
-import flexjson.ObjectBinder;
-
-public class SchoolProfileViewControllerHelper implements ControllerHelperInterface
+public class AdminControllerHelper implements ControllerHelperInterface
 {
 	private static final Logger logger = Logger
-			.getLogger(SchoolProfileViewControllerHelper.class);
-	private Class<School> myClass = School.class;
+			.getLogger(AdminControllerHelper.class);
+	private Class<Admin> myClass = Admin.class;
 
 	@Override
 	public String getParam(@SuppressWarnings("rawtypes") Map m, String p)
@@ -69,30 +62,37 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		return ret_;
 	}
 
-	class MyComparator implements Comparator<SchoolView>
+	@SuppressWarnings("unchecked")
+	private List<Faculty> getList(String studentId) throws Exception
+	{
+		List<Faculty> rList = null;
+		EntityManager em = Faculty.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct f.*");
+		queryString
+				.append(" from faculty f, student_faculty fs, subject s, quarter q, student t");
+		queryString.append(" where fs.students = t.id");
+		queryString.append(" and fs.faculty = f.id");
+		queryString.append(" and q.student = t.id");
+		queryString.append(" and q.subject = s.id");
+
+		if (studentId != null)
+		{
+			queryString.append(" and t.id = ");
+			queryString.append(studentId);
+		}
+		// queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
+		rList = (List<Faculty>) em.createNativeQuery(queryString.toString(),
+				Faculty.class).getResultList();
+
+		return rList;
+	}
+
+	class MyComparator implements Comparator<AdminView>
 	{
 		@Override
-		public int compare(SchoolView o1, SchoolView o2)
+		public int compare(AdminView o1, AdminView o2)
 		{
-			String name1 = null;
-			String name2 = null;
-			if( o1 != null && o1.getSubjectName() != null )
-				name1 = o1.getSubjectName();
-			if( o2 != null && o2.getSubjectName() != null )
-				name2 = o2.getSubjectName();
-			if( name1 != null && name2 != null )
-			{
-				return name1.compareTo(name2);
-			}
-			else
-			{
-				if( name1 == null && name2 != null)
-					return -1;
-				else if( name1 != null && name2 == null)
-					return 1;
-				else
-					return 0;
-			}
+			return o1.getUserName().compareTo(o2.getUserName());
 		}
 	}
 
@@ -123,40 +123,17 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		}
 		return ret_;
 	}
-	
-
-	@SuppressWarnings("unchecked")
-	private List<School>getJustStudentSchoolList( String studentId ) throws Exception
-	{
-		List<School> rList = null;
-		EntityManager em = Guardian.entityManager();
-		StringBuilder queryString = new StringBuilder("select distinct s.*");
-		queryString.append(" from school s, quarter q, subject sj, student t");
-		queryString.append(" where s.id = sj.school");
-		queryString.append(" and sj.id = q.subject");
-		queryString.append(" and q.student = t.id ");
-
-		if( studentId != null )
-		{
-			queryString.append(" and t.id = ");
-			queryString.append(studentId);	
-		}
-		//queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
-		rList = (List<School>)em.createNativeQuery(queryString.toString(), School.class).getResultList(); 
-
-		return rList;
-	}
 
 	public ResponseEntity<String> listJson(
 			@SuppressWarnings("rawtypes") Map params)
 	{
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<School> myViewClass = School.class;
+		Class<AdminView> myViewClass = AdminView.class;
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		List<SchoolView> records = null;
+		List<AdminView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
 
@@ -166,126 +143,63 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 
 		String userName = securityHelper.getUserName();
 		String role = securityHelper.getUserRole();
-		List<SchoolView> schoolViewList = new ArrayList<SchoolView>();
+
 		try
 		{
-			List<School> schools = null;
+			List<Admin> admins = null;
 			if( role.equals("ROLE_ADMIN") )
 			{
-				schools = School.findAllSchools();				
+				admins = Admin.findAllAdmins();
 			}
-			else if( role.equals("ROLE_FACULTY"))
+			else if( role.equals("ROLE_SCHOOL"))
 			{
-				schools = School.findAllSchools();
+				admins = Admin.findAdminsByUserNameEquals(userName).getResultList();
 			}
-			else
+			
+			List<AdminView> adminViewList = new ArrayList<AdminView>();
+			Long i = 0L;
+
+			for (Admin admin : admins)
 			{
-				Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
-				schools = this.getJustStudentSchoolList(student.getId().toString());
-			}
+				statusGood = true;
+				
+				AdminView myView = new AdminView();
+				
+				myView.setAdminId(admin.getId());
+				myView.setId(i);
+				myView.setAdminviewId(i++);
 
-			statusGood = true;
+				myView.setVersion(admin.getVersion());
+				myView.setLastUpdated(admin.getLastUpdated());
+				myView.setWhoUpdated(admin.getWhoUpdated());
+				myView.setDob(admin.getDob());
 
-			long i = 0;
-			for (School school : schools)
-			{
-				Set<Subject> subjects = school.getSubjects();
-				if( subjects != null && subjects.isEmpty() == false )
-				{
-					for( Subject subject: subjects )
-					{
-						statusGood = true;
+				myView.setVersion(admin.getVersion());
+				myView.setEmail(admin.getEmail());
+				myView.setAddress1(admin.getAddress1());
+				myView.setAddress2(admin.getAddress2());
+				myView.setCity(admin.getCity());
+				myView.setCountry(admin.getCountry());
 
-						SchoolView myView = new SchoolView();
-						myView.setId(i);
-						myView.setSchoolviewId(i++);
-						myView.setSchoolId(school.getId());
-						//myView.setId(school.getId());
-						myView.setVersion(school.getVersion());
-						myView.setLastUpdated(school.getLastUpdated());
-						myView.setCreatedDate(school.getCreatedDate());
-						myView.setWhoUpdated(school.getWhoUpdated());
-						myView.setAddress1(school.getAddress1());
-						myView.setAddress2(school.getAddress2());
-						myView.setCity(school.getCity());
-						myView.setComments(school.getComments());
-						myView.setCountry(school.getCountry());
-						myView.setCreatedDate(school.getCreatedDate());
-						myView.setCustodianOfRecords(school.getCustodianOfRecords());
-						myView.setCustodianTitle(school.getCustodianTitle());
-						myView.setDistrict(school.getDistrict());
-						myView.setEmail(school.getEmail());
-						myView.setName(school.getName());
-						myView.setPhone1(school.getPhone1());
-						myView.setPhone2(school.getPhone2());
-						myView.setPostalCode(school.getPostalCode());
-						myView.setProvince(school.getProvince());
-						myView.setEnabled(school.getEnabled());
-						
-						Admin admin = school.getAdmin();
-						if( admin != null )
-						{
-							myView.setAdminId(admin.getId());
-							myView.setAdminUserName(admin.getUserName());
-							myView.setAdminEmail(admin.getEmail());
-						}
-						myView.setSubjectId(subject.getId());
-						myView.setSubjectName(subject.getName());
-		
-						myView.setVersion(school.getVersion());
-		
-						schoolViewList.add(myView);
-					}
+				myView.setLastName(admin.getLastName());
+				myView.setMiddleName(admin.getMiddleName());
+				myView.setFirstName(admin.getFirstName());
+				myView.setPostalCode(admin.getPostalCode());
+				myView.setProvince(admin.getProvince());
+				myView.setPhone1(admin.getPhone1());
+				myView.setPhone2(admin.getPhone2());
+				myView.setEnabled(admin.getEnabled());
+				myView.setUserName(admin.getUserName());
+				myView.setUserPassword("NOT DISPLAYED");
+
+				adminViewList.add(myView);					
 				}
-				else
-				{
-					statusGood = true;
-	
-					SchoolView myView = new SchoolView();
-					myView.setId(i);
-					myView.setSchoolviewId(i++);
-					myView.setSchoolId(school.getId());
-					//myView.setId(school.getId());
-					myView.setVersion(school.getVersion());
-					myView.setLastUpdated(school.getLastUpdated());
-					myView.setCreatedDate(school.getCreatedDate());
-					myView.setWhoUpdated(school.getWhoUpdated());
-					myView.setAddress1(school.getAddress1());
-					myView.setAddress2(school.getAddress2());
-					myView.setCity(school.getCity());
-					myView.setComments(school.getComments());
-					myView.setCountry(school.getCountry());
-					myView.setCreatedDate(school.getCreatedDate());
-					myView.setCustodianOfRecords(school.getCustodianOfRecords());
-					myView.setCustodianTitle(school.getCustodianTitle());
-					myView.setDistrict(school.getDistrict());
-					myView.setEmail(school.getEmail());
-					myView.setName(school.getName());
-					myView.setPhone1(school.getPhone1());
-					myView.setPhone2(school.getPhone2());
-					myView.setPostalCode(school.getPostalCode());
-					myView.setProvince(school.getProvince());
-					myView.setEnabled(school.getEnabled());
-					
-					Admin admin = school.getAdmin();
-					if( admin != null )
-					{
-						myView.setAdminId(admin.getId());
-						myView.setAdminUserName(admin.getUserName());
-						myView.setAdminEmail(admin.getEmail());
-					}
-	
-					myView.setVersion(school.getVersion());
-	
-					schoolViewList.add(myView);					
-				}
-			}
 
-			Collections.sort( schoolViewList, new MyComparator());
+			Collections.sort(adminViewList, new MyComparator());
 
 			if (statusGood)
 			{
-				records = schoolViewList;
+				records = adminViewList;
 
 				response.setMessage("All " + login() + " " + className
 						+ "s retrieved");
@@ -313,8 +227,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		}
 
 		// Return retrieved object.
-		String responseString = JsonPrettyPrint.getPrettyString(response);
-		logger.info("RESPONSE: " + responseString);
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
 	}
@@ -334,13 +247,12 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		School record = null;
+		Admin record = null;
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
 		try
 		{
 			logger.info("GET: " + id);
-			record = School.findSchool(id);
 			if (record == null)
 			{
 				response.setMessage("No data for class=" + className);
@@ -388,50 +300,69 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			School record = new School();
+			Admin record = new Admin();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			SchoolView myView = SchoolView.fromJsonToSchoolView(myJson);
+			AdminView myView = AdminView.fromJsonToAdminView(myJson);
 
-			School school = null;
+			Admin admin = null;
 			try
 			{
-				school = School.findSchoolsByNameEquals(myView.getName()).getSingleResult();
+				admin = Admin.findAdminsByUserNameEquals(
+					myView.getUserName()).getSingleResult();
 			}
 			catch( Exception nre )
 			{
-				logger.info("No duplicate for school userName=" + myView.getName() );
+				logger.info("No duplicate for admin userName=" + myView.getUserName() );
 			}
 
-			if (school == null)
+			if (admin == null)
 			{
 				String msg = "";
-				record.setLastUpdated(new Date(System.currentTimeMillis()));
-				record.setCreatedDate(new Date(System.currentTimeMillis()));
+				record.setLastUpdated(myView.getLastUpdated());
+				record.setCreatedDate(myView.getLastUpdated());
+				record.setDob(myView.getDob());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
 				
+				String plainText = myView.getUserPassword();
+
+				String newpwd = securityHelper.convertToSHA256(myView
+						.getUserPassword());
+
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
 				record.setCity(myView.getCity());
 				record.setCountry(myView.getCountry());
 				record.setEnabled(myView.getEnabled());
 				record.setEmail(myView.getEmail());
-				record.setName(myView.getName());
+				record.setFirstName(myView.getFirstName());
+				record.setMiddleName(myView.getMiddleName());
+				record.setLastName(myView.getLastName());
 				record.setPhone1(myView.getPhone1());
 				record.setPhone2(myView.getPhone2());
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
-				record.setComments(myView.getComments());
-				record.setCustodianOfRecords(myView.getCustodianOfRecords());
-				record.setCustodianTitle(myView.getCustodianTitle());
-				record.setDistrict(myView.getDistrict());
-				record.setEnabled(true);
+				record.setUserName(myView.getUserName());
+				record.setUserPassword(newpwd);
+				if( isValidUserName( record.getUserName() ) == false )
+				{
+					statusGood = false;
+					msg = "Invalid user name.";
+				}
+				else
+				{
+					if( isValidPassword( plainText ) == false )
+					{
+						statusGood = false;
+						msg = "Invalid passord";
+					}
+				}
 
 				if (statusGood)
 				{
-					((School) record).persist();
+					((Admin) record).persist();
 					
 					myView.setVersion(record.getVersion());
 					myView.setId(record.getId());
@@ -456,7 +387,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			else
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty attempted.");
+				response.setMessage("Duplicated admin attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -527,13 +458,13 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 
 		try
 		{
-			Faculty record = null;
+			Admin record = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 
-			record = Faculty.findFaculty(id);
+			record = Admin.findAdmin(id);
 			if (record != null)
-				((Faculty) record).remove();
+				((Admin) record).remove();
 
 			else
 			{
@@ -586,7 +517,6 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		// System.out.println("Hex format : " + sb.toString());
 		return sb.toString();
 	}
-	@SuppressWarnings("unchecked")
 	@Override
 	public ResponseEntity<String> updateFromJson(String json)
 	{
@@ -603,139 +533,168 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 					"UTF8");
 			logger.info("updateFromJson():myjson=" + myJson);
 			logger.info("updateFromJson():Encoded JSON=" + json);
-			SchoolView myView = null;
+			AdminView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
+			boolean updateGood = false;
 			boolean inSync = false;
 			boolean okToDo = false;
 			String msg = "update failed.";
 
-			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToSchoolView(myJson)");
-			myView = SchoolView.fromJsonToSchoolView(myJson);
+			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToAdminView(myJson)");
+			myView = AdminView.fromJsonToAdminView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): School name=" + myView.getName());
-			//School record = School.findSchool(myView.getId());
-			// The user can select a school by name from the front end, so we need to search by name.
-			School record = School.findSchoolsByNameEquals(myView.getName()).getSingleResult();
+			logger.info("updateFromJson(): Admin id=" + myView.getAdminId());
+			//Admin record = Admin.findAdmin(myView.getId());
+			Admin record = Admin.findAdminsByUserNameEquals(myView.getUserName()).getSingleResult();
 
-			Subject newSubject = null;
-			logger.info("updateFromJson(): School id=" + record.getId());
-			long requestedSchoolId = record.getId();
-			long originalSchoolId = myView.getSchoolId();
-			
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			String userName = securityHelper.getUserName();
 			String userRole = securityHelper.getUserRole();
 			if( userRole.equals( "ROLE_ADMIN" ) )
 				okToDo = true;
-			else if( userRole.equals("ROLE_FACULTY"))
+			else if( userRole.equals("ROLE_SCHOOL") && userName.equals(myView.getUserName()))
 				okToDo = true;
-
-			record.setWhoUpdated(securityHelper.getUserName());
-			record.setLastUpdated(new Date(System.currentTimeMillis()));
-
-			if( okToDo )
+			//else if( userName.equals(myView.getUserName()))
+			//{
+			//	okToDo = true;
+			//}
+			boolean pleasedo = false;
+			if( pleasedo )
 			{
-				if( requestedSchoolId != originalSchoolId ) // If the user requested a different school name than the original
+			String plainText = myView.getUserPassword();
+			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
+			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )
+			{
+				// **********************************************
+				// Convert the given userPassword to sha 256.
+				// **********************************************
+				String pwd = convertToSHA256(myView.getUserPassword());
+				record.setUserPassword(pwd);
+			}
+			else if( plainText.equals("NOT DISPLAYED") == false )
+			{
+				statusGood = false;
+				msg = "Invalid password.";
+			}
+			}
+
+			long viewAdminId = myView.getAdminId();
+			long recordAdminId = record.getId();
+			logger.info("viewAdminId=" + viewAdminId );
+			logger.info("recordAdminId=" + recordAdminId);
+			if( viewAdminId == recordAdminId )
+			{
+				Set<School> schools = record.getSchools();
+				record.setWhoUpdated(securityHelper.getUserName());
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
+				record.setDob(myView.getDob());
+	
+				record.setAddress1(myView.getAddress1());
+				record.setAddress2(myView.getAddress2());
+				record.setCity(myView.getCity());
+				record.setCountry(myView.getCountry());
+				record.setEnabled(myView.getEnabled());
+				record.setEmail(myView.getEmail());
+				record.setFirstName(myView.getFirstName());
+				record.setMiddleName(myView.getMiddleName());
+				record.setLastName(myView.getLastName());
+				record.setPhone1(myView.getPhone1());
+				record.setPhone2(myView.getPhone2());
+				record.setPostalCode(myView.getPostalCode());
+				record.setProvince(myView.getProvince());
+				record.setUserName(myView.getUserName());
+				record.setSchools(schools);
+				if( okToDo && statusGood )
 				{
-					// Set the given subject's school to requested 'record' for the update.
-					// So now the subject get's the requested school name.
-					Subject subject = Subject.findSubject(myView.getSubjectId());
-					subject.setSchool(record);
-					subject.setLastUpdated(record.getLastUpdated());
-					subject.setWhoUpdated(record.getWhoUpdated());
-					if( subject.merge() == null )
+					logger.info("Updating the admin record...");
+					inSync = record.getVersion() == myView.getVersion();
+		
+					if (inSync && record.merge() != null)
+					{
+						logger.info("Admin update successful.");
+						myView.setVersion(record.getVersion());
+						updateGood = true;					
+					}
+					else
 					{
 						statusGood = false;
-						msg = "Failed update the subject with the requested school.";
+						msg = "Update of admin record failed.";
 					}
+				}
+				if (statusGood && updateGood)
+				{
+					returnStatus = HttpStatus.OK;
+					response.setMessage(className + " updated.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+				else if (statusGood && !updateGood)
+				{
+					returnStatus = inSync ? HttpStatus.NOT_FOUND
+							: HttpStatus.CONFLICT;
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+				}
+				else if (!statusGood)
+				{
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
 				}
 				else
 				{
-					boolean subjectMerged = false;
-					String newSubjectName = myView.getSubjectName();
-					if( newSubjectName != null && newSubjectName.equals("") == false )
-					{
-						newSubject = Subject.findSubjectsByNameEquals(myView.getSubjectName()).getSingleResult();
-						if( newSubject.getId().longValue() != myView.getSubjectId().longValue() )
-						{
-							subjectMerged = true;
-							newSubject.setSchool(record);
-							if( newSubject.merge() == null )
-								statusGood = false;
-							else
-							{
-								logger.info("Merge succesful for subject.");
-								statusGood = true;
-							}
-						}
-					}
-					if( subjectMerged == false ) // This means that a new subject was not selected.
-					{
-						// The user can select an admin from the front end, so we need to look by name.
-						if( myView.getAdminUserName() != null && myView.getAdminUserName().equals("") == false )
-						{
-							Admin admin = Admin.findAdminsByUserNameEquals(myView.getAdminUserName()).getSingleResult();
-							if( admin != null )
-							{
-								record.setAdmin(admin);
-							}
-						}
-						
-						record.setAddress1(myView.getAddress1());
-						record.setAddress2(myView.getAddress2());
-						record.setCity(myView.getCity());
-						record.setCountry(myView.getCountry());
-						record.setEnabled(myView.getEnabled());
-						record.setEmail(myView.getEmail());
-		
-						record.setPhone1(myView.getPhone1());
-						record.setPhone2(myView.getPhone2());
-						record.setPostalCode(myView.getPostalCode());
-						record.setProvince(myView.getProvince());
-						record.setName(myView.getName());
-						
-						record.setComments(myView.getComments());
-						record.setCustodianOfRecords(myView.getCustodianOfRecords());
-						record.setCustodianTitle(myView.getCustodianTitle());
-						record.setDistrict(myView.getDistrict());
-						record.setEnabled(myView.getEnabled());
-						inSync = record.getVersion() == myView.getVersion();
-						
-						if (inSync && record.merge() != null)
-						{
-							logger.info("Merge succesful.");
-							myView.setVersion(record.getVersion());
-							statusGood = true;
-						}
-						else
-						{
-							statusGood = false;
-						}					
-					}
+					response.setMessage("Unknown error state for class="
+							+ className);
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
 				}
-			}
-
-			if (statusGood)
-			{
-				returnStatus = HttpStatus.OK;
-				response.setMessage(className + " updated.");
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);
 			}
 			else
 			{
-				response.setMessage(className + " " + msg );
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
+				// We are associating the current school to a different admin.
+				String schoolName = myView.getSchoolName();
+				if( schoolName != null && schoolName.equals("") == false )
+				{
+					School currentSchool = School.findSchoolsByNameEquals(schoolName).getSingleResult();
+					currentSchool.setAdmin(record);
+					if( currentSchool.merge() != null )
+					{
+						statusGood = true;
+						logger.info("Merge of school with new admin successful.");
+					}
+				}
+
+				if (statusGood)
+				{
+					logger.info("Update for requested admin successfull.");
+					returnStatus = HttpStatus.OK;
+					response.setMessage(className + " updated.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+				else
+				{
+					logger.info("Update for requested admin failed.");
+					msg = "Unable to set the admin to the requested school";
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;						
+				}
 			}
 		}
 		catch (Exception e)
 		{
-			logger.info("Debug4");
+			logger.info("Overall update failed.");
 			logger.info(e.getMessage());
 			e.printStackTrace();
 			response.setMessage(e.getMessage());
@@ -757,7 +716,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		headers.add("Content-Type", "application/json");
 
 		HttpStatus returnStatus = HttpStatus.OK;
-		List<Faculty> results = null;
+		List<Admin> results = null;
 		JsonObjectResponse response = new JsonObjectResponse();
 		String myJson = null;
 		try
@@ -777,11 +736,9 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		String className = this.myClass.getSimpleName();
 
 		returnStatus = HttpStatus.BAD_REQUEST;
-		response.setMessage("Update by array is not implemented for " + className );
+		response.setMessage(className + " update from array is not implemented.");
 		response.setSuccess(false);
 		response.setTotal(0L);
-
-
 		// Return the updated record(s)
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
@@ -813,9 +770,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		logger.debug("Encoded JSON=" + json);
 		String className = this.myClass.getSimpleName();
 
-		
 		returnStatus = HttpStatus.BAD_REQUEST;
-		response.setMessage("Create from array is implemented for " + className );
+		response.setMessage(className + " create from array is implemented.");
 		response.setSuccess(false);
 		response.setTotal(0L);
 

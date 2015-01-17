@@ -14,14 +14,21 @@
         <intercept-url pattern="/app.js" access="isAuthenticated()"/>
         <intercept-url pattern="/app/**" access="isAuthenticated()"/>
 
+        <intercept-url pattern="/adminpasswordviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/admins/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/adminviews/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/bodyofworkviews/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/dailys/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/evaluationratingses/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/facultybystudentviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/facultyviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/guardianprofileviews/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/monthlyevaluationratingses/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/monthlysummaryratingses/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/quarternameses/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/quarters/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/schoolprofileviews/json/**" access="isAuthenticated()" />
+        <intercept-url pattern="/schools/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/securityviews/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/skillratingses/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/studentpasswordviews/json/**" access="isAuthenticated()" />
@@ -29,7 +36,13 @@
         <intercept-url pattern="/students/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/subjects/json/**" access="isAuthenticated()" />
         <intercept-url pattern="/subjectviews/json/**" access="isAuthenticated()" />
-
+        
+        <intercept-url pattern="/adminviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/adminviews/**" access="hasRole('ROLE_ADMIN')" />              
+     
+        <intercept-url pattern="/adminpasswordviews" access="hasRole('ROLE_ADMIN')" />
+        <intercept-url pattern="/adminpasswordviews/**" access="hasRole('ROLE_ADMIN')" />
+ 
         <intercept-url pattern="/admins" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/admins/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/artifacts" access="hasRole('ROLE_ADMIN')" />
@@ -54,10 +67,7 @@
         
         <intercept-url pattern="/facultyviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
         <intercept-url pattern="/facultyviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
- 
-         <intercept-url pattern="/adminviews" access="hasRole('ROLE_ADMIN')" />
-        <intercept-url pattern="/adminviews/**" access="hasRole('ROLE_ADMIN')" />              
-        
+          
         <intercept-url pattern="/graduatetrackings" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/graduatetrackings/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/monthlyevaluationratingses" access="hasRole('ROLE_ADMIN')" />

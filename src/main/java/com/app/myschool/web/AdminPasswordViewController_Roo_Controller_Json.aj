@@ -4,7 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Admin;
-import com.app.myschool.web.AdminController;
+import com.app.myschool.web.AdminPasswordViewController;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.util.UriComponentsBuilder;
 
-privileged aspect AdminController_Roo_Controller_Json {
+privileged aspect AdminPasswordViewController_Roo_Controller_Json {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> AdminController.showJson(@PathVariable("id") Long id) {
+    public ResponseEntity<String> AdminPasswordViewController.showJson(@PathVariable("id") Long id) {
         Admin admin = Admin.findAdmin(id);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
@@ -30,19 +29,8 @@ privileged aspect AdminController_Roo_Controller_Json {
         return new ResponseEntity<String>(admin.toJson(), headers, HttpStatus.OK);
     }
     
-    @RequestMapping(method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> AdminController.createFromJson(@RequestBody String json, UriComponentsBuilder uriBuilder) {
-        Admin admin = Admin.fromJsonToAdmin(json);
-        admin.persist();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        RequestMapping a = (RequestMapping) getClass().getAnnotation(RequestMapping.class);
-        headers.add("Location",uriBuilder.path(a.value()[0]+"/"+admin.getId().toString()).build().toUriString());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
-    }
-    
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
-    public ResponseEntity<String> AdminController.createFromJsonArray(@RequestBody String json) {
+    public ResponseEntity<String> AdminPasswordViewController.createFromJsonArray(@RequestBody String json) {
         for (Admin admin: Admin.fromJsonArrayToAdmins(json)) {
             admin.persist();
         }
@@ -51,20 +39,8 @@ privileged aspect AdminController_Roo_Controller_Json {
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
-    public ResponseEntity<String> AdminController.updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/json");
-        Admin admin = Admin.fromJsonToAdmin(json);
-        admin.setId(id);
-        if (admin.merge() == null) {
-            return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<String>(headers, HttpStatus.OK);
-    }
-    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-    public ResponseEntity<String> AdminController.deleteFromJson(@PathVariable("id") Long id) {
+    public ResponseEntity<String> AdminPasswordViewController.deleteFromJson(@PathVariable("id") Long id) {
         Admin admin = Admin.findAdmin(id);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
@@ -77,7 +53,7 @@ privileged aspect AdminController_Roo_Controller_Json {
     
     @RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> AdminController.jsonFindAdminsByUserNameEquals(@RequestParam("userName") String userName) {
+    public ResponseEntity<String> AdminPasswordViewController.jsonFindAdminsByUserNameEquals(@RequestParam("userName") String userName) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
         return new ResponseEntity<String>(Admin.toJsonArray(Admin.findAdminsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);

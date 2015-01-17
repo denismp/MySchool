@@ -19,13 +19,13 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 
 	requires: [
 		'MySchool.view.admin.ProfileGridAdminOnlyPanel',
-		'MySchool.view.admin.AdminOnlyProfileForm',
+		'MySchool.view.admin.AdminProfileForm',
 		'Ext.grid.Panel',
 		'Ext.form.Panel',
 		'Ext.panel.Tool'
 	],
 
-	itemId: 'adminonlyprofilepanel',
+	itemId: 'adminprofilepanel',
 	layout: 'fit',
 	title: 'School Admin Profile Details',
 
@@ -41,7 +41,7 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 			],
 			items: [
 				{
-					xtype: 'adminadminonlyprofileform'
+					xtype: 'adminadminprofileform'
 				}
 			],
 			tools: [
@@ -56,7 +56,13 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 					disabled: true,
 					itemId: 'onlyadminsearchtool',
 					tooltip: 'Search',
-					type: 'search'
+					type: 'search',
+					listeners: {
+						click: {
+							fn: me.onOnlyadminsearchtoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
@@ -75,14 +81,26 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 					disabled: true,
 					itemId: 'onlyadmindeletetool',
 					tooltip: 'Delete',
-					type: 'minus'
+					type: 'minus',
+					listeners: {
+						click: {
+							fn: me.onOnlyadmindeletetoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyadminlocktool',
 					tooltip: 'Lock',
-					type: 'pin'
+					type: 'pin',
+					listeners: {
+						click: {
+							fn: me.onOnlyadminlocktoolClick,
+							scope: me
+						}
+					}
 				},
 				{
 					xtype: 'tool',
@@ -94,6 +112,18 @@ Ext.define('MySchool.view.admin.AdminProfilePanel', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	onOnlyadminsearchtoolClick: function(tool, e, eOpts) {
+
+	},
+
+	onOnlyadmindeletetoolClick: function(tool, e, eOpts) {
+
+	},
+
+	onOnlyadminlocktoolClick: function(tool, e, eOpts) {
+
 	}
 
 });

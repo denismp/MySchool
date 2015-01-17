@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
+import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -579,7 +581,9 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 			}
 
 			record.setWhoUpdated(securityHelper.getUserName());
-			record.setLastUpdated(myView.getLastUpdated());
+			record.setLastUpdated(new Date(System.currentTimeMillis()));
+			//record.setLastUpdated(myView.getLastUpdated());
+			
 			record.setDob(myView.getDob());
 
 			record.setAddress1(myView.getAddress1());

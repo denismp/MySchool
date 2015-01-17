@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -156,23 +157,67 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 			}
 			
 			List<AdminView> adminViewList = new ArrayList<AdminView>();
+			Long i = 0L;
 
 			for (Admin admin : admins)
 			{
 				Set<School> schools = admin.getSchools();
 				
-				for( School school : schools )
+				if( schools != null && schools.isEmpty() == false )
+				{
+				
+					for( School school : schools )
+					{
+						statusGood = true;
+		
+						AdminView myView = new AdminView();
+						
+						myView.setSchoolId(school.getId());
+						myView.setSchoolName(school.getName());
+						
+						myView.setId(i);
+						myView.setAdminviewId(i++);
+						myView.setAdminId(admin.getId());
+
+						myView.setVersion(admin.getVersion());
+						myView.setLastUpdated(admin.getLastUpdated());
+						myView.setWhoUpdated(admin.getWhoUpdated());
+						myView.setDob(admin.getDob());
+		
+						myView.setVersion(admin.getVersion());
+						myView.setEmail(admin.getEmail());
+						myView.setAddress1(admin.getAddress1());
+						myView.setAddress2(admin.getAddress2());
+						myView.setCity(admin.getCity());
+						myView.setCountry(admin.getCountry());
+		
+						myView.setLastName(admin.getLastName());
+						myView.setMiddleName(admin.getMiddleName());
+						myView.setFirstName(admin.getFirstName());
+						myView.setPostalCode(admin.getPostalCode());
+						myView.setProvince(admin.getProvince());
+						myView.setPhone1(admin.getPhone1());
+						myView.setPhone2(admin.getPhone2());
+						myView.setEnabled(admin.getEnabled());
+						myView.setUserName(admin.getUserName());
+						myView.setUserPassword("NOT DISPLAYED");
+		
+						adminViewList.add(myView);
+					}
+				}
+				else
 				{
 					statusGood = true;
-	
+					
 					AdminView myView = new AdminView();
 					
-					myView.setSchoolId(school.getId());
-					myView.setSchoolName(school.getName());
+					//myView.setSchoolId(school.getId());
+					//myView.setSchoolName(school.getName());
 					
-					myView.setId(admin.getId());
 					myView.setAdminId(admin.getId());
-					myView.setAdminviewId(admin.getId());
+					myView.setId(i);
+					myView.setAdminviewId(i++);
+
 					myView.setVersion(admin.getVersion());
 					myView.setLastUpdated(admin.getLastUpdated());
 					myView.setWhoUpdated(admin.getWhoUpdated());
@@ -196,7 +241,7 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 					myView.setUserName(admin.getUserName());
 					myView.setUserPassword("NOT DISPLAYED");
 	
-					adminViewList.add(myView);
+					adminViewList.add(myView);					
 				}
 			}
 
@@ -549,9 +594,9 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToAdminView(myJson)");
 			myView = AdminView.fromJsonToAdminView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): Admin id=" + myView.getId());
-			Admin record = Admin.findAdmin(myView.getId());
-			Set<School> schools = record.getSchools();
+			logger.info("updateFromJson(): Admin id=" + myView.getAdminId());
+			//Admin record = Admin.findAdmin(myView.getId());
+			Admin record = Admin.findAdminsByUserNameEquals(myView.getUserName()).getSingleResult();
 
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			String userName = securityHelper.getUserName();
@@ -564,6 +609,9 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 			//{
 			//	okToDo = true;
 			//}
+			boolean pleasedo = false;
+			if( pleasedo )
+			{
 			String plainText = myView.getUserPassword();
 			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
 			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )
@@ -579,83 +627,124 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 				statusGood = false;
 				msg = "Invalid password.";
 			}
+			}
 
-			record.setWhoUpdated(securityHelper.getUserName());
-			record.setLastUpdated(myView.getLastUpdated());
-			record.setDob(myView.getDob());
-
-			record.setAddress1(myView.getAddress1());
-			record.setAddress2(myView.getAddress2());
-			record.setCity(myView.getCity());
-			record.setCountry(myView.getCountry());
-			record.setEnabled(myView.getEnabled());
-			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
-			record.setPhone1(myView.getPhone1());
-			record.setPhone2(myView.getPhone2());
-			record.setPostalCode(myView.getPostalCode());
-			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			record.setSchools(schools);
-			// record.setFaculty(facultys);
-			// record.setStudents(students);
-
-			if( okToDo && statusGood )
+			long viewAdminId = myView.getAdminId();
+			long recordAdminId = record.getId();
+			logger.info("viewAdminId=" + viewAdminId );
+			logger.info("recordAdminId=" + recordAdminId);
+			if( viewAdminId == recordAdminId )
 			{
-				logger.info("Debug2");
-				inSync = record.getVersion() == myView.getVersion();
+				Set<School> schools = record.getSchools();
+				record.setWhoUpdated(securityHelper.getUserName());
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
+				record.setDob(myView.getDob());
 	
-				if (inSync && record.merge() != null)
+				record.setAddress1(myView.getAddress1());
+				record.setAddress2(myView.getAddress2());
+				record.setCity(myView.getCity());
+				record.setCountry(myView.getCountry());
+				record.setEnabled(myView.getEnabled());
+				record.setEmail(myView.getEmail());
+				record.setFirstName(myView.getFirstName());
+				record.setMiddleName(myView.getMiddleName());
+				record.setLastName(myView.getLastName());
+				record.setPhone1(myView.getPhone1());
+				record.setPhone2(myView.getPhone2());
+				record.setPostalCode(myView.getPostalCode());
+				record.setProvince(myView.getProvince());
+				record.setUserName(myView.getUserName());
+				record.setSchools(schools);
+				if( okToDo && statusGood )
 				{
-					logger.info("Debug3");
-					myView.setVersion(record.getVersion());
-					updateGood = true;
+					logger.info("Updating the admin record...");
+					inSync = record.getVersion() == myView.getVersion();
+		
+					if (inSync && record.merge() != null)
+					{
+						logger.info("Admin update successful.");
+						myView.setVersion(record.getVersion());
+						updateGood = true;					
+					}
+					else
+					{
+						statusGood = false;
+						msg = "Update of admin record failed.";
+					}
+				}
+				if (statusGood && updateGood)
+				{
+					returnStatus = HttpStatus.OK;
+					response.setMessage(className + " updated.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+				else if (statusGood && !updateGood)
+				{
+					returnStatus = inSync ? HttpStatus.NOT_FOUND
+							: HttpStatus.CONFLICT;
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+				}
+				else if (!statusGood)
+				{
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
 				}
 				else
 				{
+					response.setMessage("Unknown error state for class="
+							+ className);
+					response.setSuccess(false);
+					response.setTotal(0L);
 					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;
 				}
-			}
-			if (statusGood && updateGood)
-			{
-				returnStatus = HttpStatus.OK;
-				response.setMessage(className + " updated.");
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);
-			}
-			else if (statusGood && !updateGood)
-			{
-				returnStatus = inSync ? HttpStatus.NOT_FOUND
-						: HttpStatus.CONFLICT;
-				response.setMessage(className + " " + msg );
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-			else if (!statusGood)
-			{
-				response.setMessage(className + " " + msg );
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
 			}
 			else
 			{
-				response.setMessage("Unknown error state for class="
-						+ className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
+				// We are associating the current school to a different admin.
+				String schoolName = myView.getSchoolName();
+				if( schoolName != null && schoolName.equals("") == false )
+				{
+					School currentSchool = School.findSchoolsByNameEquals(schoolName).getSingleResult();
+					currentSchool.setAdmin(record);
+					if( currentSchool.merge() != null )
+					{
+						statusGood = true;
+						logger.info("Merge of school with new admin successful.");
+					}
+				}
 
+				if (statusGood)
+				{
+					logger.info("Update for requested admin successfull.");
+					returnStatus = HttpStatus.OK;
+					response.setMessage(className + " updated.");
+					response.setSuccess(true);
+					response.setTotal(1L);
+					response.setData(myView);
+				}
+				else
+				{
+					logger.info("Update for requested admin failed.");
+					msg = "Unable to set the admin to the requested school";
+					response.setMessage(className + " " + msg );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					statusGood = false;
+					returnStatus = HttpStatus.BAD_REQUEST;						
+				}
+			}
 		}
 		catch (Exception e)
 		{
-			logger.info("Debug4");
+			logger.info("Overall update failed.");
 			logger.info(e.getMessage());
 			e.printStackTrace();
 			response.setMessage(e.getMessage());

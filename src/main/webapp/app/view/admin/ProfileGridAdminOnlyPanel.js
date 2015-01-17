@@ -19,12 +19,14 @@ Ext.define('MySchool.view.admin.ProfileGridAdminOnlyPanel', {
 
 	requires: [
 		'Ext.grid.column.Number',
+		'Ext.form.field.ComboBox',
 		'Ext.grid.column.CheckColumn',
 		'Ext.grid.column.Date',
-		'Ext.grid.View'
+		'Ext.grid.View',
+		'Ext.grid.plugin.CellEditing'
 	],
 
-	itemId: 'adminonlygridpanel',
+	itemId: 'admingridpanel',
 	maxHeight: 200,
 	minHeight: 200,
 	autoScroll: true,
@@ -68,7 +70,14 @@ Ext.define('MySchool.view.admin.ProfileGridAdminOnlyPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'userName',
-					text: 'Admin User Name'
+					text: 'Admin User Name',
+					editor: {
+						xtype: 'combobox',
+						name: 'username',
+						displayField: 'userName',
+						store: 'admin.AdminStore',
+						valueField: 'userName'
+					}
 				},
 				{
 					xtype: 'gridcolumn',
@@ -184,6 +193,11 @@ Ext.define('MySchool.view.admin.ProfileGridAdminOnlyPanel', {
 					dataIndex: 'dob',
 					text: 'dob'
 				}
+			],
+			plugins: [
+				Ext.create('Ext.grid.plugin.CellEditing', {
+
+				})
 			]
 		});
 

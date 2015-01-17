@@ -77,7 +77,13 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjectName',
-					text: 'Subj Name'
+					text: 'Subj Name',
+					editor: {
+						xtype: 'combobox',
+						displayField: 'subjName',
+						store: 'subject.AllSubjectStore',
+						valueField: 'subjName'
+					}
 				},
 				{
 					xtype: 'gridcolumn',
@@ -94,7 +100,13 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'adminUserName',
-					text: 'Admin User Name'
+					text: 'Admin User Name',
+					editor: {
+						xtype: 'combobox',
+						displayField: 'userName',
+						store: 'admin.AdminStore',
+						valueField: 'userName'
+					}
 				},
 				{
 					xtype: 'checkcolumn',

@@ -25,5 +25,21 @@ import org.springframework.web.util.UriComponentsBuilder;
 public class AdminController {
 
 
+
+	@RequestMapping(value = "/json", headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> listJson() {
+        ResponseEntity<java.lang.String> ret_ = null;
+        AdminControllerHelper controllerHelper = new AdminControllerHelper();
+        ret_ = controllerHelper.listJson();
+        /*
+        if (params.containsKey("studentName")) {
+            ret_ = controllerHelper.listJson(params);
+        } else {
+            ret_ = controllerHelper.listJson();
+        }
+        */
+        return ret_;
+    }
 }
 

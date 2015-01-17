@@ -18,7 +18,8 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 
 	stores: [
 		'school.SchoolProfileStore',
-		'subject.SchoolsStore'
+		'subject.SchoolsStore',
+		'admin.AdminStore'
 	],
 
 	refs: [
