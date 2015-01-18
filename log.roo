@@ -786,4 +786,7 @@ web mvc json all
 entity jpa      --class ~.model.School
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log closed at 2015-01-17 20:39:30
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2015-01-17 20:40:04
+<<<<<<< HEAD
 // Spring Roo 1.2.5.RELEASE [rev 8341dc2] log opened at 2015-01-18 13:02:31
+=======
+>>>>>>> FETCH_HEAD
