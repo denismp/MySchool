@@ -170,18 +170,25 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		try
 		{
 			List<School> schools = null;
-			if( role.equals("ROLE_ADMIN") )
+			try
 			{
-				schools = School.findAllSchools();				
+				if( role.equals("ROLE_ADMIN") )
+				{
+					schools = School.findAllSchools();				
+				}
+				else if( role.equals("ROLE_FACULTY"))
+				{
+					schools = School.findAllSchools();
+				}
+				else
+				{
+					Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
+					schools = this.getJustStudentSchoolList(student.getId().toString());
+				}
 			}
-			else if( role.equals("ROLE_FACULTY"))
+			catch( Exception se )
 			{
-				schools = School.findAllSchools();
-			}
-			else
-			{
-				Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
-				schools = this.getJustStudentSchoolList(student.getId().toString());
+				schools = new ArrayList<School>();
 			}
 
 			statusGood = true;
@@ -401,6 +408,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			catch( Exception nre )
 			{
 				logger.info("No duplicate for school userName=" + myView.getName() );
+				school = null;
 			}
 
 			if (school == null)
@@ -428,6 +436,17 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 				record.setCustodianTitle(myView.getCustodianTitle());
 				record.setDistrict(myView.getDistrict());
 				record.setEnabled(true);
+				record.setName(myView.getName());
+				if( myView.getAdminUserName() != null && myView.getAdminUserName().equals("") == false )
+				{
+					Admin admin = Admin.findAdminsByUserNameEquals(myView.getAdminUserName()).getSingleResult();
+					record.setAdmin(admin);
+				}
+				if( myView.getName() == null || myView.getName().equals("") == true )
+				{
+					statusGood = false;
+					msg = "School name must be specified.";
+				}
 
 				if (statusGood)
 				{
@@ -456,7 +475,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			else
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty attempted.");
+				response.setMessage("Duplicated school attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -466,6 +485,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);

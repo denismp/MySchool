@@ -1,5 +1,4 @@
 package com.app.myschool.model;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -19,11 +19,11 @@ import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
 
+@RooJson
 @RooJavaBean
+
 @RooJpaActiveRecord(finders = { "findSchoolsByNameEquals" })
 @RooToString(excludeFields={"subjects"})
-
-@RooJson
 public class School {
 	
     @NotNull
@@ -34,7 +34,7 @@ public class School {
     @Column(unique = true)
     @Size(max = 45)
     private String name;
-
+    
     @NotNull
     @Size(max = 45)
     private String district;
@@ -95,7 +95,7 @@ public class School {
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
     
-    //@NotNull
+    @NotNull
     @Column(name="enabled", columnDefinition="true")
     private Boolean enabled;
     
@@ -104,4 +104,5 @@ public class School {
   
     @ManyToOne
     private Admin admin;
+
 }

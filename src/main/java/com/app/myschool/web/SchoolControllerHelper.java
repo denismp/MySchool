@@ -148,18 +148,25 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 		try
 		{
 			List<School> schools = null;
-			if( role.equals("ROLE_ADMIN") )
+			try
 			{
-				schools = School.findAllSchools();				
+				if( role.equals("ROLE_ADMIN") )
+				{
+					schools = School.findAllSchools();				
+				}
+				else if( role.equals("ROLE_FACULTY"))
+				{
+					schools = School.findAllSchools();
+				}
+				else
+				{
+					Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
+					schools = this.getJustStudentSchoolList(student.getId().toString());
+				}
 			}
-			else if( role.equals("ROLE_FACULTY"))
+			catch( Exception fe )
 			{
-				schools = School.findAllSchools();
-			}
-			else
-			{
-				Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
-				schools = this.getJustStudentSchoolList(student.getId().toString());
+				schools = new ArrayList<School>();
 			}
 
 			statusGood = true;
@@ -306,69 +313,60 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			Faculty record = new Faculty();
+			School record = new School();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			FacultyView myView = FacultyView.fromJsonToFacultyView(myJson);
+			SchoolView myView = SchoolView.fromJsonToSchoolView(myJson);
 
-			Faculty faculty = null;
+			School school = null;
 			try
 			{
-				faculty = Faculty.findFacultysByUserNameEquals(
-					myView.getUserName()).getSingleResult();
+				school = School.findSchoolsByNameEquals(
+					myView.getName()).getSingleResult();
 			}
 			catch( Exception nre )
 			{
-				logger.info("No duplicate for faculy userName=" + myView.getUserName() );
+				logger.info("No duplicate for school userName=" + myView.getName() );
 			}
 
-			if (faculty == null)
+			if (school == null)
 			{
 				String msg = "";
 				record.setLastUpdated(myView.getLastUpdated());
 				record.setCreatedDate(myView.getLastUpdated());
-				record.setDob(myView.getDob());
+				//record.setDob(myView.getDob());
 
 				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 				record.setWhoUpdated(securityHelper.getUserName());
 				
-				String plainText = myView.getUserPassword();
+				//String plainText = myView.getUserPassword();
 
-				String newpwd = securityHelper.convertToSHA256(myView
-						.getUserPassword());
+				//String newpwd = securityHelper.convertToSHA256(myView
+				//		.getUserPassword());
 
+				record.setDistrict(myView.getDistrict());
 				record.setAddress1(myView.getAddress1());
 				record.setAddress2(myView.getAddress2());
 				record.setCity(myView.getCity());
 				record.setCountry(myView.getCountry());
 				record.setEnabled(myView.getEnabled());
 				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
+				//record.setFirstName(myView.getFirstName());
+				//record.setMiddleName(myView.getMiddleName());
+				//record.setLastName(myView.getLastName());
 				record.setPhone1(myView.getPhone1());
 				record.setPhone2(myView.getPhone2());
 				record.setPostalCode(myView.getPostalCode());
 				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(newpwd);
-				if( isValidUserName( record.getUserName() ) == false )
-				{
-					statusGood = false;
-					msg = "Invalid user name.";
-				}
-				else
-				{
-					if( isValidPassword( plainText ) == false )
-					{
-						statusGood = false;
-						msg = "Invalid passord";
-					}
-				}
+				record.setName(myView.getName());
+				record.setCustodianOfRecords(myView.getCustodianOfRecords());
+				record.setCustodianTitle(myView.getCustodianTitle());
+				record.setComments(myView.getComments());
+				
 
 				if (statusGood)
 				{
-					((Faculty) record).persist();
+					((School) record).persist();
 					
 					myView.setVersion(record.getVersion());
 					myView.setId(record.getId());
@@ -393,7 +391,7 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 			else
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty attempted.");
+				response.setMessage("Duplicated school attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
 				returnStatus = HttpStatus.CONFLICT;
@@ -539,7 +537,7 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 					"UTF8");
 			logger.info("updateFromJson():myjson=" + myJson);
 			logger.info("updateFromJson():Encoded JSON=" + json);
-			FacultyView myView = null;
+			SchoolView myView = null;
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			boolean updateGood = false;
@@ -547,44 +545,26 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 			boolean okToDo = false;
 			String msg = "update failed.";
 
-			logger.info("updateFromJson(): Debug just before call to FacultyView.fromJsonToFacultyView(myJson)");
-			myView = FacultyView.fromJsonToFacultyView(myJson);
+			logger.info("updateFromJson(): Debug just before call to SchoolView.fromJsonToSchoolView(myJson)");
+			myView = SchoolView.fromJsonToSchoolView(myJson);
 			logger.info("Debug1");
-			logger.info("updateFromJson(): Faculty id=" + myView.getId());
-			Faculty record = Faculty.findFaculty(myView.getId());
+			logger.info("updateFromJson(): School id=" + myView.getSchoolId());
+			School record = School.findSchool(myView.getSchoolId());
 
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			String userName = securityHelper.getUserName();
 			String userRole = securityHelper.getUserRole();
 			if( userRole.equals( "ROLE_ADMIN" ) )
 				okToDo = true;
-			else if( userRole.equals("ROLE_FACULTY") && userName.equals(myView.getUserName()))
+			else if( userRole.equals("ROLE_SCHOOL") && userName.equals(myView.getAdminUserName()))
 				okToDo = true;
 			//else if( userName.equals(myView.getUserName()))
 			//{
 			//	okToDo = true;
 			//}
-			String plainText = myView.getUserPassword();
-			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
-			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )
-			{
-				// **********************************************
-				// Convert the given userPassword to sha 256.
-				// **********************************************
-				String pwd = convertToSHA256(myView.getUserPassword());
-				record.setUserPassword(pwd);
-			}
-			else if( plainText.equals("NOT DISPLAYED") == false )
-			{
-				statusGood = false;
-				msg = "Invalid password.";
-			}
 
 			record.setWhoUpdated(securityHelper.getUserName());
 			record.setLastUpdated(new Date(System.currentTimeMillis()));
-			//record.setLastUpdated(myView.getLastUpdated());
-			
-			record.setDob(myView.getDob());
 
 			record.setAddress1(myView.getAddress1());
 			record.setAddress2(myView.getAddress2());
@@ -592,16 +572,16 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 			record.setCountry(myView.getCountry());
 			record.setEnabled(myView.getEnabled());
 			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
 			record.setPhone1(myView.getPhone1());
 			record.setPhone2(myView.getPhone2());
 			record.setPostalCode(myView.getPostalCode());
 			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			// record.setFaculty(facultys);
-			// record.setStudents(students);
+			record.setName(myView.getName());
+			record.setCustodianOfRecords(myView.getCustodianOfRecords());
+			record.setCustodianTitle(myView.getCustodianTitle());
+			record.setComments(myView.getComments());
+			record.setDistrict(myView.getDistrict());
+
 
 			if( okToDo && statusGood )
 			{

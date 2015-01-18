@@ -147,13 +147,20 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 		try
 		{
 			List<Admin> admins = null;
-			if( role.equals("ROLE_ADMIN") )
+			try
 			{
-				admins = Admin.findAllAdmins();
+				if( role.equals("ROLE_ADMIN") )
+				{
+					admins = Admin.findAllAdmins();
+				}
+				else if( role.equals("ROLE_SCHOOL"))
+				{
+					admins = Admin.findAdminsByUserNameEquals(userName).getResultList();
+				}
 			}
-			else if( role.equals("ROLE_SCHOOL"))
+			catch( Exception ae )
 			{
-				admins = Admin.findAdminsByUserNameEquals(userName).getResultList();
+				admins = new ArrayList<Admin>();
 			}
 			
 			List<AdminView> adminViewList = new ArrayList<AdminView>();
@@ -161,9 +168,28 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 
 			for (Admin admin : admins)
 			{
-				Set<School> schools = admin.getSchools();
-				
-				if( schools != null && schools.isEmpty() == false )
+				Set<School> schools = null;
+				try
+				{
+					schools = admin.getSchools();
+				}
+				catch( Exception sqle )
+				{
+					schools = null;
+				}
+				boolean ok = true;
+				try
+				{
+					if( schools != null && schools.isEmpty() == false )
+					{
+						ok = false;
+					}					
+				}
+				catch( Exception oke )
+				{
+					ok = false;
+				}
+				if( ok )
 				{
 				
 					for( School school : schools )
