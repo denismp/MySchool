@@ -9,21 +9,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
-import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.roo.addon.json.RooJson;
+import org.springframework.roo.addon.web.mvc.controller.json.RooWebJson;
 
-@RooJson
 @RooJavaBean
-
-@RooJpaActiveRecord(finders = { "findSchoolsByNameEquals" })
 @RooToString(excludeFields={"subjects"})
+@RooJpaActiveRecord(finders = { "findSchoolsByNameEquals" })
+@RooJson
+@RooWebJson(jsonObject = School.class)
 public class School {
 	
     @NotNull
@@ -96,7 +96,6 @@ public class School {
     private Date lastUpdated;
     
     @NotNull
-    @Column(name="enabled", columnDefinition="true")
     private Boolean enabled;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
@@ -104,5 +103,4 @@ public class School {
   
     @ManyToOne
     private Admin admin;
-
 }

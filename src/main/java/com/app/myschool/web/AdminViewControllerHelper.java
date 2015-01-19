@@ -168,81 +168,59 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 
 			for (Admin admin : admins)
 			{
-				Set<School> schools = null;
-				try
-				{
-					schools = admin.getSchools();
-				}
-				catch( Exception sqle )
-				{
-					schools = null;
-				}
-				boolean ok = true;
-				try
-				{
-					if( schools != null && schools.isEmpty() == false )
-					{
-						ok = false;
-					}					
-				}
-				catch( Exception oke )
-				{
-					ok = false;
-				}
-				if( ok )
-				{
-				
-					for( School school : schools )
-					{
-						statusGood = true;
-		
-						AdminView myView = new AdminView();
-						
-						myView.setSchoolId(school.getId());
-						myView.setSchoolName(school.getName());
-						
-						myView.setId(i);
-						myView.setAdminviewId(i++);
-						myView.setAdminId(admin.getId());
-
-						myView.setVersion(admin.getVersion());
-						myView.setLastUpdated(admin.getLastUpdated());
-						myView.setWhoUpdated(admin.getWhoUpdated());
-						myView.setDob(admin.getDob());
-		
-						myView.setVersion(admin.getVersion());
-						myView.setEmail(admin.getEmail());
-						myView.setAddress1(admin.getAddress1());
-						myView.setAddress2(admin.getAddress2());
-						myView.setCity(admin.getCity());
-						myView.setCountry(admin.getCountry());
-		
-						myView.setLastName(admin.getLastName());
-						myView.setMiddleName(admin.getMiddleName());
-						myView.setFirstName(admin.getFirstName());
-						myView.setPostalCode(admin.getPostalCode());
-						myView.setProvince(admin.getProvince());
-						myView.setPhone1(admin.getPhone1());
-						myView.setPhone2(admin.getPhone2());
-						myView.setEnabled(admin.getEnabled());
-						myView.setUserName(admin.getUserName());
-						myView.setUserPassword("NOT DISPLAYED");
-		
-						adminViewList.add(myView);
-					}
-				}
-				else
+				Set<School> schools = admin.getSchools();
+				boolean foundSchools = false;
+				for( School school : schools )
 				{
 					statusGood = true;
+					foundSchools = true;
+	
+					AdminView myView = new AdminView();
 					
+					myView.setSchoolId(school.getId());
+					myView.setSchoolName(school.getName());
+					
+					myView.setId(i);
+					myView.setAdminviewId(i++);
+					myView.setAdminId(admin.getId());
+
+					myView.setVersion(admin.getVersion());
+					myView.setLastUpdated(admin.getLastUpdated());
+					myView.setWhoUpdated(admin.getWhoUpdated());
+					myView.setDob(admin.getDob());
+	
+					myView.setVersion(admin.getVersion());
+					myView.setEmail(admin.getEmail());
+					myView.setAddress1(admin.getAddress1());
+					myView.setAddress2(admin.getAddress2());
+					myView.setCity(admin.getCity());
+					myView.setCountry(admin.getCountry());
+	
+					myView.setLastName(admin.getLastName());
+					myView.setMiddleName(admin.getMiddleName());
+					myView.setFirstName(admin.getFirstName());
+					myView.setPostalCode(admin.getPostalCode());
+					myView.setProvince(admin.getProvince());
+					myView.setPhone1(admin.getPhone1());
+					myView.setPhone2(admin.getPhone2());
+					myView.setEnabled(admin.getEnabled());
+					myView.setUserName(admin.getUserName());
+					myView.setUserPassword("NOT DISPLAYED");
+	
+					adminViewList.add(myView);
+				}
+				if( !foundSchools )
+				{
+					statusGood = true;
+	
 					AdminView myView = new AdminView();
 					
 					//myView.setSchoolId(school.getId());
 					//myView.setSchoolName(school.getName());
 					
-					myView.setAdminId(admin.getId());
 					myView.setId(i);
 					myView.setAdminviewId(i++);
+					myView.setAdminId(admin.getId());
 
 					myView.setVersion(admin.getVersion());
 					myView.setLastUpdated(admin.getLastUpdated());
