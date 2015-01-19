@@ -347,6 +347,80 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	},
 
+	onOnlyguardiannewchildtoolClick: function(button, e, eOpts) {
+		debugger;
+
+		var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
+		var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+		guardianTypesStore.myLoad();
+
+		if( this.userRole === 'ROLE_ADMIN'){
+			var newDialog = Ext.create( 'MySchool.view.guardian.AddChildDialog' );
+
+			window.console.log( 'Add Child Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+
+	},
+
+	onGuardianaddchildcancelClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel Add Child" );
+		var myForm = button.up().getForm();
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
+	onGuardianaddchildsubmitClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit Add Child" );
+		var myForm					= button.up().getForm();
+		var myPanel					= button.up();
+		var myGrid					= this.getOnlyGuardianGridPanel();
+
+		//Get the values from the form and insert a new record into the GuardianProfileStore.
+
+		var formValues				= myForm.getValues();
+
+		//	Create an empty record
+		var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		//var myRecord	= Ext.create('MySchool.model.guardian.GuardianProfileModel');
+
+		//	Get the stores that we will need
+
+		var username	= formValues.username;
+
+		var myStore		= this.getStore( 'guardian.GuardianProfileStore' );
+
+		//debugger;
+
+		//myRecord.set( 'quardianId', myRecord.get('guardianId') );
+		myRecord.set( 'studentUserName', username );
+		myRecord.set( 'id', null );
+
+		//add to the store.  For a normal update, only the sync() is called.
+		//In this case we are expecting the create method on the backend to
+		//perform an update instead of a create.  This will allow updated from
+		//the grid to work as expected while allowing us to add a new student
+		//child to the existing guardian relation.  This will actually create
+		//another record in the guardian table with the new studentId.
+		//The backend checks to see if the studentId in this records is
+		//different from the one with the specified studentUserName.  If so,
+		//then the new record will be created.
+		myStore.add( myRecord );
+
+		//sync the store.
+		myStore.sync();
+
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+
+	},
+
 	loadForm: function(form, selected) {
 		debugger;
 
@@ -466,6 +540,15 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			},
 			"#guardianprofiletab": {
 				activate: this.onGuardianprofiletabActivate
+			},
+			"#onlyguardiannewchildtool": {
+				click: this.onOnlyguardiannewchildtoolClick
+			},
+			"#guardianaddchildcancel": {
+				click: this.onGuardianaddchildcancelClick
+			},
+			"#guardianaddchildsubmit": {
+				click: this.onGuardianaddchildsubmitClick
 			}
 		});
 	}

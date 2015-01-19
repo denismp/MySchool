@@ -60,8 +60,14 @@ Ext.define('MySchool.view.guardian.GuardianProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyguardiannewtool',
-					tooltip: 'New',
+					tooltip: 'New Guardian',
 					type: 'plus'
+				},
+				{
+					xtype: 'tool',
+					itemId: 'onlyguardiannewchildtool',
+					tooltip: 'Add Child',
+					type: 'expand'
 				},
 				{
 					xtype: 'tool',

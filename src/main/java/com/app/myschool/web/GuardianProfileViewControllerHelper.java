@@ -565,7 +565,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			}
 			catch( Exception ge )
 			{
-				
+				guardian = null;
 			}
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 			String userName = securityHelper.getUserName();
@@ -575,6 +575,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			{
 				if (guardian == null)
 				{
+					// We are adding an new guardian to the database.
 					String msg = "";
 	
 					record.setLastUpdated(new Date(System.currentTimeMillis()));
@@ -674,12 +675,100 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 				}
 				else
 				{
-					statusGood = false;
-					response.setMessage("Duplicated faculty/student attempted.");
-					response.setSuccess(false);
-					response.setTotal(0L);
-					returnStatus = HttpStatus.CONFLICT;
-					// returnStatus = HttpStatus.BAD_REQUEST;
+					// The guardian already exists.
+					// In this case we are possibly adding a child student to the guardian.
+					Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+					// Check to see if the studentId of the requested studentUserName is different from the given studentUserName.
+					if( student.getId().longValue() != myView.getStudentId().longValue() )
+					{
+						String msg = "";
+						
+						if (statusGood)
+						{	
+							// the ID's are different, so we want add the new student to the guardian.
+							// First get the data for the current 
+							record = Guardian.findGuardian(myView.getGuardianId());
+							Set<Student> students = record.getStudents();
+							students.add(student);
+							record.setStudents(students);
+
+							record.setLastUpdated(new Date(System.currentTimeMillis()));
+							record.setCreatedDate(new Date(System.currentTimeMillis()));
+			
+							record.setWhoUpdated(userName);
+
+							// Update the student table which is has a Many-To-Many to the guardian table.
+							if( myView.getVersion() == record.getVersion() && record.merge() != null )
+							{							
+								myView.setVersion(record.getVersion());
+								myView.setId(record.getId());
+			
+								myView.setId(100000L + record.getId());				
+								
+								myView.setGuardianprofileviewid(100000L + record.getId());
+			
+								myView.setVersion(record.getVersion());
+								myView.setLastUpdated(record.getLastUpdated());
+								myView.setWhoUpdated(record.getWhoUpdated());
+			
+								myView.setGuardianId(record.getId());
+								myView.setVersion(record.getVersion());
+			
+								myView.setEmail(record.getEmail());
+								myView.setAddress1(record.getAddress1());
+								myView.setAddress2(record.getAddress2());
+								myView.setCity(record.getCity());
+								myView.setCountry(record.getCountry());
+			
+								myView.setLastName(record.getLastName());
+								myView.setMiddleName(record.getMiddleName());
+								myView.setFirstName(record.getFirstName());
+								myView.setPostalCode(record.getPostalCode());
+								myView.setProvince(record.getProvince());
+								myView.setPhone1(record.getPhone1());
+								myView.setPhone2(record.getPhone2());
+								myView.setEnabled(record.getEnabled());
+								myView.setUserName(record.getUserName());
+								myView.setUserPassword("NOT DISPLAYED");
+								
+								myView.setDob(record.getDob());
+								myView.setType(record.getType());
+								myView.setDescription(record.getDescription());
+								
+								returnStatus = HttpStatus.CREATED;
+								response.setMessage(className + " created.");
+								response.setSuccess(true);
+								response.setTotal(1L);
+								response.setData(myView);
+							}
+							else
+							{
+								msg = "Update failed for new student for guardian.";
+								response.setMessage(className + " " + msg );
+								response.setSuccess(false);
+								response.setTotal(0L);
+								//returnStatus = HttpStatus.CONFLICT;
+								returnStatus = HttpStatus.BAD_REQUEST;													
+							}
+						}
+						else
+						{
+							msg = "Student already exists with the Guardian.";
+							response.setMessage(className + " " + msg );
+							response.setSuccess(false);
+							response.setTotal(0L);
+							//returnStatus = HttpStatus.CONFLICT;
+							returnStatus = HttpStatus.BAD_REQUEST;					
+						}
+					}
+					else
+					{
+						response.setMessage(className + " " + "student is already a child of " + myView.getUserName() );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						//returnStatus = HttpStatus.CONFLICT;
+						returnStatus = HttpStatus.BAD_REQUEST;					
+					}
 				}
 			}
 			else

@@ -64,10 +64,10 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 	onSubjectsgridSelect: function(rowmodel, record, index, eOpts) {
 		window.console.log( "selected row in grid." );
 		window.console.log( "index=" + index );
-		//debugger;
-		//if ( record ) {
-		//    this.getSubjectsForm().getForm().loadRecord(record);
-		//}
+		debugger;
+		if ( record ) {
+		    this.getSubjectsForm().getForm().loadRecord(record);
+		}
 		this.selectedIndex = index;
 	},
 
