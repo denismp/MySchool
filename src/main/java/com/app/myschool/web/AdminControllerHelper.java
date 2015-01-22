@@ -146,7 +146,7 @@ public class AdminControllerHelper implements ControllerHelperInterface
 
 		try
 		{
-			List<Admin> admins = null;
+			List<Admin> admins = new ArrayList<Admin>();
 			if( role.equals("ROLE_ADMIN") )
 			{
 				admins = Admin.findAllAdmins();

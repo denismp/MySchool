@@ -63,13 +63,13 @@ Ext.define('MySchool.store.subject.SubjectStore', {
 	onRestException: function(proxy, response, operation, eOpts) {
 		//debugger;
 		var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
-		Ext.MessageBox.show({
-		    title: 'REMOTE EXCEPTION',
-		    msg: smsg,
-		    icon: Ext.MessageBox.ERROR,
-		    buttons: Ext.Msg.OK,
-		    resizeable: true
-		});
+		//Ext.MessageBox.show({
+		//    title: 'REMOTE EXCEPTION',
+		//    msg: smsg,
+		//    icon: Ext.MessageBox.ERROR,
+		//    buttons: Ext.Msg.OK,
+		//    resizeable: true
+		//});
 		window.console.log( smsg );
 		if( response.responseText.indexOf( 'Please specify a valid student user name' ) > -1 ){
 			this.reload();

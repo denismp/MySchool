@@ -146,7 +146,7 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 
 		try
 		{
-			List<Admin> admins = null;
+			List<Admin> admins = new ArrayList<Admin>();
 			try
 			{
 				if( role.equals("ROLE_ADMIN") )
