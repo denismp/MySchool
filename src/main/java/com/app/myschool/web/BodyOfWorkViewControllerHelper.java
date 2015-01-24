@@ -18,10 +18,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.BodyOfWorkView;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 
@@ -298,7 +300,7 @@ public class BodyOfWorkViewControllerHelper implements
 				}
 			}
 		}
-		else
+		else if( userRole.equals("ROLE_FACULTY"))
 		{
 			//	Check to see if the student belongs to the faculty.
 			boolean found = false;
@@ -329,6 +331,28 @@ public class BodyOfWorkViewControllerHelper implements
 				}				
 			}
 		}
+		if( userRole.equals("ROLE_SCHOOL"))
+		{
+			// Check to see if the student is part of the school owned by the school admin.
+			Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+			Set<School> schools = admin.getSchools();
+			for( School school: schools )
+			{
+				Set<Subject> subjects = school.getSubjects();
+				for( Subject subject: subjects )
+				{
+					quarters = subject.getQuarters();
+					for( Quarter quarter: quarters )
+					{
+						if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+						{
+							return quarter;
+						}						
+					}
+				}
+			}
+		}
+		logger.error("Invalid role: " + userRole );
 		return null;
 	}
 	

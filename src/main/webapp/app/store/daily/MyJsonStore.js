@@ -69,10 +69,10 @@ Ext.define('MySchool.store.daily.MyJsonStore', {
 		//    resizeable: true
 		//});
 		window.console.log( smsg );
-		if( this.getCount() > 0 )
-		{
-		    this.reload();
-		}
+		//if( this.getCount() > 0 )
+		//{
+		//    this.reload();
+		//}
 		//this.reload();
 
 	},

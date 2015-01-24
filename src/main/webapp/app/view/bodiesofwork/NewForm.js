@@ -46,7 +46,6 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
 			items: [
 				{
 					xtype: 'fieldset',
-					title: 'My Fields',
 					items: [
 						{
 							xtype: 'textfield',
@@ -67,7 +66,13 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
 						{
 							xtype: 'commonquartersubjectcombobox',
 							itemId: 'newbodiesofworkform-quarter',
-							anchor: '100%'
+							anchor: '100%',
+							listeners: {
+								boxready: {
+									fn: me.bodyofworkscomboboxready,
+									scope: me
+								}
+							}
 						},
 						{
 							xtype: 'textareafield',
@@ -213,6 +218,11 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
 		});
 
 		me.callParent(arguments);
+	},
+
+	bodyofworkscomboboxready: function(component, width, height, eOpts) {
+		var myStore = component.getStore();
+		myStore.reload();
 	}
 
 });

@@ -56,14 +56,6 @@ Ext.define('MySchool.view.subject.NewForm', {
 						{
 							xtype: 'textfield',
 							anchor: '100%',
-							itemId: 'newsubjectform-studentName',
-							fieldLabel: 'Student User Name',
-							name: 'studentName',
-							readOnly: true
-						},
-						{
-							xtype: 'textfield',
-							anchor: '100%',
 							hidden: true,
 							itemId: 'newsubjectform-subjName',
 							fieldLabel: 'Subject Name',
@@ -118,6 +110,14 @@ Ext.define('MySchool.view.subject.NewForm', {
 							fieldLabel: 'Objectives',
 							name: 'subjObjectives',
 							allowOnlyWhitespace: false
+						},
+						{
+							xtype: 'textfield',
+							anchor: '100%',
+							itemId: 'newsubjectform-studentName',
+							fieldLabel: 'Student User Name',
+							name: 'studentName',
+							readOnly: true
 						},
 						{
 							xtype: 'quarternamescombobox',

@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -94,15 +95,16 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		{
 			for( Student student: students )
 			{
-				List<Faculty> facultys = securityHelper.getFacultyList(student);
-				for( Faculty faculty: facultys )
+				//List<Faculty> facultys = securityHelper.getFacultyList(student);
+				Set<Quarter> quarters			= student.getQuarters();
+				for( Quarter quarter: quarters )
 				{
-					List<Daily> dailyList			= this.getList(student.getId().toString(), faculty.getId().toString());
-		
+					Set<Daily> dailyList = quarter.getDailys();
+					
 					for (Daily daily : dailyList) 
 					{
 						statusGood						= true;
-						Quarter quarter					= daily.getQuarter();
+
 						Subject u_						= quarter.getSubject();
 						DailyView myView			= new DailyView();
 						myView.setId(++i);
@@ -134,6 +136,93 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 						dailyViewList.add( myView );
 					}
 				}
+				/*
+				if( facultys.size() > 0 )
+				{
+					for( Faculty faculty: facultys )
+					{
+						List<Daily> dailyList			= this.getList(student.getId().toString(), faculty.getId().toString());
+			
+						for (Daily daily : dailyList) 
+						{
+							statusGood						= true;
+							Quarter quarter					= daily.getQuarter();
+							Subject u_						= quarter.getSubject();
+							DailyView myView			= new DailyView();
+							myView.setId(++i);
+		
+							myView.setComments(daily.getComments());
+							myView.setCorrection(daily.getCorrection());
+							myView.setDaily_day(daily.getDaily_day());
+							myView.setDaily_hours(daily.getDaily_hours());
+							myView.setDaily_month(daily.getDaily_month());
+		
+							myView.setDaily_year(quarter.getQtr_year());
+							myView.setDailyAction(daily.getDailyAction());
+							myView.setDailyId(daily.getId());
+							myView.setEvaluation(daily.getEvaluation());
+							myView.setLastUpdated(daily.getLastUpdated());
+							myView.setWhoUpdated(daily.getWhoUpdated());
+							myView.setLocked(daily.getLocked());
+							myView.setStudentUserName(student.getUserName());
+							myView.setFacultyUserName(quarter.getFaculty().getUserName());
+							myView.setStudentId(student.getId());
+							myView.setSubjId(u_.getId());
+							myView.setSubjName(u_.getName());
+							myView.setQtrId(quarter.getId());
+							myView.setQtrName(quarter.getQtrName());
+							myView.setQtrYear(quarter.getQtr_year());
+							myView.setResourcesUsed(daily.getResourcesUsed());
+							myView.setStudyDetails(daily.getStudyDetails());
+							myView.setVersion(daily.getVersion());
+							dailyViewList.add( myView );
+						}
+					}
+				}
+				else
+				{
+					Set<Quarter> quarters			= student.getQuarters();
+					for( Quarter quarter: quarters )
+					{
+						Set<Daily> dailyList = quarter.getDailys();
+						
+						for (Daily daily : dailyList) 
+						{
+							statusGood						= true;
+	
+							Subject u_						= quarter.getSubject();
+							DailyView myView			= new DailyView();
+							myView.setId(++i);
+		
+							myView.setComments(daily.getComments());
+							myView.setCorrection(daily.getCorrection());
+							myView.setDaily_day(daily.getDaily_day());
+							myView.setDaily_hours(daily.getDaily_hours());
+							myView.setDaily_month(daily.getDaily_month());
+		
+							myView.setDaily_year(quarter.getQtr_year());
+							myView.setDailyAction(daily.getDailyAction());
+							myView.setDailyId(daily.getId());
+							myView.setEvaluation(daily.getEvaluation());
+							myView.setLastUpdated(daily.getLastUpdated());
+							myView.setWhoUpdated(daily.getWhoUpdated());
+							myView.setLocked(daily.getLocked());
+							myView.setStudentUserName(student.getUserName());
+							myView.setFacultyUserName(quarter.getFaculty().getUserName());
+							myView.setStudentId(student.getId());
+							myView.setSubjId(u_.getId());
+							myView.setSubjName(u_.getName());
+							myView.setQtrId(quarter.getId());
+							myView.setQtrName(quarter.getQtrName());
+							myView.setQtrYear(quarter.getQtr_year());
+							myView.setResourcesUsed(daily.getResourcesUsed());
+							myView.setStudyDetails(daily.getStudyDetails());
+							myView.setVersion(daily.getVersion());
+							dailyViewList.add( myView );
+						}
+					}
+				}
+				*/
 			}
 			if (statusGood)
 			{

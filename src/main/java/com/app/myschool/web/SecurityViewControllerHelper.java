@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.EntityManager;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -24,10 +26,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.SecurityView;
 import com.app.myschool.model.Student;
+import com.app.myschool.model.Subject;
 
 public class SecurityViewControllerHelper implements
 		ControllerHelperInterface
@@ -85,7 +90,71 @@ public class SecurityViewControllerHelper implements
 		}
 		return ret_;
 	}
+	
+	@SuppressWarnings("unchecked")
+	private List<Faculty>getFacultyListBySchoolAdmin( String adminId ) throws Exception
+	{
+		/*
+select  distinct
+	f.* 
+from 
+	faculty f, school s, subject sj, quarter q, admin a
+where
+	a.id = 32769
+	and a.id = s.admin
+	and s.id = sj.school
+	and sj.id = q.subject
+	and q.faculty = f.id
+		 */
+		List<Faculty> rList = null;
+		EntityManager em = Faculty.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct f.*");
+		queryString.append(" from faculty f, school s, subject sj, quarter q, admin a");
+		queryString.append(" where a.id = s.admin");
+		queryString.append(" and s.id = sj.school");
+		queryString.append(" and sj.id = q.subject");
+		queryString.append(" and q.faculty = f.id");
 
+		if( adminId != null )
+		{
+			queryString.append(" and a.id = ");
+			queryString.append(adminId);	
+		}
+		queryString.append( " order by f.user_name");
+		rList = (List<Faculty>)em.createNativeQuery(queryString.toString(), Faculty.class).getResultList(); 
+
+		return rList;
+	}
+
+	@SuppressWarnings("unchecked")
+	private List<Student>getStudentListBySchoolAdmin( String adminId ) throws Exception
+	{
+		List<Student> rList = null;
+		EntityManager em = Student.entityManager();
+		StringBuilder queryString = new StringBuilder("select distinct st.*");
+		queryString.append(" from student st, school s, subject sj, quarter q, admin a");
+		queryString.append(" where a.id = s.admin");
+		queryString.append(" and s.id = sj.school");
+		queryString.append(" and sj.id = q.subject");
+		queryString.append(" and q.student = st.id");
+
+		if( adminId != null )
+		{
+			queryString.append(" and a.id = ");
+			queryString.append(adminId);	
+		}
+		queryString.append( " order by st.user_name");
+		rList = (List<Student>)em.createNativeQuery(queryString.toString(), Student.class).getResultList(); 
+
+		return rList;
+	}
+	
+	/**
+	 * Convert the plain text password.
+	 * @param plainText
+	 * @return the encrypted password.
+	 * @throws NoSuchAlgorithmException
+	 */
 	public String convertToSHA256(String plainText)
 			throws NoSuchAlgorithmException
 	{
@@ -140,10 +209,16 @@ public class SecurityViewControllerHelper implements
 		
 		return userRole;		
 	}
+	
+	/**
+	 * Get the faculty list by student id if ROLE_USER, otherwise get the list by the ROLE.
+	 * @param student
+	 * @return List<Faculty> facultys
+	 */
 	public List<Faculty> getFacultyList(Student student)
 	{
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-		List<Faculty> facultys = null;
+		List<Faculty> facultys = new ArrayList<Faculty>();
 
 		if( securityHelper.getUserRole().equals("ROLE_USER") )
 		{
@@ -161,6 +236,19 @@ public class SecurityViewControllerHelper implements
 				}
 			}
 		}
+		else if(securityHelper.getUserRole().equals("ROLE_SCHOOL"))
+		{
+			Admin admin = Admin.findAdminsByUserNameEquals(securityHelper.getUserName()).getSingleResult();
+			try
+			{
+				facultys = this.getFacultyListBySchoolAdmin(admin.getId().toString());
+			}
+			catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		else if( securityHelper.getUserRole().equals("ROLE_ADMIN"))
 		{
 			//facultys = Faculty.findAllFacultys();
@@ -168,11 +256,13 @@ public class SecurityViewControllerHelper implements
 		}
 		return facultys;
 	}
+	
 	public List<Student> findStudentsByLoginUserRole()
 	{
 		String userName = this.getUserName();
 		String userRole = this.getUserRole();
-		List<Student> students = null;
+		List<Student> students = new ArrayList<Student>();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		
 		if( userRole.equals("ROLE_ADMIN"))
 		{
@@ -183,6 +273,19 @@ public class SecurityViewControllerHelper implements
 			Faculty faculty = Faculty.findFacultysByUserNameEquals(userName).getSingleResult();
 			Set<Student> studentSet = faculty.getStudents();
 			students = new ArrayList<Student>(studentSet);
+		}
+		else if(securityHelper.getUserRole().equals("ROLE_SCHOOL"))
+		{
+			Admin admin = Admin.findAdminsByUserNameEquals(securityHelper.getUserName()).getSingleResult();
+			try
+			{
+				students = this.getStudentListBySchoolAdmin(admin.getId().toString());
+			}
+			catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		else
 		{
@@ -206,7 +309,7 @@ public class SecurityViewControllerHelper implements
 				}
 			}
 		}
-		else
+		else if( userRole.equals("ROLE_FACULTY"))
 		{
 			//	Check to see if the student belongs to the faculty.
 			boolean found = false;
@@ -237,6 +340,35 @@ public class SecurityViewControllerHelper implements
 				}				
 			}
 		}
+		else if( userRole.equals("ROLE_SCHOOL"))
+		{
+			Admin admin = Admin.findAdminsByUserNameEquals(securityHelper.getUserName()).getSingleResult();
+			try
+			{
+				Set<School> schools = admin.getSchools();
+				for( School school: schools )
+				{
+					Set<Subject> subjects = school.getSubjects();
+					for( Subject subject: subjects )
+					{
+						quarters = subject.getQuarters();
+						for( Quarter quarter: quarters )
+						{
+							if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+							{
+								return quarter;
+							}							
+						}
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		logger.error("Invalid role: " + userRole );
 		return null;
 	}		
 	public ResponseEntity<String> listJson(

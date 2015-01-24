@@ -125,9 +125,7 @@
             <password-encoder hash="sha-256" />
             <user-service>
             <!-- P@55w0rd0901 -->
-                <user name="faculty" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_FACULTY" />
                 <user name="admin" password="cdd9e66b5682c30df37a122c8883ba20303365696e06f643c4619ef5603ba8e4" authorities="ROLE_ADMIN" />
-                <user name="user" password="9b8769a4a742959a2d0298c36fb70623f2dfacda8436237df08d8dfd5b37374c" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
         <authentication-provider>
@@ -146,7 +144,7 @@
 						UNION
 						SELECT user_name, 'ROLE_FACULTY' AS role FROM faculty
 						UNION
-						SELECT user_name, 'ROLE_ADMIN' AS role FROM admin)
+						SELECT user_name, 'ROLE_SCHOOL' AS role FROM admin)
 			SELECT t.user_name AS username, t.role FROM t WHERE t.user_name = ?"
 		/>
 	</authentication-provider>

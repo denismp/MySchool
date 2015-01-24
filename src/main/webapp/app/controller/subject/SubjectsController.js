@@ -549,6 +549,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		subjGradeLevel_.setDisabled(false);
 		subjCreditHours_.setDisabled(false);
 		subjDescription_.setDisabled(false);
+		studentName_.setDisabled(true);//DENIS 01/23/2015
 		subjObjectives_.setDisabled(false);
 		quarternamescombobox.setDisabled(true);
 		quarteryearcombobox.setDisabled(true);

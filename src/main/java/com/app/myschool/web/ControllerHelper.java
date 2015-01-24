@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Artifact;
 import com.app.myschool.model.BodyOfWork;
 import com.app.myschool.model.BodyOfWorkView;
@@ -111,29 +112,69 @@ public class ControllerHelper {
 			// if studentId is null return all the subjects leaving the
 			// quarter part of SubjectView null
 			if (myClass.equals(SubjectView.class) && studentId_ == null) {
-				List<Subject> sl_ = Subject.findAllSubjects();
+				// Restrict list of subjects by the school admin role 
+				SecurityViewControllerHelper security = new SecurityViewControllerHelper();
 				List<SubjectView> svl_ = new ArrayList<SubjectView>();
-				int i_ = 1;
-				for (Subject u_ : sl_) {
-					SubjectView sv_ = new SubjectView();
-					sv_.setId((long)i_++);
-					sv_.setSubjCreditHours(u_.getCreditHours());
-					sv_.setSubjDescription(u_.getDescription());
-					sv_.setSubjGradeLevel(u_.getGradeLevel());
-					sv_.setSubjId(u_.getId());
-					sv_.setSubjLastUpdated(u_.getLastUpdated());
-					sv_.setSubjName(u_.getName());
-					sv_.setSubjObjectives(u_.getObjectives());
-					sv_.setSubjVersion(u_.getVersion());
-					sv_.setSubjWhoUpdated(u_.getWhoUpdated());
-					//DENIS 12/24/2014
-					School school = u_.getSchool();
-					if( school != null )
-					{
-						sv_.setSchoolId(school.getId());
-						sv_.setSchoolName(school.getName());
+				String userRole = security.getUserRole();
+				if( userRole.equals("ROLE_ADMIN") )
+				{
+					List<Subject> sl_ = Subject.findAllSubjects();
+
+					int i_ = 1;
+					for (Subject u_ : sl_) {
+						SubjectView sv_ = new SubjectView();
+						sv_.setId((long)i_++);
+						sv_.setSubjCreditHours(u_.getCreditHours());
+						sv_.setSubjDescription(u_.getDescription());
+						sv_.setSubjGradeLevel(u_.getGradeLevel());
+						sv_.setSubjId(u_.getId());
+						sv_.setSubjLastUpdated(u_.getLastUpdated());
+						sv_.setSubjName(u_.getName());
+						sv_.setSubjObjectives(u_.getObjectives());
+						sv_.setSubjVersion(u_.getVersion());
+						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
+						//DENIS 12/24/2014
+						School school = u_.getSchool();
+						if( school != null )
+						{
+							sv_.setSchoolId(school.getId());
+							sv_.setSchoolName(school.getName());
+						}
+						svl_.add(sv_);
 					}
-					svl_.add(sv_);
+				}
+				else if( userRole.equals("ROLE_SCHOOL"))
+				{
+					// Find the subjects owned by the school owned by the admin.
+					Admin admin = Admin.findAdminsByUserNameEquals(security.getUserName()).getSingleResult();
+					Set<School> schools = admin.getSchools();
+					long i_ = 1;
+					for( School school : schools )
+					{
+						Set<Subject> sl_ = school.getSubjects();
+						for( Subject u_: sl_ )
+						{
+							SubjectView sv_ = new SubjectView();
+							sv_.setId((long)i_++);
+							sv_.setSubjCreditHours(u_.getCreditHours());
+							sv_.setSubjDescription(u_.getDescription());
+							sv_.setSubjGradeLevel(u_.getGradeLevel());
+							sv_.setSubjId(u_.getId());
+							sv_.setSubjLastUpdated(u_.getLastUpdated());
+							sv_.setSubjName(u_.getName());
+							sv_.setSubjObjectives(u_.getObjectives());
+							sv_.setSubjVersion(u_.getVersion());
+							sv_.setSubjWhoUpdated(u_.getWhoUpdated());
+							//DENIS 12/24/2014
+							sv_.setSchoolId(school.getId());
+							sv_.setSchoolName(school.getName());
+							svl_.add(sv_);
+						}
+					}
+				}
+				else
+				{
+					logger.error("Invalid role: " + userRole );
 				}
 				Collections.sort(svl_, new MyComparator());
 				records = svl_;

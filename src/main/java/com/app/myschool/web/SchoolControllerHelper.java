@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.ManyToOne;
@@ -29,6 +30,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.extjs.JsonPrettyPrint;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
 import com.app.myschool.model.Guardian;
@@ -147,7 +149,7 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 		List<SchoolView> schoolViewList = new ArrayList<SchoolView>();
 		try
 		{
-			List<School> schools = null;
+			List<School> schools = new ArrayList<School>();
 			try
 			{
 				if( role.equals("ROLE_ADMIN") )
@@ -157,6 +159,11 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 				else if( role.equals("ROLE_FACULTY"))
 				{
 					schools = School.findAllSchools();
+				}
+				else if( role.equals("ROLE_SCHOOL"))
+				{
+					Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+					schools = new ArrayList<School>( admin.getSchools() );
 				}
 				else
 				{
