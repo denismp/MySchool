@@ -29,6 +29,10 @@ Ext.define('MySchool.model.faculty.FacultyTableModel', {
 			type: 'int'
 		},
 		{
+			name: 'facultyId',
+			type: 'int'
+		},
+		{
 			name: 'email',
 			type: 'string'
 		},

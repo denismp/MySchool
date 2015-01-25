@@ -77,6 +77,16 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 				scope: this
 			});
 		}
+		else if( this.userRole === 'ROLE_SCHOOL'){
+			title = this.userName + '/' + this.userRole;
+
+
+			myGrid.setTitle('[' + title + ']');
+			myStore.load({
+				callback: this.onMyJsonStoreLoad,
+				scope: this
+			});
+		}
 		else{
 			var myForm = this.getOnlyFacultyForm();
 			//DENIS 12/24/2014
@@ -144,7 +154,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 		var facultyStore = Ext.getStore('faculty.FacultyTableStore');
 
-		if( this.userRole === 'ROLE_ADMIN'){
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
 			var newDialog = Ext.create( 'MySchool.view.faculty.NewDialog' );
 
 			window.console.log( 'New Faculty Dialog' );

@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 
@@ -26,8 +27,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
+import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
+import com.app.myschool.model.Subject;
 
 public class FacultyViewControllerHelper implements ControllerHelperInterface
 {
@@ -136,23 +141,15 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 		logger.info("LoginInfo:" + myLoginInfo);
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
-		String userName = securityHelper.getUserName();
-		String role = securityHelper.getUserRole();
+		//String userName = securityHelper.getUserName();
+		//String role = securityHelper.getUserRole();
 
 		try
 		{
-			List<Faculty> facultys = null;
-			if( role.equals("ROLE_ADMIN") )
-			{
-				facultys = Faculty.findAllFacultys();
-			}
-			else if( role.equals("ROLE_FACULTY"))
-			{
-				facultys = Faculty.findFacultysByUserNameEquals(userName).getResultList();
-			}
+			List<Faculty> facultys = securityHelper.findFacultysByRole();;
 			
 			List<FacultyView> facultyViewList = new ArrayList<FacultyView>();
-			//long i = 0;
+			long i = 0;
 			for (Faculty faculty : facultys)
 			{
 				statusGood = true;
@@ -160,14 +157,14 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				FacultyView myView = new FacultyView();
 				myView.setId(faculty.getId());
 				myView.setFacultyId(faculty.getId());
-				myView.setFacultyviewid(faculty.getId());
+				myView.setFacultyviewid(i++);
 				myView.setVersion(faculty.getVersion());
 				myView.setLastUpdated(faculty.getLastUpdated());
 				myView.setWhoUpdated(faculty.getWhoUpdated());
 				myView.setDob(faculty.getDob());
 
 				myView.setVersion(faculty.getVersion());
-				myView.setFacultyId(faculty.getId());
+				//myView.setFacultyId(faculty.getId());
 				myView.setEmail(faculty.getEmail());
 				myView.setAddress1(faculty.getAddress1());
 				myView.setAddress2(faculty.getAddress2());

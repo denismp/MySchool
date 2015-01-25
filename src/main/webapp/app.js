@@ -148,7 +148,6 @@ Ext.application({
 		'weekly.evaluation.SaveTool',
 		'weekly.evaluation.DeleteTool',
 		'weekly.evaluation.LockTool',
-		'weekly.evaluations.NewForm',
 		'monthly.evaluation.NewFormPanel',
 		'monthly.evaluation.TabPanel',
 		'monthly.evaluation.RefreshTool',

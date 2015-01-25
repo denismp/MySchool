@@ -25,7 +25,6 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsTabPanel', {
 
 	height: 300,
 	minHeight: 300,
-	activeTab: 0,
 
 	initComponent: function() {
 		var me = this;
@@ -34,11 +33,11 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsTabPanel', {
 			items: [
 				{
 					xtype: 'commonmytabpanel',
-					itemId: 'weeklyevaluationdetailstabpanel',
+					itemId: 'weeklyevaluationcommentstabpanel',
 					title: 'Comments',
 					tabConfig: {
 						xtype: 'tab',
-						tooltip: 'Click edit to modify'
+						tooltip: 'Click Edit to modify'
 					}
 				}
 			]

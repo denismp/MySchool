@@ -262,7 +262,7 @@ where
 		String userName = this.getUserName();
 		String userRole = this.getUserRole();
 		List<Student> students = new ArrayList<Student>();
-		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		
 		if( userRole.equals("ROLE_ADMIN"))
 		{
@@ -274,9 +274,9 @@ where
 			Set<Student> studentSet = faculty.getStudents();
 			students = new ArrayList<Student>(studentSet);
 		}
-		else if(securityHelper.getUserRole().equals("ROLE_SCHOOL"))
+		else if(this.getUserRole().equals("ROLE_SCHOOL"))
 		{
-			Admin admin = Admin.findAdminsByUserNameEquals(securityHelper.getUserName()).getSingleResult();
+			Admin admin = Admin.findAdminsByUserNameEquals(this.getUserName()).getSingleResult();
 			try
 			{
 				students = this.getStudentListBySchoolAdmin(admin.getId().toString());
@@ -293,12 +293,59 @@ where
 		}
 		return students;
 	}
+	private boolean isDupFaculty(List<Faculty>fList, Faculty fMember )
+	{
+		for( Faculty faculty: fList )
+		{
+			if( faculty.getId().longValue() == fMember.getId().longValue() )
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	public List<Faculty> findFacultysByRole()
+	{
+		String role = this.getUserRole();
+		String userName = this.getUserName();
+		List<Faculty> facultys = new ArrayList<Faculty>();
+		if( role.equals("ROLE_ADMIN") )
+		{
+			facultys = Faculty.findAllFacultys();
+		}
+		else if( role.equals("ROLE_FACULTY"))
+		{
+			facultys = Faculty.findFacultysByUserNameEquals(userName).getResultList();
+		}
+		else if( role.equals("ROLE_SCHOOL"))
+		{
+			Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+			Set<School> schools = admin.getSchools();
+			for( School school: schools )
+			{
+				Set<Subject> subjects = school.getSubjects();
+				for( Subject subject: subjects )
+				{
+					Set<Quarter> quarters = subject.getQuarters();
+					for( Quarter quarter: quarters )
+					{
+						Faculty faculty = quarter.getFaculty();
+						if( this.isDupFaculty(facultys, faculty ) == false )
+						{
+							facultys.add(faculty);
+						}
+					}
+				}
+			}
+		}
+		return facultys;
+	}
 	public Quarter findQuarterByStudentAndYearAndQuarterName(Student student, int year, String qtrName )
 	{
 		Set<Quarter> quarters = student.getQuarters();
-		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-		String userName = securityHelper.getUserName();
-		String userRole = securityHelper.getUserRole();
+		//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = this.getUserName();
+		String userRole = this.getUserRole();
 		if( userRole.equals( "ROLE_ADMIN") || userRole.equals("ROLE_USER"))
 		{
 			for( Quarter quarter: quarters)
@@ -342,7 +389,7 @@ where
 		}
 		else if( userRole.equals("ROLE_SCHOOL"))
 		{
-			Admin admin = Admin.findAdminsByUserNameEquals(securityHelper.getUserName()).getSingleResult();
+			Admin admin = Admin.findAdminsByUserNameEquals(this.getUserName()).getSingleResult();
 			try
 			{
 				Set<School> schools = admin.getSchools();

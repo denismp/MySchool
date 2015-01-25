@@ -52,6 +52,13 @@ Ext.define('MySchool.view.faculty.ProfileGridFacultyOnlyPanel', {
 					format: '000000'
 				},
 				{
+					xtype: 'numbercolumn',
+					hidden: true,
+					dataIndex: 'facultyviewid',
+					text: 'facultyviewid',
+					format: '000000'
+				},
+				{
 					xtype: 'gridcolumn',
 					dataIndex: 'userName',
 					text: 'Faculty User Name'

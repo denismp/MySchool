@@ -52,7 +52,8 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsPanel', {
 				},
 				{
 					xtype: 'mytabpanel1',
-					dock: 'bottom'
+					dock: 'bottom',
+					itemId: 'weeklyevaluationcommentstabpanel'
 				}
 			],
 			tools: [

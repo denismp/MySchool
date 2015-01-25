@@ -31,7 +31,7 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 		},
 		{
 			ref: 'WeeklyEvaluationsCommentsTabPanel',
-			selector: '#weeklyevaluationdetailstabpanel'
+			selector: '#weeklyevaluationcommentstabpanel'
 		}
 	],
 
@@ -464,10 +464,10 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 
 	init: function(application) {
 				this.control({
-					"#editmonthlycommentstabpanel": {
+					"#editweeklyevaluationcommentstabpanel": {
 						click: this.buttonHandler
 					},
-					"#monthlycommentstabpaneltextbox": {
+					"#weeklyevaluationcommentstabpaneltextbox": {
 						blur: this.blurHandler
 					}
 				});
