@@ -283,6 +283,13 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 		HttpStatus returnStatus = HttpStatus.OK;
 
 		JsonObjectResponse response = new JsonObjectResponse();
+		SecurityViewControllerHelper security = new SecurityViewControllerHelper();
+		String userRole = security.getUserRole();
+		boolean okToDo = false;
+		if( userRole.equals("ROLE_ADMIN") || userRole.equals("ROLE_SCHOOL") )
+		{
+			okToDo = true;
+		}
 
 		try
 		{
@@ -294,94 +301,107 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			FacultyView myView = FacultyView.fromJsonToFacultyView(myJson);
-
-			Faculty faculty = null;
-			try
+			
+			if( okToDo )
 			{
-				faculty = Faculty.findFacultysByUserNameEquals(
-					myView.getUserName()).getSingleResult();
-			}
-			catch( Exception nre )
-			{
-				logger.info("No duplicate for faculy userName=" + myView.getUserName() );
-			}
-
-			if (faculty == null)
-			{
-				String msg = "";
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
-				record.setDob(myView.getDob());
-
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				record.setWhoUpdated(securityHelper.getUserName());
-				
-				String plainText = myView.getUserPassword();
-
-				String newpwd = securityHelper.convertToSHA256(myView
-						.getUserPassword());
-
-				record.setAddress1(myView.getAddress1());
-				record.setAddress2(myView.getAddress2());
-				record.setCity(myView.getCity());
-				record.setCountry(myView.getCountry());
-				record.setEnabled(myView.getEnabled());
-				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
-				record.setPhone1(myView.getPhone1());
-				record.setPhone2(myView.getPhone2());
-				record.setPostalCode(myView.getPostalCode());
-				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(newpwd);
-				if( isValidUserName( record.getUserName() ) == false )
+				Faculty faculty = null;
+				try
 				{
-					statusGood = false;
-					msg = "Invalid user name.";
+					faculty = Faculty.findFacultysByUserNameEquals(
+						myView.getUserName()).getSingleResult();
 				}
-				else
+				catch( Exception nre )
 				{
-					if( isValidPassword( plainText ) == false )
+					logger.info("No duplicate for faculy userName=" + myView.getUserName() );
+				}
+	
+				if (faculty == null)
+				{
+					String msg = "";
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setCreatedDate(myView.getLastUpdated());
+					record.setDob(myView.getDob());
+	
+					SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+					record.setWhoUpdated(securityHelper.getUserName());
+					
+					String plainText = myView.getUserPassword();
+	
+					String newpwd = securityHelper.convertToSHA256(myView
+							.getUserPassword());
+	
+					record.setAddress1(myView.getAddress1());
+					record.setAddress2(myView.getAddress2());
+					record.setCity(myView.getCity());
+					record.setCountry(myView.getCountry());
+					record.setEnabled(myView.getEnabled());
+					record.setEmail(myView.getEmail());
+					record.setFirstName(myView.getFirstName());
+					record.setMiddleName(myView.getMiddleName());
+					record.setLastName(myView.getLastName());
+					record.setPhone1(myView.getPhone1());
+					record.setPhone2(myView.getPhone2());
+					record.setPostalCode(myView.getPostalCode());
+					record.setProvince(myView.getProvince());
+					record.setUserName(myView.getUserName());
+					record.setUserPassword(newpwd);
+					if( isValidUserName( record.getUserName() ) == false )
 					{
 						statusGood = false;
-						msg = "Invalid passord";
+						msg = "Invalid user name.";
 					}
-				}
-
-				if (statusGood)
-				{
-					((Faculty) record).persist();
-					
-					myView.setVersion(record.getVersion());
-					myView.setId(record.getId());
-					// myView.setDailyId(record.getId());
-					//myView.setId(100000L + record.getId());
-
-					returnStatus = HttpStatus.CREATED;
-					response.setMessage(className + " created.");
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
+					else
+					{
+						if( isValidPassword( plainText ) == false )
+						{
+							statusGood = false;
+							msg = "Invalid passord";
+						}
+					}
+	
+					if (statusGood)
+					{
+						((Faculty) record).persist();
+						
+						myView.setVersion(record.getVersion());
+						myView.setId(record.getId());
+						// myView.setDailyId(record.getId());
+						//myView.setId(100000L + record.getId());
+	
+						returnStatus = HttpStatus.CREATED;
+						response.setMessage(className + " created.");
+						response.setSuccess(true);
+						response.setTotal(1L);
+						response.setData(myView);
+					}
+					else
+					{
+						response.setMessage(className + " " + msg );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						//returnStatus = HttpStatus.CONFLICT;
+						returnStatus = HttpStatus.BAD_REQUEST;					
+					}
 				}
 				else
 				{
-					response.setMessage(className + " " + msg );
+					statusGood = false;
+					response.setMessage("Duplicated faculty attempted.");
 					response.setSuccess(false);
 					response.setTotal(0L);
-					//returnStatus = HttpStatus.CONFLICT;
-					returnStatus = HttpStatus.BAD_REQUEST;					
+					returnStatus = HttpStatus.CONFLICT;
+					// returnStatus = HttpStatus.BAD_REQUEST;
 				}
 			}
 			else
 			{
-				statusGood = false;
-				response.setMessage("Duplicated faculty attempted.");
+				String msg = "Invalid role: " + userRole;
+				response.setMessage(className + " " + msg );
 				response.setSuccess(false);
 				response.setTotal(0L);
-				returnStatus = HttpStatus.CONFLICT;
-				// returnStatus = HttpStatus.BAD_REQUEST;
+				//returnStatus = HttpStatus.CONFLICT;
+				returnStatus = HttpStatus.BAD_REQUEST;					
+				
 			}
 
 		}
@@ -544,10 +564,21 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				okToDo = true;
 			else if( userRole.equals("ROLE_FACULTY") && userName.equals(myView.getUserName()))
 				okToDo = true;
-			//else if( userName.equals(myView.getUserName()))
-			//{
-			//	okToDo = true;
-			//}
+			else if( userRole.equals("ROLE_SCHOOL"))
+			{
+				Set<Quarter> quarters = record.getQuarters();
+				for( Quarter quarter: quarters )
+				{
+					Subject subject = quarter.getSubject();
+					School school = subject.getSchool();
+					Admin admin = school.getAdmin();
+					if( admin.getUserName().equals(userName) )
+					{
+						okToDo = true;
+					}
+				}
+				//okToDo = true;
+			}
 			String plainText = myView.getUserPassword();
 			//if( plainText != null && plainText.equals("") == false && plainText.equals( "NOT DISPLAYED" ) == false )
 			if( this.isValidPassword(plainText) && plainText.equals( "NOT DISPLAYED" ) == false )

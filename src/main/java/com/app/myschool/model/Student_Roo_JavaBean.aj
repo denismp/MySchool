@@ -8,6 +8,7 @@ import com.app.myschool.model.GraduateTracking;
 import com.app.myschool.model.Guardian;
 import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import java.util.Set;
 
@@ -51,6 +52,14 @@ privileged aspect Student_Roo_JavaBean {
     
     public void Student.setFaculty(Set<Faculty> faculty) {
         this.faculty = faculty;
+    }
+    
+    public School Student.getSchool() {
+        return this.school;
+    }
+    
+    public void Student.setSchool(School school) {
+        this.school = school;
     }
     
 }

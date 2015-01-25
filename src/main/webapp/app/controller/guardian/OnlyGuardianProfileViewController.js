@@ -233,7 +233,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
 		guardianTypesStore.myLoad();
 
-		if( this.userRole === 'ROLE_ADMIN'){
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL' ){
 			var newDialog = Ext.create( 'MySchool.view.guardian.NewDialog' );
 
 			window.console.log( 'New Guardian Dialog' );
@@ -354,7 +354,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
 		guardianTypesStore.myLoad();
 
-		if( this.userRole === 'ROLE_ADMIN'){
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
 			var newDialog = Ext.create( 'MySchool.view.guardian.AddChildDialog' );
 
 			window.console.log( 'Add Child Dialog' );

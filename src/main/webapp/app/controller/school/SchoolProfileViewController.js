@@ -65,7 +65,7 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 				}
 			});
 		}
-		else if( this.userRole === 'ROLE_ADMIN'){
+		else if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL' ){
 			title = this.userName + '/' + this.userRole;
 
 
@@ -149,7 +149,7 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 		//var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
 		//guardianTypesStore.myLoad();
 
-		if( this.userRole === 'ROLE_ADMIN'){
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL' ){
 			var newDialog = Ext.create( 'MySchool.view.school.NewDialog' );
 
 			window.console.log( 'New School Dialog' );

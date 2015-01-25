@@ -100,6 +100,10 @@ public class School {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
     private Set<Subject> subjects = new HashSet<Subject>();
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
+    private Set<Student> students = new HashSet<Student>();
+
   
     @ManyToOne
     private Admin admin;

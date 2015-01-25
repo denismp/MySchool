@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -179,6 +180,11 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 				else if( role.equals("ROLE_FACULTY"))
 				{
 					schools = School.findAllSchools();
+				}
+				else if( role.equals("ROLE_SCHOOL"))
+				{
+					Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+					schools = new ArrayList<School>( admin.getSchools() );
 				}
 				else
 				{

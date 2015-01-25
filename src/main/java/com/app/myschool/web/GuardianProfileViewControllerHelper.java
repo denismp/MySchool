@@ -23,11 +23,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.extjs.JsonPrettyPrint;
+import com.app.myschool.model.Admin;
 import com.app.myschool.model.Guardian;
 import com.app.myschool.model.GuardianProfileView;
+import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.StudentProfileView;
 import com.app.myschool.model.Faculty;
+import com.app.myschool.model.Subject;
 
 
 public class GuardianProfileViewControllerHelper implements ControllerHelperInterface{
@@ -227,7 +231,42 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			{
 				long i = 0;
 				//List<GuardianProfileView> guardianProfileViewList	= new ArrayList<GuardianProfileView>();
-				List<Guardian> guardianList = Guardian.findAllGuardians();
+				List<Guardian> guardianList = new ArrayList<Guardian>();
+				//List<Guardian> guardianList = Guardian.findAllGuardians();
+				if( userRole.equals("ROLE_ADMIN"))
+				{
+					guardianList = Guardian.findAllGuardians();
+				}
+				else if( userRole.equals("ROLE_SCHOOL"))
+				{
+					Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+					Set<School> schools = admin.getSchools();
+					for( School school: schools)
+					{
+						Set<Student> students = school.getStudents();
+
+						for( Student student: students )
+						{
+							Set<Guardian> gList = student.getGuardians();
+							for( Guardian guardian: gList )
+							{
+								if( this.isDupGuardian(guardianList, guardian, student) == false )
+								{
+									guardianList.add(guardian);
+								}
+							}
+						}
+					}
+					// Add any null student guardians
+					List<Guardian> gList = Guardian.findAllGuardians();
+					for( Guardian guardian: gList )
+					{
+						if( guardian.getStudents().isEmpty() )
+						{
+							guardianList.add(guardian);
+						}
+					}
+				}
 				Student singleStudent = null;
 	
 				if( userRole.equals("ROLE_USER"))
@@ -408,6 +447,24 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 				returnStatus);	
 	}
 	
+	private boolean isDupGuardian(List<Guardian> guardianList, Guardian guardian, Student student)
+	{
+		for( Guardian myGuardian: guardianList )
+		{
+			Set<Student> myStudents = myGuardian.getStudents();
+			for( Student myStudent: myStudents )
+			{
+				if( 
+						guardian.getId().longValue() == myGuardian.getId().longValue() &&
+						myStudent.getId().longValue() == student.getId().longValue()
+					)
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	@SuppressWarnings("rawtypes")
 	public ResponseEntity<String> listJson() {
 		HashMap parms = new HashMap();

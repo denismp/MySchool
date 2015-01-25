@@ -5,6 +5,7 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Admin;
 import com.app.myschool.model.School;
+import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 import java.util.Date;
 import java.util.Set;
@@ -161,6 +162,14 @@ privileged aspect School_Roo_JavaBean {
     
     public void School.setSubjects(Set<Subject> subjects) {
         this.subjects = subjects;
+    }
+    
+    public Set<Student> School.getStudents() {
+        return this.students;
+    }
+    
+    public void School.setStudents(Set<Student> students) {
+        this.students = students;
     }
     
     public Admin School.getAdmin() {
