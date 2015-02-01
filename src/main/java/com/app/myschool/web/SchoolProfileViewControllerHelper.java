@@ -6,12 +6,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -593,6 +592,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 				returnStatus);
 	}
 	
+	@SuppressWarnings("unused")
 	private String convertToSHA256(String plainText)
 			throws NoSuchAlgorithmException
 	{
@@ -655,6 +655,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			if( userRole.equals( "ROLE_ADMIN" ) )
 				okToDo = true;
 			else if( userRole.equals("ROLE_FACULTY"))
+				okToDo = true;
+			else if( userRole.equals("ROLE_SCHOOL"))
 				okToDo = true;
 
 			record.setWhoUpdated(securityHelper.getUserName());

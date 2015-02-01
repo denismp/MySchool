@@ -54,12 +54,12 @@ privileged aspect Student_Roo_JavaBean {
         this.faculty = faculty;
     }
     
-    public School Student.getSchool() {
-        return this.school;
+    public Set<School> Student.getSchools() {
+        return this.schools;
     }
     
-    public void Student.setSchool(School school) {
-        this.school = school;
+    public void Student.setSchools(Set<School> schools) {
+        this.schools = schools;
     }
     
 }

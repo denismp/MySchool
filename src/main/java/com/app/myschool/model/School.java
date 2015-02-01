@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -101,9 +102,8 @@ public class School {
     @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
     private Set<Subject> subjects = new HashSet<Subject>();
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="school")
+    @ManyToMany(cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<Student>();
-
   
     @ManyToOne
     private Admin admin;

@@ -27,6 +27,6 @@
         <field:datetime dateTimePattern="${student_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Student_createdDate" z="XeO05YvwMtFlnuzwK2q5r2iRp3k="/>
         <field:datetime dateTimePattern="${student_dob_date_format}" field="dob" id="c_com_app_myschool_model_Student_dob" z="84btigYgUX60LAPBtHPWa44BT8M="/>
         <field:select field="guardians" id="c_com_app_myschool_model_Student_guardians" itemValue="id" items="${guardians}" multiple="true" path="/guardians" z="DYlKw7p78kRonJL3EyJipBGGuFY="/>
-        <field:select field="school" id="c_com_app_myschool_model_Student_school" itemValue="id" items="${schools}" path="/schools" z="sawhb3nWsuSjIsiRH9vB7u2NtsI="/>
+        <field:select field="schools" id="c_com_app_myschool_model_Student_schools" itemValue="id" items="${schools}" multiple="true" path="/schools" z="KfbOuV+sWMyPw+M67zKOe0pyQYg="/>
     </form:update>
 </div>

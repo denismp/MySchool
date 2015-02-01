@@ -732,20 +732,31 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 				}
 				else
 				{
-					// The guardian already exists.
+					// The guardian already exists, then this is actually an update, not a create request.
 					// In this case we are possibly adding a child student to the guardian.
 					Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
 					// Check to see if the studentId of the requested studentUserName is different from the given studentUserName.
 					if( student.getId().longValue() != myView.getStudentId().longValue() )
 					{
+						logger.info("User is asking Student to be added to Guardian.");
 						String msg = "";
-						
-						if (statusGood)
-						{	
-							// the ID's are different, so we want add the new student to the guardian.
-							// First get the data for the current 
-							record = Guardian.findGuardian(myView.getGuardianId());
-							Set<Student> students = record.getStudents();
+					
+						// the ID's are different, so we want add the new student to the guardian.
+						// First get the data for the current Guardian and make sure that the student is not already his.
+						record = Guardian.findGuardian(myView.getGuardianId());
+						Set<Student> students = record.getStudents();
+						boolean found = false;
+						for( Student myStudent: students )
+						{
+							if( myStudent.getId().longValue() == student.getId().longValue() )
+							{
+								found = true;
+								break;
+							}
+						}
+						if( !found )
+						{
+							// Student currently does not belong to the Guardian so let's add the Student.
 							students.add(student);
 							record.setStudents(students);
 
@@ -792,8 +803,10 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 								myView.setType(record.getType());
 								myView.setDescription(record.getDescription());
 								
-								returnStatus = HttpStatus.CREATED;
-								response.setMessage(className + " created.");
+								logger.info("Merge of guardian record with new student successful.");
+								
+								returnStatus = HttpStatus.OK;
+								response.setMessage(className + " created.  Merge of guardian record with new student successful.");
 								response.setSuccess(true);
 								response.setTotal(1L);
 								response.setData(myView);
@@ -815,11 +828,12 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 							response.setSuccess(false);
 							response.setTotal(0L);
 							//returnStatus = HttpStatus.CONFLICT;
-							returnStatus = HttpStatus.BAD_REQUEST;					
+							returnStatus = HttpStatus.BAD_REQUEST;													
 						}
 					}
 					else
 					{
+						logger.error("Student is arleady a child of " + myView.getUserName() );
 						response.setMessage(className + " " + "student is already a child of " + myView.getUserName() );
 						response.setSuccess(false);
 						response.setTotal(0L);
@@ -973,7 +987,10 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 					// part of the relationship so we need to add it.
 					Student student = Student.findStudentsByUserNameEquals(
 							myView.getStudentUserName()).getSingleResult();
-					students.add(student);
+					if( isDupStudentGuardian(record, student) == false )
+					{
+						students.add(student);
+					}
 				}
 
 				record.setLastUpdated(new Date(System.currentTimeMillis()));
@@ -1072,6 +1089,21 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+	}
+	private boolean isDupStudentGuardian(Guardian record, Student student)
+	{
+		Set<Guardian> guardians = student.getGuardians();
+		for( Guardian guardian: guardians )
+		{
+			int currentType = record.getType();
+			int requestType = guardian.getType();
+			if( currentType == requestType && requestType != 2 && currentType != 2 )
+			{
+				return true;
+			}
+		}
+				
+		return false;
 	}
 	@Override
 	public ResponseEntity<String> updateFromJsonArray(String json)

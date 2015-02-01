@@ -35,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Guardian;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.StudentProfileView;
 import com.app.myschool.model.Faculty;
@@ -204,7 +205,14 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 	{
 		@Override
 		public int compare(StudentProfileView o1, StudentProfileView o2) {
-			return o1.getLastName().compareTo(o2.getLastName());
+			String school1 = o1.getSchoolName();
+			String school2 = o2.getSchoolName();
+			if( school1 == null )
+				return -1;
+			if( school2 == null )
+				return 1;
+			return school1.compareTo(school2);
+			//return o1.getLastName().compareTo(o2.getLastName());
 		}
 	}
 	
@@ -350,14 +358,146 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 
 				for (Faculty faculty : studentFacultyList) 
 				{					
-					statusGood					= true;
-					
-					//DENIS 12/24/2014
-					List<Guardian> guardianList = new ArrayList<Guardian>(student.getGuardians());
-					if( guardianList.size() > 0 )
+					Set<School> schools = student.getSchools();
+
+					logger.info("Checking to see if the schools list is empty.");
+					logger.info( "List is empty is " + schools.isEmpty() );
+					logger.info("List size=" + schools.size() );
+					logger.info("student user name = " + student.getUserName());
+
+					if( schools.isEmpty() == false )
 					{
-						for( Guardian guardian : guardianList )
+						for( School school: schools )
 						{
+							//DENIS 12/24/2014
+							List<Guardian> guardianList = new ArrayList<Guardian>(student.getGuardians());
+							if( guardianList.size() > 0 )
+							{
+								for( Guardian guardian : guardianList )
+								{
+									statusGood					= true;
+									StudentProfileView myView			= new StudentProfileView();
+									myView.setId(++i);
+									myView.setStudentprofileviewId(i);
+									myView.setVersion(student.getVersion());
+									myView.setLastUpdated(student.getLastUpdated());
+									myView.setWhoUpdated(student.getWhoUpdated());
+									myView.setStudentId(student.getId());
+									myView.setVersion(student.getVersion());
+									myView.setFacultyId(faculty.getId());
+									myView.setEmail(student.getEmail());
+									myView.setAddress1(student.getAddress1());
+									myView.setAddress2(student.getAddress2());
+									myView.setCity(student.getCity());
+									myView.setCountry(student.getCountry());
+									myView.setFacultyUserName(faculty.getUserName());
+									myView.setFacultyEmail(faculty.getEmail());
+									myView.setLastName(student.getLastName());
+									myView.setMiddleName(student.getMiddleName());
+									myView.setFirstName(student.getFirstName());
+									myView.setPostalCode(student.getPostalCode());
+									myView.setProvince(student.getProvince());
+									myView.setPhone1(student.getPhone1());
+									myView.setPhone2(student.getPhone2());
+									myView.setEnabled(student.getEnabled());
+									myView.setUserName(student.getUserName());
+									myView.setDob(student.getDob());
+									//DENIS 12/24/2014
+									myView.setGuardianEmail(guardian.getEmail());
+									myView.setGuardianUserName(guardian.getUserName());
+									myView.setGuardianId(guardian.getId());
+									
+									myView.setSchoolId(school.getId());
+									myView.setSchoolName(school.getName());
+															
+									studentViewList.add( myView );						
+								}
+							}
+							else // there are no guardians
+							{
+								//DENIS 12/24/2014
+								statusGood					= true;
+								StudentProfileView myView			= new StudentProfileView();
+								myView.setId(++i);
+								myView.setStudentprofileviewId(i);
+								myView.setVersion(student.getVersion());
+								myView.setLastUpdated(student.getLastUpdated());
+								myView.setWhoUpdated(student.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								myView.setVersion(student.getVersion());
+								myView.setFacultyId(faculty.getId());
+								myView.setEmail(student.getEmail());
+								myView.setAddress1(student.getAddress1());
+								myView.setAddress2(student.getAddress2());
+								myView.setCity(student.getCity());
+								myView.setCountry(student.getCountry());
+								myView.setFacultyUserName(faculty.getUserName());
+								myView.setFacultyEmail(faculty.getEmail());
+								myView.setLastName(student.getLastName());
+								myView.setMiddleName(student.getMiddleName());
+								myView.setFirstName(student.getFirstName());
+								myView.setPostalCode(student.getPostalCode());
+								myView.setProvince(student.getProvince());
+								myView.setPhone1(student.getPhone1());
+								myView.setPhone2(student.getPhone2());
+								myView.setEnabled(student.getEnabled());
+								myView.setUserName(student.getUserName());
+								myView.setDob(student.getDob());
+								
+								myView.setSchoolId(school.getId());
+								myView.setSchoolName(school.getName());
+														
+								studentViewList.add( myView );												
+							}
+						}
+					}
+					else // there are no schools
+					{
+						//DENIS 12/24/2014
+						List<Guardian> guardianList = new ArrayList<Guardian>(student.getGuardians());
+						if( guardianList.size() > 0 )
+						{
+							for( Guardian guardian : guardianList )
+							{
+								statusGood					= true;
+								StudentProfileView myView			= new StudentProfileView();
+								myView.setId(++i);
+								myView.setStudentprofileviewId(i);
+								myView.setVersion(student.getVersion());
+								myView.setLastUpdated(student.getLastUpdated());
+								myView.setWhoUpdated(student.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								myView.setVersion(student.getVersion());
+								myView.setFacultyId(faculty.getId());
+								myView.setEmail(student.getEmail());
+								myView.setAddress1(student.getAddress1());
+								myView.setAddress2(student.getAddress2());
+								myView.setCity(student.getCity());
+								myView.setCountry(student.getCountry());
+								myView.setFacultyUserName(faculty.getUserName());
+								myView.setFacultyEmail(faculty.getEmail());
+								myView.setLastName(student.getLastName());
+								myView.setMiddleName(student.getMiddleName());
+								myView.setFirstName(student.getFirstName());
+								myView.setPostalCode(student.getPostalCode());
+								myView.setProvince(student.getProvince());
+								myView.setPhone1(student.getPhone1());
+								myView.setPhone2(student.getPhone2());
+								myView.setEnabled(student.getEnabled());
+								myView.setUserName(student.getUserName());
+								myView.setDob(student.getDob());
+								//DENIS 12/24/2014
+								myView.setGuardianEmail(guardian.getEmail());
+								myView.setGuardianUserName(guardian.getUserName());
+								myView.setGuardianId(guardian.getId());
+														
+								studentViewList.add( myView );						
+							}
+						}
+						else // there are no guardians
+						{
+							//DENIS 12/24/2014
+							statusGood					= true;
 							StudentProfileView myView			= new StudentProfileView();
 							myView.setId(++i);
 							myView.setStudentprofileviewId(i);
@@ -384,45 +524,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 							myView.setEnabled(student.getEnabled());
 							myView.setUserName(student.getUserName());
 							myView.setDob(student.getDob());
-							//DENIS 12/24/2014
-							myView.setGuardianEmail(guardian.getEmail());
-							myView.setGuardianUserName(guardian.getUserName());
-							myView.setGuardianId(guardian.getId());
 													
-							studentViewList.add( myView );						
-						}
-					}
-					else
-					{
-						//DENIS 12/24/2014
-						StudentProfileView myView			= new StudentProfileView();
-						myView.setId(++i);
-						myView.setStudentprofileviewId(i);
-						myView.setVersion(student.getVersion());
-						myView.setLastUpdated(student.getLastUpdated());
-						myView.setWhoUpdated(student.getWhoUpdated());
-						myView.setStudentId(student.getId());
-						myView.setVersion(student.getVersion());
-						myView.setFacultyId(faculty.getId());
-						myView.setEmail(student.getEmail());
-						myView.setAddress1(student.getAddress1());
-						myView.setAddress2(student.getAddress2());
-						myView.setCity(student.getCity());
-						myView.setCountry(student.getCountry());
-						myView.setFacultyUserName(faculty.getUserName());
-						myView.setFacultyEmail(faculty.getEmail());
-						myView.setLastName(student.getLastName());
-						myView.setMiddleName(student.getMiddleName());
-						myView.setFirstName(student.getFirstName());
-						myView.setPostalCode(student.getPostalCode());
-						myView.setProvince(student.getProvince());
-						myView.setPhone1(student.getPhone1());
-						myView.setPhone2(student.getPhone2());
-						myView.setEnabled(student.getEnabled());
-						myView.setUserName(student.getUserName());
-						myView.setDob(student.getDob());
-												
-						studentViewList.add( myView );												
+							studentViewList.add( myView );												
+						}						
 					}
 				}
 			}
@@ -887,7 +991,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			{
 				Guardian guardian = Guardian.findGuardian(studentGuardian.guardianId);
 				guardians.add(guardian);
-				// Check to see if the currrent guardian user name is part of the student data.
+				// Check to see if the current guardian user name is part of the student data.
 				if( myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
 				{
 					if( Guardian.findGuardiansByUserNameEquals(myView.getGuardianUserName()).getSingleResult() != null )
@@ -897,6 +1001,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					}
 				}
 			}
+			
+
 			
 			// Populate the student "record" with the retrieved data.
 			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
@@ -920,6 +1026,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			record.setFaculty(facultys);
 			record.setDob(myView.getDob());
 			record.setGuardians(guardians);//DENIS 12/24/2014
+			//record.setSchools(schools);//DENIS 1/25/2015
 
 			logger.info("Debug2");
 			inSync = record.getVersion() == myView.getVersion();
@@ -929,6 +1036,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				logger.info("Debug3");
 				myView.setVersion(record.getVersion());
 	        	updateGood = true;
+	        	boolean doIt = false;
+	        	if( doIt )
+	        	{
 	        	//DENIS 12/24/2014
 	        	// Now check to see if we need to associate the guardian to the student.
 				if( !found && myView.getGuardianUserName() != null && myView.getGuardianUserName().equals("") == false )
@@ -959,9 +1069,37 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 						}
 					}
 				}
-
+				// Now with relating the school if required. THIS DOESN'T WORK, so poop on it.
+				School school = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+				Set<School> schools = record.getSchools();
+				boolean found2 = false;
+				for( School mySchool: schools )
+				{
+					if( mySchool.getId().longValue() == school.getId().longValue() )
+					{
+						found2  = true;
+						break;
+					}
+				}
+				if( found2 == false )
+				{
+					Set<Student> myStudents = school.getStudents();
+					myStudents.add(record);
+					school.setStudents(myStudents);
+					if( school.merge() != null )
+					{
+						updateGood = true;
+					}
+					else
+					{
+						updateGood = false;
+						msg = " Failed to update school with students";
+					}
+				}
+	        	}//if doIt = false
 		    }				
-			else {
+			else 
+			{
 				statusGood = false;
 			}
 			if( statusGood && updateGood )

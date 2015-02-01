@@ -132,11 +132,11 @@ where
 		List<Student> rList = null;
 		EntityManager em = Student.entityManager();
 		StringBuilder queryString = new StringBuilder("select distinct st.*");
-		queryString.append(" from student st, school s, subject sj, quarter q, admin a");
+		queryString.append(" from student st, school s, school_students ss, admin a");
 		queryString.append(" where a.id = s.admin");
-		queryString.append(" and s.id = sj.school");
-		queryString.append(" and sj.id = q.subject");
-		queryString.append(" and q.student = st.id");
+		queryString.append(" or ( s.id = ss.schools");
+		queryString.append(" and st.id = ss.students )");
+		queryString.append(" or st.school is null");
 
 		if( adminId != null )
 		{
@@ -187,7 +187,7 @@ where
 	public String getUserName()
 	{
 		String myLoginInfo = this.login();
-		logger.info("LoginInfo:" + myLoginInfo);
+		//logger.info("LoginInfo:" + myLoginInfo);
 		String[] loginInfo = myLoginInfo.split("/");
 		//String userName = loginInfo[0];
 		String userName = null;
@@ -200,7 +200,7 @@ where
 	public String getUserRole()
 	{
 		String myLoginInfo = this.login();
-		logger.info("LoginInfo:" + myLoginInfo);
+		//logger.info("LoginInfo:" + myLoginInfo);
 		String[] loginInfo = myLoginInfo.split("/");
 		//String userName = loginInfo[0];
 		String userRole = null;

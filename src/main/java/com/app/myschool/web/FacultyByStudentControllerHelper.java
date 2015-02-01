@@ -2,6 +2,7 @@ package com.app.myschool.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,6 +26,7 @@ import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyByStudentView;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
 
@@ -98,13 +100,21 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 	{
 		@Override
 		public int compare(FacultyByStudentView o1, FacultyByStudentView o2) {
-			int c;
-			c =  o1.getSubjName().compareTo(o2.getSubjName());
-			if( c == 0 )
-				c = o1.getQtrName().compareTo(o2.getQtrName());
-			if( c == 0 )
-				c = o1.getQtrYear().compareTo(o2.getQtrYear());
-			return c;
+			String facultyName1 = o1.getFacultyUserName();
+			String facultyName2 = o2.getFacultyUserName();
+			String studentName1 = o1.getStudentUserName();
+			String studentName2 = o2.getStudentUserName();
+			String subjectName1 = o1.getSubjName();
+			String subjectName2 = o2.getSubjName();
+			String qtrName1		= o1.getQtrName();
+			String qtrName2		= o2.getQtrName();
+			Integer qtrYear1	= o1.getQtrYear();
+			Integer qtrYear2	= o1.getQtrYear();
+			String schoolName1	= o1.getSchoolName();
+			String schoolName2	= o2.getSchoolName();
+			String compareString1 = facultyName1 + studentName1 + subjectName1 + qtrName1 + qtrYear1 + schoolName1;
+			String compareString2 = facultyName2 + studentName2 + subjectName2 + qtrName2 + qtrYear2 + schoolName2;
+			return compareString1.compareTo(compareString2);
 		}
 	}
 	
@@ -127,60 +137,343 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		List<FacultyByStudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
-		/*
-		String studentId_ = getParam(params, "studentId");
-		List<Student> students = new ArrayList<Student>();
-		//Stack <Long>subjectStack = new Stack<Long>();
-		if( studentId_ == null )
-		{
-			students = Student.findAllStudents();
-		//	Student student = students.get(0);
-		//	studentId_ = student.getId().toString();
-		}
-		else
-		{
-			Student student = Student.findStudent(new Long( studentId_ ));
-			students.add(student);
-		}
-		//String studentName_ = getParam(params, "studentName");
-		 * 
-		 */
-		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-		List<Student> students = securityHelper.findStudentsByLoginUserRole();
 
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		logger.info("listJson(): Get student list for " + securityHelper.getUserName() );
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
 		
 		try
 		{
 			
 			long i = 0;
+			boolean isFaculty = false;
 			List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
 			for( Student student: students )
 			{
-				String studentId_ = student.getId().toString();
-				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
-				
-
-				//Set<Quarter> studentQtrList	= student.getQuarters();
-
-				//List<Quarter> studentQtrList = Quarter.findQuartersByStudent(student).getResultList();
 				Set<Quarter> studentQtrList = student.getQuarters();
+				int qCount = studentQtrList.size();
 				for ( Quarter studentQtr: studentQtrList )
 				{	
 					Subject subject						= studentQtr.getSubject();
-					//for (StudentFaculty studentFaculty : studentFacultyList) 
 					List<Faculty> facultyList = securityHelper.getFacultyList(student);
-					//for( Faculty faculty: student.getFaculty() )
 					for( Faculty faculty: facultyList )
 					{
+						isFaculty = true;
 						if(isStudendQtrInFacultyQtr(studentQtr, faculty))
 						{
+							Set<School> schools = student.getSchools();
+							if( schools.isEmpty() == false )
+							{
+								for( School school: schools )
+								{
+									statusGood							= true;
+			
+									FacultyByStudentView myView		= new FacultyByStudentView();
+									myView.setId(++i);
+									myView.setFacultybystudentId(i);
+									myView.setVersion(faculty.getVersion());
+									myView.setLastUpdated(faculty.getLastUpdated());
+									myView.setWhoUpdated(faculty.getWhoUpdated());
+									myView.setStudentId(student.getId());
+									myView.setSubjId(subject.getId());
+									myView.setSubjName(subject.getName());
+									myView.setQtrId(studentQtr.getId());
+									myView.setQtrName(studentQtr.getQtrName());
+									myView.setQtrYear(studentQtr.getQtr_year());
+									myView.setVersion(faculty.getVersion());
+									myView.setFacultyId(faculty.getId());
+									myView.setEmail(faculty.getEmail());
+									myView.setAddress1(faculty.getAddress1());
+									myView.setAddress2(faculty.getAddress2());
+									myView.setCity(faculty.getCity());
+									myView.setCountry(faculty.getCountry());
+									myView.setFacultyUserName(faculty.getUserName());
+									myView.setLastName(faculty.getLastName());
+									myView.setMiddleName(faculty.getMiddleName());
+									myView.setFirstName(faculty.getFirstName());
+									myView.setPostalCode(faculty.getPostalCode());
+									myView.setProvince(faculty.getProvince());
+									myView.setPhone1(faculty.getPhone1());
+									myView.setPhone2(faculty.getPhone2());
+									myView.setEnabled(faculty.getEnabled());
+									myView.setStudentUserName(student.getUserName());
+									myView.setSchoolId(school.getId());
+									myView.setSchoolName(school.getName());
+				
+									facultyViewList.add( myView );
+								}
+							}
+							else
+							{
+								schools = student.getSchools();
+								if( schools.isEmpty() == false )
+								{
+									for( School school: schools )
+									{		
+										statusGood							= true;
+										
+										FacultyByStudentView myView		= new FacultyByStudentView();
+										myView.setId(++i);
+										myView.setFacultybystudentId(i);
+										myView.setVersion(faculty.getVersion());
+										myView.setLastUpdated(faculty.getLastUpdated());
+										myView.setWhoUpdated(faculty.getWhoUpdated());
+										myView.setStudentId(student.getId());
+										myView.setSubjId(subject.getId());
+										myView.setSubjName(subject.getName());
+										myView.setQtrId(studentQtr.getId());
+										myView.setQtrName(studentQtr.getQtrName());
+										myView.setQtrYear(studentQtr.getQtr_year());
+										myView.setVersion(faculty.getVersion());
+										myView.setFacultyId(faculty.getId());
+										myView.setEmail(faculty.getEmail());
+										myView.setAddress1(faculty.getAddress1());
+										myView.setAddress2(faculty.getAddress2());
+										myView.setCity(faculty.getCity());
+										myView.setCountry(faculty.getCountry());
+										myView.setFacultyUserName(faculty.getUserName());
+										myView.setLastName(faculty.getLastName());
+										myView.setMiddleName(faculty.getMiddleName());
+										myView.setFirstName(faculty.getFirstName());
+										myView.setPostalCode(faculty.getPostalCode());
+										myView.setProvince(faculty.getProvince());
+										myView.setPhone1(faculty.getPhone1());
+										myView.setPhone2(faculty.getPhone2());
+										myView.setEnabled(faculty.getEnabled());
+										myView.setStudentUserName(student.getUserName());
+										myView.setSchoolId(school.getId());
+										myView.setSchoolName(school.getName());
+					
+										facultyViewList.add( myView );
+									}
+								}
+								else
+								{
+									statusGood							= true;
+									
+									FacultyByStudentView myView		= new FacultyByStudentView();
+									myView.setId(++i);
+									myView.setFacultybystudentId(i);
+									myView.setVersion(faculty.getVersion());
+									myView.setLastUpdated(faculty.getLastUpdated());
+									myView.setWhoUpdated(faculty.getWhoUpdated());
+									myView.setStudentId(student.getId());
+									myView.setSubjId(subject.getId());
+									myView.setSubjName(subject.getName());
+									myView.setQtrId(studentQtr.getId());
+									myView.setQtrName(studentQtr.getQtrName());
+									myView.setQtrYear(studentQtr.getQtr_year());
+									myView.setVersion(faculty.getVersion());
+									myView.setFacultyId(faculty.getId());
+									myView.setEmail(faculty.getEmail());
+									myView.setAddress1(faculty.getAddress1());
+									myView.setAddress2(faculty.getAddress2());
+									myView.setCity(faculty.getCity());
+									myView.setCountry(faculty.getCountry());
+									myView.setFacultyUserName(faculty.getUserName());
+									myView.setLastName(faculty.getLastName());
+									myView.setMiddleName(faculty.getMiddleName());
+									myView.setFirstName(faculty.getFirstName());
+									myView.setPostalCode(faculty.getPostalCode());
+									myView.setProvince(faculty.getProvince());
+									myView.setPhone1(faculty.getPhone1());
+									myView.setPhone2(faculty.getPhone2());
+									myView.setEnabled(faculty.getEnabled());
+									myView.setStudentUserName(student.getUserName());
+									//myView.setSchoolId(school.getId());
+									//myView.setSchoolName(school.getName());
+				
+									facultyViewList.add( myView );
+									
+								}								
+							}
+						}
+					}
+					if( isFaculty == false )
+					{
+						// No faculty
+						Set<School> schools = student.getSchools();
+						if( schools.isEmpty() == false )
+						{
+							for( School school: schools )
+							{
+								statusGood							= true;
+		
+								FacultyByStudentView myView		= new FacultyByStudentView();
+								myView.setId(++i);
+								myView.setFacultybystudentId(i);
+								//myView.setVersion(faculty.getVersion());
+								//myView.setLastUpdated(faculty.getLastUpdated());
+								//myView.setWhoUpdated(faculty.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								myView.setSubjId(subject.getId());
+								myView.setSubjName(subject.getName());
+								myView.setQtrId(studentQtr.getId());
+								myView.setQtrName(studentQtr.getQtrName());
+								myView.setQtrYear(studentQtr.getQtr_year());
+								//myView.setVersion(faculty.getVersion());
+								//myView.setFacultyId(faculty.getId());
+								//myView.setEmail(faculty.getEmail());
+								//myView.setAddress1(faculty.getAddress1());
+								//myView.setAddress2(faculty.getAddress2());
+								//myView.setCity(faculty.getCity());
+								//myView.setCountry(faculty.getCountry());
+								//myView.setFacultyUserName(faculty.getUserName());
+								//myView.setLastName(faculty.getLastName());
+								//myView.setMiddleName(faculty.getMiddleName());
+								//myView.setFirstName(faculty.getFirstName());
+								//myView.setPostalCode(faculty.getPostalCode());
+								//myView.setProvince(faculty.getProvince());
+								//myView.setPhone1(faculty.getPhone1());
+								//myView.setPhone2(faculty.getPhone2());
+								//myView.setEnabled(faculty.getEnabled());
+								myView.setStudentUserName(student.getUserName());
+								myView.setSchoolId(school.getId());
+								myView.setSchoolName(school.getName());
+			
+								facultyViewList.add( myView );
+							}
+						}
+						else
+						{
+							schools = student.getSchools();
+							if( schools.isEmpty() == false )
+							{
+								for( School school: schools )
+								{		
+									statusGood							= true;
+									
+									FacultyByStudentView myView		= new FacultyByStudentView();
+									myView.setId(++i);
+									myView.setFacultybystudentId(i);
+									//myView.setVersion(faculty.getVersion());
+									//myView.setLastUpdated(faculty.getLastUpdated());
+									//myView.setWhoUpdated(faculty.getWhoUpdated());
+									myView.setStudentId(student.getId());
+									myView.setSubjId(subject.getId());
+									myView.setSubjName(subject.getName());
+									myView.setQtrId(studentQtr.getId());
+									myView.setQtrName(studentQtr.getQtrName());
+									myView.setQtrYear(studentQtr.getQtr_year());
+									//myView.setVersion(faculty.getVersion());
+									//myView.setFacultyId(faculty.getId());
+									//myView.setEmail(faculty.getEmail());
+									//myView.setAddress1(faculty.getAddress1());
+									//myView.setAddress2(faculty.getAddress2());
+									//myView.setCity(faculty.getCity());
+									//myView.setCountry(faculty.getCountry());
+									//myView.setFacultyUserName(faculty.getUserName());
+									//myView.setLastName(faculty.getLastName());
+									//myView.setMiddleName(faculty.getMiddleName());
+									//myView.setFirstName(faculty.getFirstName());
+									//myView.setPostalCode(faculty.getPostalCode());
+									//myView.setProvince(faculty.getProvince());
+									//myView.setPhone1(faculty.getPhone1());
+									//myView.setPhone2(faculty.getPhone2());
+									//myView.setEnabled(faculty.getEnabled());
+									myView.setStudentUserName(student.getUserName());
+									myView.setSchoolId(school.getId());
+									myView.setSchoolName(school.getName());
+				
+									facultyViewList.add( myView );
+								}
+							}
+							else
+							{
+								statusGood							= true;
+								
+								FacultyByStudentView myView		= new FacultyByStudentView();
+								myView.setId(++i);
+								myView.setFacultybystudentId(i);
+								//myView.setVersion(faculty.getVersion());
+								//myView.setLastUpdated(faculty.getLastUpdated());
+								//myView.setWhoUpdated(faculty.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								myView.setSubjId(subject.getId());
+								myView.setSubjName(subject.getName());
+								myView.setQtrId(studentQtr.getId());
+								myView.setQtrName(studentQtr.getQtrName());
+								myView.setQtrYear(studentQtr.getQtr_year());
+								//myView.setVersion(faculty.getVersion());
+								//myView.setFacultyId(faculty.getId());
+								//myView.setEmail(faculty.getEmail());
+								//myView.setAddress1(faculty.getAddress1());
+								//myView.setAddress2(faculty.getAddress2());
+								//myView.setCity(faculty.getCity());
+								//myView.setCountry(faculty.getCountry());
+								//myView.setFacultyUserName(faculty.getUserName());
+								//myView.setLastName(faculty.getLastName());
+								//myView.setMiddleName(faculty.getMiddleName());
+								//myView.setFirstName(faculty.getFirstName());
+								//myView.setPostalCode(faculty.getPostalCode());
+								//myView.setProvince(faculty.getProvince());
+								//myView.setPhone1(faculty.getPhone1());
+								//myView.setPhone2(faculty.getPhone2());
+								//myView.setEnabled(faculty.getEnabled());
+								myView.setStudentUserName(student.getUserName());
+								//myView.setSchoolId(school.getId());
+								//myView.setSchoolName(school.getName());
+			
+								facultyViewList.add( myView );
+								
+							}								
+						}
+					}
+					//subjectStack.push(subject.getId());
+				}
+				if( qCount <= 0  )
+				{
+					isFaculty = false;
+					Set<Faculty> facultys = student.getFaculty();
+					for( Faculty faculty: facultys )
+					{
+						isFaculty = true;
+						Set<School>schools = student.getSchools();
+						if( schools.isEmpty() == false )
+						{
+							for( School school: schools )
+							{		
+								statusGood							= true;
+								
+								FacultyByStudentView myView		= new FacultyByStudentView();
+								myView.setId(++i);
+								myView.setFacultybystudentId(i);
+								myView.setVersion(faculty.getVersion());
+								myView.setLastUpdated(faculty.getLastUpdated());
+								myView.setWhoUpdated(faculty.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								//myView.setSubjId(subject.getId());
+								//myView.setSubjName(subject.getName());
+								//myView.setQtrId(studentQtr.getId());
+								//myView.setQtrName(studentQtr.getQtrName());
+								//myView.setQtrYear(studentQtr.getQtr_year());
+								myView.setVersion(faculty.getVersion());
+								myView.setFacultyId(faculty.getId());
+								myView.setEmail(faculty.getEmail());
+								myView.setAddress1(faculty.getAddress1());
+								myView.setAddress2(faculty.getAddress2());
+								myView.setCity(faculty.getCity());
+								myView.setCountry(faculty.getCountry());
+								myView.setFacultyUserName(faculty.getUserName());
+								myView.setLastName(faculty.getLastName());
+								myView.setMiddleName(faculty.getMiddleName());
+								myView.setFirstName(faculty.getFirstName());
+								myView.setPostalCode(faculty.getPostalCode());
+								myView.setProvince(faculty.getProvince());
+								myView.setPhone1(faculty.getPhone1());
+								myView.setPhone2(faculty.getPhone2());
+								myView.setEnabled(faculty.getEnabled());
+								myView.setStudentUserName(student.getUserName());
+								myView.setSchoolId(school.getId());
+								myView.setSchoolName(school.getName());
+			
+								facultyViewList.add( myView );
+							}
+						}
+						else
+						{
 							statusGood							= true;
-							//Student student					= Student.findStudent(new Long(studentFaculty.studentId));
-							//Faculty faculty					= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-							//Quarter quarter					= faculty.getQuarter();
-							//Faculty faculty						= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-	
-	
+							
 							FacultyByStudentView myView		= new FacultyByStudentView();
 							myView.setId(++i);
 							myView.setFacultybystudentId(i);
@@ -188,11 +481,11 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 							myView.setLastUpdated(faculty.getLastUpdated());
 							myView.setWhoUpdated(faculty.getWhoUpdated());
 							myView.setStudentId(student.getId());
-							myView.setSubjId(subject.getId());
-							myView.setSubjName(subject.getName());
-							myView.setQtrId(studentQtr.getId());
-							myView.setQtrName(studentQtr.getQtrName());
-							myView.setQtrYear(studentQtr.getQtr_year());
+							//myView.setSubjId(subject.getId());
+							//myView.setSubjName(subject.getName());
+							//myView.setQtrId(studentQtr.getId());
+							//myView.setQtrName(studentQtr.getQtrName());
+							//myView.setQtrYear(studentQtr.getQtr_year());
 							myView.setVersion(faculty.getVersion());
 							myView.setFacultyId(faculty.getId());
 							myView.setEmail(faculty.getEmail());
@@ -210,13 +503,96 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 							myView.setPhone2(faculty.getPhone2());
 							myView.setEnabled(faculty.getEnabled());
 							myView.setStudentUserName(student.getUserName());
+							//myView.setSchoolId(school.getId());
+							//myView.setSchoolName(school.getName());
 		
-							facultyViewList.add( myView );
-						}
+							facultyViewList.add( myView );							
+						}						
 					}
-					//subjectStack.push(subject.getId());
+					if( isFaculty == false )
+					{
+						Set<School>schools = student.getSchools();
+						if( schools.isEmpty() == false )
+						{
+							for( School school: schools )
+							{		
+								statusGood							= true;
+								
+								FacultyByStudentView myView		= new FacultyByStudentView();
+								myView.setId(++i);
+								myView.setFacultybystudentId(i);
+								//myView.setVersion(faculty.getVersion());
+								//myView.setLastUpdated(faculty.getLastUpdated());
+								//myView.setWhoUpdated(faculty.getWhoUpdated());
+								myView.setStudentId(student.getId());
+								//myView.setSubjId(subject.getId());
+								//myView.setSubjName(subject.getName());
+								//myView.setQtrId(studentQtr.getId());
+								//myView.setQtrName(studentQtr.getQtrName());
+								//myView.setQtrYear(studentQtr.getQtr_year());
+								//myView.setVersion(faculty.getVersion());
+								//myView.setFacultyId(faculty.getId());
+								//myView.setEmail(faculty.getEmail());
+								//myView.setAddress1(faculty.getAddress1());
+								//myView.setAddress2(faculty.getAddress2());
+								//myView.setCity(faculty.getCity());
+								//myView.setCountry(faculty.getCountry());
+								//myView.setFacultyUserName(faculty.getUserName());
+								//myView.setLastName(faculty.getLastName());
+								//myView.setMiddleName(faculty.getMiddleName());
+								//myView.setFirstName(faculty.getFirstName());
+								//myView.setPostalCode(faculty.getPostalCode());
+								//myView.setProvince(faculty.getProvince());
+								//myView.setPhone1(faculty.getPhone1());
+								//myView.setPhone2(faculty.getPhone2());
+								//myView.setEnabled(faculty.getEnabled());
+								myView.setStudentUserName(student.getUserName());
+								myView.setSchoolId(school.getId());
+								myView.setSchoolName(school.getName());
+			
+								facultyViewList.add( myView );
+							}
+						}
+						else
+						{
+							statusGood							= true;
+							
+							FacultyByStudentView myView		= new FacultyByStudentView();
+							myView.setId(++i);
+							myView.setFacultybystudentId(i);
+							//myView.setVersion(faculty.getVersion());
+							//myView.setLastUpdated(faculty.getLastUpdated());
+							//myView.setWhoUpdated(faculty.getWhoUpdated());
+							myView.setStudentId(student.getId());
+							//myView.setSubjId(subject.getId());
+							//myView.setSubjName(subject.getName());
+							//myView.setQtrId(studentQtr.getId());
+							//myView.setQtrName(studentQtr.getQtrName());
+							//myView.setQtrYear(studentQtr.getQtr_year());
+							//myView.setVersion(faculty.getVersion());
+							//myView.setFacultyId(faculty.getId());
+							//myView.setEmail(faculty.getEmail());
+							//myView.setAddress1(faculty.getAddress1());
+							//myView.setAddress2(faculty.getAddress2());
+							//myView.setCity(faculty.getCity());
+							//myView.setCountry(faculty.getCountry());
+							//myView.setFacultyUserName(faculty.getUserName());
+							//myView.setLastName(faculty.getLastName());
+							//myView.setMiddleName(faculty.getMiddleName());
+							//myView.setFirstName(faculty.getFirstName());
+							//myView.setPostalCode(faculty.getPostalCode());
+							//myView.setProvince(faculty.getProvince());
+							//myView.setPhone1(faculty.getPhone1());
+							//myView.setPhone2(faculty.getPhone2());
+							//myView.setEnabled(faculty.getEnabled());
+							myView.setStudentUserName(student.getUserName());
+							//myView.setSchoolId(school.getId());
+							//myView.setSchoolName(school.getName());
+		
+							facultyViewList.add( myView );							
+						}												
+					}
 				}
-
 			}
 			Collections.sort(facultyViewList, new MyComparator());				
 			
@@ -249,6 +625,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		}
 
 		// Return retrieved object.
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -452,29 +829,71 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
 			FacultyByStudentView myView = FacultyByStudentView.fromJsonToFacultyByStudentView(myJson);
-
-			if( !this.isDup(myView) )
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			
+			boolean newstudentrequest = true;
+			Student requestedStudent	= Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+			Student student				= Student.findStudent(myView.getStudentId());
+			if( requestedStudent.getId().longValue() == student.getId().longValue() )
 			{
-				/*
-				Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setWhoUpdated(myView.getWhoUpdated());
-				*/
-				
-				//List<StudentFaculty> studentFacultyList = this.getStudentFacultyList(myView.getStudentId().toString());
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				List<Faculty> studentFacultyList = securityHelper.getFacultyList(Student.findStudent(myView.getStudentId()));
-				Set<Student> students = new HashSet<Student>();
-				for( Faculty studentFaculty: studentFacultyList)
+				newstudentrequest = false;
+			}
+			if( newstudentrequest )
+			{
+				// Assume an update instead of a create.  The user has asked that a student be associated with this faculty.
+				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+				boolean found2 = false;
+				Set<Student> currentStudents = faculty.getStudents();
+				for( Student currentStudent: currentStudents )
 				{
-					Student student = Student.findStudent(myView.getStudentId());
-					students.add(student);
+					if( currentStudent.getId().longValue() == requestedStudent.getId().longValue() )
+					{
+						found2 = true; // The student is already associated with the faculty.
+						break;
+					}
 				}
-				
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
-				//record.setWhoUpdated(myView.getWhoUpdated());
-				//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+				if( !found2 )
+				{
+					// We want to merge the requested student into the facultys current list.
+					requestedStudent.getFaculty().add(faculty);
+					requestedStudent.setLastUpdated(new Date(System.currentTimeMillis()));
+					if( requestedStudent.merge() != null )
+					{
+			            returnStatus = HttpStatus.OK;
+						response.setMessage( requestedStudent.getClass().getSimpleName() + " updated." );
+						response.setSuccess(true);
+						response.setTotal(1L);
+						response.setData(myView);													
+					}
+					else
+					{
+			            returnStatus = HttpStatus.BAD_REQUEST;
+						response.setMessage( className + " merge of student failed." );
+						response.setSuccess(false);
+						response.setTotal(0L);
+					}
+				}
+				else
+				{
+		            returnStatus = HttpStatus.BAD_REQUEST;
+					response.setMessage( "Requested student to faculty association already exists." );
+					response.setSuccess(false);
+					response.setTotal(0L);
+					//response.setData(myView);											
+				}
+			}
+			else if( !this.isDup(myView) )  // This is a normal create.
+			{
+				//List<Faculty> studentFacultyList = securityHelper.getFacultyList(Student.findStudent(myView.getStudentId()));
+				Set<Student> students = new HashSet<Student>();
+				//for( Faculty studentFaculty: studentFacultyList)
+				//{
+					student = Student.findStudent(myView.getStudentId());
+					students.add(student);
+				//}
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
+				record.setCreatedDate(new Date(System.currentTimeMillis()));
+
 				record.setWhoUpdated(securityHelper.getUserName());
 
 				
@@ -520,7 +939,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 				//returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
-		} catch(Exception e) {
+		} 
+		catch(Exception e) 
+		{
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -528,6 +949,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		}
 
 		// Return the created record with the new system generated id
+		logger.info(response.toString());
          return new ResponseEntity<String>(response.toString(), headers, returnStatus);	}
 
 	@Override

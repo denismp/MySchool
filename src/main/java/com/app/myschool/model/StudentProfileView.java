@@ -52,6 +52,10 @@ public class StudentProfileView {
     
     private Long studentId;
     
+    private String schoolName;
+    
+    private Long schoolId;
+    
 	private Long facultyId;
 	
 	private String facultyUserName;

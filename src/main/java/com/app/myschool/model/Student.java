@@ -30,9 +30,10 @@ public class Student extends Person {
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students" )
     private Set<Guardian> guardians = new HashSet<Guardian>();
     
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)//This should have been called facultys to consistent, but not going to change it.
     private Set<Faculty> faculty = new HashSet<Faculty>();
     
-    @ManyToOne
-    private School school;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "students")
+    private Set<School> schools = new HashSet<School>();
+
 }
