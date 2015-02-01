@@ -117,14 +117,6 @@ Ext.define('MySchool.model.faculty.ByStudentModel', {
 			type: 'string'
 		},
 		{
-			name: 'schoolId',
-			type: 'int'
-		},
-		{
-			name: 'schoolName',
-			type: 'string'
-		},
-		{
 			name: 'version',
 			type: 'int'
 		},

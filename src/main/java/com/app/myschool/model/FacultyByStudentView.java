@@ -56,10 +56,6 @@ public class FacultyByStudentView {
 	
 	private String facultyUserName;
 	
-	private String schoolName;
-	
-	private Long schoolId;
-
 	private Long qtrId;
 	private String qtrName;
 	private Integer qtrYear;
