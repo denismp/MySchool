@@ -244,6 +244,23 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		*/
 	},
 
+	onFacultyprofileassociatetoolClick: function() {
+		debugger;
+
+		var facultyByStudentStore = Ext.getStore('faculty.ByStudentStore');
+		facultyByStudentStore.load();
+
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var newDialog = Ext.create( 'MySchool.view.faculty.AddChildDialog' );
+
+			window.console.log( 'Add Student to Another Faculty Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+
+	},
+
 	onFacultyprofilesavetoolClick: function(tool, e, eOpts) {
 		window.console.log( "faculty.ByStudentStore.Save" );
 		debugger;
@@ -414,23 +431,6 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		    g_.getStore().reload();
 		}
 		//this.onMyJsonStoreLoad();
-
-	},
-
-	onFacultyprofileassociatetoolClick: function() {
-		debugger;
-
-		var facultyByStudentStore = Ext.getStore('faculty.ByStudentStore');
-		facultyByStudentStore.load();
-
-		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
-			var newDialog = Ext.create( 'MySchool.view.faculty.AddChildDialog' );
-
-			window.console.log( 'Add Student to Another Faculty Dialog' );
-
-			newDialog.render( Ext.getBody() );
-			newDialog.show();
-		}
 
 	},
 
@@ -732,6 +732,9 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 			"#facultyprofilenewtool": {
 				click: this.onFacultyprofilenewtoolClick
 			},
+			"#facultyprofileassociatetool": {
+				click: this.onFacultyprofileassociatetoolClick
+			},
 			"#facultyprofilesavetool": {
 				click: this.onFacultyprofilesavetoolClick
 			},
@@ -764,9 +767,6 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 			"#facultyprofilesbystudenttab": {
 				activate: this.onFacultyprofilesbystudenttabActivate
 			},
-			"#facultyprofileassociatetool": {
-				click: this.onFacultyprofileassociatetoolClick
-			},
 			"#facultyaddchildsubmit": {
 				click: this.onFacultyaddchildsubmitClick
 			},
@@ -784,7 +784,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		this.selectedIndex = 0;
 		myModel.select(0, false, true);
 		var mySelected = myModel.getLastSelected();
-		myModel.fireEvent( 'selectionchange', this, mySelected );
+		//myModel.fireEvent( 'selectionchange', this, mySelected );
 	},
 
 	onGridDataLoaded: function() {

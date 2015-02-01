@@ -464,6 +464,8 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 			{
 				// Assume an update instead of a create.  The user has asked that a student be associated with this faculty.
 				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
+				
+				logger.info("Checking to see if requested student asscociation " + requestedStudent.getUserName() + " already belongs to faculty " + faculty.getUserName() );
 				boolean found2 = false;
 				Set<Student> currentStudents = faculty.getStudents();
 				for( Student currentStudent: currentStudents )
@@ -471,12 +473,14 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 					if( currentStudent.getId().longValue() == requestedStudent.getId().longValue() )
 					{
 						found2 = true; // The student is already associated with the faculty.
+						logger.info("Student " + requestedStudent.getUserName() + " is already associated with faculty " + faculty.getUserName() );
 						break;
 					}
 				}
 				if( !found2 )
 				{
 					// We want to merge the requested student into the facultys current list.
+					logger.info("Adding " + requestedStudent.getUserName() + " to faculty name " + faculty.getUserName() );
 					requestedStudent.getFaculty().add(faculty);
 					requestedStudent.setLastUpdated(new Date(System.currentTimeMillis()));
 					if( requestedStudent.merge() != null )
@@ -489,8 +493,9 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 					}
 					else
 					{
+						logger.error("Association of " + requestedStudent.getUserName() + " with faculty " + faculty.getUserName() + " failed.");
 			            returnStatus = HttpStatus.BAD_REQUEST;
-						response.setMessage( className + " merge of student failed." );
+						response.setMessage( "Association of " + requestedStudent.getUserName() + " with faculty " + faculty.getUserName() + " failed." );
 						response.setSuccess(false);
 						response.setTotal(0L);
 					}
@@ -500,8 +505,7 @@ public class FacultyByStudentControllerHelper implements ControllerHelperInterfa
 		            returnStatus = HttpStatus.BAD_REQUEST;
 					response.setMessage( "Requested student to faculty association already exists." );
 					response.setSuccess(false);
-					response.setTotal(0L);
-					//response.setData(myView);											
+					response.setTotal(0L);										
 				}
 			}
 			else
