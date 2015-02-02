@@ -207,12 +207,16 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		public int compare(StudentProfileView o1, StudentProfileView o2) {
 			String school1 = o1.getSchoolName();
 			String school2 = o2.getSchoolName();
-			if( school1 == null )
-				return -1;
-			if( school2 == null )
-				return 1;
-			return school1.compareTo(school2);
-			//return o1.getLastName().compareTo(o2.getLastName());
+			String studentName1 = o1.getUserName();
+			String studentName2 = o2.getUserName();
+			String facultyName1 = o1.getFacultyUserName();
+			String facultyName2 = o2.getFacultyUserName();
+			String guardianName1 = o1.getGuardianUserName();
+			String guardianName2 = o2.getGuardianUserName();
+			String st1 = studentName1 + facultyName1 + guardianName1 + school1;
+			String st2 = studentName2 + facultyName2 + guardianName2 + school2;
+
+			return st1.compareTo(st2);
 		}
 	}
 	
@@ -360,10 +364,10 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				{					
 					Set<School> schools = student.getSchools();
 
-					logger.info("Checking to see if the schools list is empty.");
-					logger.info( "List is empty is " + schools.isEmpty() );
-					logger.info("List size=" + schools.size() );
-					logger.info("student user name = " + student.getUserName());
+					//logger.info("Checking to see if the schools list is empty.");
+					//logger.info( "List is empty is " + schools.isEmpty() );
+					//logger.info("List size=" + schools.size() );
+					//logger.info("student user name = " + student.getUserName());
 
 					if( schools.isEmpty() == false )
 					{

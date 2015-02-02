@@ -56,8 +56,15 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				{
 					xtype: 'numbercolumn',
 					hidden: true,
-					dataIndex: 'schoolId',
+					dataIndex: 'studentId',
 					text: 'schoolId',
+					format: '000000'
+				},
+				{
+					xtype: 'numbercolumn',
+					hidden: true,
+					dataIndex: 'studentId',
+					text: 'studentId',
 					format: '000000'
 				},
 				{
@@ -76,17 +83,6 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					dataIndex: 'subjectName',
-					text: 'Subj Name',
-					editor: {
-						xtype: 'combobox',
-						displayField: 'subjName',
-						store: 'subject.AllSubjectStore',
-						valueField: 'subjName'
-					}
-				},
-				{
-					xtype: 'gridcolumn',
 					dataIndex: 'name',
 					text: 'School Name',
 					editor: {
@@ -95,6 +91,22 @@ Ext.define('MySchool.view.school.ProfileGridPanel', {
 						displayField: 'name',
 						store: 'subject.SchoolsStore',
 						valueField: 'name'
+					}
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'studentUserName',
+					text: 'Student User Name'
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'subjectName',
+					text: 'Subj Name',
+					editor: {
+						xtype: 'combobox',
+						displayField: 'subjName',
+						store: 'subject.AllSubjectStore',
+						valueField: 'subjName'
 					}
 				},
 				{

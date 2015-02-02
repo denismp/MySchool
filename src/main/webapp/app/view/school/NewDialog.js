@@ -152,8 +152,10 @@ Ext.define('MySchool.view.school.NewDialog', {
 									itemId: 'schoolnewform_adminusername',
 									fieldLabel: 'Admin User Name',
 									name: 'adminUserName',
+									emptyText: 'Select one.',
 									displayField: 'userName',
-									store: 'admin.AdminProfileStore',
+									forceSelection: true,
+									store: 'admin.AdminStore',
 									valueField: 'userName'
 								}
 							]

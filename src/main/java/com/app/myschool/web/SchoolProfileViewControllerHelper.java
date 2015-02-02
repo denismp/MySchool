@@ -74,25 +74,17 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		@Override
 		public int compare(SchoolView o1, SchoolView o2)
 		{
-			String name1 = null;
-			String name2 = null;
-			if( o1 != null && o1.getSubjectName() != null )
-				name1 = o1.getSubjectName();
-			if( o2 != null && o2.getSubjectName() != null )
-				name2 = o2.getSubjectName();
-			if( name1 != null && name2 != null )
-			{
-				return name1.compareTo(name2);
-			}
-			else
-			{
-				if( name1 == null && name2 != null)
-					return -1;
-				else if( name1 != null && name2 == null)
-					return 1;
-				else
-					return 0;
-			}
+			String studentName1 = o1.getStudentUserName();
+			String studentName2 = o2.getStudentUserName();
+			String subjectName1 = o1.getSubjectName();
+			String subjectName2 = o2.getSubjectName();
+			String schoolName1	= o1.getName();
+			String schoolName2	= o2.getName();
+			String adminName1	= o1.getAdminUserName();
+			String adminName2	= o2.getAdminUserName();
+			String st1 = schoolName1 + studentName1 + subjectName1 + adminName1;
+			String st2 = schoolName2 + studentName2 + subjectName2 + adminName2;
+			return st1.compareTo(st2);
 		}
 	}
 
@@ -201,10 +193,63 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			long i = 0;
 			for (School school : schools)
 			{
-				Set<Subject> subjects = school.getSubjects();
-				if( subjects != null && subjects.isEmpty() == false )
+				Set<Student> students = school.getStudents();
+				boolean isStudents = false;
+				for (Student student : students)
 				{
-					for( Subject subject: subjects )
+					isStudents = true;
+					Set<Subject> subjects = school.getSubjects();
+					if (subjects != null && subjects.isEmpty() == false)
+					{
+						for (Subject subject : subjects)
+						{
+							statusGood = true;
+
+							SchoolView myView = new SchoolView();
+							myView.setId(i);
+							myView.setSchoolviewId(i++);
+							myView.setSchoolId(school.getId());
+
+							myView.setVersion(school.getVersion());
+							myView.setLastUpdated(school.getLastUpdated());
+							myView.setCreatedDate(school.getCreatedDate());
+							myView.setWhoUpdated(school.getWhoUpdated());
+							myView.setAddress1(school.getAddress1());
+							myView.setAddress2(school.getAddress2());
+							myView.setCity(school.getCity());
+							myView.setComments(school.getComments());
+							myView.setCountry(school.getCountry());
+							myView.setCreatedDate(school.getCreatedDate());
+							myView.setCustodianOfRecords(school
+									.getCustodianOfRecords());
+							myView.setCustodianTitle(school.getCustodianTitle());
+							myView.setDistrict(school.getDistrict());
+							myView.setEmail(school.getEmail());
+							myView.setName(school.getName());
+							myView.setPhone1(school.getPhone1());
+							myView.setPhone2(school.getPhone2());
+							myView.setPostalCode(school.getPostalCode());
+							myView.setProvince(school.getProvince());
+							myView.setEnabled(school.getEnabled());
+							myView.setStudentUserName(student.getUserName());
+							myView.setStudentId(student.getId());
+
+							Admin admin = school.getAdmin();
+							if (admin != null)
+							{
+								myView.setAdminId(admin.getId());
+								myView.setAdminUserName(admin.getUserName());
+								myView.setAdminEmail(admin.getEmail());
+							}
+							myView.setSubjectId(subject.getId());
+							myView.setSubjectName(subject.getName());
+
+							myView.setVersion(school.getVersion());
+
+							schoolViewList.add(myView);
+						}
+					}
+					else
 					{
 						statusGood = true;
 
@@ -212,7 +257,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 						myView.setId(i);
 						myView.setSchoolviewId(i++);
 						myView.setSchoolId(school.getId());
-						//myView.setId(school.getId());
+						
 						myView.setVersion(school.getVersion());
 						myView.setLastUpdated(school.getLastUpdated());
 						myView.setCreatedDate(school.getCreatedDate());
@@ -223,7 +268,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 						myView.setComments(school.getComments());
 						myView.setCountry(school.getCountry());
 						myView.setCreatedDate(school.getCreatedDate());
-						myView.setCustodianOfRecords(school.getCustodianOfRecords());
+						myView.setCustodianOfRecords(school
+								.getCustodianOfRecords());
 						myView.setCustodianTitle(school.getCustodianTitle());
 						myView.setDistrict(school.getDistrict());
 						myView.setEmail(school.getEmail());
@@ -233,63 +279,117 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 						myView.setPostalCode(school.getPostalCode());
 						myView.setProvince(school.getProvince());
 						myView.setEnabled(school.getEnabled());
-						
+						myView.setStudentUserName(student.getUserName());
+						myView.setStudentId(student.getId());
+
 						Admin admin = school.getAdmin();
-						if( admin != null )
+						if (admin != null)
 						{
 							myView.setAdminId(admin.getId());
 							myView.setAdminUserName(admin.getUserName());
 							myView.setAdminEmail(admin.getEmail());
 						}
-						myView.setSubjectId(subject.getId());
-						myView.setSubjectName(subject.getName());
-		
+
 						myView.setVersion(school.getVersion());
-		
+
 						schoolViewList.add(myView);
 					}
 				}
-				else
+				if( !isStudents )
 				{
-					statusGood = true;
-	
-					SchoolView myView = new SchoolView();
-					myView.setId(i);
-					myView.setSchoolviewId(i++);
-					myView.setSchoolId(school.getId());
-					//myView.setId(school.getId());
-					myView.setVersion(school.getVersion());
-					myView.setLastUpdated(school.getLastUpdated());
-					myView.setCreatedDate(school.getCreatedDate());
-					myView.setWhoUpdated(school.getWhoUpdated());
-					myView.setAddress1(school.getAddress1());
-					myView.setAddress2(school.getAddress2());
-					myView.setCity(school.getCity());
-					myView.setComments(school.getComments());
-					myView.setCountry(school.getCountry());
-					myView.setCreatedDate(school.getCreatedDate());
-					myView.setCustodianOfRecords(school.getCustodianOfRecords());
-					myView.setCustodianTitle(school.getCustodianTitle());
-					myView.setDistrict(school.getDistrict());
-					myView.setEmail(school.getEmail());
-					myView.setName(school.getName());
-					myView.setPhone1(school.getPhone1());
-					myView.setPhone2(school.getPhone2());
-					myView.setPostalCode(school.getPostalCode());
-					myView.setProvince(school.getProvince());
-					myView.setEnabled(school.getEnabled());
-					
-					Admin admin = school.getAdmin();
-					if( admin != null )
+					// There are no students for this school.
+					Set<Subject> subjects = school.getSubjects();
+					if (subjects != null && subjects.isEmpty() == false)
 					{
-						myView.setAdminId(admin.getId());
-						myView.setAdminUserName(admin.getUserName());
-						myView.setAdminEmail(admin.getEmail());
+						for (Subject subject : subjects)
+						{
+							statusGood = true;
+
+							SchoolView myView = new SchoolView();
+							myView.setId(i);
+							myView.setSchoolviewId(i++);
+							myView.setSchoolId(school.getId());
+
+							myView.setVersion(school.getVersion());
+							myView.setLastUpdated(school.getLastUpdated());
+							myView.setCreatedDate(school.getCreatedDate());
+							myView.setWhoUpdated(school.getWhoUpdated());
+							myView.setAddress1(school.getAddress1());
+							myView.setAddress2(school.getAddress2());
+							myView.setCity(school.getCity());
+							myView.setComments(school.getComments());
+							myView.setCountry(school.getCountry());
+							myView.setCreatedDate(school.getCreatedDate());
+							myView.setCustodianOfRecords(school
+									.getCustodianOfRecords());
+							myView.setCustodianTitle(school.getCustodianTitle());
+							myView.setDistrict(school.getDistrict());
+							myView.setEmail(school.getEmail());
+							myView.setName(school.getName());
+							myView.setPhone1(school.getPhone1());
+							myView.setPhone2(school.getPhone2());
+							myView.setPostalCode(school.getPostalCode());
+							myView.setProvince(school.getProvince());
+							myView.setEnabled(school.getEnabled());
+
+							Admin admin = school.getAdmin();
+							if (admin != null)
+							{
+								myView.setAdminId(admin.getId());
+								myView.setAdminUserName(admin.getUserName());
+								myView.setAdminEmail(admin.getEmail());
+							}
+							myView.setSubjectId(subject.getId());
+							myView.setSubjectName(subject.getName());
+
+							myView.setVersion(school.getVersion());
+
+							schoolViewList.add(myView);
+						}
 					}
-	
-					myView.setVersion(school.getVersion());
-	
-					schoolViewList.add(myView);					
+					else
+					{
+						statusGood = true;
+
+						SchoolView myView = new SchoolView();
+						myView.setId(i);
+						myView.setSchoolviewId(i++);
+						myView.setSchoolId(school.getId());
+
+						myView.setVersion(school.getVersion());
+						myView.setLastUpdated(school.getLastUpdated());
+						myView.setCreatedDate(school.getCreatedDate());
+						myView.setWhoUpdated(school.getWhoUpdated());
+						myView.setAddress1(school.getAddress1());
+						myView.setAddress2(school.getAddress2());
+						myView.setCity(school.getCity());
+						myView.setComments(school.getComments());
+						myView.setCountry(school.getCountry());
+						myView.setCreatedDate(school.getCreatedDate());
+						myView.setCustodianOfRecords(school
+								.getCustodianOfRecords());
+						myView.setCustodianTitle(school.getCustodianTitle());
+						myView.setDistrict(school.getDistrict());
+						myView.setEmail(school.getEmail());
+						myView.setName(school.getName());
+						myView.setPhone1(school.getPhone1());
+						myView.setPhone2(school.getPhone2());
+						myView.setPostalCode(school.getPostalCode());
+						myView.setProvince(school.getProvince());
+						myView.setEnabled(school.getEnabled());
+
+						Admin admin = school.getAdmin();
+						if (admin != null)
+						{
+							myView.setAdminId(admin.getId());
+							myView.setAdminUserName(admin.getUserName());
+							myView.setAdminEmail(admin.getEmail());
+						}
+
+						myView.setVersion(school.getVersion());
+
+						schoolViewList.add(myView);
+					}					
 				}
 			}
 
@@ -668,14 +768,23 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 				{
 					// Set the given subject's school to requested 'record' for the update.
 					// So now the subject get's the requested school name.
-					Subject subject = Subject.findSubject(myView.getSubjectId());
-					subject.setSchool(record);
-					subject.setLastUpdated(record.getLastUpdated());
-					subject.setWhoUpdated(record.getWhoUpdated());
-					if( subject.merge() == null )
+					//Subject subject = Subject.findSubject(myView.getSubjectId());
+					Subject subject = Subject.findSubjectsByNameEquals(myView.getSubjectName()).getSingleResult();
+					if( subject != null )
+					{
+						subject.setSchool(record);
+						subject.setLastUpdated(record.getLastUpdated());
+						subject.setWhoUpdated(record.getWhoUpdated());
+						if( subject.merge() == null )
+						{
+							statusGood = false;
+							msg = "Failed update the subject with the requested school.";
+						}
+					}
+					else
 					{
 						statusGood = false;
-						msg = "Failed update the subject with the requested school.";
+						msg = "Attempt to assign school to a non-subject.";
 					}
 				}
 				else

@@ -190,48 +190,18 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		logger.info("LoginInfo:" + myLoginInfo);
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		List<Student> students = securityHelper.findStudentsByLoginUserRole();
-		/*
-		String[] loginInfo = myLoginInfo.split("/");
-		studentUserName = loginInfo[0];
-		List<Student> students = new ArrayList<Student>();
-		
-		if( studentUserName != null && studentUserName.equals("admin") == false )
-		{
-			students = Student.findStudentsByUserNameEquals(studentUserName).getResultList();
-		}
-		else
-		{
-			if( studentId_ == null )
-			{
-				students = Student.findAllStudents();
-			}
-			else
-			{
-				Student student = Student.findStudent(new Long( studentId_ ));
-				students.add(student);
-			}
-		}
-		*/
 		
 		try
 		{
-			//List<FacultyByStudentView> facultyViewList	= new ArrayList<FacultyByStudentView>();
 			List<StudentView> studentViewList	= new ArrayList<StudentView>();
 			long i = 0;
 			for( Student student: students )
-			{
-				//studentId_ = student.getId().toString();
-				//List<StudentFaculty> studentFacultyList	= this.getStudentFacultyList(studentId_);
-				
+			{				
 				List<Faculty> facultyList = securityHelper.getFacultyList(student);
 				for (Faculty faculty : facultyList) 
 				{
-					//found 						= true;
 					statusGood					= true;
-					//Student student				= Student.findStudent(new Long(studentFaculty.studentId));
-					//Faculty faculty				= Faculty.findFaculty(new Long(studentFaculty.facultyId));
-					//Quarter quarter			= faculty.getQuarter();
-					//Faculty.findFaculty(id)
+
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{

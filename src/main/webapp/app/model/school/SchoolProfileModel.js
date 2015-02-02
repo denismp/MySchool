@@ -41,6 +41,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			type: 'int'
 		},
 		{
+			name: 'studentId',
+			type: 'int'
+		},
+		{
 			name: 'email',
 			type: 'string'
 		},
@@ -105,6 +109,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			dateFormat: 'm/d/Y',
 			name: 'createdDate',
 			type: 'date'
+		},
+		{
+			name: 'studentUserName',
+			type: 'string'
 		},
 		{
 			name: 'adminUserName',
