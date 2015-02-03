@@ -103,20 +103,8 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		}
 		//grid.getSelectionModel().select( 0 );
 		//tablepanel.getSelectionModel().select( 0 );
-	},
-
-	onStudentprofilegridpanelSelectionChange: function(model, selected, eOpts) {
-		debugger;
-		// in the onMyJsonStoreLoad we do a deselect so we need to test
-		// if selected[0] has a value
-		if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
-		    var myForm = this.getStudentProfileForm();
-		    var myPanel = myForm.up();
-		    this.loadForm( myForm, selected );
-		    //myForm.focus();
-
-		    console.log('onStudentprofilegridpanelSelectionChange()');
-		}
+		this.selectedIndex = 0;
+		myGrid.getSelectionModel().select(0);
 	},
 
 	onCheckcolumnCheckChange: function(checkcolumn, rowIndex, checked, eOpts) {
@@ -475,8 +463,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 		var formValues				= myForm.getValues();
 
-		//	Create an empty record
-		var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		//	Get the selected record.
+		var myRecord = myGrid.getSelectionModel().getLastSelected();
+		//var myRecord	= myGrid.getSelectionModel().getSelection()[0];
 		//var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
 
 		//	Get the stores that we will need
@@ -508,6 +497,16 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		button.up().hide();
 		button.up().up().close();
 
+	},
+
+	onStudentprofilegridpanelSelect: function(rowmodel, record, index, eOpts) {
+		debugger;
+
+		var myForm = this.getStudentProfileForm();
+		this.loadForm( myForm, record );
+		rowmodel.deselect( this.selectedIndex, true );
+		this.selectedIndex = index;
+		rowmodel.select( index, false, true );
 	},
 
 	buttonHandler: function(button, e, eOpts) {
@@ -599,14 +598,14 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		this.buttonHandler( edit_ );
 	},
 
-	loadForm: function(form, selected) {
+	loadForm: function(form, record) {
 		debugger;
 
 		console.log( form );
 		//var textBox = myForm.dockedItems.items[0];
 		//var textBox = myForm.down('textareafield');
 		//textBox.name = fieldname;
-		form.loadRecord( selected[0] );
+		form.loadRecord( record );
 		var rform = form.getForm();
 		var myFields = form.getForm().getFields();
 		for( var i = 0; i < myFields.length; i++ )
@@ -717,7 +716,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		this.control({
 			"#studentprofilegridpanel": {
 				viewready: this.onStudentprofilegridpanelViewReady,
-				selectionchange: this.onStudentprofilegridpanelSelectionChange
+				select: this.onStudentprofilegridpanelSelect
 			},
 			"#studentprofilegridenabledcolumn": {
 				checkchange: this.onCheckcolumnCheckChange
@@ -787,7 +786,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		this.selectedIndex = 0;
 		myModel.select(0, false, true);
 		var mySelected = myModel.getLastSelected();
-		//myModel.fireEvent( 'selectionchange', this, mySelected );
+		myModel.fireEvent( 'selectionchange', this, mySelected );
 	}
 
 });

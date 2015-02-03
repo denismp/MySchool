@@ -451,7 +451,8 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		//var selection	= selectionModel.getSelection();
 		var columns		= myGrid.columns;
 		//debugger;
-		var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		var myRecord	= myGrid.getSelectionModel().getLastSelected();
+		//var myRecord	= myGrid.getSelectionModel().getSelection()[0];
 		//var fields		= selectionModel.getFields();
 		//var recordLen	= fields.length;
 		//var myNewRecord	= Ext.create('MySchool.model.faculty.ByStudentModel');
