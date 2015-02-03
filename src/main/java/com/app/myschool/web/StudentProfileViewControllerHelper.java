@@ -2,6 +2,7 @@ package com.app.myschool.web;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -753,6 +754,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		HttpStatus returnStatus = HttpStatus.OK;
 
 		JsonObjectResponse response = new JsonObjectResponse();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserName();
 
 		try
 		{
@@ -766,11 +770,14 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			StudentProfileView myView = StudentProfileView
 					.fromJsonToStudentProfileView(myJson);
 
-			List<Student> studentList = Student.findStudentsByUserNameEquals(
-					myView.getUserName()).getResultList();
+			//List<Student> studentList = Student.findStudentsByUserNameEquals(
+			//		myView.getUserName()).getResultList();
+			Student student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();
+			boolean duplicate = true;
 
-			if (studentList.size() == 0)
+			if (student == null )
 			{
+				duplicate = false;
 				String msg = "";
 				Set<Faculty> facultys = new HashSet<Faculty>();
 				Set<Guardian> guardians = new HashSet<Guardian>(); //DENIS 12/24/2014
@@ -780,12 +787,12 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				
 				Guardian guardian = Guardian.findGuardian(myView.getGuardianId());//DENIS 12/24/2014
 				guardians.add(guardian);
+				
+				record.setCreatedDate(new Date(System.currentTimeMillis()));
+				record.setLastUpdated(new Date(System.currentTimeMillis()));
 
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
 
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				record.setWhoUpdated(securityHelper.getUserName());
+				record.setWhoUpdated(userName);
 				
 				String plainText = myView.getUserPassword();
 
@@ -872,6 +879,88 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				}
 			}
 			else
+			{
+				Long currentSchoolId = myView.getSchoolId();
+				School requestedSchool = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+				Long requestedSchoolId = requestedSchool.getId();
+				if( currentSchoolId.longValue() == requestedSchoolId.longValue() )
+				{
+					duplicate = true;
+				}
+				else
+				{
+					duplicate = false;
+					// This is actually an update to add the requested school to the student.
+					Set<School> schools = student.getSchools();
+					boolean found = false;
+					for( School school: schools )
+					{
+						if( school.getId().longValue() == requestedSchool.getId().longValue())
+						{
+							found = true;
+							break;
+						}
+					}
+					if( !found )
+					{
+						boolean studentSide = false;
+						// I can never figure out which side this merge should happen on.
+						if( studentSide )
+						{
+							schools.add(requestedSchool);
+							student.setId(myView.getStudentId());
+							student.setSchools(schools);
+							if( student.getVersion() == myView.getVersion() && student.merge() != null )
+							{
+								statusGood = true;
+								response.setMessage("School " +  requestedSchool.getName() + " is now associated with " + student.getUserName() );
+								response.setSuccess(true);
+								response.setTotal(1L);
+								returnStatus = HttpStatus.OK;													
+							}
+							else
+							{
+								statusGood = false;
+								response.setMessage("Uable to associate School " +  requestedSchool.getName() + " with " + student.getUserName() );
+								response.setSuccess(false);
+								response.setTotal(0L);
+								returnStatus = HttpStatus.BAD_REQUEST;														
+							}
+						}
+						else
+						{
+							student.setId(myView.getStudentId());
+							requestedSchool.getStudents().add(student);
+							if( requestedSchool.merge() != null )
+							{
+								statusGood = true;
+								response.setMessage("School " +  requestedSchool.getName() + " is now associated with " + student.getUserName() );
+								response.setSuccess(true);
+								response.setTotal(1L);
+								returnStatus = HttpStatus.OK;																					
+							}
+							else
+							{
+								statusGood = false;
+								response.setMessage("Uable to associate School " +  requestedSchool.getName() + " with " + student.getUserName() );
+								response.setSuccess(false);
+								response.setTotal(0L);
+								returnStatus = HttpStatus.BAD_REQUEST;														
+							}
+						}
+					}
+					else
+					{
+						statusGood = false;
+						response.setMessage("School " +  requestedSchool.getName() + " is already associated with " + student.getUserName() );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						returnStatus = HttpStatus.CONFLICT;						
+					}
+				}
+
+			}
+			if( duplicate )
 			{
 				statusGood = false;
 				response.setMessage("Duplicated faculty/student attempted.");

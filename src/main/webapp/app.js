@@ -195,7 +195,8 @@ Ext.application({
 		'admin.PasswordDialog',
 		'admin.NewDialog',
 		'guardian.AddChildDialog',
-		'faculty.AddChildDialog'
+		'faculty.AddChildDialog',
+		'student.AddChildDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',

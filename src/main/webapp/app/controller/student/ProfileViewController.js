@@ -437,6 +437,79 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 	},
 
+	onStudentprofilesassociatetoolClick: function(tool, e, eOpts) {
+		debugger;
+
+		//var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
+		//var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+		//guardianTypesStore.myLoad();
+
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var newDialog = Ext.create( 'MySchool.view.student.AddChildDialog' );
+
+			window.console.log( 'Add School To Student Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+
+	},
+
+	onStudentaddchildcancelClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel Add School To Student" );
+		var myForm = button.up().getForm();
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
+	onStudentaddchildsubmitClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit Add School To Student" );
+		var myForm					= button.up().getForm();
+		var myPanel					= button.up();
+		var myGrid					= this.getStudentProfileGridPanel();
+
+		//Get the values from the form and insert a new record into the StudentProfileStore.
+
+		var formValues				= myForm.getValues();
+
+		//	Create an empty record
+		var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		//var myRecord	= Ext.create('MySchool.model.student.StudentProfileModel');
+
+		//	Get the stores that we will need
+
+		var schoolname	= formValues.schoolname;
+
+		var myStore		= this.getStore( 'student.StudentProfileStore' );
+
+		//debugger;
+
+		myRecord.set( 'schoolName', schoolname );
+		myRecord.set( 'id', null );
+
+		//add to the store.  For a normal update, only the sync() is called.
+		//In this case we are expecting the create method on the backend to
+		//perform an update instead of a create.  This will allow updated from
+		//the grid to work as expected while allowing us to add a new student
+		//child to the existing guardian relation.  This will actually create
+		//another record in the guardian table with the new studentId.
+		//The backend checks to see if the studentId in this records is
+		//different from the one with the specified schoolName.  If so,
+		//then the new record will be created.
+		myStore.add( myRecord );
+
+		//sync the store.
+		myStore.sync();
+
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -639,6 +712,8 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	},
 
 	init: function(application) {
+				Ext.getStore('student.StudentProfileStore').addListener('datachanged', this.onGridDataChanged, this );
+
 		this.control({
 			"#studentprofilegridpanel": {
 				viewready: this.onStudentprofilegridpanelViewReady,
@@ -691,8 +766,28 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 			},
 			"#studentprofilestab": {
 				activate: this.onStudentprofilestabActivate
+			},
+			"#studentprofilesassociatetool": {
+				click: this.onStudentprofilesassociatetoolClick
+			},
+			"#studentaddchildcancel": {
+				click: this.onStudentaddchildcancelClick
+			},
+			"#studentaddchildsubmit": {
+				click: this.onStudentaddchildsubmitClick
 			}
 		});
+	},
+
+	onGridDataChanged: function() {
+		debugger;
+		var myGrid = this.getStudentProfileGridPanel();
+		var myModel = myGrid.getSelectionModel();
+		myModel.deselectAll();
+		this.selectedIndex = 0;
+		myModel.select(0, false, true);
+		var mySelected = myModel.getLastSelected();
+		//myModel.fireEvent( 'selectionchange', this, mySelected );
 	}
 
 });
