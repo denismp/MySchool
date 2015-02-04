@@ -92,6 +92,7 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 						xtype: 'combobox',
 						itemId: 'subjectgridschoolnamecombobox',
 						name: 'schoolname',
+						editable: false,
 						displayField: 'name',
 						store: 'subject.SchoolsStore',
 						valueField: 'name'

@@ -158,7 +158,8 @@ public class SchoolControllerHelper implements ControllerHelperInterface
 				}
 				else if( role.equals("ROLE_FACULTY"))
 				{
-					schools = School.findAllSchools();
+					//schools = School.findAllSchools();
+					schools = new ArrayList<School>();
 				}
 				else if( role.equals("ROLE_SCHOOL"))
 				{
