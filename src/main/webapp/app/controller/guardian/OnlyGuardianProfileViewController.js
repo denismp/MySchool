@@ -18,7 +18,8 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	stores: [
 		'guardian.GuardianTypeStore',
-		'guardian.GuardianProfileStore'
+		'guardian.GuardianProfileStore',
+		'security.SecurityStore'
 	],
 
 	refs: [

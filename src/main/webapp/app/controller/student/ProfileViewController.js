@@ -355,19 +355,20 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		//var studentRecord	= studentStore.getAt(0);
 		//var studentId		= studentRecord.get( 'id' );
 		//var studentName		= studentRecord.get( 'userName' );
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var newDialog = Ext.create( 'MySchool.view.student.PasswordDialog' );
 
-		var newDialog = Ext.create( 'MySchool.view.student.PasswordDialog' );
+			//newDialog.down('#studentid').setValue( studentId );
+			//newDialog.down('#studentname').setValue( studentName );
 
-		//newDialog.down('#studentid').setValue( studentId );
-		//newDialog.down('#studentname').setValue( studentName );
+			//commonQuarterSubjectStore.myLoad();
+			//commonMonthStore.myLoad();
 
-		//commonQuarterSubjectStore.myLoad();
-		//commonMonthStore.myLoad();
+			window.console.log( 'Password Dialog' );
 
-		window.console.log( 'Password Dialog' );
-
-		newDialog.render( Ext.getBody() );
-		newDialog.show();
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
 	},
 
 	onStudentpasswordcancelbuttonClick: function(button, e, eOpts) {

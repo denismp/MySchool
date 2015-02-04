@@ -16,6 +16,10 @@
 Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 	extend: 'Ext.app.Controller',
 
+	stores: [
+		'security.SecurityStore'
+	],
+
 	refs: [
 		{
 			ref: 'OnlyFacultyForm',

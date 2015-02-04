@@ -113,16 +113,16 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 	onSchoolsavetoolClick: function(tool, e, eOpts) {
 		window.console.log( "school.SchoolProfileStore.Save" );
 		debugger;
+		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+			var mystore = Ext.getStore("school.SchoolProfileStore");
 
-		var mystore = Ext.getStore("school.SchoolProfileStore");
-
-		var records = mystore.getModifiedRecords();
-		for( var i = 0; i < records.length; i++ )
-		{
-		    records[i].set( 'lastUpdated', new Date() );
-		    records[i].set( 'whoUpdated', 'login');
+			var records = mystore.getModifiedRecords();
+			for( var i = 0; i < records.length; i++ )
+			{
+				records[i].set( 'lastUpdated', new Date() );
+				records[i].set( 'whoUpdated', 'login');
+			}
 		}
-
 		mystore.sync();
 	},
 
@@ -253,19 +253,20 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 
 	onSchoolprofileformeditbuttonClick: function(button, e, eOpts) {
 		debugger;
-
-		var myForm = this.getSchoolProfileForm();
-		var myFields = myForm.getForm().getFields();
-		for( var i = 0; i < myFields.length; i++ )
-		{
-			myFields.items[i].enable();
+		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+			var myForm = this.getSchoolProfileForm();
+			var myFields = myForm.getForm().getFields();
+			for( var i = 0; i < myFields.length; i++ )
+			{
+				myFields.items[i].enable();
+			}
+			//myForm.getForm().focus();studentprofileformeditbutton
+			var cancelButton	= button.up().down('#schoolprofileformcanelbutton');
+			var saveButton		= button.up().down('#schoolprofileformsavebutton');
+			cancelButton.enable();
+			saveButton.enable();
+			button.disable();
 		}
-		//myForm.getForm().focus();studentprofileformeditbutton
-		var cancelButton	= button.up().down('#schoolprofileformcanelbutton');
-		var saveButton		= button.up().down('#schoolprofileformsavebutton');
-		cancelButton.enable();
-		saveButton.enable();
-		button.disable();
 
 	},
 

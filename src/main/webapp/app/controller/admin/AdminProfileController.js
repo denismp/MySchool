@@ -19,7 +19,8 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 	stores: [
 		'admin.AdminProfileStore',
 		'admin.AdminStore',
-		'admin.AdminPasswordStore'
+		'admin.AdminPasswordStore',
+		'security.SecurityStore'
 	],
 
 	refs: [
@@ -76,7 +77,8 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 			});
 		}
 		else{
-			title = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+			//title = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+			title = this.userName + '/' + this.userRole;
 
 			myGrid.setTitle('[' + title + ']' + ' School Admins');
 			myStore.load({
@@ -109,7 +111,8 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 
 		//var guardianStore = Ext.getStore('admin.AdminProfileStore');
 
-		if( this.userRole === 'ROLE_ADMIN'){
+
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
 			var newDialog = Ext.create( 'MySchool.view.admin.NewDialog' );
 
 			window.console.log( 'New Admin Dialog' );
@@ -124,16 +127,18 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 		window.console.log( "admin.AdminProfileStore.Save" );
 		debugger;
 
-		var mystore = Ext.getStore("admin.AdminProfileStore");
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var mystore = Ext.getStore("admin.AdminProfileStore");
 
-		var records = mystore.getModifiedRecords();
-		for( var i = 0; i < records.length; i++ )
-		{
-			records[i].set( 'lastUpdated', new Date() );
-			records[i].set( 'whoUpdated', 'login');
+			var records = mystore.getModifiedRecords();
+			for( var i = 0; i < records.length; i++ )
+			{
+				records[i].set( 'lastUpdated', new Date() );
+				records[i].set( 'whoUpdated', 'login');
+			}
+
+			mystore.sync();
 		}
-
-		mystore.sync();
 	},
 
 	onOnlyadminpasswordtoolClick: function(tool, e, eOpts) {
@@ -148,18 +153,20 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 		//var studentId		= studentRecord.get( 'id' );
 		//var studentName		= studentRecord.get( 'userName' );
 
-		var newDialog = Ext.create( 'MySchool.view.admin.PasswordDialog' );
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var newDialog = Ext.create( 'MySchool.view.admin.PasswordDialog' );
 
-		//newDialog.down('#studentid').setValue( studentId );
-		//newDialog.down('#studentname').setValue( studentName );
+			//newDialog.down('#studentid').setValue( studentId );
+			//newDialog.down('#studentname').setValue( studentName );
 
-		//commonQuarterSubjectStore.myLoad();
-		//commonMonthStore.myLoad();
+			//commonQuarterSubjectStore.myLoad();
+			//commonMonthStore.myLoad();
 
-		window.console.log( 'Password Dialog' );
+			window.console.log( 'Password Dialog' );
 
-		newDialog.render( Ext.getBody() );
-		newDialog.show();
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
 	},
 
 	onAdminprofiletabActivate: function(component, eOpts) {
@@ -281,18 +288,20 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 	onAdminprofileformeditbuttonClick: function(button, e, eOpts) {
 		debugger;
 
-		var myForm = this.getAdminProfileForm();
-		var myFields = myForm.getForm().getFields();
-		for( var i = 0; i < myFields.length; i++ )
-		{
-			myFields.items[i].enable();
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var myForm = this.getAdminProfileForm();
+			var myFields = myForm.getForm().getFields();
+			for( var i = 0; i < myFields.length; i++ )
+			{
+				myFields.items[i].enable();
+			}
+			//myForm.getForm().focus();studentprofileformeditbutton
+			var cancelButton	= button.up().down('#adminprofileformcanelbutton');
+			var saveButton		= button.up().down('#adminprofileformsavebutton');
+			cancelButton.enable();
+			saveButton.enable();
+			button.disable();
 		}
-		//myForm.getForm().focus();studentprofileformeditbutton
-		var cancelButton	= button.up().down('#adminprofileformcanelbutton');
-		var saveButton		= button.up().down('#adminprofileformsavebutton');
-		cancelButton.enable();
-		saveButton.enable();
-		button.disable();
 
 	},
 

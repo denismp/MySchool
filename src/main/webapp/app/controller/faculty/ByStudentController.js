@@ -21,7 +21,8 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		'faculty.ByStudentModel'
 	],
 	stores: [
-		'faculty.ByStudentStore'
+		'faculty.ByStudentStore',
+		'security.SecurityStore'
 	],
 
 	refs: [
