@@ -75,9 +75,10 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 			});
 		}
 		else{
-			title = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+			//title = r_.get('firstName') + " " + r_.get('middleName') + ' ' + r_.get('lastName');
+			title = this.userName + '/' + this.userRole;
 
-			myGrid.setTitle('[' + title + ']' + ' Guardians');
+			myGrid.setTitle('[' + title + ']' );
 			myStore.load({
 				callback: this.onMyJsonStoreLoad,
 				scope: this,
@@ -150,18 +151,20 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 	onOnlyguardianprofileformeditbuttonClick: function(button, e, eOpts) {
 		debugger;
 
-		var myForm = this.getOnlyGuardianForm();
-		var myFields = myForm.getForm().getFields();
-		for( var i = 0; i < myFields.length; i++ )
-		{
-			myFields.items[i].enable();
+		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+			var myForm = this.getOnlyGuardianForm();
+			var myFields = myForm.getForm().getFields();
+			for( var i = 0; i < myFields.length; i++ )
+			{
+				myFields.items[i].enable();
+			}
+			//myForm.getForm().focus();studentprofileformeditbutton
+			var cancelButton	= button.up().down('#onlyguardianprofileformcanelbutton');
+			var saveButton		= button.up().down('#onlyguardianprofileformsavebutton');
+			cancelButton.enable();
+			saveButton.enable();
+			button.disable();
 		}
-		//myForm.getForm().focus();studentprofileformeditbutton
-		var cancelButton	= button.up().down('#onlyguardianprofileformcanelbutton');
-		var saveButton		= button.up().down('#onlyguardianprofileformsavebutton');
-		cancelButton.enable();
-		saveButton.enable();
-		button.disable();
 
 	},
 
@@ -203,16 +206,18 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		window.console.log( "guardian.GuardianProfileStore.Save" );
 		debugger;
 
-		var mystore = Ext.getStore("guardian.GuardianProfileStore");
+		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+			var mystore = Ext.getStore("guardian.GuardianProfileStore");
 
-		var records = mystore.getModifiedRecords();
-		for( var i = 0; i < records.length; i++ )
-		{
-		    records[i].set( 'lastUpdated', new Date() );
-		    records[i].set( 'whoUpdated', 'login');
+			var records = mystore.getModifiedRecords();
+			for( var i = 0; i < records.length; i++ )
+			{
+				records[i].set( 'lastUpdated', new Date() );
+				records[i].set( 'whoUpdated', 'login');
+			}
+
+			mystore.sync();
 		}
-
-		mystore.sync();
 	},
 
 	onOnlyguardiannewtoolClick: function(tool, e, eOpts) {
@@ -339,17 +344,19 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 	onOnlyguardiannewchildtoolClick: function(button, e, eOpts) {
 		debugger;
 
-		var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
-		var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
-		guardianTypesStore.myLoad();
+		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+			var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
+			var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+			guardianTypesStore.myLoad();
 
-		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
-			var newDialog = Ext.create( 'MySchool.view.guardian.AddChildDialog' );
+			if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+				var newDialog = Ext.create( 'MySchool.view.guardian.AddChildDialog' );
 
-			window.console.log( 'Associate Student to Guardian Dialog' );
+				window.console.log( 'Associate Student to Guardian Dialog' );
 
-			newDialog.render( Ext.getBody() );
-			newDialog.show();
+				newDialog.render( Ext.getBody() );
+				newDialog.show();
+			}
 		}
 
 	},

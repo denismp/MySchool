@@ -273,6 +273,10 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 				{
 					//DENIS 12/24/2014
 					singleStudent = Student.findStudentsByUserNameEquals(userName).getSingleResult();
+					if( singleStudent != null )
+					{
+						guardianList = new ArrayList<Guardian>(singleStudent.getGuardians());
+					}
 				}
 	
 				for( Guardian guardian : guardianList )
