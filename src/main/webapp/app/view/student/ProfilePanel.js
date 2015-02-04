@@ -64,7 +64,7 @@ Ext.define('MySchool.view.student.ProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'studentprofilesassociatetool',
-					tooltip: 'Add School To Student',
+					tooltip: 'School2Student',
 					type: 'expand'
 				},
 				{

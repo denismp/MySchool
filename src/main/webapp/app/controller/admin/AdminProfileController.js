@@ -18,7 +18,8 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 
 	stores: [
 		'admin.AdminProfileStore',
-		'admin.AdminStore'
+		'admin.AdminStore',
+		'admin.AdminPasswordStore'
 	],
 
 	refs: [

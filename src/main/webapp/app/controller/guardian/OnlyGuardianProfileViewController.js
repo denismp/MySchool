@@ -32,19 +32,6 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		}
 	],
 
-	onGuardianonlygridpanelSelectionChange: function(model, selected, eOpts) {
-		debugger;
-		console.log('onGuardianonlygridpanelSelectionChange()');
-		// in the onMyJsonStoreLoad we do a deselect so we need to test
-		// if selected[0] has a value
-		var record = model.getLastSelected();
-		if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
-		    var myForm = this.getOnlyGuardianForm();
-
-		    this.loadForm( myForm, record );
-		}
-	},
-
 	onGuardianonlygridpanelViewReady: function(tablepanel, eOpts) {
 		debugger;
 		console.log('onGuardianprofilerefreshtoolClick()');
@@ -99,6 +86,8 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 				}
 			});
 		}
+		this.selectedIndex = 0;
+		myGrid.getSelectionModel().select(0);
 	},
 
 	onOnlyguardianrefreshtoolClick: function(tool, e, eOpts) {
@@ -357,7 +346,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
 			var newDialog = Ext.create( 'MySchool.view.guardian.AddChildDialog' );
 
-			window.console.log( 'Add Child Dialog' );
+			window.console.log( 'Associate Student to Guardian Dialog' );
 
 			newDialog.render( Ext.getBody() );
 			newDialog.show();
@@ -365,9 +354,22 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	},
 
+	onGuardianonlygridpanelSelectionChange: function(model, selected, eOpts) {
+		debugger;
+		console.log('onGuardianonlygridpanelSelectionChange()');
+		// in the onMyJsonStoreLoad we do a deselect so we need to test
+		// if selected[0] has a value
+		var record = model.getLastSelected();
+		if ( Ext.isDefined( selected  ) && Ext.isDefined( selected[0]  )) {
+		    var myForm = this.getOnlyGuardianForm();
+
+		    this.loadForm( myForm, record );
+		}
+	},
+
 	onGuardianaddchildcancelClick: function(button, e, eOpts) {
 		debugger;
-		window.console.log( "Cancel Add Child" );
+		window.console.log( "Cancel Associate Student to Guadian" );
 		var myForm = button.up().getForm();
 		myForm.reset();
 		button.up().hide();
@@ -376,7 +378,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 	onGuardianaddchildsubmitClick: function(button, e, eOpts) {
 		debugger;
-		window.console.log( "Submit Add Child" );
+		window.console.log( "Submit Associate Student to Guardian" );
 		var myForm					= button.up().getForm();
 		var myPanel					= button.up();
 		var myGrid					= this.getOnlyGuardianGridPanel();
@@ -385,8 +387,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 
 		var formValues				= myForm.getValues();
 
-		//	Create an empty record
-		var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		//	Get an empty record
+		//var myRecord	= myGrid.getSelectionModel().getSelection()[0];
+		var myRecord	= myGrid.getSelectionModel().getLastSelected();
 		//var myRecord	= Ext.create('MySchool.model.guardian.GuardianProfileModel');
 
 		//	Get the stores that we will need
@@ -418,12 +421,11 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		myForm.reset();
 		button.up().hide();
 		button.up().up().close();
-
 	},
 
 	loadForm: function(form, record) {
 		debugger;
-
+		console.log('guardian.OnlyGuardianProfileViewController.loadForm(): completed');
 		console.log( form );
 
 		form.loadRecord( record );
@@ -433,7 +435,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		{
 		    myFields.items[i].disable();
 		}
-		console.log('guardian.OnlyGuardianProfileViewController.loadForm(): completed');
+
 	},
 
 	onMyJsonStoreLoad: function() {
@@ -511,8 +513,8 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 	init: function(application) {
 		this.control({
 			"#guardianonlygridpanel": {
-				selectionchange: this.onGuardianonlygridpanelSelectionChange,
-				viewready: this.onGuardianonlygridpanelViewReady
+				viewready: this.onGuardianonlygridpanelViewReady,
+				selectionchange: this.onGuardianonlygridpanelSelectionChange
 			},
 			"#onlyguardianrefreshtool": {
 				click: this.onOnlyguardianrefreshtoolClick

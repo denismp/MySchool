@@ -436,7 +436,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 
 	onFacultyaddchildsubmitClick: function(button, e, eOpts) {
 		debugger;
-		window.console.log( "Submit Add Child" );
+		window.console.log( "Submit Associate School to Student" );
 		var myPanel					= button.up();
 		var myForm					= myPanel.getForm();
 		//var myForm					= button.up().getForm();
@@ -785,7 +785,7 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 		this.selectedIndex = 0;
 		myModel.select(0, false, true);
 		var mySelected = myModel.getLastSelected();
-		//myModel.fireEvent( 'selectionchange', this, mySelected );
+		//myModel.fireEvent( 'selectionchange', this, mySelected );//May need to comment this out.
 	},
 
 	onGridDataLoaded: function() {

@@ -442,7 +442,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		}
 
 		// Return retrieved object.
-		logger.info(JsonPrettyPrint.getPrettyString(response));
+		//logger.info(JsonPrettyPrint.getPrettyString(response));
+		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
@@ -628,7 +629,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			String userName = securityHelper.getUserName();
 			String userRole = securityHelper.getUserRole();
 
-			if( userRole.equals("ROLE_USER") == false )
+			if( userRole.equals("ROLE_USER") == false && userRole.equals("ROLE_FACULTY") == false )
 			{
 				if (guardian == null)
 				{
@@ -738,12 +739,13 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 					// Check to see if the studentId of the requested studentUserName is different from the given studentUserName.
 					if( student.getId().longValue() != myView.getStudentId().longValue() )
 					{
-						logger.info("User is asking Student to be added to Guardian.");
 						String msg = "";
 					
 						// the ID's are different, so we want add the new student to the guardian.
 						// First get the data for the current Guardian and make sure that the student is not already his.
 						record = Guardian.findGuardian(myView.getGuardianId());
+						logger.info("User is asking Student " + student.getUserName() + " to be added to Guardian " + record.getUserName() + ".");
+						
 						Set<Student> students = record.getStudents();
 						boolean found = false;
 						for( Student myStudent: students )
@@ -766,10 +768,11 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 							record.setWhoUpdated(userName);
 
 							// Update the student table which is has a Many-To-Many to the guardian table.
-							if( myView.getVersion() == record.getVersion() && record.merge() != null )
+							//if( myView.getVersion() == record.getVersion() && record.merge() != null )
+							if( record.merge() != null )
 							{							
 								myView.setVersion(record.getVersion());
-								myView.setId(record.getId());
+								//myView.setId(record.getId());
 			
 								myView.setId(100000L + record.getId());				
 								
@@ -803,18 +806,22 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 								myView.setType(record.getType());
 								myView.setDescription(record.getDescription());
 								
-								logger.info("Merge of guardian record with new student successful.");
+								myView.setStudentId(student.getId());
+								myView.setStudentEmail(student.getEmail());
+								myView.setStudentUserName(student.getUserName());
+								
+								logger.info("Successfully added " + student.getUserName() + " to " + record.getUserName());
 								
 								returnStatus = HttpStatus.OK;
-								response.setMessage(className + " created.  Merge of guardian record with new student successful.");
+								response.setMessage( "Successfully added " + student.getUserName() + " to " + record.getUserName() );
 								response.setSuccess(true);
 								response.setTotal(1L);
 								response.setData(myView);
 							}
 							else
 							{
-								msg = "Update failed for new student for guardian.";
-								response.setMessage(className + " " + msg );
+								msg = "Unable to add " + student.getUserName() + " to " + record.getUserName();
+								response.setMessage( msg );
 								response.setSuccess(false);
 								response.setTotal(0L);
 								//returnStatus = HttpStatus.CONFLICT;
@@ -823,8 +830,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 						}
 						else
 						{
-							msg = "Student already exists with the Guardian.";
-							response.setMessage(className + " " + msg );
+							msg = "Student " + student.getUserName() + " already exists with the Guardian " + record.getUserName();
+							response.setMessage( msg );
 							response.setSuccess(false);
 							response.setTotal(0L);
 							//returnStatus = HttpStatus.CONFLICT;
@@ -833,8 +840,8 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 					}
 					else
 					{
-						logger.error("Student is arleady a child of " + myView.getUserName() );
-						response.setMessage(className + " " + "student is already a child of " + myView.getUserName() );
+						logger.error("Student " + student.getUserName() + " is arleady a child of " + myView.getUserName() );
+						response.setMessage("Student " + student.getUserName() + " is arleady a child of " + myView.getUserName() );
 						response.setSuccess(false);
 						response.setTotal(0L);
 						//returnStatus = HttpStatus.CONFLICT;
@@ -854,6 +861,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -947,7 +955,7 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 			String userName = securityHelper.getUserName();
 			String userRole = securityHelper.getUserRole();
 
-			if (userRole.equals("ROLE_USER") == false)
+			if (userRole.equals("ROLE_USER") == false && userRole.equals("ROLE_FACULTY") == false )
 			{
 				logger.info("updateFromJson(): Debug just before call to GuardianProfileView.fromJsonToGuardianProfileView(myJson)");
 				myView = GuardianProfileView

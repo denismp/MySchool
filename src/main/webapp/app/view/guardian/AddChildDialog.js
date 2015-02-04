@@ -26,7 +26,7 @@ Ext.define('MySchool.view.guardian.AddChildDialog', {
 	height: 151,
 	itemId: 'guardianaddchilddialog',
 	width: 390,
-	title: 'Add Child',
+	title: 'Associate Student To Guardian',
 
 	initComponent: function() {
 		var me = this;
