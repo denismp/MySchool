@@ -66,9 +66,18 @@ Ext.define('MySchool.store.guardian.GuardianProfileStore', {
 
 		var myStr = response.responseText;
 		var n = myStr.search('No data for');
+		var n2 = myStr.search('No records for');
+		var displayMsg = true;
+		if( n < 0  ){
+			displayMsg = false;
+		}
+		if( displayMsg === false || n2 < 0 ){
+			displayMsg = false;
+		}
+
 		window.console.log('n=' + n );
 
-		if( n < 0 ){
+		if( displayMsg === true ){
 			Ext.MessageBox.show({
 				title: 'REMOTE EXCEPTION',
 				msg: smsg,
