@@ -752,11 +752,13 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json");
 		HttpStatus returnStatus = HttpStatus.OK;
-
 		JsonObjectResponse response = new JsonObjectResponse();
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		String userName = securityHelper.getUserName();
-		String userRole = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		Student student = null;
+		StudentProfileView myView = null;
+		//THIS WAS CHANGED!!!! DAMN IT!
 
 		try
 		{
@@ -764,20 +766,53 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			Student record = new Student();
-			String className = this.myClass.getSimpleName();
-			boolean statusGood = true;
-			StudentProfileView myView = StudentProfileView
+			 myView = StudentProfileView
 					.fromJsonToStudentProfileView(myJson);
 
-			//List<Student> studentList = Student.findStudentsByUserNameEquals(
-			//		myView.getUserName()).getResultList();
-			Student student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();
+			if( userRole.equals("ROLE_ADMIN"))
+			{
+				student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();				
+			}
+			else if( userRole.equals("ROLE_FACULTY"))
+			{
+				student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();				
+			}
+			else if( userRole.equals("ROLE_SCHOOL"))
+			{
+				student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();				
+			}
+			else if( userRole.equals("ROLE_USER"))
+			{				
+				student = Student.findStudentsByUserNameEquals(myView.getUserName()).getSingleResult();
+			}
+			else
+			{
+				response.setMessage( userRole + " is invalid role for " + userName );
+				response.setSuccess(false);
+				response.setTotal(0L);
+				//returnStatus = HttpStatus.CONFLICT;
+				returnStatus = HttpStatus.UNAUTHORIZED;	
+				logger.info(response.toString());
+				return new ResponseEntity<String>(response.toString(), headers,
+						returnStatus);
+			}				
+		}
+		catch( Exception me)
+		{
+			student = null;
+		}
+
+		try
+		{
+			String className = this.myClass.getSimpleName();
+			boolean statusGood = true;
+
 			boolean duplicate = true;
 
 			if (student == null )
 			{
 				duplicate = false;
+				Student record = new Student();
 				String msg = "";
 				Set<Faculty> facultys = new HashSet<Faculty>();
 				Set<Guardian> guardians = new HashSet<Guardian>(); //DENIS 12/24/2014
