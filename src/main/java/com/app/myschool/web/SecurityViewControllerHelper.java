@@ -136,7 +136,7 @@ where
 		queryString.append(" where a.id = s.admin");
 		queryString.append(" or ( s.id = ss.schools");
 		queryString.append(" and st.id = ss.students )");
-		queryString.append(" or st.school is null");
+		//queryString.append(" or st.school is null");
 
 		if( adminId != null )
 		{
@@ -280,6 +280,10 @@ where
 			try
 			{
 				students = this.getStudentListBySchoolAdmin(admin.getId().toString());
+				if( students == null || students.isEmpty() )
+				{
+					students = Student.findAllStudents();
+				}
 			}
 			catch (Exception e)
 			{
@@ -335,7 +339,19 @@ where
 							facultys.add(faculty);
 						}
 					}
+					if( quarters.isEmpty() )
+					{
+						facultys = Faculty.findAllFacultys();
+					}
 				}
+				if( subjects.isEmpty() )
+				{
+					facultys = Faculty.findAllFacultys();
+				}
+			}
+			if( schools.isEmpty() )
+			{
+				facultys = Faculty.findAllFacultys();
 			}
 		}
 		return facultys;

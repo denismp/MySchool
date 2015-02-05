@@ -6,11 +6,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.util.ArrayList;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -34,6 +32,7 @@ import com.app.myschool.model.Admin;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.FacultyView;
 import com.app.myschool.model.Guardian;
+import com.app.myschool.model.Quarter;
 import com.app.myschool.model.School;
 import com.app.myschool.model.SchoolView;
 import com.app.myschool.model.Student;
@@ -241,8 +240,16 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 								myView.setAdminUserName(admin.getUserName());
 								myView.setAdminEmail(admin.getEmail());
 							}
-							myView.setSubjectId(subject.getId());
-							myView.setSubjectName(subject.getName());
+							Set<Quarter> quarters = subject.getQuarters();
+							for( Quarter quarter: quarters )
+							{
+								Student qStudent = quarter.getStudent();
+								if( qStudent != null && qStudent.getId().longValue() == student.getId().longValue() )
+								{
+									myView.setSubjectId(subject.getId());
+									myView.setSubjectName(subject.getName());									
+								}
+							}
 
 							myView.setVersion(school.getVersion());
 
@@ -289,6 +296,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 							myView.setAdminUserName(admin.getUserName());
 							myView.setAdminEmail(admin.getEmail());
 						}
+						myView.setSubjectId(null);
+						myView.setSubjectName(null);
 
 						myView.setVersion(school.getVersion());
 
@@ -339,8 +348,6 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 								myView.setAdminUserName(admin.getUserName());
 								myView.setAdminEmail(admin.getEmail());
 							}
-							myView.setSubjectId(subject.getId());
-							myView.setSubjectName(subject.getName());
 
 							myView.setVersion(school.getVersion());
 
@@ -385,6 +392,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 							myView.setAdminUserName(admin.getUserName());
 							myView.setAdminEmail(admin.getEmail());
 						}
+						myView.setSubjectId(null);
+						myView.setSubjectName(null);
 
 						myView.setVersion(school.getVersion());
 
