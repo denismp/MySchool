@@ -104,6 +104,9 @@ public class School {
     
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Student> students = new HashSet<Student>();
+    
+    //@ManyToMany(cascade = CascadeType.ALL)
+    //private Set<Faculty> facultys = new HashSet<Faculty>();
   
     @ManyToOne
     private Admin admin;

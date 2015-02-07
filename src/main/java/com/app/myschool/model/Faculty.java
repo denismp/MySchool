@@ -2,6 +2,7 @@ package com.app.myschool.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -23,5 +24,8 @@ public class Faculty extends Person {
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy="faculty")
     private Set<Quarter> quarters = new HashSet<Quarter>();
+    
+    //@ManyToMany(cascade = CascadeType.ALL, mappedBy = "facultys")
+    //private Set<School> schools = new HashSet<School>();
     
 }

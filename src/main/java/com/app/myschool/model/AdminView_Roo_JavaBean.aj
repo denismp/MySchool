@@ -136,14 +136,6 @@ privileged aspect AdminView_Roo_JavaBean {
         this.whoUpdated = whoUpdated;
     }
     
-    public Date AdminView.getLastUpdated() {
-        return this.lastUpdated;
-    }
-    
-    public void AdminView.setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
-    
     public String AdminView.getUserName() {
         return this.userName;
     }
@@ -192,12 +184,12 @@ privileged aspect AdminView_Roo_JavaBean {
         this.dob = dob;
     }
     
-    public Date AdminView.getLastUpdate() {
-        return this.lastUpdate;
+    public Date AdminView.getLastUpdated() {
+        return this.lastUpdated;
     }
     
-    public void AdminView.setLastUpdate(Date lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void AdminView.setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
     
     public Date AdminView.getCreatedDate() {

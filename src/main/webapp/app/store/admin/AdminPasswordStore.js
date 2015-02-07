@@ -66,10 +66,10 @@ Ext.define('MySchool.store.admin.AdminPasswordStore', {
 		//    resizeable: true
 		//});
 		window.console.log( smsg );
-		if( this.getCount() > 0 )
-		{
-		    this.reload();
-		}
+		//if( this.getCount() > 0 )
+		//{
+		//    this.reload();
+		//}
 		//this.reload();
 	},
 

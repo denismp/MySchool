@@ -223,7 +223,7 @@ public class AdminPasswordViewControllerHelper implements
 		try
 		{
 			List<AdminView> adminViewList = new ArrayList<AdminView>();
-			if( userRole.equals("ROLE_ADMIN") )
+			if( userRole.equals("ROLE_ADMIN") || userRole.equals("SCHOOL_ADMIN"))
 			{
 				admins = Admin.findAllAdmins();
 

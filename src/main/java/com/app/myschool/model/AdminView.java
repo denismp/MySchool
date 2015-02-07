@@ -45,8 +45,6 @@ public class AdminView {
     private Boolean enabled;
 
     private String whoUpdated;
-
-    private Date lastUpdated;
         
     private String userName;
     
@@ -64,7 +62,7 @@ public class AdminView {
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
-    private Date lastUpdate;
+    private Date lastUpdated;
 
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")

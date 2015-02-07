@@ -138,7 +138,259 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		return rList;
 	}
 
+	private SchoolView setSchoolViewBaseValues( long index, SchoolView myView, SchoolView currentView )
+	{
+		long i = index;
+		myView.setId(i);
+		myView.setSchoolviewId(i);
+		myView.setSchoolId(currentView.getSchoolId());
+		myView.setName(currentView.getName());
+
+		myView.setVersion(currentView.getVersion());
+		myView.setLastUpdated(currentView.getLastUpdated());
+		myView.setCreatedDate(currentView.getCreatedDate());
+		myView.setWhoUpdated(currentView.getWhoUpdated());
+		myView.setAddress1(currentView.getAddress1());
+		myView.setAddress2(currentView.getAddress2());
+		myView.setCity(currentView.getCity());
+		myView.setComments(currentView.getComments());
+		myView.setCountry(currentView.getCountry());
+
+		myView.setCustodianOfRecords(currentView
+				.getCustodianOfRecords());
+		myView.setCustodianTitle(currentView.getCustodianTitle());
+		myView.setDistrict(currentView.getDistrict());
+		myView.setEmail(currentView.getEmail());
+		myView.setName(currentView.getName());
+		myView.setPhone1(currentView.getPhone1());
+		myView.setPhone2(currentView.getPhone2());
+		myView.setPostalCode(currentView.getPostalCode());
+		myView.setProvince(currentView.getProvince());
+		myView.setEnabled(currentView.getEnabled());
+		
+		myView.setAdminId(currentView.getAdminId());
+		myView.setAdminUserName(currentView.getAdminUserName());
+		myView.setAdminEmail(currentView.getAdminEmail());
+		
+		myView.setStudentUserName(currentView.getStudentUserName());
+		myView.setStudentId(currentView.getStudentId());
+		
+		//myView.setFacultyUserName(currentView.getFacultyUserName());
+		//myView.setFacultyId(currentView.getFacultyId());
+		
+		myView.setSubjectName(currentView.getSubjectName());
+		myView.setSubjectId(currentView.getSubjectId());
+
+		return myView;
+	}
+	private List<SchoolView> makeSchoolList( List<School> schools )
+	{
+		List<SchoolView> rList = new ArrayList<SchoolView>();
+		long i = 0;
+		for( School school: schools )
+		{
+			SchoolView myView = new SchoolView();
+
+			myView.setId(i);
+			myView.setSchoolviewId(i++);
+			myView.setSchoolId(school.getId());
+	
+			myView.setVersion(school.getVersion());
+			myView.setLastUpdated(school.getLastUpdated());
+			myView.setCreatedDate(school.getCreatedDate());
+			myView.setWhoUpdated(school.getWhoUpdated());
+			myView.setAddress1(school.getAddress1());
+			myView.setAddress2(school.getAddress2());
+			myView.setCity(school.getCity());
+			myView.setComments(school.getComments());
+			myView.setCountry(school.getCountry());
+
+			myView.setCustodianOfRecords(school
+					.getCustodianOfRecords());
+			myView.setCustodianTitle(school.getCustodianTitle());
+			myView.setDistrict(school.getDistrict());
+			myView.setEmail(school.getEmail());
+			myView.setName(school.getName());
+			myView.setPhone1(school.getPhone1());
+			myView.setPhone2(school.getPhone2());
+			myView.setPostalCode(school.getPostalCode());
+			myView.setProvince(school.getProvince());
+			myView.setEnabled(school.getEnabled());
+			
+			myView.setAdminId(school.getAdmin().getId());
+			myView.setAdminUserName(school.getAdmin().getUserName());
+			myView.setAdminEmail(school.getAdmin().getEmail());
+
+			rList.add(myView);
+		}
+		return rList;
+	}
+	private List<SchoolView> addStudentsToSchoolList( List<SchoolView> currentList )
+	{
+		List<SchoolView> rList = new ArrayList<SchoolView>();
+		long i = 0;
+		long loopCount = 0;
+		boolean hasStudents = false;
+		
+		for( SchoolView currentView: currentList )
+		{	
+			loopCount++;
+			School school = School.findSchool( currentView.getSchoolId() );
+			Set<Student> students = school.getStudents();
+			logger.info("Number of students is " + students.size() );
+			for( Student student: students )
+			{
+				hasStudents = true;
+				SchoolView myView = new SchoolView();
+				myView = this.setSchoolViewBaseValues(i, myView, currentView);
+				i++;
+				
+				myView.setStudentUserName(student.getUserName());
+				myView.setStudentId(student.getId());
+				rList.add(myView);
+
+			}
+			if( i < loopCount )
+			{
+				i = loopCount;
+				rList.add(currentView);
+			}
+		}
+		if( !hasStudents )
+		{
+			return currentList;
+		}
+		return rList;
+	}
+	private List<SchoolView> addSubjectsToSchoolList( List<SchoolView> currentList )
+	{
+		List<SchoolView> rList = new ArrayList<SchoolView>();
+		long i = 0;
+		long loopCount = 0;
+		boolean hasSubjects = false;
+
+		for( SchoolView currentView: currentList )
+		{
+			loopCount++;
+			School school = School.findSchool(currentView.getSchoolId());
+			if( school != null )
+			{
+				Set<Subject>subjects = school.getSubjects();
+				for( Subject subject: subjects )
+				{
+					hasSubjects = true;
+					SchoolView myView = new SchoolView();
+					myView = this.setSchoolViewBaseValues(i, myView, currentView);
+					i++;
+					myView.setSubjectName(subject.getName());
+					myView.setSubjectId(subject.getId());
+					rList.add(myView);					
+				}
+ 			}
+			if( i < loopCount )
+			{
+				i = loopCount;
+				rList.add(currentView);
+			}			
+		}
+		if( !hasSubjects )
+		{
+			return currentList;
+		}
+
+		return rList;
+	}
+
 	public ResponseEntity<String> listJson(
+			@SuppressWarnings("rawtypes") Map params)
+	{
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=utf-8");
+		Class<School> myViewClass = School.class;
+
+		HttpStatus returnStatus = HttpStatus.OK;
+		JsonObjectResponse response = new JsonObjectResponse();
+		List<SchoolView> records = null;
+		String className = myViewClass.getSimpleName();
+
+		String myLoginInfo = this.login();
+		logger.info("LoginInfo:" + myLoginInfo);
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+
+		String userName = securityHelper.getUserName();
+		String role = securityHelper.getUserRole();
+		List<SchoolView> schoolViewList = new ArrayList<SchoolView>();
+		try
+		{
+			List<School> schools = null;
+			try
+			{
+				if( role.equals("ROLE_ADMIN") )
+				{
+					schools = School.findAllSchools();				
+				}
+				else if( role.equals("ROLE_FACULTY"))
+				{
+					schools = School.findAllSchools();
+				}
+				else if( role.equals("ROLE_SCHOOL"))
+				{
+					Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+					schools = new ArrayList<School>( admin.getSchools() );
+				}
+				else
+				{
+					Student student = Student.findStudentsByUserNameEquals(userName).getSingleResult();
+					schools = this.getJustStudentSchoolList(student.getId().toString());
+				}
+			}
+			catch( Exception se )
+			{
+				schools = new ArrayList<School>();
+			}
+			
+			schoolViewList = this.makeSchoolList(schools);
+			schoolViewList = this.addStudentsToSchoolList(schoolViewList);
+			schoolViewList = this.addSubjectsToSchoolList(schoolViewList );
+
+			if (schoolViewList.isEmpty() == false )
+			{
+				records = schoolViewList;
+
+				response.setMessage("All " + login() + " " + className
+						+ "s retrieved");
+				response.setData(records);
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(records.size());
+			}
+			else
+			{
+				response.setMessage("No records for class=" + className);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				returnStatus = HttpStatus.BAD_REQUEST;
+			}
+
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			returnStatus = HttpStatus.BAD_REQUEST;
+			response.setMessage(e.getMessage());
+			response.setSuccess(false);
+			response.setTotal(0L);
+		}
+		
+
+		// Return retrieved object.
+		String responseString = JsonPrettyPrint.getPrettyString(response);
+		logger.info("RESPONSE: " + responseString);
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);
+	}
+
+	public ResponseEntity<String> listJsonOLD(
 			@SuppressWarnings("rawtypes") Map params)
 	{
 		HttpHeaders headers = new HttpHeaders();
@@ -193,6 +445,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			for (School school : schools)
 			{
 				Set<Student> students = school.getStudents();
+
 				boolean isStudents = false;
 				for (Student student : students)
 				{
