@@ -174,6 +174,8 @@ Ext.define('MySchool.controller.monthly.SummaryRatingsController', {
 
 	onRefreshmonthlysummariestoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('monthly.SummaryRatingsStore');
+		var myGrid = this.getMonthlyDetailsGridPanel();
+		myGrid.removeAll();
 		myStore.reload();
 	},
 

@@ -63,15 +63,30 @@ Ext.define('MySchool.store.faculty.FacultyTableStore', {
 	onRestException: function(proxy, response, operation, eOpts) {
 		debugger;
 		var smsg = response.request.options.method + '<br>' + response.request.options.action + '<br>' + response.responseText + '<br>' + response.status + '<br>' + response.statusText + '<br>' + operation.params.data;
-		Ext.MessageBox.show({
-		    title: 'REMOTE EXCEPTION',
-		    msg: smsg,
-		    icon: Ext.MessageBox.ERROR,
-		    buttons: Ext.Msg.OK,
-		    resizeable: true
-		});
+		var myStr = response.responseText;
+		var n = myStr.search('No data for');
+		var n2 = myStr.search('No records for');
+		var displayMsg = true;
+		if( n >= 0  ){
+			displayMsg = false;
+		}
+		if( displayMsg === false || n2 >= 0 ){
+			displayMsg = false;
+		}
+
+		window.console.log('n=' + n );
+
+		if( displayMsg === true ){
+			Ext.MessageBox.show({
+				title: 'REMOTE EXCEPTION',
+				msg: smsg,
+				icon: Ext.MessageBox.ERROR,
+				buttons: Ext.Msg.OK,
+				resizeable: true
+			});
+		}
 		window.console.log( smsg );
-		if( this.getCount() > 0 )
+		if( this.getTotalCount() > 0 )
 		{
 		    this.reload();
 		}

@@ -37,6 +37,8 @@ Ext.define('MySchool.controller.monthly.EvaluationRatingsController', {
 
 	onMonthlyevaluationrefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('monthly.EvaluationRatingsStore');
+		var myGrid = this.getMonthlyEvaluationGridPanel();
+		myGrid.removeAll();
 		myStore.reload();
 	},
 

@@ -106,6 +106,8 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 	onSchoolrefreshtoolClick: function(tool, e, eOpts) {
 		debugger;
 		var myStore = Ext.getStore('school.SchoolProfileStore');
+		var myGrid = this.getSchoolGridPanel();
+		myGrid.removeAll();
 		myStore.reload();
 
 	},

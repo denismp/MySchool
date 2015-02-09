@@ -40,6 +40,10 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		{
 			ref: 'BodiesOfWorkObjectiveTabPanel',
 			selector: '#bodiesofworkobjectivetabpanel'
+		},
+		{
+			ref: 'BodiesOfWorkGridPanel',
+			selector: '#bodiesofworkssubjectsgrid'
 		}
 	],
 
@@ -135,6 +139,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		//debugger;
 		window.console.log( 'Refresh' );
 		var mystore = Ext.getStore("bodiesofwork.MyJsonStore");
+		var myGrid = this.getBodiesOfWorkGridPanel();
+		myGrid.removeAll();
 		mystore.reload();
 
 	},

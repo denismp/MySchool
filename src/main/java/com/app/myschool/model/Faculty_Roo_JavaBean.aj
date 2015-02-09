@@ -5,6 +5,7 @@ package com.app.myschool.model;
 
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import java.util.Set;
 
@@ -24,6 +25,14 @@ privileged aspect Faculty_Roo_JavaBean {
     
     public void Faculty.setQuarters(Set<Quarter> quarters) {
         this.quarters = quarters;
+    }
+    
+    public Set<School> Faculty.getSchools() {
+        return this.schools;
+    }
+    
+    public void Faculty.setSchools(Set<School> schools) {
+        this.schools = schools;
     }
     
 }

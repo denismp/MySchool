@@ -24,6 +24,7 @@
         <field:select field="admin" id="c_com_app_myschool_model_School_admin" itemValue="id" items="${admins}" path="/admins" z="kt8cE4JamwlLTKfbnQii+ESF6W8="/>
         <field:checkbox field="enabled" id="c_com_app_myschool_model_School_enabled" z="Z2IULQ27AtV/uFN3xt2l/fF2ElI="/>
         <field:select field="students" id="c_com_app_myschool_model_School_students" itemValue="id" items="${students}" multiple="true" path="/students" z="uqvK0J4TuBWX2w8bWek0fe17rsU="/>
+        <field:select field="facultys" id="c_com_app_myschool_model_School_facultys" itemValue="id" items="${facultys}" multiple="true" path="/facultys" z="yCp3fPQdj46D34p62Y0tl4jOZYI="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_School" render="${not empty dependencies}" z="je3Q6rlON5EDotEytIMOVv5xAD8="/>
 </div>

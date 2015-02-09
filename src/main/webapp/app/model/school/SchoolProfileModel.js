@@ -45,6 +45,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			type: 'int'
 		},
 		{
+			name: 'facultyId',
+			type: 'int'
+		},
+		{
 			name: 'email',
 			type: 'string'
 		},
@@ -112,6 +116,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 		},
 		{
 			name: 'studentUserName',
+			type: 'string'
+		},
+		{
+			name: 'facultyUserName',
 			type: 'string'
 		},
 		{

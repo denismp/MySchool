@@ -24,6 +24,7 @@
         <field:select field="students" id="c_com_app_myschool_model_Faculty_students" itemValue="id" items="${students}" multiple="true" path="/students" z="2vb3sYkkv+bU3wcSOdxDBF1AG3U="/>
         <field:datetime dateTimePattern="${faculty_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Faculty_createdDate" z="dBucVMyKFK7wbDMltlLnwloxUBo="/>
         <field:datetime dateTimePattern="${faculty_dob_date_format}" field="dob" id="c_com_app_myschool_model_Faculty_dob" z="s7ytwSW7KulCSM1xMqPKmI6ufXI="/>
+        <field:select field="schools" id="c_com_app_myschool_model_Faculty_schools" itemValue="id" items="${schools}" multiple="true" path="/schools" z="pB5kilVghD4tCGEY5C9IgIPvsjc="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Faculty" render="${not empty dependencies}" z="b+d4IZfazzMYmClMjmKctUatxdg="/>
 </div>

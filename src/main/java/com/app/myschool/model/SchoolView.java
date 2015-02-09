@@ -80,9 +80,9 @@ public class SchoolView {
     
     private String studentUserName;
 
-    //private Long facultyId;
+    private Long facultyId;
     
-    //private String facultyUserName;
+    private String facultyUserName;
 
     private Long adminId;
     

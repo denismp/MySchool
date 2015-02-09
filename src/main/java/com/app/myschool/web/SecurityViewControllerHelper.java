@@ -134,8 +134,8 @@ where
 		StringBuilder queryString = new StringBuilder("select distinct st.*");
 		queryString.append(" from student st, school s, school_students ss, admin a");
 		queryString.append(" where a.id = s.admin");
-		queryString.append(" or ( s.id = ss.schools");
-		queryString.append(" and st.id = ss.students )");
+		queryString.append(" and s.id = ss.schools");
+		queryString.append(" and st.id = ss.students");
 		//queryString.append(" or st.school is null");
 
 		if( adminId != null )
@@ -280,10 +280,10 @@ where
 			try
 			{
 				students = this.getStudentListBySchoolAdmin(admin.getId().toString());
-				if( students == null || students.isEmpty() )
-				{
-					students = Student.findAllStudents();
-				}
+				//if( students == null || students.isEmpty() )
+				//{
+				//	students = Student.findAllStudents();
+				//}
 			}
 			catch (Exception e)
 			{
@@ -353,6 +353,41 @@ where
 			{
 				facultys = Faculty.findAllFacultys();
 			}
+		}
+		return facultys;
+	}
+	public List<Faculty> findSchoolFacultysByRole()
+	{
+		String role = this.getUserRole();
+		String userName = this.getUserName();
+		List<Faculty> facultys = new ArrayList<Faculty>();
+		if( role.equals("ROLE_ADMIN") )
+		{
+			facultys = Faculty.findAllFacultys();
+		}
+		else if( role.equals("ROLE_FACULTY"))
+		{
+			facultys = Faculty.findFacultysByUserNameEquals(userName).getResultList();
+		}
+		else if( role.equals("ROLE_SCHOOL"))
+		{
+			Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+			Set<School> schools = admin.getSchools();
+			for( School school: schools )
+			{
+				Set<Faculty> schoolFacultys = school.getFacultys();
+				for( Faculty faculty: schoolFacultys )
+				{
+					if( this.isDupFaculty(facultys, faculty ) == false )
+					{
+						facultys.add(faculty);
+					}
+				}
+			}
+			//if( schools.isEmpty() )
+			//{
+			//	facultys = Faculty.findAllFacultys();
+			//}
 		}
 		return facultys;
 	}

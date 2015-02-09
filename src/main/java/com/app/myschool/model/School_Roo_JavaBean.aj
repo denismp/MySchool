@@ -4,6 +4,7 @@
 package com.app.myschool.model;
 
 import com.app.myschool.model.Admin;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -170,6 +171,14 @@ privileged aspect School_Roo_JavaBean {
     
     public void School.setStudents(Set<Student> students) {
         this.students = students;
+    }
+    
+    public Set<Faculty> School.getFacultys() {
+        return this.facultys;
+    }
+    
+    public void School.setFacultys(Set<Faculty> facultys) {
+        this.facultys = facultys;
     }
     
     public Admin School.getAdmin() {

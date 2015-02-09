@@ -146,43 +146,85 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 
 		try
 		{
-			List<Faculty> facultys = securityHelper.findFacultysByRole();;
+			List<Faculty> facultys = securityHelper.findSchoolFacultysByRole();
 			
 			List<FacultyView> facultyViewList = new ArrayList<FacultyView>();
 			long i = 0;
 			for (Faculty faculty : facultys)
 			{
-				statusGood = true;
-
-				FacultyView myView = new FacultyView();
-				myView.setId(faculty.getId());
-				myView.setFacultyId(faculty.getId());
-				myView.setFacultyviewid(i++);
-				myView.setVersion(faculty.getVersion());
-				myView.setLastUpdated(faculty.getLastUpdated());
-				myView.setWhoUpdated(faculty.getWhoUpdated());
-				myView.setDob(faculty.getDob());
-
-				myView.setVersion(faculty.getVersion());
-				//myView.setFacultyId(faculty.getId());
-				myView.setEmail(faculty.getEmail());
-				myView.setAddress1(faculty.getAddress1());
-				myView.setAddress2(faculty.getAddress2());
-				myView.setCity(faculty.getCity());
-				myView.setCountry(faculty.getCountry());
-
-				myView.setLastName(faculty.getLastName());
-				myView.setMiddleName(faculty.getMiddleName());
-				myView.setFirstName(faculty.getFirstName());
-				myView.setPostalCode(faculty.getPostalCode());
-				myView.setProvince(faculty.getProvince());
-				myView.setPhone1(faculty.getPhone1());
-				myView.setPhone2(faculty.getPhone2());
-				myView.setEnabled(faculty.getEnabled());
-				myView.setUserName(faculty.getUserName());
-				myView.setUserPassword("NOT DISPLAYED");
-
-				facultyViewList.add(myView);
+				Set<School> schools = faculty.getSchools();
+				boolean hasSchools = false;
+				for( School school: schools )
+				{					
+					statusGood = true;
+					hasSchools = true;
+	
+					FacultyView myView = new FacultyView();
+					myView.setId(faculty.getId());
+					myView.setFacultyId(faculty.getId());
+					myView.setFacultyviewid(i++);
+					myView.setVersion(faculty.getVersion());
+					myView.setLastUpdated(faculty.getLastUpdated());
+					myView.setWhoUpdated(faculty.getWhoUpdated());
+					myView.setDob(faculty.getDob());
+	
+					myView.setVersion(faculty.getVersion());
+					//myView.setFacultyId(faculty.getId());
+					myView.setEmail(faculty.getEmail());
+					myView.setAddress1(faculty.getAddress1());
+					myView.setAddress2(faculty.getAddress2());
+					myView.setCity(faculty.getCity());
+					myView.setCountry(faculty.getCountry());
+	
+					myView.setLastName(faculty.getLastName());
+					myView.setMiddleName(faculty.getMiddleName());
+					myView.setFirstName(faculty.getFirstName());
+					myView.setPostalCode(faculty.getPostalCode());
+					myView.setProvince(faculty.getProvince());
+					myView.setPhone1(faculty.getPhone1());
+					myView.setPhone2(faculty.getPhone2());
+					myView.setEnabled(faculty.getEnabled());
+					myView.setUserName(faculty.getUserName());
+					myView.setUserPassword("NOT DISPLAYED");
+					myView.setSchoolId(school.getId());
+					myView.setSchoolName(school.getName());
+						
+					facultyViewList.add(myView);
+				}
+				if( !hasSchools )
+				{
+					statusGood = true;
+	
+					FacultyView myView = new FacultyView();
+					myView.setId(faculty.getId());
+					myView.setFacultyId(faculty.getId());
+					myView.setFacultyviewid(i++);
+					myView.setVersion(faculty.getVersion());
+					myView.setLastUpdated(faculty.getLastUpdated());
+					myView.setWhoUpdated(faculty.getWhoUpdated());
+					myView.setDob(faculty.getDob());
+	
+					myView.setVersion(faculty.getVersion());
+					//myView.setFacultyId(faculty.getId());
+					myView.setEmail(faculty.getEmail());
+					myView.setAddress1(faculty.getAddress1());
+					myView.setAddress2(faculty.getAddress2());
+					myView.setCity(faculty.getCity());
+					myView.setCountry(faculty.getCountry());
+	
+					myView.setLastName(faculty.getLastName());
+					myView.setMiddleName(faculty.getMiddleName());
+					myView.setFirstName(faculty.getFirstName());
+					myView.setPostalCode(faculty.getPostalCode());
+					myView.setProvince(faculty.getProvince());
+					myView.setPhone1(faculty.getPhone1());
+					myView.setPhone2(faculty.getPhone2());
+					myView.setEnabled(faculty.getEnabled());
+					myView.setUserName(faculty.getUserName());
+					myView.setUserPassword("NOT DISPLAYED");
+						
+					facultyViewList.add(myView);					
+				}
 			}
 
 			Collections.sort(facultyViewList, new MyComparator());
@@ -307,8 +349,9 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				Faculty faculty = null;
 				try
 				{
+					String facultyUserName = myView.getUserName();
 					faculty = Faculty.findFacultysByUserNameEquals(
-						myView.getUserName()).getSingleResult();
+						facultyUserName).getSingleResult();
 				}
 				catch( Exception nre )
 				{
@@ -364,15 +407,41 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 						((Faculty) record).persist();
 						
 						myView.setVersion(record.getVersion());
-						myView.setId(record.getId());
+						myView.setFacultyId(record.getId());
 						// myView.setDailyId(record.getId());
-						//myView.setId(100000L + record.getId());
-	
-						returnStatus = HttpStatus.CREATED;
-						response.setMessage(className + " created.");
-						response.setSuccess(true);
-						response.setTotal(1L);
-						response.setData(myView);
+						myView.setId(100000L + record.getId());
+						
+						School school = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+						if( school != null )
+						{
+							school.getFacultys().add(record);
+							if( school.merge() == null )
+							{
+								statusGood = false;
+								response.setMessage("Failed to add faculty " + record.getUserName() + " to school " + school.getName() );
+								response.setSuccess(false);
+								response.setTotal(0L);
+								returnStatus = HttpStatus.BAD_REQUEST;
+								statusGood = false;
+								// Return the created record with the new system generated id
+								logger.info(response.toString());
+								return new ResponseEntity<String>(response.toString(), headers,
+										returnStatus);	
+							}
+							else
+							{
+								returnStatus = HttpStatus.CREATED;
+								response.setMessage(className + " created.");
+								response.setSuccess(true);
+								response.setTotal(1L);
+								response.setData(myView);
+								statusGood = true;
+							}
+						}
+						else
+						{
+							logger.error( myView.getSchoolName() + " is not found." );
+						}
 					}
 					else
 					{
@@ -386,11 +455,11 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				else
 				{
 					statusGood = false;
-					response.setMessage("Duplicated faculty attempted.");
+					response.setMessage("Duplicate faculty attempted.");
 					response.setSuccess(false);
 					response.setTotal(0L);
-					returnStatus = HttpStatus.CONFLICT;
-					// returnStatus = HttpStatus.BAD_REQUEST;
+					//returnStatus = HttpStatus.CONFLICT;
+					returnStatus = HttpStatus.BAD_REQUEST;
 				}
 			}
 			else
@@ -400,8 +469,7 @@ public class FacultyViewControllerHelper implements ControllerHelperInterface
 				response.setSuccess(false);
 				response.setTotal(0L);
 				//returnStatus = HttpStatus.CONFLICT;
-				returnStatus = HttpStatus.BAD_REQUEST;					
-				
+				returnStatus = HttpStatus.BAD_REQUEST;									
 			}
 
 		}

@@ -68,10 +68,10 @@ Ext.define('MySchool.store.guardian.GuardianProfileStore', {
 		var n = myStr.search('No data for');
 		var n2 = myStr.search('No records for');
 		var displayMsg = true;
-		if( n < 0  ){
+		if( n >= 0  ){
 			displayMsg = false;
 		}
-		if( displayMsg === false || n2 < 0 ){
+		if( displayMsg === false || n2 >= 0 ){
 			displayMsg = false;
 		}
 

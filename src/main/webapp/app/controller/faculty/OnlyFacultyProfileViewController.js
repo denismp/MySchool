@@ -108,6 +108,10 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 
 	onOnlyfacultyrefreshtoolClick: function(tool, e, eOpts) {
 		debugger;
+		var myGrid = this.getOnlyFacultyGridPanel();
+		//myGrid.view.clearData();
+		//myGrid.view.refresh();
+		myGrid.removeAll();
 		var myStore = Ext.getStore('faculty.FacultyTableStore');
 		myStore.reload();
 
@@ -209,6 +213,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		var username	= formValues.username;
 		var password	= formValues.password;
 		var dob			= formValues.dob;
+		var schoolname	= formValues.schoolName;
 
 
 		var myStore		= this.getStore( 'faculty.FacultyTableStore' );
@@ -237,6 +242,7 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		myRecord.set('userPassword',password);
 		myRecord.set('enabled', true);
 		myRecord.set('dob', dob);
+		myRecord.set('schoolName',schoolname);
 
 		//add to the store
 

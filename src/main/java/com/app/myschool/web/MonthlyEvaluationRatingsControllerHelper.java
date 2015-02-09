@@ -82,6 +82,9 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		List<MonthlyEvaluationRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean hasStudents = false;
+		boolean hasFaculty = false;
+		boolean hasRatings = false;
 		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
@@ -92,14 +95,17 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 		{
 			for( Student student: students )
 			{
+				hasStudents = true;
 				List<Faculty> facultys = securityHelper.getFacultyList(student);
 				for( Faculty faculty: facultys )
 				{
+					hasFaculty = true;
 					List<MonthlyEvaluationRatings> monthlyEvaluationRatingsList = this.getList(student.getId().toString(), faculty.getId().toString());
 		
 					//long i = 0;
 					for (MonthlyEvaluationRatings monthlyEvaluationRatings : monthlyEvaluationRatingsList) 
 					{
+						hasRatings = true;
 						statusGood = true;
 						Quarter quarter = monthlyEvaluationRatings.getQuarter();
 						Subject u_ = quarter.getSubject();
@@ -158,6 +164,14 @@ public class MonthlyEvaluationRatingsControllerHelper implements ControllerHelpe
 					statusGood = false;
 					returnStatus = HttpStatus.BAD_REQUEST;				
 				}
+			}
+			if( !hasStudents || !hasFaculty || !hasRatings )
+			{
+				response.setMessage("No records for class=" + className);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;								
 			}
 		}
 		catch(Exception e)

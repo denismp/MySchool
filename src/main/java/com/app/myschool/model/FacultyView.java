@@ -54,6 +54,10 @@ public class FacultyView {
     
 	private Long facultyId;
 	
+	private Long schoolId;
+	
+	private String schoolName;
+	
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date dob;

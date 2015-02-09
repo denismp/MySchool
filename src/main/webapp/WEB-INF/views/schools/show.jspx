@@ -23,5 +23,6 @@
         <field:display field="admin" id="s_com_app_myschool_model_School_admin" object="${school}" z="Gv7wkW3Cht4S9a63JNYuA9RE5aw="/>
         <field:display field="enabled" id="s_com_app_myschool_model_School_enabled" object="${school}" z="ukk8bR3izDLi44nFtBjsn0kM7CA="/>
         <field:display field="students" id="s_com_app_myschool_model_School_students" object="${school}" z="sB2kU+RqBGqLHp3CuK5sXhHcSSA="/>
+        <field:display field="facultys" id="s_com_app_myschool_model_School_facultys" object="${school}" z="MH38PgrMLZmwskORu51IDyVC3lA="/>
     </page:show>
 </div>

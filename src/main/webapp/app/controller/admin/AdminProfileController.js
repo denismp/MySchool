@@ -188,6 +188,8 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 	onOnlyadminrefreshtoolClick: function(tool, e, eOpts) {
 		debugger;
 		var myStore = Ext.getStore('admin.AdminProfileStore');
+		var myGrid = this.getAdminGridPanel();
+		myGrid.removeAll();
 		myStore.reload();
 
 	},

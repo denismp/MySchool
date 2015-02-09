@@ -83,6 +83,10 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		List<MonthlySummaryRatingsView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean hasStudents = false;
+		boolean hasFaculty = false;
+		boolean hasSummaryRatings = false;
+		String msg = "";
 		//String studentId_ = getParam(params, "studentId");
 		//String studentName_ = getParam(params, "studentName");
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
@@ -93,15 +97,18 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 		{
 			for( Student student: students )
 			{
+				hasStudents = true;
 				List<Faculty> facultys = securityHelper.getFacultyList(student);
 				for( Faculty faculty: facultys )
 				{
+					hasFaculty = true;
 					List<MonthlySummaryRatings> monthlySummaryRatingsList = this.getList(student.getId().toString(), faculty.getId().toString());
 		
 					//long i = 0;
 					for (MonthlySummaryRatings monthlySummaryRatings : monthlySummaryRatingsList) 
 					{
 						statusGood = true;
+						hasSummaryRatings = true;
 						Quarter quarter = monthlySummaryRatings.getQuarter();
 						Subject u_ = quarter.getSubject();
 						Student student_ = quarter.getStudent();
@@ -136,7 +143,7 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 						monthlySummaryRatingsView.setQtrYear(quarter.getQtr_year());
 			
 						monthlySummaryRatingsViewList.add(monthlySummaryRatingsView);					
-				}
+					}
 				}
 				if (statusGood)
 				{
@@ -154,8 +161,31 @@ public class MonthlySummaryRatingsControllerHelper implements ControllerHelperIn
 					response.setSuccess(false);
 					response.setTotal(0L);
 					statusGood = false;
-					returnStatus = HttpStatus.BAD_REQUEST;				
+					returnStatus = HttpStatus.BAD_REQUEST;	
 				}
+			}
+			if( !hasStudents )
+			{
+				statusGood = false;
+				msg = "No records for students.";
+			}
+			else if( !hasFaculty )
+			{
+				statusGood = false;
+				msg = "No records for faculty.";
+			}
+			else if( !hasSummaryRatings )
+			{
+				statusGood = false;
+				msg = "No records for summary ratings.";
+			}
+			if( statusGood == false )
+			{
+				response.setMessage(msg);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;								
 			}
 		}
 		catch(Exception e)

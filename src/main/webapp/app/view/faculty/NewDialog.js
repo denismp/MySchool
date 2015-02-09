@@ -20,10 +20,11 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 		'Ext.form.Panel',
 		'Ext.form.FieldSet',
 		'Ext.form.field.Date',
+		'Ext.form.field.ComboBox',
 		'Ext.button.Button'
 	],
 
-	height: 548,
+	height: 563,
 	itemId: 'facultynewdialog',
 	width: 390,
 	title: 'New Faculty',
@@ -37,7 +38,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 					xtype: 'form',
 					dock: 'top',
 					frame: true,
-					height: 508,
+					height: 523,
 					itemId: 'facultynewform',
 					width: 381,
 					bodyPadding: 10,
@@ -45,7 +46,7 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 						{
 							xtype: 'fieldset',
 							dock: 'top',
-							height: 445,
+							height: 472,
 							itemId: 'facultynewformfieldset',
 							padding: 5,
 							items: [
@@ -159,6 +160,15 @@ Ext.define('MySchool.view.faculty.NewDialog', {
 									itemId: 'newform_password',
 									fieldLabel: 'Password',
 									name: 'password'
+								},
+								{
+									xtype: 'combobox',
+									anchor: '100%',
+									fieldLabel: 'School',
+									name: 'schoolName',
+									displayField: 'name',
+									store: 'subject.SchoolsStore',
+									valueField: 'name'
 								}
 							]
 						}

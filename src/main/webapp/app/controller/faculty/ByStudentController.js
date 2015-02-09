@@ -161,6 +161,8 @@ Ext.define('MySchool.controller.faculty.ByStudentController', {
 
 		debugger;
 		var myStore = Ext.getStore('faculty.ByStudentStore');
+		var myGrid = this.getFacultyByStudentGridPanel();
+		myGrid.removeAll();
 		myStore.reload();
 
 		if( false ){

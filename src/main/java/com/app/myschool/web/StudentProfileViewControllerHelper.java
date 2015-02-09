@@ -820,9 +820,9 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
 				facultys.add(faculty);
 				
-				Guardian guardian = Guardian.findGuardian(myView.getGuardianId());//DENIS 12/24/2014
-				guardians.add(guardian);
-				
+				//Guardian guardian = Guardian.findGuardian(myView.getGuardianId());//DENIS 12/24/2014
+				//guardians.add(guardian);
+								
 				record.setCreatedDate(new Date(System.currentTimeMillis()));
 				record.setLastUpdated(new Date(System.currentTimeMillis()));
 
@@ -852,6 +852,7 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				record.setFaculty(facultys);
 				record.setDob(myView.getDob());
 				record.setGuardians(guardians);//DENIS 12/24/2014
+				//record.setSchools(schools);
 				
 				if( this.isValidUserName(record.getUserName() ) == false )
 				{
@@ -867,42 +868,63 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 				if (statusGood)
 				{
 					((Student) record).persist();
-
-					myView.setVersion(record.getVersion());
-					myView.setId(record.getId());
-
-					myView.setId(100000L + record.getId());				
 					
-					myView.setStudentprofileviewId(100000L + record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setLastUpdated(record.getLastUpdated());
-					myView.setWhoUpdated(record.getWhoUpdated());
-					myView.setStudentId(record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setFacultyId(faculty.getId());
-					myView.setEmail(record.getEmail());
-					myView.setAddress1(record.getAddress1());
-					myView.setAddress2(record.getAddress2());
-					myView.setCity(record.getCity());
-					myView.setCountry(record.getCountry());
-					myView.setFacultyUserName(faculty.getUserName());
-					myView.setFacultyEmail(faculty.getEmail());
-					myView.setLastName(record.getLastName());
-					myView.setMiddleName(record.getMiddleName());
-					myView.setFirstName(record.getFirstName());
-					myView.setPostalCode(record.getPostalCode());
-					myView.setProvince(record.getProvince());
-					myView.setPhone1(record.getPhone1());
-					myView.setPhone2(record.getPhone2());
-					myView.setEnabled(record.getEnabled());
-					myView.setUserName(record.getUserName());
-					myView.setDob(record.getDob());
 					
-					returnStatus = HttpStatus.CREATED;
-					response.setMessage(className + " created.");
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
+					School school = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+					school.getStudents().add(record);
+					if( school.merge() != null )
+					{
+						myView.setVersion(record.getVersion());
+						myView.setId(record.getId());
+	
+						myView.setId(100000L + record.getId());				
+						
+						myView.setStudentprofileviewId(100000L + record.getId());
+						myView.setVersion(record.getVersion());
+						myView.setLastUpdated(record.getLastUpdated());
+						myView.setWhoUpdated(record.getWhoUpdated());
+						myView.setStudentId(record.getId());
+						myView.setVersion(record.getVersion());
+						myView.setFacultyId(faculty.getId());
+						myView.setEmail(record.getEmail());
+						myView.setAddress1(record.getAddress1());
+						myView.setAddress2(record.getAddress2());
+						myView.setCity(record.getCity());
+						myView.setCountry(record.getCountry());
+						myView.setFacultyUserName(faculty.getUserName());
+						myView.setFacultyEmail(faculty.getEmail());
+						myView.setLastName(record.getLastName());
+						myView.setMiddleName(record.getMiddleName());
+						myView.setFirstName(record.getFirstName());
+						myView.setPostalCode(record.getPostalCode());
+						myView.setProvince(record.getProvince());
+						myView.setPhone1(record.getPhone1());
+						myView.setPhone2(record.getPhone2());
+						myView.setEnabled(record.getEnabled());
+						myView.setUserName(record.getUserName());
+						myView.setDob(record.getDob());
+						
+						returnStatus = HttpStatus.CREATED;
+						response.setMessage(className + " created.");
+						response.setSuccess(true);
+						response.setTotal(1L);
+						response.setData(myView);
+						// Return the created record with the new system generated id
+						logger.info(response.toString());
+						return new ResponseEntity<String>(response.toString(), headers,
+								returnStatus);
+					}
+					else
+					{
+						returnStatus = HttpStatus.BAD_REQUEST;
+						response.setMessage("Failed to add student " + record.getUserName() + " to school " + school.getName() );
+						response.setSuccess(false);
+						response.setTotal(0L);
+
+						logger.info(response.toString());
+						return new ResponseEntity<String>(response.toString(), headers,
+								returnStatus);						
+					}
 				}
 				else
 				{
@@ -910,87 +932,130 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 					response.setSuccess(false);
 					response.setTotal(0L);
 					//returnStatus = HttpStatus.CONFLICT;
-					returnStatus = HttpStatus.BAD_REQUEST;					
+					returnStatus = HttpStatus.BAD_REQUEST;		
+					// Return the created record with the new system generated id
+					logger.info(response.toString());
+					return new ResponseEntity<String>(response.toString(), headers,
+							returnStatus);
 				}
 			}
 			else
 			{
+				// this typically means we want to associate a school to this student.
 				Long currentSchoolId = myView.getSchoolId();
-				School requestedSchool = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
-				Long requestedSchoolId = requestedSchool.getId();
-				if( currentSchoolId.longValue() == requestedSchoolId.longValue() )
+				if (currentSchoolId.longValue() != 0L) // A 0L means that this request came for the new dialog.  
 				{
-					duplicate = true;
-				}
-				else
-				{
-					duplicate = false;
-					// This is actually an update to add the requested school to the student.
-					Set<School> schools = student.getSchools();
-					boolean found = false;
-					for( School school: schools )
+					School requestedSchool = School.findSchoolsByNameEquals(
+							myView.getSchoolName()).getSingleResult();
+					Long requestedSchoolId = requestedSchool.getId();
+					if (currentSchoolId.longValue() == requestedSchoolId
+							.longValue())
 					{
-						if( school.getId().longValue() == requestedSchool.getId().longValue())
-						{
-							found = true;
-							break;
-						}
+						duplicate = true;
 					}
-					if( !found )
+					else
 					{
-						boolean studentSide = false;
-						// I can never figure out which side this merge should happen on.
-						if( studentSide )
+						duplicate = false;
+						// This is actually an update to add the requested
+						// school to the student.
+						Set<School> schools = student.getSchools();
+						boolean found = false;
+						for (School school : schools)
 						{
-							schools.add(requestedSchool);
-							student.setId(myView.getStudentId());
-							student.setSchools(schools);
-							if( student.getVersion() == myView.getVersion() && student.merge() != null )
+							if (school.getId().longValue() == requestedSchool
+									.getId().longValue())
 							{
-								statusGood = true;
-								response.setMessage("School " +  requestedSchool.getName() + " is now associated with " + student.getUserName() );
-								response.setSuccess(true);
-								response.setTotal(1L);
-								returnStatus = HttpStatus.OK;													
+								found = true;
+								break;
+							}
+						}
+						if (!found)
+						{
+							boolean studentSide = false;
+							// I can never figure out which side this merge
+							// should happen on.
+							if (studentSide)
+							{
+								schools.add(requestedSchool);
+								student.setId(myView.getStudentId());
+								student.setSchools(schools);
+								if (student.getVersion() == myView.getVersion()
+										&& student.merge() != null)
+								{
+									statusGood = true;
+									response.setMessage("School "
+											+ requestedSchool.getName()
+											+ " is now associated with "
+											+ student.getUserName());
+									response.setSuccess(true);
+									response.setTotal(1L);
+									returnStatus = HttpStatus.OK;
+									// Return the created record with the new system generated id
+									logger.info(response.toString());
+									return new ResponseEntity<String>(response.toString(), headers,
+											returnStatus);
+								}
+								else
+								{
+									statusGood = false;
+									response.setMessage("Uable to associate School "
+											+ requestedSchool.getName()
+											+ " with " + student.getUserName());
+									response.setSuccess(false);
+									response.setTotal(0L);
+									returnStatus = HttpStatus.BAD_REQUEST;
+									// Return the created record with the new system generated id
+									logger.info(response.toString());
+									return new ResponseEntity<String>(response.toString(), headers,
+											returnStatus);
+								}
 							}
 							else
 							{
-								statusGood = false;
-								response.setMessage("Uable to associate School " +  requestedSchool.getName() + " with " + student.getUserName() );
-								response.setSuccess(false);
-								response.setTotal(0L);
-								returnStatus = HttpStatus.BAD_REQUEST;														
+								student.setId(myView.getStudentId());
+								requestedSchool.getStudents().add(student);
+								if (requestedSchool.merge() != null)
+								{
+									statusGood = true;
+									response.setMessage("School "
+											+ requestedSchool.getName()
+											+ " is now associated with "
+											+ student.getUserName());
+									response.setSuccess(true);
+									response.setTotal(1L);
+									returnStatus = HttpStatus.OK;
+									// Return the created record with the new system generated id
+									logger.info(response.toString());
+									return new ResponseEntity<String>(response.toString(), headers,
+											returnStatus);
+								}
+								else
+								{
+									statusGood = false;
+									response.setMessage("Uable to associate School "
+											+ requestedSchool.getName()
+											+ " with " + student.getUserName());
+									response.setSuccess(false);
+									response.setTotal(0L);
+									returnStatus = HttpStatus.BAD_REQUEST;
+									// Return the created record with the new system generated id
+									logger.info(response.toString());
+									return new ResponseEntity<String>(response.toString(), headers,
+											returnStatus);
+								}
 							}
 						}
 						else
 						{
-							student.setId(myView.getStudentId());
-							requestedSchool.getStudents().add(student);
-							if( requestedSchool.merge() != null )
-							{
-								statusGood = true;
-								response.setMessage("School " +  requestedSchool.getName() + " is now associated with " + student.getUserName() );
-								response.setSuccess(true);
-								response.setTotal(1L);
-								returnStatus = HttpStatus.OK;																					
-							}
-							else
-							{
-								statusGood = false;
-								response.setMessage("Uable to associate School " +  requestedSchool.getName() + " with " + student.getUserName() );
-								response.setSuccess(false);
-								response.setTotal(0L);
-								returnStatus = HttpStatus.BAD_REQUEST;														
-							}
+							statusGood = false;
+							response.setMessage("School "
+									+ requestedSchool.getName()
+									+ " is already associated with "
+									+ student.getUserName());
+							response.setSuccess(false);
+							response.setTotal(0L);
+							returnStatus = HttpStatus.BAD_REQUEST;
 						}
-					}
-					else
-					{
-						statusGood = false;
-						response.setMessage("School " +  requestedSchool.getName() + " is already associated with " + student.getUserName() );
-						response.setSuccess(false);
-						response.setTotal(0L);
-						returnStatus = HttpStatus.CONFLICT;						
 					}
 				}
 
@@ -998,10 +1063,10 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 			if( duplicate )
 			{
 				statusGood = false;
-				response.setMessage("Duplicated faculty/student attempted.");
+				response.setMessage("Duplicated student attempted.");
 				response.setSuccess(false);
 				response.setTotal(0L);
-				returnStatus = HttpStatus.CONFLICT;
+				returnStatus = HttpStatus.BAD_REQUEST;
 				// returnStatus = HttpStatus.BAD_REQUEST;
 			}
 

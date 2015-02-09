@@ -4,6 +4,7 @@
 package com.app.myschool.web;
 
 import com.app.myschool.model.Admin;
+import com.app.myschool.model.Faculty;
 import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
 import com.app.myschool.model.Subject;
@@ -100,6 +101,7 @@ privileged aspect SchoolController_Roo_Controller {
         uiModel.addAttribute("school", school);
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("admins", Admin.findAllAdmins());
+        uiModel.addAttribute("facultys", Faculty.findAllFacultys());
         uiModel.addAttribute("students", Student.findAllStudents());
         uiModel.addAttribute("subjects", Subject.findAllSubjects());
     }

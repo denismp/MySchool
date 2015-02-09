@@ -175,8 +175,8 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 		myView.setStudentUserName(currentView.getStudentUserName());
 		myView.setStudentId(currentView.getStudentId());
 		
-		//myView.setFacultyUserName(currentView.getFacultyUserName());
-		//myView.setFacultyId(currentView.getFacultyId());
+		myView.setFacultyUserName(currentView.getFacultyUserName());
+		myView.setFacultyId(currentView.getFacultyId());
 		
 		myView.setSubjectName(currentView.getSubjectName());
 		myView.setSubjectId(currentView.getSubjectId());
@@ -257,6 +257,43 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			}
 		}
 		if( !hasStudents )
+		{
+			return currentList;
+		}
+		return rList;
+	}
+	private List<SchoolView> adFacultysToSchoolList( List<SchoolView> currentList )
+	{
+		List<SchoolView> rList = new ArrayList<SchoolView>();
+		long i = 0;
+		long loopCount = 0;
+		boolean hasFacultys = false;
+		
+		for( SchoolView currentView: currentList )
+		{	
+			loopCount++;
+			School school = School.findSchool( currentView.getSchoolId() );
+			Set<Faculty> facultys = school.getFacultys();
+			logger.info("Number of facultys is " + facultys.size() );
+			for( Faculty faculty: facultys )
+			{
+				hasFacultys = true;
+				SchoolView myView = new SchoolView();
+				myView = this.setSchoolViewBaseValues(i, myView, currentView);
+				i++;
+				
+				myView.setFacultyUserName(faculty.getUserName());
+				myView.setFacultyId(faculty.getId());
+				rList.add(myView);
+
+			}
+			if( i < loopCount )
+			{
+				i = loopCount;
+				rList.add(currentView);
+			}
+		}
+		if( !hasFacultys )
 		{
 			return currentList;
 		}
@@ -351,6 +388,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 			
 			schoolViewList = this.makeSchoolList(schools);
 			schoolViewList = this.addStudentsToSchoolList(schoolViewList);
+			schoolViewList = this.adFacultysToSchoolList(schoolViewList);
 			schoolViewList = this.addSubjectsToSchoolList(schoolViewList );
 
 			if (schoolViewList.isEmpty() == false )
