@@ -178,6 +178,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		List<StudentView> records = null;
 		String className = myViewClass.getSimpleName();
 		boolean statusGood = false;
+		boolean hasStudents = false;
+		boolean hasFaculty = false;
+		boolean hasQtrs = false;
 		//boolean found = false;
 		//String studentId_ = getParam(params, "studentId");
 		//String studentUserName = getParam(params,"studentName");
@@ -196,15 +199,18 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 			List<StudentView> studentViewList	= new ArrayList<StudentView>();
 			long i = 0;
 			for( Student student: students )
-			{				
+			{	
+				hasStudents = true;
 				List<Faculty> facultyList = securityHelper.getFacultyList(student);
 				for (Faculty faculty : facultyList) 
 				{
-					statusGood					= true;
+					hasFaculty = true;
 
 					Set<Quarter> quarterList	= student.getQuarters();
 					for ( Quarter quarter: quarterList )
 					{
+						statusGood = true;
+						hasQtrs = true;
 						Subject subject				= quarter.getSubject();
 	
 						StudentView myView			= new StudentView();
@@ -243,19 +249,9 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 						studentViewList.add( myView );
 					}
 				}
-				Collections.sort(studentViewList, new MyComparator());
-			}
-			/*
-			if( !found )
-			{
-				for( Student student: students )
+				if( !hasFaculty )
 				{
-					studentId_ = student.getId().toString();
-					
-					long i = 0;
-					found 						= true;
-					statusGood					= true;
-	
+					statusGood = true;
 					StudentView myView			= new StudentView();
 					myView.setId(++i);
 					myView.setStudentviewId(i);
@@ -264,14 +260,14 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 					myView.setWhoUpdated(student.getWhoUpdated());
 					myView.setStudentId(student.getId());
 					myView.setVersion(student.getVersion());
-					//myView.setFacultyId(faculty.getId());
+
 					myView.setEmail(student.getEmail());
 					myView.setAddress1(student.getAddress1());
 					myView.setAddress2(student.getAddress2());
 					myView.setCity(student.getCity());
 					myView.setCountry(student.getCountry());
-					//myView.setFacultyUserName(faculty.getUserName());
-					//myView.setFacultyEmail(faculty.getEmail());
+
+
 					myView.setLastName(student.getLastName());
 					myView.setMiddleName(student.getMiddleName());
 					myView.setFirstName(student.getFirstName());
@@ -281,18 +277,55 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 					myView.setPhone2(student.getPhone2());
 					myView.setEnabled(student.getEnabled());
 					myView.setUserName(student.getUserName());
-					//myView.setQtrId(quarter.getId());
-					//myView.setQtrName(quarter.getQtrName());
-					//myView.setSubjId(subject.getId());
-					//myView.setSubjName(subject.getName());
-					//myView.setQtrYear(quarter.getQtr_year());
+					myView.setUserPassword("NOT DISPLAYED");
 
-					studentViewList.add( myView );
+					myView.setDob(student.getDob());
 
-					Collections.sort(studentViewList, new MyComparator());	
+					studentViewList.add( myView );					
 				}
+				else if( !hasQtrs )
+				{
+					for (Faculty faculty : facultyList) 
+					{
+						statusGood					= true;
+
+						StudentView myView			= new StudentView();
+						myView.setId(++i);
+						myView.setStudentviewId(i);
+						myView.setVersion(student.getVersion());
+						myView.setLastUpdated(student.getLastUpdated());
+						myView.setWhoUpdated(student.getWhoUpdated());
+						myView.setStudentId(student.getId());
+						myView.setVersion(student.getVersion());
+						myView.setFacultyId(faculty.getId());
+						myView.setEmail(student.getEmail());
+						myView.setAddress1(student.getAddress1());
+						myView.setAddress2(student.getAddress2());
+						myView.setCity(student.getCity());
+						myView.setCountry(student.getCountry());
+						myView.setFacultyUserName(faculty.getUserName());
+						myView.setFacultyEmail(faculty.getEmail());
+						myView.setLastName(student.getLastName());
+						myView.setMiddleName(student.getMiddleName());
+						myView.setFirstName(student.getFirstName());
+						myView.setPostalCode(student.getPostalCode());
+						myView.setProvince(student.getProvince());
+						myView.setPhone1(student.getPhone1());
+						myView.setPhone2(student.getPhone2());
+						myView.setEnabled(student.getEnabled());
+						myView.setUserName(student.getUserName());
+						myView.setUserPassword("NOT DISPLAYED");
+	
+						myView.setDob(student.getDob());
+	
+						studentViewList.add( myView );
+					}
+				}
+				hasFaculty = false;
+				hasQtrs = false;
 			}
-			*/
+			Collections.sort(studentViewList, new MyComparator());
+
 			if (statusGood)
 			{
 				records = studentViewList;			
@@ -326,6 +359,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
+	
 	public ResponseEntity<String> listJsonOld2(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");

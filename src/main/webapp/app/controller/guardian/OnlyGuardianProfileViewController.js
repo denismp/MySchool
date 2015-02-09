@@ -280,6 +280,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		var country		= formValues.country;
 		var email		= formValues.email;
 		var username	= formValues.username;
+		var studentname = formValues.studentusername;
 
 		var type		= formValues.combotype;
 
@@ -309,6 +310,7 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		myRecord.set('postalCode',postalcode);
 		myRecord.set('country',country);
 		myRecord.set('userName',username);
+		myRecord.set('studentUserName', studentname );
 
 		myRecord.set('enabled', true);
 		myRecord.set('dob', dob);

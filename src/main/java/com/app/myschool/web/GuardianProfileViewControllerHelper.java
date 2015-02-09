@@ -258,14 +258,14 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 						}
 					}
 					// Add any null student guardians
-					List<Guardian> gList = Guardian.findAllGuardians();
-					for( Guardian guardian: gList )
-					{
-						if( guardian.getStudents().isEmpty() )
-						{
-							guardianList.add(guardian);
-						}
-					}
+					//List<Guardian> gList = Guardian.findAllGuardians();
+					//for( Guardian guardian: gList )
+					//{
+					//	if( guardian.getStudents().isEmpty() )
+					//	{
+					//		guardianList.add(guardian);
+					//	}
+					//}
 				}
 				Student singleStudent = null;
 	
@@ -680,6 +680,26 @@ public class GuardianProfileViewControllerHelper implements ControllerHelperInte
 						default: record.setDescription("Other");
 							break;					
 					}
+					Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+					if( student != null )
+					{
+						Set<Student> students = record.getStudents();
+						students.add(student);
+						record.setStudents(students);
+					}
+					else
+					{
+						response.setMessage("Unable to find student " + myView.getStudentUserName() );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						returnStatus = HttpStatus.BAD_REQUEST;					
+						statusGood = false;
+
+						logger.info(response.toString());
+						return new ResponseEntity<String>(response.toString(), headers,
+								returnStatus);
+					}
+
 					
 					if (statusGood)
 					{

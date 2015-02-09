@@ -25,7 +25,7 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 		'Ext.button.Button'
 	],
 
-	height: 541,
+	height: 597,
 	itemId: 'guardiannewdialog',
 	width: 390,
 	title: 'New Guardian',
@@ -38,7 +38,7 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 				{
 					xtype: 'form',
 					dock: 'top',
-					height: 503,
+					height: 557,
 					itemId: 'gaurdiannewform',
 					width: 390,
 					bodyPadding: 10,
@@ -46,10 +46,20 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 						{
 							xtype: 'fieldset',
 							dock: 'top',
-							height: 445,
+							height: 497,
 							itemId: 'guardiannewformfieldset',
 							padding: 5,
 							items: [
+								{
+									xtype: 'combobox',
+									anchor: '100%',
+									itemId: 'guardiannewform_studentname',
+									fieldLabel: 'Student User Name',
+									name: 'studentusername',
+									displayField: 'userName',
+									store: 'student.StudentStore',
+									valueField: 'userName'
+								},
 								{
 									xtype: 'textfield',
 									anchor: '100%',
