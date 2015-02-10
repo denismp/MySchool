@@ -83,7 +83,7 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 			else
 			{
 				studentId = 0;
-				studentName = "Enter student user name";
+				studentName = "Select one.";
 			}
 		}
 

@@ -45,12 +45,16 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 					title: 'Monthly Summary Fields',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'newmonthlysummary-studentname',
 							fieldLabel: 'studentname',
 							name: 'studentname',
-							readOnly: true
+							readOnly: true,
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'commonquartersubjectcombobox',

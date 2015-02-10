@@ -141,7 +141,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 	{
 		@Override
 		public int compare(StudentView o1, StudentView o2) {
-			return o1.getSubjName().compareTo(o2.getSubjName());
+			return o1.getUserName().compareTo(o2.getUserName());
 		}
 	}
 
@@ -168,7 +168,7 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		return ret_;
 	}
 
-	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
+	public ResponseEntity<String> listJsonOLD(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		Class<StudentView> myViewClass = StudentView.class;
@@ -359,7 +359,105 @@ public class StudentViewControllerHelper implements ControllerHelperInterface{
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);	
 	}
-	
+	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Type", "application/json; charset=utf-8");
+		Class<StudentView> myViewClass = StudentView.class;
+
+		HttpStatus returnStatus = HttpStatus.OK;
+		JsonObjectResponse response = new JsonObjectResponse();
+		List<StudentView> records = null;
+		String className = myViewClass.getSimpleName();
+		boolean statusGood = false;
+		//boolean found = false;
+		//String studentId_ = getParam(params, "studentId");
+		//String studentUserName = getParam(params,"studentName");
+		//********************************************************
+		//	Added logic to call Don's new login() method to get
+		//	studentUserName from the security context from the 
+		//	login on the front end web page.
+		//********************************************************
+		String myLoginInfo = this.login();
+		logger.info("LoginInfo:" + myLoginInfo);
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		List<Student> students = securityHelper.findStudentsByLoginUserRole();
+		
+		try
+		{
+			List<StudentView> studentViewList	= new ArrayList<StudentView>();
+			long i = 0;
+			for( Student student: students )
+			{	
+				statusGood = true;
+				StudentView myView			= new StudentView();
+				myView.setId(++i);
+				myView.setStudentviewId(i);
+				myView.setVersion(student.getVersion());
+				myView.setLastUpdated(student.getLastUpdated());
+				myView.setWhoUpdated(student.getWhoUpdated());
+				myView.setStudentId(student.getId());
+				myView.setVersion(student.getVersion());
+				//myView.setFacultyId(faculty.getId());
+				myView.setEmail(student.getEmail());
+				myView.setAddress1(student.getAddress1());
+				myView.setAddress2(student.getAddress2());
+				myView.setCity(student.getCity());
+				myView.setCountry(student.getCountry());
+				//myView.setFacultyUserName(faculty.getUserName());
+				//myView.setFacultyEmail(faculty.getEmail());
+				myView.setLastName(student.getLastName());
+				myView.setMiddleName(student.getMiddleName());
+				myView.setFirstName(student.getFirstName());
+				myView.setPostalCode(student.getPostalCode());
+				myView.setProvince(student.getProvince());
+				myView.setPhone1(student.getPhone1());
+				myView.setPhone2(student.getPhone2());
+				myView.setEnabled(student.getEnabled());
+				myView.setUserName(student.getUserName());
+				myView.setUserPassword("NOT DISPLAYED");
+				//myView.setQtrId(quarter.getId());
+				//myView.setQtrName(quarter.getQtrName());
+				//myView.setSubjId(subject.getId());
+				//myView.setSubjName(subject.getName());
+				//myView.setQtrYear(quarter.getQtr_year());
+				//myView.setDob(student.getDob());
+				studentViewList.add(myView);
+			}
+			Collections.sort(studentViewList, new MyComparator());
+
+			if (statusGood)
+			{
+				records = studentViewList;			
+
+				response.setMessage("All " + login() + " " + className + "s retrieved");
+				response.setData(records);
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(records.size());
+			}
+			else
+			{
+				response.setMessage("No records for class=" + className);
+				response.setSuccess(false);
+				response.setTotal(0L);
+				statusGood = false;
+				returnStatus = HttpStatus.BAD_REQUEST;				
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			returnStatus = HttpStatus.BAD_REQUEST;
+			response.setMessage(e.getMessage());
+			response.setSuccess(false);
+			response.setTotal(0L);			
+		}
+
+		// Return retrieved object.
+		logger.info(response.toString());
+		return new ResponseEntity<String>(response.toString(), headers,
+				returnStatus);	
+	}	
 	public ResponseEntity<String> listJsonOld2(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");

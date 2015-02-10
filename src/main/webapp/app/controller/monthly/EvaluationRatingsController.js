@@ -84,7 +84,7 @@ Ext.define('MySchool.controller.monthly.EvaluationRatingsController', {
 			else
 			{
 				studentId = 0;
-				studentName = "Enter student user name";
+				studentName = "Select one.";
 			}
 		}
 

@@ -197,7 +197,7 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 			}
 			else
 			{
-				studentName_.setValue( "Enter user name" );
+				studentName_.setValue( "Select one." );
 			}
 		}
 		if( this.userRole !== 'ROLE_USER')

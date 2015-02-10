@@ -70,6 +70,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 						{
 							xtype: 'subjectschoolnamecombobox',
 							editable: false,
+							forceSelection: true,
 							anchor: '100%'
 						},
 						{
@@ -120,6 +121,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 							readOnly: true,
 							emptyText: 'Select one.',
 							displayField: 'userName',
+							forceSelection: true,
 							store: 'student.StudentStore',
 							valueField: 'userName'
 						},

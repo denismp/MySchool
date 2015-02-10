@@ -45,12 +45,16 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 					title: 'Monthly Evaluation Fields',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'studentname',
 							fieldLabel: 'studentname',
 							name: 'studentname',
-							readOnly: true
+							readOnly: true,
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'commonquartersubjectcombobox',

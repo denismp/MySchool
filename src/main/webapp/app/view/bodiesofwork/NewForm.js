@@ -48,12 +48,17 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
 					xtype: 'fieldset',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'newbodiesofworkform-studentName',
 							fieldLabel: 'Student User Name',
 							name: 'studentUserName',
-							readOnly: true
+							readOnly: true,
+							emptyText: 'Select one.',
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'textfield',

@@ -46,13 +46,17 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 					title: 'Skills Fields',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'skills-studentname',
 							fieldLabel: 'Student User Name',
 							name: 'studentUserName',
 							readOnly: true,
-							allowBlank: false
+							allowBlank: false,
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'commonquartersubjectcombobox',

@@ -114,7 +114,7 @@ Ext.define('MySchool.controller.daily.MyController', {
 			{
 				// The faculty or admin is going to have to enter it.
 				studentId = 0;
-				studentName = "Enter student user name";
+				studentName = "Select one.";
 			}
 		}
 

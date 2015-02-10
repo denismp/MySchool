@@ -57,6 +57,7 @@ Ext.define('MySchool.view.guardian.NewDialog', {
 									fieldLabel: 'Student User Name',
 									name: 'studentusername',
 									displayField: 'userName',
+									forceSelection: true,
 									store: 'student.StudentStore',
 									valueField: 'userName'
 								},

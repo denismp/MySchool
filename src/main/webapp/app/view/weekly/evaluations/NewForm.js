@@ -46,12 +46,16 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 					title: 'Evaluations Fields',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'evaluation-studentname',
 							fieldLabel: 'studentname',
 							name: 'studentUserName',
-							readOnly: true
+							readOnly: true,
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'commonquartersubjectcombobox',

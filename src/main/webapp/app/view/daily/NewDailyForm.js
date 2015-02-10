@@ -46,12 +46,16 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
 					title: 'Daily Fields',
 					items: [
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'daily-studentname',
 							fieldLabel: 'studentname',
 							name: 'studentUserName',
-							readOnly: true
+							readOnly: true,
+							displayField: 'userName',
+							forceSelection: true,
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'commonquartersubjectcombobox',
