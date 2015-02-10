@@ -88,13 +88,13 @@ Ext.define('MySchool.view.student.ProfileGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					dataIndex: 'middleName',
-					text: 'Middle Name'
+					dataIndex: 'firstName',
+					text: 'First Name'
 				},
 				{
 					xtype: 'gridcolumn',
-					dataIndex: 'firstName',
-					text: 'First Name'
+					dataIndex: 'middleName',
+					text: 'Middle Name'
 				},
 				{
 					xtype: 'gridcolumn',

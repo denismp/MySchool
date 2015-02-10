@@ -112,12 +112,16 @@ Ext.define('MySchool.view.subject.NewForm', {
 							allowOnlyWhitespace: false
 						},
 						{
-							xtype: 'textfield',
+							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'newsubjectform-studentName',
 							fieldLabel: 'Student User Name',
 							name: 'studentName',
-							readOnly: true
+							readOnly: true,
+							emptyText: 'Select one.',
+							displayField: 'userName',
+							store: 'student.StudentStore',
+							valueField: 'userName'
 						},
 						{
 							xtype: 'quarternamescombobox',

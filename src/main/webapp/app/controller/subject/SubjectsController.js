@@ -145,7 +145,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 
 		if( this.userRole !== 'ROLE_USER')
 		{
-			studentName_.setValue('Enter student user name');
+			//studentName_.setValue('Enter student user name');
 			studentName_.setReadOnly( false );
 		}
 		else
