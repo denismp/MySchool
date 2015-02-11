@@ -48,7 +48,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'studentname',
-							fieldLabel: 'studentname',
+							fieldLabel: 'Student User Name',
 							name: 'studentname',
 							readOnly: true,
 							displayField: 'userName',
@@ -190,7 +190,7 @@ Ext.define('MySchool.view.monthly.evaluation.NewFormPanel', {
 				{
 					xtype: 'button',
 					itemId: 'newmonthlyevaluationcanel',
-					text: 'Canel'
+					text: 'Cancel'
 				},
 				{
 					xtype: 'button',

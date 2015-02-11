@@ -48,7 +48,7 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'newmonthlysummary-studentname',
-							fieldLabel: 'studentname',
+							fieldLabel: 'Student User Name',
 							name: 'studentname',
 							readOnly: true,
 							displayField: 'userName',
@@ -182,7 +182,7 @@ Ext.define('MySchool.view.monthly.summary.NewSummaryFormPanel', {
 				{
 					xtype: 'button',
 					itemId: 'newmonthlysummarycanel',
-					text: 'Canel'
+					text: 'Cancel'
 				},
 				{
 					xtype: 'button',

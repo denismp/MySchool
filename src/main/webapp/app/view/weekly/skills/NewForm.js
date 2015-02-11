@@ -178,7 +178,7 @@ Ext.define('MySchool.view.weekly.skills.NewForm', {
 				{
 					xtype: 'button',
 					itemId: 'skillscancel',
-					text: 'Canel'
+					text: 'Cancel'
 				},
 				{
 					xtype: 'button',

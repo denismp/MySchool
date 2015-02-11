@@ -49,7 +49,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'evaluation-studentname',
-							fieldLabel: 'studentname',
+							fieldLabel: 'Student User Name',
 							name: 'studentUserName',
 							readOnly: true,
 							displayField: 'userName',
@@ -193,7 +193,7 @@ Ext.define('MySchool.view.weekly.evaluations.NewForm', {
 				{
 					xtype: 'button',
 					itemId: 'evaluationcancel',
-					text: 'Canel'
+					text: 'Cancel'
 				},
 				{
 					xtype: 'button',

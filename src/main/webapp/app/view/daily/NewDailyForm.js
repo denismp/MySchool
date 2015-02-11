@@ -49,7 +49,7 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
 							xtype: 'combobox',
 							anchor: '100%',
 							itemId: 'daily-studentname',
-							fieldLabel: 'studentname',
+							fieldLabel: 'Student User Name',
 							name: 'studentUserName',
 							readOnly: true,
 							displayField: 'userName',
@@ -169,7 +169,7 @@ Ext.define('MySchool.view.daily.NewDailyForm', {
 				{
 					xtype: 'button',
 					itemId: 'dailycancel',
-					text: 'Canel'
+					text: 'Cancel'
 				},
 				{
 					xtype: 'button',
