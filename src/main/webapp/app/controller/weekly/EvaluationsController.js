@@ -107,8 +107,9 @@ Ext.define('MySchool.controller.weekly.EvaluationsController', {
 	onWeeklyevaluationrefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('weekly.EvaluationsRatingsStore');
 		var myGrid = this.getWeeklyEvaluationsGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onWeeklyevaluationgridpanelViewReady( myGrid, null );
 	},
 
 	onWeeklyevaluationsearchtoolClick: function(tool, e, eOpts) {

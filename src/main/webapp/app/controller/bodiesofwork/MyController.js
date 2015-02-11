@@ -140,8 +140,9 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		window.console.log( 'Refresh' );
 		var mystore = Ext.getStore("bodiesofwork.MyJsonStore");
 		var myGrid = this.getBodiesOfWorkGridPanel();
-		myGrid.removeAll();
-		mystore.reload();
+		//myGrid.removeAll();
+		//mystore.reload();
+		this.onBodiesofworkssubjectsgridViewReady( myGrid, null );
 
 	},
 

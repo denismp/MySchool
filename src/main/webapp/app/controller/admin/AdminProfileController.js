@@ -189,8 +189,9 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 		debugger;
 		var myStore = Ext.getStore('admin.AdminProfileStore');
 		var myGrid = this.getAdminGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onAdmingridpanelViewReady(myGrid, null);
 
 	},
 

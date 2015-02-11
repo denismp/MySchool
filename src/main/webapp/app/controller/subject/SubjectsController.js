@@ -222,7 +222,7 @@ Ext.define('MySchool.controller.subject.SubjectsController', {
 		window.console.log( 'Refresh' );
 		var mystore = Ext.getStore("subject.SubjectStore");
 		var myGrid = this.getSubjectsGrid();
-		myGrid.removeAll();
+		//myGrid.removeAll();
 		mystore.reload();
 		//this.onLaunch();
 		//pnl.setTitle( 'Denis' );

@@ -38,8 +38,9 @@ Ext.define('MySchool.controller.weekly.SkillRatingsController', {
 	onWeeklyskillrefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('weekly.SkillRatingsStore');
 		var myGrid = this.getWeeklySkillsGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onWeeklyskillsgridpanelViewReady( myGrid, null );
 	},
 
 	onWeeklyskillssearchtoolClick: function(tool, e, eOpts) {

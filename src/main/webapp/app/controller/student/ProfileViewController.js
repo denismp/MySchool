@@ -170,8 +170,9 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	onStudentprofilerefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('student.StudentProfileStore');
 		var myGrid = this.getStudentProfileGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onStudentprofilegridpanelViewReady( myGrid, null );
 	},
 
 	onStudentprofilesearchtoolClick: function(tool, e, eOpts) {

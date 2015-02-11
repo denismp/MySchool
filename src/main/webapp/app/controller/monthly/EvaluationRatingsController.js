@@ -38,8 +38,9 @@ Ext.define('MySchool.controller.monthly.EvaluationRatingsController', {
 	onMonthlyevaluationrefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('monthly.EvaluationRatingsStore');
 		var myGrid = this.getMonthlyEvaluationGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onMonthlyevaluationgridpanelViewReady( myGrid, null );
 	},
 
 	onMonthlyevaluationsearchtoolClick: function(tool, e, eOpts) {

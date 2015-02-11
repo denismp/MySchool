@@ -111,9 +111,10 @@ Ext.define('MySchool.controller.faculty.OnlyFacultyProfileViewController', {
 		var myGrid = this.getOnlyFacultyGridPanel();
 		//myGrid.view.clearData();
 		//myGrid.view.refresh();
-		myGrid.removeAll();
-		var myStore = Ext.getStore('faculty.FacultyTableStore');
-		myStore.reload();
+		//myGrid.removeAll();
+		//var myStore = Ext.getStore('faculty.FacultyTableStore');
+		//myStore.reload();
+		this.onFacultyonlygridpanelViewReady( myGrid, null );
 
 		if( false ){
 		debugger;

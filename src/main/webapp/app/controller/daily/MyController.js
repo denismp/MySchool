@@ -64,8 +64,9 @@ Ext.define('MySchool.controller.daily.MyController', {
 	onDailyrefreshtoolClick: function(tool, e, eOpts) {
 		var myStore = Ext.getStore('daily.MyJsonStore');
 		var myGrid = this.getDailyGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onDailygridpanelViewReady( myGrid, null );
 	},
 
 	onDailysearchtoolClick: function(tool, e, eOpts) {

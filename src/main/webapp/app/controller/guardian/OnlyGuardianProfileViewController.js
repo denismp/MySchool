@@ -96,8 +96,9 @@ Ext.define('MySchool.controller.guardian.OnlyGuardianProfileViewController', {
 		debugger;
 		var myStore = Ext.getStore('guardian.GuardianProfileStore');
 		var myGrid = this.getOnlyGuardianGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onGuardianonlygridpanelViewReady( myGrid, null );
 
 		if( false ){
 		//debugger;
