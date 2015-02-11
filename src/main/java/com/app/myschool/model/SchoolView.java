@@ -72,6 +72,8 @@ public class SchoolView {
     
     private String subjectName;
     
+    private String subjectSimpleName;
+    
     private Long quarterId;
     
     private String quarterName;

@@ -20,7 +20,7 @@ Ext.define('MySchool.view.subject.SubjectNameComboBox', {
 	itemId: 'subjectnamecombobox',
 	fieldLabel: 'Subject Name',
 	emptyText: 'Select one.',
-	displayField: 'subjName',
+	displayField: 'subjSimpleName',
 	forceSelection: true,
 	store: 'subject.AllSubjectStore',
 	valueField: 'subjId',

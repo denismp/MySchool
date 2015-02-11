@@ -130,6 +130,7 @@ public class ControllerHelper {
 						sv_.setSubjId(u_.getId());
 						sv_.setSubjLastUpdated(u_.getLastUpdated());
 						sv_.setSubjName(u_.getName());
+						sv_.setSubjSimpleName(u_.getSimpleName());
 						sv_.setSubjObjectives(u_.getObjectives());
 						sv_.setSubjVersion(u_.getVersion());
 						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
@@ -162,6 +163,7 @@ public class ControllerHelper {
 							sv_.setSubjId(u_.getId());
 							sv_.setSubjLastUpdated(u_.getLastUpdated());
 							sv_.setSubjName(u_.getName());
+							sv_.setSubjSimpleName(u_.getSimpleName());
 							sv_.setSubjObjectives(u_.getObjectives());
 							sv_.setSubjVersion(u_.getVersion());
 							sv_.setSubjWhoUpdated(u_.getWhoUpdated());
@@ -210,6 +212,7 @@ public class ControllerHelper {
 						sv_.setSubjId(u_.getId());
 						sv_.setSubjLastUpdated(u_.getLastUpdated());
 						sv_.setSubjName(u_.getName());
+						sv_.setSubjSimpleName(u_.getSimpleName());
 						sv_.setSubjObjectives(u_.getObjectives());
 						sv_.setSubjVersion(u_.getVersion());
 						sv_.setSubjWhoUpdated(u_.getWhoUpdated());
@@ -699,11 +702,12 @@ public class ControllerHelper {
 					subj_.setObjectives(s_.getSubjObjectives());
 					subj_.setLastUpdated(s_.getSubjLastUpdated());
 					subj_.setCreatedDate(s_.getSubjLastUpdated());
-					subj_.setName(s_.getSubjName());
+					subj_.setSimpleName(s_.getSubjName());
 					subj_.setWhoUpdated(s_.getSubjWhoUpdated());
 					//DENIS 12/24/2014
 					School school = School.findSchool(s_.getSchoolId());
 					subj_.setSchool(school);
+					subj_.setName(subj_.getSimpleName() + "_" + school.getId().longValue());
 
 					subj_.persist();
 					s_.setId(100000L + subj_.getId());
@@ -741,6 +745,7 @@ public class ControllerHelper {
 					s_.setSubjGradeLevel(subj_.getGradeLevel());
 					s_.setSubjLastUpdated(subj_.getLastUpdated());
 					s_.setSubjName(subj_.getName());
+					s_.setSubjSimpleName(subj_.getSimpleName());
 					s_.setSubjObjectives(subj_.getObjectives());
 					s_.setSubjVersion(subj_.getVersion());
 					s_.setSubjWhoUpdated(subj_.getWhoUpdated());
@@ -1021,6 +1026,7 @@ public class ControllerHelper {
 						subj_.setObjectives(s_.getSubjObjectives());
 						subj_.setLastUpdated(s_.getSubjLastUpdated());
 						subj_.setName(s_.getSubjName());
+						subj_.setSimpleName(s_.getSubjSimpleName());
 						subj_.setWhoUpdated(s_.getSubjWhoUpdated());
 						//DENIS 12/24/2014
 						//School school = School.findSchool(s_.getSchoolId());

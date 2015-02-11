@@ -9,7 +9,7 @@
             <table:column id="c_com_app_myschool_model_Subject_creditHours" property="creditHours" z="6p1z+DINWnqrhUbn5Zt7nEETP2c="/>
             <table:column id="c_com_app_myschool_model_Subject_description" property="description" z="CkK4BeZUj9648LKWoMnSKmDa83A="/>
             <table:column id="c_com_app_myschool_model_Subject_objectives" property="objectives" z="L0zalDzZCyHOJUwo30uI7+uC3hs="/>
-            <table:column id="c_com_app_myschool_model_Subject_whoUpdated" property="whoUpdated" z="x5EqSkclz4kJRhErktEqfuyFQ2I="/>
+            <table:column id="c_com_app_myschool_model_Subject_simpleName" property="simpleName" z="Vk/pHShxSDDxEy9lKGAiWipM44E="/>
         </table:table>
     </page:list>
 </div>

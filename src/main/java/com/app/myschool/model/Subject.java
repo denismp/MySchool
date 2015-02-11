@@ -32,6 +32,10 @@ public class Subject {
     @Column(unique = true)
     @Size(max = 45)
     private String name;
+    
+    @NotNull
+    @Size(max = 45)
+    private String simpleName;
 
     @NotNull
     @Min(0L)

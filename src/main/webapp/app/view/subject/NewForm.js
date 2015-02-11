@@ -59,7 +59,7 @@ Ext.define('MySchool.view.subject.NewForm', {
 							hidden: true,
 							itemId: 'newsubjectform-subjName',
 							fieldLabel: 'Subject Name',
-							name: 'subjName',
+							name: 'subjSimpleName',
 							allowOnlyWhitespace: false
 						},
 						{

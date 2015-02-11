@@ -184,6 +184,14 @@ privileged aspect SchoolView_Roo_JavaBean {
         this.subjectName = subjectName;
     }
     
+    public String SchoolView.getSubjectSimpleName() {
+        return this.subjectSimpleName;
+    }
+    
+    public void SchoolView.setSubjectSimpleName(String subjectSimpleName) {
+        this.subjectSimpleName = subjectSimpleName;
+    }
+    
     public Long SchoolView.getQuarterId() {
         return this.quarterId;
     }

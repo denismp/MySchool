@@ -139,6 +139,10 @@ Ext.define('MySchool.model.school.SchoolProfileModel', {
 			type: 'string'
 		},
 		{
+			name: 'subjectSimpleName',
+			type: 'string'
+		},
+		{
 			name: 'enabled',
 			type: 'boolean'
 		},

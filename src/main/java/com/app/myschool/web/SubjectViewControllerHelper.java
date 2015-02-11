@@ -208,6 +208,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 								myView.setSubjDescription(subject.getDescription());
 								myView.setSubjGradeLevel(subject.getGradeLevel());
 								myView.setSubjName(subject.getName());
+								myView.setSubjSimpleName(subject.getSimpleName());
 								myView.setSubjObjectives(subject.getObjectives());
 								
 								myView.setQtrId(quarter.getId());
@@ -399,12 +400,13 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					record.setCreditHours(myView.getSubjCreditHours());
 					record.setDescription(myView.getSubjDescription());
 					record.setGradeLevel(myView.getSubjGradeLevel());
-					record.setName(myView.getSubjName());
+					record.setSimpleName(myView.getSubjName());
 					record.setObjectives(myView.getSubjObjectives());
 					//DENIS 12/24/2014
 					// Get the school record.
 					School school = School.findSchool(myView.getStudentId());
 					record.setSchool(school);
+					record.setName(record.getSimpleName() + "_" + school.getId().longValue());
 					
 					((Subject)record).persist();
 					
@@ -632,6 +634,7 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 			record.setDescription(myView.getSubjDescription());
 			record.setGradeLevel(myView.getSubjGradeLevel());
 			record.setName(myView.getSubjName());
+			record.setSimpleName(myView.getSubjSimpleName());
 			record.setObjectives(myView.getSubjObjectives());
 			//DENIS 12/24/2014
 			// Get the school record.

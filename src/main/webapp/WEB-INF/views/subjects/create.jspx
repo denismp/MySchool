@@ -13,6 +13,7 @@
         <field:simple field="quarters" id="c_com_app_myschool_model_Subject_quarters" messageCode="entity_reference_not_managed" messageCodeAttribute="Quarter" z="DLtzALGqNB48AP/WbhQ5xmToseU="/>
         <field:datetime dateTimePattern="${subject_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_Subject_createdDate" z="xvx30pNuq7hL536ANKoL6obQ2fo="/>
         <field:select field="school" id="c_com_app_myschool_model_Subject_school" itemValue="id" items="${schools}" path="/schools" z="BS1pV6HzOG2MWGK80gHETiOPVBE="/>
+        <field:textarea field="simpleName" id="c_com_app_myschool_model_Subject_simpleName" required="true" z="4SKs0rnt4BPA/brRpX24hpWgg9k="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_Subject" render="${not empty dependencies}" z="F6EW0aB1RCQ0yJdOUXRsMjSAJwM="/>
 </div>

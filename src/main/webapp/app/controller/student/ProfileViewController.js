@@ -23,7 +23,8 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 	stores: [
 		'student.StudentStore',
 		'faculty.FacultyTableStore',
-		'student.StudentProfileStore'
+		'student.StudentProfileStore',
+		'subject.SchoolsStore'
 	],
 
 	refs: [
@@ -274,7 +275,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 		var myStore		= this.getStore( 'student.StudentProfileStore' );
 		var facultyStore= this.getStore('faculty.FacultyTableStore');
-		var schoolStore = this.getStore('subject.SchoolStore');
+		var schoolStore = this.getStore('subject.SchoolsStore');
 		var facultyComboBox = myPanel.down('#facultynamescombobox');
 
 		//var selectedIndex = myGrid.getSelectionModel().getSelection()[0].index;
@@ -283,7 +284,7 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 
 		var facultyId;
 
-		if( this.userRole === 'ROLE_FACULTY'  || this.userRole === 'ROLE_SCHOOL' || this.userRole === 'ROLE_ADMIN')
+		if( this.userRole === 'ROLE_FACULTY' )
 		{
 			var facultyRecord = facultyStore.findRecord( 'userName', this.userName );
 			if( facultyRecord !== null )

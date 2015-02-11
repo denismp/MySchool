@@ -107,8 +107,9 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 		debugger;
 		var myStore = Ext.getStore('school.SchoolProfileStore');
 		var myGrid = this.getSchoolGridPanel();
-		myGrid.removeAll();
-		myStore.reload();
+		//myGrid.removeAll();
+		//myStore.reload();
+		this.onSchoolprofilesgridpanelViewReady( myGrid, null );
 
 	},
 

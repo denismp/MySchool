@@ -19,6 +19,14 @@ privileged aspect Subject_Roo_JavaBean {
         this.name = name;
     }
     
+    public String Subject.getSimpleName() {
+        return this.simpleName;
+    }
+    
+    public void Subject.setSimpleName(String simpleName) {
+        this.simpleName = simpleName;
+    }
+    
     public int Subject.getGradeLevel() {
         return this.gradeLevel;
     }

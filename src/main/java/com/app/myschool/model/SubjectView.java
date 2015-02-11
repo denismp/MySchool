@@ -29,6 +29,8 @@ public class SubjectView {
 	private Date subjLastUpdated;
 
 	private String subjName;
+	
+	private String subjSimpleName;
 
 	private String subjObjectives;
 

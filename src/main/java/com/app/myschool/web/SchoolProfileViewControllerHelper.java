@@ -320,6 +320,7 @@ public class SchoolProfileViewControllerHelper implements ControllerHelperInterf
 					myView = this.setSchoolViewBaseValues(i, myView, currentView);
 					i++;
 					myView.setSubjectName(subject.getName());
+					myView.setSubjectSimpleName(subject.getSimpleName());
 					myView.setSubjectId(subject.getId());
 					rList.add(myView);					
 				}

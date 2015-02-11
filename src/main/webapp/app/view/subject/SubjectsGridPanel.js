@@ -82,8 +82,14 @@ Ext.define('MySchool.view.subject.SubjectsGridPanel', {
 				},
 				{
 					xtype: 'gridcolumn',
-					dataIndex: 'subjName',
+					dataIndex: 'subjSimpleName',
 					text: 'Subject Name'
+				},
+				{
+					xtype: 'gridcolumn',
+					hidden: true,
+					dataIndex: 'subjName',
+					text: 'Real Subject Name'
 				},
 				{
 					xtype: 'gridcolumn',

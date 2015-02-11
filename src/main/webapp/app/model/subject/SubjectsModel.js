@@ -46,6 +46,11 @@ Ext.define('MySchool.model.subject.SubjectsModel', {
 			type: 'string'
 		},
 		{
+			name: 'subjSimpleName',
+			sortType: 'asText',
+			type: 'string'
+		},
+		{
 			name: 'studentName',
 			type: 'string'
 		},

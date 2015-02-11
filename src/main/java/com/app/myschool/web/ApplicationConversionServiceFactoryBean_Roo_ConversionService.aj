@@ -416,7 +416,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Subject, String> ApplicationConversionServiceFactoryBean.getSubjectToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.Subject, java.lang.String>() {
             public String convert(Subject subject) {
-                return new StringBuilder().append(subject.getName()).append(' ').append(subject.getGradeLevel()).append(' ').append(subject.getCreditHours()).append(' ').append(subject.getDescription()).toString();
+                return new StringBuilder().append(subject.getName()).append(' ').append(subject.getSimpleName()).append(' ').append(subject.getGradeLevel()).append(' ').append(subject.getCreditHours()).toString();
             }
         };
     }

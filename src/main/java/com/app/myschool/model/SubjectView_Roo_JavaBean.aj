@@ -96,6 +96,14 @@ privileged aspect SubjectView_Roo_JavaBean {
         this.subjName = subjName;
     }
     
+    public String SubjectView.getSubjSimpleName() {
+        return this.subjSimpleName;
+    }
+    
+    public void SubjectView.setSubjSimpleName(String subjSimpleName) {
+        this.subjSimpleName = subjSimpleName;
+    }
+    
     public String SubjectView.getSubjObjectives() {
         return this.subjObjectives;
     }
