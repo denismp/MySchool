@@ -256,7 +256,7 @@ Ext.define('MySchool.controller.school.SchoolProfileViewController', {
 
 	onSchoolprofileformeditbuttonClick: function(button, e, eOpts) {
 		debugger;
-		if( this.roleUser === 'ROLE_SCHOOL' || this.roleUser === 'ROLE_ADMIN'){
+		if( this.userRole === 'ROLE_SCHOOL' || this.userRole === 'ROLE_ADMIN'){
 			var myForm = this.getSchoolProfileForm();
 			var myFields = myForm.getForm().getFields();
 			for( var i = 0; i < myFields.length; i++ )
