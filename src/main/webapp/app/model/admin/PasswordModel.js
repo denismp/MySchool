@@ -90,6 +90,11 @@ Ext.define('MySchool.model.admin.PasswordModel', {
 			type: 'date'
 		},
 		{
+			dateFormat: 'm/d/Y',
+			name: 'dob',
+			type: 'date'
+		},
+		{
 			name: 'userName',
 			type: 'string'
 		},
