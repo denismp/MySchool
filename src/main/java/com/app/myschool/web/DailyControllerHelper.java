@@ -4,6 +4,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +25,9 @@ import com.app.myschool.model.DailyView;
 import com.app.myschool.model.Faculty;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.Student;
+import com.app.myschool.model.StudentProfileView;
 import com.app.myschool.model.Subject;
+import com.app.myschool.web.StudentViewControllerHelper.MyComparator;
 
 public class DailyControllerHelper implements ControllerHelperInterface{
 	private static final Logger logger = Logger.getLogger(DailyControllerHelper.class);
@@ -74,6 +78,26 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		return rList;
 	}
 
+	class MyComparator implements Comparator<DailyView>
+	{
+		@Override
+		public int compare(DailyView o1, DailyView o2) {
+			String subject1 = o1.getSubjName();
+			String subject2 = o2.getSubjName();
+			Integer year1 = o1.getDaily_year();
+			Integer year2 = o2.getDaily_year();
+			Integer month1 = o1.getDaily_month();
+			Integer month2 = o2.getDaily_month();
+			Integer day1 = o1.getDaily_day();
+			Integer day2 = o2.getDaily_day();
+			Double hours1 = o1.getDaily_hours();
+			Double hours2 = o2.getDaily_hours();
+			String st1 = subject1 + year1 + month1 + day1 + hours1;
+			String st2 = subject2 + year2 + month2 + day2 + hours2;
+
+			return st1.compareTo(st2);
+		}
+	}
 	public ResponseEntity<String> listJson(@SuppressWarnings("rawtypes") Map params) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
@@ -136,6 +160,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 						dailyViewList.add( myView );
 					}
 				}
+				Collections.sort(dailyViewList, new MyComparator());
 				/*
 				if( facultys.size() > 0 )
 				{
