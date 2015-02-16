@@ -112,7 +112,7 @@ Ext.define('MySchool.controller.admin.AdminProfileController', {
 		//var guardianStore = Ext.getStore('admin.AdminProfileStore');
 
 
-		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+		if( this.userRole === 'ROLE_ADMIN'){
 			var newDialog = Ext.create( 'MySchool.view.admin.NewDialog' );
 
 			window.console.log( 'New Admin Dialog' );
