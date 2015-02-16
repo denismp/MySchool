@@ -452,7 +452,7 @@ where
 						quarters = subject.getQuarters();
 						for( Quarter quarter: quarters )
 						{
-							if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+							if( quarter.getStudent().getId().longValue() == student.getId().longValue() && quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
 							{
 								return quarter;
 							}							

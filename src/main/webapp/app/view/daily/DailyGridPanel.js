@@ -44,6 +44,11 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 					text: 'Subject Name'
 				},
 				{
+					xtype: 'gridcolumn',
+					dataIndex: 'qtrName',
+					text: 'Term'
+				},
+				{
 					xtype: 'numbercolumn',
 					dataIndex: 'daily_year',
 					text: 'Year',
@@ -84,8 +89,8 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				{
 					xtype: 'numbercolumn',
 					hidden: true,
-					dataIndex: 'studentId',
-					text: 'studentId',
+					dataIndex: 'id',
+					text: 'id',
 					format: '000000'
 				},
 				{
@@ -98,8 +103,23 @@ Ext.define('MySchool.view.daily.DailyGridPanel', {
 				{
 					xtype: 'numbercolumn',
 					hidden: true,
+					dataIndex: 'studentId',
+					text: 'studentId',
+					format: '000000'
+				},
+				{
+					xtype: 'numbercolumn',
+					hidden: true,
 					dataIndex: 'subjId',
-					text: 'subjectId'
+					text: 'subjectId',
+					format: '000000'
+				},
+				{
+					xtype: 'numbercolumn',
+					hidden: true,
+					dataIndex: 'qtrId',
+					text: 'qtrId',
+					format: '000000'
 				},
 				{
 					xtype: 'gridcolumn',

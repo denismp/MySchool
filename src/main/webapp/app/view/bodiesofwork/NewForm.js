@@ -46,6 +46,7 @@ Ext.define('MySchool.view.bodiesofwork.NewForm', {
 			items: [
 				{
 					xtype: 'fieldset',
+					title: 'Bodies of work fields',
 					items: [
 						{
 							xtype: 'combobox',

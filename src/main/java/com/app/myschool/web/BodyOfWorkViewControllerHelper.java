@@ -341,13 +341,22 @@ public class BodyOfWorkViewControllerHelper implements
 				Set<Subject> subjects = school.getSubjects();
 				for( Subject subject: subjects )
 				{
-					quarters = subject.getQuarters();
+					Set<Quarter>subquarters = subject.getQuarters();
 					for( Quarter quarter: quarters )
 					{
-						if( quarter.getStudent().getId().longValue() == student.getId().longValue() && quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+						for( Quarter subjqtr: subquarters )
 						{
-							return quarter;
-						}						
+							if( 
+									subjqtr.getId().longValue() == quarter.getId().longValue() 				&& 
+									subjqtr.getStudent().getId().longValue() == student.getId().longValue()	&&
+									quarter.getStudent().getId().longValue() == student.getId().longValue() && 
+									quarter.getQtr_year() == year 											&& 
+									quarter.getQtrName().equals(qtrName)
+								)
+							{
+								return quarter;
+							}
+						}
 					}
 				}
 			}
@@ -419,9 +428,8 @@ public class BodyOfWorkViewControllerHelper implements
 					//	Find the quarter for the student/qtrName/qtrYear.
 					//****************************************************
 					Quarter quarter = this
-							.findQuarterByStudentAndYearAndQuarterName(student,
-									myView.getQtrYear().intValue(),
-									myView.getQtrName());
+							.findQuarterByStudentAndQuarterId(student,
+									myView.getQtrId());
 					if (quarter != null)
 					{
 						record.setLastUpdated(myView.getLastUpdated());
@@ -497,6 +505,76 @@ public class BodyOfWorkViewControllerHelper implements
 		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+	}
+
+	private Quarter findQuarterByStudentAndQuarterId(Student student,
+			Long qtrId)
+	{
+		Set<Quarter> quarters = student.getQuarters();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		String userName = securityHelper.getUserName();
+		String userRole = securityHelper.getUserRole();
+		Quarter rQuarter = null;
+		if( userRole.equals( "ROLE_ADMIN") || userRole.equals("ROLE_USER"))
+		{
+			rQuarter = Quarter.findQuarter(qtrId);
+			if( rQuarter.getStudent().getId().longValue() == student.getId().longValue() )
+			{
+				return rQuarter;
+			}
+		}
+		else if( userRole.equals("ROLE_FACULTY"))
+		{
+			//	Check to see if the student belongs to the faculty.
+			boolean found = false;
+			Set<Faculty> facultyList = student.getFaculty();
+			for( Faculty faculty: facultyList)
+			{
+				if( userName.equals(faculty.getUserName()))
+				{
+					Set<Student> studentList = faculty.getStudents();
+					for( Student myStudent: studentList )
+					{
+						if( myStudent.getId() == student.getId() )
+						{
+							found = true;
+							break;
+						}
+					}
+				}
+			}
+			if( found )
+			{
+				rQuarter = Quarter.findQuarter(qtrId);
+				if( rQuarter.getStudent().getId().longValue() == student.getId().longValue() )
+				{
+					return rQuarter;
+				}
+			}
+		}
+		if( userRole.equals("ROLE_SCHOOL"))
+		{
+			// Check to see if the student is part of the school owned by the school admin.
+			Admin admin = Admin.findAdminsByUserNameEquals(userName).getSingleResult();
+			Set<School> schools = admin.getSchools();
+			for( School school: schools )
+			{
+				Set<Student> students = school.getStudents();				
+				for( Student schoolStudent: students )
+				{
+					if( schoolStudent.getId().longValue() == student.getId().longValue() )
+					{
+						rQuarter = Quarter.findQuarter(qtrId);
+						if( rQuarter.getStudent().getId().longValue() == student.getId().longValue() )
+						{
+							return rQuarter;
+						}						
+					}
+				}
+			}
+		}
+		logger.error("Invalid role: " + userRole );
+		return null;
 	}
 
 	@Override

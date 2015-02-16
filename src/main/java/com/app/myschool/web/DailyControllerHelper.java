@@ -84,6 +84,8 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		public int compare(DailyView o1, DailyView o2) {
 			String subject1 = o1.getSubjName();
 			String subject2 = o2.getSubjName();
+			String qtrName1	= o1.getQtrName();
+			String qtrName2	= o2.getQtrName();
 			Integer year1 = o1.getDaily_year();
 			Integer year2 = o2.getDaily_year();
 			Integer month1 = o1.getDaily_month();
@@ -92,8 +94,8 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 			Integer day2 = o2.getDaily_day();
 			Double hours1 = o1.getDaily_hours();
 			Double hours2 = o2.getDaily_hours();
-			String st1 = subject1 + year1 + month1 + day1 + hours1;
-			String st2 = subject2 + year2 + month2 + day2 + hours2;
+			String st1 = subject1 + qtrName1 + year1 + month1 + day1 + hours1;
+			String st2 = subject2 + qtrName2 + year2 + month2 + day2 + hours2;
 
 			return st1.compareTo(st2);
 		}
@@ -409,7 +411,11 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 	{
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
-		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getDaily_day().intValue(), myView.getQtrName());
+		Quarter quarter = securityHelper.findQuarterByStudentAndYearAndQuarterName(student, myView.getDaily_year().intValue(), myView.getQtrName());
+		if( quarter == null )
+		{
+			return false;
+		}
 
 		//Integer monthNumber = myView.getMonth_number();
 		//Long studentId = myView.getStudentId();
@@ -426,13 +432,12 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 			{
 				if( 
 						daily.getDaily_month() == myView.getDaily_month() &&
-						//daily.getDaily_week() == myView.getDaily_week() && 
 						daily.getDaily_day() == myView.getDaily_day() &&
-						daily.getQuarter().getId().longValue() == quarter.getId().longValue() &&
-						quarter.getQtr_year() == myView.getQtrYear() &&
-						quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
-						//quarter.getStudent().getId() == myView.getStudentId() &&
-						quarter.getSubject().getId() == myView.getSubjId()
+						daily.getQuarter().getId().longValue() == quarter.getId().longValue() //&&
+						//quarter.getQtr_year() == myView.getDaily_year().intValue() &&
+						//quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
+						//quarter.getStudent().getId().longValue() == myView.getStudentId().longValue() &&
+						//quarter.getSubject().getId().longValue() == myView.getSubjId().longValue()
 						)
 				{
 					return true;
@@ -532,6 +537,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 		} 
 		catch(Exception e) 
 		{
+			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);

@@ -243,7 +243,8 @@ Ext.define('MySchool.controller.bodiesofwork.MyController', {
 		    var obj_ = newDialog.down('#newbodiesofworkform-objective');
 
 		    //b_.setDisabled(true);
-		    qsCB_.setValue(qs_.getAt(0).get('id'));
+		    //qsCB_.setValue(qs_.getAt(0).get('id'));
+			qsCB_.setValue('Select one.');
 		    workName_.setValue("replace_me_with_name");
 		    what_.setValue("replace_me_with_what");
 		    desc_.setValue("replace_me_with_description");
