@@ -347,114 +347,127 @@ public class AdminViewControllerHelper implements ControllerHelperInterface
 		HttpStatus returnStatus = HttpStatus.OK;
 
 		JsonObjectResponse response = new JsonObjectResponse();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
-		try
+		String userName = securityHelper.getUserName();
+		String role = securityHelper.getUserRole();
+		
+		if( role.equals("ROLE_ADMIN") )
 		{
-			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""),
-					"UTF8");
-			logger.info("createFromJson():myjson=" + myJson);
-			logger.info("createFromJson():Encoded JSON=" + json);
-			Admin record = new Admin();
-			String className = this.myClass.getSimpleName();
-			boolean statusGood = true;
-			AdminView myView = AdminView.fromJsonToAdminView(myJson);
-
-			Admin admin = null;
 			try
 			{
-				admin = Admin.findAdminsByUserNameEquals(
-					myView.getUserName()).getSingleResult();
-			}
-			catch( Exception nre )
-			{
-				logger.info("No duplicate for admin userName=" + myView.getUserName() );
-			}
-
-			if (admin == null)
-			{
-				String msg = "";
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
-				record.setDob(myView.getDob());
-
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				record.setWhoUpdated(securityHelper.getUserName());
-				
-				String plainText = myView.getUserPassword();
-
-				String newpwd = securityHelper.convertToSHA256(myView
-						.getUserPassword());
-
-				record.setAddress1(myView.getAddress1());
-				record.setAddress2(myView.getAddress2());
-				record.setCity(myView.getCity());
-				record.setCountry(myView.getCountry());
-				record.setEnabled(myView.getEnabled());
-				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
-				record.setPhone1(myView.getPhone1());
-				record.setPhone2(myView.getPhone2());
-				record.setPostalCode(myView.getPostalCode());
-				record.setProvince(myView.getProvince());
-				record.setUserName(myView.getUserName());
-				record.setUserPassword(newpwd);
-				if( isValidUserName( record.getUserName() ) == false )
+				String myJson = URLDecoder.decode(json.replaceFirst("data=", ""),
+						"UTF8");
+				logger.info("createFromJson():myjson=" + myJson);
+				logger.info("createFromJson():Encoded JSON=" + json);
+				Admin record = new Admin();
+				String className = this.myClass.getSimpleName();
+				boolean statusGood = true;
+				AdminView myView = AdminView.fromJsonToAdminView(myJson);
+	
+				Admin admin = null;
+				try
 				{
-					statusGood = false;
-					msg = "Invalid user name.";
+					admin = Admin.findAdminsByUserNameEquals(
+						myView.getUserName()).getSingleResult();
 				}
-				else
+				catch( Exception nre )
 				{
-					if( isValidPassword( plainText ) == false )
+					logger.info("No duplicate for admin userName=" + myView.getUserName() );
+				}
+	
+				if (admin == null)
+				{
+					String msg = "";
+					record.setLastUpdated(myView.getLastUpdated());
+					record.setCreatedDate(myView.getLastUpdated());
+					record.setDob(myView.getDob());
+	
+					record.setWhoUpdated(securityHelper.getUserName());
+					
+					String plainText = myView.getUserPassword();
+	
+					String newpwd = securityHelper.convertToSHA256(myView
+							.getUserPassword());
+	
+					record.setAddress1(myView.getAddress1());
+					record.setAddress2(myView.getAddress2());
+					record.setCity(myView.getCity());
+					record.setCountry(myView.getCountry());
+					record.setEnabled(myView.getEnabled());
+					record.setEmail(myView.getEmail());
+					record.setFirstName(myView.getFirstName());
+					record.setMiddleName(myView.getMiddleName());
+					record.setLastName(myView.getLastName());
+					record.setPhone1(myView.getPhone1());
+					record.setPhone2(myView.getPhone2());
+					record.setPostalCode(myView.getPostalCode());
+					record.setProvince(myView.getProvince());
+					record.setUserName(myView.getUserName());
+					record.setUserPassword(newpwd);
+					if( isValidUserName( record.getUserName() ) == false )
 					{
 						statusGood = false;
-						msg = "Invalid passord";
+						msg = "Invalid user name.";
 					}
-				}
-
-				if (statusGood)
-				{
-					((Admin) record).persist();
-					
-					myView.setVersion(record.getVersion());
-					myView.setId(record.getId());
-					// myView.setDailyId(record.getId());
-					//myView.setId(100000L + record.getId());
-
-					returnStatus = HttpStatus.CREATED;
-					response.setMessage(className + " created.");
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
+					else
+					{
+						if( isValidPassword( plainText ) == false )
+						{
+							statusGood = false;
+							msg = "Invalid passord";
+						}
+					}
+	
+					if (statusGood)
+					{
+						((Admin) record).persist();
+						
+						myView.setVersion(record.getVersion());
+						myView.setId(record.getId());
+						// myView.setDailyId(record.getId());
+						//myView.setId(100000L + record.getId());
+	
+						returnStatus = HttpStatus.CREATED;
+						response.setMessage(className + " created.");
+						response.setSuccess(true);
+						response.setTotal(1L);
+						response.setData(myView);
+					}
+					else
+					{
+						response.setMessage(className + " " + msg );
+						response.setSuccess(false);
+						response.setTotal(0L);
+						//returnStatus = HttpStatus.CONFLICT;
+						returnStatus = HttpStatus.BAD_REQUEST;					
+					}
 				}
 				else
 				{
-					response.setMessage(className + " " + msg );
+					statusGood = false;
+					response.setMessage("Duplicate admin attempted.");
 					response.setSuccess(false);
 					response.setTotal(0L);
-					//returnStatus = HttpStatus.CONFLICT;
-					returnStatus = HttpStatus.BAD_REQUEST;					
+					returnStatus = HttpStatus.CONFLICT;
+					// returnStatus = HttpStatus.BAD_REQUEST;
 				}
+	
 			}
-			else
+			catch (Exception e)
 			{
-				statusGood = false;
-				response.setMessage("Duplicated admin attempted.");
+				response.setMessage(e.getMessage());
 				response.setSuccess(false);
 				response.setTotal(0L);
-				returnStatus = HttpStatus.CONFLICT;
-				// returnStatus = HttpStatus.BAD_REQUEST;
+				returnStatus = HttpStatus.BAD_REQUEST;
 			}
-
 		}
-		catch (Exception e)
+		else
 		{
-			response.setMessage(e.getMessage());
+			response.setMessage( role + " is not authorized.");
 			response.setSuccess(false);
 			response.setTotal(0L);
-			returnStatus = HttpStatus.BAD_REQUEST;
+			returnStatus = HttpStatus.CONFLICT;			
 		}
 
 		// Return the created record with the new system generated id

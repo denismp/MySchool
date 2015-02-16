@@ -273,8 +273,8 @@ public class BodyOfWorkViewControllerHelper implements
 			if (bodyofwork.getWorkName().equals(myView.getWorkName())
 					&& bodyofwork.getQuarter().getQtr_year() == quarter.getQtr_year()
 					&& bodyofwork.getQuarter().getQtrName().equals(quarter.getQtrName())
-					&& quarter.getStudent().getId() == student.getId()
-					&& quarter.getSubject().getId() == myView.getSubjId()
+					&& quarter.getStudent().getId().longValue() == student.getId().longValue()
+					&& quarter.getSubject().getId().longValue() == myView.getSubjId().longValue()
 				)
 			{
 				return true;
@@ -344,7 +344,7 @@ public class BodyOfWorkViewControllerHelper implements
 					quarters = subject.getQuarters();
 					for( Quarter quarter: quarters )
 					{
-						if( quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
+						if( quarter.getStudent().getId().longValue() == student.getId().longValue() && quarter.getQtr_year() == year && quarter.getQtrName().equals(qtrName))
 						{
 							return quarter;
 						}						
