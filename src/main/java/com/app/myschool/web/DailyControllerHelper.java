@@ -434,6 +434,7 @@ public class DailyControllerHelper implements ControllerHelperInterface{
 						daily.getDaily_month() == myView.getDaily_month() &&
 						daily.getDaily_day() == myView.getDaily_day() &&
 						daily.getQuarter().getId().longValue() == quarter.getId().longValue() //&&
+						//daily.getQuarter().getSubject().getId().longValue() == myView.getSubjId().longValue() 
 						//quarter.getQtr_year() == myView.getDaily_year().intValue() &&
 						//quarter.getStudent().getUserName().equals( myView.getStudentUserName()) &&
 						//quarter.getStudent().getId().longValue() == myView.getStudentId().longValue() &&
