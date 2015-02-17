@@ -23,7 +23,7 @@ Ext.define('MySchool.view.common.MyTabPanel', {
 		'Ext.button.Button'
 	],
 
-	itemId: 'mypanel265',
+	itemId: 'mypanel293',
 	minWidth: 273,
 	autoScroll: true,
 	layout: 'fit',
