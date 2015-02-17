@@ -47,12 +47,14 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyfacultyrefreshtool',
+					tooltip: 'Refresh',
 					type: 'refresh'
 				},
 				{
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyfacultysearchtool',
+					tooltip: 'Search',
 					type: 'search',
 					listeners: {
 						click: {
@@ -64,11 +66,13 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyfacultynewtool',
+					tooltip: 'New',
 					type: 'plus'
 				},
 				{
 					xtype: 'tool',
 					itemId: 'onlyfacultysavetool',
+					tooltip: 'Save',
 					type: 'save',
 					listeners: {
 						click: {
@@ -81,6 +85,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyfacultydeletetool',
+					tooltip: 'Delete',
 					type: 'minus',
 					listeners: {
 						click: {
@@ -93,6 +98,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 					xtype: 'tool',
 					disabled: true,
 					itemId: 'onlyfacultylocktool',
+					tooltip: 'Lock',
 					type: 'pin',
 					listeners: {
 						click: {
@@ -104,6 +110,7 @@ Ext.define('MySchool.view.faculty.OnlyFacultyProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'onlyfacultylpasswordtool',
+					tooltip: 'Password',
 					type: 'gear'
 				}
 			]

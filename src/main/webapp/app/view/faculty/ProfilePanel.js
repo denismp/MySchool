@@ -64,7 +64,8 @@ Ext.define('MySchool.view.faculty.ProfilePanel', {
 				{
 					xtype: 'tool',
 					itemId: 'facultyprofileassociatetool',
-					tooltip: 'Student2Faculty',
+					tooltip: 'Associate Student To Faculty',
+					tooltipType: 'title',
 					type: 'expand',
 					listeners: {
 						blur: {

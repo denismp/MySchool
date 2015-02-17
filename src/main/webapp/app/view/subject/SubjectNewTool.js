@@ -19,6 +19,7 @@ Ext.define('MySchool.view.subject.SubjectNewTool', {
 
 	id: 'toolnewsubjects',
 	tooltip: 'Create/Edit subjects and term/quarters',
+	tooltipType: 'title',
 	type: 'plus',
 
 	initComponent: function() {
