@@ -758,7 +758,6 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 		String userRole = securityHelper.getUserRole();
 		Student student = null;
 		StudentProfileView myView = null;
-		//THIS WAS CHANGED!!!! DAMN IT!
 
 		try
 		{
