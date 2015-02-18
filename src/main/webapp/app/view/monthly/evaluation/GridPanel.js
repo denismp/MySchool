@@ -42,29 +42,39 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
-					text: 'Subj Name'
+					text: 'Subj Name',
+					tooltip: 'Subject Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Term'
+					text: 'Term',
+					tooltip: 'Quarter/Semester or Summer Session',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'qtrYear',
 					text: 'Year',
+					tooltip: 'Year',
+					tooltipType: 'title',
 					format: '0000'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'month_number',
 					text: 'Month',
+					tooltip: 'Month',
+					tooltipType: 'title',
 					format: '00'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'levelOfDifficulty',
 					text: 'LevelOfDifficulty',
+					tooltip: 'Level Of Difficulty for Subject',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -76,6 +86,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'criticalThinkingSkills',
 					text: 'CriticalThinking',
+					tooltip: 'Level of Critical Thinking',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -87,6 +99,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'effectiveCorrectionActions',
 					text: 'CorrectiveActions',
+					tooltip: 'Application of Corrective Actions',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -98,6 +112,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'accuratelyIdCorrections',
 					text: 'AccuratelyIDsCorrections',
+					tooltip: 'How accurately are corrections identified.',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -109,6 +125,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'completingCourseObjectives',
 					text: 'CompletesCourseObjectives',
+					tooltip: 'Completeness of course objectives',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -120,6 +138,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'thoughtfulnessOfReflections',
 					text: 'ThoughtfulnessOfReflections',
+					tooltip: 'How thoughful are reflections',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -131,6 +151,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'responsibilityOfProgress',
 					text: 'ResponsibilityOfProgress',
+					tooltip: 'How responsible is student of progress.',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -142,6 +164,8 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'workingEffectivelyWithAdvisor',
 					text: 'WorksEffWithAdvisor',
+					tooltip: 'How well does student work with advisor.',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -161,23 +185,31 @@ Ext.define('MySchool.view.monthly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'Student User Name'
+					text: 'Student User Name',
+					tooltip: 'Student User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'Faculty User Name'
+					text: 'Faculty User Name',
+					tooltip: 'Faculty User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'Who Updated'
+					text: 'Who Updated',
+					tooltip: 'Who last updated.',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'Last Updated',
+					tooltip: 'Last Update',
+					tooltipType: 'title',
 					format: 'm/d/Y'
 				},
 				{

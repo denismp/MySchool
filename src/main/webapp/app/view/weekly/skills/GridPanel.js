@@ -41,35 +41,47 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
-					text: 'Subject Name'
+					text: 'Subject Name',
+					tooltip: 'Subject Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'qtrName',
-					text: 'Term'
+					text: 'Term',
+					tooltip: 'Quarter/Semester or Summer Session',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'qtrYear',
 					text: 'Year',
+					tooltip: 'Year',
+					tooltipType: 'title',
 					format: '0000'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'week_month',
 					text: 'Month',
+					tooltip: 'Month',
+					tooltipType: 'title',
 					format: '00'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'week_number',
 					text: 'Week',
+					tooltip: 'Week',
+					tooltipType: 'title',
 					format: '0'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'remembering',
 					text: 'Remembering',
+					tooltip: 'Remembering Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -81,6 +93,8 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'understanding',
 					text: 'Understanding',
+					tooltip: 'Understanding Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -92,6 +106,8 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'applying',
 					text: 'Applying',
+					tooltip: 'Applying Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -103,6 +119,8 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'analyzing',
 					text: 'Analyzing',
+					tooltip: 'Analyzing Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -114,6 +132,8 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'evaluating',
 					text: 'Evaluating',
+					tooltip: 'Evaluating Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -125,6 +145,8 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'creating',
 					text: 'Creating',
+					tooltip: 'Creativity Skills',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -186,24 +208,32 @@ Ext.define('MySchool.view.weekly.skills.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'Student User Name'
+					text: 'Student User Name',
+					tooltip: 'Student User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'Faculty User Name'
+					text: 'Faculty User Name',
+					tooltip: 'Faculty User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'Last Updated',
+					tooltip: 'Last Updated',
+					tooltipType: 'title',
 					format: 'm/d/Y'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'Who Updated'
+					text: 'Who Updated',
+					tooltip: 'Who Updated',
+					tooltipType: 'title'
 				}
 			],
 			viewConfig: {

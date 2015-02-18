@@ -41,30 +41,40 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'subjName',
-					text: 'Subject Name'
+					text: 'Subject Name',
+					tooltip: 'Subject Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'qtrYear',
 					text: 'Year',
+					tooltip: 'Year',
+					tooltipType: 'title',
 					format: '0000'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'week_month',
 					text: 'Month',
+					tooltip: 'Month',
+					tooltipType: 'title',
 					format: '00'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'week_number',
 					text: 'Week',
+					tooltip: 'Week',
+					tooltipType: 'title',
 					format: '0'
 				},
 				{
 					xtype: 'numbercolumn',
 					dataIndex: 'motivation',
 					text: 'Motivation',
+					tooltip: 'Motivation',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -76,6 +86,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'organization',
 					text: 'Organization',
+					tooltip: 'Organization',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -87,6 +99,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'effectiveUseOfStudyTime',
 					text: 'Effective Use Of Time',
+					tooltip: 'Effective Use Of Time',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -98,6 +112,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'qualityOfWork',
 					text: 'Quality Of Work',
+					tooltip: 'Quality Of Work',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -109,6 +125,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'accuracyOfWork',
 					text: 'Accuracy Of Work',
+					tooltip: 'Accuracy Of Work',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -120,6 +138,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'complexityOfWork',
 					text: 'Complexity Of Work',
+					tooltip: 'Complexity Of Work',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -131,6 +151,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'growth',
 					text: 'Growth',
+					tooltip: 'Growth',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -142,6 +164,8 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 					xtype: 'numbercolumn',
 					dataIndex: 'consistency',
 					text: 'Consistency',
+					tooltip: 'Consistency',
+					tooltipType: 'title',
 					format: '00',
 					editor: {
 						xtype: 'numberfield',
@@ -196,24 +220,32 @@ Ext.define('MySchool.view.weekly.evaluation.GridPanel', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'studentUserName',
-					text: 'Student User Name'
+					text: 'Student User Name',
+					tooltip: 'Student User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'facultyUserName',
-					text: 'Faculty User Name'
+					text: 'Faculty User Name',
+					tooltip: 'Faculty User Name',
+					tooltipType: 'title'
 				},
 				{
 					xtype: 'datecolumn',
 					hidden: true,
 					dataIndex: 'lastUpdated',
 					text: 'Last Updated',
+					tooltip: 'Last Updated Date',
+					tooltipType: 'title',
 					format: 'm/d/Y'
 				},
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'whoUpdated',
-					text: 'Who Updated'
+					text: 'Who Updated',
+					tooltip: 'Who Performed Last Update',
+					tooltipType: 'title'
 				}
 			],
 			viewConfig: {
