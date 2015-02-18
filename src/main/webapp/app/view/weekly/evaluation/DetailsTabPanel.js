@@ -37,7 +37,8 @@ Ext.define('MySchool.view.weekly.evaluation.DetailsTabPanel', {
 					title: 'Comments',
 					tabConfig: {
 						xtype: 'tab',
-						tooltip: 'Click Edit to modify'
+						tooltip: 'Click Edit to modify',
+						tooltipType: 'title'
 					}
 				}
 			]

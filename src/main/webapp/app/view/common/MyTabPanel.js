@@ -55,7 +55,8 @@ Ext.define('MySchool.view.common.MyTabPanel', {
 							xtype: 'button',
 							itemId: 'editmytabpanel',
 							text: 'Edit',
-							tooltip: 'Click edit to modify'
+							tooltip: 'Click edit to modify',
+							tooltipType: 'title'
 						}
 					]
 				}
