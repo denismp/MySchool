@@ -52,9 +52,24 @@ public class PDFCompletedTranscript
 	private float lineWidthPoints = 0;
 	private float charactersPerLine = 0;
 	private float fontWidth = 0;
+	private String pdfFileName = null;
 
 	private PDFTextBox pdfTextBox;
 	
+	/**
+	 * @return the pdfFileName
+	 */
+	public String getPdfFileName()
+	{
+		return pdfFileName;
+	}
+	/**
+	 * @param pdfFileName the pdfFileName to set
+	 */
+	public void setPdfFileName(String pdfFileName)
+	{
+		this.pdfFileName = pdfFileName;
+	}
 	public float getFontHeight()
 	{
 		return this.fontHeight;
@@ -204,7 +219,7 @@ public class PDFCompletedTranscript
 		contentStream.close();
 
 		// Save the results and ensure that the document is properly closed:
-		document.save( "Hello World.pdf");
+		document.save( this.pdfFileName);
 		document.close();				
 	}
 	public float writeHeader() throws IOException
@@ -416,43 +431,43 @@ public class PDFCompletedTranscript
 	/**
 	 * Write first and second year boxes.
 	 * @param lastBoxBottom
-	 * @param yearOneInfo
-	 * @param yearTwoInfo
-	 * @param yearOneInfoArray
-	 * @param yearTwoInfoArray
-	 * @param yearOneCumulativeInfo
-	 * @param yearTwoCumulativeInfo
+	 * @param semesterOneInfo
+	 * @param semesterTwoInfo
+	 * @param semesterOneInfoArray
+	 * @param semesterTwoInfoArray
+	 * @param semesterOneCumulativeInfo
+	 * @param semesterTwoCumulativeInfo
 	 * @return lastBoxBottom
 	 * @throws IOException
 	 */
-	public float writeFirstAndSecondYear(
+	public float writeSemesterOneAndTwo(
 										float lastBoxBottom, 
-										ConcurrentHashMap<String,String> yearOneInfo, 
-										ConcurrentHashMap<String,String> yearTwoInfo,
-										ArrayList<ConcurrentHashMap<String,String>> yearOneInfoArray,
-										ArrayList<ConcurrentHashMap<String,String>> yearTwoInfoArray,
-										ConcurrentHashMap<String,String> yearOneCumulativeInfo,
-										ConcurrentHashMap<String,String> yearTwoCumulativeInfo
+										ConcurrentHashMap<String,String> semesterOneInfo, 
+										ConcurrentHashMap<String,String> semesterTwoInfo,
+										ArrayList<ConcurrentHashMap<String,String>> semesterOneInfoArray,
+										ArrayList<ConcurrentHashMap<String,String>> semesterTwoInfoArray,
+										ConcurrentHashMap<String,String> semesterOneCumulativeInfo,
+										ConcurrentHashMap<String,String> semesterTwoCumulativeInfo
 			) throws IOException
 	{
 		float fontHeight = this.getFontHeight();
 		
 		TextList textBoxListLeft = new TextList();
-		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 0, "School Year:  " + yearOneInfo.get("schoolYear") + "    Grade Level " + yearOneInfo.get("gradeLevel"));
+		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 0, "School Year:  " + semesterOneInfo.get("schoolYear") + "    Grade Level " + semesterOneInfo.get("gradeLevel"));
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 1, "Course Title");
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN + 15 * fontHeight, 1, "Credit");
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN + 20 * fontHeight, 1, "Final");
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN + 15 * fontHeight, 2, "Earned");
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN + 20 * fontHeight, 2, "Grade");
 		int i = 0;
-		for( i = 0; i < yearOneInfoArray.size(); i++ )
+		for( i = 0; i < semesterOneInfoArray.size(); i++ )
 		{
-			textBoxListLeft.addText(LEFT_TEXT_MARGIN, 3 + i, yearOneInfoArray.get(i).get("courseTitle") );
-			textBoxListLeft.addText(LEFT_TEXT_MARGIN + 15 * fontHeight, 3 + i, yearOneInfoArray.get(i).get("creditsEarned") );
-			textBoxListLeft.addText(LEFT_TEXT_MARGIN + 20 * fontHeight, 3 + i, yearOneInfoArray.get(i).get("grade") );
+			textBoxListLeft.addText(LEFT_TEXT_MARGIN, 3 + i, semesterOneInfoArray.get(i).get("courseTitle") );
+			textBoxListLeft.addText(LEFT_TEXT_MARGIN + 15 * fontHeight, 3 + i, semesterOneInfoArray.get(i).get("creditsEarned") );
+			textBoxListLeft.addText(LEFT_TEXT_MARGIN + 20 * fontHeight, 3 + i, semesterOneInfoArray.get(i).get("grade") );
 		}
 		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 3 + i, "");
-		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 3 + i + 1, "Total Credits: " + yearOneCumulativeInfo.get("totalCredits") + "   GPA: " + yearOneCumulativeInfo.get("yearlyGPA") + "  Cumulative GPA: " + yearOneCumulativeInfo.get("cumulativeGPA"));
+		textBoxListLeft.addText(LEFT_TEXT_MARGIN, 3 + i + 1, "Total Credits: " + semesterOneCumulativeInfo.get("totalCredits") + "   GPA: " + semesterOneCumulativeInfo.get("yearlyGPA") + "  Cumulative GPA: " + semesterOneCumulativeInfo.get("cumulativeGPA"));
 		
 		//textBoxListLeft.addText(LEFT_TEXT_MARGIN, 11, "");
 		//textBoxListLeft.addText(LEFT_TEXT_MARGIN, 12, "Total Credits: 7.0   GPA: 3.36   Cumulative GPA: 3.36");
@@ -466,7 +481,7 @@ public class PDFCompletedTranscript
 		//leftTextMargin = (RIGHT_TEXT_MARGIN + LEFT_TEXT_MARGIN + 88)/2 - 10;
 		TextList textBoxListRight = new TextList();
 		float leftTextMargin = this.calcLeftTextMargin(fontHeight);
-		textBoxListRight.addText(leftTextMargin, 0, "School Year:  " + yearTwoInfo.get("schoolYear") + "    Grade Level " + yearTwoInfo.get("gradeLevel"));
+		textBoxListRight.addText(leftTextMargin, 0, "School Year:  " + semesterTwoInfo.get("schoolYear") + "    Grade Level " + semesterTwoInfo.get("gradeLevel"));
 		textBoxListRight.addText(leftTextMargin, 1, "Course Title");
 		textBoxListRight.addText(leftTextMargin + 15 * fontHeight, 1, "Credit");
 		textBoxListRight.addText(leftTextMargin + 20 * fontHeight, 1, "Final");
@@ -474,14 +489,14 @@ public class PDFCompletedTranscript
 		textBoxListRight.addText(leftTextMargin + 20 * fontHeight, 2, "Grade");
 		
 		i = 0;
-		for( i = 0; i < yearTwoInfoArray.size(); i++ )
+		for( i = 0; i < semesterTwoInfoArray.size(); i++ )
 		{
-			textBoxListLeft.addText(leftTextMargin, 3 + i, yearTwoInfoArray.get(i).get("courseTitle") );
-			textBoxListLeft.addText(leftTextMargin + 15 * fontHeight, 3 + i, yearTwoInfoArray.get(i).get("creditsEarned") );
-			textBoxListLeft.addText(leftTextMargin + 20 * fontHeight, 3 + i, yearTwoInfoArray.get(i).get("grade") );			
+			textBoxListLeft.addText(leftTextMargin, 3 + i, semesterTwoInfoArray.get(i).get("courseTitle") );
+			textBoxListLeft.addText(leftTextMargin + 15 * fontHeight, 3 + i, semesterTwoInfoArray.get(i).get("creditsEarned") );
+			textBoxListLeft.addText(leftTextMargin + 20 * fontHeight, 3 + i, semesterTwoInfoArray.get(i).get("grade") );			
 		}
 		textBoxListLeft.addText(leftTextMargin, 3 + i, "");
-		textBoxListLeft.addText(leftTextMargin, 3 + i + 1, "Total Credits: " + yearTwoCumulativeInfo.get("totalCredits") + "   GPA: " + yearTwoCumulativeInfo.get("yearlyGPA") + "  Cumulative GPA: " + yearTwoCumulativeInfo.get("cumulativeGPA"));
+		textBoxListLeft.addText(leftTextMargin, 3 + i + 1, "Total Credits: " + semesterTwoCumulativeInfo.get("totalCredits") + "   GPA: " + semesterTwoCumulativeInfo.get("yearlyGPA") + "  Cumulative GPA: " + semesterTwoCumulativeInfo.get("cumulativeGPA"));
 		textBoxListLeft.setNumLines(i + 3 + 1 + 1);
 		System.out.println("lines2=" + (i + 3 + 1 + 1));
 		
@@ -634,6 +649,7 @@ public class PDFCompletedTranscript
 		// TODO Auto-generated method stub
 		// Create a document and add a page to it
 		PDFCompletedTranscript transcript = new PDFCompletedTranscript();
+		transcript.setPdfFileName("HelloWorld.pdf");
 		ConcurrentHashMap<String,String> studentInfo = new ConcurrentHashMap<String,String>();
 		ConcurrentHashMap<String,String> schoolInfo = new ConcurrentHashMap<String,String>();
 		transcript.setSchoolName("Smith Academy");
@@ -775,7 +791,7 @@ public class PDFCompletedTranscript
 		yearTwoCumulativeInfo.put("cumulativeGPA", "3.25");
 
 				
-		lastBoxBottom = transcript.writeFirstAndSecondYear(
+		lastBoxBottom = transcript.writeSemesterOneAndTwo(
 													lastBoxBottom, 
 													yearOneInfo, 
 													yearTwoInfo, 
@@ -784,7 +800,7 @@ public class PDFCompletedTranscript
 													yearOneCumulativeInfo,
 													yearTwoCumulativeInfo
 													);
-		lastBoxBottom = transcript.writeFirstAndSecondYear(
+		lastBoxBottom = transcript.writeSemesterOneAndTwo(
 													lastBoxBottom, 
 													yearOneInfo, 
 													yearTwoInfo, 

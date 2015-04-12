@@ -9,5 +9,9 @@
         <field:textarea field="pdfURL" id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" required="true" z="c73GMLKdzro13E9VBPy+PjHUfeQ="/>
         <field:select field="school" id="c_com_app_myschool_model_PreviousTranscripts_school" itemValue="id" items="${schools}" path="/schools" z="Q0Nqrgoyw4lgYQ3ADl1N0RR9xR4="/>
         <field:textarea field="comments" id="c_com_app_myschool_model_PreviousTranscripts_comments" required="true" z="l3WkKT5r8UxkKFvQ+pqqrrF+8+g="/>
+        <field:textarea field="name" id="c_com_app_myschool_model_PreviousTranscripts_name" required="true" z="WgMzROLXthyLUs0taLjzHcEriG8="/>
+        <field:input field="gradingScale" id="c_com_app_myschool_model_PreviousTranscripts_gradingScale" min="0" required="true" z="SDROYZ46qdgpJYVN+Lr2CZ9JvR8="/>
+        <field:textarea field="whoUpdated" id="c_com_app_myschool_model_PreviousTranscripts_whoUpdated" required="true" z="N9Z2po+c5aeW9dEdOa5dRYNHDg0="/>
+        <field:datetime dateTimePattern="${previousTranscripts_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_PreviousTranscripts_lastUpdated" required="true" z="qaKD41m3+BN77kP+LBO9c8CszFY="/>
     </form:update>
 </div>

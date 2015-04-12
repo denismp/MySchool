@@ -7,9 +7,9 @@
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_type" property="type" z="cLDSKVpUWfQh2Pm7OFS4iJElmek="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" property="pdfURL" z="83OyNss5eP2+kFU1ri/LcpU9eb0="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_student" property="student" z="qYYFkJ/txlsgmNfWSQJNT63bJZ4="/>
-            <table:column id="c_com_app_myschool_model_PreviousTranscripts_school" property="school" z="EeOYJQ539KZLyR8IHChSZ8N7paA="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_comments" property="comments" z="QDX20S3zYi8oO+k/rFOVjkCW0io="/>
-            <table:column date="true" dateTimePattern="${previousTranscripts_createddate_date_format}" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" property="createdDate" z="zeDc/V0AGxb9kZf73bGrMp1EUY4="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_name" property="name" z="xEKmNOXx1xHzirENSQLoKT8KqxM="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_gradingScale" property="gradingScale" z="d7rkhmokl92pLrVT9bpWUJi+Ygo="/>
         </table:table>
     </page:list>
 </div>

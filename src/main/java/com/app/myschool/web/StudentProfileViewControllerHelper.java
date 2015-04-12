@@ -35,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
 import com.app.myschool.model.Guardian;
+import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
 import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
@@ -413,8 +414,8 @@ public class StudentProfileViewControllerHelper implements ControllerHelperInter
 									myView.setGuardianId(guardian.getId());
 									
 									myView.setSchoolId(school.getId());
-									myView.setSchoolName(school.getName());
-															
+									myView.setSchoolName(school.getName());									
+									
 									studentViewList.add( myView );						
 								}
 							}

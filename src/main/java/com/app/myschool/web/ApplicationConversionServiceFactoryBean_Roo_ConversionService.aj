@@ -272,7 +272,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<PreviousTranscripts, String> ApplicationConversionServiceFactoryBean.getPreviousTranscriptsToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.app.myschool.model.PreviousTranscripts, java.lang.String>() {
             public String convert(PreviousTranscripts previousTranscripts) {
-                return new StringBuilder().append(previousTranscripts.getType()).append(' ').append(previousTranscripts.getPdfURL()).append(' ').append(previousTranscripts.getComments()).append(' ').append(previousTranscripts.getCreatedDate()).toString();
+                return new StringBuilder().append(previousTranscripts.getName()).append(' ').append(previousTranscripts.getType()).append(' ').append(previousTranscripts.getPdfURL()).append(' ').append(previousTranscripts.getComments()).toString();
             }
         };
     }

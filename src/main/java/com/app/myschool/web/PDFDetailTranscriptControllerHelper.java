@@ -1,45 +1,54 @@
 package com.app.myschool.web;
 
-import java.io.UnsupportedEncodingException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URLDecoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-//import javax.persistence.EntityManager;
-//import javax.persistence.Query;
-
+import javax.servlet.ServletContext;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.pdfbox.exceptions.COSVisitorException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.app.myschool.extjs.JsonObjectResponse;
+import com.app.myschool.model.Guardian;
+import com.app.myschool.model.PreviousTranscriptView;
+import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.model.Quarter;
+import com.app.myschool.model.School;
 import com.app.myschool.model.Student;
-import com.app.myschool.model.Faculty;
-import com.app.myschool.model.StudentView;
 import com.app.myschool.model.Subject;
-import com.app.myschool.model.SubjectView;
+import com.app.myschool.report.PDFCompletedTranscript;
 
 public class PDFDetailTranscriptControllerHelper implements
 		ControllerHelperInterface
 {
 	private static final Logger logger = Logger
 			.getLogger(PDFDetailTranscriptControllerHelper.class);
-	private Class<Student> myClass = Student.class;
+	private Class<PreviousTranscripts> myClass = PreviousTranscripts.class;
+	
+	@Autowired private ServletContext servletContext;
 
 	@Override
 	public String getParam(@SuppressWarnings("rawtypes") Map m, String p)
@@ -63,114 +72,23 @@ public class PDFDetailTranscriptControllerHelper implements
 		return ret_;
 	}
 
-	@SuppressWarnings("unchecked")
-	private List<Faculty> getJustStudentFacultyList(String studentId)
-			throws Exception
-	{
-		List<Faculty> rList = null;
-		EntityManager em = Faculty.entityManager();
-		StringBuilder queryString = new StringBuilder("select distinct f.*");
-		queryString.append(" from faculty f, student_faculty fs, student t");
-		queryString.append(" where fs.students = t.id");
-		queryString.append(" and fs.faculty = f.id");
-		// queryString.append(" and q.student = t.id");
-		// queryString.append(" and q.subject = s.id");
-
-		if (studentId != null)
-		{
-			queryString.append(" and t.id = ");
-			queryString.append(studentId);
-		}
-		// queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
-		rList = (List<Faculty>) em.createNativeQuery(queryString.toString(),
-				Faculty.class).getResultList();
-
-		return rList;
-	}
-
-	@SuppressWarnings("unchecked")
-	private List<Faculty> getList(String studentId) throws Exception
-	{
-		List<Faculty> rList = null;
-		EntityManager em = Faculty.entityManager();
-		StringBuilder queryString = new StringBuilder("select distinct f.*");
-		queryString
-				.append(" from faculty f, student_faculty fs, subject s, quarter q, student t");
-		queryString.append(" where fs.students = t.id");
-		queryString.append(" and fs.faculty = f.id");
-		// queryString.append(" and q.student = t.id");
-		// queryString.append(" and q.subject = s.id");
-
-		if (studentId != null)
-		{
-			queryString.append(" and t.id = ");
-			queryString.append(studentId);
-		}
-		// queryString.append( " order by s.name, q.qtr_name, q.qtr_year");
-		rList = (List<Faculty>) em.createNativeQuery(queryString.toString(),
-				Faculty.class).getResultList();
-
-		return rList;
-	}
-
-	private class StudentFaculty
-	{
-		long studentId;
-		long facultyId;
-	}
-
-	private List<StudentFaculty> getStudentFacultyList(String studentId)
-			throws Exception
-	{
-		List<StudentFaculty> rList = new ArrayList<StudentFaculty>();
-		List<Faculty> facultyList = this.getList(studentId);
-		Student student = Student.findStudent(new Long(studentId));
-		// Student student = (Student)
-		// Student.findStudentsByUserNameEquals(userName);
-		if (facultyList.size() == 0)
-			facultyList = this.getJustStudentFacultyList(studentId);
-		for (Faculty faculty : facultyList)
-		{
-			StudentFaculty studentFaculty = new StudentFaculty();
-			studentFaculty.facultyId = faculty.getId();
-
-			studentFaculty.studentId = student.getId();
-			rList.add(studentFaculty);
-		}
-		return rList;
-	}
-
-	/*
-	class MyComparator implements Comparator<StudentView>
+	class MyComparator implements Comparator<PreviousTranscriptView>
 	{
 		@Override
-		public int compare(StudentView o1, StudentView o2)
+		public int compare(PreviousTranscriptView o1, PreviousTranscriptView o2)
 		{
-			return o1.getLastName().compareTo(o2.getLastName());
-		}
-	}
-	*/
+			String name1 = o1.getName();
+			String name2 = o2.getName();
+			String schoolName1	= o1.getSchoolName();
+			String schoolName2	= o2.getSchoolName();
+			String createdDate1 = o1.getCreatedDate().toString();
+			String createdDate2 = o2.getCreatedDate().toString();
 
-	class MySubjectComparator implements Comparator<SubjectView>
-	{
-		/*
-		 * @Override public int compare(SubjectView o1, SubjectView o2) { return
-		 * o1.getSubjName().compareTo(o2.getSubjName());
-		 * 
-		 * }
-		 */
-		@Override
-		public int compare(SubjectView o1, SubjectView o2)
-		{
-			int c;
-			c = o1.getSubjName().compareTo(o2.getSubjName());
-			if (c == 0)
-				c = o1.getQtrName().compareTo(o2.getQtrName());
-			if (c == 0)
-				c = o1.getQtrYear().compareTo(o2.getQtrYear());
-			return c;
-		}
+			String st1 = name1 + schoolName1 + createdDate1;
+			String st2 = name2 + schoolName2 + createdDate2;
 
+			return st1.compareTo(st2);
+		}
 	}
 
 	public ResponseEntity<String> listJson(
@@ -178,12 +96,12 @@ public class PDFDetailTranscriptControllerHelper implements
 	{
 		HttpHeaders headers							= new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
-		Class<SubjectView> myViewClass				= SubjectView.class;
+		Class<PreviousTranscriptView> myViewClass	= PreviousTranscriptView.class;
 		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 
 		HttpStatus returnStatus						= HttpStatus.OK;
 		JsonObjectResponse response					= new JsonObjectResponse();
-		List<SubjectView> records					= null;
+		List<PreviousTranscriptView> records		= null;
 		String className							= myViewClass.getSimpleName();
 		boolean statusGood							= false;
 
@@ -191,69 +109,54 @@ public class PDFDetailTranscriptControllerHelper implements
 
 		try
 		{
-			List<SubjectView> subjectViewList = new ArrayList<SubjectView>();
+			List<PreviousTranscriptView> transcriptViewList = new ArrayList<PreviousTranscriptView>();
 			long i = 0;
 			for (Student student : students)
 			{
-
-				List<Faculty> studentFacultyList = securityHelper
-						.getFacultyList(student);
-
-				for (Faculty faculty : studentFacultyList)
+				Set<PreviousTranscripts> transcriptList = student.getPreviousTranscripts();
+				
+				for( PreviousTranscripts transcript: transcriptList )
 				{
-
+					PreviousTranscriptView myView = new PreviousTranscriptView();
 					statusGood = true;
-					Set<Quarter> quarterList = student.getQuarters();
-					for (Quarter quarter : quarterList)
-					{
-						if (quarter.getFaculty() != null
-								&& quarter.getFaculty().getId() == faculty
-										.getId()
-								&& quarter.getStudent().getId() == student
-										.getId())
-						{
-							Subject subject = quarter.getSubject();
-							SubjectView myView = new SubjectView();
-							myView.setId(++i);
-							myView.setSubjectviewId(i);
-							myView.setStudentName(student.getUserName());
-							myView.setStudentId(student.getId());
+					School school = transcript.getSchool();
+					myView.setId(++i);
+					myView.setPrevioustranscriptviewId(i);
+					myView.setName(transcript.getName());
+					myView.setComments(transcript.getComments());
+					myView.setCreatedDate(transcript.getCreatedDate());
+					myView.setCustodianOfRecords(school.getCustodianOfRecords());
+					myView.setCustodianTitle(school.getCustodianTitle());
+					myView.setDistrict(school.getDistrict());
+					myView.setGradingScale(transcript.getGradingScale());
+					myView.setLastUpdated(transcript.getLastUpdated());
+					myView.setPdfURL(transcript.getPdfURL());
+					myView.setWhoUpdated(transcript.getWhoUpdated());
+					myView.setSchoolAdminEmail(school.getAdmin().getEmail());
+					myView.setSchoolAdminId(school.getAdmin().getId());
+					myView.setSchoolAdminUserName(school.getAdmin().getUserName());
+					myView.setSchoolEmail(school.getEmail());
+					myView.setSchoolName(school.getName());
+					myView.setSchoolId(school.getId());
+					myView.setSchoolPhone1(school.getPhone1());
+					myView.setSchoolPhone2(school.getPhone2());
+					myView.setSchoolAddress1(school.getAddress1());
+					myView.setSchoolAddress2(school.getAddress2());
+					myView.setSchoolPostalCode(school.getPostalCode());
+					myView.setSchoolProvince(school.getProvince());
+					myView.setStudentId(student.getId());
+					myView.setStudentUserName(student.getUserName());
 
-							myView.setSubjVersion(subject.getVersion());
-							myView.setQtrVersion(quarter.getVersion());
-							myView.setSubjLastUpdated(subject.getLastUpdated());
-							myView.setSubjWhoUpdated(subject.getWhoUpdated());
-							myView.setSubjId(subject.getId());
-							myView.setSubjCreditHours(subject.getCreditHours());
-							myView.setSubjDescription(subject.getDescription());
-							myView.setSubjGradeLevel(subject.getGradeLevel());
-							myView.setSubjName(subject.getName());
-							myView.setSubjObjectives(subject.getObjectives());
-
-							myView.setQtrId(quarter.getId());
-							myView.setQtrName(quarter.getQtrName());
-							myView.setQtrYear(quarter.getQtr_year());
-							myView.setQtrGradeType(quarter.getGrade_type());
-							myView.setQtrGrade(quarter.getGrade());
-							myView.setQtrCompleted(quarter.getCompleted());
-							myView.setQtrLocked(quarter.getLocked());
-							myView.setQtrWhoUpdated(quarter.getWhoUpdated());
-							myView.setQtrLastUpdated(quarter.getLastUpdated());
-
-							myView.setFacultyId(faculty.getId());
-							myView.setFacultyEmail(faculty.getEmail());
-							myView.setFacultyUserName(faculty.getUserName());
-
-							subjectViewList.add(myView);
-						}
-					}
-					Collections
-							.sort(subjectViewList, new MySubjectComparator());
+					transcriptViewList.add(myView);					
 				}
+
 			}
+
+			Collections.sort(transcriptViewList, new MyComparator());
+
 			if (statusGood)
 			{
-				records = subjectViewList;
+				records = transcriptViewList;
 
 				response.setMessage("All " + className + "s retrieved: ");
 				response.setData(records);
@@ -300,17 +203,17 @@ public class PDFDetailTranscriptControllerHelper implements
 
 		HttpStatus returnStatus = HttpStatus.OK;
 		JsonObjectResponse response = new JsonObjectResponse();
-		Student student = Student.findStudent(id);
+		PreviousTranscripts transcript = PreviousTranscripts.findPreviousTranscripts(id);
 		//PDFRecord record = new PDFRecord();
 		long i = 0;
-		List<SubjectView> subjectViewList = new ArrayList<SubjectView>();
+		List<PreviousTranscriptView> transcriptViewList = new ArrayList<PreviousTranscriptView>();
 		String className = this.myClass.getSimpleName();
 		boolean statusGood = true;
-		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+		//SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
 		try
 		{
 			logger.info("GET: " + id);
-			if (student == null)
+			if (transcript == null)
 			{
 				response.setMessage("No data for class=" + className);
 				response.setSuccess(false);
@@ -321,67 +224,47 @@ public class PDFDetailTranscriptControllerHelper implements
 			if (statusGood)
 			{
 
-				List<Faculty> studentFacultyList = securityHelper
-						.getFacultyList(student);
+				PreviousTranscriptView myView = new PreviousTranscriptView();
+				statusGood = true;
+				School school = transcript.getSchool();
+				Student student = transcript.getStudent();
+				myView.setId(++i);
+				myView.setPrevioustranscriptviewId(i);
+				myView.setName(transcript.getName());
+				myView.setComments(transcript.getComments());
+				myView.setCreatedDate(transcript.getCreatedDate());
+				myView.setCustodianOfRecords(school.getCustodianOfRecords());
+				myView.setCustodianTitle(school.getCustodianTitle());
+				myView.setDistrict(school.getDistrict());
+				myView.setGradingScale(transcript.getGradingScale());
+				myView.setLastUpdated(transcript.getLastUpdated());
+				myView.setPdfURL(transcript.getPdfURL());
+				myView.setWhoUpdated(transcript.getWhoUpdated());
+				myView.setSchoolAdminEmail(school.getAdmin().getEmail());
+				myView.setSchoolAdminId(school.getAdmin().getId());
+				myView.setSchoolAdminUserName(school.getAdmin().getUserName());
+				myView.setSchoolEmail(school.getEmail());
+				myView.setSchoolName(school.getName());
+				myView.setSchoolId(school.getId());
+				myView.setSchoolPhone1(school.getPhone1());
+				myView.setSchoolPhone2(school.getPhone2());
+				myView.setSchoolAddress1(school.getAddress1());
+				myView.setSchoolAddress2(school.getAddress2());
+				myView.setSchoolPostalCode(school.getPostalCode());
+				myView.setSchoolProvince(school.getProvince());
+				myView.setStudentId(student.getId());
+				myView.setStudentUserName(student.getUserName());
 
-				for (Faculty faculty : studentFacultyList)
-				{
+				transcriptViewList.add(myView);	
+				
+				Collections.sort(transcriptViewList, new MyComparator());
+				response.setMessage(className + " retrieved: " + id);
+				//TODO This is where we need to create the PDF file and return the URL of its location.
+				response.setData(student);
 
-					statusGood = true;
-					Set<Quarter> quarterList = student.getQuarters();
-					for (Quarter quarter : quarterList)
-					{
-						if (quarter.getFaculty() != null
-								&& quarter.getFaculty().getId() == faculty
-										.getId()
-								&& quarter.getStudent().getId() == student
-										.getId())
-						{
-							Subject subject = quarter.getSubject();
-							SubjectView myView = new SubjectView();
-							myView.setId(++i);
-							myView.setSubjectviewId(i);
-							myView.setStudentName(student.getUserName());
-							myView.setStudentId(student.getId());
-
-							myView.setSubjVersion(subject.getVersion());
-							myView.setQtrVersion(quarter.getVersion());
-							myView.setSubjLastUpdated(subject.getLastUpdated());
-							myView.setSubjWhoUpdated(subject.getWhoUpdated());
-							myView.setSubjId(subject.getId());
-							myView.setSubjCreditHours(subject.getCreditHours());
-							myView.setSubjDescription(subject.getDescription());
-							myView.setSubjGradeLevel(subject.getGradeLevel());
-							myView.setSubjName(subject.getName());
-							myView.setSubjObjectives(subject.getObjectives());
-
-							myView.setQtrId(quarter.getId());
-							myView.setQtrName(quarter.getQtrName());
-							myView.setQtrYear(quarter.getQtr_year());
-							myView.setQtrGradeType(quarter.getGrade_type());
-							myView.setQtrGrade(quarter.getGrade());
-							myView.setQtrCompleted(quarter.getCompleted());
-							myView.setQtrLocked(quarter.getLocked());
-							myView.setQtrWhoUpdated(quarter.getWhoUpdated());
-							myView.setQtrLastUpdated(quarter.getLastUpdated());
-
-							myView.setFacultyId(faculty.getId());
-							myView.setFacultyEmail(faculty.getEmail());
-							myView.setFacultyUserName(faculty.getUserName());
-
-							subjectViewList.add(myView);
-						}
-					}
-					Collections
-							.sort(subjectViewList, new MySubjectComparator());
-					response.setMessage(className + " retrieved: " + id);
-					//TODO This is where we need to create the PDF file and return the URL of its location.
-					response.setData(student);
-
-					returnStatus = HttpStatus.OK;
-					response.setSuccess(true);
-					response.setTotal(1L);
-				}
+				returnStatus = HttpStatus.OK;
+				response.setSuccess(true);
+				response.setTotal(1L);
 			}
 		}
 		catch (Exception e)
@@ -396,90 +279,6 @@ public class PDFDetailTranscriptControllerHelper implements
 		// Return retrieved object.
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
-	}
-
-	private boolean isDup(StudentView myView) throws Exception
-	{
-		// Integer monthNumber = myView.getMonth_number();
-		Long studentId = myView.getStudentId();
-		// Quarter quarter = Quarter.findQuarter(myView.getQtrId());
-		Student student = Student.findStudent(myView.getStudentId());
-		// Subject subject = Subject.findSubject(myView.getSubjId());
-		List<Faculty> facultyList = this.getList(studentId.toString());
-
-		for (Faculty faculty : facultyList)
-		{
-			if (faculty.getId() == myView.getFacultyId()
-					&& student.getId() == myView.getStudentId()
-			// faculty.getDaily_week() == myView.getDaily_week() &&
-			// faculty.getDaily_day() == myView.getDaily_day() &&
-			// faculty.getQuarter() == quarter &&
-			// quarter.getStudent().getId() == myView.getStudentId() &&
-			// quarter.getSubject().getId() == myView.getSubjId()
-			)
-			{
-				return true;
-			}
-
-		}
-		return false;
-	}
-
-	@Transactional
-	private int relateStudentAndFaculty(Long studentId, Long facultyId)
-			throws Exception
-	{
-		int rVal = 0;
-
-		StringBuilder queryString = new StringBuilder(
-				"insert into student_faculty ( faculty, students ) values ( ");
-		queryString.append("?,?)");
-
-		Query query = Faculty.entityManager().createNativeQuery(
-				queryString.toString());
-		query.setParameter(1, facultyId);
-		query.setParameter(2, studentId);
-		rVal = query.executeUpdate();
-
-		return rVal;
-	}
-
-	private boolean isValidPassword(String userPassword)
-	{
-		boolean rVal = true;
-		if (userPassword == null)
-			rVal = false;
-		else if (userPassword.equals(""))
-			rVal = false;
-		else if (userPassword.length() < 8)
-			rVal = false;
-		return rVal;
-	}
-
-	private boolean isValidUserName(String userName)
-	{
-		boolean rVal = true;
-		if (userName == null)
-			rVal = false;
-		else if (userName.equals(""))
-			rVal = false;
-		else if (hasBlank(userName))
-			rVal = false;
-		return rVal;
-	}
-
-	private boolean hasBlank(String userName)
-	{
-		boolean rVal = false;
-		for (int i = 0; i < userName.length(); i++)
-		{
-			if (userName.charAt(i) == ' ')
-			{
-				rVal = true;
-				break;
-			}
-		}
-		return rVal;
 	}
 
 	@Override
@@ -497,124 +296,116 @@ public class PDFDetailTranscriptControllerHelper implements
 					"UTF8");
 			logger.info("createFromJson():myjson=" + myJson);
 			logger.info("createFromJson():Encoded JSON=" + json);
-			Student record = new Student();
+			PreviousTranscripts record = new PreviousTranscripts();
 			String className = this.myClass.getSimpleName();
 			boolean statusGood = true;
-			StudentView myView = StudentView.fromJsonToStudentView(myJson);
+			PreviousTranscriptView myView = PreviousTranscriptView.fromJsonToPreviousTranscriptView(myJson);
 
-			List<Student> studentList = Student.findStudentsByUserNameEquals(
-					myView.getUserName()).getResultList();
+			String msg = "";
 
-			if (studentList.size() == 0)
+			record.setLastUpdated(myView.getLastUpdated());
+			record.setCreatedDate(myView.getLastUpdated());
+
+			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+			record.setWhoUpdated(securityHelper.getUserName());
+			
+
+			record.setLastUpdated(new Date(System.currentTimeMillis()));
+			record.setCreatedDate(new Date(System.currentTimeMillis()));
+			record.setGradingScale(1);//TODO deal with this later.
+			School school = School.findSchoolsByNameEquals(myView.getSchoolName()).getSingleResult();
+			Student student = Student.findStudentsByUserNameEquals(myView.getStudentUserName()).getSingleResult();
+			record.setSchool(school);
+			record.setStudent(student);
+			// Create an instance of SimpleDateFormat used for formatting 
+			// the string representation of date (month/day/year)
+			DateFormat df = new SimpleDateFormat("MM-dd-yyyy-HH:mm:ss");
+
+			// Get the date today using Calendar object.
+			//Date today = Calendar.getInstance().getTime();        
+			// Using DateFormat format method we can create a string 
+			// representation of a date with the defined format.
+			String reportDate = df.format(record.getCreatedDate());
+
+			String name = myView.getStudentUserName() + reportDate;
+			record.setName(name);
+			record.setComments("Generated on " + reportDate );
+			Map<String, String> env = System.getenv();
+			
+			String rootDir = env.get("TRANSCRIPTS_DIR");
+			String dataDir = rootDir + File.separatorChar;
+			/*
+			File fDataDir = new File( dataDir );
+			if( !fDataDir.exists() )
 			{
-				String msg = "";
-				Set<Faculty> facultys = new HashSet<Faculty>();
+				fDataDir.mkdirs();
+			}
+			*/
+			String pdfURL = dataDir + name + ".pdf";
+			record.setPdfURL(pdfURL);
+			//TODO Need to create the pdf right here.
+			//this.createTranscriptFile(record);
+			
+			//record.setSchool(School.findSchool(myView.getSchoolId()));
+			//record.setStudent(Student.findStudent(myView.getStudentId()));
+			record.setType(myView.getType());
+			
+			statusGood = createTranscriptFile( record );
 
-				Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-				facultys.add(faculty);
+			if (statusGood)
+			{
 
-				record.setLastUpdated(myView.getLastUpdated());
-				record.setCreatedDate(myView.getLastUpdated());
+				((PreviousTranscripts) record).persist();
 
-				SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-				record.setWhoUpdated(securityHelper.getUserName());
+				myView.setVersion(record.getVersion());
 
-				String plainText = myView.getUserPassword();
+				myView.setId(100000L + record.getId());
 
-				//String newpwd = securityHelper.convertToSHA256(myView
-				//		.getUserPassword());
-
-				record.setAddress1(myView.getAddress1());
-				record.setAddress2(myView.getAddress2());
-				record.setCity(myView.getCity());
-				record.setCountry(myView.getCountry());
-				record.setEnabled(myView.getEnabled());
-				record.setEmail(myView.getEmail());
-				record.setFirstName(myView.getFirstName());
-				record.setMiddleName(myView.getMiddleName());
-				record.setLastName(myView.getLastName());
-				record.setPhone1(myView.getPhone1());
-				record.setPhone2(myView.getPhone2());
-				record.setPostalCode(myView.getPostalCode());
-				record.setProvince(myView.getProvince());
-				//record.setUserName(myView.getUserName());
-				//record.setUserPassword(newpwd);
-				//record.setFaculty(facultys);
-
-				if (this.isValidUserName(record.getUserName()) == false)
-				{
-					msg = "Invalid user name.";
-					statusGood = false;
-				}
-				else if (this.isValidPassword(plainText) == false)
-				{
-					statusGood = false;
-					msg = "Invalid password.";
-				}
-
-				if (statusGood)
-				{
-					/*
-					((Student) record).persist();
-
-					myView.setVersion(record.getVersion());
-					myView.setId(record.getId());
-
-					myView.setId(100000L + record.getId());
-
-					// myView.setId(100000L + record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setLastUpdated(record.getLastUpdated());
-					myView.setWhoUpdated(record.getWhoUpdated());
-					myView.setStudentId(record.getId());
-					myView.setVersion(record.getVersion());
-					myView.setFacultyId(faculty.getId());
-					myView.setEmail(record.getEmail());
-					myView.setAddress1(record.getAddress1());
-					myView.setAddress2(record.getAddress2());
-					myView.setCity(record.getCity());
-					myView.setCountry(record.getCountry());
-					myView.setFacultyUserName(faculty.getUserName());
-					myView.setFacultyEmail(faculty.getEmail());
-					myView.setLastName(record.getLastName());
-					myView.setMiddleName(record.getMiddleName());
-					myView.setFirstName(record.getFirstName());
-					myView.setPostalCode(record.getPostalCode());
-					myView.setProvince(record.getProvince());
-					myView.setPhone1(record.getPhone1());
-					myView.setPhone2(record.getPhone2());
-					myView.setEnabled(record.getEnabled());
-					myView.setUserName(record.getUserName());
-
-					returnStatus = HttpStatus.CREATED;
-					response.setMessage(className + " created.");
-					response.setSuccess(true);
-					response.setTotal(1L);
-					response.setData(myView);
-					*/
-				}
-				else
-				{
-					response.setMessage(className + " " + msg);
-					response.setSuccess(false);
-					response.setTotal(0L);
-					// returnStatus = HttpStatus.CONFLICT;
-					returnStatus = HttpStatus.BAD_REQUEST;
-				}
+				myView.setPrevioustranscriptviewId(100000L + record.getId());
+				myView.setName(record.getName());
+				myView.setComments(record.getComments());
+				myView.setCreatedDate(record.getCreatedDate());
+				myView.setCustodianOfRecords(record.getSchool().getCustodianOfRecords());
+				myView.setCustodianTitle(record.getSchool().getCustodianTitle());
+				myView.setDistrict(record.getSchool().getDistrict());
+				myView.setGradingScale(record.getGradingScale());
+				myView.setLastUpdated(record.getLastUpdated());
+				myView.setPdfURL(record.getPdfURL());
+				myView.setWhoUpdated(record.getWhoUpdated());
+				myView.setSchoolAdminEmail(record.getSchool().getAdmin().getEmail());
+				myView.setSchoolAdminId(record.getSchool().getAdmin().getId());
+				myView.setSchoolAdminUserName(record.getSchool().getAdmin().getUserName());
+				myView.setSchoolEmail(record.getSchool().getEmail());
+				myView.setSchoolName(record.getSchool().getName());
+				myView.setSchoolId(record.getSchool().getId());
+				myView.setSchoolPhone1(record.getSchool().getPhone1());
+				myView.setSchoolPhone2(record.getSchool().getPhone2());
+				myView.setSchoolAddress1(record.getSchool().getAddress1());
+				myView.setSchoolAddress2(record.getSchool().getAddress2());
+				myView.setSchoolPostalCode(record.getSchool().getPostalCode());
+				myView.setSchoolProvince(record.getSchool().getProvince());
+				myView.setStudentId(record.getStudent().getId());
+				myView.setStudentUserName(record.getStudent().getUserName());					
+				
+				returnStatus = HttpStatus.CREATED;
+				response.setMessage(className + " created.");
+				response.setSuccess(true);
+				response.setTotal(1L);
+				response.setData(myView);
 			}
 			else
 			{
-				statusGood = false;
-				response.setMessage("Duplicated faculty/student attempted.");
+				response.setMessage(className + " " + msg);
 				response.setSuccess(false);
 				response.setTotal(0L);
-				returnStatus = HttpStatus.CONFLICT;
-				// returnStatus = HttpStatus.BAD_REQUEST;
+				// returnStatus = HttpStatus.CONFLICT;
+				returnStatus = HttpStatus.BAD_REQUEST;
 			}
 
 		}
 		catch (Exception e)
 		{
+			e.printStackTrace();
 			response.setMessage(e.getMessage());
 			response.setSuccess(false);
 			response.setTotal(0L);
@@ -625,6 +416,359 @@ public class PDFDetailTranscriptControllerHelper implements
 		logger.info(response.toString());
 		return new ResponseEntity<String>(response.toString(), headers,
 				returnStatus);
+	}
+
+	private int createSemesterInfo( List<Quarter> quarters, ArrayList<ConcurrentHashMap<String,String>> yearInfoArray, ConcurrentHashMap<String,String> cumlativeHash )
+	{
+		ConcurrentHashMap<String,String> courseInfo = new ConcurrentHashMap<String,String>();
+
+		double fgrade = 0;
+		double fcredits = 0;
+		int count = 0;
+		for( Quarter quarter: quarters )
+		{
+			Subject subject = quarter.getSubject();
+			courseInfo.put("courseTitle", subject.getSimpleName() );
+			String creditsEarned = "0";
+			if( quarter.getGrade() > 69.0  && quarter.getCompleted() == true )//TODO use gradingScale to determine this.
+			{
+				creditsEarned = new Double( subject.getCreditHours() ).toString();
+				fcredits += new Double( subject.getCreditHours() );
+			}
+			//fcredits += new Double( subject.getCreditHours() );
+			courseInfo.put("creditsEarned", creditsEarned );
+			String grade = "A";
+			//TODO these calculations are base on a typical grading scale.  Fix this later.
+			if( quarter.getCompleted() == false )
+			{
+				grade = "I";
+			}
+			else if( quarter.getGrade() >= 90  )
+			{
+				grade = "A";
+				fgrade += 4.0;
+			}
+			else if( quarter.getGrade() >= 80 )
+			{
+				grade = "B";
+				fgrade += 3.0;
+			}
+			else if( quarter.getGrade() >= 70 )
+			{
+				grade = "C";
+				fgrade += 2.0;
+			}
+			else if( quarter.getGrade() >= 60 )
+			{
+				grade = "D";
+				fgrade += 1.0;
+			}
+			else
+			{
+				grade = "F";
+				fgrade += 0.0;
+			}
+			if( quarter.getGrade_type() != 1 )
+			{
+				if( quarter.getGrade() > 60 )
+				{
+					grade = "P";
+					fgrade += 4.0;
+				}
+				else
+				{
+					grade = "F";
+					fgrade += 0;
+				}
+			}
+			courseInfo.put("grade", grade );
+			yearInfoArray.add(courseInfo);
+			
+			courseInfo = new ConcurrentHashMap<String,String>();
+			count++;
+		}
+
+		double gpa = fgrade / count;
+		double cGPA = gpa;
+		if( cumlativeHash.get("gpa") != null )
+		{
+			cGPA = (new Double( cumlativeHash.get("cGpa") ) + gpa ) / 2.0;
+		}
+		
+		cumlativeHash.put( "yearlyGPA", new Double( gpa ).toString());
+		cumlativeHash.put( "totalCredits", new Double( fcredits ).toString() );
+		cumlativeHash.put( "cumulativeGPA", new Double( cGPA ).toString() );
+
+		return count;		
+	}
+	private boolean createTranscriptFile(PreviousTranscripts record) throws COSVisitorException, IOException, Exception
+	{
+		PDFCompletedTranscript transcript = new PDFCompletedTranscript();
+		transcript.setPdfFileName(record.getPdfURL());
+		ConcurrentHashMap<String,String> studentInfo = new ConcurrentHashMap<String,String>();
+		ConcurrentHashMap<String,String> schoolInfo = new ConcurrentHashMap<String,String>();
+		transcript.setSchoolName(record.getSchool().getName());
+		studentInfo.put("name", record.getStudent().getFirstName() + " " + record.getStudent().getMiddleName() + " " + record.getStudent().getLastName());
+		studentInfo.put("address1", record.getStudent().getAddress1());
+		studentInfo.put("address2", record.getStudent().getAddress2());
+		studentInfo.put("phone", record.getStudent().getPhone1());
+		studentInfo.put("email", record.getStudent().getEmail());
+		studentInfo.put("dob", record.getStudent().getDob().toString());
+		Set<Guardian> guardians = record.getStudent().getGuardians();
+		StringBuilder guardianString = new StringBuilder();
+		for( Guardian guardian: guardians )
+		{
+			guardianString.append(guardian.getFirstName() + " " + guardian.getMiddleName() + " " + guardian.getLastName() + ",");
+		}
+		studentInfo.put("guardian", guardianString.toString());
+		
+		schoolInfo.put( "name", record.getSchool().getName());
+		schoolInfo.put("address1", record.getSchool().getAddress1());
+		schoolInfo.put("address2", record.getSchool().getAddress2());
+		schoolInfo.put("phone", record.getSchool().getPhone1());
+		schoolInfo.put("email", record.getSchool().getEmail());
+		transcript.setStudentInformation(studentInfo);
+		transcript.setSchoolInformation(schoolInfo);
+
+		float lastBoxBottom = transcript.writeHeader();		
+		
+		ConcurrentHashMap<String,String> semesterOneInfo = new ConcurrentHashMap<String,String>();
+		ArrayList<ConcurrentHashMap<String,String>> semesterOneInfoArray = new ArrayList<ConcurrentHashMap<String,String>>();
+
+		ConcurrentHashMap<String,String> semesterTwoInfo = new ConcurrentHashMap<String,String>();
+		ArrayList<ConcurrentHashMap<String,String>> semesterTwoInfoArray = new ArrayList<ConcurrentHashMap<String,String>>();
+		
+		Set<Subject> subjects = record.getSchool().getSubjects();
+		String semesterOneYear = getSemesterOneYear( subjects );
+		List<Quarter> quarters = getQuarters( semesterOneYear, subjects );
+		semesterOneInfo.put("schoolYear", semesterOneYear);
+		semesterOneInfo.put("gradeLevel", "9th");
+		ConcurrentHashMap<String,String> semesterOneCumulativeInfo = new ConcurrentHashMap<String,String>();
+		this.createSemesterInfo(quarters, semesterOneInfoArray, semesterOneCumulativeInfo);
+		
+		String semesterTwoYear = this.getSemesterYear( semesterOneYear );
+		
+		//TODO Do year2
+		ConcurrentHashMap<String,String> courseInfo = new ConcurrentHashMap<String,String>();
+		semesterTwoInfo.put("schoolYear", "2008-2009");
+		semesterTwoInfo.put("gradeLevel", "10th");
+
+		courseInfo.put("courseTitle", "English 10");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "B");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+		
+		courseInfo.put("courseTitle", "Geometry");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "B");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "*Chemistry w/lab");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "C");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "World History");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "C");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "Latin II");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "A");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "Rhetoric");
+		courseInfo.put("creditsEarned", "1.0");
+		courseInfo.put("grade", "B");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "Fine Arts Piano II");
+		courseInfo.put("creditsEarned", "0.5");
+		courseInfo.put("grade", "B");
+		semesterTwoInfoArray.add(courseInfo);
+		courseInfo = new ConcurrentHashMap<String,String>();
+
+		courseInfo.put("courseTitle", "Old Testiment Survay");
+		courseInfo.put("creditsEarned", "0.5");
+		courseInfo.put("grade", "B");
+		semesterTwoInfoArray.add(courseInfo);
+		
+		ConcurrentHashMap<String,String> semesterTwoCumulativeInfo = new ConcurrentHashMap<String,String>();
+		semesterTwoCumulativeInfo.put("totalCredits", "7.0");
+		semesterTwoCumulativeInfo.put("yearlyGPA", "3.30");
+		semesterTwoCumulativeInfo.put("cumulativeGPA", "3.25");
+
+				
+		lastBoxBottom = transcript.writeSemesterOneAndTwo(
+													lastBoxBottom, 
+													semesterOneInfo, 
+													semesterTwoInfo, 
+													semesterOneInfoArray, 
+													semesterTwoInfoArray,
+													semesterOneCumulativeInfo,
+													semesterTwoCumulativeInfo
+													);
+		lastBoxBottom = transcript.writeSemesterOneAndTwo(
+													lastBoxBottom, 
+													semesterOneInfo, 
+													semesterTwoInfo, 
+													semesterOneInfoArray, 
+													semesterTwoInfoArray,
+													semesterOneCumulativeInfo,
+													semesterTwoCumulativeInfo
+													);
+		
+		ConcurrentHashMap<String,String> academicSummary = new ConcurrentHashMap<String,String>();
+		academicSummary.put("cumulativeGPA", "3.38");
+		academicSummary.put("creditsEarned", "28.0");
+		academicSummary.put("deplomaEarned", "yes");
+		academicSummary.put("graduationDate", "6/15/2011");
+		lastBoxBottom = transcript.writeSummaryAndGradeScale(lastBoxBottom, academicSummary);
+		
+		String data[] = new String[3];
+		data[0] = "Notes";
+		data[1] = "* Course work taken at a local community college.";
+		data[2] = "Official transcript form college has been requested and will be sent to you shortly.";
+
+		lastBoxBottom = transcript.writeNotes(lastBoxBottom, data);
+		System.out.println("10:lastBoxBottom=" + lastBoxBottom);
+		
+		ConcurrentHashMap<String,String> signatureInfo = new ConcurrentHashMap<String,String>();
+		signatureInfo.put("studentName", "Jane B. Smith");
+		signatureInfo.put("years", "2007 - 2011");
+		signatureInfo.put("title", "Principle");
+		signatureInfo.put("date", "July 2, 2011");
+		
+		lastBoxBottom = transcript.writeSignature(lastBoxBottom, signatureInfo);
+
+		transcript.writePDFFile();
+
+
+		return true;
+	}
+
+	private String getSemesterYear(String semesterOneYear)
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Get the quarters between year1 and year2
+	 * @param year1Year2 - a string of format <year>-<year>
+	 * @param subjects - Set of subjects that contain the quarters.
+	 * @return List<Quarter>
+	 */
+	private List<Quarter> getQuarters(String year1Year2, Set<Subject> subjects)
+	{
+		String years[] = year1Year2.split("-");
+		Integer year1 = new Integer( years[0] );
+		Integer year2 = new Integer( years[1] );
+		List<Quarter> quarters = new ArrayList<Quarter>();
+		List<Quarter> rVal = new ArrayList<Quarter>();
+		
+		for( Subject subject: subjects )
+		{
+			quarters = new ArrayList<Quarter>( subject.getQuarters() );	
+			for( Quarter quarter: quarters )
+			{
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+				String year = sdf.format(quarter.getCreatedDate());
+				Integer iYear = new Integer( year );
+				if( iYear.intValue() >= year1.intValue() && iYear.intValue() <= year2.intValue() )
+				{
+					// calBegin is the beginning of the fall semester
+					// calEnd is the end of the spring/summer1/summer2 semester.
+					// quarter's date has to fall into this range.
+					Calendar calBegin = new GregorianCalendar(year1.intValue(), 8, 31);//fall semester starts in sept.
+					sdf = new SimpleDateFormat("MM-dd-yyyy HH:MM:SS");
+					String sCalBegin = sdf.format(calBegin.getTime());
+					logger.info("calBegin=" + sCalBegin );
+
+					Calendar calEnd = new GregorianCalendar(year2.intValue(), 9, 1);//spring/summer ends in sept.
+					String sCalEnd = sdf.format(calEnd.getTime());
+					logger.info("calEnd=" + sCalEnd );
+
+					Calendar calCurrentDate = new GregorianCalendar();
+					calCurrentDate.setTime(quarter.getCreatedDate());
+					String sCalCurrentDate = sdf.format(calCurrentDate.getTime());
+					logger.info("c=" + sCalCurrentDate );
+
+					
+					if( calCurrentDate.after(calBegin) && calCurrentDate.before(calEnd) )
+					{
+						rVal.add(quarter);						
+					}					
+				}				
+			}
+		}
+
+		return rVal;
+	}
+
+	/**
+	 * Get the year one value as something like 2007-2008
+	 * @param subjects
+	 * @return A string with the format of <year>-<year>.
+	 */
+	private String getSemesterOneYear(Set<Subject> subjects)
+	{
+		// find the oldest quarter.
+		Quarter oldestQuarter = null;
+		List<Quarter> quarters = new ArrayList<Quarter>();
+		for( Subject subject: subjects )
+		{
+			quarters = new ArrayList<Quarter>( subject.getQuarters() );
+			for( Quarter quarter: quarters )
+			{
+				if( oldestQuarter == null )
+				{
+					oldestQuarter = quarter;
+				}
+				else
+				{
+					if( quarter.getCreatedDate().compareTo(oldestQuarter.getCreatedDate()) < 0 )
+					{
+						oldestQuarter = quarter;
+					}
+				}
+			}
+		}
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		String year = sdf.format(oldestQuarter.getCreatedDate());
+		Integer iYear = new Integer(year);
+		
+		Calendar calBegin = new GregorianCalendar(iYear.intValue() - 1, 8, 31);//fall semester starts in sept.
+		sdf = new SimpleDateFormat("MM-dd-yyyy HH:MM:SS");
+		String sCalBegin = sdf.format(calBegin.getTime());
+		logger.info("calBegin=" + sCalBegin );
+
+		Calendar calEnd = new GregorianCalendar(iYear.intValue(), 9, 1);//spring/summer ends in sept.
+		String sCalEnd = sdf.format(calEnd.getTime());
+		logger.info("calEnd=" + sCalEnd );
+
+		Calendar calCurrentDate = new GregorianCalendar();
+		calCurrentDate.setTime(oldestQuarter.getCreatedDate());
+		String sCalCurrentDate = sdf.format(calCurrentDate.getTime());
+		logger.info("calCurrentDate=" + sCalCurrentDate );
+
+		
+		if( calCurrentDate.after(calBegin) && calCurrentDate.before(calEnd) )
+		{
+			iYear -= 1;						
+		}					
+
+		String year2 = new Integer( iYear.intValue() + 1 ).toString();
+		String rVal = iYear.intValue() + "-" + year2;
+
+		return rVal;
 	}
 
 	@Override
@@ -678,293 +822,80 @@ public class PDFDetailTranscriptControllerHelper implements
 				returnStatus);
 	}
 
-	private boolean isNewFaculty(Long facultyId, List<StudentFaculty> list)
-	{
-		boolean rVal = false;
-		for (StudentFaculty sf : list)
-		{
-			if (sf.facultyId == facultyId)
-				return true;
-		}
-		return rVal;
-	}
-
 	@Override
 	public ResponseEntity<String> updateFromJson(String json)
 	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json");
-
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-
-		try
-		{
-			logger.info("updateFromJson(): Before decode() is " + json);
-			String myJson = URLDecoder.decode(json.replaceFirst("data=", ""),
-					"UTF8");
-			logger.info("updateFromJson():myjson=" + myJson);
-			logger.info("updateFromJson():Encoded JSON=" + json);
-			StudentView myView = null;
-			String className = this.myClass.getSimpleName();
-			boolean statusGood = true;
-			boolean updateGood = false;
-			boolean inSync = false;
-
-			logger.info("updateFromJson(): Debug just before call to StudentProfileView.fromJsonToStudentProfileView(myJson)");
-			myView = StudentView.fromJsonToStudentView(myJson);
-			logger.info("Debug1");
-			logger.info("updateFromJson(): Student id=" + myView.getStudentId());
-			Student record = Student.findStudent(myView.getStudentId());
-
-			List<StudentFaculty> studentList = this
-					.getStudentFacultyList(myView.getStudentId().toString());
-			Set<Faculty> facultys = new HashSet<Faculty>();
-			for (StudentFaculty studentFaculty : studentList)
-			{
-				Faculty faculty = Faculty.findFaculty(studentFaculty.facultyId);
-				facultys.add(faculty);
-			}
-
-			/*
-			 * // Check to see if the given facultyId in the view is part of the
-			 * student record. // If not, then add it. if(
-			 * this.isNewFaculty(myView.getFacultyId(), studentList) == false )
-			 * { Faculty faculty = Faculty.findFaculty(myView.getFacultyId());
-			 * facultys.add(faculty); }
-			 */
-			SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
-			record.setLastUpdated(myView.getLastUpdated());
-			record.setWhoUpdated(securityHelper.getUserName());
-
-			record.setAddress1(myView.getAddress1());
-			record.setAddress2(myView.getAddress2());
-			record.setCity(myView.getCity());
-			record.setCountry(myView.getCountry());
-			record.setEnabled(myView.getEnabled());
-			record.setEmail(myView.getEmail());
-			record.setFirstName(myView.getFirstName());
-			record.setMiddleName(myView.getMiddleName());
-			record.setLastName(myView.getLastName());
-			record.setPhone1(myView.getPhone1());
-			record.setPhone2(myView.getPhone2());
-			record.setPostalCode(myView.getPostalCode());
-			record.setProvince(myView.getProvince());
-			record.setUserName(myView.getUserName());
-			record.setFaculty(facultys);
-
-			logger.info("Debug2");
-			inSync = record.getVersion() == myView.getVersion();
-
-			if (inSync && record.merge() != null)
-			{
-				logger.info("Debug3");
-				myView.setVersion(record.getVersion());
-				updateGood = true;
-			}
-			else
-			{
-				statusGood = false;
-			}
-			if (statusGood && updateGood)
-			{
-				returnStatus = HttpStatus.OK;
-				response.setMessage(className + " updated.");
-				response.setSuccess(true);
-				response.setTotal(1L);
-				response.setData(myView);
-			}
-			else if (statusGood && !updateGood)
-			{
-				returnStatus = inSync ? HttpStatus.NOT_FOUND
-						: HttpStatus.CONFLICT;
-				response.setMessage(className + " update failed.");
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-			else if (!statusGood)
-			{
-				response.setMessage("Unsupported class=" + className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-			else
-			{
-				response.setMessage("Unknown error state for class="
-						+ className);
-				response.setSuccess(false);
-				response.setTotal(0L);
-				statusGood = false;
-				returnStatus = HttpStatus.BAD_REQUEST;
-			}
-
-		}
-		catch (Exception e)
-		{
-			logger.info("Debug4");
-			logger.info(e.getMessage());
-			e.printStackTrace();
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-			returnStatus = HttpStatus.BAD_REQUEST;
-		}
-
-		// Return the updated myView
-		return new ResponseEntity<String>(response.toString(), headers,
-				returnStatus);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public ResponseEntity<String> updateFromJsonArray(String json)
 	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json");
-
-		HttpStatus returnStatus = HttpStatus.OK;
-		List<Student> results = null;
-		JsonObjectResponse response = new JsonObjectResponse();
-		String myJson = null;
-		try
-		{
-			myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
-		}
-		catch (UnsupportedEncodingException e1)
-		{
-			response.setMessage(e1.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-			return new ResponseEntity<String>(response.toString(), headers,
-					returnStatus);
-		}
-		logger.debug("myjson=" + myJson);
-		logger.debug("Encoded JSON=" + json);
-		String className = this.myClass.getSimpleName();
-		boolean statusGood = false;
-		try
-		{
-			Collection<Student> mycollection = Student
-					.fromJsonArrayToStudents(myJson);
-			List<Student> records = new ArrayList<Student>(mycollection);
-
-			for (Student record : Student.fromJsonArrayToStudents(myJson))
-			{
-
-				if (record.merge() == null)
-				{
-					returnStatus = HttpStatus.NOT_FOUND;
-					response.setMessage(className + " update failed for id="
-							+ record.getId());
-					response.setSuccess(false);
-					response.setTotal(0L);
-					return new ResponseEntity<String>(response.toString(),
-							headers, returnStatus);
-				}
-			}
-			results = records;
-			statusGood = true;
-
-			if (statusGood)
-			{
-				returnStatus = HttpStatus.OK;
-				response.setMessage("All " + className + "s updated.");
-				response.setSuccess(true);
-				response.setTotal(results.size());
-				response.setData(results);
-			}
-			else
-			{
-				returnStatus = HttpStatus.BAD_REQUEST;
-				response.setMessage(className + " is not valid.");
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-
-		}
-		catch (Exception e)
-		{
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-
-		}
-
-		// Return the updated record(s)
-		return new ResponseEntity<String>(response.toString(), headers,
-				returnStatus);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public ResponseEntity<String> createFromJsonArray(String json)
 	{
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Type", "application/json");
-
-		HttpStatus returnStatus = HttpStatus.OK;
-		JsonObjectResponse response = new JsonObjectResponse();
-		String myJson = null;
-		try
-		{
-			myJson = URLDecoder.decode(json.replaceFirst("data=", ""), "UTF8");
-		}
-		catch (UnsupportedEncodingException e1)
-		{
-			// e1.printStackTrace();
-			response.setMessage(e1.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-			return new ResponseEntity<String>(response.toString(), headers,
-					returnStatus);
-		}
-		logger.debug("myjson=" + myJson);
-		logger.debug("Encoded JSON=" + json);
-		String className = this.myClass.getSimpleName();
-		boolean statusGood = false;
-		List<?> results = null;
-
-		try
-		{
-
-			Collection<Student> mycollection = Student
-					.fromJsonArrayToStudents(myJson);
-			List<Student> records = new ArrayList<Student>(mycollection);
-
-			for (Student record : Student.fromJsonArrayToStudents(myJson))
-			{
-				record.persist();
-			}
-			results = records;
-			statusGood = true;
-
-			if (statusGood)
-			{
-				returnStatus = HttpStatus.CREATED;
-				response.setMessage("All " + className + "s updated.");
-				response.setSuccess(true);
-				response.setTotal(results.size());
-				response.setData(results);
-			}
-			else
-			{
-				returnStatus = HttpStatus.BAD_REQUEST;
-				response.setMessage(className + " is invalid.");
-				response.setSuccess(false);
-				response.setTotal(0L);
-			}
-		}
-		catch (Exception e)
-		{
-			returnStatus = HttpStatus.BAD_REQUEST;
-			response.setMessage(e.getMessage());
-			response.setSuccess(false);
-			response.setTotal(0L);
-		}
-		// Return the updated record(s)
-		return new ResponseEntity<String>(response.toString(), headers,
-				returnStatus);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	public ResponseEntity<InputStreamResource> getTranscriptFile(Long id)
+	{
+		//String fullPath = stuffService.figureOutFileNameFor(stuffId);
+		Long transcriptId = id;
+		String fullPath = "";
+		String fileName = "";
+		File file = null;
+	    HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		
+		//figure out the full path based on the transcriptId from the PreviousTranscripts table record.
+		PreviousTranscripts record = PreviousTranscripts.findPreviousTranscripts(transcriptId);
+		
+		//URL myUrl = PreviousTranscripts.class.getResource("PreviousTranscripts.class");
+		//String rootDir = this.getClass().getClassLoader().getResource("").getPath();
+		
+		//String rootDir = myUrl.getPath();
+		//logger.info("roor dir=" + rootDir );
+		
+		try
+		{
+			fileName = record.getName() + ".pdf";
+			fullPath = record.getPdfURL();
+		    file = new File(fullPath);
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+			return new ResponseEntity<InputStreamResource>(null, headers, HttpStatus.BAD_REQUEST);
+		}
+
+
+		//headers.add("Content-Type", "application/pdf");
+
+		//headers.setContentType("application/pdf");
+		//calculate the length of the pdf file.
+		headers.setContentLength(file.length());
+		//get the fileNameIwant.pdf from the PreviousTranscripts table record.
+		//headers.setContentDispositionFormData("attachment", "fileNameIwant.pdf");
+		headers.setContentDispositionFormData("attachment", fileName);
+
+	    InputStreamResource isr = null;
+		try
+		{
+			isr = new InputStreamResource(new FileInputStream(file));
+		}
+		catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			logger.error("Unable to retrieve file " + fullPath );
+			e.printStackTrace();
+			return new ResponseEntity<InputStreamResource>(isr, headers, HttpStatus.BAD_REQUEST);
+		}
+	    return new ResponseEntity<InputStreamResource>(isr, headers, HttpStatus.OK);	
+	}
 }

@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.json.RooJson;
@@ -14,17 +13,17 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooJavaBean
 @RooToString
 @RooJson
-public class SchoolView {
-	
+public class PreviousTranscriptView
+{
 	private Long id;
 	
 	private Long schoolId;
 	
-	private Long schoolviewId;
+	private Long previoustranscriptviewId;
 	
-    private String email;
+    private String schoolEmail;
 
-    private String name;
+    private String schoolName;
 
     private String district;
     
@@ -32,59 +31,53 @@ public class SchoolView {
     
     private String custodianTitle;
     
-    private String phone1;
+    private String schoolPhone1;
 
-    private String phone2;
+    private String schoolPhone2;
 
-    private String address1;
+    private String schoolAddress1;
 
-    private String address2;
+    private String schoolAddress2;
 
-    private String city;
+    private String schoolCity;
 
-    private String province;
+    private String schoolProvince;
 
-    private String postalCode;
+    private String schoolPostalCode;
 
-    private String country;
+    private String schoolCountry;
     
-    private String comments;
+    private String schoolComments;
 
     private String whoUpdated;
     
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date createdDate;
-
+    
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(style = "M-")
     private Date lastUpdated;
-    
-    private Long subjectId;
-    
-    private String subjectName;
-    
-    private String subjectSimpleName;
-    
-    private Long quarterId;
-    
-    private String quarterName;
-    
+
     private Long studentId;
     
     private String studentUserName;
 
-    private Long facultyId;
+    private Long schoolAdminId;
     
-    private String facultyUserName;
+    private String schoolAdminUserName;
+    
+    private String schoolAdminEmail;
+    
+    private String name;
+    
+    private Integer type;//1 - unofficial, 2 - official
+    
+    private String pdfURL;
 
-    private Long adminId;
+    private String comments;
     
-    private String adminUserName;
-    
-    private String adminEmail;
-    
-    private Boolean enabled;
+    private Integer gradingScale;
     
 	private Integer version;
 }

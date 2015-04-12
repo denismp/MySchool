@@ -10,6 +10,14 @@ import java.util.Date;
 
 privileged aspect PreviousTranscripts_Roo_JavaBean {
     
+    public String PreviousTranscripts.getName() {
+        return this.name;
+    }
+    
+    public void PreviousTranscripts.setName(String name) {
+        this.name = name;
+    }
+    
     public int PreviousTranscripts.getType() {
         return this.type;
     }
@@ -34,6 +42,14 @@ privileged aspect PreviousTranscripts_Roo_JavaBean {
         this.comments = comments;
     }
     
+    public int PreviousTranscripts.getGradingScale() {
+        return this.gradingScale;
+    }
+    
+    public void PreviousTranscripts.setGradingScale(int gradingScale) {
+        this.gradingScale = gradingScale;
+    }
+    
     public Student PreviousTranscripts.getStudent() {
         return this.student;
     }
@@ -48,6 +64,22 @@ privileged aspect PreviousTranscripts_Roo_JavaBean {
     
     public void PreviousTranscripts.setSchool(School school) {
         this.school = school;
+    }
+    
+    public String PreviousTranscripts.getWhoUpdated() {
+        return this.whoUpdated;
+    }
+    
+    public void PreviousTranscripts.setWhoUpdated(String whoUpdated) {
+        this.whoUpdated = whoUpdated;
+    }
+    
+    public Date PreviousTranscripts.getLastUpdated() {
+        return this.lastUpdated;
+    }
+    
+    public void PreviousTranscripts.setLastUpdated(Date lastUpdated) {
+        this.lastUpdated = lastUpdated;
     }
     
     public Date PreviousTranscripts.getCreatedDate() {

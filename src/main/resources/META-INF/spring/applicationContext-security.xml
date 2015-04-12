@@ -67,6 +67,10 @@
         
         <intercept-url pattern="/facultyviews" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
         <intercept-url pattern="/facultyviews/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_FACULTY')" />
+        
+        <intercept-url pattern="/detailtranscripts" access="hasAnyRole('ROLE_ADMIN', 'ROLE_SCHOOL')" />
+        <intercept-url pattern="/detailtranscripts/**" access="hasAnyRole('ROLE_ADMIN', 'ROLE_SCHOOL')" />
+        
           
         <intercept-url pattern="/graduatetrackings" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/graduatetrackings/**" access="hasRole('ROLE_ADMIN')" />

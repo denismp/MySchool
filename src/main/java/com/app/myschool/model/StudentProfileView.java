@@ -67,7 +67,6 @@ public class StudentProfileView {
 	private String guardianUserName;
 	
 	private String guardianEmail;
-
 	
 	private Integer version;
 }

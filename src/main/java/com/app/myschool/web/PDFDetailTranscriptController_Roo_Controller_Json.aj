@@ -3,7 +3,7 @@
 
 package com.app.myschool.web;
 
-import com.app.myschool.model.Student;
+import com.app.myschool.model.PreviousTranscripts;
 import com.app.myschool.web.PDFDetailTranscriptController;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,32 +19,52 @@ privileged aspect PDFDetailTranscriptController_Roo_Controller_Json {
     
     @RequestMapping(value = "/jsonArray", method = RequestMethod.POST, headers = "Accept=application/json")
     public ResponseEntity<String> PDFDetailTranscriptController.createFromJsonArray(@RequestBody String json) {
-        for (Student student: Student.fromJsonArrayToStudents(json)) {
-            student.persist();
+        for (PreviousTranscripts previousTranscripts: PreviousTranscripts.fromJsonArrayToPreviousTranscriptses(json)) {
+            previousTranscripts.persist();
         }
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
         return new ResponseEntity<String>(headers, HttpStatus.CREATED);
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
-    public ResponseEntity<String> PDFDetailTranscriptController.deleteFromJson(@PathVariable("id") Long id) {
-        Student student = Student.findStudent(id);
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT, headers = "Accept=application/json")
+    public ResponseEntity<String> PDFDetailTranscriptController.updateFromJson(@RequestBody String json, @PathVariable("id") Long id) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json");
-        if (student == null) {
+        PreviousTranscripts previousTranscripts = PreviousTranscripts.fromJsonToPreviousTranscripts(json);
+        previousTranscripts.setId(id);
+        if (previousTranscripts.merge() == null) {
             return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
         }
-        student.remove();
         return new ResponseEntity<String>(headers, HttpStatus.OK);
     }
     
-    @RequestMapping(params = "find=ByUserNameEquals", headers = "Accept=application/json")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    public ResponseEntity<String> PDFDetailTranscriptController.deleteFromJson(@PathVariable("id") Long id) {
+        PreviousTranscripts previousTranscripts = PreviousTranscripts.findPreviousTranscripts(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        if (previousTranscripts == null) {
+            return new ResponseEntity<String>(headers, HttpStatus.NOT_FOUND);
+        }
+        previousTranscripts.remove();
+        return new ResponseEntity<String>(headers, HttpStatus.OK);
+    }
+    
+    @RequestMapping(params = "find=ByNameEquals", headers = "Accept=application/json")
     @ResponseBody
-    public ResponseEntity<String> PDFDetailTranscriptController.jsonFindStudentsByUserNameEquals(@RequestParam("userName") String userName) {
+    public ResponseEntity<String> PDFDetailTranscriptController.jsonFindPreviousTranscriptsesByNameEquals(@RequestParam("name") String name) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=utf-8");
-        return new ResponseEntity<String>(Student.toJsonArray(Student.findStudentsByUserNameEquals(userName).getResultList()), headers, HttpStatus.OK);
+        return new ResponseEntity<String>(PreviousTranscripts.toJsonArray(PreviousTranscripts.findPreviousTranscriptsesByNameEquals(name).getResultList()), headers, HttpStatus.OK);
+    }
+    
+    @RequestMapping(params = "find=ByPdfURLEquals", headers = "Accept=application/json")
+    @ResponseBody
+    public ResponseEntity<String> PDFDetailTranscriptController.jsonFindPreviousTranscriptsesByPdfURLEquals(@RequestParam("pdfURL") String pdfURL) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=utf-8");
+        return new ResponseEntity<String>(PreviousTranscripts.toJsonArray(PreviousTranscripts.findPreviousTranscriptsesByPdfURLEquals(pdfURL).getResultList()), headers, HttpStatus.OK);
     }
     
 }

@@ -91,6 +91,7 @@ privileged aspect PreviousTranscriptsController_Roo_Controller {
     }
     
     void PreviousTranscriptsController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("previousTranscripts_lastupdated_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
         uiModel.addAttribute("previousTranscripts_createddate_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
     }
     

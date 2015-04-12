@@ -893,6 +893,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.model.subject.QuarterNamesModel": [],
   "MySchool.model.subject.SchoolsModel": [],
   "MySchool.model.subject.SubjectsModel": [],
+  "MySchool.model.transcripts.PreviousTranscriptsModel": [],
   "MySchool.model.weekly.EvaluationsModel": [],
   "MySchool.model.weekly.SkillRatingsModel": [],
   "MySchool.store.admin.AdminPasswordStore": [],
@@ -920,6 +921,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.store.subject.QuarterYearStore": [],
   "MySchool.store.subject.SchoolsStore": [],
   "MySchool.store.subject.SubjectStore": [],
+  "MySchool.store.transcript.PreviousTranscriptsStore": [],
   "MySchool.store.weekly.EvaluationsRatingsStore": [],
   "MySchool.store.weekly.SkillRatingsStore": [],
   "MySchool.view.Main": [],
@@ -1012,6 +1014,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "MySchool.view.student.ProfileRefreshTool": [],
   "MySchool.view.student.ProfileSaveTool": [],
   "MySchool.view.student.ProfileSearchTool": [],
+  "MySchool.view.student.TranscriptDialog": [],
   "MySchool.view.subject.EditForm": [],
   "MySchool.view.subject.FacultyNamesComboBox": [],
   "MySchool.view.subject.GradeTypeComboBox": [],
@@ -2122,6 +2125,9 @@ Ext.ClassManager.addNameAliasMappings({
     "model.subjectschoolsmodel"
   ],
   "MySchool.model.subject.SubjectsModel": [],
+  "MySchool.model.transcripts.PreviousTranscriptsModel": [
+    "model.previoustranscriptsmodel"
+  ],
   "MySchool.model.weekly.EvaluationsModel": [
     "model.weeklyevaluationsmodel"
   ],
@@ -2177,6 +2183,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.store.subject.SubjectStore": [
     "store.subjectstore"
   ],
+  "MySchool.store.transcript.PreviousTranscriptsStore": [],
   "MySchool.store.weekly.EvaluationsRatingsStore": [
     "store.weeklyevaluationsratingsstore"
   ],
@@ -2429,6 +2436,7 @@ Ext.ClassManager.addNameAliasMappings({
   "MySchool.view.student.ProfileSearchTool": [
     "widget.studentprofilesearchtool"
   ],
+  "MySchool.view.student.TranscriptDialog": [],
   "MySchool.view.subject.EditForm": [],
   "MySchool.view.subject.FacultyNamesComboBox": [
     "widget.subjectfacultynamescombobox"

@@ -91,6 +91,11 @@ public class SecurityViewControllerHelper implements
 		return ret_;
 	}
 	
+	public String getHomePath()
+	{
+		return System.getProperty("user.dir");
+	}
+	
 	@SuppressWarnings("unchecked")
 	private List<Faculty>getFacultyListBySchoolAdmin( String adminId ) throws Exception
 	{

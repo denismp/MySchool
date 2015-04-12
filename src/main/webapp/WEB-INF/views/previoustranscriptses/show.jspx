@@ -9,5 +9,9 @@
         <field:display field="pdfURL" id="s_com_app_myschool_model_PreviousTranscripts_pdfURL" object="${previoustranscripts}" z="/eXVrPbk9L0Zg579+T8XzXfMseM="/>
         <field:display field="school" id="s_com_app_myschool_model_PreviousTranscripts_school" object="${previoustranscripts}" z="xQEA1rAMg381c5Wg4tu4sOtQULE="/>
         <field:display field="comments" id="s_com_app_myschool_model_PreviousTranscripts_comments" object="${previoustranscripts}" z="+OnKWpGuHnBv7Tme4DVJWK5/e0Y="/>
+        <field:display field="name" id="s_com_app_myschool_model_PreviousTranscripts_name" object="${previoustranscripts}" z="lvw5bc1s/3WBcduGABT7+3B6fqQ="/>
+        <field:display field="gradingScale" id="s_com_app_myschool_model_PreviousTranscripts_gradingScale" object="${previoustranscripts}" z="I2DBRAJZcnxDeePUJ6KN7yZOvoQ="/>
+        <field:display field="whoUpdated" id="s_com_app_myschool_model_PreviousTranscripts_whoUpdated" object="${previoustranscripts}" z="+LDZFvn+JJJ9I55/upbDOvbcnIg="/>
+        <field:display date="true" dateTimePattern="${previousTranscripts_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_PreviousTranscripts_lastUpdated" object="${previoustranscripts}" z="FN9hGWyRLJd/Sf6K9bUerVmnvTA="/>
     </page:show>
 </div>

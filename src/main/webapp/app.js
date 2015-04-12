@@ -43,7 +43,8 @@ Ext.application({
 		'guardian.GuardianTypeModel',
 		'school.SchoolProfileModel',
 		'admin.AdminProfileModel',
-		'admin.PasswordModel'
+		'admin.PasswordModel',
+		'transcripts.PreviousTranscriptsModel'
 	],
 	stores: [
 		'subject.SubjectStore',
@@ -72,7 +73,8 @@ Ext.application({
 		'school.SchoolProfileStore',
 		'admin.AdminProfileStore',
 		'admin.AdminPasswordStore',
-		'admin.AdminStore'
+		'admin.AdminStore',
+		'transcript.PreviousTranscriptsStore'
 	],
 	views: [
 		'MainPanel',
@@ -196,7 +198,8 @@ Ext.application({
 		'admin.NewDialog',
 		'guardian.AddChildDialog',
 		'faculty.AddChildDialog',
-		'student.AddChildDialog'
+		'student.AddChildDialog',
+		'student.TranscriptDialog'
 	],
 	controllers: [
 		'subject.SubjectsController',

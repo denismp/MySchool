@@ -396,6 +396,10 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 		HttpStatus returnStatus = HttpStatus.OK;
 		
 		JsonObjectResponse response = new JsonObjectResponse();
+		SecurityViewControllerHelper securityHelper = new SecurityViewControllerHelper();
+
+		String userName = securityHelper.getUserName();
+		String role = securityHelper.getUserRole();
 
 		try {
 			String myJson = URLDecoder.decode(json.replaceFirst( "data=", "" ), "UTF8");
@@ -428,9 +432,9 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					}
 					*/
 					
-					record.setLastUpdated(myView.getSubjLastUpdated());
-					record.setCreatedDate(myView.getSubjLastUpdated());
-					record.setWhoUpdated(myView.getSubjWhoUpdated());
+					record.setLastUpdated(new Date(System.currentTimeMillis()));
+					record.setCreatedDate(new Date(System.currentTimeMillis()));
+					record.setWhoUpdated(userName);
 					
 					record.setCreditHours(myView.getSubjCreditHours());
 					record.setDescription(myView.getSubjDescription());
@@ -489,8 +493,9 @@ public class SubjectViewControllerHelper implements ControllerHelperInterface{
 					quarter.setGrade(myView.getQtrGrade());
 					quarter.setGrade_type(myView.getQtrGradeType());
 					quarter.setLocked(myView.getQtrLocked());
-					quarter.setLastUpdated(myView.getQtrLastUpdated());
-					quarter.setWhoUpdated(myView.getQtrWhoUpdated());
+					quarter.setLastUpdated(new Date(System.currentTimeMillis()));
+					quarter.setCreatedDate(new Date(System.currentTimeMillis()));
+					quarter.setWhoUpdated(userName);
 					quarter.setQtrName(myView.getQtrName());
 					quarter.setQtr_year(myView.getQtrYear());
 					

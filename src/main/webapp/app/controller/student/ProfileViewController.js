@@ -24,7 +24,8 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		'student.StudentStore',
 		'faculty.FacultyTableStore',
 		'student.StudentProfileStore',
-		'subject.SchoolsStore'
+		'subject.SchoolsStore',
+		'transcript.PreviousTranscriptsStore'
 	],
 
 	refs: [
@@ -515,6 +516,72 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 		rowmodel.select( index, false, true );
 	},
 
+	onStudentprofilestranscriptstoolClick: function(tool, e, eOpts) {
+		debugger;
+
+		//var guardianStore = Ext.getStore('guardian.GuardianProfileStore');
+		//var guardianTypesStore = Ext.getStore('guardian.GuardianTypeStore');
+		//guardianTypesStore.myLoad();
+
+		if( this.userRole === 'ROLE_ADMIN' || this.userRole === 'ROLE_SCHOOL'){
+			var newDialog = Ext.create( 'MySchool.view.student.TranscriptDialog' );
+
+			window.console.log( 'Student Transcript Dialog' );
+
+			newDialog.render( Ext.getBody() );
+			newDialog.show();
+		}
+	},
+
+	onStudenttranscriptform_schoolnameBoxReady: function(component, width, height, eOpts) {
+		component.focus(false, 200);
+	},
+
+	onStudenttranscriptcancelClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Cancel Create Transcript" );
+		var myForm = button.up().getForm();
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
+	onStudenttranscriptsubmitClick: function(button, e, eOpts) {
+		debugger;
+		window.console.log( "Submit Create Transcript" );
+		var myForm = button.up().getForm();
+
+		//var myStore = Ext.getStore("student.StudentStore");
+		var myStore = Ext.getStore("transcript.PreviousTranscriptsStore");
+		var userName = myForm.findField('userName').getSubmitValue();
+		var schoolName = myForm.findField('schoolname').getSubmitValue();
+
+		//var myRecord = myStore.findRecord('userName', userName );
+		//	Create an empty record
+		var myRecord	= Ext.create('MySchool.model.transcripts.PreviousTranscriptsModel');
+
+
+		if( myRecord === null )
+		{
+			Ext.MessageBox.show({
+				title: 'INVALID USER EXCEPTION',
+				msg: 'You have entered an invalid data.',
+				icon: Ext.MessageBox.ERROR,
+				buttons: Ext.Msg.OK
+			});
+		}
+
+		myRecord.set( 'studentUserName', userName );
+		myRecord.set( 'schoolName', schoolName );
+		myStore.add(myRecord);
+		myStore.sync();
+		//myStore.reload();
+
+		myForm.reset();
+		button.up().hide();
+		button.up().up().close();
+	},
+
 	buttonHandler: function(button, e, eOpts) {
 		debugger;
 		window.console.log(button);
@@ -780,6 +847,18 @@ Ext.define('MySchool.controller.student.ProfileViewController', {
 			},
 			"#studentaddchildsubmit": {
 				click: this.onStudentaddchildsubmitClick
+			},
+			"#studentprofilestranscriptstool": {
+				click: this.onStudentprofilestranscriptstoolClick
+			},
+			"#studenttranscriptform_schoolname": {
+				boxready: this.onStudenttranscriptform_schoolnameBoxReady
+			},
+			"#studenttranscriptcancel": {
+				click: this.onStudenttranscriptcancelClick
+			},
+			"#studenttranscriptsubmit": {
+				click: this.onStudenttranscriptsubmitClick
 			}
 		});
 	},

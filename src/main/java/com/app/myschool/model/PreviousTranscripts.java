@@ -19,10 +19,15 @@ import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
-@RooJpaActiveRecord
+@RooJpaActiveRecord(finders = { "findPreviousTranscriptsesByNameEquals", "findPreviousTranscriptsesByPdfURLEquals" })
 @RooJson
 public class PreviousTranscripts {
 
+    @NotNull
+    @Column(unique = true)
+    @Size(max = 100)
+    private String name;
+    
     @NotNull
     @Min(0L)
     @Max(1L)
@@ -30,6 +35,7 @@ public class PreviousTranscripts {
     
    
     @NotNull
+    @Column(unique = true)
     @Size(max = 1024)
     private String pdfURL;
 
@@ -37,12 +43,24 @@ public class PreviousTranscripts {
     @Size(max = 1024)
     private String comments;
     
+    @NotNull
+    @Min(0L)
+    private int gradingScale;
+    
     @ManyToOne
     private Student student;
     
     @ManyToOne
     private School school;
 
+    @NotNull
+    @Size(max = 45)
+    private String whoUpdated;
+
+    @NotNull
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(style = "M-")
+    private Date lastUpdated;
     
     @Column(name="createdDate", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")  
     //@NotNull
