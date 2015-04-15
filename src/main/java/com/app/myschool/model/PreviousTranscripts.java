@@ -11,6 +11,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
@@ -29,9 +30,13 @@ public class PreviousTranscripts {
     private String name;
     
     @NotNull
-    @Min(0L)
-    @Max(1L)
-    private int type;//1 - unofficial, 2 - official
+    @Min(1L)
+    @Max(3L)
+    private int type;//1 - grade school, 2 - high school, 3 - other
+    
+    @NotNull
+    @Value("false")
+    private Boolean official;
     
    
     @NotNull

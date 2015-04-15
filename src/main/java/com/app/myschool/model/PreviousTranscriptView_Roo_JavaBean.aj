@@ -224,6 +224,14 @@ privileged aspect PreviousTranscriptView_Roo_JavaBean {
         this.type = type;
     }
     
+    public Boolean PreviousTranscriptView.getOfficial() {
+        return this.official;
+    }
+    
+    public void PreviousTranscriptView.setOfficial(Boolean official) {
+        this.official = official;
+    }
+    
     public String PreviousTranscriptView.getPdfURL() {
         return this.pdfURL;
     }

@@ -130,6 +130,10 @@ Ext.define('MySchool.model.transcripts.PreviousTranscriptsModel', {
 			type: 'int'
 		},
 		{
+			name: 'type',
+			type: 'boolean'
+		},
+		{
 			name: 'pdfURL',
 			type: 'string'
 		},

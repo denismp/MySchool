@@ -13,5 +13,6 @@
         <field:display field="gradingScale" id="s_com_app_myschool_model_PreviousTranscripts_gradingScale" object="${previoustranscripts}" z="I2DBRAJZcnxDeePUJ6KN7yZOvoQ="/>
         <field:display field="whoUpdated" id="s_com_app_myschool_model_PreviousTranscripts_whoUpdated" object="${previoustranscripts}" z="+LDZFvn+JJJ9I55/upbDOvbcnIg="/>
         <field:display date="true" dateTimePattern="${previousTranscripts_lastupdated_date_format}" field="lastUpdated" id="s_com_app_myschool_model_PreviousTranscripts_lastUpdated" object="${previoustranscripts}" z="FN9hGWyRLJd/Sf6K9bUerVmnvTA="/>
+        <field:display field="official" id="s_com_app_myschool_model_PreviousTranscripts_official" object="${previoustranscripts}" z="7HR6e8GqB3sURRNoJUNal6q3tAo="/>
     </page:show>
 </div>

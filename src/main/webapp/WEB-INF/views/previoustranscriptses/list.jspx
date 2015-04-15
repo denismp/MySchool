@@ -6,10 +6,10 @@
         <table:table data="${previoustranscriptses}" id="l_com_app_myschool_model_PreviousTranscripts" path="/previoustranscriptses" z="tli4PERiAmmab3mdYQnWmgJKFWM=">
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_type" property="type" z="cLDSKVpUWfQh2Pm7OFS4iJElmek="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" property="pdfURL" z="83OyNss5eP2+kFU1ri/LcpU9eb0="/>
-            <table:column id="c_com_app_myschool_model_PreviousTranscripts_student" property="student" z="qYYFkJ/txlsgmNfWSQJNT63bJZ4="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_comments" property="comments" z="QDX20S3zYi8oO+k/rFOVjkCW0io="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_name" property="name" z="xEKmNOXx1xHzirENSQLoKT8KqxM="/>
             <table:column id="c_com_app_myschool_model_PreviousTranscripts_gradingScale" property="gradingScale" z="d7rkhmokl92pLrVT9bpWUJi+Ygo="/>
+            <table:column id="c_com_app_myschool_model_PreviousTranscripts_official" property="official" z="FTIl+ESBEffug9Auw3YJgciJmM8="/>
         </table:table>
     </page:list>
 </div>

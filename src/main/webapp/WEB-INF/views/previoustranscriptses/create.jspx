@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_app_myschool_model_PreviousTranscripts" modelAttribute="previousTranscripts" path="/previoustranscriptses" render="${empty dependencies}" z="lvBPEb9f0sBBaGjgEFI9JYbl/HY=">
-        <field:input field="type" id="c_com_app_myschool_model_PreviousTranscripts_type" max="1" min="0" required="true" z="meEkyB2U7Zf0WFllFiyeA1YvsM8="/>
+        <field:input field="type" id="c_com_app_myschool_model_PreviousTranscripts_type" max="3" min="1" required="true" z="fcP8dBdCGbxprTZAdPF9AoqGi5Y="/>
         <field:select field="student" id="c_com_app_myschool_model_PreviousTranscripts_student" itemValue="id" items="${students}" path="/students" z="Z24J+aKmhGzCUC/Ft0lb4HwArMc="/>
         <field:datetime dateTimePattern="${previousTranscripts_createddate_date_format}" field="createdDate" id="c_com_app_myschool_model_PreviousTranscripts_createdDate" z="KGH6CXmkIjt7OcrbL+TapM5053I="/>
         <field:textarea field="pdfURL" id="c_com_app_myschool_model_PreviousTranscripts_pdfURL" required="true" z="c73GMLKdzro13E9VBPy+PjHUfeQ="/>
@@ -13,6 +13,7 @@
         <field:input field="gradingScale" id="c_com_app_myschool_model_PreviousTranscripts_gradingScale" min="0" required="true" z="SDROYZ46qdgpJYVN+Lr2CZ9JvR8="/>
         <field:textarea field="whoUpdated" id="c_com_app_myschool_model_PreviousTranscripts_whoUpdated" required="true" z="N9Z2po+c5aeW9dEdOa5dRYNHDg0="/>
         <field:datetime dateTimePattern="${previousTranscripts_lastupdated_date_format}" field="lastUpdated" id="c_com_app_myschool_model_PreviousTranscripts_lastUpdated" required="true" z="qaKD41m3+BN77kP+LBO9c8CszFY="/>
+        <field:checkbox field="official" id="c_com_app_myschool_model_PreviousTranscripts_official" z="SwWm0Ll5w/g21ZYF5HE+maa91RM="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_app_myschool_model_PreviousTranscripts" render="${not empty dependencies}" z="Ulx4IZVDZa3D7y/F4gjwYjKEFC4="/>
 </div>

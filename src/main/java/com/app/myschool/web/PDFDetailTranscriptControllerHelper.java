@@ -124,6 +124,9 @@ public class PDFDetailTranscriptControllerHelper implements
 					myView.setPrevioustranscriptviewId(i);
 					myView.setName(transcript.getName());
 					myView.setComments(transcript.getComments());
+					myView.setType(transcript.getType());
+					myView.setVersion(transcript.getVersion());
+					myView.setOfficial(transcript.getOfficial());
 					myView.setCreatedDate(transcript.getCreatedDate());
 					myView.setCustodianOfRecords(school.getCustodianOfRecords());
 					myView.setCustodianTitle(school.getCustodianTitle());

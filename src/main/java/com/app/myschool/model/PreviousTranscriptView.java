@@ -71,7 +71,9 @@ public class PreviousTranscriptView
     
     private String name;
     
-    private Integer type;//1 - unofficial, 2 - official
+    private Integer type;//1 - Grade school , 2 - High School, 3 - Other
+    
+    private Boolean official;
     
     private String pdfURL;
 
