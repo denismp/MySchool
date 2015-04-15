@@ -130,7 +130,7 @@ Ext.define('MySchool.model.transcripts.PreviousTranscriptsModel', {
 			type: 'int'
 		},
 		{
-			name: 'type',
+			name: 'official',
 			type: 'boolean'
 		},
 		{
